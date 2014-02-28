@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+  <title>Login - Ondestán</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
+  <meta name="description" content="cows position monitoring web app" />
+  <link rel="stylesheet"
+        href="${request.static_url('ondestan:static/pylons.css')}"
+        type="text/css" media="screen" charset="utf-8" />
+  <!--[if lte IE 6]>
+  <link rel="stylesheet"
+        href="${request.static_url('ondestan:static/ie6.css')}"
+        type="text/css" media="screen" charset="utf-8" />
+  <![endif]-->
+</head>
+<body>
+  <div id="wrap">
+    <div id="middle">
+      <div class="middle align-right">
+        <div id="left" class="app-welcome align-left">
+          <b>Login</b><br/>
+          <span tal:replace="message"/>
+        </div>
+        <div id="right" class="app-welcome align-right"></div>
+      </div>
+    </div>
+    <div id="bottom">
+      <div class="bottom">
+        <form action="${url}" method="post">
+          <input type="hidden" name="came_from" value="${came_from}"/>
+          <input type="text" name="login" value="${login}"/><br/>
+          <input type="password" name="password"
+                 value="${password}"/><br/>
+          <input type="submit" name="form.submitted" value="Log In"/>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="footer">&copy; Copyright 2014.</div>
+  </div>
+</body>
+</html>
