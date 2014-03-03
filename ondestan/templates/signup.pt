@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal">
+<head>
+  <title>Sign Up - Ondestán</title>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+  <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
+  <meta name="description" content="cows position monitoring web app" />
+  <link rel="stylesheet"
+        href="${request.static_url('ondestan:static/pylons.css')}"
+        type="text/css" media="screen" charset="utf-8" />
+  <!--[if lte IE 6]>
+  <link rel="stylesheet"
+        href="${request.static_url('ondestan:static/ie6.css')}"
+        type="text/css" media="screen" charset="utf-8" />
+  <![endif]-->
+</head>
+<body>
+  <script type="text/javascript">
+
+  	function checkFields() {
+  		login = document.getElementById('login').value;
+  		name = document.getElementById('name').value;
+  		email = document.getElementById('email').value;
+  		phone = document.getElementById('phone').value;
+  		pass1 = document.getElementById('password1').value;
+  		pass2 = document.getElementById('password2').value;
+  		document.getElementById('submit').disabled = ((pass1 != pass2) || (pass1 == '') || (login == '') || (name == '') || (email == '') || (phone == ''));
+  		if (pass1 != '') {
+	  		if (pass1.length < 6) {
+	  			document.getElementById('passtooshort').style.display="";
+	  			document.getElementById('passdistinct').style.display="none";
+	  		} else {
+	  			document.getElementById('passtooshort').style.display="none";
+		  		if ((pass2 != '') && (pass1 != pass2)) {
+		  			document.getElementById('passdistinct').style.display="";
+		  		} else {
+		  			document.getElementById('passdistinct').style.display="none";
+		  		}
+	  		}
+  		}
+  	}
+
+  </script>
+  <div id="wrap">
+    <div id="middle">
+      <div class="middle align-right">
+        <div id="left" class="app-welcome align-left">
+          <b>Sign Up</b><br/>
+          <span tal:replace="message"/>
+        </div>
+        <div id="right" class="app-welcome align-right"></div>
+      </div>
+    </div>
+    <div id="bottom">
+      <div class="bottom">
+      	<label>All fields are mandatory</label>
+        <form action="${url}" method="post">
+	        <table>
+	          <tr><td align="right" style="padding-right:10px"><label>Login:</label></td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label>Name:</label></td><td><input type="text" id="name" name="name" value="${name}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label>Email:</label></td><td><input type="text" id="email" name="email" value="${email}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label>Phone number:</label></td><td><input type="text" id="phone" name="phone" value="${phone}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td><br/></td><td><label id="passtooshort" style="display: none;">Password must be at least 6 chars</label><label id="passdistinct" style="display: none;">Passwords don't match</label></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label>Password:</label></td><td><input type="password" id="password1" name="password" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label>Retype password:</label></td><td><input type="password" id="password2" onkeyup="checkFields()"/></td></tr>
+	          <tr><td></td><td align="right"><input disabled="disabled" id="submit" type="submit" name="form.submitted" value="Sign Up"/></td></tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div id="footer">
+    <div class="footer">&copy; Copyright 2014.</div>
+  </div>
+</body>
+</html>

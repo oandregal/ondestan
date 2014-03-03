@@ -15,7 +15,10 @@ from pyramid.security import (
 
 from .cow import Cow
 from .plot import Plot
+from .user import User
 from .security import check_login_request, get_user_login, check_permission
+from hashlib import sha512
+print()
 
 @view_config(route_name='login', renderer='templates/login.pt')
 @forbidden_view_config(renderer='templates/login.pt')
@@ -42,6 +45,40 @@ def login(request):
         came_from = came_from,
         login = login,
         password = password,
+        )
+
+@view_config(route_name='signup', renderer='templates/signup.pt')
+def signup(request):
+    message = ''
+    login = ''
+    name = ''
+    email = ''
+    phone = ''
+    if 'form.submitted' in request.params:
+        login = request.params['login']
+        name = request.params['name']
+        email = request.params['email']
+        phone = request.params['phone']
+        user = User().queryObject().filter(User.login==login).scalar()
+        if (user == None):
+            user = User()
+            user.login = login
+            user.name = name
+            user.email = email
+            user.phone = phone
+            user.password = sha512(request.params['password']).hexdigest()
+            user.role_id = 2
+            user.save()
+            raise HTTPFound(request.route_url("login"))
+        message = 'Login is already in use. Please choose a different one.'
+
+    return dict(
+        message = message,
+        url = request.application_url + '/signup',
+        login = login,
+        name = name,
+        email = email,
+        phone = phone,
         )
 
 @view_config(route_name='logout')

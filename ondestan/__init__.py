@@ -18,6 +18,7 @@ def main(global_config, **settings):
     config.add_route('default', '/')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
+    config.add_route('signup', '/signup')
 
     config.add_route('map', '/map')
     config.add_route('json_points', '/json/points.json')

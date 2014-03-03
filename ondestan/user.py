@@ -10,6 +10,9 @@ class User(Entity, Base):
  
     id = Column(Integer, primary_key=True)
     login = Column(String, unique=True)
+    name = Column(String)
+    email = Column(String)
+    phone = Column(String)
     password = Column(String)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role")

@@ -17,7 +17,7 @@ class Db(object):
  
     '''
  
-    The DB Class should only exits once, thats why it has the @Singleton decorator.
+    The DB Class should only exist once, thats why it has the @Singleton decorator.
  
     To Create an instance you have to use the instance method:
  
@@ -45,7 +45,7 @@ class Db(object):
  
         '''
  
-        Dummy method, cause several IDEs can not handel singeltons in Python
+        Dummy method, because several IDEs can not handle singletons in Python
  
         '''
  
