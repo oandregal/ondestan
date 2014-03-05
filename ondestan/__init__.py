@@ -19,6 +19,8 @@ def main(global_config, **settings):
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
     config.add_route('signup', '/signup')
+    config.add_route('signup_success', '/signup_success')
+    config.add_route('activate_user', '/activate/{loginhash}')
 
     config.add_route('map', '/map')
     config.add_route('json_points', '/json/points.json')

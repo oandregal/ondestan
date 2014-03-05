@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 from .entity import Entity
@@ -14,5 +14,6 @@ class User(Entity, Base):
     email = Column(String)
     phone = Column(String)
     password = Column(String)
+    activated = Column(Boolean)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role")

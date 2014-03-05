@@ -7,16 +7,23 @@ from hashlib import sha512
 from .user import User
 
 def group_finder(login, request):
-    user = User().queryObject().filter(User.login==login).scalar()
+    user = User().queryObject().filter(User.login==login, User.activated==True).scalar()
     if ((user != None) and (user.role != None)):
         return ['role:' + user.role.name];
     return [];
+
+def activate_user(loginhash):
+    users = User().queryObject().all()
+    for user in users:
+        if sha512(user.login).hexdigest() == loginhash:
+            user.activated = True
+            user.save()
 
 def check_login_request(request):
     return check_user_pass(request.params['login'], request.params['password'])
 
 def check_user_pass(login, password):
-    user = User().queryObject().filter(User.login==login).scalar()
+    user = User().queryObject().filter(User.login==login, User.activated==True).scalar()
     if (user != None):
         return user.password == sha512(password).hexdigest()
     return False
