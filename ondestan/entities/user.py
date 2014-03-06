@@ -1,8 +1,9 @@
+# coding=UTF-8
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
 from .entity import Entity
-from .db import Base
+from ..utils.db import Base
 
 class User(Entity, Base):
  

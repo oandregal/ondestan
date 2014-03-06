@@ -1,9 +1,10 @@
+# coding=UTF-8
 from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship, column_property
 from geoalchemy2 import Geometry
 
 from .entity import Entity
-from .db import Base
+from ..utils.db import Base
 
 class Plot(Entity, Base):
 

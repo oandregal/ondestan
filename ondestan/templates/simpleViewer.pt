@@ -23,7 +23,7 @@
 		var map = L.map('map').setView([51.505, -0.09], 13);
 		
 		function load_cows() {
-			new L.GeoJSON.AJAX("${request.application_url}/json/points.json",{
+			new L.GeoJSON.AJAX("${request.application_url}/json/cows.json",{
 				pointToLayer: function (feature, latlng) { 
 					var color = "green"; 
 					var weight = 0; 
@@ -52,7 +52,7 @@
 			}).addTo(map);
 		}
 
-		new L.GeoJSON.AJAX("${request.application_url}/json/polygons.json",{
+		new L.GeoJSON.AJAX("${request.application_url}/json/plots.json",{
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(feature.properties.popup);
 	        },

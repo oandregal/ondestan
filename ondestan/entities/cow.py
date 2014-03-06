@@ -1,10 +1,11 @@
+# coding=UTF-8
 from sqlalchemy import Column, Integer, ForeignKey, String, Float
 from sqlalchemy.orm import relationship, column_property
 from sqlalchemy.ext.hybrid import hybrid_property
 from geoalchemy2 import Geometry
 
 from .entity import Entity
-from .db import Base
+from ..utils.db import Base
 
 class Cow(Entity, Base):
 

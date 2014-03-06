@@ -1,4 +1,5 @@
-from .db import Db
+# coding=UTF-8
+from ..utils.db import Db
 
 class Entity():
     

@@ -1,0 +1,41 @@
+2014-03-06 13:34:47,527 DEBUG  [__init__] Application initialized
+2014-03-06 16:40:25,260 DEBUG  [__init__] Application initialized
+2014-03-06 16:41:36,848 DEBUG  [__init__] Application initialized
+2014-03-06 16:41:41,919 DEBUG  [views] Found 2 plots for all users
+2014-03-06 16:41:42,168 DEBUG  [views] Found 2 cows for all users
+2014-03-06 16:45:54,977 INFO  [__init__] Application initialized
+2014-03-06 16:45:58,539 DEBUG  [views] Found 2 plots for all users
+2014-03-06 16:45:58,769 DEBUG  [views] Found 2 cows for all users
+2014-03-06 18:05:15,336 INFO  [__init__] Application initialized
+2014-03-06 18:09:38,457 DEBUG  [views] Found 2 plots for all users
+2014-03-06 18:09:38,670 DEBUG  [views] Found 2 cows for all users
+2014-03-06 19:32:35,238 DEBUG  [views] Found 2 plots for all users
+2014-03-06 19:32:35,443 DEBUG  [views] Found 2 cows for all users
+2014-03-06 19:32:40,656 INFO  [__init__] Application initialized
+2014-03-06 19:32:44,213 DEBUG  [views] Found 2 plots for all users
+2014-03-06 19:32:44,401 DEBUG  [views] Found 2 cows for all users
+2014-03-06 20:26:22,416 INFO  [__init__] Application initialized
+2014-03-06 20:27:08,120 INFO  [__init__] Application initialized
+2014-03-06 20:29:35,444 INFO  [__init__] Application initialized
+2014-03-06 20:29:48,442 DEBUG  [views] Found 2 plots for all users
+2014-03-06 20:29:48,657 DEBUG  [views] Found 2 cows for all users
+2014-03-06 20:32:36,413 DEBUG  [views] Found 2 plots for all users
+2014-03-06 20:32:36,628 DEBUG  [views] Found 2 cows for all users
+2014-03-06 20:41:51,342 INFO  [__init__] Application initialized
+2014-03-06 20:42:01,068 DEBUG  [views] Found 2 plots for all users
+2014-03-06 20:42:01,304 DEBUG  [views] Found 2 cows for all users
+2014-03-06 20:43:57,786 INFO  [__init__] Application initialized
+2014-03-06 20:45:11,199 INFO  [user_service] User jlopez has been activated
+2014-03-06 20:47:03,440 INFO  [__init__] Application initialized
+2014-03-06 20:47:19,137 DEBUG  [views] Found 2 plots for all users
+2014-03-06 20:47:19,335 DEBUG  [views] Found 2 cows for all users
+2014-03-06 20:48:54,699 INFO  [__init__] Application initialized
+2014-03-06 20:49:07,618 DEBUG  [views] Found no plots for user jlopez
+2014-03-06 20:49:07,889 DEBUG  [views] Found no cows for user jlopez
+2014-03-06 20:55:10,684 INFO  [__init__] Application initialized
+2014-03-06 20:56:04,645 INFO  [__init__] Application initialized
+2014-03-06 20:58:14,550 INFO  [__init__] Application initialized
+2014-03-06 21:00:46,440 INFO  [__init__] Application initialized
+2014-03-06 21:01:07,030 INFO  [user_service] User jlopez has been activated
+2014-03-06 21:01:15,230 DEBUG  [views] Found no plots for user jlopez
+2014-03-06 21:01:15,475 DEBUG  [views] Found no cows for user jlopez

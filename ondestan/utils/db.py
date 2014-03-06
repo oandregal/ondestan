@@ -1,16 +1,18 @@
+# coding=UTF-8
+import config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from .singleton import Singleton;
+from .singleton import Singleton
 
 Base = declarative_base()
 
-host = 'localhost'
-port = '5433'
-db = 'ondestan'
-user = 'postgres'
-password = 'postgres'
+host = config.get_string_value('db_host')
+port = config.get_string_value('db_port')
+db = config.get_string_value('db_dbname')
+user = config.get_string_value('db_user')
+password = config.get_string_value('db_password')
 
 @Singleton
 class Db(object):

@@ -1,7 +1,8 @@
+# coding=UTF-8
 from sqlalchemy import Column, Integer, String
 
 from .entity import Entity
-from .db import Base
+from ..utils.db import Base
 
 class Role(Entity,Base):
  
