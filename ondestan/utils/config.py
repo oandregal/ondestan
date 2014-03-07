@@ -1,17 +1,24 @@
 # coding=UTF-8
-import ConfigParser
+class Config:
 
-config = ConfigParser.ConfigParser()
-config.read('ondestan.cfg')
-
-def get_string_value(field):
-    return config.get('default', field)
-
-def get_boolean_value(field):
-    return config.getboolean('default', field)
-
-def get_int_value(field):
-    return config.getint('default', field)
-
-def get_float_value(field):
-    return config.getfloat('default', field)
+    config = {}
+    
+    @staticmethod
+    def init_settings(settings):
+        Config.config = settings
+    
+    @staticmethod
+    def get_string_value(field):
+        return str(Config.config[field])
+    
+    @staticmethod
+    def get_boolean_value(field):
+        return bool(Config.config[field])
+    
+    @staticmethod
+    def get_int_value(field):
+        return int(Config.config[field])
+    
+    @staticmethod
+    def get_float_value(field):
+        return float(Config.config[field])

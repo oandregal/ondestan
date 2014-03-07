@@ -1,19 +1,23 @@
 from pyramid.config import Configurator
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
-
-from .services import user_service
-from .utils.db import Db
-from utils.log import setup_custom_logger
+from .utils.config import Config
+import logging
 
 def main(global_config, **settings):
-    logger = setup_custom_logger('ondestan')
     """ This function returns a Pyramid WSGI application.
     """
-    authn_policy = AuthTktAuthenticationPolicy('ondestan', callback=user_service.group_finder)
-    authz_policy = ACLAuthorizationPolicy()
     config = Configurator(settings=settings,
                           root_factory='ondestan.models.RootFactory')
+    Config.init_settings(settings)
+
+    from .services import user_service
+    from .utils.db import Db
+    
+    Db.instance()
+    logger = logging.getLogger('ondestan')
+    authn_policy = AuthTktAuthenticationPolicy('ondestan', callback=user_service.group_finder)
+    authz_policy = ACLAuthorizationPolicy()
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)
@@ -29,7 +33,6 @@ def main(global_config, **settings):
     config.add_route('json_plots', '/json/plots.json')
     config.scan()
     
-    Db.instance()
     logger.info('Application initialized')
     
     return config.make_wsgi_app()

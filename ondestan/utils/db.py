@@ -1,5 +1,5 @@
 # coding=UTF-8
-import config
+from config import Config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -8,11 +8,11 @@ from .singleton import Singleton
 
 Base = declarative_base()
 
-host = config.get_string_value('db_host')
-port = config.get_string_value('db_port')
-db = config.get_string_value('db_dbname')
-user = config.get_string_value('db_user')
-password = config.get_string_value('db_password')
+host = Config.get_string_value('db.host')
+port = Config.get_string_value('db.port')
+db = Config.get_string_value('db.dbname')
+user = Config.get_string_value('db.user')
+password = Config.get_string_value('db.password')
 
 @Singleton
 class Db(object):

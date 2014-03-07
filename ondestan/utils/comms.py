@@ -2,12 +2,12 @@
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-import config
+from config import Config
 
-smtp_server = config.get_string_value('smtp_server')
-smtp_port = config.get_int_value('smtp_port')
-smtp_mail = config.get_string_value('smtp_mail')
-smtp_password = config.get_string_value('smtp_password')
+smtp_server = Config.get_string_value('smtp.server')
+smtp_port = Config.get_int_value('smtp.port')
+smtp_mail = Config.get_string_value('smtp.mail')
+smtp_password = Config.get_string_value('smtp.password')
 
 def send_mail(html, text, subject, destination):
     
