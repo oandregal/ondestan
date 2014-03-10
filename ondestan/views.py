@@ -88,7 +88,7 @@ def activate_usr(request):
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):
-    return dict(project= 'Ondestán',
+    return dict(project= u'Ondestán',
                 user_id=get_user_login(request),
                 can_edit=check_permission('edit', request),
                 is_admin=check_permission('admin', request))
@@ -178,4 +178,3 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for user " + login)
     return geojson;
-    
