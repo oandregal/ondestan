@@ -4,8 +4,8 @@ from sqlalchemy.orm import relationship, column_property
 from sqlalchemy.ext.hybrid import hybrid_property
 from geoalchemy2 import Geometry
 
-from .entity import Entity
-from ..utils.db import Base
+from ondestan.entities import Entity
+from ondestan.utils import Base
 
 
 class Cow(Entity, Base):

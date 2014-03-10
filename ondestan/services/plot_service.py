@@ -1,5 +1,5 @@
 # coding=UTF-8
-from ..entities.plot import Plot
+from ondestan.entities import Plot
 
 
 def get_plot_by_user_login(login):

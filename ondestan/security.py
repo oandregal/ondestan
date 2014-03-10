@@ -4,7 +4,8 @@ from pyramid.security import (
     ACLAllowed,
     has_permission
     )
-from .services import user_service
+
+from ondestan.services import user_service
 
 
 def get_user_login(request):

@@ -1,5 +1,5 @@
 # coding=UTF-8
-from ..entities.cow import Cow
+from ondestan.entities import Cow
 
 
 def get_cow_by_user_login(login):

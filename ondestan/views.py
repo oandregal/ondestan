@@ -13,8 +13,8 @@ from pyramid.security import (
     forget
     )
 
-from .security import get_user_login, check_permission
-from .services import plot_service, cow_service, user_service
+from ondestan.security import get_user_login, check_permission
+from ondestan.services import plot_service, cow_service, user_service
 import logging
 
 logger = logging.getLogger('ondestan')

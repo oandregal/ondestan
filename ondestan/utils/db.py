@@ -1,18 +1,12 @@
 # coding=UTF-8
-from config import Config
+from ondestan.utils import Config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-from .singleton import Singleton
+from ondestan.utils import Singleton
 
 Base = declarative_base()
-
-host = Config.get_string_value('db.host')
-port = Config.get_string_value('db.port')
-db = Config.get_string_value('db.dbname')
-user = Config.get_string_value('db.user')
-password = Config.get_string_value('db.password')
 
 
 @Singleton
@@ -33,6 +27,12 @@ class Db(object):
     session = None
 
     def __init__(self):
+        host = Config.get_string_value('db.host')
+        port = Config.get_string_value('db.port')
+        db = Config.get_string_value('db.dbname')
+        user = Config.get_string_value('db.user')
+        password = Config.get_string_value('db.password')
+
         conn_str = 'postgresql+psycopg2://' + user + ':' + password + \
                          '@' + host + ':' + port + '/' + db
         self.engine = create_engine(

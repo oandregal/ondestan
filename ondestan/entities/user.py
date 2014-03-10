@@ -2,8 +2,8 @@
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from sqlalchemy.orm import relationship
 
-from .entity import Entity
-from ..utils.db import Base
+from ondestan.entities import Entity
+from ondestan.utils import Base
 
 
 class User(Entity, Base):

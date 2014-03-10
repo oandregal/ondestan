@@ -3,8 +3,8 @@ from sqlalchemy import Column, Integer, ForeignKey, String
 from sqlalchemy.orm import relationship, column_property
 from geoalchemy2 import Geometry
 
-from .entity import Entity
-from ..utils.db import Base
+from ondestan.entities import Entity
+from ondestan.utils import Base
 
 
 class Plot(Entity, Base):

@@ -1,8 +1,8 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, String
 
-from .entity import Entity
-from ..utils.db import Base
+from ondestan.entities import Entity
+from ondestan.utils import Base
 
 
 class Role(Entity, Base):

@@ -1,8 +1,7 @@
 # coding=UTF-8
 from hashlib import sha512
-
-from ..entities.user import User
-from ..utils import comms
+from ondestan.entities import User
+from ondestan.utils import send_mail
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -77,6 +76,6 @@ def create_user(request):
     </html>
     """
 
-    comms.send_mail(html, text, 'Ondestán signup', email)
+    send_mail(html, text, 'Ondestán signup', email)
 
     return True
