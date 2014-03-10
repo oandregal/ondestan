@@ -3,16 +3,16 @@ import os
 from setuptools import setup, find_packages
 
 here = os.path.abspath(os.path.dirname(__file__))
-README = open(os.path.join(here, 'README.txt')).read()
+README = open(os.path.join(here, 'README.md')).read()
 CHANGES = open(os.path.join(here, 'CHANGES.txt')).read()
 
 requires = [
-    'pyramid',
+    'pyramid==1.4.5',
     'pyramid_debugtoolbar',
-    'waitress',
-    'geoalchemy2',
-    'sqlalchemy',
-    'psycopg2'
+    'waitress==0.8.7',
+    'geoalchemy2==0.2.3',
+    'sqlalchemy==0.9.3',
+    'psycopg2==2.5.2'
     ]
 
 setup(name='Ondestan',
