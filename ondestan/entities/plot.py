@@ -6,6 +6,7 @@ from geoalchemy2 import Geometry
 from .entity import Entity
 from ..utils.db import Base
 
+
 class Plot(Entity, Base):
 
     __tablename__ = "plots"

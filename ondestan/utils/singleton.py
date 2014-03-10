@@ -1,4 +1,6 @@
 # coding=UTF-8
+
+
 class Singleton:
     """
     A non-thread-safe helper class to ease implementing singletons.
