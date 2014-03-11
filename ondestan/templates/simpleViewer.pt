@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan">
 <head>
 	<title>${project}</title>
 	<meta charset="utf-8" />
 
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
 	<link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.css')}" />
 </head>
 <body>
 	<span tal:condition="user_id != None">
-	  <label>Hello, ${user_id}</label> <label tal:condition="can_edit">Editor</label>
-	  <a href="${request.application_url}/logout">Logout</a>
+	  <label i18n:translate="hello">Hello</label><label>, ${user_id}</label> <label tal:condition="can_edit" i18n:translate="editor">Editor</label>
+	  <a href="${request.application_url}/logout" i18n:translate="logout">Logout</a>
 	</span>
 	<div id="map" style="width: 600px; height: 400px"></div>
 

@@ -13,6 +13,8 @@ requires = [
     'geoalchemy2==0.2.3',
     'sqlalchemy==0.9.3',
     'psycopg2==2.5.2'
+    'Babel==1.3',
+    'lingua==1.6',
     ]
 
 setup(name='Ondestan',
@@ -25,6 +27,10 @@ setup(name='Ondestan',
         "Topic :: Internet :: WWW/HTTP",
         "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
         ],
+      message_extractors={'.': [
+            ('**.py', 'lingua_python', None),
+            ('**.pt', 'lingua_xml', None)
+            ]},
       author='',
       author_email='',
       url='',

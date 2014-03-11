@@ -1,8 +1,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan">
 <head>
-  <title>Sign Up Success - Ondestán</title>
+  <title i18n:translate="sign_up_title">Sign Up - Ondestán</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
   <meta name="description" content="cows position monitoring web app" />
@@ -20,14 +22,14 @@
     <div id="middle">
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left">
-          <b>Sign Up Successful</b><br/>
+          <b><label i18n:translate="successful_sign_up">Successful Sign Up</label></b><br/>
         </div>
         <div id="right" class="app-welcome align-right"></div>
       </div>
     </div>
     <div id="bottom">
       <div class="bottom">
-      	<label>We have sent you an email with the instructions for activating your new account.<br/>Welcome to Ondestán!!</label>
+      	<label i18n:translate="sign_up_instructions">We have sent you an email with the instructions for activating your new account.<br/>Welcome to Ondestán!!</label>
       </div>
     </div>
   </div>

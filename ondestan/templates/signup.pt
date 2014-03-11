@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
-      xmlns:tal="http://xml.zope.org/namespaces/tal">
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan">
 <head>
-  <title>Sign Up - Ondestán</title>
+  <title i18n:translate="sign_up_title">Sign Up - Ondestán</title>
   <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
   <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
   <meta name="description" content="cows position monitoring web app" />
@@ -47,7 +49,7 @@
     <div id="middle">
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left">
-          <b>Sign Up</b><br/>
+          <b><label i18n:translate="sign_up">Sign Up</label></b><br/>
           <span tal:replace="message"/>
         </div>
         <div id="right" class="app-welcome align-right"></div>
@@ -55,17 +57,17 @@
     </div>
     <div id="bottom">
       <div class="bottom">
-      	<label>All fields are mandatory</label>
+      	<label i18n:translate="all_fields_mandatory">All fields are mandatory</label>
         <form action="${url}" method="post">
 	        <table>
-	          <tr><td align="right" style="padding-right:10px"><label>Login:</label></td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/></td></tr>
-	          <tr><td align="right" style="padding-right:10px"><label>Name:</label></td><td><input type="text" id="name" name="name" value="${name}" onkeyup="checkFields()"/></td></tr>
-	          <tr><td align="right" style="padding-right:10px"><label>Email:</label></td><td><input type="text" id="email" name="email" value="${email}" onkeyup="checkFields()"/></td></tr>
-	          <tr><td align="right" style="padding-right:10px"><label>Phone number:</label></td><td><input type="text" id="phone" name="phone" value="${phone}" onkeyup="checkFields()"/></td></tr>
-	          <tr><td><br/></td><td><label id="passtooshort" style="display: none;">Password must be at least 6 chars</label><label id="passdistinct" style="display: none;">Passwords don't match</label></td></tr>
-	          <tr><td align="right" style="padding-right:10px"><label>Password:</label></td><td><input type="password" id="password1" name="password" onkeyup="checkFields()"/></td></tr>
-	          <tr><td align="right" style="padding-right:10px"><label>Retype password:</label></td><td><input type="password" id="password2" onkeyup="checkFields()"/></td></tr>
-	          <tr><td></td><td align="right"><input disabled="disabled" id="submit" type="submit" name="form.submitted" value="Sign Up"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="username">Login</label>:</td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="name">Name</label>:</td><td><input type="text" id="name" name="name" value="${name}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">Email</label>:</td><td><input type="text" id="email" name="email" value="${email}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="phone_number">Phone number</label>:</td><td><input type="text" id="phone" name="phone" value="${phone}" onkeyup="checkFields()"/></td></tr>
+	          <tr><td colspan="2"><label id="passtooshort" style="display: none;" i18n:translate="password_too_short">Password must be at least 6 chars</label><label id="passdistinct" style="display: none;" i18n:translate="passwords_dont_match">Passwords don't match</label></td><td><br/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="password">Password</label>:</td><td><input type="password" id="password1" name="password" onkeyup="checkFields()"/></td></tr>
+	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="retype_password">Retype password</label>:</td><td><input type="password" id="password2" onkeyup="checkFields()"/></td></tr>
+	          <tr><td></td><td align="right"><input disabled="disabled" id="submit" type="submit" name="form.submitted" i18n:attributes="value sign_up" value="Sign Up"/></td></tr>
           </table>
         </form>
       </div>
