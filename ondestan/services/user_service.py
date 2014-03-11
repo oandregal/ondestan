@@ -1,5 +1,11 @@
 # coding=UTF-8
 from hashlib import sha512
+
+from pyramid.i18n import (
+    get_localizer,
+    TranslationString as _
+    )
+
 from ondestan.entities import User
 from ondestan.utils import send_mail
 import logging
@@ -59,23 +65,21 @@ def create_user(request):
     user.role_id = 2
     user.save()
 
+    localizer = get_localizer(request)
+
     # Create the body of the message (a plain-text and an HTML version).
     url = request.route_url('activate_user',
                             loginhash=sha512(login).hexdigest())
-    text = "Hi " + name + \
-           "!\nPlease click the following link in order to activate your account:\n" + \
-           url
-    html = """\
-    <html>
-      <head></head>
-      <body>
-        <p>Hi """ + name + """!<br>
-           Please click this <a href=\"""" + url + """\">link</a> in order to activate your account.
-        </p>
-      </body>
-    </html>
-    """
+    text_ts = _('plain_signup_mail', mapping={'name': name, 'url': url},
+                                domain='Ondestan')
+    html_ts = _('html_signup_mail', mapping={'name': name, 'url': url},
+                                domain='Ondestan')
+    subject_ts = _('subject_signup_mail', domain='Ondestan')
 
-    send_mail(html, text, 'Ondestán signup', email)
+    text = localizer.translate(text_ts)
+    html = localizer.translate(html_ts)
+    subject = localizer.translate(subject_ts)
+
+    send_mail(html, text, subject, email)
 
     return True

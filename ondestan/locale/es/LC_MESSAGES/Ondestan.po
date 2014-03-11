@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-11 15:04+0100\n"
-"PO-Revision-Date: 2014-03-11 15:06+0100\n"
+"POT-Creation-Date: 2014-03-11 19:19+0100\n"
+"PO-Revision-Date: 2014-03-11 19:19+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -16,6 +16,25 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
+
+#: ondestan/views.py:50
+msgid "failed_login"
+msgstr "Autenticación fallida"
+
+#: ondestan/services/user_service.py:73
+msgid "plain_signup_mail"
+msgstr ""
+"¡Hola ${name}!\n"
+"Haz click en el siguiente enlace para activar tu cuenta de Ondestán:\n"
+"${url}"
+
+#: ondestan/services/user_service.py:75
+msgid "html_signup_mail"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Haz click en <a href=\"${url}\">este enlace</a> para activar tu cuenta de Ondestán.     </p></body></html>"
+
+#: ondestan/services/user_service.py:77
+msgid "subject_signup_mail"
+msgstr "Alta en Ondestán"
 
 #. Default: Login - Ondestán
 #: ondestan/templates/login.pt:8
@@ -30,13 +49,13 @@ msgstr "Autenticación"
 #. Default: Username
 #. Default: Login
 #: ondestan/templates/login.pt:37
-#: ondestan/templates/signup.pt:37
+#: ondestan/templates/signup.pt:39
 msgid "username"
 msgstr "Usuario"
 
 #. Default: Password
 #: ondestan/templates/login.pt:38
-#: ondestan/templates/signup.pt:42
+#: ondestan/templates/signup.pt:44
 msgid "password"
 msgstr "Password"
 
@@ -47,10 +66,16 @@ msgstr "Entrar"
 
 #. Default: Sign Up
 #: ondestan/templates/login.pt:39
-#: ondestan/templates/signup.pt:26
-#: ondestan/templates/signup.pt:44
+#: ondestan/templates/signup.pt:28
+#: ondestan/templates/signup.pt:46
 msgid "sign_up"
 msgstr "Darse de alta"
+
+#. Default: Forgot your user/password?
+#: ondestan/templates/login.pt:43
+#| msgid "retype_password"
+msgid "forgot_user_password"
+msgstr "¿Has olvidado tu usuario/password?"
 
 #. Default: Sign Up - Ondestán
 #: ondestan/templates/signup.pt:8
@@ -58,38 +83,38 @@ msgstr "Darse de alta"
 msgid "sign_up_title"
 msgstr "Darse de alta - Ondestán"
 
-#. Default: All fields are mandatory
-#: ondestan/templates/signup.pt:34
-msgid "all_fields_mandatory"
-msgstr "Todos los campos son obligatorios"
+#. Default: Mandatory fields
+#: ondestan/templates/signup.pt:36
+msgid "mandatory_fields"
+msgstr "Campos obligatorios"
 
 #. Default: Name
-#: ondestan/templates/signup.pt:38
+#: ondestan/templates/signup.pt:40
 msgid "name"
 msgstr "Nombre"
 
 #. Default: Email
-#: ondestan/templates/signup.pt:39
+#: ondestan/templates/signup.pt:41
 msgid "email"
 msgstr "E-mail"
 
-#. Default: Phone number
-#: ondestan/templates/signup.pt:40
-msgid "phone_number"
-msgstr "Teléfono"
+#. Default: Cell phone number
+#: ondestan/templates/signup.pt:42
+msgid "cell_phone_number"
+msgstr "Teléfono móvil"
 
 #. Default: Password must be at least 6 chars
-#: ondestan/templates/signup.pt:41
+#: ondestan/templates/signup.pt:43
 msgid "password_too_short"
 msgstr "El password debe tener al menos 6 caracteres"
 
 #. Default: Passwords don't match
-#: ondestan/templates/signup.pt:41
+#: ondestan/templates/signup.pt:43
 msgid "passwords_dont_match"
 msgstr "Los passwords no coinciden"
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:43
+#: ondestan/templates/signup.pt:45
 msgid "retype_password"
 msgstr "Repite el password"
 
@@ -120,3 +145,5 @@ msgstr "Gestor"
 msgid "logout"
 msgstr "Salir"
 
+#~ msgid "all_fields_mandatory"
+#~ msgstr "Todos los campos son obligatorios"

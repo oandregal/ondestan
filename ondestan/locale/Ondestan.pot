@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-11 15:04+0100\n"
+"POT-Creation-Date: 2014-03-11 19:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,22 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
+
+#: ondestan/views.py:50
+msgid "failed_login"
+msgstr ""
+
+#: ondestan/services/user_service.py:73
+msgid "plain_signup_mail"
+msgstr ""
+
+#: ondestan/services/user_service.py:75
+msgid "html_signup_mail"
+msgstr ""
+
+#: ondestan/services/user_service.py:77
+msgid "subject_signup_mail"
+msgstr ""
 
 #. Default: Login - Ondestán
 #: ondestan/templates/login.pt:8
@@ -29,12 +45,12 @@ msgstr ""
 
 #. Default: Username
 #. Default: Login
-#: ondestan/templates/login.pt:37 ondestan/templates/signup.pt:37
+#: ondestan/templates/login.pt:37 ondestan/templates/signup.pt:39
 msgid "username"
 msgstr ""
 
 #. Default: Password
-#: ondestan/templates/login.pt:38 ondestan/templates/signup.pt:42
+#: ondestan/templates/login.pt:38 ondestan/templates/signup.pt:44
 msgid "password"
 msgstr ""
 
@@ -44,9 +60,14 @@ msgid "log_in"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:39 ondestan/templates/signup.pt:26
-#: ondestan/templates/signup.pt:44
+#: ondestan/templates/login.pt:39 ondestan/templates/signup.pt:28
+#: ondestan/templates/signup.pt:46
 msgid "sign_up"
+msgstr ""
+
+#. Default: Forgot your user/password?
+#: ondestan/templates/login.pt:43
+msgid "forgot_user_password"
 msgstr ""
 
 #. Default: Sign Up - Ondestán
@@ -54,38 +75,38 @@ msgstr ""
 msgid "sign_up_title"
 msgstr ""
 
-#. Default: All fields are mandatory
-#: ondestan/templates/signup.pt:34
-msgid "all_fields_mandatory"
+#. Default: Mandatory fields
+#: ondestan/templates/signup.pt:36
+msgid "mandatory_fields"
 msgstr ""
 
 #. Default: Name
-#: ondestan/templates/signup.pt:38
+#: ondestan/templates/signup.pt:40
 msgid "name"
 msgstr ""
 
 #. Default: Email
-#: ondestan/templates/signup.pt:39
+#: ondestan/templates/signup.pt:41
 msgid "email"
 msgstr ""
 
-#. Default: Phone number
-#: ondestan/templates/signup.pt:40
-msgid "phone_number"
+#. Default: Cell phone number
+#: ondestan/templates/signup.pt:42
+msgid "cell_phone_number"
 msgstr ""
 
 #. Default: Password must be at least 6 chars
-#: ondestan/templates/signup.pt:41
+#: ondestan/templates/signup.pt:43
 msgid "password_too_short"
 msgstr ""
 
 #. Default: Passwords don't match
-#: ondestan/templates/signup.pt:41
+#: ondestan/templates/signup.pt:43
 msgid "passwords_dont_match"
 msgstr ""
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:43
+#: ondestan/templates/signup.pt:45
 msgid "retype_password"
 msgstr ""
 

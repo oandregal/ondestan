@@ -13,6 +13,11 @@ from pyramid.security import (
     forget
     )
 
+from pyramid.i18n import (
+    get_localizer,
+    TranslationString as _
+    )
+
 from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, cow_service, user_service
 import logging
@@ -36,7 +41,10 @@ def login(request):
             headers = remember(request, login)
             return HTTPFound(location=came_from,
                              headers=headers)
-        message = 'Failed login'
+
+        localizer = get_localizer(request)
+        message_ts = _('failed_login', domain='Ondestan')
+        message = localizer.translate(message_ts)
 
     return dict(
         message=message,
