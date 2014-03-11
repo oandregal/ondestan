@@ -12,7 +12,7 @@ requires = [
     'waitress==0.8.7',
     'geoalchemy2==0.2.3',
     'sqlalchemy==0.9.3',
-    'psycopg2==2.5.2'
+    'psycopg2==2.5.2',
     'Babel==1.3',
     'lingua==1.6',
     ]
