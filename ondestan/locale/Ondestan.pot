@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-12 16:39+0100\n"
+"POT-Creation-Date: 2014-03-12 17:54+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,15 +45,23 @@ msgstr ""
 msgid "subject_reminder_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:131
+#: ondestan/services/user_service.py:121
+msgid "login_already_use"
+msgstr ""
+
+#: ondestan/services/user_service.py:126
+msgid "email_already_use"
+msgstr ""
+
+#: ondestan/services/user_service.py:143
 msgid "plain_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:133
+#: ondestan/services/user_service.py:145
 msgid "html_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:135
+#: ondestan/services/user_service.py:147
 msgid "subject_signup_mail"
 msgstr ""
 

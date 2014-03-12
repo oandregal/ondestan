@@ -103,16 +103,27 @@ def check_user_pass(login, password):
 
 
 def get_user_by_login(login):
-    User().queryObject().filter(User.login == login).scalar()
+    return User().queryObject().filter(User.login == login).scalar()
+
+
+def get_user_by_email(email):
+    return User().queryObject().filter(User.email == email).scalar()
 
 
 def create_user(request):
+    localizer = get_localizer(request)
+
     login = request.params['login']
     name = request.params['name']
     email = request.params['email']
     user = User().queryObject().filter(User.login == login).scalar()
     if (user != None):
-        return False
+        msg = _('login_already_use', domain='Ondestan')
+        return localizer.translate(msg)
+    user = User().queryObject().filter(User.email == email).scalar()
+    if (user != None):
+        msg = _('email_already_use', domain='Ondestan')
+        return localizer.translate(msg)
     user = User()
     user.login = login
     user.name = name
@@ -122,8 +133,6 @@ def create_user(request):
     user.password = sha512(request.params['password']).hexdigest()
     user.role_id = 2
     user.save()
-
-    localizer = get_localizer(request)
 
     # Create the body of the message (a plain-text and an HTML version).
     url = request.route_url('activate_user',
@@ -140,4 +149,4 @@ def create_user(request):
 
     send_mail(html, text, subject, email)
 
-    return True
+    return ''

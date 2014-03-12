@@ -62,9 +62,9 @@ def signup(request):
     email = ''
     phone = ''
     if 'form.submitted' in request.params:
-        if user_service.create_user(request):
+        message = user_service.create_user(request)
+        if message == '':
             raise HTTPFound(request.route_url("signup_success"))
-        message = 'Login is already in use. Please choose a different one.'
         login = request.params['login']
         name = request.params['name']
         email = request.params['email']
