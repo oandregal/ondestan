@@ -86,6 +86,26 @@ def signup_success(request):
     return dict()
 
 
+@view_config(route_name='reminder', renderer='templates/reminder.pt')
+def reminder(request):
+    email = ''
+    if 'form.submitted' in request.params:
+        user_service.remind_user(request)
+        email = request.params['email']
+
+    return dict(
+        email=email,
+        url=request.application_url + '/reminder',
+        )
+
+
+@view_config(route_name='password_reset',
+             renderer='templates/passwordReset.pt')
+def reset_password(request):
+    user_service.reset_password(request)
+    return dict()
+
+
 @view_config(route_name='logout')
 def logout(request):
     headers = forget(request)
@@ -95,8 +115,7 @@ def logout(request):
 
 @view_config(route_name='activate_user')
 def activate_usr(request):
-    loginhash = request.matchdict['loginhash']
-    user_service.activate_user(loginhash)
+    user_service.activate_user(request)
     return HTTPFound(location=request.route_url('login'))
 
 

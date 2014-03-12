@@ -7,7 +7,8 @@ from pyramid.i18n import (
     )
 
 from ondestan.entities import User
-from ondestan.utils import send_mail
+from ondestan.utils.comms import send_mail
+from ondestan.utils.various import rand_string
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -22,13 +23,70 @@ def group_finder(login, request):
     return []
 
 
-def activate_user(loginhash):
+def activate_user(request):
+    loginhash = request.matchdict['loginhash']
     users = User().queryObject().all()
     for user in users:
         if sha512(user.login).hexdigest() == loginhash:
             logger.info('User ' + user.login + ' has been activated')
             user.activated = True
             user.save()
+            break
+
+
+def reset_password(request):
+    loginhash = request.matchdict['loginhash']
+    users = User().queryObject().all()
+    for user in users:
+        if sha512(user.login).hexdigest() == loginhash:
+            new_password = rand_string(10)
+            logger.info('Password of user ' + user.login +
+                        ' has been reset to ' + new_password)
+            user.password = sha512(new_password).hexdigest()
+            user.save()
+
+            localizer = get_localizer(request)
+
+            # Create the body of the message (a plain-text and an HTML version)
+            url = request.route_url('login')
+            text_ts = _('plain_password_reset_mail', mapping={
+                        'name': user.name, 'password': new_password,
+                        'url': url}, domain='Ondestan')
+            html_ts = _('html_password_reset_mail', mapping={'name': user.name,
+                        'password': new_password, 'url': url},
+                        domain='Ondestan')
+            subject_ts = _('subject_password_reset_mail', domain='Ondestan')
+
+            text = localizer.translate(text_ts)
+            html = localizer.translate(html_ts)
+            subject = localizer.translate(subject_ts)
+
+            send_mail(html, text, subject, user.email)
+            break
+
+
+def remind_user(request):
+    email = request.params['email']
+    user = User().queryObject().filter(
+        User.email == email).scalar()
+    if (user != None):
+
+        localizer = get_localizer(request)
+
+        # Create the body of the message (a plain-text and an HTML version).
+        url = request.route_url('password_reset',
+                                loginhash=sha512(user.login).hexdigest())
+        text_ts = _('plain_reminder_mail', mapping={'name': user.name,
+                        'url': url, 'login': user.login}, domain='Ondestan')
+        html_ts = _('html_reminder_mail', mapping={'name': user.name,
+                        'url': url, 'login': user.login}, domain='Ondestan')
+        subject_ts = _('subject_reminder_mail', domain='Ondestan')
+
+        text = localizer.translate(text_ts)
+        html = localizer.translate(html_ts)
+        subject = localizer.translate(subject_ts)
+
+        send_mail(html, text, subject, email)
 
 
 def check_login_request(request):
