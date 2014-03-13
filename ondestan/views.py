@@ -63,12 +63,11 @@ def signup(request):
     phone = ''
     if 'form.submitted' in request.params:
         message = user_service.create_user(request)
-        if message == '':
-            raise HTTPFound(request.route_url("signup_success"))
-        login = request.params['login']
-        name = request.params['name']
-        email = request.params['email']
-        phone = request.params['phone']
+        if message != '':
+            login = request.params['login']
+            name = request.params['name']
+            email = request.params['email']
+            phone = request.params['phone']
 
     return dict(
         message=message,
@@ -78,12 +77,6 @@ def signup(request):
         email=email,
         phone=phone,
         )
-
-
-@view_config(route_name='signup_success',
-             renderer='templates/signupSuccess.pt')
-def signup_success(request):
-    return dict()
 
 
 @view_config(route_name='reminder', renderer='templates/reminder.pt')
