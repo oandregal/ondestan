@@ -1,6 +1,9 @@
 # coding=UTF-8
 from pyramid.httpexceptions import (
-    HTTPFound
+    HTTPFound,
+    HTTPOk,
+    HTTPBadRequest,
+    HTTPInternalServerError
     )
 
 from pyramid.view import (
@@ -21,6 +24,7 @@ from pyramid.i18n import (
 from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service
+from ondestan.gps import comms_service
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -56,6 +60,16 @@ def login(request):
         login=login,
         activated=activated
         )
+
+
+@view_config(route_name='gps_update')
+def gps_update(request):
+    if request.method == 'POST':
+        if comms_service.process_data_updates(request.params):
+            return HTTPOk()
+        else:
+            return HTTPInternalServerError()
+    return HTTPBadRequest()
 
 
 @view_config(route_name='signup', renderer='templates/signup.pt')

@@ -1,0 +1,2 @@
+from ondestan.gps.comms_service import process_data_updates
+from ondestan.gps.comms_service import process_data_update

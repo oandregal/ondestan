@@ -34,6 +34,7 @@ def main(global_config, **settings):
     config.add_route('signup_success', '/signup_success')
     config.add_route('update_profile', '/update_profile')
     config.add_route('activate_user', '/activate/{loginhash}')
+    config.add_route('gps_update', '/gps_update')
 
     config.add_route('check_login', '/check_login')
     config.add_route('check_email', '/check_email')
