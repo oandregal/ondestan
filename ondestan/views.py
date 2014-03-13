@@ -48,7 +48,7 @@ def login(request):
 
     return dict(
         message=message,
-        url=request.application_url + '/login',
+        url=request.path_url,
         came_from=came_from,
         login=login,
         )
@@ -71,7 +71,33 @@ def signup(request):
 
     return dict(
         message=message,
-        url=request.application_url + '/signup',
+        url=request.path_url,
+        login=login,
+        name=name,
+        email=email,
+        phone=phone,
+        )
+
+
+@view_config(route_name='update_profile',
+             renderer='templates/updateProfile.pt',
+             permission='view')
+def update_profile(request):
+    message = ''
+    login = get_user_login(request)
+    user = user_service.get_user_by_login(login)
+    user_id = user.id
+    name = user.name
+    email = user.email
+    phone = user.phone
+
+    if 'form.submitted' in request.params:
+        message = user_service.update_user(request)
+
+    return dict(
+        message=message,
+        url=request.path_url,
+        id=user_id,
         login=login,
         name=name,
         email=email,

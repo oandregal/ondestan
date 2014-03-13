@@ -32,6 +32,7 @@ def main(global_config, **settings):
     config.add_route('password_reset', '/password_reset/{loginhash}')
     config.add_route('signup', '/signup')
     config.add_route('signup_success', '/signup_success')
+    config.add_route('update_profile', '/update_profile')
     config.add_route('activate_user', '/activate/{loginhash}')
 
     config.add_route('map', '/map')

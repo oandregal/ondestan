@@ -150,3 +150,30 @@ def create_user(request):
     send_mail(html, text, subject, email)
 
     return ''
+
+
+def update_user(request):
+    localizer = get_localizer(request)
+
+    user_id = int(request.params['id'])
+    login = request.params['login']
+    name = request.params['name']
+    email = request.params['email']
+    user = User().queryObject().filter(User.login == login).scalar()
+    if ((user != None) and (user.id != user_id)):
+        msg = _('login_already_use', domain='Ondestan')
+        return localizer.translate(msg)
+    user = User().queryObject().filter(User.email == email).scalar()
+    if ((user != None) and (user.id != user_id)):
+        msg = _('email_already_use', domain='Ondestan')
+        return localizer.translate(msg)
+    user = User().queryObject().filter(User.id == user_id).scalar()
+    user.login = login
+    user.name = name
+    user.email = email
+    user.phone = request.params['phone']
+    user.password = sha512(request.params['password']).hexdigest()
+    user.update()
+
+    msg = _('user_profile_updated', domain='Ondestan')
+    return localizer.translate(msg)

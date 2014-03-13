@@ -15,7 +15,7 @@
 <body>
 	<span tal:condition="user_id != None">
 	  <label i18n:translate="hello">Hello</label><label>, ${user_id}</label> <label tal:condition="can_edit" i18n:translate="editor">Editor</label>
-	  <a href="${request.application_url}/logout" i18n:translate="logout">Logout</a>
+	  <a href="${request.application_url}/update_profile" i18n:translate="update_profile">Update Profile</a> <a href="${request.application_url}/logout" i18n:translate="logout">Logout</a>
 	</span>
 	<div id="map" style="width: 600px; height: 400px"></div>
 

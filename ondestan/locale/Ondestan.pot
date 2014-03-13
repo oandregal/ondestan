@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-12 17:54+0100\n"
+"POT-Creation-Date: 2014-03-13 19:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,24 +45,28 @@ msgstr ""
 msgid "subject_reminder_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:121
+#: ondestan/services/user_service.py:121 ondestan/services/user_service.py:164
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:126
+#: ondestan/services/user_service.py:125 ondestan/services/user_service.py:168
 msgid "email_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:143
+#: ondestan/services/user_service.py:140
 msgid "plain_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:145
+#: ondestan/services/user_service.py:142
 msgid "html_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:147
+#: ondestan/services/user_service.py:144
 msgid "subject_signup_mail"
+msgstr ""
+
+#: ondestan/services/user_service.py:178
+msgid "user_profile_updated"
 msgstr ""
 
 #. Default: Login - Ondestán
@@ -77,12 +81,14 @@ msgstr ""
 
 #. Default: Username
 #. Default: Login
-#: ondestan/templates/login.pt:37 ondestan/templates/signup.pt:38
+#: ondestan/templates/login.pt:37 ondestan/templates/signup.pt:44
+#: ondestan/templates/updateProfile.pt:39
 msgid "username"
 msgstr ""
 
 #. Default: Password
-#: ondestan/templates/login.pt:38 ondestan/templates/signup.pt:43
+#: ondestan/templates/login.pt:38 ondestan/templates/signup.pt:49
+#: ondestan/templates/updateProfile.pt:44
 msgid "password"
 msgstr ""
 
@@ -92,8 +98,8 @@ msgid "log_in"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:39 ondestan/templates/signup.pt:27
-#: ondestan/templates/signup.pt:45
+#: ondestan/templates/login.pt:39 ondestan/templates/signup.pt:30
+#: ondestan/templates/signup.pt:51
 msgid "sign_up"
 msgstr ""
 
@@ -140,7 +146,8 @@ msgstr ""
 
 #. Default: E-mail
 #. Default: Email
-#: ondestan/templates/reminder.pt:39 ondestan/templates/signup.pt:40
+#: ondestan/templates/reminder.pt:39 ondestan/templates/signup.pt:46
+#: ondestan/templates/updateProfile.pt:41
 msgid "email"
 msgstr ""
 
@@ -150,49 +157,49 @@ msgid "send_email"
 msgstr ""
 
 #. Default: Sign Up - Ondestán
-#: ondestan/templates/signup.pt:8 ondestan/templates/signupSuccess.pt:7
+#: ondestan/templates/signup.pt:8
 msgid "sign_up_title"
 msgstr ""
 
-#. Default: Mandatory fields
-#: ondestan/templates/signup.pt:35
-msgid "mandatory_fields"
-msgstr ""
-
-#. Default: Name
-#: ondestan/templates/signup.pt:39
-msgid "name"
-msgstr ""
-
-#. Default: Cell phone number
-#: ondestan/templates/signup.pt:41
-msgid "cell_phone_number"
-msgstr ""
-
-#. Default: Password must be at least 6 chars
-#: ondestan/templates/signup.pt:42
-msgid "password_too_short"
-msgstr ""
-
-#. Default: Passwords don't match
-#: ondestan/templates/signup.pt:42
-msgid "passwords_dont_match"
-msgstr ""
-
-#. Default: Retype password
-#: ondestan/templates/signup.pt:44
-msgid "retype_password"
-msgstr ""
-
 #. Default: Successful Sign Up
-#: ondestan/templates/signupSuccess.pt:25
+#: ondestan/templates/signup.pt:27
 msgid "successful_sign_up"
 msgstr ""
 
 #. Default: We have sent you an email with the instructions for activating your new
 #. account.<dynamic element>Welcome to Ondestán!!
-#: ondestan/templates/signupSuccess.pt:32
+#: ondestan/templates/signup.pt:38
 msgid "sign_up_instructions"
+msgstr ""
+
+#. Default: Mandatory fields
+#: ondestan/templates/signup.pt:41 ondestan/templates/updateProfile.pt:35
+msgid "mandatory_fields"
+msgstr ""
+
+#. Default: Name
+#: ondestan/templates/signup.pt:45 ondestan/templates/updateProfile.pt:40
+msgid "name"
+msgstr ""
+
+#. Default: Cell phone number
+#: ondestan/templates/signup.pt:47 ondestan/templates/updateProfile.pt:42
+msgid "cell_phone_number"
+msgstr ""
+
+#. Default: Password must be at least 6 chars
+#: ondestan/templates/signup.pt:48 ondestan/templates/updateProfile.pt:43
+msgid "password_too_short"
+msgstr ""
+
+#. Default: Passwords don't match
+#: ondestan/templates/signup.pt:48 ondestan/templates/updateProfile.pt:43
+msgid "passwords_dont_match"
+msgstr ""
+
+#. Default: Retype password
+#: ondestan/templates/signup.pt:50 ondestan/templates/updateProfile.pt:45
+msgid "retype_password"
 msgstr ""
 
 #. Default: Hello
@@ -205,8 +212,19 @@ msgstr ""
 msgid "editor"
 msgstr ""
 
+#. Default: Update Profile
+#: ondestan/templates/simpleViewer.pt:18 ondestan/templates/updateProfile.pt:27
+#: ondestan/templates/updateProfile.pt:46
+msgid "update_profile"
+msgstr ""
+
 #. Default: Logout
 #: ondestan/templates/simpleViewer.pt:18
 msgid "logout"
+msgstr ""
+
+#. Default: Sign Up - Ondestán
+#: ondestan/templates/updateProfile.pt:8
+msgid "update_profile_title"
 msgstr ""
 
