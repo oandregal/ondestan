@@ -1,50 +1,36 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="Ondestan">
-<head>
-  <title i18n:translate="user_password_reminder_title">User/password reminder - Ondestán</title>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
-  <meta name="description" content="cows position monitoring web app" />
-  <link rel="stylesheet"
-        href="${request.static_url('ondestan:static/pylons.css')}"
-        type="text/css" media="screen" charset="utf-8" />
-  <!--[if lte IE 6]>
-  <link rel="stylesheet"
-        href="${request.static_url('ondestan:static/ie6.css')}"
-        type="text/css" media="screen" charset="utf-8" />
-  <![endif]-->
-</head>
-<body>
-  <div id="wrap">
-    <div id="middle">
-      <div class="middle align-right">
-        <div id="left" class="app-welcome align-left">
-          <b><label i18n:translate="user_password_reminder">User/password reminder</label></b><br/>
-        </div>
-        <div id="right" class="app-welcome align-right"></div>
-      </div>
-    </div>
-    <div id="bottom" tal:switch="'form.submitted' in request.params">
-      <div class="bottom" tal:case="True">
-      	<label i18n:translate="user_password_reminder_sent">Please check your e-mail inbox for the reminder.</label>
-      </div>
-      <div class="bottom" tal:case="False">
-      	<label i18n:translate="user_password_reminder_msg">Please write below the e-mail you used for registration and we'll send you a reminder on your user/password.</label>
-        <form action="${url}" method="post">
-	        <table>
-	          <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">E-mail</label>:</td><td><input type="text" id="email" name="email"/></td></tr>
-	          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value send_email" value="Send e-mail"/></td></tr>
-          </table>
-        </form>
-      </div>
-    </div>
-  </div>
-  <div id="footer">
-    <div class="footer">&copy; Copyright 2014.</div>
-  </div>
-</body>
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+	<div metal:fill-slot="head">
+    	<title i18n:translate="user_password_reminder_title">User/password reminder - Ondestán</title>
+	</div>
+	
+	<div metal:fill-slot="content">
+	    <div id="middle">
+	      <div class="middle align-right">
+	        <div id="left" class="app-welcome align-left">
+	          <b><label i18n:translate="user_password_reminder">User/password reminder</label></b><br/>
+	        </div>
+	        <div id="right" class="app-welcome align-right"></div>
+	      </div>
+	    </div>
+	    <div id="bottom" tal:switch="'form.submitted' in request.params">
+	      <div class="bottom" tal:case="True">
+	      	<label i18n:translate="user_password_reminder_sent">Please check your e-mail inbox for the reminder.</label>
+	      </div>
+	      <div class="bottom" tal:case="False">
+	      	<label i18n:translate="user_password_reminder_msg">Please write below the e-mail you used for registration and we'll send you a reminder on your user/password.</label>
+	        <form action="${url}" method="post">
+		        <table>
+		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">E-mail</label>:</td><td><input type="text" id="email" name="email"/></td></tr>
+		          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value send_email" value="Send e-mail"/></td></tr>
+	          </table>
+	        </form>
+	      </div>
+	    </div>
+	</div>
+
 </html>
