@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+	<div metal:fill-slot="head">
+    	<title i18n:translate="new_order_title">New order - Ondestán</title>
+	</div>
+	
+	<div metal:fill-slot="content">
+	    <div id="middle">
+	      <div class="middle align-right" tal:switch="'form.submitted' in request.params and message == ''">
+	        <div id="left" class="app-welcome align-left" tal:case="True">
+	      	  <b><label i18n:translate="successful_order">Successful Order</label></b>
+	        </div>
+	        <div id="left" class="app-welcome align-left" tal:case="False">
+	          <b><label i18n:translate="new_order">New Order</label></b><br/>
+	          <span tal:replace="message"/>
+	        </div>
+	        <div id="right" class="app-welcome align-right"></div>
+	      </div>
+	    </div>
+	    <div id="bottom" tal:switch="'form.submitted' in request.params and message == ''">
+	      <div class="bottom" tal:case="True">
+	      	<label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
+	      </div>
+	      <div class="bottom" tal:case="False">
+	      	<label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
+	        <form action="${url}" method="post">
+		        <table>
+		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="number_units">Number of units:</label>:</td><td><input type="text" id="units" name="units" value="${units}" onkeyup="checkFields()"/>*</td></tr>
+		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="delivery_address">Delivery address:</label>:</td><td><input type="text" id="address" name="address" value="${address}" onkeyup="checkFields()"/>*</td></tr>
+		          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value confirm_order" value="Confirm order"/></td></tr>
+	          </table>
+	        </form>
+	      </div>
+	    </div>
+	</div>
+
+</html>

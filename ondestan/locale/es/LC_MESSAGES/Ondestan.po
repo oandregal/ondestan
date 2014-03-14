@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-13 21:01+0100\n"
-"PO-Revision-Date: 2014-03-13 21:02+0100\n"
+"POT-Creation-Date: 2014-03-14 19:33+0100\n"
+"PO-Revision-Date: 2014-03-14 19:34+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -123,6 +123,51 @@ msgstr "Darse de alta"
 msgid "forgot_user_password"
 msgstr "¿Has olvidado tu usuario/password?"
 
+#. Default: New order - Ondestán
+#: ondestan/templates/newOrder.pt:8
+msgid "new_order_title"
+msgstr "Nuevo pedido - Ondestán"
+
+#. Default: Successful Order
+#: ondestan/templates/newOrder.pt:15
+msgid "successful_order"
+msgstr "Pedido exitoso"
+
+#. Default: New Order
+#. Default: New order
+#: ondestan/templates/newOrder.pt:18
+#: ondestan/templates/simpleViewer.pt:18
+msgid "new_order"
+msgstr "Nuevo pedido"
+
+#. Default: Thanks for your order! Our team will get in touch with you soon.
+#: ondestan/templates/newOrder.pt:26
+msgid "new_order_instructions"
+msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en contacto contigo."
+
+#. Default: Mandatory fields
+#: ondestan/templates/newOrder.pt:29
+#: ondestan/templates/signup.pt:29
+#: ondestan/templates/updateProfile.pt:23
+msgid "mandatory_fields"
+msgstr "Campos obligatorios"
+
+#. Default: Number of units:
+#: ondestan/templates/newOrder.pt:32
+msgid "number_units"
+msgstr "Nº de unidades"
+
+#. Default: Delivery address:
+#: ondestan/templates/newOrder.pt:33
+msgid "delivery_address"
+msgstr "Dirección de envío"
+
+#. Default: Confirm order
+#: ondestan/templates/newOrder.pt:34
+#| msgid "new_order"
+msgid "confirm_order"
+msgstr "Confirmar pedido"
+
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8
 msgid "password_reset_title"
@@ -190,12 +235,6 @@ msgstr "Proceso de alta exitoso"
 msgid "sign_up_instructions"
 msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu nueva cuenta.<br/>¡¡Bienvenido a Ondestán!!"
 
-#. Default: Mandatory fields
-#: ondestan/templates/signup.pt:29
-#: ondestan/templates/updateProfile.pt:23
-msgid "mandatory_fields"
-msgstr "Campos obligatorios"
-
 #. Default: Name
 #: ondestan/templates/signup.pt:33
 #: ondestan/templates/updateProfile.pt:28
@@ -241,6 +280,7 @@ msgstr "Hola"
 msgid "editor"
 msgstr "Gestor"
 
+#. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/simpleViewer.pt:18
 #: ondestan/templates/updateProfile.pt:15
@@ -253,7 +293,7 @@ msgstr "Actualizar perfil"
 msgid "logout"
 msgstr "Salir"
 
-#. Default: Sign Up - Ondestán
+#. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"

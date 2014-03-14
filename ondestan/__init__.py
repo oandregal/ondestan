@@ -35,6 +35,8 @@ def main(global_config, **settings):
     config.add_route('update_profile', '/update_profile')
     config.add_route('activate_user', '/activate/{loginhash}')
 
+    config.add_route('new_order', '/order/new')
+
     config.add_route('map', '/map')
     config.add_route('json_cows', '/json/cows.json')
     config.add_route('json_plots', '/json/plots.json')

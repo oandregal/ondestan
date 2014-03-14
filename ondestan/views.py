@@ -19,7 +19,7 @@ from pyramid.i18n import (
     )
 
 from ondestan.security import get_user_login, check_permission
-from ondestan.services import plot_service, cow_service, user_service
+from ondestan.services import plot_service, cow_service, user_service, order_service
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -136,6 +136,26 @@ def logout(request):
 def activate_usr(request):
     user_service.activate_user(request)
     return HTTPFound(location=request.route_url('login'))
+
+
+@view_config(route_name='new_order', renderer='templates/newOrder.pt',
+             permission='view')
+def new_order(request):
+    message = ''
+    units = ''
+    address = ''
+    if 'form.submitted' in request.params:
+        message = order_service.create_order(request)
+        if message != '':
+            units = request.params['units']
+            address = request.params['address']
+
+    return dict(
+        message=message,
+        url=request.path_url,
+        units=units,
+        address=address,
+        )
 
 
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',

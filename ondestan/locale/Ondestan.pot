@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-13 21:01+0100\n"
+"POT-Creation-Date: 2014-03-14 19:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -108,6 +108,48 @@ msgstr ""
 msgid "forgot_user_password"
 msgstr ""
 
+#. Default: New order - Ondestán
+#: ondestan/templates/newOrder.pt:8
+msgid "new_order_title"
+msgstr ""
+
+#. Default: Successful Order
+#: ondestan/templates/newOrder.pt:15
+msgid "successful_order"
+msgstr ""
+
+#. Default: New Order
+#. Default: New order
+#: ondestan/templates/newOrder.pt:18 ondestan/templates/simpleViewer.pt:18
+msgid "new_order"
+msgstr ""
+
+#. Default: Thanks for your order! Our team will get in touch with you soon.
+#: ondestan/templates/newOrder.pt:26
+msgid "new_order_instructions"
+msgstr ""
+
+#. Default: Mandatory fields
+#: ondestan/templates/newOrder.pt:29 ondestan/templates/signup.pt:29
+#: ondestan/templates/updateProfile.pt:23
+msgid "mandatory_fields"
+msgstr ""
+
+#. Default: Number of units:
+#: ondestan/templates/newOrder.pt:32
+msgid "number_units"
+msgstr ""
+
+#. Default: Delivery address:
+#: ondestan/templates/newOrder.pt:33
+msgid "delivery_address"
+msgstr ""
+
+#. Default: Confirm order
+#: ondestan/templates/newOrder.pt:34
+msgid "confirm_order"
+msgstr ""
+
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8
 msgid "password_reset_title"
@@ -172,11 +214,6 @@ msgstr ""
 msgid "sign_up_instructions"
 msgstr ""
 
-#. Default: Mandatory fields
-#: ondestan/templates/signup.pt:29 ondestan/templates/updateProfile.pt:23
-msgid "mandatory_fields"
-msgstr ""
-
 #. Default: Name
 #: ondestan/templates/signup.pt:33 ondestan/templates/updateProfile.pt:28
 msgid "name"
@@ -217,6 +254,7 @@ msgstr ""
 msgid "editor"
 msgstr ""
 
+#. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/simpleViewer.pt:18 ondestan/templates/updateProfile.pt:15
 #: ondestan/templates/updateProfile.pt:34
@@ -228,7 +266,7 @@ msgstr ""
 msgid "logout"
 msgstr ""
 
-#. Default: Sign Up - Ondestán
+#. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr ""

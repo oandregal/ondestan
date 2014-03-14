@@ -32,6 +32,13 @@ CREATE TABLE cows (
 
 SELECT AddGeometryColumn ('public', 'cows', 'geom', 3857, 'POINT', 2);
 
+CREATE TABLE orders (
+	id SERIAL PRIMARY KEY,
+	units INTEGER NOT NULL,
+	address VARCHAR NOT NULL,
+	user_id INTEGER REFERENCES users NOT NULL
+);
+
 INSERT INTO roles(name) VALUES
 	('viewer'),
 	('manager'),
