@@ -5,7 +5,7 @@
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
 	<div metal:fill-slot="head">
-    	<title i18n:translate="update_profile_title">Sign Up - Ondestán</title>
+    	<title i18n:translate="update_profile_title">Update profile - Ondestán</title>
 		<script type="text/javascript">
 		  	function checkFields() {
 		  		login = document.getElementById('login').value;
