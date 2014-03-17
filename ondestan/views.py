@@ -162,10 +162,18 @@ def new_order(request):
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):
+    is_admin = check_permission('admin', request)
+    if is_admin:
+        n_new_orders = len(order_service.get_all_new_orders())
+        localizer = get_localizer(request)
+        new_orders_msg = str(n_new_orders) + ' ' + localizer.pluralize('new_order', 'new_orders', n_new_orders, 'Ondestan')
+    else:
+        new_orders_msg = ''
     return dict(project=u'Ondestán',
                 user_id=get_user_login(request),
                 can_edit=check_permission('edit', request),
-                is_admin=check_permission('admin', request))
+                is_admin=is_admin,
+                new_orders_msg=new_orders_msg)
 
 
 @view_config(route_name='default')
