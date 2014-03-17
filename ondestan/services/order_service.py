@@ -15,9 +15,14 @@ def create_order(request):
     user = User().queryObject().filter(User.login == login).scalar()
     if (user != None):
         order = Order()
+        order.state = Order._NEW_ORDER
         order.units = units
         order.address = address
         order.user_id = user.id
         order.save()
 
     return ''
+
+
+def get_all_new_orders():
+    return Order().queryObject().filter(Order.state == Order._NEW_ORDER).all()
