@@ -20,8 +20,8 @@
 	
 	<div metal:fill-slot="content">
 	    <span tal:condition="user_id != None">
-		  <label i18n:translate="hello">Hello</label><label>, ${user_id}</label> <label tal:condition="can_edit" i18n:translate="editor">Editor</label>  <label tal:condition="is_admin">${new_orders_msg}</label> <a href="${request.application_url}/order/new" tal:condition="not is_admin" i18n:translate="new_order">New order</a>
-		  <a href="${request.application_url}/update_profile" i18n:translate="update_profile">Update profile</a> <a href="${request.application_url}/logout" i18n:translate="logout">Logout</a>
+		  <label i18n:translate="hello">Hello</label><label>, ${user_id}</label> <label tal:condition="can_edit" i18n:translate="editor">Editor</label>  <a href="${request.route_url('orders')}">${orders_msg}</a>
+		  <a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a> <a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a>
 		</span>
 		<div id="map" style="width: 600px; height: 400px"></div>
 	</div>

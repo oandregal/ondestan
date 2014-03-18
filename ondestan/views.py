@@ -135,23 +135,33 @@ def activate_usr(request):
     return HTTPFound(location=request.route_url('login'))
 
 
-@view_config(route_name='new_order', renderer='templates/newOrder.pt',
+@view_config(route_name='orders', renderer='templates/orders.pt',
              permission='view')
-def new_order(request):
+def orders(request):
     message = ''
     units = ''
     address = ''
     if 'form.submitted' in request.params:
-        message = order_service.create_order(request)
-        if message != '':
-            units = request.params['units']
-            address = request.params['address']
+        if 'id' in request.params:
+            message = order_service.update_order_state(request)
+        else:
+            message = order_service.create_order(request)
+            if message != '':
+                units = request.params['units']
+                address = request.params['address']
+
+    is_admin = check_permission('admin', request)
+    if is_admin:
+        orders = order_service.get_all_orders()
+    else:
+        orders = order_service.get_all_orders(get_user_login(request))
 
     return dict(
         message=message,
-        url=request.path_url,
         units=units,
         address=address,
+        orders=orders,
+        is_admin=is_admin,
         )
 
 
@@ -159,17 +169,19 @@ def new_order(request):
              permission='view')
 def viewer(request):
     is_admin = check_permission('admin', request)
+    localizer = get_localizer(request)
     if is_admin:
         n_new_orders = len(order_service.get_all_new_orders())
-        localizer = get_localizer(request)
-        new_orders_msg = str(n_new_orders) + ' ' + localizer.pluralize('new_order', 'new_orders', n_new_orders, 'Ondestan')
+        orders_msg = localizer.pluralize('new_order', 'new_orders',
+               n_new_orders, domain='Ondestan',
+               mapping={'n_orders': n_new_orders})
     else:
-        new_orders_msg = ''
+        orders_msg = _('orders_management', domain='Ondestan')
     return dict(project=u'Ondestán',
                 user_id=get_user_login(request),
                 can_edit=check_permission('edit', request),
                 is_admin=is_admin,
-                new_orders_msg=new_orders_msg)
+                orders_msg=orders_msg)
 
 
 @view_config(route_name='default')
