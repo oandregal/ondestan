@@ -28,7 +28,7 @@
 	      </div>
 	      <div class="bottom" tal:case="False">
 	      	<label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
-	        <form action="${url}" method="post">
+	        <form action="${request.route_url('signup')}" method="post">
 		        <table>
 		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="username">Login</label>:</td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/>*</td></tr>
 		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="name">Name</label>:</td><td><input type="text" id="name" name="name" value="${name}" onkeyup="checkFields()"/>*</td></tr>

@@ -49,7 +49,6 @@ def login(request):
 
     return dict(
         message=message,
-        url=request.path_url,
         came_from=came_from,
         login=login,
         )
@@ -72,7 +71,6 @@ def signup(request):
 
     return dict(
         message=message,
-        url=request.path_url,
         login=login,
         name=name,
         email=email,
@@ -97,7 +95,6 @@ def update_profile(request):
 
     return dict(
         message=message,
-        url=request.path_url,
         id=user_id,
         login=login,
         name=name,
@@ -115,7 +112,6 @@ def reminder(request):
 
     return dict(
         email=email,
-        url=request.application_url + '/reminder',
         )
 
 

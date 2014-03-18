@@ -23,7 +23,7 @@
 	      </div>
 	      <div class="bottom" tal:case="False">
 	      	<label i18n:translate="user_password_reminder_msg">Please write below the e-mail you used for registration and we'll send you a reminder on your user/password.</label>
-	        <form action="${url}" method="post">
+	        <form action="${request.route_url('reminder')}" method="post">
 		        <table>
 		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">E-mail</label>:</td><td><input type="text" id="email" name="email"/></td></tr>
 		          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value send_email" value="Send e-mail"/></td></tr>

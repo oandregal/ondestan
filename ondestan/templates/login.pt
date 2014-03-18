@@ -20,7 +20,7 @@
 	    </div>
 	    <div id="bottom">
 	      <div class="bottom">
-	        <form action="${url}" method="post">
+	        <form action="${request.route_url('login')}" method="post">
 	        	<input type="hidden" name="came_from" value="${came_from}"/>
 		    	<table>
 		          <tr><td align="right" style="padding-right:10px"><label><label i18n:translate="username">Username</label>:</label></td><td colspan="2"><input type="text" name="login" value="${login}"/></td></tr>

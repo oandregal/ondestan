@@ -22,7 +22,7 @@
 	    <div id="bottom">
 	      <div class="bottom">
 	      	<label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
-	        <form action="${url}" method="post">
+	        <form action="${request.route_url('update_profile')}" method="post">
 	        	<input type="hidden" id="id" name="id" value="${id}"></input>
 		        <table>
 		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="username">Login</label>:</td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/>*</td></tr>
