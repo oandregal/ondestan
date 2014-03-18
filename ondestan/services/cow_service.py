@@ -2,9 +2,8 @@
 from ondestan.entities import Cow
 
 
-def get_cow_by_user_login(login):
-    return Cow().queryObject().filter(Cow.user.has(login=login)).all()
-
-
-def get_all_cows():
-    return Cow().queryObject().all()
+def get_all_cows(login=None):
+    if login != None:
+        return Cow().queryObject().filter(Cow.user.has(login=login)).all()
+    else:
+        return Cow().queryObject().all()

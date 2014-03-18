@@ -2,9 +2,8 @@
 from ondestan.entities import Plot
 
 
-def get_plot_by_user_login(login):
-    return Plot().queryObject().filter(Plot.user.has(login=login)).all()
-
-
-def get_all_plots():
-    return Plot().queryObject().all()
+def get_all_plots(login=None):
+    if login != None:
+        return Plot().queryObject().filter(Plot.user.has(login=login)).all()
+    else:
+        return Plot().queryObject().all()

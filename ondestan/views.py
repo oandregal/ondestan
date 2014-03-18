@@ -209,7 +209,7 @@ def json_cows(request):
             logger.debug("Found no cows for any user")
     else:
         login = get_user_login(request)
-        cows = cow_service.get_cow_by_user_login(login)
+        cows = cow_service.get_all_cows(login)
         if cows != None:
             logger.debug("Found " + str(len(cows)) + " cows for user " + login)
             for cow in cows:
@@ -255,7 +255,7 @@ def json_plots(request):
             logger.debug("Found no plots for any user")
     else:
         login = get_user_login(request)
-        plots = plot_service.get_plot_by_user_login(login)
+        plots = plot_service.get_all_plots(login)
         if plots != None:
             logger.debug("Found " + str(len(plots)) + " plots " + \
                          "for user " + login)
