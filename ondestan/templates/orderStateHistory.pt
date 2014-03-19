@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+	<div metal:fill-slot="head">
+    	<title i18n:translate="order_state_history_title">Order state history - Ondestán</title>
+	</div>
+	
+	<div metal:fill-slot="content">
+	    <div id="middle">
+	      <div class="middle align-right">
+	        <div id="left" class="app-welcome align-left" >
+	      	  <b><label i18n:translate="order_state_history">Order state history</label></b>
+	        </div>
+	      </div>
+	    </div>
+	    <div id="bottom">
+	      <div class="bottom">
+	        <table>
+	          <tr>
+	          	<th i18n:translate="order_state">Order state</th>
+	          	<th i18n:translate="change_date">Change date</th>
+	          </tr>
+	          <tr tal:repeat="state order.states">
+				<td>
+					<tal:block tal:switch="state.state">
+						<label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
+						<label tal:case="1" i18n:translate="order_state_1">In process</label>
+					</tal:block>
+				</td>
+				<td><label tal:content="state.date"/></td>
+	          </tr>
+          	</table>
+	      </div>
+	    </div>
+	</div>
+
+</html>

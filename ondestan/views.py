@@ -168,6 +168,19 @@ def orders(request):
         )
 
 
+@view_config(route_name='order_state_history',
+             renderer='templates/orderStateHistory.pt',
+             permission='admin')
+def order_state_history(request):
+    order = order_service.get_order_by_id(
+                request.matchdict['order_id'])
+    if (order == None):
+        raise HTTPFound(request.route_url("orders"))
+    return dict(
+        order=order,
+        )
+
+
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):
