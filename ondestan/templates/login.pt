@@ -4,35 +4,28 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
-	<div metal:fill-slot="head">
-	    <title i18n:translate="login_title">Login - Ondestán</title>
-	</div>
-	
-	<div metal:fill-slot="content">
-	    <div id="middle">
-	      <div class="middle align-right">
-	        <div id="left" class="app-welcome align-left">
-	          <b><label i18n:translate="login">Login</label></b><br/>
-	          <span tal:replace="message"/>
-	        </div>
-	        <div id="right" class="app-welcome align-right"></div>
-	      </div>
-	    </div>
-	    <div id="bottom">
-	      <div class="bottom">
-	        <form action="${request.route_url('login')}" method="post">
-	        	<input type="hidden" name="came_from" value="${came_from}"/>
-		    	<table>
-		          <tr><td align="right" style="padding-right:10px"><label><label i18n:translate="username">Username</label>:</label></td><td colspan="2"><input type="text" name="login" value="${login}"/></td></tr>
-		          <tr><td align="right" style="padding-right:10px"><label><label i18n:translate="password">Password</label>:</label></td><td colspan="2"><input type="password" name="password"/></td></tr>
-		          <tr><td/><td align="left"><input type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/></td><td align="right"><a href="/signup"><label i18n:translate="sign_up">Sign Up</label></a></td></tr>
-		        </table>
-	        </form>
-	        <div>
-	        	<a href="/reminder"><label i18n:translate="forgot_user_password">Forgot your user/password?</label></a>
-	        </div>
-	      </div>
-	    </div>
-	</div>
+  <div metal:fill-slot="head">
+    <title i18n:translate="login_title">Login - Ondestán</title>
+  </div>
+
+  <div metal:fill-slot="styles">
+    <link rel="stylesheet"
+          href="${request.static_url('ondestan:static/css/login.css')}"
+          type="text/css" media="screen" />
+  </div>
+
+  <div class="container" metal:fill-slot="content">
+    <form class="form-signin" role="form" action="${request.route_url('login')}" method="post">
+      <h2 class="form-signin-heading" i18n:translate="login">Login</h2>
+      <span tal:replace="message"/>
+      <input type="hidden" name="came_from" value="${came_from}"/>
+      <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
+      <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+      <button class="btn btn-lg btn-block btn-primary" type="submit" name="form.submitted" i18n:translate="log_in" value="Log in">Login</button>
+      <br />
+      <a href="/signup"><label i18n:translate="sign_up">Sign Up</label></a>
+      <a href="/reminder"><label i18n:translate="forgot_user_password">Forgot your user/password?</label></a>
+    </form>
+  </div>
 
 </html>

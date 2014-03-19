@@ -4,68 +4,106 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
-	<div metal:fill-slot="head">
-    	<title i18n:translate="orders_list_title">Orders list - Ondestán</title>
-	</div>
-	
-	<div metal:fill-slot="content">
-	    <div id="middle">
-	      <div class="middle align-right">
-	        <div id="left" class="app-welcome align-left" >
-	      	  <b><label i18n:translate="orders_list">Orders list</label></b>
-	        </div>
-	        <div id="right" class="app-welcome align-right"><label>${message}</label></div>
-	      </div>
-	    </div>
-	    <div id="bottom" tal:switch="'form.submitted' in request.params and message == ''">
-	      <div class="bottom" tal:condition="not is_admin" tal:case="True">
-	      	<label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
-	      </div>
-	      <div class="bottom" tal:condition="not is_admin" tal:case="False">
-	      	<b><label i18n:translate="new_order_header">New Order</label></b><br/>
-	      	<label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
-	        <form action="${request.route_url('orders')}" method="post">
-		        <table>
-		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="number_units">Number of units</label>:</td><td><input type="text" id="units" name="units" value="${units}" onkeyup="checkFields()"/>*</td></tr>
-		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="delivery_address">Delivery address</label>:</td><td><input type="text" id="address" name="address" value="${address}" onkeyup="checkFields()"/>*</td></tr>
-		          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value confirm_order" value="Confirm order"/></td></tr>
-	          </table>
-	        </form>
-	      </div>
-	      <div class="bottom">
-	        <table>
-	          <tr>
-	          	<th tal:condition="is_admin" i18n:translate="order_user">User</th>
-	          	<th i18n:translate="order_state">Order state</th>
-	          	<th i18n:translate="number_units">Number of units</th>
-	          	<th i18n:translate="delivery_address">Delivery address</th>
-	          </tr>
-	          <tr tal:repeat="order orders">
-	          	<td tal:condition="is_admin">
-	          		<label tal:content="order.user.login"/>
-	          	</td>
-				<td tal:switch="is_admin">
-					<form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
-						<input type="hidden" name="id" value="${order.id}"/>
-						<select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
-						  <option value="0" tal:attributes="selected 'selected' if order.states[0].state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
-						  <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
-						</select>
-						<input type="submit" name="form.submitted" style="display: none;"/>
-					</form>
-					<tal:block tal:case="False">
-						<tal:block tal:switch="order.states[0].state">
-							<label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
-							<label tal:case="1" i18n:translate="order_state_1">In process</label>
-						</tal:block>
-					</tal:block>
-				</td>
-				<td><label tal:content="order.units"/></td>
-				<td><label tal:content="order.address"/></td>
-	          </tr>
-          	</table>
-	      </div>
-	    </div>
-	</div>
+  <div metal:fill-slot="head">
+    <title i18n:translate="orders_list_title">Orders list - Ondestán</title>
+  </div>
+
+  <div metal:fill-slot="styles">
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/css/main.css')}" />
+  </div>
+
+  <div class="container" metal:fill-slot="content">
+
+    <div class="header">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
+            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
+    </div>
+
+    <div id="middle">
+      <div class="middle align-right">
+        <div id="left" class="app-welcome align-left" >
+          <h3 i18n:translate="orders_list">Orders list</h3>
+        </div>
+        <div id="right" class="app-welcome align-right"><label>${message}</label></div>
+      </div>
+    </div>
+
+    <div id="bottom" tal:switch="'form.submitted' in request.params and message == ''">
+
+      <div class="bottom" tal:condition="not is_admin" tal:case="True">
+        <label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
+      </div>
+
+      <div class="bottom">
+
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th tal:condition="is_admin">ID</th>
+              <th tal:condition="is_admin" i18n:translate="order_user">User</th>
+              <th i18n:translate="order_state">Order state</th>
+              <th i18n:translate="number_units">Number of units</th>
+              <th i18n:translate="delivery_address">Delivery address</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr tal:repeat="order orders">
+              <td tal:condition="is_admin">
+                <a href="/orders/history/${order.id}"><label tal:content="order.id"/></a>
+              </td>
+              <td tal:condition="is_admin">
+                <label tal:content="order.user.login"/>
+              </td>
+              <td tal:switch="is_admin">
+                <form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
+                  <input type="hidden" name="id" value="${order.id}"/>
+                  <select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
+                    <option value="0" tal:attributes="selected 'selected' if order.states[0].state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
+                    <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
+                  </select>
+                  <input type="submit" name="form.submitted" style="display: none;"/>
+                </form>
+                <tal:block tal:case="False">
+                  <tal:block tal:switch="order.states[0].state">
+                    <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
+                    <label tal:case="1" i18n:translate="order_state_1">In process</label>
+                  </tal:block>
+                </tal:block>
+              </td>
+              <td><label tal:content="order.units"/></td>
+              <td><label tal:content="order.address"/></td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="bottom" tal:condition="not is_admin" tal:case="False">
+        <form class="form-inline" role="form" action="${request.route_url('orders')}" method="post">
+          <input class="form-control" type="text" id="units" name="units" value="${units}" placeholder="Nº unidades" />
+          <input class="form-control" type="text" id="address" name="address" value="${address}" placeholder="Dirección envío" />
+          <button class="btn btn-default" id="submit" type="submit" name="form.submitted" i18n:translate="new_order_header" value="Confirm order">Confirm order</button>
+        </form>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div metal:fill-slot="javascript">
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+  </div>
 
 </html>

@@ -95,6 +95,7 @@ def update_profile(request):
 
     return dict(
         message=message,
+        user_id=login,
         id=user_id,
         login=login,
         name=name,
@@ -160,6 +161,7 @@ def orders(request):
         orders = order_service.get_all_orders(get_user_login(request))
 
     return dict(
+        user_id=get_user_login(request),
         message=message,
         units=units,
         address=address,
@@ -177,6 +179,7 @@ def order_state_history(request):
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     return dict(
+        user_id=get_user_login(request),
         order=order,
         )
 

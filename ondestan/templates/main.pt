@@ -1,30 +1,27 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:metal="http://xml.zope.org/namespaces/metal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan">
-<head>
-  <div metal:define-slot="head"></div>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
-  <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
-  <meta name="description" content="cows position monitoring web app" />
-  <link rel="stylesheet"
-        href="${request.static_url('ondestan:static/pylons.css')}"
-        type="text/css" media="screen" charset="utf-8" />
-  <!--[if lte IE 6]>
-  <link rel="stylesheet"
-        href="${request.static_url('ondestan:static/ie6.css')}"
-        type="text/css" media="screen" charset="utf-8" />
-  <![endif]-->
-</head>
-<body>
-  <div id="wrap">
-  	<div metal:define-slot="content"></div>
-  </div>
-  <div id="footer">
-    <div class="footer">&copy; Copyright 2014.</div>
-  </div>
-</body>
+
+  <head>
+    <div metal:define-slot="head"></div>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
+    <meta name="description" content="cows position monitoring web app" />
+    <link rel="stylesheet"
+          href="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/css/bootstrap.css')}"
+          type="text/css" media="screen" charset="utf-8" />
+    <div metal:define-slot="styles"></div>
+  </head>
+
+  <body>
+    <div metal:define-slot="content"></div>
+    <div metal:define-slot="footer"></div>
+    <div metal:define-slot="javascript"></div>
+  </body>
+
 </html>

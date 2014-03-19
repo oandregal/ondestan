@@ -12,8 +12,8 @@ def main(global_config, **settings):
                           root_factory='ondestan.models.RootFactory')
     Config.init_settings(settings)
 
-    from .services import user_service
-    from .utils.db import Db
+    from ondestan.services import user_service
+    from ondestan.utils.db import Db
 
     Db.instance()
     logger = logging.getLogger('ondestan')
