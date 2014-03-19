@@ -21,6 +21,7 @@
   <body>
     <div metal:define-slot="content"></div>
     <div metal:define-slot="footer"></div>
+    <div metal:define-slot="javascript"></div>
   </body>
 
 </html>

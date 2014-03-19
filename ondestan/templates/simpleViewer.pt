@@ -6,24 +6,47 @@
 
   <div metal:fill-slot="head">
     <title i18n:translate="simple_viewer_title">Viewer - Ondestán</title>
+  </div>
+
+  <div metal:fill-slot="styles">
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/css/main.css')}" />
+  </div>
+
+  <div class="container" metal:fill-slot="content">
+
+    <div class="header">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
+            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h3 class="text-muted">Onde Están</h3>
+    </div>
+
+    <span tal:condition="user_id != None">
+      <a href="${request.route_url('orders')}">${orders_msg}</a>
+    </span>
+
+    <div id="map" style="width: 600px; height: 400px"></div>
+
+  </div>
+
+  <div metal:fill-slot="javascript">
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
     <script type="text/javascript">
       window.contextVariables = {
       application_url : "${request.application_url}"
       };
     </script>
-  </div>
-
-  <div metal:fill-slot="content">
-    <span tal:condition="user_id != None">
-      <label i18n:translate="hello">Hello</label><label>, ${user_id}</label> <label tal:condition="can_edit" i18n:translate="editor">Editor</label>  <a href="${request.route_url('orders')}">${orders_msg}</a>
-      <a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a> <a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a>
-    </span>
-    <div id="map" style="width: 600px; height: 400px"></div>
   </div>
 
 </html>
