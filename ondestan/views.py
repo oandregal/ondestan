@@ -189,18 +189,23 @@ def order_state_history(request):
 def viewer(request):
     is_admin = check_permission('admin', request)
     localizer = get_localizer(request)
+    n_new_orders = 0
     if is_admin:
         n_new_orders = len(order_service.get_all_new_orders())
-        orders_msg = localizer.pluralize('new_order', 'new_orders',
-               n_new_orders, domain='Ondestan',
-               mapping={'n_orders': n_new_orders})
+        orders_msg = localizer.pluralize(
+            'new_order', 'new_orders',
+            n_new_orders, domain='Ondestan',
+            mapping={'n_orders': n_new_orders}
+        )
     else:
-        orders_msg = _('orders_management', domain='Ondestan')
+        n_new_orders = len(
+            order_service.get_all_orders(get_user_login(request))
+        )
     return dict(project=u'Ondestán',
                 user_id=get_user_login(request),
                 can_edit=check_permission('edit', request),
                 is_admin=is_admin,
-                orders_msg=orders_msg)
+                orders_msg=n_new_orders)
 
 
 @view_config(route_name='default')

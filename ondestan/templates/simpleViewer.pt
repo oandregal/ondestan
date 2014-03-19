@@ -28,11 +28,26 @@
       <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
     </div>
 
-    <span tal:condition="user_id != None">
-      <a href="${request.route_url('orders')}">${orders_msg}</a>
-    </span>
+    <div class="row data">
+      <div class="col-md-2 col-md-offset-1">
+        <h5 class="text-center text-muted">ACTIVOS</h5>
+        <p class="text-center">0</p>
+      </div>
+      <div class="col-md-2 col-md-offset-2">
+        <h5 class="text-center text-muted">SIN BATERÍA</h5>
+        <p class="text-center">0</p>
+      </div>
+      <div class="col-md-2 col-md-offset-2">
+        <h5 class="text-center text-muted">EN TRÁMITE</h5>
+        <p class="text-center"><a href="${request.route_url('orders')}">${orders_msg}</a></p>
+      </div>
+    </div>
 
-    <div id="map" style="width: 600px; height: 400px"></div>
+      <!-- <span class="col-md-6" tal:condition="user_id != None"> -->
+      <!--   <a href="${request.route_url('orders')}">${orders_msg}</a> -->
+      <!-- </span> -->
+
+    <div class="center-block" id="map" style="width: 600px; height: 400px"></div>
 
   </div>
 
