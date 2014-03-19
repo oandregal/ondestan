@@ -57,7 +57,7 @@
           <div class="form-group">
             <label for="email" class="col-sm-4 control-label" i18n:translate="email">Email</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control "id="email" name="email" value="${email}" onkeyup="checkFields()"/>
+              <input type="text" class="form-control" id="email" name="email" value="${email}" onkeyup="checkFields()"/>
             </div>
           </div>
           <div class="form-group">

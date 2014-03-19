@@ -19,7 +19,7 @@
       <h2 class="form-signin-heading" i18n:translate="login">Login</h2>
       <span tal:replace="message"/>
       <input type="hidden" name="came_from" value="${came_from}"/>
-      <input type="text" class="form-control" placeholder="Usuario" autofocus name="login" value="${login}" />
+      <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
       <input type="password" class="form-control" placeholder="Contraseña" name="password" />
       <button class="btn btn-lg btn-block btn-primary" type="submit" name="form.submitted" i18n:translate="log_in" value="Log in">Login</button>
       <br />
