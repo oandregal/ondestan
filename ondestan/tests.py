@@ -12,7 +12,7 @@ class ViewTests(unittest.TestCase):
         testing.tearDown()
 
     def test_my_view(self):
-        from .views import viewer
+        from ondestan.views import viewer
         request = testing.DummyRequest()
         info = viewer(request)
         self.assertEqual(info['project'], 'Ondestán')
