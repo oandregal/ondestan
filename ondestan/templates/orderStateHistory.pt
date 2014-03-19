@@ -35,6 +35,7 @@
         <th i18n:translate="order_state">Order state</th>
         <th i18n:translate="change_date">Change date</th>
       </tr>
+      <?python from babel.dates import format_datetime; from pyramid.i18n import get_locale_name; ?>
       <tr tal:repeat="state order.states">
         <td>
           <tal:block tal:switch="state.state">
@@ -42,7 +43,7 @@
             <label tal:case="1" i18n:translate="order_state_1">In process</label>
           </tal:block>
         </td>
-        <td><label tal:content="state.date"/></td>
+        <td><label tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/></td>
       </tr>
     </table>
 
