@@ -4,37 +4,54 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
-	<div metal:fill-slot="head">
-    	<title i18n:translate="order_state_history_title">Order state history - Ondestán</title>
-	</div>
-	
-	<div metal:fill-slot="content">
-	    <div id="middle">
-	      <div class="middle align-right">
-	        <div id="left" class="app-welcome align-left" >
-	      	  <b><label i18n:translate="order_state_history">Order state history</label></b>
-	        </div>
-	      </div>
-	    </div>
-	    <div id="bottom">
-	      <div class="bottom">
-	        <table>
-	          <tr>
-	          	<th i18n:translate="order_state">Order state</th>
-	          	<th i18n:translate="change_date">Change date</th>
-	          </tr>
-	          <tr tal:repeat="state order.states">
-				<td>
-					<tal:block tal:switch="state.state">
-						<label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
-						<label tal:case="1" i18n:translate="order_state_1">In process</label>
-					</tal:block>
-				</td>
-				<td><label tal:content="state.date"/></td>
-	          </tr>
-          	</table>
-	      </div>
-	    </div>
-	</div>
+  <div metal:fill-slot="head">
+    <title i18n:translate="order_state_history_title">Order state history - Ondestán</title>
+  </div>
+
+  <div metal:fill-slot="styles">
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/css/main.css')}" />
+  </div>
+
+  <div class="container" metal:fill-slot="content">
+
+    <div class="header">
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
+            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+      <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
+    </div>
+
+    <h3 i18n:translate="order_state_history">Order state history <small><a href="/orders">pedidos</a></small></h3>
+
+
+    <table class="table table-bordered table-hover">
+      <tr>
+        <th i18n:translate="order_state">Order state</th>
+        <th i18n:translate="change_date">Change date</th>
+      </tr>
+      <tr tal:repeat="state order.states">
+        <td>
+          <tal:block tal:switch="state.state">
+            <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
+            <label tal:case="1" i18n:translate="order_state_1">In process</label>
+          </tal:block>
+        </td>
+        <td><label tal:content="state.date"/></td>
+      </tr>
+    </table>
+
+
+  </div>
+
+  <div metal:fill-slot="javascript">
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+  </div>
 
 </html>

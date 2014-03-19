@@ -179,6 +179,7 @@ def order_state_history(request):
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     return dict(
+        user_id=get_user_login(request),
         order=order,
         )
 

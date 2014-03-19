@@ -48,6 +48,7 @@
 
           <thead>
             <tr>
+              <th tal:condition="is_admin">ID</th>
               <th tal:condition="is_admin" i18n:translate="order_user">User</th>
               <th i18n:translate="order_state">Order state</th>
               <th i18n:translate="number_units">Number of units</th>
@@ -57,6 +58,9 @@
 
           <tbody>
             <tr tal:repeat="order orders">
+              <td tal:condition="is_admin">
+                <a href="/orders/history/${order.id}"><label tal:content="order.id"/></a>
+              </td>
               <td tal:condition="is_admin">
                 <label tal:content="order.user.login"/>
               </td>
