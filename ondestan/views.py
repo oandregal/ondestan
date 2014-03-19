@@ -143,7 +143,10 @@ def orders(request):
     address = ''
     if 'form.submitted' in request.params:
         if 'id' in request.params:
-            message = order_service.update_order_state(request)
+            order_id = int(request.params['id'])
+            state = int(request.params['state'])
+
+            message = order_service.update_order_state(order_id, state)
         else:
             message = order_service.create_order(request)
             if message != '':

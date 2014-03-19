@@ -1,5 +1,5 @@
 # coding=UTF-8
-from sqlalchemy import func, tuple_, and_
+from sqlalchemy import func, tuple_, and_, desc
 
 from ondestan.entities import Order, User, Order_state
 from ondestan.security import get_user_login
@@ -23,26 +23,20 @@ def create_order(request):
         order.user_id = user.id
         order.save()
 
-        # We create a NEW state
-        order_state = Order_state()
-        order_state.order_id = order.id
-        order_state.state = Order_state._STATES[0]
-        order_state.date = datetime.datetime.now()
-        order_state.save()
+        update_order_state(order.id, Order_state._STATES[0])
 
     return ''
 
 
-def update_order_state(request):
-
-    order_id = int(request.params['id'])
-    state = int(request.params['state'])
+def update_order_state(order_id, state):
 
     order_state = Order_state()
     order_state.order_id = order_id
     order_state.state = state
     order_state.date = datetime.datetime.now()
     order_state.save()
+
+    return ''
 
 
 def get_order_by_id(order_id):
@@ -57,7 +51,7 @@ def get_all_new_orders():
     # Then we filter the orders by checking which ones have a last state with state 0
     return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order_state.state == 0)).all()
+        Order_state.state == 0)).order_by(desc(Order_state.date)).all()
 
 
 def get_all_orders(login=None):
@@ -68,8 +62,9 @@ def get_all_orders(login=None):
     if login != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login))).order_by(Order_state.state).all()
+        Order.user.has(login=login))).order_by(Order_state.state,\
+        desc(Order_state.date)).all()
     else:
         return Order().queryObject().join(Order_state).filter(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery)).\
-        order_by(Order_state.state).all()
+        order_by(Order_state.state, desc(Order_state.date)).all()
