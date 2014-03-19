@@ -4,33 +4,33 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
-	<div metal:fill-slot="head">
-    	<title i18n:translate="user_password_reminder_title">User/password reminder - Ondestán</title>
-	</div>
-	
-	<div metal:fill-slot="content">
-	    <div id="middle">
-	      <div class="middle align-right">
-	        <div id="left" class="app-welcome align-left">
-	          <b><label i18n:translate="user_password_reminder">User/password reminder</label></b><br/>
-	        </div>
-	        <div id="right" class="app-welcome align-right"></div>
-	      </div>
-	    </div>
-	    <div id="bottom" tal:switch="'form.submitted' in request.params">
-	      <div class="bottom" tal:case="True">
-	      	<label i18n:translate="user_password_reminder_sent">Please check your e-mail inbox for the reminder.</label>
-	      </div>
-	      <div class="bottom" tal:case="False">
-	      	<label i18n:translate="user_password_reminder_msg">Please write below the e-mail you used for registration and we'll send you a reminder on your user/password.</label>
-	        <form action="${request.route_url('reminder')}" method="post">
-		        <table>
-		          <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">E-mail</label>:</td><td><input type="text" id="email" name="email"/></td></tr>
-		          <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value send_email" value="Send e-mail"/></td></tr>
-	          </table>
-	        </form>
-	      </div>
-	    </div>
-	</div>
+  <div metal:fill-slot="head">
+    <title i18n:translate="user_password_reminder_title">User/password reminder - Ondestán</title>
+  </div>
+
+  <div metal:fill-slot="content">
+    <div id="middle">
+      <div class="middle align-right">
+        <div id="left" class="app-welcome align-left">
+          <b><label i18n:translate="user_password_reminder">User/password reminder</label></b><br/>
+        </div>
+        <div id="right" class="app-welcome align-right"></div>
+      </div>
+    </div>
+    <div id="bottom" tal:switch="'form.submitted' in request.params">
+      <div class="bottom" tal:case="True">
+        <label i18n:translate="user_password_reminder_sent">Please check your e-mail inbox for the reminder.</label>
+      </div>
+      <div class="bottom" tal:case="False">
+        <label i18n:translate="user_password_reminder_msg">Please write below the e-mail you used for registration and we'll send you a reminder on your user/password.</label>
+        <form action="${request.route_url('reminder')}" method="post">
+          <table>
+            <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">E-mail</label>:</td><td><input type="text" id="email" name="email"/></td></tr>
+            <tr><td></td><td align="right"><input id="submit" type="submit" name="form.submitted" i18n:attributes="value send_email" value="Send e-mail"/></td></tr>
+          </table>
+        </form>
+      </div>
+    </div>
+  </div>
 
 </html>
