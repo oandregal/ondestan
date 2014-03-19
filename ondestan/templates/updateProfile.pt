@@ -6,7 +6,6 @@
 
   <div metal:fill-slot="head">
     <title i18n:translate="update_profile_title">Update profile - Ondestán</title>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/signup.js')}"></script>
   </div>
 
   <div metal:fill-slot="styles">
@@ -31,28 +30,59 @@
     <div id="middle">
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left">
-          <b><label i18n:translate="update_profile">Update Profile</label></b><br/>
+          <h4 i18n:translate="update_profile">Update Profile</h4>
           <span tal:replace="message"/>
         </div>
         <div id="right" class="app-welcome align-right"></div>
       </div>
     </div>
+
     <div id="bottom">
       <div class="bottom">
-        <label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
-        <form action="${request.route_url('update_profile')}" method="post">
+
+        <form class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
           <input type="hidden" id="id" name="id" value="${id}"></input>
-          <table>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="username">Login</label>:</td><td><input type="text" id="login" name="login" value="${login}" onkeyup="checkFields()"/>*</td></tr>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="name">Name</label>:</td><td><input type="text" id="name" name="name" value="${name}" onkeyup="checkFields()"/>*</td></tr>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="email">Email</label>:</td><td><input type="text" id="email" name="email" value="${email}" onkeyup="checkFields()"/>*</td></tr>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="cell_phone_number">Cell phone number</label>:</td><td><input type="text" id="phone" name="phone" value="${phone}"/></td></tr>
-            <tr><td colspan="2"><label id="passtooshort" style="display: none;" i18n:translate="password_too_short">Password must be at least 6 chars</label><label id="passdistinct" style="display: none;" i18n:translate="passwords_dont_match">Passwords don't match</label></td><td><br/></td></tr>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="password">Password</label>:</td><td><input type="password" id="password1" name="password" onkeyup="checkFields()"/>*</td></tr>
-            <tr><td align="right" style="padding-right:10px"><label i18n:translate="retype_password">Retype password</label>:</td><td><input type="password" id="password2" onkeyup="checkFields()"/>*</td></tr>
-            <tr><td></td><td align="right"><input disabled="disabled" id="submit" type="submit" name="form.submitted" i18n:attributes="value update_profile" value="Update Profile"/></td></tr>
-          </table>
+          <div class="form-group">
+            <label for="login" class="col-sm-4 control-label" i18n:translate="username">Login</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="login" name="login" value="${login}" onkeyup="checkFields()"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="name" class="col-sm-4 control-label" i18n:translate="name">Name</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="name" name="name" value="${name}" onkeyup="checkFields()"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email" class="col-sm-4 control-label" i18n:translate="email">Email</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control "id="email" name="email" value="${email}" onkeyup="checkFields()"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="phone" class="col-sm-4 control-label" i18n:translate="cell_phone_number">Cell phone number</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="phone" name="phone" value="${phone}"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label id="passtooshort" style="display: none;" i18n:translate="password_too_short">Password must be at least 6 chars</label>
+            <label id="passdistinct" style="display: none;" i18n:translate="passwords_dont_match">Passwords don't match</label>
+            <label for="password1" class="col-sm-4 control-label" i18n:translate="password">Password</label>
+            <div class="col-sm-6">
+              <input type="password" class="form-control" id="password1" name="password" onkeyup="checkFields()"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password2" class="col-sm-4 control-label" i18n:translate="retype_password">Retype password</label>
+            <div class="col-sm-6">
+              <input type="password" class="form-control" id="password2" onkeyup="checkFields()"/>
+            </div>
+          </div>
+          <button class="btn btn-primary col-sm-offset-8" disabled="disabled" id="submit" type="submit" name="form.submitted" i18n:attributes="value update_profile" value="Update Profile">Update profile</button>
         </form>
+
       </div>
     </div>
   </div>
@@ -60,6 +90,7 @@
   <div metal:fill-slot="javascript">
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/signup.js')}"></script>
   </div>
 
 </html>
