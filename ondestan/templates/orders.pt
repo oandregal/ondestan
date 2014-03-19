@@ -13,7 +13,6 @@
 	      <div class="middle align-right">
 	        <div id="left" class="app-welcome align-left" >
 	      	  <b><label i18n:translate="orders_list">Orders list</label></b>
-	      	  <b><label i18n:translate="successful_order" tal:condition="'form.submitted' in request.params and message == ''">Successful Order</label></b>
 	        </div>
 	        <div id="right" class="app-welcome align-right"><label>${message}</label></div>
 	      </div>
