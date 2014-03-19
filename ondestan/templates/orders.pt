@@ -36,10 +36,13 @@
         <div id="right" class="app-welcome align-right"><label>${message}</label></div>
       </div>
     </div>
+
     <div id="bottom" tal:switch="'form.submitted' in request.params and message == ''">
+
       <div class="bottom" tal:condition="not is_admin" tal:case="True">
         <label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
       </div>
+
       <div class="bottom" tal:condition="not is_admin" tal:case="False">
         <b><label i18n:translate="new_order_header">New Order</label></b><br/>
         <label>*</label><label i18n:translate="mandatory_fields">Mandatory fields</label>
@@ -51,40 +54,52 @@
           </table>
         </form>
       </div>
+
       <div class="bottom">
-        <table>
-          <tr>
-            <th tal:condition="is_admin" i18n:translate="order_user">User</th>
-            <th i18n:translate="order_state">Order state</th>
-            <th i18n:translate="number_units">Number of units</th>
-            <th i18n:translate="delivery_address">Delivery address</th>
-          </tr>
-          <tr tal:repeat="order orders">
-            <td tal:condition="is_admin">
-              <label tal:content="order.user.login"/>
-            </td>
-            <td tal:switch="is_admin">
-              <form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
-                <input type="hidden" name="id" value="${order.id}"/>
-                <select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
-                  <option value="0" tal:attributes="selected 'selected' if order.state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
-                  <option value="1" tal:attributes="selected 'selected' if order.state == 1 else None" i18n:translate="order_state_1">In process</option>
-                </select>
-                <input type="submit" name="form.submitted" style="display: none;"/>
-              </form>
-              <tal:block tal:case="False">
-                <tal:block tal:switch="order.state">
-                  <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
-                  <label tal:case="1" i18n:translate="order_state_1">In process</label>
+
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th tal:condition="is_admin" i18n:translate="order_user">User</th>
+              <th i18n:translate="order_state">Order state</th>
+              <th i18n:translate="number_units">Number of units</th>
+              <th i18n:translate="delivery_address">Delivery address</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr tal:repeat="order orders">
+              <td tal:condition="is_admin">
+                <label tal:content="order.user.login"/>
+              </td>
+              <td tal:switch="is_admin">
+                <form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
+                  <input type="hidden" name="id" value="${order.id}"/>
+                  <select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
+                    <option value="0" tal:attributes="selected 'selected' if order.state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
+                    <option value="1" tal:attributes="selected 'selected' if order.state == 1 else None" i18n:translate="order_state_1">In process</option>
+                  </select>
+                  <input type="submit" name="form.submitted" style="display: none;"/>
+                </form>
+                <tal:block tal:case="False">
+                  <tal:block tal:switch="order.state">
+                    <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
+                    <label tal:case="1" i18n:translate="order_state_1">In process</label>
+                  </tal:block>
                 </tal:block>
-              </tal:block>
-            </td>
-            <td><label tal:content="order.units"/></td>
-            <td><label tal:content="order.address"/></td>
-          </tr>
+              </td>
+              <td><label tal:content="order.units"/></td>
+              <td><label tal:content="order.address"/></td>
+            </tr>
+          </tbody>
+
         </table>
+
       </div>
+
     </div>
+
   </div>
 
   <div metal:fill-slot="javascript">
