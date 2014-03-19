@@ -95,7 +95,7 @@ def update_profile(request):
 
     return dict(
         message=message,
-        user_id=user.name,
+        user_id=login,
         id=user_id,
         login=login,
         name=name,
