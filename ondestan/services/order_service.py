@@ -1,7 +1,10 @@
 # coding=UTF-8
-from ondestan.entities import Order, User
+from sqlalchemy import func, tuple_, and_
+
+from ondestan.entities import Order, User, Order_state
 from ondestan.security import get_user_login
-import logging
+from ondestan.utils import Db
+import logging, datetime
 
 logger = logging.getLogger('ondestan')
 
@@ -15,11 +18,17 @@ def create_order(request):
     user = User().queryObject().filter(User.login == login).scalar()
     if (user != None):
         order = Order()
-        order.state = Order._STATES[0]
         order.units = units
         order.address = address
         order.user_id = user.id
         order.save()
+
+        # We create a NEW state
+        order_state = Order_state()
+        order_state.order_id = order.id
+        order_state.state = Order_state._STATES[0]
+        order_state.date = datetime.datetime.now()
+        order_state.save()
 
     return ''
 
@@ -29,10 +38,11 @@ def update_order_state(request):
     order_id = int(request.params['id'])
     state = int(request.params['state'])
 
-    order = get_order_by_id(order_id)
-    order.state = state
-
-    order.update()
+    order_state = Order_state()
+    order_state.order_id = order_id
+    order_state.state = state
+    order_state.date = datetime.datetime.now()
+    order_state.save()
 
 
 def get_order_by_id(order_id):
@@ -40,12 +50,26 @@ def get_order_by_id(order_id):
 
 
 def get_all_new_orders():
-    return Order().queryObject().filter(Order.state == Order._STATES[0]).all()
+    session = Db.instance().session
+    # First we create a subquery for retrieving the last state of each order
+    subquery = session.query(Order_state.order_id, func.max(Order_state.date)).\
+         group_by(Order_state.order_id).subquery()
+    # Then we filter the orders by checking which ones have a last state with state 0
+    return Order().queryObject().join(Order_state).filter(and_(
+        tuple_(Order_state.order_id, Order_state.date).in_(subquery),
+        Order_state.state == 0)).all()
 
 
 def get_all_orders(login=None):
+    session = Db.instance().session
+    # First we create a subquery for retrieving the last state of each order
+    subquery = session.query(Order_state.order_id, func.max(Order_state.date)).\
+         group_by(Order_state.order_id).subquery()
     if login != None:
-        return Order().queryObject().filter(
-            Order.user.has(login=login)).order_by(Order.state).all()
+        return Order().queryObject().join(Order_state).filter(and_(
+        tuple_(Order_state.order_id, Order_state.date).in_(subquery),
+        Order.user.has(login=login))).order_by(Order_state.state).all()
     else:
-        return Order().queryObject().order_by(Order.state).all()
+        return Order().queryObject().join(Order_state).filter(
+        tuple_(Order_state.order_id, Order_state.date).in_(subquery)).\
+        order_by(Order_state.state).all()
