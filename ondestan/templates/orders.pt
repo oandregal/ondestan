@@ -31,7 +31,6 @@
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left" >
           <h3 i18n:translate="orders_list">Orders list</h3>
-          <b><label i18n:translate="successful_order" tal:condition="'form.submitted' in request.params and message == ''">Successful Order</label></b>
         </div>
         <div id="right" class="app-welcome align-right"><label>${message}</label></div>
       </div>
@@ -65,13 +64,13 @@
                 <form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
                   <input type="hidden" name="id" value="${order.id}"/>
                   <select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
-                    <option value="0" tal:attributes="selected 'selected' if order.state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
-                    <option value="1" tal:attributes="selected 'selected' if order.state == 1 else None" i18n:translate="order_state_1">In process</option>
+                    <option value="0" tal:attributes="selected 'selected' if order.states[0].state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
+                    <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
                   </select>
                   <input type="submit" name="form.submitted" style="display: none;"/>
                 </form>
                 <tal:block tal:case="False">
-                  <tal:block tal:switch="order.state">
+                  <tal:block tal:switch="order.states[0].state">
                     <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
                     <label tal:case="1" i18n:translate="order_state_1">In process</label>
                   </tal:block>
