@@ -83,15 +83,21 @@ def signup(request):
              permission='view')
 def update_profile(request):
     message = ''
-    login = get_user_login(request)
-    user = user_service.get_user_by_login(login)
-    user_id = user.id
-    name = user.name
-    email = user.email
-    phone = user.phone
 
     if 'form.submitted' in request.params:
         message = user_service.update_user(request)
+        login = request.params['login']
+        name = request.params['name']
+        email = request.params['email']
+        phone = request.params['phone']
+        user_id = request.params['id']
+    else:
+        login = get_user_login(request)
+        user = user_service.get_user_by_login(login)
+        user_id = user.id
+        name = user.name
+        email = user.email
+        phone = user.phone
 
     return dict(
         message=message,
