@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-19 18:54+0100\n"
+"POT-Creation-Date: 2014-03-20 13:27+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,14 +22,41 @@ msgid "failed_login"
 msgstr ""
 
 #. Default: new_orders
-#: ondestan/views.py:194
+#: ondestan/views.py:196
 msgid "new_order"
 msgid_plural "new_orders"
 msgstr[0] ""
 msgstr[1] ""
 
-#: ondestan/views.py:198
-msgid "orders_management"
+#: ondestan/services/order_service.py:63
+msgid "plain_order_update_user_mail"
+msgstr ""
+
+#: ondestan/services/order_service.py:72
+msgid "html_order_update_user_mail"
+msgstr ""
+
+#: ondestan/services/order_service.py:81
+msgid "subject_order_update_user_mail"
+msgstr ""
+
+#: ondestan/services/order_service.py:96
+msgid "plain_new_order_admin_mail"
+msgstr ""
+
+#. Default: Awaiting
+#: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
+#: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:71
+#: ondestan/templates/orders.pt:78
+msgid "order_state_0"
+msgstr ""
+
+#: ondestan/services/order_service.py:105
+msgid "html_new_order_admin_mail"
+msgstr ""
+
+#: ondestan/services/order_service.py:114
+msgid "subject_new_order_admin_mail"
 msgstr ""
 
 #: ondestan/services/user_service.py:52
@@ -137,12 +164,6 @@ msgstr ""
 #. Default: Change date
 #: ondestan/templates/orderStateHistory.pt:36
 msgid "change_date"
-msgstr ""
-
-#. Default: Awaiting
-#: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:71
-#: ondestan/templates/orders.pt:78
-msgid "order_state_0"
 msgstr ""
 
 #. Default: In process

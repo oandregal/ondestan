@@ -147,7 +147,8 @@ def orders(request):
             order_id = int(request.params['id'])
             state = int(request.params['state'])
 
-            message = order_service.update_order_state(order_id, state)
+            message = order_service.update_order_state(order_id, state,
+                                                       request)
         else:
             message = order_service.create_order(request)
             if message != '':
