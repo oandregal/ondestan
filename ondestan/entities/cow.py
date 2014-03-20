@@ -1,6 +1,6 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, ForeignKey, String, Float
-from sqlalchemy.orm import relationship, column_property
+from sqlalchemy.orm import relationship, column_property, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 from geoalchemy2 import Geometry
 
@@ -16,9 +16,11 @@ class Cow(Entity, Base):
     name = Column(String)
     battery_level = Column(Float)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User")
+    user = relationship("User", backref=backref('cows',
+                                                  order_by=name))
     plot_id = Column(Integer, ForeignKey("plots.id"))
-    plot = relationship("Plot")
+    plot = relationship("Plot", backref=backref('cows',
+                                                  order_by=name))
     geom = Column(Geometry('POINT'))
     geojson = column_property(geom.ST_AsGeoJSON())
 

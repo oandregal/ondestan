@@ -1,6 +1,6 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, ForeignKey, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 from ondestan.entities import Entity
 from ondestan.utils import Base
@@ -14,4 +14,5 @@ class Order(Entity, Base):
     units = Column(Integer)
     address = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User")
+    user = relationship("User", backref=backref('orders',
+                                                  order_by=id))

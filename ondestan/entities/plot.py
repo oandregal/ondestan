@@ -1,6 +1,6 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, ForeignKey, String
-from sqlalchemy.orm import relationship, column_property
+from sqlalchemy.orm import relationship, column_property, backref
 from geoalchemy2 import Geometry
 
 from ondestan.entities import Entity
@@ -14,6 +14,7 @@ class Plot(Entity, Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User")
+    user = relationship("User", backref=backref('plots',
+                                                  order_by=name))
     geom = Column(Geometry('POLYGON'))
     geojson = column_property(geom.ST_AsGeoJSON())
