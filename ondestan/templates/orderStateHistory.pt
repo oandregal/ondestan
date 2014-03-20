@@ -39,11 +39,11 @@
       <tr tal:repeat="state order.states">
         <td>
           <tal:block tal:switch="state.state">
-            <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
-            <label tal:case="1" i18n:translate="order_state_1">In process</label>
+            <tal:block tal:case="0" i18n:translate="order_state_0">Awaiting</tal:block>
+            <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
           </tal:block>
         </td>
-        <td><label tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/></td>
+        <td tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/>
       </tr>
     </table>
 

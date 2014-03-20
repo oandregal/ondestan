@@ -72,7 +72,7 @@
           <tbody>
             <tr tal:repeat="order orders">
               <td tal:condition="is_admin">
-                <a href="/orders/history/${order.id}"><label tal:content="order.id"/></a>
+                <a href="/orders/history/${order.id}" tal:content="order.id"/>
               </td>
               <td tal:condition="is_admin">
                 <label tal:content="order.user.login"/>
@@ -84,18 +84,17 @@
                     <option value="0" tal:attributes="selected 'selected' if order.states[0].state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
                     <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
                   </select>
-                  <a href="${request.route_url('order_state_history', order_id=order.id)}" i18n:translate="order_state_history_link">History</a>
                   <input type="submit" name="form.submitted" style="display: none;"/>
                 </form>
                 <tal:block tal:case="False">
                   <tal:block tal:switch="order.states[0].state">
-                    <label tal:case="0" i18n:translate="order_state_0">Awaiting</label>
-                    <label tal:case="1" i18n:translate="order_state_1">In process</label>
+                    <tal:block tal:case="0" i18n:translate="order_state_0">Awaiting</tal:block>
+                    <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
                   </tal:block>
                 </tal:block>
               </td>
-              <td><label tal:content="order.units"/></td>
-              <td><label tal:content="order.address"/></td>
+              <td tal:content="order.units"/>
+              <td tal:content="order.address"/>
             </tr>
           </tbody>
 
