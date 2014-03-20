@@ -124,16 +124,7 @@ def create_user(request):
     if (user != None):
         msg = _('email_already_use', domain='Ondestan')
         return localizer.translate(msg)
-    user = User()
-    user.login = login
-    user.name = name
-    user.email = email
-    user.phone = request.params['phone']
-    user.activated = False
-    user.password = sha512(request.params['password']).hexdigest()
-    user.role_id = 2
-    user.save()
-
+    
     # Create the body of the message (a plain-text and an HTML version).
     url = request.route_url('activate_user',
                             loginhash=sha512(login).hexdigest())
@@ -148,6 +139,16 @@ def create_user(request):
     subject = localizer.translate(subject_ts)
 
     send_mail(html, text, subject, email)
+
+    user = User()
+    user.login = login
+    user.name = name
+    user.email = email
+    user.phone = request.params['phone']
+    user.activated = False
+    user.password = sha512(request.params['password']).hexdigest()
+    user.role_id = 2
+    user.save()
 
     return ''
 
