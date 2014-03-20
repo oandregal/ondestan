@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-20 15:23+0100\n"
+"POT-Creation-Date: 2014-03-20 19:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,13 +20,6 @@ msgstr ""
 #: ondestan/views.py:47
 msgid "failed_login"
 msgstr ""
-
-#. Default: new_orders
-#: ondestan/views.py:196
-msgid "new_order"
-msgid_plural "new_orders"
-msgstr[0] ""
-msgstr[1] ""
 
 #: ondestan/services/order_service.py:63
 msgid "plain_order_update_user_mail"
@@ -46,8 +39,8 @@ msgstr ""
 
 #. Default: Awaiting
 #: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
-#: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:71
-#: ondestan/templates/orders.pt:79
+#: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:84
+#: ondestan/templates/orders.pt:92
 msgid "order_state_0"
 msgstr ""
 
@@ -157,7 +150,7 @@ msgid "order_state_history"
 msgstr ""
 
 #. Default: Order state
-#: ondestan/templates/orderStateHistory.pt:35 ondestan/templates/orders.pt:53
+#: ondestan/templates/orderStateHistory.pt:35 ondestan/templates/orders.pt:66
 msgid "order_state"
 msgstr ""
 
@@ -167,8 +160,8 @@ msgid "change_date"
 msgstr ""
 
 #. Default: In process
-#: ondestan/templates/orderStateHistory.pt:43 ondestan/templates/orders.pt:72
-#: ondestan/templates/orders.pt:80
+#: ondestan/templates/orderStateHistory.pt:43 ondestan/templates/orders.pt:85
+#: ondestan/templates/orders.pt:93
 msgid "order_state_1"
 msgstr ""
 
@@ -177,39 +170,44 @@ msgstr ""
 msgid "orders_list_title"
 msgstr ""
 
-#. Default: Orders list
+#. Default: New order
 #: ondestan/templates/orders.pt:33
-msgid "orders_list"
+msgid "new_order"
 msgstr ""
 
 #. Default: Thanks for your order! Our team will get in touch with you soon.
-#: ondestan/templates/orders.pt:42
+#: ondestan/templates/orders.pt:39
 msgid "new_order_instructions"
 msgstr ""
 
+#. Default: Confirm order
+#: ondestan/templates/orders.pt:46
+msgid "new_order_header"
+msgstr ""
+
+#. Default: Orders list
+#: ondestan/templates/orders.pt:54
+msgid "orders_list"
+msgstr ""
+
 #. Default: User
-#: ondestan/templates/orders.pt:52
+#: ondestan/templates/orders.pt:65
 msgid "order_user"
 msgstr ""
 
 #. Default: Number of units
-#: ondestan/templates/orders.pt:54
+#: ondestan/templates/orders.pt:67
 msgid "number_units"
 msgstr ""
 
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:55
+#: ondestan/templates/orders.pt:68
 msgid "delivery_address"
 msgstr ""
 
 #. Default: History
-#: ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:87
 msgid "order_state_history_link"
-msgstr ""
-
-#. Default: Confirm order
-#: ondestan/templates/orders.pt:97
-msgid "new_order_header"
 msgstr ""
 
 #. Default: Password reset - Ondestán

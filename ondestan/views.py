@@ -189,15 +189,9 @@ def order_state_history(request):
              permission='view')
 def viewer(request):
     is_admin = check_permission('admin', request)
-    localizer = get_localizer(request)
     n_new_orders = 0
     if is_admin:
         n_new_orders = len(order_service.get_all_new_orders())
-        orders_msg = localizer.pluralize(
-            'new_order', 'new_orders',
-            n_new_orders, domain='Ondestan',
-            mapping={'n_orders': n_new_orders}
-        )
     else:
         n_new_orders = len(
             order_service.get_all_orders(get_user_login(request))

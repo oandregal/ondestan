@@ -27,19 +27,32 @@
       <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
     </div>
 
-    <div id="middle">
+    <div tal:condition="not is_admin">
+		<div class="middle align-right">
+		  <div id="left" class="app-welcome align-left" >
+		    <h3 i18n:translate="new_order">New order</h3>
+		  </div>
+		  <div id="right" class="app-welcome align-right"><label>${message}</label></div>
+		</div>
+
+		<div class="bottom" tal:condition="not is_admin and 'form.submitted' in request.params and message == ''">
+		  <label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
+		</div>
+
+		<div class="bottom" tal:condition="not is_admin">
+		  <form class="form-inline" role="form" action="${request.route_url('orders')}" method="post">
+		    <input class="form-control" type="text" id="units" name="units" value="${units}" placeholder="Nº unidades" />
+		    <input class="form-control" type="text" id="address" name="address" value="${address}" placeholder="Dirección envío" />
+		    <button class="btn btn-default" id="submit" type="submit" name="form.submitted" i18n:translate="new_order_header" value="Confirm order">Confirm order</button>
+		  </form>
+		</div>
+    </div>
+
+    <div>
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left" >
           <h3 i18n:translate="orders_list">Orders list</h3>
         </div>
-        <div id="right" class="app-welcome align-right"><label>${message}</label></div>
-      </div>
-    </div>
-
-    <div id="bottom">
-
-      <div class="bottom" tal:condition="not is_admin and 'form.submitted' in request.params and message == ''">
-        <label i18n:translate="new_order_instructions">Thanks for your order! Our team will get in touch with you soon.</label>
       </div>
 
       <div class="bottom">
@@ -88,14 +101,6 @@
 
         </table>
 
-      </div>
-
-      <div class="bottom" tal:condition="not is_admin">
-        <form class="form-inline" role="form" action="${request.route_url('orders')}" method="post">
-          <input class="form-control" type="text" id="units" name="units" value="${units}" placeholder="Nº unidades" />
-          <input class="form-control" type="text" id="address" name="address" value="${address}" placeholder="Dirección envío" />
-          <button class="btn btn-default" id="submit" type="submit" name="form.submitted" i18n:translate="new_order_header" value="Confirm order">Confirm order</button>
-        </form>
       </div>
 
     </div>
