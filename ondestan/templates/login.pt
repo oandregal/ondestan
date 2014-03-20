@@ -21,10 +21,10 @@
       <input type="hidden" name="came_from" value="${came_from}"/>
       <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
       <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+      <a href="/reminder" i18n:translate="forgot_user_password">Forgot your user/password?</a><br/><br/>
       <button class="btn btn-lg btn-block btn-primary" type="submit" name="form.submitted" i18n:translate="log_in" value="Log in">Login</button>
-      <br />
-      <a href="/signup"><label i18n:translate="sign_up">Sign Up</label></a>
-      <a href="/reminder"><label i18n:translate="forgot_user_password">Forgot your user/password?</label></a>
+      <br/>
+      <a href="/signup" i18n:translate="sign_up">Sign Up</a>
     </form>
   </div>
 
