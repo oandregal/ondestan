@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-20 13:27+0100\n"
+"POT-Creation-Date: 2014-03-20 15:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,7 +47,7 @@ msgstr ""
 #. Default: Awaiting
 #: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
 #: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:71
-#: ondestan/templates/orders.pt:78
+#: ondestan/templates/orders.pt:79
 msgid "order_state_0"
 msgstr ""
 
@@ -168,7 +168,7 @@ msgstr ""
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:43 ondestan/templates/orders.pt:72
-#: ondestan/templates/orders.pt:79
+#: ondestan/templates/orders.pt:80
 msgid "order_state_1"
 msgstr ""
 
@@ -202,8 +202,13 @@ msgstr ""
 msgid "delivery_address"
 msgstr ""
 
+#. Default: History
+#: ondestan/templates/orders.pt:76
+msgid "order_state_history_link"
+msgstr ""
+
 #. Default: Confirm order
-#: ondestan/templates/orders.pt:96
+#: ondestan/templates/orders.pt:97
 msgid "new_order_header"
 msgstr ""
 
