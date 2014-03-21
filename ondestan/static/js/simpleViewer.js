@@ -4,7 +4,7 @@ $( function() {
 	var low_battery_devices = [];
 
 	function load_cows() {
-		layer = new L.GeoJSON.AJAX(contextVariables.application_url + "/json/animals.json",{
+		layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
 			pointToLayer: function (feature, latlng) { 
 				var color = "green"; 
 				var weight = 0;
@@ -40,7 +40,7 @@ $( function() {
 		layer.addTo(map);
 	}
 
-	new L.GeoJSON.AJAX(contextVariables.application_url + "/json/plots.json",{
+	new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
         onEachFeature: function (feature, layer) {
             layer.bindPopup(feature.properties.popup);
         },

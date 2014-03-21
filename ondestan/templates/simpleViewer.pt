@@ -13,6 +13,20 @@
     <link rel="stylesheet" href="${request.static_url('ondestan:static/css/main.css')}" />
   </div>
 
+  <div metal:fill-slot="javascript">
+    <script type="text/javascript">
+      window.contextVariables = {
+	      animals_json_url : "${request.route_url('json_animals')}",
+	      plots_json_url : "${request.route_url('json_plots')}"
+      };
+    </script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
+  </div>
+
   <div class="container" metal:fill-slot="content">
 
     <div class="header">
@@ -49,19 +63,6 @@
 
     <div class="center-block" id="map" style="width: 600px; height: 400px"></div>
 
-  </div>
-
-  <div metal:fill-slot="javascript">
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
-    <script type="text/javascript">
-      window.contextVariables = {
-      application_url : "${request.application_url}"
-      };
-    </script>
   </div>
 
 </html>
