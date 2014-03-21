@@ -42,7 +42,7 @@ def main(global_config, **settings):
     config.add_route('order_state_history', '/orders/history/{order_id}')
 
     config.add_route('map', '/map')
-    config.add_route('json_cows', '/json/cows.json')
+    config.add_route('json_animals', '/json/animals.json')
     config.add_route('json_plots', '/json/plots.json')
     config.scan()
 

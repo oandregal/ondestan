@@ -22,10 +22,11 @@ CREATE TABLE plots (
 
 SELECT AddGeometryColumn ('public', 'plots', 'geom', 3857, 'POLYGON', 2);
 
-CREATE TABLE cows (
+CREATE TABLE animals (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL,
 	battery_level REAL,
+	type VARCHAR DEFAULT 'cow',
 	user_id INTEGER REFERENCES users NOT NULL,
 	plot_id INTEGER REFERENCES plots
 );
@@ -60,6 +61,6 @@ INSERT INTO plots(user_id, name, geom) VALUES
 (2, 'Parcela 1', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.07999 51.51077, -0.10592 51.51611))', 3857)),
 (3, 'Parcela 2', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.04738 51.51334, -0.10592 51.51611))', 3857));
 
-INSERT INTO cows(user_id, name, battery_level, plot_id, geom) VALUES
+INSERT INTO animals(user_id, name, battery_level, plot_id, geom) VALUES
 (2, 'Manuela', 5, 1, ST_GeomFromText('POINT(-0.09407 51.51569)', 3857)),
 (3, 'Pepa', 100, 2, ST_GeomFromText('POINT(-0.05442 51.49218)', 3857));

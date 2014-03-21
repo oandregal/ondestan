@@ -1,4 +1,4 @@
-from ondestan.services.cow_service import get_all_cows
+from ondestan.services.animal_service import get_all_animals
 
 from ondestan.services.plot_service import get_all_plots
 

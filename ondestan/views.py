@@ -19,7 +19,7 @@ from pyramid.i18n import (
     )
 
 from ondestan.security import get_user_login, check_permission
-from ondestan.services import plot_service, cow_service, user_service
+from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service
 import logging
 
@@ -244,52 +244,54 @@ def default(request):
     raise HTTPFound(request.route_url("map"))
 
 
-@view_config(route_name='json_cows', renderer='json',
+@view_config(route_name='json_animals', renderer='json',
              permission='view')
-def json_cows(request):
+def json_animals(request):
     geojson = []
     if (check_permission('admin', request)):
-        cows = cow_service.get_all_cows()
-        if cows != None:
-            logger.debug("Found " + str(len(cows)) + " cows for all users")
-            for cow in cows:
-                popup_str = cow.name + \
-                            " (" + str(cow.battery_level) + \
-                            "%), property of " + cow.user.name + \
-                            " (" + cow.user.login + ")"
+        animals = animal_service.get_all_animals()
+        if animals != None:
+            logger.debug("Found " + str(len(animals)) +
+                         " animals for all users")
+            for animal in animals:
+                popup_str = animal.name + \
+                            " (" + str(animal.battery_level) + \
+                            "%), property of " + animal.user.name + \
+                            " (" + animal.user.login + ")"
                 geojson.append({
                     "type": "Feature",
                     "properties": {
-                        "name": cow.name,
-                        "battery_level": cow.battery_level,
-                        "owner": cow.user.login,
-                        "outside": cow.outside,
+                        "name": animal.name,
+                        "battery_level": animal.battery_level,
+                        "owner": animal.user.login,
+                        "outside": animal.outside,
                         "popup": popup_str
                     },
-                    "geometry": eval(cow.geojson)
+                    "geometry": eval(animal.geojson)
                 })
         else:
-            logger.debug("Found no cows for any user")
+            logger.debug("Found no animals for any user")
     else:
         login = get_user_login(request)
-        cows = cow_service.get_all_cows(login)
-        if cows != None:
-            logger.debug("Found " + str(len(cows)) + " cows for user " + login)
-            for cow in cows:
-                popup_str = cow.name + " (" + str(cow.battery_level) + "%)"
+        animals = animal_service.get_all_animals(login)
+        if animals != None:
+            logger.debug("Found " + str(len(animals)) +
+                         " animals for user " + login)
+            for animal in animals:
+                popup_str = animal.name + " (" + str(animal.battery_level) + "%)"
                 geojson.append({
                     "type": "Feature",
                     "properties": {
-                        "name": cow.name,
-                        "battery_level": cow.battery_level,
-                        "owner": cow.user.login,
-                        "outside": cow.outside,
+                        "name": animal.name,
+                        "battery_level": animal.battery_level,
+                        "owner": animal.user.login,
+                        "outside": animal.outside,
                         "popup": popup_str
                     },
-                    "geometry": eval(cow.geojson)
+                    "geometry": eval(animal.geojson)
                 })
         else:
-            logger.debug("Found no cows for user " + login)
+            logger.debug("Found no animals for user " + login)
     return geojson
 
 

@@ -8,18 +8,19 @@ from ondestan.entities import Entity
 from ondestan.utils import Base
 
 
-class Cow(Entity, Base):
+class Animal(Entity, Base):
 
-    __tablename__ = "cows"
+    __tablename__ = "animals"
 
     id = Column(Integer, primary_key=True)
     name = Column(String)
     battery_level = Column(Float)
+    type = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
-    user = relationship("User", backref=backref('cows',
+    user = relationship("User", backref=backref('animals',
                                                   order_by=name))
     plot_id = Column(Integer, ForeignKey("plots.id"))
-    plot = relationship("Plot", backref=backref('cows',
+    plot = relationship("Plot", backref=backref('animals',
                                                   order_by=name))
     geom = Column(Geometry('POINT'))
     geojson = column_property(geom.ST_AsGeoJSON())
