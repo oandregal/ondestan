@@ -136,6 +136,28 @@ def logout(request):
                      headers=headers)
 
 
+@view_config(route_name='check_login', renderer='json')
+def check_login(request):
+    if 'login' in request.params:
+        login = request.params['login']
+        if (user_service.get_user_by_login(login) == None):
+            return True
+    localizer = get_localizer(request)
+    message_ts = _('login_already_use', domain='Ondestan')
+    return localizer.translate(message_ts)
+
+
+@view_config(route_name='check_email', renderer='json')
+def check_email(request):
+    if 'email' in request.params:
+        email = request.params['email']
+        if (user_service.get_user_by_email(email) == None):
+            return True
+    localizer = get_localizer(request)
+    message_ts = _('email_already_use', domain='Ondestan')
+    return localizer.translate(message_ts)
+
+
 @view_config(route_name='activate_user')
 def activate_usr(request):
     user_service.activate_user(request)

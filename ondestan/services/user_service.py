@@ -124,7 +124,7 @@ def create_user(request):
     if (user != None):
         msg = _('email_already_use', domain='Ondestan')
         return localizer.translate(msg)
-    
+
     # Create the body of the message (a plain-text and an HTML version).
     url = request.route_url('activate_user',
                             loginhash=sha512(login).hexdigest())
