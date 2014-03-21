@@ -31,11 +31,11 @@
     <div class="row data">
       <div class="col-md-2 col-md-offset-1">
         <h5 class="text-center text-muted">ACTIVOS</h5>
-        <p class="text-center">0</p>
+        <p id="active_devices" class="text-center"/>
       </div>
       <div class="col-md-2 col-md-offset-2">
         <h5 class="text-center text-muted">SIN BATERÍA</h5>
-        <p class="text-center">0</p>
+        <p id="low_battery_devices" class="text-center"/>
       </div>
       <div class="col-md-2 col-md-offset-2">
         <h5 class="text-center text-muted">EN TRÁMITE</h5>
