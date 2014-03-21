@@ -26,7 +26,7 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/signup.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/updateProfile.js')}"></script>
   </div>
 
   <div class="container" metal:fill-slot="content">
