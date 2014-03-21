@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-21 16:43+0100\n"
-"PO-Revision-Date: 2014-03-21 16:44+0100\n"
+"POT-Creation-Date: 2014-03-21 17:54+0100\n"
+"PO-Revision-Date: 2014-03-21 17:55+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -160,9 +160,9 @@ msgstr "Histórico de estados de pedido - Ondestán"
 #: ondestan/templates/orderStateHistory.pt:22
 #: ondestan/templates/orders.pt:35
 #: ondestan/templates/simpleViewer.pt:23
-#: ondestan/templates/updateProfile.pt:39
-#: ondestan/templates/updateProfile.pt:50
-#: ondestan/templates/updateProfile.pt:97
+#: ondestan/templates/updateProfile.pt:41
+#: ondestan/templates/updateProfile.pt:52
+#: ondestan/templates/updateProfile.pt:99
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
@@ -170,7 +170,7 @@ msgstr "Actualizar perfil"
 #: ondestan/templates/orderStateHistory.pt:23
 #: ondestan/templates/orders.pt:36
 #: ondestan/templates/simpleViewer.pt:24
-#: ondestan/templates/updateProfile.pt:40
+#: ondestan/templates/updateProfile.pt:42
 msgid "logout"
 msgstr "Salir"
 
@@ -294,7 +294,7 @@ msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un r
 #. Default: Email
 #: ondestan/templates/reminder.pt:35
 #: ondestan/templates/signup.pt:72
-#: ondestan/templates/updateProfile.pt:74
+#: ondestan/templates/updateProfile.pt:76
 msgid "email"
 msgstr "E-mail"
 
@@ -322,7 +322,7 @@ msgstr "Por favor, introduce una dirección de e-mail válida."
 
 #. Default: Passwords don't match.
 #: ondestan/templates/signup.pt:23
-#: ondestan/templates/updateProfile.pt:23
+#: ondestan/templates/updateProfile.pt:24
 msgid "passwords_dont_match"
 msgstr "Los passwords no coinciden"
 
@@ -340,31 +340,31 @@ msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu 
 
 #. Default: Login
 #: ondestan/templates/signup.pt:58
-#: ondestan/templates/updateProfile.pt:62
+#: ondestan/templates/updateProfile.pt:64
 msgid "username"
 msgstr "Usuario"
 
 #. Default: Name
 #: ondestan/templates/signup.pt:65
-#: ondestan/templates/updateProfile.pt:68
+#: ondestan/templates/updateProfile.pt:70
 msgid "name"
 msgstr "Nombre completo"
 
 #. Default: Cell phone number
 #: ondestan/templates/signup.pt:79
-#: ondestan/templates/updateProfile.pt:80
+#: ondestan/templates/updateProfile.pt:82
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
 
 #. Default: Password
 #: ondestan/templates/signup.pt:86
-#: ondestan/templates/updateProfile.pt:86
+#: ondestan/templates/updateProfile.pt:88
 msgid "password"
 msgstr "Password"
 
 #. Default: Retype password
 #: ondestan/templates/signup.pt:93
-#: ondestan/templates/updateProfile.pt:92
+#: ondestan/templates/updateProfile.pt:94
 msgid "retype_password"
 msgstr "Repite el password"
 
@@ -377,6 +377,12 @@ msgstr "Visor de prueba - Ondestán"
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
+
+#. Default: Please specify a valid mobile phone number.
+#: ondestan/templates/updateProfile.pt:23
+#| msgid "email_field"
+msgid "mobile_field"
+msgstr "Por favor, introduce un número de telf. móvil válido."
 
 #~ msgid "all_fields_mandatory"
 #~ msgstr "Todos los campos son obligatorios"

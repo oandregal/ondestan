@@ -2,8 +2,10 @@ $.extend($.validator.messages, {
 	required : window.contextVariables.required_field_msg,
 	minlength : jQuery.validator
 			.format(window.contextVariables.minlength_field_msg),
-	email : window.contextVariables.email_field_msg
+	email : window.contextVariables.email_field_msg,
+	mobile : window.contextVariables.mobile_field_msg
 });
+
 $(function() {
 	$('#form').validate({
 		rules : {
@@ -23,6 +25,7 @@ $(function() {
 				}
 			},
 			name : "required",
+			phone : "mobile",
 			email : {
 				email : true,
 				required : true,
