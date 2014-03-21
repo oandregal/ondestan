@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-21 13:39+0100\n"
-"PO-Revision-Date: 2014-03-21 14:56+0100\n"
+"POT-Creation-Date: 2014-03-21 15:49+0100\n"
+"PO-Revision-Date: 2014-03-21 15:50+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -20,6 +20,18 @@ msgstr ""
 #: ondestan/views.py:47
 msgid "failed_login"
 msgstr "Autenticación fallida"
+
+#: ondestan/views.py:146
+#: ondestan/services/user_service.py:121
+#: ondestan/services/user_service.py:165
+msgid "login_already_use"
+msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
+
+#: ondestan/views.py:157
+#: ondestan/services/user_service.py:125
+#: ondestan/services/user_service.py:169
+msgid "email_already_use"
+msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
 #: ondestan/services/order_service.py:63
 msgid "plain_order_update_user_mail"
@@ -48,8 +60,8 @@ msgstr ""
 #: ondestan/services/order_service.py:102
 #: ondestan/services/order_service.py:111
 #: ondestan/templates/orderStateHistory.pt:42
-#: ondestan/templates/orders.pt:84
-#: ondestan/templates/orders.pt:91
+#: ondestan/templates/orders.pt:95
+#: ondestan/templates/orders.pt:102
 msgid "order_state_0"
 msgstr "En espera"
 
@@ -91,16 +103,6 @@ msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Tu usuari
 #: ondestan/services/user_service.py:83
 msgid "subject_reminder_mail"
 msgstr "Recordatorio de usuario de Ondestán"
-
-#: ondestan/services/user_service.py:121
-#: ondestan/services/user_service.py:165
-msgid "login_already_use"
-msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
-
-#: ondestan/services/user_service.py:125
-#: ondestan/services/user_service.py:169
-msgid "email_already_use"
-msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
 #: ondestan/services/user_service.py:131
 msgid "plain_signup_mail"
@@ -156,7 +158,7 @@ msgstr "Histórico de estados de pedido - Ondestán"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/orderStateHistory.pt:22
-#: ondestan/templates/orders.pt:22
+#: ondestan/templates/orders.pt:33
 #: ondestan/templates/simpleViewer.pt:23
 #: ondestan/templates/updateProfile.pt:39
 #: ondestan/templates/updateProfile.pt:50
@@ -166,7 +168,7 @@ msgstr "Actualizar perfil"
 
 #. Default: Logout
 #: ondestan/templates/orderStateHistory.pt:23
-#: ondestan/templates/orders.pt:23
+#: ondestan/templates/orders.pt:34
 #: ondestan/templates/simpleViewer.pt:24
 #: ondestan/templates/updateProfile.pt:40
 msgid "logout"
@@ -179,7 +181,7 @@ msgstr "Histórico de estados de pedido"
 
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:35
-#: ondestan/templates/orders.pt:66
+#: ondestan/templates/orders.pt:77
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -190,8 +192,8 @@ msgstr "Fecha de cambio"
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:43
-#: ondestan/templates/orders.pt:85
-#: ondestan/templates/orders.pt:92
+#: ondestan/templates/orders.pt:96
+#: ondestan/templates/orders.pt:103
 msgid "order_state_1"
 msgstr "En proceso"
 
@@ -200,38 +202,51 @@ msgstr "En proceso"
 msgid "orders_list_title"
 msgstr "Listado de pedidos - Ondestán"
 
+#. Default: This field is required.
+#: ondestan/templates/orders.pt:18
+#: ondestan/templates/signup.pt:20
+#: ondestan/templates/updateProfile.pt:20
+msgid "required_field"
+msgstr "Este campo es obligatorio."
+
+#. Default: Please enter only digits.
+#: ondestan/templates/orders.pt:19
+#| msgid "minlength_field"
+msgid "digits_field"
+msgstr "Por favor, introduce sólo números."
+
 #. Default: New order
-#: ondestan/templates/orders.pt:33
+#: ondestan/templates/orders.pt:44
 msgid "new_order"
 msgstr "Nuevo pedido"
 
 #. Default: Thanks for your order! Our team will get in touch with you soon.
-#: ondestan/templates/orders.pt:39
+#: ondestan/templates/orders.pt:50
 msgid "new_order_instructions"
 msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en contacto contigo."
 
 #. Default: Confirm order
-#: ondestan/templates/orders.pt:46
-msgid "new_order_header"
-msgstr "Pedido nuevo"
+#: ondestan/templates/orders.pt:57
+msgid "confirm_order"
+msgstr "Confirmar pedido"
 
 #. Default: Orders list
-#: ondestan/templates/orders.pt:54
+#: ondestan/templates/orders.pt:65
 msgid "orders_list"
 msgstr "Listado de pedidos"
 
 #. Default: User
-#: ondestan/templates/orders.pt:65
+#: ondestan/templates/orders.pt:76
 msgid "order_user"
 msgstr "Usuario"
 
 #. Default: Number of units
-#: ondestan/templates/orders.pt:67
+#: ondestan/templates/orders.pt:78
 msgid "number_units"
 msgstr "Nº de unidades"
 
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:68
+#: ondestan/templates/orders.pt:79
 msgid "delivery_address"
 msgstr "Dirección de envío"
 
@@ -289,12 +304,6 @@ msgstr "Enviar e-mail"
 #: ondestan/templates/signup.pt:8
 msgid "sign_up_title"
 msgstr "Darse de alta - Ondestán"
-
-#. Default: This field is required.
-#: ondestan/templates/signup.pt:20
-#: ondestan/templates/updateProfile.pt:20
-msgid "required_field"
-msgstr "Este campo es obligatorio."
 
 #. Default: Please enter at least {0} characters.
 #: ondestan/templates/signup.pt:21
@@ -378,9 +387,6 @@ msgstr "Actualizar perfil - Ondestán"
 #~ msgid "mandatory_fields"
 #~ msgstr "Campos obligatorios"
 
-#~ msgid "confirm_order"
-#~ msgstr "Confirmar pedido"
-
 #~ msgid "hello"
 #~ msgstr "Hola"
 
@@ -395,3 +401,6 @@ msgstr "Actualizar perfil - Ondestán"
 
 #~ msgid "password_too_short"
 #~ msgstr "El password debe tener al menos 6 caracteres"
+
+#~ msgid "new_order_header"
+#~ msgstr "Pedido nuevo"
