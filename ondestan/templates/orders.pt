@@ -54,8 +54,8 @@
 
 		<div class="bottom" tal:condition="not is_admin">
 		  <form class="form-inline" id="form" role="form" action="${request.route_url('orders')}" method="post">
-		    <input class="form-control" type="text" id="units" name="units" value="${units}" placeholder="Nº unidades" />
-		    <input class="form-control" type="text" id="address" name="address" value="${address}" placeholder="Dirección envío" />
+		    <input class="form-control" type="text" id="units" name="units" value="${units}" i18n:attributes="placeholder number_units" placeholder="Nr units" />
+		    <input class="form-control" type="text" id="address" name="address" value="${address}" i18n:attributes="placeholder delivery_address" placeholder="Send address" />
 		    <input class="btn btn-default" id="submit" type="submit" name="form.submitted" i18n:attributes="value confirm_order" value="Confirm order"/>
 		  </form>
 		</div>

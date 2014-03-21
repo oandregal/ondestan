@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-21 15:49+0100\n"
-"PO-Revision-Date: 2014-03-21 15:50+0100\n"
+"POT-Creation-Date: 2014-03-21 16:43+0100\n"
+"PO-Revision-Date: 2014-03-21 16:44+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -21,13 +21,13 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:146
+#: ondestan/views.py:150
 #: ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:157
+#: ondestan/views.py:165
 #: ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
@@ -60,8 +60,8 @@ msgstr ""
 #: ondestan/services/order_service.py:102
 #: ondestan/services/order_service.py:111
 #: ondestan/templates/orderStateHistory.pt:42
-#: ondestan/templates/orders.pt:95
-#: ondestan/templates/orders.pt:102
+#: ondestan/templates/orders.pt:97
+#: ondestan/templates/orders.pt:104
 msgid "order_state_0"
 msgstr "En espera"
 
@@ -158,7 +158,7 @@ msgstr "Histórico de estados de pedido - Ondestán"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/orderStateHistory.pt:22
-#: ondestan/templates/orders.pt:33
+#: ondestan/templates/orders.pt:35
 #: ondestan/templates/simpleViewer.pt:23
 #: ondestan/templates/updateProfile.pt:39
 #: ondestan/templates/updateProfile.pt:50
@@ -168,7 +168,7 @@ msgstr "Actualizar perfil"
 
 #. Default: Logout
 #: ondestan/templates/orderStateHistory.pt:23
-#: ondestan/templates/orders.pt:34
+#: ondestan/templates/orders.pt:36
 #: ondestan/templates/simpleViewer.pt:24
 #: ondestan/templates/updateProfile.pt:40
 msgid "logout"
@@ -181,7 +181,7 @@ msgstr "Histórico de estados de pedido"
 
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:35
-#: ondestan/templates/orders.pt:77
+#: ondestan/templates/orders.pt:79
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -192,8 +192,8 @@ msgstr "Fecha de cambio"
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:43
-#: ondestan/templates/orders.pt:96
-#: ondestan/templates/orders.pt:103
+#: ondestan/templates/orders.pt:98
+#: ondestan/templates/orders.pt:105
 msgid "order_state_1"
 msgstr "En proceso"
 
@@ -211,44 +211,47 @@ msgstr "Este campo es obligatorio."
 
 #. Default: Please enter only digits.
 #: ondestan/templates/orders.pt:19
-#| msgid "minlength_field"
 msgid "digits_field"
 msgstr "Por favor, introduce sólo números."
 
 #. Default: New order
-#: ondestan/templates/orders.pt:44
+#: ondestan/templates/orders.pt:46
 msgid "new_order"
 msgstr "Nuevo pedido"
 
 #. Default: Thanks for your order! Our team will get in touch with you soon.
-#: ondestan/templates/orders.pt:50
+#: ondestan/templates/orders.pt:52
 msgid "new_order_instructions"
 msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en contacto contigo."
 
-#. Default: Confirm order
+#. Default: Nr units
+#. Default: Number of units
 #: ondestan/templates/orders.pt:57
+#: ondestan/templates/orders.pt:80
+msgid "number_units"
+msgstr "Nº de unidades"
+
+#. Default: Send address
+#. Default: Delivery address
+#: ondestan/templates/orders.pt:58
+#: ondestan/templates/orders.pt:81
+msgid "delivery_address"
+msgstr "Dirección de envío"
+
+#. Default: Confirm order
+#: ondestan/templates/orders.pt:59
 msgid "confirm_order"
 msgstr "Confirmar pedido"
 
 #. Default: Orders list
-#: ondestan/templates/orders.pt:65
+#: ondestan/templates/orders.pt:67
 msgid "orders_list"
 msgstr "Listado de pedidos"
 
 #. Default: User
-#: ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:78
 msgid "order_user"
 msgstr "Usuario"
-
-#. Default: Number of units
-#: ondestan/templates/orders.pt:78
-msgid "number_units"
-msgstr "Nº de unidades"
-
-#. Default: Delivery address
-#: ondestan/templates/orders.pt:79
-msgid "delivery_address"
-msgstr "Dirección de envío"
 
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8
