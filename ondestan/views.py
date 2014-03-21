@@ -30,6 +30,9 @@ logger = logging.getLogger('ondestan')
 @forbidden_view_config(renderer='templates/login.pt')
 def login(request):
     login_url = request.route_url('login')
+    activated = False
+    if 'activated' in request.params:
+        activated = request.params['activated'].lower() == 'true'
     referrer = request.url
     if referrer == login_url:
         referrer = '/'  # never use the login form itself as came_from
@@ -51,6 +54,7 @@ def login(request):
         message=message,
         came_from=came_from,
         login=login,
+        activated=activated
         )
 
 
@@ -122,6 +126,12 @@ def reminder(request):
         )
 
 
+@view_config(route_name='activate_user')
+def activate_usr(request):
+    user_service.activate_user(request)
+    return HTTPFound(location=request.route_url('login') + '?activated=true')
+
+
 @view_config(route_name='password_reset',
              renderer='templates/passwordReset.pt')
 def reset_password(request):
@@ -164,12 +174,6 @@ def check_email(request):
     localizer = get_localizer(request)
     message_ts = _('email_already_use', domain='Ondestan')
     return localizer.translate(message_ts)
-
-
-@view_config(route_name='activate_user')
-def activate_usr(request):
-    user_service.activate_user(request)
-    return HTTPFound(location=request.route_url('login'))
 
 
 @view_config(route_name='orders', renderer='templates/orders.pt',
