@@ -37,7 +37,7 @@
           </ul>
         </li>
       </ul>
-      <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
+      <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>
     </div>
 
     <div tal:condition="not is_admin">
@@ -85,7 +85,7 @@
           <tbody>
             <tr tal:repeat="order orders">
               <td tal:condition="is_admin">
-                <a href="/orders/history/${order.id}" tal:content="order.id"/>
+                <a href="${request.route_url('order_state_history', order_id=order.id)}" tal:content="order.id"/>
               </td>
               <td tal:condition="is_admin">
                 <label tal:content="order.user.login"/>

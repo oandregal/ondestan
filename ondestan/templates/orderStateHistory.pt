@@ -24,7 +24,7 @@
           </ul>
         </li>
       </ul>
-      <h3 class="text-muted"><a href="/map">Onde Están</a></h3>
+      <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>
     </div>
 
     <h3 i18n:translate="order_state_history">Order state history <small><a href="/orders">pedidos</a></small></h3>
