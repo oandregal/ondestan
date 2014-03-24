@@ -197,16 +197,21 @@ def orders(request):
 
     is_admin = check_permission('admin', request)
     if is_admin:
-        orders = order_service.get_all_orders()
+        pending_orders = order_service.get_all_pending_orders()
+        processed_orders = order_service.get_all_processed_orders()
     else:
-        orders = order_service.get_all_orders(get_user_login(request))
+        pending_orders = order_service.get_all_pending_orders(
+            get_user_login(request))
+        processed_orders = order_service.get_all_processed_orders(
+            get_user_login(request))
 
     return dict(
         user_id=get_user_login(request),
         message=message,
         units=units,
         address=address,
-        orders=orders,
+        pending_orders=pending_orders,
+        processed_orders=processed_orders,
         is_admin=is_admin,
         )
 

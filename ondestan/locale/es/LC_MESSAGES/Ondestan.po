@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-21 19:54+0100\n"
-"PO-Revision-Date: 2014-03-21 19:55+0100\n"
+"POT-Creation-Date: 2014-03-24 11:59+0100\n"
+"PO-Revision-Date: 2014-03-24 12:00+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -62,6 +62,8 @@ msgstr ""
 #: ondestan/templates/orderStateHistory.pt:42
 #: ondestan/templates/orders.pt:97
 #: ondestan/templates/orders.pt:104
+#: ondestan/templates/orders.pt:150
+#: ondestan/templates/orders.pt:157
 msgid "order_state_0"
 msgstr "En espera"
 
@@ -128,15 +130,15 @@ msgstr "Perfil de usuario actualizado"
 msgid "login_title"
 msgstr "Autenticación - Ondestán"
 
-#. Default: Thank you. Your account has been activated and you may now log in.
-#: ondestan/templates/login.pt:18
-msgid "account_activated"
-msgstr "Gracias. Tu cuenta ha sido activada y ya puedes entrar en la aplicación."
-
 #. Default: Login
-#: ondestan/templates/login.pt:20
+#: ondestan/templates/login.pt:19
 msgid "login"
 msgstr "Autenticación"
+
+#. Default: Thank you. Your account has been activated and you may now log in.
+#: ondestan/templates/login.pt:20
+msgid "account_activated"
+msgstr "Gracias. Tu cuenta ha sido activada y ya puedes entrar en la aplicación."
 
 #. Default: Forgot your user/password?
 #: ondestan/templates/login.pt:25
@@ -187,6 +189,7 @@ msgstr "Histórico de estados de pedido"
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:35
 #: ondestan/templates/orders.pt:79
+#: ondestan/templates/orders.pt:132
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -199,6 +202,8 @@ msgstr "Fecha de cambio"
 #: ondestan/templates/orderStateHistory.pt:43
 #: ondestan/templates/orders.pt:98
 #: ondestan/templates/orders.pt:105
+#: ondestan/templates/orders.pt:151
+#: ondestan/templates/orders.pt:158
 msgid "order_state_1"
 msgstr "En proceso"
 
@@ -233,6 +238,7 @@ msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en 
 #. Default: Number of units
 #: ondestan/templates/orders.pt:57
 #: ondestan/templates/orders.pt:80
+#: ondestan/templates/orders.pt:133
 msgid "number_units"
 msgstr "Nº de unidades"
 
@@ -240,6 +246,7 @@ msgstr "Nº de unidades"
 #. Default: Delivery address
 #: ondestan/templates/orders.pt:58
 #: ondestan/templates/orders.pt:81
+#: ondestan/templates/orders.pt:134
 msgid "delivery_address"
 msgstr "Dirección de envío"
 
@@ -248,15 +255,23 @@ msgstr "Dirección de envío"
 msgid "confirm_order"
 msgstr "Confirmar pedido"
 
-#. Default: Orders list
+#. Default: Pending orders list
 #: ondestan/templates/orders.pt:67
-msgid "orders_list"
-msgstr "Listado de pedidos"
+#| msgid "orders_list"
+msgid "pending_orders_list"
+msgstr "Listado de pedidos pendientes"
 
 #. Default: User
 #: ondestan/templates/orders.pt:78
+#: ondestan/templates/orders.pt:131
 msgid "order_user"
 msgstr "Usuario"
+
+#. Default: Processed orders list
+#: ondestan/templates/orders.pt:120
+#| msgid "orders_list"
+msgid "processed_orders_list"
+msgstr "Listado de pedidos procesados"
 
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8

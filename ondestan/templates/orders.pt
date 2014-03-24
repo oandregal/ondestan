@@ -64,7 +64,7 @@
     <div>
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left" >
-          <h3 i18n:translate="orders_list">Orders list</h3>
+          <h3 i18n:translate="pending_orders_list">Pending orders list</h3>
         </div>
       </div>
 
@@ -83,7 +83,60 @@
           </thead>
 
           <tbody>
-            <tr tal:repeat="order orders">
+            <tr tal:repeat="order pending_orders">
+              <td tal:condition="is_admin">
+                <a href="${request.route_url('order_state_history', order_id=order.id)}" tal:content="order.id"/>
+              </td>
+              <td tal:condition="is_admin">
+                <label tal:content="order.user.login"/>
+              </td>
+              <td tal:switch="is_admin">
+                <form tal:case="True" name="form_order_${order.id}" action="${request.route_url('orders')}" method="post">
+                  <input type="hidden" name="id" value="${order.id}"/>
+                  <select name="state" onchange="document.form_order_${order.id}['form.submitted'].click();">
+                    <option value="0" tal:attributes="selected 'selected' if order.states[0].state == 0 else None" i18n:translate="order_state_0">Awaiting</option>
+                    <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
+                  </select>
+                  <input type="submit" name="form.submitted" style="display: none;"/>
+                </form>
+                <tal:block tal:case="False">
+                  <tal:block tal:switch="order.states[0].state">
+                    <tal:block tal:case="0" i18n:translate="order_state_0">Awaiting</tal:block>
+                    <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
+                  </tal:block>
+                </tal:block>
+              </td>
+              <td tal:content="order.units"/>
+              <td tal:content="order.address"/>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <div class="middle align-right">
+        <div id="left" class="app-welcome align-left" >
+          <h3 i18n:translate="processed_orders_list">Processed orders list</h3>
+        </div>
+      </div>
+
+      <div class="bottom">
+
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th tal:condition="is_admin">ID</th>
+              <th tal:condition="is_admin" i18n:translate="order_user">User</th>
+              <th i18n:translate="order_state">Order state</th>
+              <th i18n:translate="number_units">Number of units</th>
+              <th i18n:translate="delivery_address">Delivery address</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr tal:repeat="order processed_orders">
               <td tal:condition="is_admin">
                 <a href="${request.route_url('order_state_history', order_id=order.id)}" tal:content="order.id"/>
               </td>
