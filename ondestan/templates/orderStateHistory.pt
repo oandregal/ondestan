@@ -27,7 +27,7 @@
       <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>
     </div>
 
-    <h3 i18n:translate="order_state_history">Order state history <small><a href="/orders">pedidos</a></small></h3>
+    <h3 i18n:translate="order_state_history">Order state history</h3>
 
 
     <table class="table table-bordered table-hover">
@@ -41,6 +41,8 @@
           <tal:block tal:switch="state.state">
             <tal:block tal:case="0" i18n:translate="order_state_0">Awaiting</tal:block>
             <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
+            <tal:block tal:case="2" i18n:translate="order_state_2">Dispatched</tal:block>
+            <tal:block tal:case="3" i18n:translate="order_state_3">Activated</tal:block>
           </tal:block>
         </td>
         <td tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/>

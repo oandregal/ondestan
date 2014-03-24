@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-24 11:59+0100\n"
-"PO-Revision-Date: 2014-03-24 12:00+0100\n"
+"POT-Creation-Date: 2014-03-24 12:48+0100\n"
+"PO-Revision-Date: 2014-03-24 12:49+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -61,9 +61,9 @@ msgstr ""
 #: ondestan/services/order_service.py:111
 #: ondestan/templates/orderStateHistory.pt:42
 #: ondestan/templates/orders.pt:97
-#: ondestan/templates/orders.pt:104
-#: ondestan/templates/orders.pt:150
-#: ondestan/templates/orders.pt:157
+#: ondestan/templates/orders.pt:106
+#: ondestan/templates/orders.pt:154
+#: ondestan/templates/orders.pt:162
 msgid "order_state_0"
 msgstr "En espera"
 
@@ -189,7 +189,7 @@ msgstr "Histórico de estados de pedido"
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:35
 #: ondestan/templates/orders.pt:79
-#: ondestan/templates/orders.pt:132
+#: ondestan/templates/orders.pt:136
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -201,11 +201,29 @@ msgstr "Fecha de cambio"
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:43
 #: ondestan/templates/orders.pt:98
-#: ondestan/templates/orders.pt:105
-#: ondestan/templates/orders.pt:151
-#: ondestan/templates/orders.pt:158
+#: ondestan/templates/orders.pt:107
+#: ondestan/templates/orders.pt:155
+#: ondestan/templates/orders.pt:163
 msgid "order_state_1"
 msgstr "En proceso"
+
+#. Default: Dispatched
+#: ondestan/templates/orderStateHistory.pt:44
+#: ondestan/templates/orders.pt:99
+#: ondestan/templates/orders.pt:108
+#: ondestan/templates/orders.pt:156
+#: ondestan/templates/orders.pt:164
+#| msgid "order_state_1"
+msgid "order_state_2"
+msgstr "Enviado"
+
+#. Default: Activated
+#: ondestan/templates/orderStateHistory.pt:45
+#: ondestan/templates/orders.pt:100
+#: ondestan/templates/orders.pt:109
+#| msgid "order_state_1"
+msgid "order_state_3"
+msgstr "Activado"
 
 #. Default: Orders list - Ondestán
 #: ondestan/templates/orders.pt:8
@@ -238,7 +256,7 @@ msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en 
 #. Default: Number of units
 #: ondestan/templates/orders.pt:57
 #: ondestan/templates/orders.pt:80
-#: ondestan/templates/orders.pt:133
+#: ondestan/templates/orders.pt:137
 msgid "number_units"
 msgstr "Nº de unidades"
 
@@ -246,7 +264,7 @@ msgstr "Nº de unidades"
 #. Default: Delivery address
 #: ondestan/templates/orders.pt:58
 #: ondestan/templates/orders.pt:81
-#: ondestan/templates/orders.pt:134
+#: ondestan/templates/orders.pt:138
 msgid "delivery_address"
 msgstr "Dirección de envío"
 
@@ -257,19 +275,17 @@ msgstr "Confirmar pedido"
 
 #. Default: Pending orders list
 #: ondestan/templates/orders.pt:67
-#| msgid "orders_list"
 msgid "pending_orders_list"
 msgstr "Listado de pedidos pendientes"
 
 #. Default: User
 #: ondestan/templates/orders.pt:78
-#: ondestan/templates/orders.pt:131
+#: ondestan/templates/orders.pt:135
 msgid "order_user"
 msgstr "Usuario"
 
 #. Default: Processed orders list
-#: ondestan/templates/orders.pt:120
-#| msgid "orders_list"
+#: ondestan/templates/orders.pt:124
 msgid "processed_orders_list"
 msgstr "Listado de pedidos procesados"
 
