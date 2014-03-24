@@ -264,19 +264,19 @@ def json_animals(request):
                          " animals for all users")
             for animal in animals:
                 popup_str = animal.name + \
-                            " (" + str(animal.battery_level) + \
+                            " (" + str(animal.positions[0].battery_level) + \
                             "%), property of " + animal.user.name + \
                             " (" + animal.user.login + ")"
                 geojson.append({
                     "type": "Feature",
                     "properties": {
                         "name": animal.name,
-                        "battery_level": animal.battery_level,
+                        "battery_level": animal.positions[0].battery_level,
                         "owner": animal.user.login,
-                        "outside": animal.outside,
+                        "outside": animal.positions[0].outside,
                         "popup": popup_str
                     },
-                    "geometry": eval(animal.geojson)
+                    "geometry": eval(animal.positions[0].geojson)
                 })
         else:
             logger.debug("Found no animals for any user")
@@ -287,17 +287,18 @@ def json_animals(request):
             logger.debug("Found " + str(len(animals)) +
                          " animals for user " + login)
             for animal in animals:
-                popup_str = animal.name + " (" + str(animal.battery_level) + "%)"
+                popup_str = animal.name + " (" + str(animal.positions[0].
+                    battery_level) + "%)"
                 geojson.append({
                     "type": "Feature",
                     "properties": {
                         "name": animal.name,
-                        "battery_level": animal.battery_level,
+                        "battery_level": animal.positions[0].battery_level,
                         "owner": animal.user.login,
-                        "outside": animal.outside,
+                        "outside": animal.positions[0].outside,
                         "popup": popup_str
                     },
-                    "geometry": eval(animal.geojson)
+                    "geometry": eval(animal.positions[0].geojson)
                 })
         else:
             logger.debug("Found no animals for user " + login)

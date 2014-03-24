@@ -1,4 +1,4 @@
-CREATE TABLE roles (
+﻿CREATE TABLE roles (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL UNIQUE
 );
@@ -25,13 +25,19 @@ SELECT AddGeometryColumn ('public', 'plots', 'geom', 3857, 'POLYGON', 2);
 CREATE TABLE animals (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL,
-	battery_level REAL,
 	type VARCHAR DEFAULT 'cow',
 	user_id INTEGER REFERENCES users NOT NULL,
 	plot_id INTEGER REFERENCES plots
 );
 
-SELECT AddGeometryColumn ('public', 'cows', 'geom', 3857, 'POINT', 2);
+CREATE TABLE positions (
+	id SERIAL PRIMARY KEY,
+	"date" TIMESTAMP NOT NULL,
+	battery_level REAL,
+	animal_id INTEGER REFERENCES animals NOT NULL
+);
+
+SELECT AddGeometryColumn ('public', 'positions', 'geom', 3857, 'POINT', 2);
 
 CREATE TABLE orders (
 	id SERIAL PRIMARY KEY,
@@ -61,6 +67,10 @@ INSERT INTO plots(user_id, name, geom) VALUES
 (2, 'Parcela 1', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.07999 51.51077, -0.10592 51.51611))', 3857)),
 (3, 'Parcela 2', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.04738 51.51334, -0.10592 51.51611))', 3857));
 
-INSERT INTO animals(user_id, name, battery_level, plot_id, geom) VALUES
-(2, 'Manuela', 5, 1, ST_GeomFromText('POINT(-0.09407 51.51569)', 3857)),
-(3, 'Pepa', 100, 2, ST_GeomFromText('POINT(-0.05442 51.49218)', 3857));
+INSERT INTO animals(user_id, name, plot_id) VALUES
+(2, 'Manuela', 1),
+(3, 'Pepa', 2);
+
+INSERT INTO positions(animal_id, battery_level, geom, date) VALUES
+(1, 5, ST_GeomFromText('POINT(-0.09407 51.51569)', 3857), now()),
+(2, 100, ST_GeomFromText('POINT(-0.05442 51.49218)', 3857), now());
