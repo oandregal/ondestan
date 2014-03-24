@@ -3,7 +3,7 @@ from pyramid.httpexceptions import (
     HTTPFound,
     HTTPOk,
     HTTPBadRequest,
-    HTTPInternalServerError
+    HTTPMethodNotAllowed
     )
 
 from pyramid.view import (
@@ -25,6 +25,8 @@ from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service
 from ondestan.gps import comms_service
+from ondestan.gps.gps_update_error import GpsUpdateError
+
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -65,11 +67,12 @@ def login(request):
 @view_config(route_name='gps_update')
 def gps_update(request):
     if request.method == 'POST':
-        if comms_service.process_data_updates(request.params):
+        try:
+            comms_service.process_data_updates(request)
             return HTTPOk()
-        else:
-            return HTTPInternalServerError()
-    return HTTPBadRequest()
+        except GpsUpdateError as e:
+            return HTTPBadRequest(detail=e.msg)
+    return HTTPMethodNotAllowed()
 
 
 @view_config(route_name='signup', renderer='templates/signup.pt')
