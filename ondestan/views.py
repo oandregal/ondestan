@@ -263,21 +263,22 @@ def json_animals(request):
             logger.debug("Found " + str(len(animals)) +
                          " animals for all users")
             for animal in animals:
-                popup_str = animal.name + \
-                            " (" + str(animal.positions[0].battery_level) + \
-                            "%), property of " + animal.user.name + \
-                            " (" + animal.user.login + ")"
-                geojson.append({
-                    "type": "Feature",
-                    "properties": {
-                        "name": animal.name,
-                        "battery_level": animal.positions[0].battery_level,
-                        "owner": animal.user.login,
-                        "outside": animal.positions[0].outside,
-                        "popup": popup_str
-                    },
-                    "geometry": eval(animal.positions[0].geojson)
-                })
+                if len(animal.positions) > 0:
+                    popup_str = animal.name + \
+                                " (" + str(animal.positions[0].battery_level)\
+                                + "%), property of " + animal.user.name + \
+                                " (" + animal.user.login + ")"
+                    geojson.append({
+                        "type": "Feature",
+                        "properties": {
+                            "name": animal.name,
+                            "battery_level": animal.positions[0].battery_level,
+                            "owner": animal.user.login,
+                            "outside": animal.positions[0].outside,
+                            "popup": popup_str
+                        },
+                        "geometry": eval(animal.positions[0].geojson)
+                    })
         else:
             logger.debug("Found no animals for any user")
     else:
@@ -287,19 +288,20 @@ def json_animals(request):
             logger.debug("Found " + str(len(animals)) +
                          " animals for user " + login)
             for animal in animals:
-                popup_str = animal.name + " (" + str(animal.positions[0].
-                    battery_level) + "%)"
-                geojson.append({
-                    "type": "Feature",
-                    "properties": {
-                        "name": animal.name,
-                        "battery_level": animal.positions[0].battery_level,
-                        "owner": animal.user.login,
-                        "outside": animal.positions[0].outside,
-                        "popup": popup_str
-                    },
-                    "geometry": eval(animal.positions[0].geojson)
-                })
+                if len(animal.positions) > 0:
+                    popup_str = animal.name + " (" + str(animal.positions[0].
+                        battery_level) + "%)"
+                    geojson.append({
+                        "type": "Feature",
+                        "properties": {
+                            "name": animal.name,
+                            "battery_level": animal.positions[0].battery_level,
+                            "owner": animal.user.login,
+                            "outside": animal.positions[0].outside,
+                            "popup": popup_str
+                        },
+                        "geometry": eval(animal.positions[0].geojson)
+                    })
         else:
             logger.debug("Found no animals for user " + login)
     return geojson
