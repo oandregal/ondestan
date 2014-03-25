@@ -13,7 +13,7 @@ class Position(Entity, Base):
     __tablename__ = "positions"
 
     id = Column(Integer, primary_key=True)
-    battery_level = Column(Float)
+    battery = Column(Float)
     coverage = Column(Float)
     date = Column(DateTime)
     animal_id = Column(Integer, ForeignKey("animals.id"))

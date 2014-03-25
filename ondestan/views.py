@@ -3,6 +3,7 @@ from pyramid.httpexceptions import (
     HTTPFound,
     HTTPOk,
     HTTPBadRequest,
+    HTTPForbidden,
     HTTPMethodNotAllowed
     )
 
@@ -68,10 +69,12 @@ def login(request):
 def gps_update(request):
     if request.method == 'POST':
         try:
-            comms_service.process_data_updates(request)
+            comms_service.process_gps_updates(request)
             return HTTPOk()
         except GpsUpdateError as e:
             logger.error("Gps update couldn't be processed: " + e.msg)
+            if e.code == 403:
+                return HTTPForbidden(detail=e.msg)
             return HTTPBadRequest(detail=e.msg)
     logger.warning("Gps update requested with wrong method.")
     return HTTPMethodNotAllowed()
@@ -284,14 +287,14 @@ def json_animals(request):
             for animal in animals:
                 if len(animal.positions) > 0:
                     popup_str = animal.name + \
-                                " (" + str(animal.positions[0].battery_level)\
+                                " (" + str(animal.positions[0].battery)\
                                 + "%), property of " + animal.user.name + \
                                 " (" + animal.user.login + ")"
                     geojson.append({
                         "type": "Feature",
                         "properties": {
                             "name": animal.name,
-                            "battery_level": animal.positions[0].battery_level,
+                            "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "outside": animal.positions[0].outside,
                             "popup": popup_str
@@ -309,12 +312,12 @@ def json_animals(request):
             for animal in animals:
                 if len(animal.positions) > 0:
                     popup_str = animal.name + " (" + str(animal.positions[0].
-                        battery_level) + "%)"
+                        battery) + "%)"
                     geojson.append({
                         "type": "Feature",
                         "properties": {
                             "name": animal.name,
-                            "battery_level": animal.positions[0].battery_level,
+                            "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "outside": animal.positions[0].outside,
                             "popup": popup_str

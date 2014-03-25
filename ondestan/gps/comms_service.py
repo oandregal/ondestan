@@ -13,80 +13,67 @@ epsg3857=pyproj.Proj("+init=EPSG:3857")
 logger = logging.getLogger('ondestan')
 date_format = '%Y-%m-%dT%H:%M:%S'
 
-def process_data_updates(request):
+base_data = {
+    'mac': None,
+    'password': None,
+    'date': None,
+    'lat': None,
+    'lon': None,
+    'coverage': None,
+    'battery': None
+}
+
+def process_gps_updates(request):
     if len(request.body) != request.content_length:
-        raise GpsUpdateError('Wrong length')
+        raise GpsUpdateError('Wrong length', 400)
     if not 'content-md5' in request._headers:
-        raise GpsUpdateError('No MD5')
+        raise GpsUpdateError('No MD5', 400)
     expected_md5 = request._headers['content-md5']
     if expected_md5 != md5.new(request.body).hexdigest():
-        raise GpsUpdateError('Wrong MD5')
-    process_data(request.params)
+        raise GpsUpdateError('Wrong MD5', 400)
+    process_gps_params(request.params)
 
 
-def process_data(params):
-    data = base_data.copy()
-    if 'mac' in params and 'password' in params and 'date' in params:
-        mac = str(params['mac'])
-        password = str(params['password'])
-        date = datetime.strptime(str(params['date']), date_format)
-        battery = float(params['battery'])
-        coverage = float(params['coverage'])
-        lat = float(params['latitude'])
-        lon = float(params['longitude'])
-        try:
-            x, y = pyproj.transform(wgs84, epsg3857, lon, lat)
-        except RuntimeError as e:
-            raise GpsUpdateError(e.message)
-        logger.info('Processing update for mac: ' + mac +
-                ' for date ' + date.strftime(date_format) +
-                ' with battery level ' + str(battery) +
-                ' with coverage ' + str(coverage) +
-                ' at y ' + str(y) +
-                ' and x ' + str(x))
-        animal = animal_service.get_animal(mac, password)
-        if animal == None:
-            raise GpsUpdateError("Referenced animal doesn't exist")
-        position = Position()
-        position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) + ')'
-        position.date = date
-        position.battery_level = battery
-        position.coverage = coverage
-        position.animal_id = animal.id
-        position.save()
-    elif 'mac[0]' in params and 'password[0]' in params and\
-        'date[0]' in params:
+def process_gps_params(params):
+    if 'mac' in params:
+        data = base_data.copy()
+        for key in params:
+            data[key] = params[key]
+        process_gps_data(data)
+    elif 'mac[0]' in params:
         i = 0
-        while 'mac[' + str(i) + ']' in params and 'password[' + str(i) + ']' in params and\
-        'date[' + str(i) + ']' in params:
-            mac = str(params['mac[' + str(i) + ']'])
-            password = str(params['password[' + str(i) + ']'])
-            date = datetime.strptime(str(params['date[' + str(i) + ']']),
-                                     date_format)
-            battery = float(params['battery[' + str(i) + ']'])
-            coverage = float(params['coverage[' + str(i) + ']'])
-            lat = float(params['latitude[' + str(i) + ']'])
-            lon = float(params['longitude[' + str(i) + ']'])
-            try:
-                x, y = pyproj.transform(wgs84, epsg3857, lon, lat)
-            except RuntimeError as e:
-                raise GpsUpdateError(e.message)
-            logger.info('Processing update for mac: ' + mac +
-                ' for date ' + date.strftime(date_format) +
-                ' with battery level ' + str(battery) +
-                ' with coverage ' + str(coverage) +
-                ' at y ' + str(y) +
-                ' and x ' + str(x))
-            animal = animal_service.get_animal(mac, password)
-            if animal == None:
-                raise GpsUpdateError("Referenced animal doesn't exist")
-            position = Position()
-            position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) + ')'
-            position.date = date
-            position.battery_level = battery
-            position.coverage = coverage
-            position.animal_id = animal.id
-            position.save()
+        subfix = '[' + str(i) + ']'
+        while 'mac' + subfix in params:
+            data = base_data.copy()
+            for key in params:
+                if key.endswith(subfix):
+                    data[key[:-len(subfix)]] = params[key]
+            process_gps_data(data)
             i += 1
+            subfix = '[' + str(i) + ']'
     else:
-        raise GpsUpdateError('Insufficient POST params')
+        raise GpsUpdateError('Insufficient POST params', 400)
+
+
+def process_gps_data(data):
+    if data['mac'] == None or data['password'] == None or data['date'] == None:
+        raise GpsUpdateError('Insufficient POST params', 400)
+    position = Position()
+    if data['longitude'] != None and data['latitude'] != None:
+        try:
+            x, y = pyproj.transform(wgs84, epsg3857, float(data['longitude']), float(data['latitude']))
+            position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) + ')'
+        except RuntimeError as e:
+            raise GpsUpdateError(e.message, 400)
+    animal = animal_service.get_animal(data['mac'], data['password'])
+    if animal == None:
+        raise GpsUpdateError("No animal matches the passed credentials", 403)
+    position.animal_id = animal.id
+    position.date = datetime.strptime(data['date'], date_format)
+    if data['battery'] != None:
+        position.battery = float(data['battery'])
+    if data['coverage'] != None:
+        position.coverage = float(data['coverage'])
+    position.save()
+    logger.info('Processed update for mac: ' + animal.mac +
+            ' for date ' + position.date.strftime(date_format))

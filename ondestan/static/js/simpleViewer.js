@@ -9,11 +9,11 @@ $( function() {
 				var color = "green"; 
 				var weight = 0;
 				active_devices.push(feature);
-	            if (feature.properties.battery_level < 20.0) {
+	            if (feature.properties.battery < 20.0) {
 	            	color = "red";
 	            	low_battery_devices.push(feature);
 	            } else {
-		            if (feature.properties.battery_level < 50.0) {
+		            if (feature.properties.battery < 50.0) {
 		            	color = "yellow";
 		            }
 	            }
