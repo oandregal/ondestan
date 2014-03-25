@@ -14,6 +14,8 @@ class Animal(Entity, Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     type = Column(String)
+    mac = Column(String)
+    password = Column(String)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('animals',
                                                   order_by=name))

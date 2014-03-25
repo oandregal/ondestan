@@ -15,6 +15,7 @@ requires = [
     'psycopg2==2.5.2',
     'Babel==1.3',
     'lingua==1.6',
+    'pyproj==1.9.3'
     ]
 
 setup(name='Ondestan',

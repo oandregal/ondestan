@@ -14,6 +14,7 @@ class Position(Entity, Base):
 
     id = Column(Integer, primary_key=True)
     battery_level = Column(Float)
+    coverage = Column(Float)
     date = Column(DateTime)
     animal_id = Column(Integer, ForeignKey("animals.id"))
     animal = relationship("Animal", backref=backref('positions',

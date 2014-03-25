@@ -71,7 +71,9 @@ def gps_update(request):
             comms_service.process_data_updates(request)
             return HTTPOk()
         except GpsUpdateError as e:
+            logger.error("Gps update couldn't be processed: " + e.msg)
             return HTTPBadRequest(detail=e.msg)
+    logger.warning("Gps update requested with wrong method.")
     return HTTPMethodNotAllowed()
 
 
