@@ -1,4 +1,4 @@
-BEGIN;
+﻿BEGIN;
 
 DROP TABLE IF EXISTS roles CASCADE;
 CREATE TABLE roles (
@@ -94,13 +94,13 @@ INSERT INTO orders(units, address, user_id) VALUES
 (2, 'Praza Maior - Ourense', 3);
 
 INSERT INTO order_states(state, date, order_id) VALUES
-(0, now(), 1),
-(1, now(), 1),
-(2, now(), 1),
+(0, now() - INTERVAL '3 days', 1),
+(1, now()- INTERVAL '2 days', 1),
+(2, now()- INTERVAL '1 days', 1),
 (3, now(), 1),
-(0, now(), 2),
-(1, now(), 2),
-(2, now(), 2),
+(0, now()- INTERVAL '3 days', 2),
+(1, now()- INTERVAL '2 days', 2),
+(2, now()- INTERVAL '1 days', 2),
 (3, now(), 2);
 
 COMMIT;
