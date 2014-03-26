@@ -42,7 +42,9 @@ def login(request):
         activated = request.params['activated'].lower() == 'true'
     referrer = request.url
     if referrer == login_url:
-        referrer = '/'  # never use the login form itself as came_from
+        # never use the login form itself as came_from
+        # use main view instead
+        referrer = 'map'
     came_from = request.params.get('came_from', referrer)
     message = ''
     login = ''
