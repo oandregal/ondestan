@@ -119,6 +119,10 @@
 
       </div>
 
+      <br />
+      <br />
+      <br />
+
       <div class="middle align-right">
         <div id="left" class="app-welcome align-left" >
           <h3 i18n:translate="processed_orders_list">Processed orders list</h3>
