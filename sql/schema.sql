@@ -1,10 +1,12 @@
 ﻿BEGIN;
 
+DROP TABLE IF EXISTS roles CASCADE;
 CREATE TABLE roles (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL UNIQUE
 );
 
+DROP TABLE IF EXISTS users CASCADE;
 CREATE TABLE users (
 	id SERIAL PRIMARY KEY,
 	login VARCHAR NOT NULL UNIQUE,
@@ -16,14 +18,15 @@ CREATE TABLE users (
 	role_id INTEGER REFERENCES roles NOT NULL DEFAULT 1
 );
 
+DROP TABLE IF EXISTS plots CASCADE;
 CREATE TABLE plots (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL,
 	user_id INTEGER REFERENCES users NOT NULL
 );
-
 SELECT AddGeometryColumn ('public', 'plots', 'geom', 3857, 'POLYGON', 2);
 
+DROP TABLE IF EXISTS animals CASCADE;
 CREATE TABLE animals (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL,
@@ -34,6 +37,7 @@ CREATE TABLE animals (
 	plot_id INTEGER REFERENCES plots
 );
 
+DROP TABLE IF EXISTS positions CASCADE;
 CREATE TABLE positions (
 	id SERIAL PRIMARY KEY,
 	"date" TIMESTAMP NOT NULL,
@@ -41,9 +45,9 @@ CREATE TABLE positions (
 	coverage REAL,
 	animal_id INTEGER REFERENCES animals NOT NULL
 );
-
 SELECT AddGeometryColumn ('public', 'positions', 'geom', 3857, 'POINT', 2);
 
+DROP TABLE IF EXISTS orders CASCADE;
 CREATE TABLE orders (
 	id SERIAL PRIMARY KEY,
 	units INTEGER NOT NULL,
@@ -51,12 +55,15 @@ CREATE TABLE orders (
 	user_id INTEGER REFERENCES users NOT NULL
 );
 
+DROP TABLE IF EXISTS order_states CASCADE;
 CREATE TABLE order_states (
 	id SERIAL PRIMARY KEY,
 	state INTEGER NOT NULL DEFAULT 0,
 	"date" TIMESTAMP NOT NULL,
 	order_id INTEGER REFERENCES orders NOT NULL
 );
+
+-- data insertion
 
 INSERT INTO roles(name) VALUES
 	('viewer'),
