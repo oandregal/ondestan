@@ -4,20 +4,12 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
-  <div metal:fill-slot="head">
+  <tal:block metal:fill-slot="head">
     <title i18n:translate="user_password_reminder_title">User/password reminder - Ondestán</title>
-  </div>
+  </tal:block>
 
-  <div metal:fill-slot="styles">
-    <link rel="stylesheet"
-          href="${request.static_url('ondestan:static/css/login.css')}"
-          type="text/css" media="screen" />
-  </div>
-
-  <div metal:fill-slot="content">
-    <div id="left" class="app-welcome align-left">
-      <b><label i18n:translate="user_password_reminder">User/password reminder</label></b><br/>
-    </div>
+  <tal:block metal:fill-slot="content">
+    <h3 i18n:translate="user_password_reminder">User/password reminder</h3><br/>
 
     <div id="right" class="app-welcome align-right"></div>
 
@@ -41,6 +33,6 @@
 
     </div>
 
-  </div>
+  </tal:block>
 
 </html>

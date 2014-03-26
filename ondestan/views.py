@@ -130,7 +130,6 @@ def update_profile(request):
 
     return dict(
         message=message,
-        user_id=login,
         id=user_id,
         login=login,
         name=name,
@@ -231,7 +230,6 @@ def orders(request):
             get_user_login(request))
 
     return dict(
-        user_id=get_user_login(request),
         message=message,
         units=units,
         address=address,
@@ -250,7 +248,6 @@ def order_state_history(request):
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     return dict(
-        user_id=get_user_login(request),
         order=order,
         )
 
@@ -267,7 +264,6 @@ def viewer(request):
             order_service.get_all_unprocessed_orders(get_user_login(request))
         )
     return dict(project=u'Ondestán',
-                user_id=get_user_login(request),
                 can_edit=check_permission('edit', request),
                 is_admin=is_admin,
                 orders_msg=n_new_orders)
