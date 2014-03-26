@@ -1,12 +1,12 @@
 $( function() {
-	var map = L.map('map').setView([51.505, -0.09], 13);
+	var map = L.map('map').setView([42.25, -7.54], 13);
 	var active_devices = [];
 	var low_battery_devices = [];
 
 	function load_cows() {
 		layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
-			pointToLayer: function (feature, latlng) { 
-				var color = "green"; 
+			pointToLayer: function (feature, latlng) {
+				var color = "green";
 				var weight = 0;
 				active_devices.push(feature);
 	            if (feature.properties.battery < 20.0) {
@@ -18,7 +18,7 @@ $( function() {
 		            }
 	            }
 	            if (feature.properties.outside) {
-	            	weight = 5;
+	            	weight = 2;
 	            }
                 return new L.CircleMarker(latlng, {
                     radius: 8,
@@ -50,8 +50,9 @@ $( function() {
         }
 	}).addTo(map);
 
-	L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 18,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
-	}).addTo(map);
+        L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	    maxZoom: 18,
+	    attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
 });

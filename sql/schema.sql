@@ -1,4 +1,6 @@
-﻿CREATE TABLE roles (
+﻿BEGIN;
+
+CREATE TABLE roles (
 	id SERIAL PRIMARY KEY,
 	name VARCHAR NOT NULL UNIQUE
 );
@@ -72,8 +74,26 @@ INSERT INTO plots(user_id, name, geom) VALUES
 
 INSERT INTO animals(user_id, name, mac, password, plot_id) VALUES
 (2, 'Manuela', '1', '1', 1),
-(3, 'Pepa', '2', '2', 2);
+(3, 'Pepa', '2', '2', 2),
+(3, 'Rubia', '3', '3', 2);
 
 INSERT INTO positions(animal_id, battery, coverage, geom, date) VALUES
-(1, 5, 50, ST_GeomFromText('POINT(-0.09407 51.51569)', 3857), now()),
-(2, 100, 80, ST_GeomFromText('POINT(-0.05442 51.49218)', 3857), now());
+(1, 5, 50, ST_GeomFromText('POINT(-7.55421 42.25482)', 3857), now()),
+(2, 100, 80, ST_GeomFromText('POINT(-7.54726 42.25323)', 3857), now()),
+(3, 45, 50, ST_GeomFromText('POINT(-7.55421 42.25323)', 3857), now());
+
+INSERT INTO orders(units, address, user_id) VALUES
+(1, 'Avenida Menor - Ourense', 2),
+(2, 'Praza Maior - Ourense', 3);
+
+INSERT INTO order_states(state, date, order_id) VALUES
+(0, now(), 1),
+(1, now(), 1),
+(2, now(), 1),
+(3, now(), 1),
+(0, now(), 2),
+(1, now(), 2),
+(2, now(), 2),
+(3, now(), 2);
+
+COMMIT;
