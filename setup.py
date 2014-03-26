@@ -17,6 +17,9 @@ requires = [
     'lingua==1.6',
     'pyproj==1.9.3'
     ]
+test_requires = [
+    'requests==2.2.1'
+    ]
 
 setup(name='Ondestan',
       version='0.1',
@@ -40,7 +43,7 @@ setup(name='Ondestan',
       include_package_data=True,
       zip_safe=False,
       install_requires=requires,
-      tests_require=requires,
+      tests_require=requires + test_requires,
       test_suite="ondestan",
       entry_points="""\
       [paste.app_factory]
