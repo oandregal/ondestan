@@ -67,15 +67,16 @@ def login(request):
 
 @view_config(route_name='gps_update')
 def gps_update(request):
+    response = "buzzer=true\npost_frequency=1"
     if request.method == 'POST':
         try:
             comms_service.process_gps_updates(request)
-            return HTTPOk()
+            return HTTPOk(body_template=response)
         except GpsUpdateError as e:
             logger.error("Gps update couldn't be processed: " + e.msg)
             if e.code == 403:
-                return HTTPForbidden(detail=e.msg)
-            return HTTPBadRequest(detail=e.msg)
+                return HTTPForbidden(detail=e.msg, body_template=response)
+            return HTTPBadRequest(detail=e.msg, body_template=response)
     logger.warning("Gps update requested with wrong method.")
     return HTTPMethodNotAllowed()
 

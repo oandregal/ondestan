@@ -10,7 +10,7 @@ req = Request('POST', url, data=params)
 prepped = req.prepare()
 prepped.headers['Content-MD5'] = md5.new(prepped.body).hexdigest()
 r = s.send(prepped)
-print str(r.status_code) + " " + r.reason
+print str(r._content)
 
 params = {'mac[0]': '1', 'mac[1]': '2', 'password[0]': '1',
           'password[1]': '2', 'date[0]': '2014-03-27T19:04:00',
@@ -24,4 +24,4 @@ req = Request('POST', url, data=params)
 prepped = req.prepare()
 prepped.headers['Content-MD5'] = md5.new(prepped.body).hexdigest()
 r = s.send(prepped)
-print str(r.status_code) + " " + r.reason
+print str(r._content)
