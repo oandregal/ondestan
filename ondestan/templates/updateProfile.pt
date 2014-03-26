@@ -10,7 +10,7 @@
 
   <div metal:fill-slot="styles">
     <link rel="stylesheet"
-          href="${request.static_url('ondestan:static/css/login.css')}"
+          href="${request.static_url('ondestan:static/css/main.css')}"
           type="text/css" media="screen" />
   </div>
 
