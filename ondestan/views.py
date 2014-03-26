@@ -261,10 +261,10 @@ def viewer(request):
     is_admin = check_permission('admin', request)
     n_new_orders = 0
     if is_admin:
-        n_new_orders = len(order_service.get_all_new_orders())
+        n_new_orders = len(order_service.get_all_unprocessed_orders())
     else:
         n_new_orders = len(
-            order_service.get_all_orders(get_user_login(request))
+            order_service.get_all_unprocessed_orders(get_user_login(request))
         )
     return dict(project=u'Ondestán',
                 user_id=get_user_login(request),
