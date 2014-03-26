@@ -35,7 +35,7 @@ CREATE TABLE animals (
 CREATE TABLE positions (
 	id SERIAL PRIMARY KEY,
 	"date" TIMESTAMP NOT NULL,
-	battery_level REAL,
+	battery REAL,
 	coverage REAL,
 	animal_id INTEGER REFERENCES animals NOT NULL
 );
@@ -74,6 +74,6 @@ INSERT INTO animals(user_id, name, mac, password, plot_id) VALUES
 (2, 'Manuela', '1', '1', 1),
 (3, 'Pepa', '2', '2', 2);
 
-INSERT INTO positions(animal_id, battery_level, coverage, geom, date) VALUES
+INSERT INTO positions(animal_id, battery, coverage, geom, date) VALUES
 (1, 5, 50, ST_GeomFromText('POINT(-0.09407 51.51569)', 3857), now()),
 (2, 100, 80, ST_GeomFromText('POINT(-0.05442 51.49218)', 3857), now());
