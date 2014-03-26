@@ -1,3 +1,24 @@
+$('#active_devices').popover({
+    html: true,
+    placement: 'bottom',
+    trigger: 'hover',
+    content: '<ul class="list-unstyled"><li>Pepa (80%)</li><li>Rubia (40%)</li></ul>',
+});
+
+$('#low_battery_devices').popover({
+    html: true,
+    placement: 'bottom',
+    trigger: 'hover',
+    content: '<ul class="list-unstyled"><li>Rubia (40%)</li></ul>',
+});
+
+$('#new_devices').popover({
+    html: true,
+    placement: 'bottom',
+    trigger: 'hover',
+    content: '<ul class="list-unstyled"><li>1 en proceso</li><li>1 en espera</li></ul>',
+});
+
 $( function() {
 	var map = L.map('map').setView([42.25, -7.54], 13);
 	var active_devices = [];
