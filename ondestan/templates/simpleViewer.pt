@@ -28,15 +28,15 @@
 
     <div class="row data">
       <div class="col-md-2 col-md-offset-1">
-        <h5 class="text-center text-muted">ACTIVOS</h5>
+        <h5 class="text-center text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
         <p id="active_devices" class="text-center"/>
       </div>
       <div class="col-md-2 col-md-offset-2">
-        <h5 class="text-center text-muted">SIN BATERÍA</h5>
+        <h5 class="text-center text-muted" i18n:translate="dashboard_out_of_battery">OUT OF BATTERY</h5>
         <p id="low_battery_devices" class="text-center"/>
       </div>
       <div class="col-md-2 col-md-offset-2">
-        <h5 class="text-center text-muted">EN TRÁMITE</h5>
+        <h5 class="text-center text-muted" i18n:translate="dashboard_in_progress">IN PROGRESS</h5>
         <p id="new_devices" class="text-center"><a href="${request.route_url('orders')}">${orders_msg}</a></p>
       </div>
     </div>

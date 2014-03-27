@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-24 12:48+0100\n"
+"POT-Creation-Date: 2014-03-27 17:37+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:50
+#: ondestan/views.py:59
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:160 ondestan/services/user_service.py:121
+#: ondestan/views.py:184 ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:175 ondestan/services/user_service.py:125
+#: ondestan/views.py:199 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
 msgstr ""
@@ -49,9 +49,9 @@ msgstr ""
 
 #. Default: Awaiting
 #: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
-#: ondestan/templates/orderStateHistory.pt:42 ondestan/templates/orders.pt:97
-#: ondestan/templates/orders.pt:106 ondestan/templates/orders.pt:154
-#: ondestan/templates/orders.pt:162
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:74
+#: ondestan/templates/orders.pt:83 ondestan/templates/orders.pt:131
+#: ondestan/templates/orders.pt:140
 msgid "order_state_0"
 msgstr ""
 
@@ -123,15 +123,27 @@ msgstr ""
 msgid "forgot_user_password"
 msgstr ""
 
-#. Default: Login
+#. Default: Log in
 #: ondestan/templates/login.pt:26
 msgid "log_in"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:28 ondestan/templates/signup.pt:43
-#: ondestan/templates/signup.pt:101
+#: ondestan/templates/login.pt:28 ondestan/templates/signup.pt:32
+#: ondestan/templates/signup.pt:88
 msgid "sign_up"
+msgstr ""
+
+#. Default: Update profile
+#. Default: Update Profile
+#: ondestan/templates/main.pt:33 ondestan/templates/updateProfile.pt:31
+#: ondestan/templates/updateProfile.pt:78
+msgid "update_profile"
+msgstr ""
+
+#. Default: Logout
+#: ondestan/templates/main.pt:34
+msgid "logout"
 msgstr ""
 
 #. Default: Order state history - Ondestán
@@ -139,53 +151,40 @@ msgstr ""
 msgid "order_state_history_title"
 msgstr ""
 
-#. Default: Update profile
-#. Default: Update Profile
-#: ondestan/templates/orderStateHistory.pt:22 ondestan/templates/orders.pt:35
-#: ondestan/templates/simpleViewer.pt:37 ondestan/templates/updateProfile.pt:41
-#: ondestan/templates/updateProfile.pt:52 ondestan/templates/updateProfile.pt:99
-msgid "update_profile"
-msgstr ""
-
-#. Default: Logout
-#: ondestan/templates/orderStateHistory.pt:23 ondestan/templates/orders.pt:36
-#: ondestan/templates/simpleViewer.pt:38 ondestan/templates/updateProfile.pt:42
-msgid "logout"
-msgstr ""
-
-#. Default: Order state history <dynamic element>
-#: ondestan/templates/orderStateHistory.pt:30
+#. Default: Order state history
+#: ondestan/templates/orderStateHistory.pt:13
 msgid "order_state_history"
 msgstr ""
 
 #. Default: Order state
-#: ondestan/templates/orderStateHistory.pt:35 ondestan/templates/orders.pt:79
-#: ondestan/templates/orders.pt:136
+#: ondestan/templates/orderStateHistory.pt:18 ondestan/templates/orders.pt:56
+#: ondestan/templates/orders.pt:113
 msgid "order_state"
 msgstr ""
 
 #. Default: Change date
-#: ondestan/templates/orderStateHistory.pt:36
+#: ondestan/templates/orderStateHistory.pt:19
 msgid "change_date"
 msgstr ""
 
 #. Default: In process
-#: ondestan/templates/orderStateHistory.pt:43 ondestan/templates/orders.pt:98
-#: ondestan/templates/orders.pt:107 ondestan/templates/orders.pt:155
-#: ondestan/templates/orders.pt:163
+#: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:75
+#: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:132
+#: ondestan/templates/orders.pt:141
 msgid "order_state_1"
 msgstr ""
 
 #. Default: Dispatched
-#: ondestan/templates/orderStateHistory.pt:44 ondestan/templates/orders.pt:99
-#: ondestan/templates/orders.pt:108 ondestan/templates/orders.pt:156
-#: ondestan/templates/orders.pt:164
+#: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:85 ondestan/templates/orders.pt:133
+#: ondestan/templates/orders.pt:142
 msgid "order_state_2"
 msgstr ""
 
 #. Default: Activated
-#: ondestan/templates/orderStateHistory.pt:45 ondestan/templates/orders.pt:100
-#: ondestan/templates/orders.pt:109
+#: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:77
+#: ondestan/templates/orders.pt:86 ondestan/templates/orders.pt:134
+#: ondestan/templates/orders.pt:143
 msgid "order_state_3"
 msgstr ""
 
@@ -195,57 +194,57 @@ msgid "orders_list_title"
 msgstr ""
 
 #. Default: This field is required.
-#: ondestan/templates/orders.pt:18 ondestan/templates/signup.pt:20
-#: ondestan/templates/updateProfile.pt:20
+#: ondestan/templates/orders.pt:14 ondestan/templates/signup.pt:14
+#: ondestan/templates/updateProfile.pt:14
 msgid "required_field"
 msgstr ""
 
 #. Default: Please enter only digits.
-#: ondestan/templates/orders.pt:19
+#: ondestan/templates/orders.pt:15
 msgid "digits_field"
 msgstr ""
 
 #. Default: New order
-#: ondestan/templates/orders.pt:46
+#: ondestan/templates/orders.pt:27
 msgid "new_order"
 msgstr ""
 
 #. Default: Thanks for your order! Our team will get in touch with you soon.
-#: ondestan/templates/orders.pt:52
+#: ondestan/templates/orders.pt:33
 msgid "new_order_instructions"
 msgstr ""
 
 #. Default: Nr units
 #. Default: Number of units
-#: ondestan/templates/orders.pt:57 ondestan/templates/orders.pt:80
-#: ondestan/templates/orders.pt:137
+#: ondestan/templates/orders.pt:38 ondestan/templates/orders.pt:57
+#: ondestan/templates/orders.pt:114
 msgid "number_units"
 msgstr ""
 
 #. Default: Send address
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:58 ondestan/templates/orders.pt:81
-#: ondestan/templates/orders.pt:138
+#: ondestan/templates/orders.pt:39 ondestan/templates/orders.pt:58
+#: ondestan/templates/orders.pt:115
 msgid "delivery_address"
 msgstr ""
 
 #. Default: Confirm order
-#: ondestan/templates/orders.pt:59
+#: ondestan/templates/orders.pt:40
 msgid "confirm_order"
 msgstr ""
 
 #. Default: Pending orders list
-#: ondestan/templates/orders.pt:67
+#: ondestan/templates/orders.pt:46
 msgid "pending_orders_list"
 msgstr ""
 
 #. Default: User
-#: ondestan/templates/orders.pt:78 ondestan/templates/orders.pt:135
+#: ondestan/templates/orders.pt:55 ondestan/templates/orders.pt:112
 msgid "order_user"
 msgstr ""
 
 #. Default: Processed orders list
-#: ondestan/templates/orders.pt:124
+#: ondestan/templates/orders.pt:103
 msgid "processed_orders_list"
 msgstr ""
 
@@ -255,12 +254,12 @@ msgid "password_reset_title"
 msgstr ""
 
 #. Default: Password reset
-#: ondestan/templates/passwordReset.pt:15
+#: ondestan/templates/passwordReset.pt:12
 msgid "password_reset"
 msgstr ""
 
 #. Default: Please check your e-mail inbox for the password reset.
-#: ondestan/templates/passwordReset.pt:21
+#: ondestan/templates/passwordReset.pt:15
 msgid "password_reset_sent"
 msgstr ""
 
@@ -270,30 +269,30 @@ msgid "user_password_reminder_title"
 msgstr ""
 
 #. Default: User/password reminder
-#: ondestan/templates/reminder.pt:19
+#: ondestan/templates/reminder.pt:12
 msgid "user_password_reminder"
 msgstr ""
 
 #. Default: Please check your e-mail inbox for the reminder.
-#: ondestan/templates/reminder.pt:27
+#: ondestan/templates/reminder.pt:19
 msgid "user_password_reminder_sent"
 msgstr ""
 
 #. Default: Please write below the e-mail you used for registration and we'll send
 #. you a reminder on your user/password.
-#: ondestan/templates/reminder.pt:32
+#: ondestan/templates/reminder.pt:24
 msgid "user_password_reminder_msg"
 msgstr ""
 
 #. Default: E-mail
 #. Default: Email
-#: ondestan/templates/reminder.pt:35 ondestan/templates/signup.pt:74
-#: ondestan/templates/updateProfile.pt:76
+#: ondestan/templates/reminder.pt:27 ondestan/templates/signup.pt:61
+#: ondestan/templates/updateProfile.pt:55
 msgid "email"
 msgstr ""
 
 #. Default: Send e-mail
-#: ondestan/templates/reminder.pt:37
+#: ondestan/templates/reminder.pt:29
 msgid "send_email"
 msgstr ""
 
@@ -303,64 +302,79 @@ msgid "sign_up_title"
 msgstr ""
 
 #. Default: Please enter at least {0} characters.
-#: ondestan/templates/signup.pt:21 ondestan/templates/updateProfile.pt:21
+#: ondestan/templates/signup.pt:15 ondestan/templates/updateProfile.pt:15
 msgid "minlength_field"
 msgstr ""
 
 #. Default: Please enter a valid email address.
-#: ondestan/templates/signup.pt:22 ondestan/templates/updateProfile.pt:22
+#: ondestan/templates/signup.pt:16 ondestan/templates/updateProfile.pt:16
 msgid "email_field"
 msgstr ""
 
 #. Default: Please specify a valid mobile phone number.
-#: ondestan/templates/signup.pt:23 ondestan/templates/updateProfile.pt:23
+#: ondestan/templates/signup.pt:17 ondestan/templates/updateProfile.pt:17
 msgid "mobile_field"
 msgstr ""
 
 #. Default: Passwords don't match.
-#: ondestan/templates/signup.pt:24 ondestan/templates/updateProfile.pt:24
+#: ondestan/templates/signup.pt:18 ondestan/templates/updateProfile.pt:18
 msgid "passwords_dont_match"
 msgstr ""
 
 #. Default: Successful Sign Up
-#: ondestan/templates/signup.pt:39
+#: ondestan/templates/signup.pt:30
 msgid "successful_sign_up"
 msgstr ""
 
 #. Default: We have sent you an email with the instructions for activating your new
 #. account.<dynamic element>Welcome to Ondestán!!
-#: ondestan/templates/signup.pt:52
+#: ondestan/templates/signup.pt:39
 msgid "sign_up_instructions"
 msgstr ""
 
 #. Default: Login
-#: ondestan/templates/signup.pt:60 ondestan/templates/updateProfile.pt:64
+#: ondestan/templates/signup.pt:47 ondestan/templates/updateProfile.pt:43
 msgid "username"
 msgstr ""
 
 #. Default: Name
-#: ondestan/templates/signup.pt:67 ondestan/templates/updateProfile.pt:70
+#: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:49
 msgid "name"
 msgstr ""
 
 #. Default: Cell phone number
-#: ondestan/templates/signup.pt:81 ondestan/templates/updateProfile.pt:82
+#: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:61
 msgid "cell_phone_number"
 msgstr ""
 
 #. Default: Password
-#: ondestan/templates/signup.pt:88 ondestan/templates/updateProfile.pt:88
+#: ondestan/templates/signup.pt:75 ondestan/templates/updateProfile.pt:67
 msgid "password"
 msgstr ""
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:95 ondestan/templates/updateProfile.pt:94
+#: ondestan/templates/signup.pt:82 ondestan/templates/updateProfile.pt:73
 msgid "retype_password"
 msgstr ""
 
 #. Default: Viewer - Ondestán
 #: ondestan/templates/simpleViewer.pt:8
 msgid "simple_viewer_title"
+msgstr ""
+
+#. Default: ACTIVE
+#: ondestan/templates/simpleViewer.pt:31
+msgid "dashboard_active"
+msgstr ""
+
+#. Default: OUT OF BATTERY
+#: ondestan/templates/simpleViewer.pt:35
+msgid "dashboard_out_of_battery"
+msgstr ""
+
+#. Default: IN PROGRESS
+#: ondestan/templates/simpleViewer.pt:39
+msgid "dashboard_in_progress"
 msgstr ""
 
 #. Default: Update profile - Ondestán
