@@ -2,16 +2,17 @@
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from os.path import expandvars
 
 from ondestan.utils import Config
 
 
 def send_mail(html, text, subject, destination):
 
-    smtp_server = Config.get_string_value('smtp.server')
-    smtp_port = Config.get_int_value('smtp.port')
-    smtp_mail = Config.get_string_value('smtp.mail')
-    smtp_password = Config.get_string_value('smtp.password')
+    smtp_server = expandvars(Config.get_string_value('smtp.server'))
+    smtp_port = int(expandvars(Config.get_string_value('smtp.port')))
+    smtp_mail = expandvars(Config.get_string_value('smtp.mail'))
+    smtp_password = expandvars(Config.get_string_value('smtp.password'))
 
     # Create message container - the correct MIME type is multipart/alternative
     msg = MIMEMultipart('alternative')
