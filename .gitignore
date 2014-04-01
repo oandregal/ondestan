@@ -1,3 +1,7 @@
-# Ignore all compiled python files
+# Ignore all compiled python files and the log
 *.pyc
 *.log
+*.pyo
+*.egg*
+*.db*
+*.swp

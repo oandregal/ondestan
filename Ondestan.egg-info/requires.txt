@@ -1,6 +1,0 @@
-pyramid
-pyramid_debugtoolbar
-waitress
-geoalchemy2
-sqlalchemy
-psycopg2

@@ -1,0 +1,43 @@
+#!/bin/bash
+# Pyramid OpenShift post-deploy pre-start configuration
+
+export PYTHON=python-2.7
+export PATH=$PATH:~/$PYTHON/virtenv/bin/
+export PYTHON_EGG_CACHE=~/$PYTHON/virtenv/lib/python2.7/site-packages
+
+APP=ondestan
+
+source ~/$PYTHON/virtenv/bin/activate
+
+if [ -z $OPENSHIFT_DB_HOST ]
+then
+    echo 1>&2
+    echo 1>&2
+    echo "Could not find postgresql database.  Please run:" 1>&2
+    echo "rhc-ctl-app -a $OPENSHIFT_APP_NAME -e add-postgresql-9.2" 1>&2
+    echo 1>&2
+    echo 1>&2
+    exit 5
+fi
+
+cd $OPENSHIFT_REPO_DIR/wsgi/$APP
+
+sed -i 's/^db.host=.*/db.host='$OPENSHIFT_POSTGRESQL_DB_HOST'/' production.ini
+sed -i 's/^db.port=.*/db.port='$OPENSHIFT_POSTGRESQL_DB_PORT'/' production.ini
+sed -i 's/^db.dbname=.*/db.dbname='$OPENSHIFT_APP_NAME'/' production.ini
+sed -i 's/^db.user=.*/db.user='$OPENSHIFT_POSTGRESQL_DB_USERNAME'/' production.ini
+sed -i 's/^db.password=.*/db.password='$OPENSHIFT_POSTGRESQL_DB_PASSWORD'/' production.ini
+
+
+# Initialize our database
+if [ ! -e $OPENSHIFT_DATA_DIR/DB_INITIALIZED ]; then
+    echo "Initializing database"
+    paster setup-app production.ini
+    touch $OPENSHIFT_DATA_DIR/DB_INITIALIZED
+fi
+
+# Run the test suite automatically
+# At the moment failure does not prevent the code from getting deployed
+echo "Running the test suite"
+unset OPENSHIFT_APP_NAME
+python setup.py test
