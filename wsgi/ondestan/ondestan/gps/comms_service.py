@@ -8,8 +8,8 @@ from gps_update_error import GpsUpdateError
 from ondestan.services import animal_service
 from ondestan.entities.position import Position
 
-wgs84=pyproj.Proj("+init=EPSG:4326")
-epsg3857=pyproj.Proj("+init=EPSG:3857")
+wgs84 = pyproj.Proj("+init=EPSG:4326")
+epsg3857 = pyproj.Proj("+init=EPSG:3857")
 logger = logging.getLogger('ondestan')
 date_format = '%Y-%m-%dT%H:%M:%S'
 
@@ -22,6 +22,7 @@ base_data = {
     'coverage': None,
     'battery': None
 }
+
 
 def process_gps_updates(request):
     if len(request.body) != request.content_length:
@@ -57,19 +58,22 @@ def process_gps_params(params):
 
 def process_gps_data(data):
     try:
-        if data['mac'] == None or data['password'] == None or data['date'] == None:
+        if data['mac'] == None or data['password'] == None or data['date']\
+            == None or data['longitude'] == None or data['latitude'] == None:
             raise GpsUpdateError('Insufficient POST params', 400)
         position = Position()
-        if data['longitude'] != None and data['latitude'] != None:
-            try:
-                x, y = pyproj.transform(wgs84, epsg3857, float(data['longitude']), float(data['latitude']))
-                position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) + ')'
-            except RuntimeError as e:
-                raise GpsUpdateError(e.message, 400)
+        try:
+            x, y = pyproj.transform(wgs84, epsg3857,
+                float(data['longitude']), float(data['latitude']))
+            position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) +\
+            ')'
+        except RuntimeError as e:
+            raise GpsUpdateError(e.message, 400)
         animal = animal_service.get_animal(data['mac'], data['password'])
         if animal == None:
-            raise GpsUpdateError("No animal matches the passed credentials (mac: '"
-                                 + data['mac'] + "'; password: '" + data['password'] + "')", 403)
+            raise GpsUpdateError("No animal matches the passed credentials " +
+                                 "(mac: '" + data['mac'] + "'; password: '" +
+                                 data['password'] + "')", 403)
         position.animal_id = animal.id
         position.date = datetime.strptime(data['date'], date_format)
         if data['battery'] != None:
