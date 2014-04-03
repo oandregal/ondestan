@@ -22,6 +22,7 @@ from pyramid.i18n import (
     TranslationString as _
     )
 
+from ondestan.utils.html_container import HtmlContainer
 from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service
@@ -256,17 +257,29 @@ def order_state_history(request):
              permission='view')
 def viewer(request):
     is_admin = check_permission('admin', request)
-    n_new_orders = 0
     if is_admin:
-        n_new_orders = len(order_service.get_all_unprocessed_orders())
+        new_orders = order_service.get_all_unprocessed_orders()
     else:
-        n_new_orders = len(
-            order_service.get_all_unprocessed_orders(get_user_login(request))
-        )
+        new_orders = order_service.get_all_unprocessed_orders(
+                                        get_user_login(request))
+    orders_popover_content = ''
+    n_orders = {}
+    for order in new_orders:
+        state = order.states[0].state
+        if not state in n_orders:
+            n_orders[state] = 1
+        else:
+            n_orders[state] += 1
+    localizer = get_localizer(request)
+    for state in n_orders:
+        orders_popover_content += '<li>' + str(n_orders[state]) + ' en ' +\
+        localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
+        + '</li>'
     return dict(project=u'Ondestán',
                 can_edit=check_permission('edit', request),
                 is_admin=is_admin,
-                orders_msg=n_new_orders)
+                orders_msg=len(new_orders),
+                orders_popover_content=HtmlContainer(orders_popover_content))
 
 
 @view_config(route_name='default')
@@ -292,9 +305,11 @@ def json_animals(request):
                     geojson.append({
                         "type": "Feature",
                         "properties": {
+                            "id": animal.id,
                             "name": animal.name,
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
+                            "active": animal.active,
                             "outside": animal.positions[0].outside,
                             "popup": popup_str
                         },
@@ -326,6 +341,40 @@ def json_animals(request):
         else:
             logger.debug("Found no animals for user " + login)
     return geojson
+
+
+@view_config(route_name='json_inactive_animals', renderer='json',
+             permission='view')
+def json_inactive_animals(request):
+    json = []
+    if (check_permission('admin', request)):
+        animals = animal_service.get_inactive_animals()
+        if animals != None:
+            logger.debug("Found " + str(len(animals)) +
+                         " inactive animals for all users")
+            for animal in animals:
+                json.append({
+                    "id": animal.id,
+                    "name": animal.name,
+                    "owner": animal.user.login,
+                })
+        else:
+            logger.debug("Found no inactive animals for any user")
+    else:
+        login = get_user_login(request)
+        animals = animal_service.get_inactive_animals(login)
+        if animals != None:
+            logger.debug("Found " + str(len(animals)) +
+                         " inactive animals for user " + login)
+            for animal in animals:
+                json.append({
+                    "id": animal.id,
+                    "name": animal.name,
+                    "owner": animal.user.login,
+                })
+        else:
+            logger.debug("Found no inactive animals for user " + login)
+    return json
 
 
 @view_config(route_name='json_plots', renderer='json',

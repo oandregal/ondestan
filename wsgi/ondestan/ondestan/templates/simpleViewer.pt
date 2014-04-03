@@ -16,7 +16,9 @@
     <script type="text/javascript">
       window.contextVariables = {
 	      animals_json_url : "${request.route_url('json_animals')}",
-	      plots_json_url : "${request.route_url('json_plots')}"
+	      inactive_animals_json_url : "${request.route_url('json_inactive_animals')}",
+	      plots_json_url : "${request.route_url('json_plots')}",
+	      orders_popover_content : "${orders_popover_content}"
       };
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>

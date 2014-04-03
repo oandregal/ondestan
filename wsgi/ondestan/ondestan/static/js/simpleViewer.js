@@ -1,38 +1,67 @@
-$('#active_devices').popover({
-    html: true,
-    placement: 'bottom',
-    trigger: 'hover',
-    content: '<ul class="list-unstyled"><li>Pepa (80%)</li><li>Rubia (40%)</li></ul>',
-});
-
-$('#low_battery_devices').popover({
-    html: true,
-    placement: 'bottom',
-    trigger: 'hover',
-    content: '<ul class="list-unstyled"><li>Rubia (40%)</li></ul>',
-});
-
-$('#new_devices').popover({
-    html: true,
-    placement: 'bottom',
-    trigger: 'hover',
-    content: '<ul class="list-unstyled"><li>1 en proceso</li><li>1 en espera</li></ul>',
-});
+if (contextVariables.orders_popover_content != '') {
+	$('#new_devices').popover({
+	    html: true,
+	    placement: 'bottom',
+	    trigger: 'hover',
+	    content: '<ul class="list-unstyled">' + contextVariables.orders_popover_content + '</ul>',
+	});
+}
 
 $( function() {
 	var map = L.map('map').setView([42.25, -7.54], 13);
 	var active_devices = [];
+	var active_devices_popover_content = '';
+	var inactive_devices = [];
+	var inactive_devices_popover_content = '';
 	var low_battery_devices = [];
+	var low_battery_devices_popover_content = '';
+	
+	function load_inactive_animals() {
+		$.get( contextVariables.inactive_animals_json_url, function( data ) {
+			inactive_devices = data;
+			for (i = 0, len = data.length; i < len; ++i) {
+				if ((data[i].name != null) && (data[i].name != '')) {
+					name = data[i].name;
+				} else {
+					name = data[i].id;
+				}
+				inactive_devices_popover_content += '<li>' + name + '</li>';
+			}
+			$('#inactive_devices').text(inactive_devices.length);
+			if (inactive_devices_popover_content != '') {
+				$('#inactive_devices').popover({
+				    html: true,
+				    placement: 'bottom',
+				    trigger: 'hover',
+				    content: '<ul class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
+				});
+			}
+		});
+	}
 
-	function load_cows() {
+	function load_animals() {
 		layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
 			pointToLayer: function (feature, latlng) {
 				var color = "green";
 				var weight = 0;
-				active_devices.push(feature);
+				if (feature.properties.active) {
+					active_devices.push(feature);
+					if ((feature.properties.name != null) && (feature.properties.name != '')) {
+						name = feature.properties.name;
+					} else {
+						name = feature.properties.id;
+					}
+					active_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
+				}
 	            if (feature.properties.battery < 20.0) {
 	            	color = "red";
 	            	low_battery_devices.push(feature);
+					if ((feature.properties.name != null) && (feature.properties.name != '')) {
+						name = feature.properties.name;
+					} else {
+						name = feature.properties.id;
+					}
+					low_battery_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
 	            } else {
 		            if (feature.properties.battery < 50.0) {
 		            	color = "yellow";
@@ -50,13 +79,34 @@ $( function() {
                     fillOpacity: 1
                 });
             },
+            middleware: function(data) {
+            	load_inactive_animals();
+            	return data;
+            },
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(feature.properties.popup);
 	        }
 		});
 		layer.on('data:loaded', function(e) {
-			$('#low_battery_devices').text(low_battery_devices.length);
 			$('#active_devices').text(active_devices.length);
+			if (active_devices_popover_content != '') {
+				$('#active_devices').popover({
+				    html: true,
+				    placement: 'bottom',
+				    trigger: 'hover',
+				    content: '<ul class="list-unstyled">' + active_devices_popover_content + '</ul>',
+				});
+			}
+
+			$('#low_battery_devices').text(low_battery_devices.length);
+			if (low_battery_devices_popover_content != '') {
+				$('#low_battery_devices').popover({
+				    html: true,
+				    placement: 'bottom',
+				    trigger: 'hover',
+				    content: '<ul class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
+				});
+			}
 		});
 		layer.addTo(map);
 	}
@@ -66,14 +116,14 @@ $( function() {
             layer.bindPopup(feature.properties.popup);
         },
         middleware:function(data){
-            load_cows();
+            load_animals();
             return data;
         }
 	}).addTo(map);
 
-        L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	    maxZoom: 18,
 	    attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
+    }).addTo(map);
 
 });

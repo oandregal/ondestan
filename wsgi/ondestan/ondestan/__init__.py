@@ -44,6 +44,7 @@ def main(global_config, **settings):
 
     config.add_route('map', '/map')
     config.add_route('json_animals', '/json/animals.json')
+    config.add_route('json_inactive_animals', '/json/inactive_animals.json')
     config.add_route('json_plots', '/json/plots.json')
     config.scan()
 
