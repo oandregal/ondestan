@@ -27,25 +27,25 @@
   <tal:block metal:fill-slot="content">
 
     <div class="row data">
-      <div class="col-md-2 col-md-offset-1">
-        <h5 class="text-center text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
-        <p id="active_devices" class="text-center"/>
+      <div class="col-md-3 text-center">
+        <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
+        <p id="active_devices">-</p>
       </div>
-      <div class="col-md-2 col-md-offset-2">
-        <h5 class="text-center text-muted" i18n:translate="dashboard_out_of_battery">OUT OF BATTERY</h5>
-        <p id="low_battery_devices" class="text-center"/>
+      <div class="col-md-3 text-center">
+        <h5 class="text-muted" i18n:translate="dashboard_inactive">INACTIVE</h5>
+        <p id="inactive_devices">-</p>
       </div>
-      <div class="col-md-2 col-md-offset-2">
-        <h5 class="text-center text-muted" i18n:translate="dashboard_in_progress">IN PROGRESS</h5>
-        <p id="new_devices" class="text-center"><a href="${request.route_url('orders')}">${orders_msg}</a></p>
+      <div class="col-md-3 text-center">
+        <h5 class="text-muted" i18n:translate="dashboard_out_of_battery">OUT OF BATTERY</h5>
+        <p id="low_battery_devices">-</p>
+      </div>
+      <div class="col-md-3 text-center">
+        <h5 class="text-muted" i18n:translate="dashboard_in_progress">IN PROGRESS</h5>
+        <p id="new_devices"><a href="${request.route_url('orders')}">${orders_msg}</a></p>
       </div>
     </div>
 
-      <!-- <span class="col-md-6" tal:condition="user_id != None"> -->
-      <!--   <a href="${request.route_url('orders')}">${orders_msg}</a> -->
-      <!-- </span> -->
-
-    <div class="center-block" id="map" style="width: 600px; height: 400px"></div>
+    <div id="map" class="col-md-12" style="height: 600px"></div>
 
   </tal:block>
 
