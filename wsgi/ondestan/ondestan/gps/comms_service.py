@@ -61,6 +61,21 @@ def process_gps_data(data):
         if data['mac'] == None or data['password'] == None or data['date']\
             == None or data['longitude'] == None or data['latitude'] == None:
             raise GpsUpdateError('Insufficient POST params', 400)
+        animal = animal_service.get_animal(data['mac'], data['password'])
+        if animal == None:
+            raise GpsUpdateError("No animal matches the passed credentials " +
+                                 "(mac: '" + data['mac'] + "'; password: '" +
+                                 data['password'] + "')", 403)
+        if animal.active:
+            process_gps_data_active(data, animal)
+        else:
+            process_gps_data_inactive(data, animal)
+    except ValueError as e:
+        raise GpsUpdateError(e.message, 400)
+
+
+def process_gps_data_active(data, animal):
+    try:
         position = Position()
         try:
             x, y = pyproj.transform(wgs84, epsg3857,
@@ -69,11 +84,6 @@ def process_gps_data(data):
             ')'
         except RuntimeError as e:
             raise GpsUpdateError(e.message, 400)
-        animal = animal_service.get_animal(data['mac'], data['password'])
-        if animal == None:
-            raise GpsUpdateError("No animal matches the passed credentials " +
-                                 "(mac: '" + data['mac'] + "'; password: '" +
-                                 data['password'] + "')", 403)
         position.animal_id = animal.id
         position.date = datetime.strptime(data['date'], date_format)
         if data['battery'] != None:
@@ -83,5 +93,12 @@ def process_gps_data(data):
         position.save()
         logger.info('Processed update for mac: ' + animal.mac +
                 ' for date ' + position.date.strftime(date_format))
+    except ValueError as e:
+        raise GpsUpdateError(e.message, 400)
+
+
+def process_gps_data_inactive(data, animal):
+    try:
+        logger.info('Processed update for inactive mac: ' + animal.mac)
     except ValueError as e:
         raise GpsUpdateError(e.message, 400)

@@ -1,5 +1,5 @@
 # coding=UTF-8
-from sqlalchemy import Column, Integer, ForeignKey, String
+from sqlalchemy import Column, Integer, ForeignKey, String, Boolean
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -16,6 +16,7 @@ class Animal(Entity, Base):
     type = Column(String)
     mac = Column(String)
     password = Column(String)
+    active = Column(Boolean)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('animals',
                                                   order_by=name))

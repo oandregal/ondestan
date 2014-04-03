@@ -33,6 +33,7 @@ CREATE TABLE animals (
 	type VARCHAR DEFAULT 'cow',
 	mac VARCHAR UNIQUE,
 	password VARCHAR,
+	active BOOL NOT NULL DEFAULT FALSE,
 	user_id INTEGER REFERENCES users NOT NULL,
 	plot_id INTEGER REFERENCES plots
 );
