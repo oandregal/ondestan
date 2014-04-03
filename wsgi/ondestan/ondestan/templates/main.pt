@@ -23,7 +23,7 @@
 
   <?python from ondestan.security import get_user_login ?>
   <body tal:define="user_id get_user_login(request)">
-	
+
 	<div class="container">
 	    <div class="header">
 	      <ul tal:condition="user_id != None" class="nav navbar-nav pull-right">
@@ -37,7 +37,7 @@
 	      </ul>
 	      <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>
 	    </div>
-	    
+
 	    <tal:block metal:define-slot="content"/>
     </div>
     <div metal:define-slot="footer"></div>

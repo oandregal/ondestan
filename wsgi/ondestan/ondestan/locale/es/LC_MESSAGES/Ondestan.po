@@ -164,8 +164,8 @@ msgstr "Gracias. Tu cuenta ha sido activada y ya puedes entrar en la aplicación
 
 #. Default: Forgot your user/password?
 #: ondestan/templates/login.pt:25
-msgid "forgot_user_password"
-msgstr "¿Has olvidado tu usuario/password?"
+msgid "remember_user_password"
+msgstr "Recordar usuario/contraseña"
 
 #. Default: Log in
 #: ondestan/templates/login.pt:26
