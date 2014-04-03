@@ -90,9 +90,14 @@ def process_gps_data_active(data, animal):
             position.battery = float(data['battery'])
         if data['coverage'] != None:
             position.coverage = float(data['coverage'])
-        position.save()
-        logger.info('Processed update for mac: ' + animal.mac +
-                ' for date ' + position.date.strftime(date_format))
+        if animal_service.get_animal_position_by_date(position.animal_id,
+           position.date) == None:
+            position.save()
+            logger.info('Processed update for mac: ' + animal.mac +
+                    ' for date ' + position.date.strftime(date_format))
+        else:
+            logger.warn('Position already exists for animal: ' + str(animal.id)
+                    + ' for date ' + position.date.strftime(date_format))
     except ValueError as e:
         raise GpsUpdateError(e.message, 400)
 

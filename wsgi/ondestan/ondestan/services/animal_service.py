@@ -1,7 +1,7 @@
 # coding=UTF-8
 from sqlalchemy import and_
 
-from ondestan.entities import Animal
+from ondestan.entities import Animal, Position
 
 
 def get_all_animals(login=None):
@@ -15,5 +15,13 @@ def get_animal(mac, password):
     if mac != None and password != None:
         return Animal().queryObject().filter(and_(Animal.mac == mac,
                 Animal.password == password)).scalar()
+    else:
+        return None
+
+
+def get_animal_position_by_date(animal_id, date):
+    if animal_id != None and date != None:
+        return Position().queryObject().filter(and_(Position.animal_id\
+                == animal_id, Position.date == date)).scalar()
     else:
         return None

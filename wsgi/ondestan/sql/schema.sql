@@ -44,7 +44,8 @@ CREATE TABLE positions (
 	"date" TIMESTAMP NOT NULL,
 	battery REAL,
 	coverage REAL,
-	animal_id INTEGER REFERENCES animals NOT NULL
+	animal_id INTEGER REFERENCES animals NOT NULL,
+	UNIQUE ("date", animal_id)
 );
 SELECT AddGeometryColumn ('public', 'positions', 'geom', 3857, 'POINT', 2);
 
