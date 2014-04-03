@@ -14,7 +14,7 @@ def get_all_animals(login=None):
 def get_inactive_animals(login=None):
     if login != None:
         return Animal().queryObject().filter(and_(Animal.user.has(login=login),
-                                                  Animal.active == False)).all()
+                                                Animal.active == False)).all()
     else:
         return Animal().queryObject().filter(Animal.active == False).all()
 

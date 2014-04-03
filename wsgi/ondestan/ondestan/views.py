@@ -333,6 +333,7 @@ def json_animals(request):
                             "name": animal.name,
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
+                            "active": animal.active,
                             "outside": animal.positions[0].outside,
                             "popup": popup_str
                         },
