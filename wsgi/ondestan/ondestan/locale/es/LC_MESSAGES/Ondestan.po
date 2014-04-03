@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-03-27 17:37+0100\n"
+"POT-Creation-Date: 2014-04-03 13:45+0200\n"
 "PO-Revision-Date: 2014-03-27 17:38+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,14 +21,12 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:184
-#: ondestan/services/user_service.py:121
+#: ondestan/views.py:184 ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:199
-#: ondestan/services/user_service.py:125
+#: ondestan/views.py:199 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
@@ -38,12 +36,17 @@ msgid "plain_order_update_user_mail"
 msgstr ""
 "¡Hola ${name}!\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado ${state}\n"
-"Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes acceder a la url:\n"
+"Te seguiremos informando de futuros cambios en él . Para consultar tus "
+"pedidos también puedes acceder a la url:\n"
 "${url}"
 
 #: ondestan/services/order_service.py:72
 msgid "html_order_update_user_mail"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>  Tu pedido de ${units} aparato(s) ha pasado a estado ${state}<br/>Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.  </p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>  Tu pedido de "
+"${units} aparato(s) ha pasado a estado ${state}<br/>Te seguiremos "
+"informando de futuros cambios en él . Para consultar tus pedidos también "
+"puedes seguir <a href=\"${url}\">este enlace</a>.  </p></body></html>"
 
 #: ondestan/services/order_service.py:81
 msgid "subject_order_update_user_mail"
@@ -52,24 +55,26 @@ msgstr "Actualización de tu pedido en Ondestán"
 #: ondestan/services/order_service.py:96
 msgid "plain_new_order_admin_mail"
 msgstr ""
-"Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con nombre ${name}.\n"
+"Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con "
+"nombre ${name}.\n"
 "Listado de pedidos:\n"
 "${url}"
 
 #. Default: Awaiting
 #: ondestan/services/order_service.py:102
 #: ondestan/services/order_service.py:111
-#: ondestan/templates/orderStateHistory.pt:25
-#: ondestan/templates/orders.pt:74
-#: ondestan/templates/orders.pt:83
-#: ondestan/templates/orders.pt:131
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:74
+#: ondestan/templates/orders.pt:83 ondestan/templates/orders.pt:131
 #: ondestan/templates/orders.pt:140
 msgid "order_state_0"
 msgstr "En espera"
 
 #: ondestan/services/order_service.py:105
 msgid "html_new_order_admin_mail"
-msgstr "<html>    <head></head>    <body>    <p>Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con nombre ${name}.<br><a href=\"${url}\">Listado de pedidos</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>Hay un nuevo pedido de ${units} "
+"aparato(s) para el usuario ${login}, con nombre ${name}.<br><a "
+"href=\"${url}\">Listado de pedidos</a></p></body></html>"
 
 #: ondestan/services/order_service.py:114
 msgid "subject_new_order_admin_mail"
@@ -79,13 +84,20 @@ msgstr "Aviso de nuevo pedido en Ondestán"
 msgid "plain_password_reset_mail"
 msgstr ""
 "¡Hola ${name}!\n"
-"El password de tu cuenta asociada a este correo ha sido reseteado a ${password}\n"
-"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu password a uno nuevo lo antes posible.\n"
+"El password de tu cuenta asociada a este correo ha sido reseteado a "
+"${password}\n"
+"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu password a"
+" uno nuevo lo antes posible.\n"
 "${url}"
 
 #: ondestan/services/user_service.py:55
 msgid "html_password_reset_mail"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>   El password de tu cuenta asociada a este correo ha sido reseteado a ${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta en Ondestán</a> y cambies tu password a uno nuevo lo antes posible.    </p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>   El password "
+"de tu cuenta asociada a este correo ha sido reseteado a "
+"${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta "
+"en Ondestán</a> y cambies tu password a uno nuevo lo antes posible.    "
+"</p></body></html>"
 
 #: ondestan/services/user_service.py:58
 msgid "subject_password_reset_mail"
@@ -95,12 +107,19 @@ msgstr "Reseteo de password de Ondestán"
 msgid "plain_reminder_mail"
 msgstr ""
 "¡Hola ${name}!\n"
-"Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu password, pulsa en el siguiente enlace para resetearlo a uno nuevo que te comunicaremos por e-mail a esta misma dirección.\n"
+"Tu usuario asociado a este correo es ${login}, y en caso de que hayas "
+"olvidado tu password, pulsa en el siguiente enlace para resetearlo a uno "
+"nuevo que te comunicaremos por e-mail a esta misma dirección.\n"
 "${url}"
 
 #: ondestan/services/user_service.py:81
 msgid "html_reminder_mail"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu password, pulsa en <a href=\"${url}\">este enlace</a> para resetearlo a uno nuevo que te comunicaremos por e-mail a esta misma dirección.     </p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Tu usuario "
+"asociado a este correo es ${login}, y en caso de que hayas olvidado tu "
+"password, pulsa en <a href=\"${url}\">este enlace</a> para resetearlo a "
+"uno nuevo que te comunicaremos por e-mail a esta misma dirección.     "
+"</p></body></html>"
 
 #: ondestan/services/user_service.py:83
 msgid "subject_reminder_mail"
@@ -115,7 +134,10 @@ msgstr ""
 
 #: ondestan/services/user_service.py:133
 msgid "html_signup_mail"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Haz click en <a href=\"${url}\">este enlace</a> para activar tu cuenta de Ondestán.     </p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Haz click "
+"en <a href=\"${url}\">este enlace</a> para activar tu cuenta de Ondestán."
+"     </p></body></html>"
 
 #: ondestan/services/user_service.py:135
 msgid "subject_signup_mail"
@@ -151,16 +173,14 @@ msgid "log_in"
 msgstr "Entrar"
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:28
-#: ondestan/templates/signup.pt:32
+#: ondestan/templates/login.pt:28 ondestan/templates/signup.pt:32
 #: ondestan/templates/signup.pt:88
 msgid "sign_up"
 msgstr "Darse de alta"
 
 #. Default: Update profile
 #. Default: Update Profile
-#: ondestan/templates/main.pt:33
-#: ondestan/templates/updateProfile.pt:31
+#: ondestan/templates/main.pt:33 ondestan/templates/updateProfile.pt:31
 #: ondestan/templates/updateProfile.pt:78
 msgid "update_profile"
 msgstr "Actualizar perfil"
@@ -181,8 +201,7 @@ msgid "order_state_history"
 msgstr "Histórico de estados de pedido"
 
 #. Default: Order state
-#: ondestan/templates/orderStateHistory.pt:18
-#: ondestan/templates/orders.pt:56
+#: ondestan/templates/orderStateHistory.pt:18 ondestan/templates/orders.pt:56
 #: ondestan/templates/orders.pt:113
 msgid "order_state"
 msgstr "Estado del pedido"
@@ -193,28 +212,22 @@ msgid "change_date"
 msgstr "Fecha de cambio"
 
 #. Default: In process
-#: ondestan/templates/orderStateHistory.pt:26
-#: ondestan/templates/orders.pt:75
-#: ondestan/templates/orders.pt:84
-#: ondestan/templates/orders.pt:132
+#: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:75
+#: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:132
 #: ondestan/templates/orders.pt:141
 msgid "order_state_1"
 msgstr "En proceso"
 
 #. Default: Dispatched
-#: ondestan/templates/orderStateHistory.pt:27
-#: ondestan/templates/orders.pt:76
-#: ondestan/templates/orders.pt:85
-#: ondestan/templates/orders.pt:133
+#: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:85 ondestan/templates/orders.pt:133
 #: ondestan/templates/orders.pt:142
 msgid "order_state_2"
 msgstr "Enviado"
 
 #. Default: Activated
-#: ondestan/templates/orderStateHistory.pt:28
-#: ondestan/templates/orders.pt:77
-#: ondestan/templates/orders.pt:86
-#: ondestan/templates/orders.pt:134
+#: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:77
+#: ondestan/templates/orders.pt:86 ondestan/templates/orders.pt:134
 #: ondestan/templates/orders.pt:143
 msgid "order_state_3"
 msgstr "Activado"
@@ -225,8 +238,7 @@ msgid "orders_list_title"
 msgstr "Listado de pedidos - Ondestán"
 
 #. Default: This field is required.
-#: ondestan/templates/orders.pt:14
-#: ondestan/templates/signup.pt:14
+#: ondestan/templates/orders.pt:14 ondestan/templates/signup.pt:14
 #: ondestan/templates/updateProfile.pt:14
 msgid "required_field"
 msgstr "Este campo es obligatorio."
@@ -244,20 +256,20 @@ msgstr "Nuevo pedido"
 #. Default: Thanks for your order! Our team will get in touch with you soon.
 #: ondestan/templates/orders.pt:33
 msgid "new_order_instructions"
-msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en contacto contigo."
+msgstr ""
+"¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en "
+"contacto contigo."
 
 #. Default: Nr units
 #. Default: Number of units
-#: ondestan/templates/orders.pt:38
-#: ondestan/templates/orders.pt:57
+#: ondestan/templates/orders.pt:38 ondestan/templates/orders.pt:57
 #: ondestan/templates/orders.pt:114
 msgid "number_units"
 msgstr "Nº de unidades"
 
 #. Default: Send address
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:39
-#: ondestan/templates/orders.pt:58
+#: ondestan/templates/orders.pt:39 ondestan/templates/orders.pt:58
 #: ondestan/templates/orders.pt:115
 msgid "delivery_address"
 msgstr "Dirección de envío"
@@ -273,8 +285,7 @@ msgid "pending_orders_list"
 msgstr "Listado de pedidos pendientes"
 
 #. Default: User
-#: ondestan/templates/orders.pt:55
-#: ondestan/templates/orders.pt:112
+#: ondestan/templates/orders.pt:55 ondestan/templates/orders.pt:112
 msgid "order_user"
 msgstr "Usuario"
 
@@ -318,12 +329,13 @@ msgstr "Comprueba tu bandeja de entrada del e-mail para ver el recordatorio."
 #. you a reminder on your user/password.
 #: ondestan/templates/reminder.pt:24
 msgid "user_password_reminder_msg"
-msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un recordatorio para tu usuario/password."
+msgstr ""
+"Escribe debajo el e-mail con el cual te registraste y te enviaremos un "
+"recordatorio para tu usuario/password."
 
 #. Default: E-mail
 #. Default: Email
-#: ondestan/templates/reminder.pt:27
-#: ondestan/templates/signup.pt:61
+#: ondestan/templates/reminder.pt:27 ondestan/templates/signup.pt:61
 #: ondestan/templates/updateProfile.pt:55
 msgid "email"
 msgstr "E-mail"
@@ -339,26 +351,22 @@ msgid "sign_up_title"
 msgstr "Darse de alta - Ondestán"
 
 #. Default: Please enter at least {0} characters.
-#: ondestan/templates/signup.pt:15
-#: ondestan/templates/updateProfile.pt:15
+#: ondestan/templates/signup.pt:15 ondestan/templates/updateProfile.pt:15
 msgid "minlength_field"
 msgstr "Por favor, introduce al menos {0} caracteres."
 
 #. Default: Please enter a valid email address.
-#: ondestan/templates/signup.pt:16
-#: ondestan/templates/updateProfile.pt:16
+#: ondestan/templates/signup.pt:16 ondestan/templates/updateProfile.pt:16
 msgid "email_field"
 msgstr "Por favor, introduce una dirección de e-mail válida."
 
 #. Default: Please specify a valid mobile phone number.
-#: ondestan/templates/signup.pt:17
-#: ondestan/templates/updateProfile.pt:17
+#: ondestan/templates/signup.pt:17 ondestan/templates/updateProfile.pt:17
 msgid "mobile_field"
 msgstr "Por favor, introduce un número de telf. móvil válido."
 
 #. Default: Passwords don't match.
-#: ondestan/templates/signup.pt:18
-#: ondestan/templates/updateProfile.pt:18
+#: ondestan/templates/signup.pt:18 ondestan/templates/updateProfile.pt:18
 msgid "passwords_dont_match"
 msgstr "Los passwords no coinciden"
 
@@ -372,35 +380,32 @@ msgstr "Proceso de alta exitoso"
 #. account.<dynamic element>Welcome to Ondestán!!
 #: ondestan/templates/signup.pt:39
 msgid "sign_up_instructions"
-msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu nueva cuenta.<br/>¡¡Bienvenido a Ondestán!!"
+msgstr ""
+"Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu "
+"nueva cuenta.<br/>¡¡Bienvenido a Ondestán!!"
 
 #. Default: Login
-#: ondestan/templates/signup.pt:47
-#: ondestan/templates/updateProfile.pt:43
+#: ondestan/templates/signup.pt:47 ondestan/templates/updateProfile.pt:43
 msgid "username"
 msgstr "Usuario"
 
 #. Default: Name
-#: ondestan/templates/signup.pt:54
-#: ondestan/templates/updateProfile.pt:49
+#: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:49
 msgid "name"
 msgstr "Nombre completo"
 
 #. Default: Cell phone number
-#: ondestan/templates/signup.pt:68
-#: ondestan/templates/updateProfile.pt:61
+#: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:61
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
 
 #. Default: Password
-#: ondestan/templates/signup.pt:75
-#: ondestan/templates/updateProfile.pt:67
+#: ondestan/templates/signup.pt:75 ondestan/templates/updateProfile.pt:67
 msgid "password"
 msgstr "Password"
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:82
-#: ondestan/templates/updateProfile.pt:73
+#: ondestan/templates/signup.pt:82 ondestan/templates/updateProfile.pt:73
 msgid "retype_password"
 msgstr "Repite el password"
 
@@ -414,13 +419,18 @@ msgstr "Visor de prueba - Ondestán"
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
-#. Default: OUT OF BATTERY
+#. Default: INACTIVE
 #: ondestan/templates/simpleViewer.pt:35
+msgid "dashboard_inactive"
+msgstr "INACTIVOS"
+
+#. Default: OUT OF BATTERY
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_out_of_battery"
 msgstr "SIN BATERÍA"
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_in_progress"
 msgstr "EN TRÁMITE"
 

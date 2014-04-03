@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-03-27 17:37+0100\n"
+"POT-Creation-Date: 2014-04-03 13:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -367,13 +367,18 @@ msgstr ""
 msgid "dashboard_active"
 msgstr ""
 
-#. Default: OUT OF BATTERY
+#. Default: INACTIVE
 #: ondestan/templates/simpleViewer.pt:35
+msgid "dashboard_inactive"
+msgstr ""
+
+#. Default: OUT OF BATTERY
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_out_of_battery"
 msgstr ""
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_in_progress"
 msgstr ""
 
