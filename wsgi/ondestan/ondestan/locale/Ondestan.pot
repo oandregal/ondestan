@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-03 13:45+0200\n"
+"POT-Creation-Date: 2014-04-07 17:02+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:59
+#: ondestan/views.py:60
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:184 ondestan/services/user_service.py:121
+#: ondestan/views.py:185 ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:199 ondestan/services/user_service.py:125
+#: ondestan/views.py:200 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
 msgstr ""
@@ -118,20 +118,20 @@ msgstr ""
 msgid "account_activated"
 msgstr ""
 
-#. Default: Forgot your user/password?
-#: ondestan/templates/login.pt:25
-msgid "forgot_user_password"
-msgstr ""
-
 #. Default: Log in
-#: ondestan/templates/login.pt:26
+#: ondestan/templates/login.pt:25
 msgid "log_in"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:28 ondestan/templates/signup.pt:32
+#: ondestan/templates/login.pt:27 ondestan/templates/signup.pt:32
 #: ondestan/templates/signup.pt:88
 msgid "sign_up"
+msgstr ""
+
+#. Default: Remember user/pass
+#: ondestan/templates/login.pt:27
+msgid "remember_user_password"
 msgstr ""
 
 #. Default: Update profile
@@ -144,6 +144,42 @@ msgstr ""
 #. Default: Logout
 #: ondestan/templates/main.pt:34
 msgid "logout"
+msgstr ""
+
+#. Default: Order devices list - Ondestán
+#: ondestan/templates/orderDevices.pt:8
+msgid "order_devices_list_title"
+msgstr ""
+
+#. Default: New device
+#: ondestan/templates/orderDevices.pt:20
+msgid "new_device"
+msgstr ""
+
+#. Default: IMEI
+#: ondestan/templates/orderDevices.pt:26 ondestan/templates/orderDevices.pt:43
+msgid "imei"
+msgstr ""
+
+#. Default: Name
+#: ondestan/templates/orderDevices.pt:27 ondestan/templates/orderDevices.pt:44
+msgid "name"
+msgstr ""
+
+#. Default: Add device
+#: ondestan/templates/orderDevices.pt:28
+msgid "add_device"
+msgstr ""
+
+#. Default: Created devices
+#: ondestan/templates/orderDevices.pt:34
+msgid "created_devices_list"
+msgstr ""
+
+#. Default: ID
+#: ondestan/templates/orderDevices.pt:42 ondestan/templates/orders.pt:54
+#: ondestan/templates/orders.pt:111
+msgid "id"
 msgstr ""
 
 #. Default: Order state history - Ondestán
@@ -337,9 +373,9 @@ msgstr ""
 msgid "username"
 msgstr ""
 
-#. Default: Name
+#. Default: Full name
 #: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:49
-msgid "name"
+msgid "full_name"
 msgstr ""
 
 #. Default: Cell phone number
@@ -363,22 +399,22 @@ msgid "simple_viewer_title"
 msgstr ""
 
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:31
+#: ondestan/templates/simpleViewer.pt:33
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:35
+#: ondestan/templates/simpleViewer.pt:37
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: OUT OF BATTERY
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:41
 msgid "dashboard_out_of_battery"
 msgstr ""
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:45
 msgid "dashboard_in_progress"
 msgstr ""
 
