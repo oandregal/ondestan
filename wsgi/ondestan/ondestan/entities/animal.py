@@ -14,14 +14,16 @@ class Animal(Entity, Base):
     id = Column(Integer, primary_key=True)
     name = Column(String)
     type = Column(String)
-    mac = Column(String)
-    password = Column(String)
+    imei = Column(String)
     active = Column(Boolean)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('animals',
                                                   order_by=name))
     plot_id = Column(Integer, ForeignKey("plots.id"))
     plot = relationship("Plot", backref=backref('animals',
+                                                  order_by=name))
+    order_id = Column(Integer, ForeignKey("orders.id"))
+    order = relationship("Order", backref=backref('animals',
                                                   order_by=name))
 
     @hybrid_property

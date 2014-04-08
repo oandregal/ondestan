@@ -19,10 +19,16 @@ def get_inactive_animals(login=None):
         return Animal().queryObject().filter(Animal.active == False).all()
 
 
-def get_animal(mac, password):
-    if mac != None and password != None:
-        return Animal().queryObject().filter(and_(Animal.mac == mac,
-                Animal.password == password)).scalar()
+def get_animal(imei):
+    if imei != None:
+        return Animal().queryObject().filter(Animal.imei == imei).scalar()
+    else:
+        return None
+
+
+def get_animal_by_id(animal_id):
+    if animal_id != None:
+        return Animal().queryObject().filter(Animal.id == animal_id).scalar()
     else:
         return None
 
@@ -33,3 +39,22 @@ def get_animal_position_by_date(animal_id, date):
                 == animal_id, Position.date == date)).scalar()
     else:
         return None
+
+
+def create_animal(imei, order, name=''):
+    animal = Animal()
+    animal.active = False
+    animal.imei = imei
+    if (name != None and name != ''):
+        animal.name = name
+    if (order != None and order.user != None):
+        animal.order_id = order.id
+        animal.user_id = order.user.id
+        animal.save()
+
+
+def delete_animal_by_id(animal_id):
+    if animal_id != None:
+        animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
+        if (len(animal.positions) == 0):
+            animal.delete()

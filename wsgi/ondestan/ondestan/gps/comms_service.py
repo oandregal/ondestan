@@ -14,7 +14,7 @@ logger = logging.getLogger('ondestan')
 date_format = '%Y-%m-%dT%H:%M:%S'
 
 base_data = {
-    'mac': None,
+    'imei': None,
     'password': None,
     'date': None,
     'lat': None,
@@ -30,21 +30,21 @@ def process_gps_updates(request):
     if not 'content-md5' in request._headers:
         raise GpsUpdateError('No MD5', 400)
     expected_md5 = request._headers['content-md5']
-    if expected_md5 != md5.new(request.body).hexdigest():
+    if expected_md5 != md5.new(request.params.keys()[0]).hexdigest():
         raise GpsUpdateError('Wrong MD5', 400)
-    process_gps_params(request.params)
+    process_gps_params(request.params.keys()[0])
 
 
 def process_gps_params(params):
-    if 'mac' in params:
+    if 'imei' in params:
         data = base_data.copy()
         for key in params:
             data[key] = params[key]
         process_gps_data(data)
-    elif 'mac[0]' in params:
+    elif 'imei[0]' in params:
         i = 0
         subfix = '[' + str(i) + ']'
-        while 'mac' + subfix in params:
+        while 'imei' + subfix in params:
             data = base_data.copy()
             for key in params:
                 if key.endswith(subfix):
@@ -58,14 +58,13 @@ def process_gps_params(params):
 
 def process_gps_data(data):
     try:
-        if data['mac'] == None or data['password'] == None or data['date']\
-            == None or data['longitude'] == None or data['latitude'] == None:
+        if data['imei'] == None or data['date'] == None or data['longitude']\
+        == None or data['latitude'] == None:
             raise GpsUpdateError('Insufficient POST params', 400)
-        animal = animal_service.get_animal(data['mac'], data['password'])
+        animal = animal_service.get_animal(data['imei'])
         if animal == None:
             raise GpsUpdateError("No animal matches the passed credentials " +
-                                 "(mac: '" + data['mac'] + "'; password: '" +
-                                 data['password'] + "')", 403)
+                                 "(IMEI: '" + data['imei'] + "')", 403)
         if animal.active:
             process_gps_data_active(data, animal)
         else:
@@ -93,7 +92,7 @@ def process_gps_data_active(data, animal):
         if animal_service.get_animal_position_by_date(position.animal_id,
            position.date) == None:
             position.save()
-            logger.info('Processed update for mac: ' + animal.mac +
+            logger.info('Processed update for IMEI: ' + animal.imei +
                     ' for date ' + position.date.strftime(date_format))
         else:
             logger.warn('Position already exists for animal: ' + str(animal.id)
@@ -104,6 +103,6 @@ def process_gps_data_active(data, animal):
 
 def process_gps_data_inactive(data, animal):
     try:
-        logger.info('Processed update for inactive mac: ' + animal.mac)
+        logger.info('Processed update for inactive IMEI: ' + animal.imei)
     except ValueError as e:
         raise GpsUpdateError(e.message, 400)
