@@ -253,6 +253,35 @@ def order_state_history(request):
         )
 
 
+@view_config(route_name='order_devices',
+             renderer='templates/orderDevices.pt',
+             permission='admin')
+def order_devices(request):
+    order = order_service.get_order_by_id(
+                request.matchdict['order_id'])
+    if (order == None):
+        raise HTTPFound(request.route_url("orders"))
+    if 'form.submitted' in request.params:
+        if 'imei' in request.params:
+            imei = request.params['imei']
+            name = request.params['name']
+
+            animal_service.create_animal(imei, order, name)
+    return dict(
+        order=order
+        )
+
+
+@view_config(route_name='delete_device',
+             permission='admin')
+def delete_device(request):
+    order_id = animal_service.get_animal_by_id(request.matchdict['device_id'])\
+               .order_id
+    animal_service.delete_animal_by_id(
+                request.matchdict['device_id'])
+    raise HTTPFound(request.route_url("order_devices", order_id=order_id))
+
+
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):

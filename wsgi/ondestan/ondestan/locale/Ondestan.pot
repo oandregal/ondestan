@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-07 17:02+0200\n"
+"POT-Creation-Date: 2014-04-08 13:35+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,9 +49,9 @@ msgstr ""
 
 #. Default: Awaiting
 #: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
-#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:74
-#: ondestan/templates/orders.pt:83 ondestan/templates/orders.pt:131
-#: ondestan/templates/orders.pt:140
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:72
+#: ondestan/templates/orders.pt:81 ondestan/templates/orders.pt:132
+#: ondestan/templates/orders.pt:141
 msgid "order_state_0"
 msgstr ""
 
@@ -151,35 +151,57 @@ msgstr ""
 msgid "order_devices_list_title"
 msgstr ""
 
+#. Default: This field is required.
+#: ondestan/templates/orderDevices.pt:14 ondestan/templates/orders.pt:14
+#: ondestan/templates/signup.pt:14 ondestan/templates/updateProfile.pt:14
+msgid "required_field"
+msgstr ""
+
+#. Default: Order devices
+#: ondestan/templates/orderDevices.pt:22
+msgid "order_devices"
+msgstr ""
+
+#. Default: ID
+#: ondestan/templates/orderDevices.pt:22 ondestan/templates/orderDevices.pt:49
+#: ondestan/templates/orders.pt:54 ondestan/templates/orders.pt:114
+msgid "id"
+msgstr ""
+
 #. Default: New device
-#: ondestan/templates/orderDevices.pt:20
+#: ondestan/templates/orderDevices.pt:27
 msgid "new_device"
 msgstr ""
 
 #. Default: IMEI
-#: ondestan/templates/orderDevices.pt:26 ondestan/templates/orderDevices.pt:43
+#: ondestan/templates/orderDevices.pt:33 ondestan/templates/orderDevices.pt:50
 msgid "imei"
 msgstr ""
 
 #. Default: Name
-#: ondestan/templates/orderDevices.pt:27 ondestan/templates/orderDevices.pt:44
+#: ondestan/templates/orderDevices.pt:34 ondestan/templates/orderDevices.pt:51
 msgid "name"
 msgstr ""
 
 #. Default: Add device
-#: ondestan/templates/orderDevices.pt:28
+#: ondestan/templates/orderDevices.pt:35
 msgid "add_device"
 msgstr ""
 
 #. Default: Created devices
-#: ondestan/templates/orderDevices.pt:34
+#: ondestan/templates/orderDevices.pt:41
 msgid "created_devices_list"
 msgstr ""
 
-#. Default: ID
-#: ondestan/templates/orderDevices.pt:42 ondestan/templates/orders.pt:54
-#: ondestan/templates/orders.pt:111
-msgid "id"
+#. Default: Device cannot be deleted because it has already been activated and/or
+#. has stored positions.
+#: ondestan/templates/orderDevices.pt:58
+msgid "device_cannot_be_deleted_tooltip"
+msgstr ""
+
+#. Default: Delete
+#: ondestan/templates/orderDevices.pt:60
+msgid "delete"
 msgstr ""
 
 #. Default: Order state history - Ondestán
@@ -194,7 +216,7 @@ msgstr ""
 
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:18 ondestan/templates/orders.pt:56
-#: ondestan/templates/orders.pt:113
+#: ondestan/templates/orders.pt:116
 msgid "order_state"
 msgstr ""
 
@@ -204,35 +226,29 @@ msgid "change_date"
 msgstr ""
 
 #. Default: In process
-#: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:75
-#: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:132
-#: ondestan/templates/orders.pt:141
+#: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:73
+#: ondestan/templates/orders.pt:82 ondestan/templates/orders.pt:133
+#: ondestan/templates/orders.pt:142
 msgid "order_state_1"
 msgstr ""
 
 #. Default: Dispatched
-#: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:76
-#: ondestan/templates/orders.pt:85 ondestan/templates/orders.pt:133
-#: ondestan/templates/orders.pt:142
+#: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:74
+#: ondestan/templates/orders.pt:83 ondestan/templates/orders.pt:134
+#: ondestan/templates/orders.pt:143
 msgid "order_state_2"
 msgstr ""
 
 #. Default: Activated
-#: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:77
-#: ondestan/templates/orders.pt:86 ondestan/templates/orders.pt:134
-#: ondestan/templates/orders.pt:143
+#: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:75
+#: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:135
+#: ondestan/templates/orders.pt:144
 msgid "order_state_3"
 msgstr ""
 
 #. Default: Orders list - Ondestán
 #: ondestan/templates/orders.pt:8
 msgid "orders_list_title"
-msgstr ""
-
-#. Default: This field is required.
-#: ondestan/templates/orders.pt:14 ondestan/templates/signup.pt:14
-#: ondestan/templates/updateProfile.pt:14
-msgid "required_field"
 msgstr ""
 
 #. Default: Please enter only digits.
@@ -253,14 +269,14 @@ msgstr ""
 #. Default: Nr units
 #. Default: Number of units
 #: ondestan/templates/orders.pt:38 ondestan/templates/orders.pt:57
-#: ondestan/templates/orders.pt:114
+#: ondestan/templates/orders.pt:117
 msgid "number_units"
 msgstr ""
 
 #. Default: Send address
 #. Default: Delivery address
 #: ondestan/templates/orders.pt:39 ondestan/templates/orders.pt:58
-#: ondestan/templates/orders.pt:115
+#: ondestan/templates/orders.pt:118
 msgid "delivery_address"
 msgstr ""
 
@@ -275,12 +291,12 @@ msgid "pending_orders_list"
 msgstr ""
 
 #. Default: User
-#: ondestan/templates/orders.pt:55 ondestan/templates/orders.pt:112
+#: ondestan/templates/orders.pt:55 ondestan/templates/orders.pt:115
 msgid "order_user"
 msgstr ""
 
 #. Default: Processed orders list
-#: ondestan/templates/orders.pt:103
+#: ondestan/templates/orders.pt:106
 msgid "processed_orders_list"
 msgstr ""
 

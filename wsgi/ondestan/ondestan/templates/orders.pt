@@ -85,7 +85,12 @@
                   </tal:block>
                 </tal:block>
               </td>
-              <td tal:content="order.units"/>
+              <td>
+              	<tal:block tal:condition="is_admin">
+              		<a href="${request.route_url('order_devices', order_id=order.id)}" tal:content="order.units"/>
+              	</tal:block>
+              	<tal:block tal:condition="not is_admin" tal:content="order.units"/>
+              </td>
               <td tal:content="order.address"/>
             </tr>
           </tbody>
@@ -140,7 +145,12 @@
                   </tal:block>
                 </tal:block>
               </td>
-              <td tal:content="order.units"/>
+              <td>
+              	<tal:block tal:condition="is_admin">
+              		<a href="${request.route_url('order_devices', order_id=order.id)}" tal:content="order.units"/>
+              	</tal:block>
+              	<tal:block tal:condition="not is_admin" tal:content="order.units"/>
+              </td>
               <td tal:content="order.address"/>
             </tr>
           </tbody>
