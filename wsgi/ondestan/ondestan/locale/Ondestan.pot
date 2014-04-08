@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-08 13:35+0200\n"
+"POT-Creation-Date: 2014-04-08 17:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -193,8 +193,8 @@ msgstr ""
 msgid "created_devices_list"
 msgstr ""
 
-#. Default: Device cannot be deleted because it has already been activated and/or
-#. has stored positions.
+#. Default: Device cannot be deleted because it is currently active and/or has
+#. stored positions.
 #: ondestan/templates/orderDevices.pt:58
 msgid "device_cannot_be_deleted_tooltip"
 msgstr ""
@@ -414,23 +414,33 @@ msgstr ""
 msgid "simple_viewer_title"
 msgstr ""
 
+#. Default: Activate
+#: ondestan/templates/simpleViewer.pt:22
+msgid "activate"
+msgstr ""
+
+#. Default: Deactivate
+#: ondestan/templates/simpleViewer.pt:23
+msgid "deactivate"
+msgstr ""
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:33
+#: ondestan/templates/simpleViewer.pt:35
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:37
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: OUT OF BATTERY
-#: ondestan/templates/simpleViewer.pt:41
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_out_of_battery"
 msgstr ""
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:45
+#: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_in_progress"
 msgstr ""
 

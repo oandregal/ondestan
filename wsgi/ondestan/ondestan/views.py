@@ -272,14 +272,28 @@ def order_devices(request):
         )
 
 
-@view_config(route_name='delete_device',
-             permission='admin')
-def delete_device(request):
-    order_id = animal_service.get_animal_by_id(request.matchdict['device_id'])\
-               .order_id
-    animal_service.delete_animal_by_id(
-                request.matchdict['device_id'])
-    raise HTTPFound(request.route_url("order_devices", order_id=order_id))
+@view_config(route_name='activate_device',
+             permission='view')
+def activate_device(request):
+    if check_permission('admin', request):
+        animal_service.activate_animal_by_id(request.matchdict['device_id'])
+    else:
+        animal_service.activate_animal_by_id(request.matchdict['device_id'],
+                                             get_user_login(request))
+
+    raise HTTPFound(request.route_url("map"))
+
+
+@view_config(route_name='deactivate_device',
+             permission='view')
+def deactivate_device(request):
+    if check_permission('admin', request):
+        animal_service.deactivate_animal_by_id(request.matchdict['device_id'])
+    else:
+        animal_service.deactivate_animal_by_id(request.matchdict['device_id'],
+                                               get_user_login(request))
+
+    raise HTTPFound(request.route_url("map"))
 
 
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
@@ -359,6 +373,7 @@ def json_animals(request):
                     geojson.append({
                         "type": "Feature",
                         "properties": {
+                            "id": animal.id,
                             "name": animal.name,
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
@@ -422,6 +437,7 @@ def json_plots(request):
                 geojson.append({
                     "type": "Feature",
                     "properties": {
+                        "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
                         "popup": popup_str
@@ -440,6 +456,7 @@ def json_plots(request):
                 geojson.append({
                     "type": "Feature",
                     "properties": {
+                        "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
                         "popup": plot.name

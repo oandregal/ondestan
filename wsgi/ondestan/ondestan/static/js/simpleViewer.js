@@ -25,14 +25,16 @@ $( function() {
 				} else {
 					name = data[i].id;
 				}
-				inactive_devices_popover_content += '<li>' + name + '</li>';
+				url = contextVariables.activate_device_url.replace('__device_id__', data[i].id);
+				inactive_devices_popover_content += '<li><div class="left">' + name + '</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_msg + '</a></li>';
 			}
 			$('#inactive_devices').text(inactive_devices.length);
 			if (inactive_devices_popover_content != '') {
+				$('#inactive_devices').removeAttr('disabled');
 				$('#inactive_devices').popover({
 				    html: true,
 				    placement: 'bottom',
-				    trigger: 'hover',
+				    trigger: 'click',
 				    content: '<ul class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
 				});
 			}
@@ -51,7 +53,8 @@ $( function() {
 					} else {
 						name = feature.properties.id;
 					}
-					active_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
+					url = contextVariables.deactivate_device_url.replace('__device_id__', feature.properties.id);
+					active_devices_popover_content += '<li><div class="left">' + name + ' (' + feature.properties.battery + '%)</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_msg + '</a></li>';
 				}
 	            if (feature.properties.battery < 20.0) {
 	            	color = "red";
@@ -90,20 +93,22 @@ $( function() {
 		layer.on('data:loaded', function(e) {
 			$('#active_devices').text(active_devices.length);
 			if (active_devices_popover_content != '') {
+				$('#active_devices').removeAttr('disabled');
 				$('#active_devices').popover({
 				    html: true,
 				    placement: 'bottom',
-				    trigger: 'hover',
+				    trigger: 'click',
 				    content: '<ul class="list-unstyled">' + active_devices_popover_content + '</ul>',
 				});
 			}
 
 			$('#low_battery_devices').text(low_battery_devices.length);
 			if (low_battery_devices_popover_content != '') {
+				$('#low_battery_devices').removeAttr('disabled');
 				$('#low_battery_devices').popover({
 				    html: true,
 				    placement: 'bottom',
-				    trigger: 'hover',
+				    trigger: 'click',
 				    content: '<ul class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
 				});
 			}

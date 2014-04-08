@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-08 13:35+0200\n"
-"PO-Revision-Date: 2014-04-08 15:32+0100\n"
+"POT-Creation-Date: 2014-04-08 17:04+0200\n"
+"PO-Revision-Date: 2014-04-08 17:04+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -223,9 +223,8 @@ msgstr "Añadir dispositivo"
 msgid "created_devices_list"
 msgstr "Listado de dispositivos"
 
-#. Default: Device cannot be deleted because it has already been activated
-#. and/or
-#. has stored positions.
+#. Default: Device cannot be deleted because it is currently active and/or has
+#. stored positions.
 #: ondestan/templates/orderDevices.pt:58
 msgid "device_cannot_be_deleted_tooltip"
 msgstr "El dispositivo no se puede borrar porque se encuentra actualmente activo y/o tiene posiciones asociadas."
@@ -467,23 +466,34 @@ msgstr "Repite el password"
 msgid "simple_viewer_title"
 msgstr "Visor de prueba - Ondestán"
 
+#. Default: Activate
+#: ondestan/templates/simpleViewer.pt:22
+#| msgid "account_activated"
+msgid "activate"
+msgstr "Activar"
+
+#. Default: Deactivate
+#: ondestan/templates/simpleViewer.pt:23
+msgid "deactivate"
+msgstr "Desactivar"
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:33
+#: ondestan/templates/simpleViewer.pt:35
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:37
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
 #. Default: OUT OF BATTERY
-#: ondestan/templates/simpleViewer.pt:41
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_out_of_battery"
 msgstr "SIN BATERÍA"
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:45
+#: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_in_progress"
 msgstr "EN TRÁMITE"
 

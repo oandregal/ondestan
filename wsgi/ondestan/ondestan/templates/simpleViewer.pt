@@ -18,7 +18,11 @@
 	      animals_json_url : "${request.route_url('json_animals')}",
 	      inactive_animals_json_url : "${request.route_url('json_inactive_animals')}",
 	      plots_json_url : "${request.route_url('json_plots')}",
-	      orders_popover_content : "${orders_popover_content}"
+	      orders_popover_content : "${orders_popover_content}",
+	      activate_msg: "<tal:block i18n:translate="activate">Activate</tal:block>",
+	      deactivate_msg: "<tal:block i18n:translate="deactivate">Deactivate</tal:block>",
+	      activate_device_url : "${request.route_url('activate_device', device_id='__device_id__')}",
+	      deactivate_device_url : "${request.route_url('deactivate_device', device_id='__device_id__')}"
       };
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
@@ -31,15 +35,15 @@
     <div class="row data">
       <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
-        <p id="active_devices">-</p>
+        <p type="button" class="btn btn-default btn-sm" id="active_devices" disabled="disabled">-</p>
       </div>
       <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_inactive">INACTIVE</h5>
-        <p id="inactive_devices">-</p>
+        <p type="button" class="btn btn-default btn-sm" id="inactive_devices" disabled="disabled">-</p>
       </div>
       <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_out_of_battery">OUT OF BATTERY</h5>
-        <p id="low_battery_devices">-</p>
+        <p type="button" class="btn btn-default btn-sm" id="low_battery_devices" disabled="disabled">-</p>
       </div>
       <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_in_progress">IN PROGRESS</h5>

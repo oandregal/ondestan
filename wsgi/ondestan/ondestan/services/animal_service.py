@@ -58,3 +58,23 @@ def delete_animal_by_id(animal_id):
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
         if (len(animal.positions) == 0):
             animal.delete()
+
+
+def activate_animal_by_id(animal_id, login=None):
+    if animal_id != None:
+        animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
+        if (login != None):
+            if (animal.user.login != login):
+                return
+        animal.active = True
+        animal.update()
+
+
+def deactivate_animal_by_id(animal_id, login=None):
+    if animal_id != None:
+        animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
+        if (login != None):
+            if (animal.user.login != login):
+                return
+        animal.active = False
+        animal.update()

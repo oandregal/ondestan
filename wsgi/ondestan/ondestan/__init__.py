@@ -43,6 +43,9 @@ def main(global_config, **settings):
     config.add_route('order_state_history', '/orders/history/{order_id}')
     config.add_route('order_devices', '/orders/devices/{order_id}')
     config.add_route('delete_device', '/orders/devices/delete/{device_id}')
+    config.add_route('activate_device', '/orders/devices/activate/{device_id}')
+    config.add_route('deactivate_device', '/orders/devices/deactivate/' +
+                     '{device_id}')
 
     config.add_route('map', '/map')
     config.add_route('json_animals', '/json/animals.json')
