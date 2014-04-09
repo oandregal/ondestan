@@ -38,7 +38,7 @@
       <div class="bottom">
 
         <form id="form" class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
-          <input type="hidden" id="id" name="id" value="${id}"></input>
+          <input type="hidden" id="id" name="id" value="${id}"/>
           <div class="form-group">
             <label for="login" class="col-sm-4 control-label" i18n:translate="username">Login</label>
             <div class="col-sm-6">
