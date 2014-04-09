@@ -70,8 +70,8 @@ def login(request):
 
 @view_config(route_name='gps_update')
 def gps_update(request):
-    response = "buzzer=true\npost_frequency=1"
     if request.method == 'POST':
+        response = '0,0,0,0'
         try:
             comms_service.process_gps_updates(request)
             return HTTPOk(body_template=response)

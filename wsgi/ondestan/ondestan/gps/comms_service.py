@@ -1,65 +1,64 @@
 # coding=UTF-8
 import pyproj
 import logging
-import md5
+#import md5
 from datetime import datetime
 from gps_update_error import GpsUpdateError
 
 from ondestan.services import animal_service
 from ondestan.entities.position import Position
 
-wgs84 = pyproj.Proj("+init=EPSG:4326")
-epsg3857 = pyproj.Proj("+init=EPSG:3857")
+positions_divider = '|||'
+params_divider = ','
+params_positions = ['imei', 'date', 'lat', 'lon', 'inact', 'speed', 'battery']
+orig_proj = pyproj.Proj("+init=EPSG:4326")
+dest_proj = pyproj.Proj("+init=EPSG:3857")
 logger = logging.getLogger('ondestan')
-date_format = '%Y-%m-%dT%H:%M:%S'
+date_format = '%Y%m%d%H%M%S'
 
 base_data = {
     'imei': None,
-    'password': None,
     'date': None,
     'lat': None,
     'lon': None,
-    'coverage': None,
-    'battery': None
+    'inact': None,
+    'speed': None,
+    'battery': None,
+    'coverage': None
 }
 
 
 def process_gps_updates(request):
     if len(request.body) != request.content_length:
         raise GpsUpdateError('Wrong length', 400)
-    if not 'content-md5' in request._headers:
+    """if not 'content-md5' in request._headers:
         raise GpsUpdateError('No MD5', 400)
     expected_md5 = request._headers['content-md5']
     if expected_md5 != md5.new(request.params.keys()[0]).hexdigest():
-        raise GpsUpdateError('Wrong MD5', 400)
+        raise GpsUpdateError('Wrong MD5', 400)"""
     process_gps_params(request.params.keys()[0])
 
 
 def process_gps_params(params):
-    if 'imei' in params:
-        data = base_data.copy()
-        for key in params:
-            data[key] = params[key]
-        process_gps_data(data)
-    elif 'imei[0]' in params:
+    positions = params.split(positions_divider)
+    for position in positions:
+        params = position.split(params_divider)
         i = 0
-        subfix = '[' + str(i) + ']'
-        while 'imei' + subfix in params:
-            data = base_data.copy()
-            for key in params:
-                if key.endswith(subfix):
-                    data[key[:-len(subfix)]] = params[key]
-            process_gps_data(data)
+        data = base_data.copy()
+        if (len(params) != len(params_positions)):
+            raise GpsUpdateError('Insufficient POST params', 400)
+        for key in params_positions:
+            data[key] = params[i]
             i += 1
-            subfix = '[' + str(i) + ']'
-    else:
-        raise GpsUpdateError('Insufficient POST params', 400)
+        process_gps_data(data)
 
 
 def process_gps_data(data):
     try:
-        if data['imei'] == None or data['date'] == None or data['longitude']\
-        == None or data['latitude'] == None:
+        if data['imei'] == None or data['imei'] == '' or data['date'] == None\
+        or data['date'] == '' or data['lon'] == None or\
+        data['lon'] == '' or data['lat'] == None or\
+        data['lat'] == '':
             raise GpsUpdateError('Insufficient POST params', 400)
         animal = animal_service.get_animal(data['imei'])
         if animal == None:
@@ -77,8 +76,8 @@ def process_gps_data_active(data, animal):
     try:
         position = Position()
         try:
-            x, y = pyproj.transform(wgs84, epsg3857,
-                float(data['longitude']), float(data['latitude']))
+            x, y = pyproj.transform(orig_proj, dest_proj,
+                float(data['lon']), float(data['lat']))
             position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) +\
             ')'
         except RuntimeError as e:
