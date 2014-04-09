@@ -280,6 +280,16 @@ def order_devices(request):
         )
 
 
+@view_config(route_name='delete_device',
+             permission='admin')
+def delete_device(request):
+    order_id = animal_service.get_animal_by_id(request.matchdict['device_id'])\
+               .order_id
+    animal_service.delete_animal_by_id(
+                request.matchdict['device_id'])
+    raise HTTPFound(request.route_url("order_devices", order_id=order_id))  
+
+
 @view_config(route_name='activate_device',
              permission='view')
 def activate_device(request):
