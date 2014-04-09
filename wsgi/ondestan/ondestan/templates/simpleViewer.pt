@@ -47,7 +47,7 @@
         <h5 class="text-muted" i18n:translate="dashboard_low_battery">LOW BATTERY</h5>
         <p type="button" class="btn btn-default btn-sm" id="low_battery_devices" disabled="disabled">-</p>
       </div>
-      <div class="col-md-3 text-center">
+      <div class="col-md-3 text-center border-left">
         <h5 class="text-muted" i18n:translate="dashboard_orders_in_progress">ORDERS IN PROGRESS</h5>
         <p id="new_devices"><a href="${request.route_url('orders')}">${orders_msg}</a></p>
       </div>
