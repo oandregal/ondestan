@@ -333,7 +333,7 @@ def viewer(request):
             n_orders[state] += 1
     localizer = get_localizer(request)
     for state in n_orders:
-        orders_popover_content += '<li>' + str(n_orders[state]) + ' en ' +\
+        orders_popover_content += '<li>' + str(n_orders[state]) + ' en ' + \
         localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
         + '</li>'
     return dict(project=u'Ondestán',
@@ -359,7 +359,11 @@ def json_animals(request):
                          " animals for all users")
             for animal in animals:
                 if len(animal.positions) > 0:
-                    popup_str = animal.name + \
+                    if animal.name != None and len(animal.name) > 0:
+                        name = animal.name
+                    else:
+                        name = animal.imei
+                    popup_str = name + \
                                 " (" + str(animal.positions[0].battery)\
                                 + "%), property of " + animal.user.name + \
                                 " (" + animal.user.login + ")"
@@ -368,6 +372,7 @@ def json_animals(request):
                         "properties": {
                             "id": animal.id,
                             "name": animal.name,
+                            "imei": animal.imei,
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
@@ -382,11 +387,12 @@ def json_animals(request):
                         "properties": {
                             "id": animal.id,
                             "name": animal.name,
+                            "imei": animal.imei,
                             "battery": None,
                             "owner": animal.user.login,
                             "active": animal.active,
                             "outside": None,
-                            "popup": popup_str
+                            "popup": None
                         },
                         "geometry": None
                     })
@@ -400,13 +406,18 @@ def json_animals(request):
                          " animals for user " + login)
             for animal in animals:
                 if len(animal.positions) > 0:
-                    popup_str = animal.name + " (" + str(animal.positions[0].
+                    if animal.name != None and len(animal.name) > 0:
+                        name = animal.name
+                    else:
+                        name = animal.imei
+                    popup_str = name + " (" + str(animal.positions[0].
                         battery) + "%)"
                     geojson.append({
                         "type": "Feature",
                         "properties": {
                             "id": animal.id,
                             "name": animal.name,
+                            "imei": animal.imei,
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
@@ -421,6 +432,7 @@ def json_animals(request):
                         "properties": {
                             "id": animal.id,
                             "name": animal.name,
+                            "imei": animal.imei,
                             "battery": None,
                             "owner": animal.user.login,
                             "active": animal.active,
