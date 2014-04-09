@@ -58,13 +58,15 @@ $( function() {
 				}
 	            if (feature.properties.battery < 20.0) {
 	            	color = "red";
-	            	low_battery_devices.push(feature);
-					if ((feature.properties.name != null) && (feature.properties.name != '')) {
-						name = feature.properties.name;
-					} else {
-						name = feature.properties.id;
-					}
-					low_battery_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
+	            	if (feature.properties.active) {
+		            	low_battery_devices.push(feature);
+						if ((feature.properties.name != null) && (feature.properties.name != '')) {
+							name = feature.properties.name;
+						} else {
+							name = feature.properties.id;
+						}
+						low_battery_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
+	            	}
 	            } else {
 		            if (feature.properties.battery < 50.0) {
 		            	color = "yellow";
