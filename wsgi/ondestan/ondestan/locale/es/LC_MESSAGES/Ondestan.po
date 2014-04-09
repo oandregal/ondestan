@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-09 16:44+0200\n"
-"PO-Revision-Date: 2014-04-09 16:51+0100\n"
+"POT-Creation-Date: 2014-04-09 19:12+0200\n"
+"PO-Revision-Date: 2014-04-09 19:12+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -479,7 +479,7 @@ msgstr "Desactivar"
 #. Default: Activate
 #: ondestan/templates/simpleViewer.pt:27
 msgid "edit_animal_name_tooltip"
-msgstr "Editar el nombre."
+msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: ACTIVE
 #: ondestan/templates/simpleViewer.pt:39
@@ -491,15 +491,16 @@ msgstr "ACTIVOS"
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
-#. Default: OUT OF BATTERY
+#. Default: LOW BATTERY
 #: ondestan/templates/simpleViewer.pt:47
-msgid "dashboard_out_of_battery"
-msgstr "SIN BATERÍA"
+msgid "dashboard_low_battery"
+msgstr "BATERÍA BAJA"
 
-#. Default: IN PROGRESS
+#. Default: ORDERS IN PROGRESS
 #: ondestan/templates/simpleViewer.pt:51
-msgid "dashboard_in_progress"
-msgstr "EN TRÁMITE"
+#| msgid "dashboard_in_progress"
+msgid "dashboard_orders_in_progress"
+msgstr "PEDIDOS EN TRÁMITE"
 
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
