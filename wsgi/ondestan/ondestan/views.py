@@ -358,6 +358,20 @@ def json_animals(request):
                         },
                         "geometry": eval(animal.positions[0].geojson)
                     })
+                else:
+                    geojson.append({
+                        "type": "Feature",
+                        "properties": {
+                            "id": animal.id,
+                            "name": animal.name,
+                            "battery": None,
+                            "owner": animal.user.login,
+                            "active": animal.active,
+                            "outside": None,
+                            "popup": popup_str
+                        },
+                        "geometry": None
+                    })
         else:
             logger.debug("Found no animals for any user")
     else:
@@ -382,6 +396,20 @@ def json_animals(request):
                             "popup": popup_str
                         },
                         "geometry": eval(animal.positions[0].geojson)
+                    })
+                else:
+                    geojson.append({
+                        "type": "Feature",
+                        "properties": {
+                            "id": animal.id,
+                            "name": animal.name,
+                            "battery": None,
+                            "owner": animal.user.login,
+                            "active": animal.active,
+                            "outside": None,
+                            "popup": popup_str
+                        },
+                        "geometry": None
                     })
         else:
             logger.debug("Found no animals for user " + login)

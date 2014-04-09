@@ -15,47 +15,12 @@ $( function() {
 	var inactive_devices_popover_content = '';
 	var low_battery_devices = [];
 	var low_battery_devices_popover_content = '';
-	
-	function load_inactive_animals() {
-		$.get( contextVariables.inactive_animals_json_url, function( data ) {
-			inactive_devices = data;
-			for (i = 0, len = data.length; i < len; ++i) {
-				if ((data[i].name != null) && (data[i].name != '')) {
-					name = data[i].name;
-				} else {
-					name = data[i].id;
-				}
-				url = contextVariables.activate_device_url.replace('__device_id__', data[i].id);
-				inactive_devices_popover_content += '<li><div class="left">' + name + '</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_msg + '</a></li>';
-			}
-			$('#inactive_devices').text(inactive_devices.length);
-			if (inactive_devices_popover_content != '') {
-				$('#inactive_devices').removeAttr('disabled');
-				$('#inactive_devices').popover({
-				    html: true,
-				    placement: 'bottom',
-				    trigger: 'click',
-				    content: '<ul class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
-				});
-			}
-		});
-	}
 
 	function load_animals() {
 		layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
 			pointToLayer: function (feature, latlng) {
 				var color = "green";
 				var weight = 0;
-				if (feature.properties.active) {
-					active_devices.push(feature);
-					if ((feature.properties.name != null) && (feature.properties.name != '')) {
-						name = feature.properties.name;
-					} else {
-						name = feature.properties.id;
-					}
-					url = contextVariables.deactivate_device_url.replace('__device_id__', feature.properties.id);
-					active_devices_popover_content += '<li><div class="left">' + name + ' (' + feature.properties.battery + '%)</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_msg + '</a></li>';
-				}
 	            if (feature.properties.battery < 20.0) {
 	            	color = "red";
 	            	if (feature.properties.active) {
@@ -85,7 +50,32 @@ $( function() {
                 });
             },
             middleware: function(data) {
-            	load_inactive_animals();
+            	for (i = 0, len = data.length; i < len; i++) {
+    				if (data[i].properties.active) {
+    					active_devices.push(data[i]);
+    					if ((data[i].properties.name != null) && (data[i].properties.name != '')) {
+    						name = data[i].properties.name;
+    					} else {
+    						name = data[i].properties.id;
+    					}
+    					if ((data[i].properties.battery != null) && (data[i].properties.battery != '')) {
+    						battery = data[i].properties.battery + '%';
+    					} else {
+    						battery = '---';
+    					}
+    					url = contextVariables.deactivate_device_url.replace('__device_id__', data[i].properties.id);
+    					active_devices_popover_content += '<li><div class="left">' + name + ' (' + battery + ')</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_msg + '</a></li>';
+    				} else {
+    					inactive_devices.push(data[i]);
+    					if ((data[i].properties.name != null) && (data[i].properties.name != '')) {
+    						name = data[i].properties.name;
+    					} else {
+    						name = data[i].properties.id;
+    					}
+    					url = contextVariables.activate_device_url.replace('__device_id__', data[i].properties.id);
+    					inactive_devices_popover_content += '<li><div class="left">' + name + '</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_msg + '</a></li>';
+    				}
+            	}
             	return data;
             },
             onEachFeature: function (feature, layer) {
@@ -101,6 +91,17 @@ $( function() {
 				    placement: 'bottom',
 				    trigger: 'click',
 				    content: '<ul class="list-unstyled">' + active_devices_popover_content + '</ul>',
+				});
+			}
+
+			$('#inactive_devices').text(inactive_devices.length);
+			if (inactive_devices_popover_content != '') {
+				$('#inactive_devices').removeAttr('disabled');
+				$('#inactive_devices').popover({
+				    html: true,
+				    placement: 'bottom',
+				    trigger: 'click',
+				    content: '<ul class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
 				});
 			}
 

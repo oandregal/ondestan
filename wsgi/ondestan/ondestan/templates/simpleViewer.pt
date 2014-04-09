@@ -16,7 +16,6 @@
     <script type="text/javascript">
       window.contextVariables = {
 	      animals_json_url : "${request.route_url('json_animals')}",
-	      inactive_animals_json_url : "${request.route_url('json_inactive_animals')}",
 	      plots_json_url : "${request.route_url('json_plots')}",
 	      orders_popover_content : "${orders_popover_content}",
 	      activate_msg: "<tal:block i18n:translate="activate">Activate</tal:block>",
