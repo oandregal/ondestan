@@ -74,8 +74,8 @@ INSERT INTO roles(name) VALUES
 
 INSERT INTO users(login, password, role_id, name, email, phone, activated) VALUES
 ('admin', 'c7ad44cbad762a5da0a452f9e854fdc1e0e7a52a38015f23f3eab1d80b931dd472634dfac71cd34ebc35d16ab7fb8a90c81f975113d6c7538dc69dd8de9077ec', 3, 'Admin', 'admin@admin.admin', '111111111', True),
-('manager', '5fc2ca6f085919f2f77626f1e280fab9cc92b4edc9edc53ac6eee3f72c5c508e869ee9d67a96d63986d14c1c2b82c35ff5f31494bea831015424f59c96fff664', 2, 'Manager', 'manager@manager.manager', '222222222', True),
-('viewer', 'a8d73e712d9257a75bce54754e0ad3074894e29feeec1709f9e47b761dc38d7ab923a62f1b4883a19569115e8b68850cc86b27fda81a0daa5305538e4d910168', 1, 'Viewer', 'viewer@viewer.viewer', '333333333', True);
+('pepe', '974f3036f39834082e23f4d70f1feba9d4805b3ee2cedb50b6f1f49f72dd83616c2155f9ff6e08a1cefbf9e6ba2f4aaa45233c8c066a65e002924abfa51590c4', 2, 'Pepe', 'pepe@pepe.pepe', '222222222', True),
+('juan', '673d4b1d7deabe33d0037d3a39927ec3d56397a45f5eb9ac0512c75808c293f0d022e04adc5555cd3644d18cf79e9e9ebaea7e3a8e96744b0c49312a7f8af398', 1, 'Juan', 'juan@juan.juan', '333333333', True);
 
 INSERT INTO orders(units, address, user_id) VALUES
 (1, 'Avenida Menor - Ourense', 2),
