@@ -46,6 +46,7 @@ def main(global_config, **settings):
     config.add_route('activate_device', '/orders/devices/activate/{device_id}')
     config.add_route('deactivate_device', '/orders/devices/deactivate/' +
                      '{device_id}')
+    config.add_route('update_animal_name', '/animals/update_name')
 
     config.add_route('map', '/map')
     config.add_route('json_animals', '/json/animals.json')

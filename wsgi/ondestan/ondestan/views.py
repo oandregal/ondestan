@@ -108,6 +108,14 @@ def signup(request):
         )
 
 
+@view_config(route_name='update_animal_name', renderer='templates/signup.pt')
+def update_animal_name(request):
+    if 'name' in request.params and 'id' in request.params:
+        animal_service.update_animal_name(request.params['id'],
+                                          request.params['name'])
+    return HTTPFound(location=request.route_url('map'))
+
+
 @view_config(route_name='update_profile',
              renderer='templates/updateProfile.pt',
              permission='view')
@@ -407,7 +415,7 @@ def json_animals(request):
                             "owner": animal.user.login,
                             "active": animal.active,
                             "outside": None,
-                            "popup": popup_str
+                            "popup": None
                         },
                         "geometry": None
                     })

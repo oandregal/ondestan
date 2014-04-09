@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-08 17:04+0200\n"
-"PO-Revision-Date: 2014-04-08 17:04+0100\n"
+"POT-Creation-Date: 2014-04-09 16:44+0200\n"
+"PO-Revision-Date: 2014-04-09 16:51+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -21,13 +21,13 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:185
+#: ondestan/views.py:193
 #: ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:200
+#: ondestan/views.py:208
 #: ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
@@ -467,33 +467,37 @@ msgid "simple_viewer_title"
 msgstr "Visor de prueba - Ondestán"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:22
-#| msgid "account_activated"
+#: ondestan/templates/simpleViewer.pt:21
 msgid "activate"
 msgstr "Activar"
 
 #. Default: Deactivate
-#: ondestan/templates/simpleViewer.pt:23
+#: ondestan/templates/simpleViewer.pt:22
 msgid "deactivate"
 msgstr "Desactivar"
 
+#. Default: Activate
+#: ondestan/templates/simpleViewer.pt:27
+msgid "edit_animal_name_tooltip"
+msgstr "Editar el nombre."
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:35
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
 #. Default: OUT OF BATTERY
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_out_of_battery"
 msgstr "SIN BATERÍA"
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:47
+#: ondestan/templates/simpleViewer.pt:51
 msgid "dashboard_in_progress"
 msgstr "EN TRÁMITE"
 

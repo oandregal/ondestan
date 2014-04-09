@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-08 17:04+0200\n"
+"POT-Creation-Date: 2014-04-09 16:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:185 ondestan/services/user_service.py:121
+#: ondestan/views.py:193 ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:200 ondestan/services/user_service.py:125
+#: ondestan/views.py:208 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
 msgstr ""
@@ -415,32 +415,37 @@ msgid "simple_viewer_title"
 msgstr ""
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:22
+#: ondestan/templates/simpleViewer.pt:21
 msgid "activate"
 msgstr ""
 
 #. Default: Deactivate
-#: ondestan/templates/simpleViewer.pt:23
+#: ondestan/templates/simpleViewer.pt:22
 msgid "deactivate"
 msgstr ""
 
+#. Default: Activate
+#: ondestan/templates/simpleViewer.pt:27
+msgid "edit_animal_name_tooltip"
+msgstr ""
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:35
+#: ondestan/templates/simpleViewer.pt:39
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:43
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: OUT OF BATTERY
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_out_of_battery"
 msgstr ""
 
 #. Default: IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:47
+#: ondestan/templates/simpleViewer.pt:51
 msgid "dashboard_in_progress"
 msgstr ""
 

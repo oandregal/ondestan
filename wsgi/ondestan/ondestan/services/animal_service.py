@@ -6,9 +6,10 @@ from ondestan.entities import Animal, Position
 
 def get_all_animals(login=None):
     if login != None:
-        return Animal().queryObject().filter(Animal.user.has(login=login)).all()
+        return Animal().queryObject().filter(Animal.user.has(login=login)).\
+            order_by(Animal.name).all()
     else:
-        return Animal().queryObject().all()
+        return Animal().queryObject().order_by(Animal.name).all()
 
 
 def get_inactive_animals(login=None):
@@ -51,6 +52,14 @@ def create_animal(imei, order, name=''):
         animal.order_id = order.id
         animal.user_id = order.user.id
         animal.save()
+
+
+def update_animal_name(animal_id, name):
+    if (id != None and name != None):
+        animal = get_animal_by_id(animal_id)
+        if (animal != None):
+            animal.name = name
+            animal.update()
 
 
 def delete_animal_by_id(animal_id):

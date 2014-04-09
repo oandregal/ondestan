@@ -64,7 +64,11 @@ $( function() {
     						battery = '---';
     					}
     					url = contextVariables.deactivate_device_url.replace('__device_id__', data[i].properties.id);
-    					active_devices_popover_content += '<li><div class="left">' + name + ' (' + battery + ')</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_msg + '</a></li>';
+    					active_devices_popover_content += '<li><img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#active_name_' + data[i].properties.id + '\').toggle(0);$(\'#active_form_' + data[i].properties.id + '\').toggle(0);"/>' + 
+    					'<div class="left" id="active_name_' + data[i].properties.id + '">' + name + ' (' + battery + ')</div>' + 
+    					'<form role="form" id="active_form_' + data[i].properties.id + '" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;"><input type="hidden" id="id" name="id" value="' + data[i].properties.id + '"/>' + 
+    					'<input class="form-control" type="text" id="name" name="name" value="' + data[i].properties.name + '" />' + '</form>' + 
+    					'<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_device_msg + '</a></li>';
     				} else {
     					inactive_devices.push(data[i]);
     					if ((data[i].properties.name != null) && (data[i].properties.name != '')) {
@@ -73,7 +77,11 @@ $( function() {
     						name = data[i].properties.id;
     					}
     					url = contextVariables.activate_device_url.replace('__device_id__', data[i].properties.id);
-    					inactive_devices_popover_content += '<li><div class="left">' + name + '</div><a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_msg + '</a></li>';
+    					inactive_devices_popover_content += '<li><img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#inactive_name_' + data[i].properties.id + '\').toggle(0);$(\'#inactive_form_' + data[i].properties.id + '\').toggle(0);"/>' + 
+    					'<div class="left" id="inactive_name_' + data[i].properties.id + '">' + name + '</div>' + 
+    					'<form role="form" id="inactive_form_' + data[i].properties.id + '" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;"><input type="hidden" id="id" name="id" value="' + data[i].properties.id + '"/>' + 
+    					'<input class="form-control" type="text" id="name" name="name" value="' + data[i].properties.name + '" />' + '</form>' + 
+    					'<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_device_msg + '</a></li>';
     				}
             	}
             	return data;
@@ -90,8 +98,11 @@ $( function() {
 				    html: true,
 				    placement: 'bottom',
 				    trigger: 'click',
-				    content: '<ul class="list-unstyled">' + active_devices_popover_content + '</ul>',
+				    content: '<ul id="active_devices_popover_content" class="list-unstyled">' + active_devices_popover_content + '</ul>',
 				});
+				$('#active_devices').on('shown.bs.popover', function () {
+					$( "#active_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
+				})
 			}
 
 			$('#inactive_devices').text(inactive_devices.length);
@@ -101,8 +112,11 @@ $( function() {
 				    html: true,
 				    placement: 'bottom',
 				    trigger: 'click',
-				    content: '<ul class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
+				    content: '<ul id="inactive_devices_popover_content" class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
 				});
+				$('#inactive_devices').on('shown.bs.popover', function () {
+					$( "#inactive_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
+				})
 			}
 
 			$('#low_battery_devices').text(low_battery_devices.length);
