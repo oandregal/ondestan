@@ -23,7 +23,6 @@
 	      activate_device_url : "${request.route_url('activate_device', device_id='__device_id__')}",
 	      deactivate_device_url : "${request.route_url('deactivate_device', device_id='__device_id__')}",
 	      update_animal_name_url : "${request.route_url('update_animal_name')}",
-	      edit_image_url : "${request.static_url('ondestan:static/images/edit.gif')}",
 	      edit_image_tooltip : "<tal:block i18n:translate="edit_animal_name_tooltip">Activate</tal:block>"
       };
     </script>
@@ -45,15 +44,15 @@
 
       <div class="col-md-4 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
-        <p type="button" class="btn btn-default btn-sm" id="active_devices" disabled="disabled">-</p>
+        <a href="#" id="active_devices" disabled="disabled">-</a>
       </div>
       <div class="col-md-4 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_inactive">INACTIVE</h5>
-        <p type="button" class="btn btn-default btn-sm" id="inactive_devices" disabled="disabled">-</p>
+        <a href="#" id="inactive_devices" disabled="disabled">-</a>
       </div>
       <div class="col-md-4 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_low_battery">LOW BATTERY</h5>
-        <p type="button" class="btn btn-default btn-sm" id="low_battery_devices" disabled="disabled">-</p>
+        <a href="#" id="low_battery_devices" disabled="disabled">-</a>
       </div>
     </div>
 

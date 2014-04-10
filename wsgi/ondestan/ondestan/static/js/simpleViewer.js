@@ -57,21 +57,20 @@ $( function() {
         var name = device.name || device.imei;
         var battery = device.battery || '---';
         var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
-        var elID = 'name_' + device.id;
-        var formID = 'form_' + device.id;
-        var msg = contextVariables.deactivate_device_msg;
+        var toggleClass = 'toggle_' + device.id;
+        var activation = contextVariables.deactivate_device_msg;
         if(!device.active){
             url = contextVariables.activate_device_url.replace('__device_id__', device.id);
-            msg = contextVariables.activate_device_msg;
+            activation = contextVariables.activate_device_msg;
         }
-        return '<li>' +
-            '<img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#'+elID+'\').toggle(0);$(\'#'+formID+'\').toggle(0);"/>' +
-            '<div class="left" id="'+elID+'">' + name + ' (' + battery + ' %)</div>' +
-            '<form role="form" id="'+formID+'" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
+        return '<li class="list-group-item">' +
+            ' <a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs '+toggleClass+'">' + activation + '</a> ' +
+            '<span class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</span>'+
+            '<span class="badge '+toggleClass+'">' + battery + '%</span>' +
+            '<form role="form" class="form-inline '+toggleClass+'" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
             '<input type="hidden" id="id" name="id" value="' + device.id + '"/>' +
             '<input class="form-control" type="text" id="name" name="name" value="' + name + '" />' +
             '</form>' +
-            '<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + msg + '</a>';
             '</li>';
     }
 
@@ -112,7 +111,7 @@ $( function() {
                     html: true,
                     placement: 'bottom',
                     trigger: 'click',
-                    content: '<ul id="active_devices_popover_content" class="list-unstyled">' + active_devices_popover_content + '</ul>',
+                    content: '<ul id="active_devices_popover_content" class="list-group">' + active_devices_popover_content + '</ul>',
                 });
                 $('#active_devices').on('shown.bs.popover', function () {
                     $( "#active_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
