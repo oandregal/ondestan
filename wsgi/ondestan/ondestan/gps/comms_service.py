@@ -40,14 +40,14 @@ def process_gps_updates(request):
 
 def process_gps_params(params):
     positions = params.split(positions_divider)
-    # Temporarily return OK if the petition has too many params
-    if len(positions) > len(params_positions):
-        logger.warning('Received a GPS update with too many params...')
-        return
     for position in positions:
         params = position.split(params_divider)
         i = 0
         data = base_data.copy()
+        # Temporarily return OK if the petition has too many params
+        if len(params) > len(params_positions):
+            logger.warning('Received a GPS update with too many params...')
+            continue
         if (len(params) != len(params_positions)):
             raise GpsUpdateError('Insufficient POST params', 400)
         for key in params_positions:
