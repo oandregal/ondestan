@@ -10,7 +10,8 @@ from ondestan.entities.position import Position
 
 positions_divider = '|||'
 params_divider = ','
-params_positions = ['imei', 'date', 'lat', 'lon', 'inact', 'speed', 'battery']
+params_positions = ['imei', 'hor_prec', 'date', 'lat', 'inact', 'vert_prec',
+                    'speed', 'lon', 'battery', 'direction']
 orig_proj = pyproj.Proj("+init=EPSG:4326")
 dest_proj = pyproj.Proj("+init=EPSG:3857")
 logger = logging.getLogger('ondestan')
@@ -21,8 +22,6 @@ base_data = {
     'date': None,
     'lat': None,
     'lon': None,
-    'inact': None,
-    'speed': None,
     'battery': None,
     'coverage': None
 }
@@ -52,7 +51,8 @@ def process_gps_params(params):
         if (len(params) != len(params_positions)):
             raise GpsUpdateError('Insufficient POST params', 400)
         for key in params_positions:
-            data[key] = params[i]
+            if key in data:
+                data[key] = params[i]
             i += 1
         process_gps_data(data)
 
