@@ -6,3 +6,4 @@ from ondestan.entities.role import Role
 from ondestan.entities.user import User
 from ondestan.entities.order import Order
 from ondestan.entities.order_state import Order_state
+from ondestan.entities.notification import Notification

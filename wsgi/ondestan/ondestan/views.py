@@ -22,12 +22,12 @@ from pyramid.i18n import (
     TranslationString as _
     )
 
-from ondestan.utils.html_container import HtmlContainer
 from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, animal_service, user_service
-from ondestan.services import order_service
+from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
+from ondestan.utils import HtmlContainer
 
 import logging
 
@@ -337,7 +337,9 @@ def viewer(request):
         can_edit=check_permission('edit', request),
         is_admin=is_admin,
         orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content)
+        orders_popover_content=HtmlContainer(orders_popover_content),
+        notifications=notification_service.\
+            get_new_notifications_for_logged_user(request)
     )
 
 

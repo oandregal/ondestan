@@ -33,8 +33,16 @@
   </tal:block>
 
   <tal:block metal:fill-slot="content">
+  
 
     <div class="row data">
+
+	  	<div tal:condition="len(notifications) > 0" class="alerts-panel">
+	  		<tal:block tal:repeat="notification notifications">
+	  			${notification.get_html(request)}
+	  		</tal:block>
+		</div>
+
       <div class="col-md-4 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
         <p type="button" class="btn btn-default btn-sm" id="active_devices" disabled="disabled">-</p>

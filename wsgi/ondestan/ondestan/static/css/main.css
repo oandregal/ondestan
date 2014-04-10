@@ -52,3 +52,9 @@
 .popover-content li>.right {
 	float: right;
 }
+
+.alerts-panel {
+	max-height: 100px;
+	overflow-y: auto;
+	padding: 5px;
+}

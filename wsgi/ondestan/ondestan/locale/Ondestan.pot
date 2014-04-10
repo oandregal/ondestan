@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-10 14:27+0200\n"
+"POT-Creation-Date: 2014-04-10 17:25+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 #: ondestan/views.py:214 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
+msgstr ""
+
+#: ondestan/services/notification_service.py:14
+msgid "no_orders_notification"
 msgstr ""
 
 #: ondestan/services/order_service.py:63
@@ -63,43 +67,43 @@ msgstr ""
 msgid "subject_new_order_admin_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:52
+#: ondestan/services/user_service.py:53
 msgid "plain_password_reset_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:55
+#: ondestan/services/user_service.py:56
 msgid "html_password_reset_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:58
+#: ondestan/services/user_service.py:59
 msgid "subject_password_reset_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:79
+#: ondestan/services/user_service.py:80
 msgid "plain_reminder_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:81
+#: ondestan/services/user_service.py:82
 msgid "html_reminder_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:83
+#: ondestan/services/user_service.py:84
 msgid "subject_reminder_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:131
+#: ondestan/services/user_service.py:140
 msgid "plain_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:133
+#: ondestan/services/user_service.py:142
 msgid "html_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:135
+#: ondestan/services/user_service.py:144
 msgid "subject_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:179
+#: ondestan/services/user_service.py:188
 msgid "user_profile_updated"
 msgstr ""
 
@@ -435,17 +439,17 @@ msgid "edit_animal_name_tooltip"
 msgstr ""
 
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:46
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:50
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:47
+#: ondestan/templates/simpleViewer.pt:54
 msgid "dashboard_low_battery"
 msgstr ""
 
