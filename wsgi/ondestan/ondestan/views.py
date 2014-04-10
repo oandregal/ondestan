@@ -266,10 +266,16 @@ def orders(request):
 def order_state_history(request):
     order = order_service.get_order_by_id(
                 request.matchdict['order_id'])
+    is_admin = check_permission('admin', request)
+    new_orders = get_orders(request, is_admin)
+    orders_popover_content = get_orders_popover(request, new_orders)
+
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     return dict(
         order=order,
+        orders_msg=len(new_orders),
+        orders_popover_content=HtmlContainer(orders_popover_content)
         )
 
 
@@ -287,8 +293,15 @@ def order_devices(request):
             name = request.params['name']
 
             animal_service.create_animal(imei, order, name)
+
+    is_admin = check_permission('admin', request)
+    new_orders = get_orders(request, is_admin)
+    orders_popover_content = get_orders_popover(request, new_orders)
+
     return dict(
-        order=order
+        order=order,
+        orders_msg=len(new_orders),
+        orders_popover_content=HtmlContainer(orders_popover_content)
         )
 
 
