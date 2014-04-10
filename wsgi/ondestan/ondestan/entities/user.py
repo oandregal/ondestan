@@ -1,5 +1,5 @@
 # coding=UTF-8
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
 
 from ondestan.entities import Entity
@@ -17,5 +17,6 @@ class User(Entity, Base):
     phone = Column(String)
     password = Column(String)
     activated = Column(Boolean)
+    last_login = Column(Date)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role")

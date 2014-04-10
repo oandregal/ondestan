@@ -1,4 +1,5 @@
 # coding=UTF-8
+from datetime import datetime
 from hashlib import sha512
 
 from pyramid.i18n import (
@@ -90,7 +91,15 @@ def remind_user(request):
 
 
 def check_login_request(request):
-    return check_user_pass(request.params['login'], request.params['password'])
+    login = request.params['login']
+    if (check_user_pass(login, request.params['password'])):
+        user = get_user_by_login(login)
+        user.last_login = datetime.now()
+        user.update()
+        logger.debug('Updating last_login for user ' + login)
+        return True
+    else:
+        return False
 
 
 def check_user_pass(login, password):
