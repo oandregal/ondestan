@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-10 17:25+0200\n"
+"POT-Creation-Date: 2014-04-10 18:26+0200\n"
 "PO-Revision-Date: 2014-04-10 17:47+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
@@ -21,20 +21,21 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:199 ondestan/services/user_service.py:121
-#: ondestan/services/user_service.py:165
+#: ondestan/views.py:199 ondestan/services/user_service.py:130
+#: ondestan/services/user_service.py:174
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:214 ondestan/services/user_service.py:125
-#: ondestan/services/user_service.py:169
+#: ondestan/views.py:214 ondestan/services/user_service.py:134
+#: ondestan/services/user_service.py:178
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/services/notification_service.py:14
-#| msgid "new_order_instructions"
+#: ondestan/services/notification_service.py:17
 msgid "no_orders_notification"
-msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
+msgstr ""
+"<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de "
+"dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
 #: ondestan/services/order_service.py:63
 msgid "plain_order_update_user_mail"
@@ -186,7 +187,7 @@ msgstr "Recordar usuario/contraseña"
 #. Default: ORDERS IN PROGRESS
 #: ondestan/templates/main.pt:30
 msgid "dashboard_orders_in_progress"
-msgstr "Pedidos"
+msgstr "pedidos"
 
 #. Default: Update profile
 #. Default: Update Profile
@@ -489,7 +490,7 @@ msgid "deactivate"
 msgstr "Desactivar"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:27
+#: ondestan/templates/simpleViewer.pt:26
 msgid "edit_animal_name_tooltip"
 msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
@@ -542,3 +543,4 @@ msgstr "Actualizar perfil - Ondestán"
 
 #~ msgid "new_order_header"
 #~ msgstr "Pedido nuevo"
+

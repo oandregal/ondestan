@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-10 17:25+0200\n"
+"POT-Creation-Date: 2014-04-10 18:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,17 +21,17 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:199 ondestan/services/user_service.py:121
-#: ondestan/services/user_service.py:165
+#: ondestan/views.py:199 ondestan/services/user_service.py:130
+#: ondestan/services/user_service.py:174
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:214 ondestan/services/user_service.py:125
-#: ondestan/services/user_service.py:169
+#: ondestan/views.py:214 ondestan/services/user_service.py:134
+#: ondestan/services/user_service.py:178
 msgid "email_already_use"
 msgstr ""
 
-#: ondestan/services/notification_service.py:14
+#: ondestan/services/notification_service.py:17
 msgid "no_orders_notification"
 msgstr ""
 
@@ -434,7 +434,7 @@ msgid "deactivate"
 msgstr ""
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:27
+#: ondestan/templates/simpleViewer.pt:26
 msgid "edit_animal_name_tooltip"
 msgstr ""
 
