@@ -15,77 +15,85 @@ $( function() {
     var inactive_devices_popover_content = '';
     var low_battery_devices = [];
     var low_battery_devices_popover_content = '';
+    var batteryStandards = {
+        level: {
+            low: 20.0,
+            middle: 50.0,
+        },
+        color: {
+            high:     "green",
+            middle:   "yellow",
+            low:      "red",
+            inactive: "grey",
+        },
+        opacity:{
+            active: 1,
+            inactive: 0.3,
+        }
+    };
+
+    function getStyleForDevice(feature){
+        var device = feature.properties;
+        var optionsDefault = {
+            stroke: false,
+            radius: 8,
+            fillColor: batteryStandards.color.high,
+            fillOpacity: batteryStandards.opacity.active
+        };
+        var opt = optionsDefault;
+
+        if(!device.active){
+            opt.fillColor = batteryStandards.color.inactive;
+            opt.fillOpacity = batteryStandards.opacity.inactive;
+        } else if (device.battery < batteryStandards.level.low) {
+            opt.fillColor = batteryStandards.color.low;
+        } else if (device.battery < batteryStandards.level.middle) {
+            opt.fillColor = batteryStandards.color.middle;
+        }
+        return opt;
+    };
+
+    function addToPopover(device){
+        var name = device.name || device.imei;
+        var battery = device.battery || '---';
+        var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
+        var elID = 'name_' + device.id;
+        var formID = 'form_' + device.id;
+        var msg = contextVariables.deactivate_device_msg;
+        if(!device.active){
+            url = contextVariables.activate_device_url.replace('__device_id__', device.id);
+            msg = contextVariables.activate_device_msg;
+        }
+        return '<li>' +
+            '<img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#'+elID+'\').toggle(0);$(\'#'+formID+'\').toggle(0);"/>' +
+            '<div class="left" id="'+elID+'">' + name + ' (' + battery + ' %)</div>' +
+            '<form role="form" id="'+formID+'" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
+            '<input type="hidden" id="id" name="id" value="' + device.id + '"/>' +
+            '<input class="form-control" type="text" id="name" name="name" value="' + name + '" />' +
+            '</form>' +
+            '<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + msg + '</a>';
+            '</li>';
+    }
 
     function load_animals() {
+
         layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
             pointToLayer: function (feature, latlng) {
-                var color = "green";
-                var weight = 0;
-                if (feature.properties.battery < 20.0) {
-                    color = "red";
-                    if (feature.properties.active) {
-                        low_battery_devices.push(feature);
-                        if ((feature.properties.name != null) && (feature.properties.name != '')) {
-                            name = feature.properties.name;
-                        } else {
-                            name = feature.properties.id;
-                        }
-                        low_battery_devices_popover_content += '<li>' + name + ' (' + feature.properties.battery + '%)</li>';
-                    }
-                } else {
-                    if (feature.properties.battery < 50.0) {
-                        color = "yellow";
-                    }
-                }
-                if (feature.properties.outside) {
-                    weight = 2;
-                }
-                return new L.CircleMarker(latlng, {
-                    radius: 8,
-                    fillColor: color,
-                    color: "black",
-                    weight: weight,
-                    opacity: 1,
-                    fillOpacity: 1
-                });
+                return new L.CircleMarker(latlng, getStyleForDevice(feature));
             },
             middleware: function(data) {
                 for (i = 0, len = data.length; i < len; i++) {
-                    if (data[i].properties.active) {
+                    var device = data[i].properties;
+                    if (device.active) {
+                        if (device.battery < batteryStandards.level.low) {
+                            low_battery_devices.push(data[i]);
+                            low_battery_devices_popover_content += addToPopover(device);
+                        }
                         active_devices.push(data[i]);
-                        if ((data[i].properties.name != null) && (data[i].properties.name != '')) {
-                            name = data[i].properties.name;
-                            form_name_value = name;
-                        } else {
-                            name = data[i].properties.imei;
-                            form_name_value = '';
-                        }
-                        if ((data[i].properties.battery != null) && (data[i].properties.battery != '')) {
-                            battery = data[i].properties.battery + '%';
-                        } else {
-                            battery = '---';
-                        }
-                        url = contextVariables.deactivate_device_url.replace('__device_id__', data[i].properties.id);
-                        active_devices_popover_content += '<li><img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#active_name_' + data[i].properties.id + '\').toggle(0);$(\'#active_form_' + data[i].properties.id + '\').toggle(0);"/>' +
-                            '<div class="left" id="active_name_' + data[i].properties.id + '">' + name + ' (' + battery + ')</div>' +
-                            '<form role="form" id="active_form_' + data[i].properties.id + '" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;"><input type="hidden" id="id" name="id" value="' + data[i].properties.id + '"/>' +
-                            '<input class="form-control" type="text" id="name" name="name" value="' + form_name_value + '" />' + '</form>' +
-                            '<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.deactivate_device_msg + '</a></li>';
+                        active_devices_popover_content += addToPopover(device);
                     } else {
                         inactive_devices.push(data[i]);
-                        if ((data[i].properties.name != null) && (data[i].properties.name != '')) {
-                            name = data[i].properties.name;
-                            form_name_value = name;
-                        } else {
-                            name = data[i].properties.imei;
-                            form_name_value = '';
-                        }
-                        url = contextVariables.activate_device_url.replace('__device_id__', data[i].properties.id);
-                        inactive_devices_popover_content += '<li><img data-toggle="tooltip" data-placement="left" title="' + contextVariables.edit_image_tooltip + '" class="left" src="' + contextVariables.edit_image_url + '" onclick="$(\'#inactive_name_' + data[i].properties.id + '\').toggle(0);$(\'#inactive_form_' + data[i].properties.id + '\').toggle(0);"/>' +
-                            '<div class="left" id="inactive_name_' + data[i].properties.id + '">' + name + '</div>' +
-                            '<form role="form" id="inactive_form_' + data[i].properties.id + '" class="form-inline left" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;"><input type="hidden" id="id" name="id" value="' + data[i].properties.id + '"/>' +
-                            '<input class="form-control" type="text" id="name" name="name" value="' + form_name_value + '" />' + '</form>' +
-                            '<a href="' + url + '" type="button" class="btn btn-default btn-xs right">' + contextVariables.activate_device_msg + '</a></li>';
+                        inactive_devices_popover_content += addToPopover(device);
                     }
                 }
                 return data;
@@ -94,7 +102,9 @@ $( function() {
                 layer.bindPopup(feature.properties.popup);
             }
         });
+
         layer.on('data:loaded', function(e) {
+
             $('#active_devices').text(active_devices.length);
             if (active_devices_popover_content != '') {
                 $('#active_devices').removeAttr('disabled');
@@ -133,7 +143,9 @@ $( function() {
                     content: '<ul class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
                 });
             }
+
         });
+
         layer.addTo(map);
     }
 
