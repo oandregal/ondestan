@@ -21,13 +21,13 @@
     <tal:block metal:define-slot="styles"/>
   </head>
 
-  <?python from ondestan.security import get_user_login ?>
-  <body tal:define="user_id get_user_login(request)">
+  <?python from ondestan.security import get_user_login; from ondestan.services.order_service import get_orders, get_orders_popover ?>
+  <body tal:define="user_id get_user_login(request); orders get_orders(request); orders_popover_content get_orders_popover(request, orders)">
 
 	<div class="container">
 	    <div class="header">
 	      <ul tal:condition="user_id != None" class="nav navbar-nav pull-right">
-                <li id="new_devices"><a href="${request.route_url('orders')}">${orders_msg} <span i18n:translate="dashboard_orders_in_progress">ORDERS IN PROGRESS</span></a></li>
+                <li id="new_devices"><a href="${request.route_url('orders')}">${len(orders)} <span i18n:translate="orders_menu">order(s)</span></a></li>
 	        <li class="dropdown active">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
@@ -45,6 +45,11 @@
     <div>
     	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     	<script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+	    <script type="text/javascript">
+	      window.contextVariables = {};
+		  window.contextVariables.orders_popover_content = "${orders_popover_content}";
+	    </script>
+    	<script type="text/javascript" src="${request.static_url('ondestan:static/js/main.js')}"></script>
     	<tal:block metal:define-slot="javascript"/>
     </div>
   </body>

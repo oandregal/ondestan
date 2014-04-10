@@ -10,11 +10,38 @@ import datetime
 import logging
 
 from ondestan.entities import Order, User, Order_state
-from ondestan.security import get_user_login
-from ondestan.utils import Db, Config
+from ondestan.security import get_user_login, check_permission
+from ondestan.utils import Db, Config, HtmlContainer
 from ondestan.utils.comms import send_mail
 
 logger = logging.getLogger('ondestan')
+
+
+def get_orders(request):
+    is_admin = check_permission('admin', request)
+    if is_admin:
+        new_orders = get_all_unprocessed_orders()
+    else:
+        new_orders = get_all_unprocessed_orders(
+            get_user_login(request))
+    return new_orders
+
+
+def get_orders_popover(request, new_orders):
+    popover_content = ''
+    n_orders = {}
+    for order in new_orders:
+        state = order.states[0].state
+        if not state in n_orders:
+            n_orders[state] = 1
+        else:
+            n_orders[state] += 1
+    localizer = get_localizer(request)
+    for state in n_orders:
+        popover_content += '<li>' + str(n_orders[state]) + ' en ' + \
+        localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
+        + '</li>'
+    return HtmlContainer(popover_content)
 
 
 def create_order(request):

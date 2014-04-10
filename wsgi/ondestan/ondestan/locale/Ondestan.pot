@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-10 18:26+0200\n"
+"POT-Creation-Date: 2014-04-10 21:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:60
+#: ondestan/views.py:59
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:199 ondestan/services/user_service.py:130
+#: ondestan/views.py:192 ondestan/services/user_service.py:130
 #: ondestan/services/user_service.py:174
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:214 ondestan/services/user_service.py:134
+#: ondestan/views.py:207 ondestan/services/user_service.py:134
 #: ondestan/services/user_service.py:178
 msgid "email_already_use"
 msgstr ""
@@ -35,35 +35,35 @@ msgstr ""
 msgid "no_orders_notification"
 msgstr ""
 
-#: ondestan/services/order_service.py:63
+#: ondestan/services/order_service.py:90
 msgid "plain_order_update_user_mail"
 msgstr ""
 
-#: ondestan/services/order_service.py:72
+#: ondestan/services/order_service.py:99
 msgid "html_order_update_user_mail"
 msgstr ""
 
-#: ondestan/services/order_service.py:81
+#: ondestan/services/order_service.py:108
 msgid "subject_order_update_user_mail"
 msgstr ""
 
-#: ondestan/services/order_service.py:96
+#: ondestan/services/order_service.py:123
 msgid "plain_new_order_admin_mail"
 msgstr ""
 
 #. Default: Awaiting
-#: ondestan/services/order_service.py:102 ondestan/services/order_service.py:111
+#: ondestan/services/order_service.py:129 ondestan/services/order_service.py:138
 #: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:72
 #: ondestan/templates/orders.pt:81 ondestan/templates/orders.pt:132
 #: ondestan/templates/orders.pt:141
 msgid "order_state_0"
 msgstr ""
 
-#: ondestan/services/order_service.py:105
+#: ondestan/services/order_service.py:132
 msgid "html_new_order_admin_mail"
 msgstr ""
 
-#: ondestan/services/order_service.py:114
+#: ondestan/services/order_service.py:141
 msgid "subject_new_order_admin_mail"
 msgstr ""
 
@@ -138,9 +138,9 @@ msgstr ""
 msgid "remember_user_password"
 msgstr ""
 
-#. Default: ORDERS IN PROGRESS
+#. Default: orders
 #: ondestan/templates/main.pt:30
-msgid "dashboard_orders_in_progress"
+msgid "orders_menu"
 msgstr ""
 
 #. Default: Update profile

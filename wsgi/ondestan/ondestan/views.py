@@ -27,7 +27,6 @@ from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
-from ondestan.utils import HtmlContainer
 
 import logging
 
@@ -137,19 +136,13 @@ def update_profile(request):
         email = user.email
         phone = user.phone
 
-    is_admin = check_permission('admin', request)
-    new_orders = get_orders(request, is_admin)
-    orders_popover_content = get_orders_popover(request, new_orders)
-
     return dict(
         message=message,
         id=user_id,
         login=login,
         name=name,
         email=email,
-        phone=phone,
-        orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content),
+        phone=phone
         )
 
 
@@ -245,8 +238,6 @@ def orders(request):
             get_user_login(request))
 
     is_admin = check_permission('admin', request)
-    new_orders = get_orders(request, is_admin)
-    orders_popover_content = get_orders_popover(request, new_orders)
 
     return dict(
         message=message,
@@ -254,9 +245,7 @@ def orders(request):
         address=address,
         pending_orders=pending_orders,
         processed_orders=processed_orders,
-        is_admin=is_admin,
-        orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content)
+        is_admin=is_admin
         )
 
 
@@ -266,16 +255,11 @@ def orders(request):
 def order_state_history(request):
     order = order_service.get_order_by_id(
                 request.matchdict['order_id'])
-    is_admin = check_permission('admin', request)
-    new_orders = get_orders(request, is_admin)
-    orders_popover_content = get_orders_popover(request, new_orders)
 
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     return dict(
-        order=order,
-        orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content)
+        order=order
         )
 
 
@@ -294,14 +278,8 @@ def order_devices(request):
 
             animal_service.create_animal(imei, order, name)
 
-    is_admin = check_permission('admin', request)
-    new_orders = get_orders(request, is_admin)
-    orders_popover_content = get_orders_popover(request, new_orders)
-
     return dict(
         order=order,
-        orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content)
         )
 
 
@@ -343,14 +321,10 @@ def deactivate_device(request):
              permission='view')
 def viewer(request):
     is_admin = check_permission('admin', request)
-    new_orders = get_orders(request, is_admin)
-    orders_popover_content = get_orders_popover(request, new_orders)
     return dict(
         project=u'Ondestán',
         can_edit=check_permission('edit', request),
         is_admin=is_admin,
-        orders_msg=len(new_orders),
-        orders_popover_content=HtmlContainer(orders_popover_content),
         notifications=notification_service.\
             get_new_notifications_for_logged_user(request)
     )
@@ -537,29 +511,3 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for user " + login)
     return geojson
-
-
-def get_orders(request, is_admin):
-    if is_admin:
-        new_orders = order_service.get_all_unprocessed_orders()
-    else:
-        new_orders = order_service.get_all_unprocessed_orders(
-            get_user_login(request))
-    return new_orders
-
-
-def get_orders_popover(request, new_orders):
-    popover_content = ''
-    n_orders = {}
-    for order in new_orders:
-        state = order.states[0].state
-        if not state in n_orders:
-            n_orders[state] = 1
-        else:
-            n_orders[state] += 1
-    localizer = get_localizer(request)
-    for state in n_orders:
-        popover_content += '<li>' + str(n_orders[state]) + ' en ' + \
-        localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
-        + '</li>'
-    return popover_content
