@@ -7,7 +7,7 @@ from sqlalchemy import and_
 
 from ondestan.entities import Notification
 from ondestan.services import user_service, order_service
-from ondestan.security import get_user_login
+from ondestan.security import get_user_login, check_permission
 from datetime import datetime
 import logging
 
@@ -35,7 +35,7 @@ def get_new_notifications_for_logged_user(request):
     for notification in notifications:
         notification.archived = True
         notification.update()
-    if (len(order_service.get_all_orders(login)) == 0):
+    if (not check_permission('admin', request)) and len(order_service.get_all_orders(login)) == 0:
         logger.debug("User " + login + " has no orders. Notification " +
             "about making a first one will be displayed.")
         notification = Notification()
