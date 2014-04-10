@@ -27,6 +27,7 @@
 	<div class="container">
 	    <div class="header">
 	      <ul tal:condition="user_id != None" class="nav navbar-nav pull-right">
+                <li id="new_devices"><a href="${request.route_url('orders')}">${orders_msg} <span i18n:translate="dashboard_orders_in_progress">ORDERS IN PROGRESS</span></a></li>
 	        <li class="dropdown active">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
 	          <ul class="dropdown-menu">

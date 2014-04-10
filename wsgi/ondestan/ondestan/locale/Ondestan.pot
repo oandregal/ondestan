@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-09 19:12+0200\n"
+"POT-Creation-Date: 2014-04-10 14:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,12 +21,12 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:193 ondestan/services/user_service.py:121
+#: ondestan/views.py:199 ondestan/services/user_service.py:121
 #: ondestan/services/user_service.py:165
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:208 ondestan/services/user_service.py:125
+#: ondestan/views.py:214 ondestan/services/user_service.py:125
 #: ondestan/services/user_service.py:169
 msgid "email_already_use"
 msgstr ""
@@ -134,15 +134,20 @@ msgstr ""
 msgid "remember_user_password"
 msgstr ""
 
+#. Default: ORDERS IN PROGRESS
+#: ondestan/templates/main.pt:30
+msgid "dashboard_orders_in_progress"
+msgstr ""
+
 #. Default: Update profile
 #. Default: Update Profile
-#: ondestan/templates/main.pt:33 ondestan/templates/updateProfile.pt:31
+#: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:31
 #: ondestan/templates/updateProfile.pt:78
 msgid "update_profile"
 msgstr ""
 
 #. Default: Logout
-#: ondestan/templates/main.pt:34
+#: ondestan/templates/main.pt:35
 msgid "logout"
 msgstr ""
 
@@ -442,11 +447,6 @@ msgstr ""
 #. Default: LOW BATTERY
 #: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_low_battery"
-msgstr ""
-
-#. Default: ORDERS IN PROGRESS
-#: ondestan/templates/simpleViewer.pt:51
-msgid "dashboard_orders_in_progress"
 msgstr ""
 
 #. Default: Update profile - Ondestán

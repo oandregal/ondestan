@@ -137,6 +137,10 @@ def update_profile(request):
         email = user.email
         phone = user.phone
 
+    is_admin = check_permission('admin', request)
+    new_orders = get_orders(request, is_admin)
+    orders_popover_content = get_orders_popover(request, new_orders)
+
     return dict(
         message=message,
         id=user_id,
@@ -144,6 +148,8 @@ def update_profile(request):
         name=name,
         email=email,
         phone=phone,
+        orders_msg=len(new_orders),
+        orders_popover_content=HtmlContainer(orders_popover_content),
         )
 
 
@@ -238,6 +244,10 @@ def orders(request):
         processed_orders = order_service.get_all_processed_orders(
             get_user_login(request))
 
+    is_admin = check_permission('admin', request)
+    new_orders = get_orders(request, is_admin)
+    orders_popover_content = get_orders_popover(request, new_orders)
+
     return dict(
         message=message,
         units=units,
@@ -245,6 +255,8 @@ def orders(request):
         pending_orders=pending_orders,
         processed_orders=processed_orders,
         is_admin=is_admin,
+        orders_msg=len(new_orders),
+        orders_popover_content=HtmlContainer(orders_popover_content)
         )
 
 
@@ -287,7 +299,7 @@ def delete_device(request):
                .order_id
     animal_service.delete_animal_by_id(
                 request.matchdict['device_id'])
-    raise HTTPFound(request.route_url("order_devices", order_id=order_id))  
+    raise HTTPFound(request.route_url("order_devices", order_id=order_id))
 
 
 @view_config(route_name='activate_device',
@@ -318,29 +330,15 @@ def deactivate_device(request):
              permission='view')
 def viewer(request):
     is_admin = check_permission('admin', request)
-    if is_admin:
-        new_orders = order_service.get_all_unprocessed_orders()
-    else:
-        new_orders = order_service.get_all_unprocessed_orders(
-                                        get_user_login(request))
-    orders_popover_content = ''
-    n_orders = {}
-    for order in new_orders:
-        state = order.states[0].state
-        if not state in n_orders:
-            n_orders[state] = 1
-        else:
-            n_orders[state] += 1
-    localizer = get_localizer(request)
-    for state in n_orders:
-        orders_popover_content += '<li>' + str(n_orders[state]) + ' en ' + \
-        localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
-        + '</li>'
-    return dict(project=u'Ondestán',
-                can_edit=check_permission('edit', request),
-                is_admin=is_admin,
-                orders_msg=len(new_orders),
-                orders_popover_content=HtmlContainer(orders_popover_content))
+    new_orders = get_orders(request, is_admin)
+    orders_popover_content = get_orders_popover(request, new_orders)
+    return dict(
+        project=u'Ondestán',
+        can_edit=check_permission('edit', request),
+        is_admin=is_admin,
+        orders_msg=len(new_orders),
+        orders_popover_content=HtmlContainer(orders_popover_content)
+    )
 
 
 @view_config(route_name='default')
@@ -524,3 +522,29 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for user " + login)
     return geojson
+
+
+def get_orders(request, is_admin):
+    if is_admin:
+        new_orders = order_service.get_all_unprocessed_orders()
+    else:
+        new_orders = order_service.get_all_unprocessed_orders(
+            get_user_login(request))
+    return new_orders
+
+
+def get_orders_popover(request, new_orders):
+    popover_content = ''
+    n_orders = {}
+    for order in new_orders:
+        state = order.states[0].state
+        if not state in n_orders:
+            n_orders[state] = 1
+        else:
+            n_orders[state] += 1
+    localizer = get_localizer(request)
+    for state in n_orders:
+        popover_content += '<li>' + str(n_orders[state]) + ' en ' + \
+        localizer.translate(_('order_state_' + str(state), domain='Ondestan'))\
+        + '</li>'
+    return popover_content
