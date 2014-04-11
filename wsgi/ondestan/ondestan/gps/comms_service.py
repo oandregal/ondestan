@@ -43,6 +43,8 @@ def process_gps_updates(request):
 
 
 def process_gps_params(base_params):
+    logger.debug("Received a GPS update with body: '"
+                               + base_params + "'")
     if base_params.startswith(beacon_header):
         logger.info("Answering OK to beacon data: '"
                        + base_params + "'")
@@ -66,7 +68,8 @@ def process_gps_params(base_params):
                     data[key] = params[i]
                 i += 1
             process_gps_data(data)
-
+    else:
+        raise GpsUpdateError('Unaccepted data', 403)
 
 def process_gps_data(data):
     try:
