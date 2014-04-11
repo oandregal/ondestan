@@ -11,6 +11,7 @@
         level: {
             low: 20.0,
             middle: 50.0,
+            noData: '--- ',
         },
         color: {
             high:     "green",
@@ -47,20 +48,26 @@
 
     function addToPopover(feature){
         var device = feature.properties;
-        var lng = feature.geometry.coordinates[0];
-        var lat = feature.geometry.coordinates[1];
+        var zoomString = '<span class="glyphicon glyphicon-search"></span> ';
+        if (feature.geometry){
+            var lng = feature.geometry.coordinates[0];
+            var lat = feature.geometry.coordinates[1];
+            zoomString = '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-search" disabled></span>  </a>';
+        }
         var name = device.name || device.imei;
-        var battery = device.battery || '---';
+        var battery = device.battery || batteryStandards.level.noData;
         var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
         var toggleClass = 'toggle_' + device.id;
         var activation = contextVariables.deactivate_device_msg;
         if(!device.active){
             url = contextVariables.activate_device_url.replace('__device_id__', device.id);
             activation = contextVariables.activate_device_msg;
+            zoomString = '<span class="glyphicon glyphicon-search"></span> ';
+            battery = batteryStandards.level.noData;
         }
         return '<li class="list-group-item">' +
             ' <a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs '+toggleClass+'">' + activation + '</a> ' +
-            '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-search"></span>  </a>'+
+            zoomString +
             '<span class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</span>'+
             '<span class="badge '+toggleClass+'">' + battery + '%</span>' +
             '<form role="form" class="form-inline '+toggleClass+'" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
@@ -87,7 +94,6 @@
             middleware: function(data) {
                 for (i = 0, len = data.length; i < len; i++) {
                     var device = data[i].properties;
-                    var coordinates = data[i].geometry.coordinates;
                     if (device.active) {
                         if (device.battery < batteryStandards.level.low) {
                             low_battery_devices.push(data[i]);
