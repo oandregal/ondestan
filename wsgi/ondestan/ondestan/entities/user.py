@@ -18,5 +18,6 @@ class User(Entity, Base):
     password = Column(String)
     activated = Column(Boolean)
     last_login = Column(Date)
+    locale = Column(String)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role")

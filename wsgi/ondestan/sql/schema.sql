@@ -16,6 +16,7 @@ CREATE TABLE users (
 	phone VARCHAR NOT NULL,
 	activated BOOL NOT NULL DEFAULT FALSE,
 	last_login TIMESTAMP,
+	locale VARCHAR,
 	role_id INTEGER REFERENCES roles NOT NULL DEFAULT 1
 );
 

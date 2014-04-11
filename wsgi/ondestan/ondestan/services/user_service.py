@@ -4,12 +4,13 @@ from hashlib import sha512
 
 from pyramid.i18n import (
     get_localizer,
+    get_locale_name,
     TranslationString as _
     )
 
 from ondestan.entities import User
 from ondestan.utils.comms import send_mail
-from ondestan.utils.various import rand_string
+from ondestan.utils import rand_string
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -95,8 +96,9 @@ def check_login_request(request):
     if (check_user_pass(login, request.params['password'])):
         user = get_user_by_login(login)
         user.last_login = datetime.now()
+        user.locale = get_locale_name(request)
         user.update()
-        logger.debug('Updating last_login for user ' + login)
+        logger.debug('Updating last_login and locale for user ' + login)
         return True
     else:
         return False
@@ -153,6 +155,7 @@ def create_user(request):
     user.login = login
     user.name = name
     user.email = email
+    user.locale = get_locale_name(request)
     user.phone = request.params['phone']
     user.activated = False
     user.password = sha512(request.params['password']).hexdigest()
