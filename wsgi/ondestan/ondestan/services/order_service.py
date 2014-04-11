@@ -11,10 +11,22 @@ import logging
 
 from ondestan.entities import Order, User, Order_state
 from ondestan.security import get_user_login, check_permission
-from ondestan.utils import Db, Config, HtmlContainer
-from ondestan.utils.comms import send_mail
+from ondestan.utils import (
+        Db,
+        Config,
+        HtmlContainer,
+        get_custom_localizer,
+        send_mail
+        )
+from ondestan.services import notification_service
 
 logger = logging.getLogger('ondestan')
+
+# We put these 18n strings here so they're detected when parsing files
+_('order_update_notification_web', domain='Ondestan')
+_('order_update_notification_mail_subject', domain='Ondestan')
+_('order_update_notification_mail_html_body', domain='Ondestan')
+_('order_update_notification_mail_text_body', domain='Ondestan')
 
 
 def get_orders(request):
@@ -45,8 +57,6 @@ def get_orders_popover(request, new_orders):
 
 
 def create_order(request):
-    # localizer = get_localizer(request)
-
     login = get_user_login(request)
     units = int(request.params['units'])
     address = request.params['address']
@@ -78,46 +88,30 @@ def update_order_state(order_id, state, request):
 
 def notify_order_update(order_state, request):
     if order_state.state == 0:
-        notify_new_order_to_admin_by_email(order_state, request)
+        notify_new_order_to_admin(order_state, request)
     else:
-        notify_order_update_to_user_by_email(order_state, request)
+        notify_order_update_to_user(order_state, request)
 
 
-def notify_order_update_to_user_by_email(order_state, request):
-    localizer = get_localizer(request)
-
-    # Create the body of the message (a plain-text and an HTML version).
-    text_ts = _('plain_order_update_user_mail',
-        mapping={'name': order_state.order.user.name,
+def notify_order_update_to_user(order_state, request):
+    parameters = {'name': order_state.order.user.name,
                  'login': order_state.order.user.login,
                  'units': order_state.order.units,
                  'address': order_state.order.address,
                  'url': request.route_url('orders'),
-                 'state': localizer.translate(_('order_state_' + str(order_state.state),
-                            domain='Ondestan'))},
-        domain='Ondestan')
-    html_ts = _('html_order_update_user_mail',
-        mapping={'name': order_state.order.user.name,
-                 'login': order_state.order.user.login,
-                 'units': order_state.order.units,
-                 'address': order_state.order.address,
-                 'url': request.route_url('orders'),
-                 'state': localizer.translate(_('order_state_' + str(order_state.state),
-                            domain='Ondestan'))},
-        domain='Ondestan')
-    subject_ts = _('subject_order_update_user_mail', domain='Ondestan')
-
-    text = localizer.translate(text_ts)
-    html = localizer.translate(html_ts)
-    subject = localizer.translate(subject_ts)
-
-    send_mail(html, text, subject, order_state.order.user.email)
+                 'state': "_('order_state_" + str(order_state.state) +
+                 "', domain='Ondestan')"
+                 }
+    notification_service.process_notification('order_update',
+        order_state.order.user.login, True, 1, True, False, parameters)
 
 
-def notify_new_order_to_admin_by_email(order_state, request):
+def notify_new_order_to_admin(order_state, request):
     admin_email = Config.get_string_value('config.admin_email')
     if admin_email != None and admin_email != '':
-        localizer = get_localizer(request)
+
+        localizer = get_custom_localizer(Config.get_string_value(
+                    'pyramid.default_locale_name'))
 
         # Create the body of the message (a plain-text and an HTML version).
         text_ts = _('plain_new_order_admin_mail',
