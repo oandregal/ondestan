@@ -28,6 +28,11 @@ _('order_update_notification_mail_subject', domain='Ondestan')
 _('order_update_notification_mail_html_body', domain='Ondestan')
 _('order_update_notification_mail_text_body', domain='Ondestan')
 
+_('new_order_notification_web', domain='Ondestan')
+_('new_order_notification_mail_subject', domain='Ondestan')
+_('new_order_notification_mail_html_body', domain='Ondestan')
+_('new_order_notification_mail_text_body', domain='Ondestan')
+
 
 def get_orders(request):
     is_admin = check_permission('admin', request)
@@ -88,7 +93,7 @@ def update_order_state(order_id, state, request):
 
 def notify_order_update(order_state, request):
     if order_state.state == 0:
-        notify_new_order_to_admin(order_state, request)
+        notify_new_order_to_admins(order_state, request)
     else:
         notify_order_update_to_user(order_state, request)
 
@@ -106,39 +111,17 @@ def notify_order_update_to_user(order_state, request):
         order_state.order.user.login, True, 1, True, False, parameters)
 
 
-def notify_new_order_to_admin(order_state, request):
-    admin_email = Config.get_string_value('config.admin_email')
-    if admin_email != None and admin_email != '':
-
-        localizer = get_custom_localizer(Config.get_string_value(
-                    'pyramid.default_locale_name'))
-
-        # Create the body of the message (a plain-text and an HTML version).
-        text_ts = _('plain_new_order_admin_mail',
-            mapping={'name': order_state.order.user.name,
+def notify_new_order_to_admins(order_state, request):
+    admins = ondestan.services.user_service.get_admin_users()
+    for admin in admins:
+        parameters = {'name': order_state.order.user.name,
                      'login': order_state.order.user.login,
                      'units': order_state.order.units,
                      'address': order_state.order.address,
                      'url': request.route_url('orders'),
-                     'state': _('order_state_0',
-                                domain='Ondestán')},
-            domain='Ondestan')
-        html_ts = _('html_new_order_admin_mail',
-            mapping={'name': order_state.order.user.name,
-                     'login': order_state.order.user.login,
-                     'units': order_state.order.units,
-                     'address': order_state.order.address,
-                     'url': request.route_url('orders'),
-                     'state': _('order_state_0',
-                                domain='Ondestán')},
-            domain='Ondestan')
-        subject_ts = _('subject_new_order_admin_mail', domain='Ondestan')
-
-        text = localizer.translate(text_ts)
-        html = localizer.translate(html_ts)
-        subject = localizer.translate(subject_ts)
-
-        send_mail(html, text, subject, admin_email)
+                     'state': "_('order_state_0', domain='Ondestán')"}
+        ondestan.services.notification_service.process_notification(
+            'new_order', admin.login, True, 1, True, False, parameters)
 
 
 def get_order_by_id(order_id):

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-11 18:38+0200\n"
-"PO-Revision-Date: 2014-04-11 18:36+0100\n"
+"POT-Creation-Date: 2014-04-11 19:20+0200\n"
+"PO-Revision-Date: 2014-04-11 19:18+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -25,13 +25,13 @@ msgstr "Autenticación fallida"
 msgid "imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:208 ondestan/services/user_service.py:122
-#: ondestan/services/user_service.py:158
+#: ondestan/views.py:208 ondestan/services/user_service.py:127
+#: ondestan/services/user_service.py:163
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:223 ondestan/services/user_service.py:126
-#: ondestan/services/user_service.py:162
+#: ondestan/views.py:223 ondestan/services/user_service.py:131
+#: ondestan/services/user_service.py:167
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
@@ -66,33 +66,30 @@ msgstr ""
 "pedidos también puedes acceder a la url:\n"
 "${url}"
 
-#: ondestan/services/order_service.py:117
-msgid "plain_new_order_admin_mail"
+#: ondestan/services/order_service.py:31
+msgid "new_order_notification_web"
 msgstr ""
 "Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con "
-"nombre ${name}.\n"
-"Listado de pedidos:\n"
-"${url}"
+"nombre ${name}."
 
-#. Default: Awaiting
-#: ondestan/services/order_service.py:123
-#: ondestan/services/order_service.py:132
-#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:70
-#: ondestan/templates/orders.pt:79 ondestan/templates/orders.pt:130
-#: ondestan/templates/orders.pt:139
-msgid "order_state_0"
-msgstr "En espera"
+#: ondestan/services/order_service.py:32
+msgid "new_order_notification_mail_subject"
+msgstr "Aviso de nuevo pedido en Ondestán"
 
-#: ondestan/services/order_service.py:126
-msgid "html_new_order_admin_mail"
+#: ondestan/services/order_service.py:33
+msgid "new_order_notification_mail_html_body"
 msgstr ""
 "<html>    <head></head>    <body>    <p>Hay un nuevo pedido de ${units} "
 "aparato(s) para el usuario ${login}, con nombre ${name}.<br><a "
 "href=\"${url}\">Listado de pedidos</a></p></body></html>"
 
-#: ondestan/services/order_service.py:135
-msgid "subject_new_order_admin_mail"
-msgstr "Aviso de nuevo pedido en Ondestán"
+#: ondestan/services/order_service.py:34
+msgid "new_order_notification_mail_text_body"
+msgstr ""
+"Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con "
+"nombre ${name}.\n"
+"Listado de pedidos:\n"
+"${url}"
 
 #: ondestan/services/user_service.py:19
 msgid "signup_notification_mail_subject"
@@ -163,7 +160,7 @@ msgstr ""
 " uno nuevo lo antes posible.\n"
 "${url}"
 
-#: ondestan/services/user_service.py:172
+#: ondestan/services/user_service.py:178
 msgid "user_profile_updated"
 msgstr "Perfil de usuario actualizado"
 
@@ -295,6 +292,13 @@ msgstr "Estado del pedido"
 #: ondestan/templates/orderStateHistory.pt:19
 msgid "change_date"
 msgstr "Fecha de cambio"
+
+#. Default: Awaiting
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:70
+#: ondestan/templates/orders.pt:79 ondestan/templates/orders.pt:130
+#: ondestan/templates/orders.pt:139
+msgid "order_state_0"
+msgstr "En espera"
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:71
@@ -527,48 +531,4 @@ msgstr "BATERÍA BAJA"
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
-
-#~ msgid "plain_signup_mail"
-#~ msgstr ""
-
-#~ msgid "html_signup_mail"
-#~ msgstr ""
-
-#~ msgid "subject_signup_mail"
-#~ msgstr "Alta en Ondestán"
-
-#~ msgid "plain_reminder_mail"
-#~ msgstr ""
-
-#~ msgid "html_reminder_mail"
-#~ msgstr ""
-
-#~ msgid "subject_reminder_mail"
-#~ msgstr "Recordatorio de usuario de Ondestán"
-
-#~ msgid "plain_password_reset_mail"
-#~ msgstr ""
-#~ "¡Hola ${name}!\n"
-#~ "El password de tu cuenta asociada "
-#~ "a este correo ha sido reseteado a"
-#~ " ${password}\n"
-#~ "Te aconsejamos que entres a tu "
-#~ "cuenta en Ondestán y cambies tu "
-#~ "password a uno nuevo lo antes "
-#~ "posible.\n"
-#~ "${url}"
-
-#~ msgid "html_password_reset_mail"
-#~ msgstr ""
-#~ "<html>    <head></head>    <body>    <p>¡Hola "
-#~ "${name}!<br>   El password de tu cuenta"
-#~ " asociada a este correo ha sido "
-#~ "reseteado a ${password}<br/>Te aconsejamos que"
-#~ " <a href=\"${url}\">entres a tu cuenta "
-#~ "en Ondestán</a> y cambies tu password"
-#~ " a uno nuevo lo antes posible.    "
-#~ "</p></body></html>"
-
-#~ msgid "subject_password_reset_mail"
-#~ msgstr "Reseteo de password de Ondestán"
 

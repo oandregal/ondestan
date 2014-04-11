@@ -1,6 +1,6 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, backref
 
 from ondestan.entities import Entity
 from ondestan.utils import Base
@@ -20,4 +20,5 @@ class User(Entity, Base):
     last_login = Column(Date)
     locale = Column(String)
     role_id = Column(Integer, ForeignKey("roles.id"))
-    role = relationship("Role")
+    role = relationship("Role", backref=backref('users',
+                        order_by=login))

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-11 18:38+0200\n"
+"POT-Creation-Date: 2014-04-11 19:20+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,13 +25,13 @@ msgstr ""
 msgid "imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:208 ondestan/services/user_service.py:122
-#: ondestan/services/user_service.py:158
+#: ondestan/views.py:208 ondestan/services/user_service.py:127
+#: ondestan/services/user_service.py:163
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:223 ondestan/services/user_service.py:126
-#: ondestan/services/user_service.py:162
+#: ondestan/views.py:223 ondestan/services/user_service.py:131
+#: ondestan/services/user_service.py:167
 msgid "email_already_use"
 msgstr ""
 
@@ -55,24 +55,20 @@ msgstr ""
 msgid "order_update_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/order_service.py:117
-msgid "plain_new_order_admin_mail"
+#: ondestan/services/order_service.py:31
+msgid "new_order_notification_web"
 msgstr ""
 
-#. Default: Awaiting
-#: ondestan/services/order_service.py:123 ondestan/services/order_service.py:132
-#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:70
-#: ondestan/templates/orders.pt:79 ondestan/templates/orders.pt:130
-#: ondestan/templates/orders.pt:139
-msgid "order_state_0"
+#: ondestan/services/order_service.py:32
+msgid "new_order_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/order_service.py:126
-msgid "html_new_order_admin_mail"
+#: ondestan/services/order_service.py:33
+msgid "new_order_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/order_service.py:135
-msgid "subject_new_order_admin_mail"
+#: ondestan/services/order_service.py:34
+msgid "new_order_notification_mail_text_body"
 msgstr ""
 
 #: ondestan/services/user_service.py:19
@@ -115,7 +111,7 @@ msgstr ""
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:172
+#: ondestan/services/user_service.py:178
 msgid "user_profile_updated"
 msgstr ""
 
@@ -244,6 +240,13 @@ msgstr ""
 #. Default: Change date
 #: ondestan/templates/orderStateHistory.pt:19
 msgid "change_date"
+msgstr ""
+
+#. Default: Awaiting
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:70
+#: ondestan/templates/orders.pt:79 ondestan/templates/orders.pt:130
+#: ondestan/templates/orders.pt:139
+msgid "order_state_0"
 msgstr ""
 
 #. Default: In process

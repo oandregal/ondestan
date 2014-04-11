@@ -8,7 +8,7 @@ from pyramid.i18n import (
     TranslationString as _
     )
 
-from ondestan.entities import User
+from ondestan.entities import User, Role
 import ondestan.services
 from ondestan.utils import rand_string
 import logging
@@ -92,6 +92,11 @@ def check_login_request(request):
         return True
     else:
         return False
+
+
+def get_admin_users():
+    role = Role().queryObject().filter(Role.name == Role._ADMIN_ROLE).scalar()
+    return role.users
 
 
 def check_user_pass(login, password):
