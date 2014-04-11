@@ -1,5 +1,6 @@
-$( function() {
-    var map = L.map('map').setView([42.25, -7.54], 13);
+(function(NS) {
+
+    var map;
     var active_devices = [];
     var active_devices_popover_content = '';
     var inactive_devices = [];
@@ -44,7 +45,10 @@ $( function() {
         return opt;
     };
 
-    function addToPopover(device){
+    function addToPopover(feature){
+        var device = feature.properties;
+        var lng = feature.geometry.coordinates[0];
+        var lat = feature.geometry.coordinates[1];
         var name = device.name || device.imei;
         var battery = device.battery || '---';
         var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
@@ -56,6 +60,7 @@ $( function() {
         }
         return '<li class="list-group-item">' +
             ' <a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs '+toggleClass+'">' + activation + '</a> ' +
+            '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-search"></span>  </a>'+
             '<span class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</span>'+
             '<span class="badge '+toggleClass+'">' + battery + '%</span>' +
             '<form role="form" class="form-inline '+toggleClass+'" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
@@ -64,6 +69,14 @@ $( function() {
             '</form>' +
             '</li>';
     }
+
+    NS.zoom = function(lng, lat){
+        var offset = 0.002;
+        var southWest = L.latLng(lat-offset, lng-offset),
+        northEast = L.latLng(lat+offset, lng+offset),
+        bounds = L.latLngBounds(southWest, northEast);
+        map.fitBounds(bounds);
+    };
 
     function load_animals() {
 
@@ -74,16 +87,17 @@ $( function() {
             middleware: function(data) {
                 for (i = 0, len = data.length; i < len; i++) {
                     var device = data[i].properties;
+                    var coordinates = data[i].geometry.coordinates;
                     if (device.active) {
                         if (device.battery < batteryStandards.level.low) {
                             low_battery_devices.push(data[i]);
-                            low_battery_devices_popover_content += addToPopover(device);
+                            low_battery_devices_popover_content += addToPopover(data[i]);
                         }
                         active_devices.push(data[i]);
-                        active_devices_popover_content += addToPopover(device);
+                        active_devices_popover_content += addToPopover(data[i]);
                     } else {
                         inactive_devices.push(data[i]);
-                        inactive_devices_popover_content += addToPopover(device);
+                        inactive_devices_popover_content += addToPopover(data[i]);
                     }
                 }
                 return data;
@@ -139,19 +153,28 @@ $( function() {
         layer.addTo(map);
     }
 
-    new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
-        onEachFeature: function (feature, layer) {
-            layer.bindPopup(feature.properties.popup);
-        },
-        middleware:function(data){
-            load_animals();
-            return data;
-        }
-    }).addTo(map);
+    NS.init = function(){
+        map = L.map('map').setView([42.25, -7.54], 13);
 
-    L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 18,
-        attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-    }).addTo(map);
+        new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
+            onEachFeature: function (feature, layer) {
+                layer.bindPopup(feature.properties.popup);
+            },
+            middleware:function(data){
+                load_animals();
+                return data;
+            }
+        }).addTo(map);
 
-});
+        L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
+        }).addTo(map);
+    };
+
+    // Init on document ready
+    $(function(){
+        NS.init();
+    });
+
+})(window.OE = window.OE || {});
