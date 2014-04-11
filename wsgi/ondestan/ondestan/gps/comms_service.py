@@ -69,7 +69,7 @@ def process_gps_params(base_params):
                 i += 1
             process_gps_data(data)
     else:
-        raise GpsUpdateError('Unaccepted data', 400)
+        raise GpsUpdateError('Unaccepted data header', 400)
 
 def process_gps_data(data):
     try:
