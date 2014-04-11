@@ -178,6 +178,22 @@ def logout(request):
                      headers=headers)
 
 
+@view_config(route_name='check_imei', renderer='json',
+             permission='admin')
+def check_imei(request):
+    if 'imei' in request.params:
+        imei = request.params['imei']
+        animal = animal_service.get_animal_by_imei(imei)
+        if (animal == None):
+            return True
+        if 'id' in request.params:
+            if animal.id == int(request.params['id']):
+                return True
+    localizer = get_localizer(request)
+    message_ts = _('imei_already_use', domain='Ondestan')
+    return localizer.translate(message_ts)
+
+
 @view_config(route_name='check_login', renderer='json')
 def check_login(request):
     if 'login' in request.params:

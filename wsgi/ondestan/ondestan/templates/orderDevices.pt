@@ -11,6 +11,7 @@
   <tal:block metal:fill-slot="javascript">
     <script type="text/javascript">
       window.contextVariables.required_field_msg = "<tal:block i18n:translate="required_field">This field is required.</tal:block>";
+      window.contextVariables.check_imei_url = "${request.route_url('check_imei')}";
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/newDevice.js')}"></script>

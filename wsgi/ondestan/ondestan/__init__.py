@@ -38,6 +38,7 @@ def main(global_config, **settings):
 
     config.add_route('check_login', '/check_login')
     config.add_route('check_email', '/check_email')
+    config.add_route('check_imei', '/check_imei')
 
     config.add_route('orders', '/orders')
     config.add_route('order_state_history', '/orders/history/{order_id}')

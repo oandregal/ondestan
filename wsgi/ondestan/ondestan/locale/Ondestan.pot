@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-11 13:47+0200\n"
+"POT-Creation-Date: 2014-04-11 17:19+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,13 +21,17 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:192 ondestan/services/user_service.py:132
-#: ondestan/services/user_service.py:176
+#: ondestan/views.py:193
+msgid "imei_already_use"
+msgstr ""
+
+#: ondestan/views.py:208 ondestan/services/user_service.py:132
+#: ondestan/services/user_service.py:177
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/views.py:207 ondestan/services/user_service.py:136
-#: ondestan/services/user_service.py:180
+#: ondestan/views.py:223 ondestan/services/user_service.py:136
+#: ondestan/services/user_service.py:181
 msgid "email_already_use"
 msgstr ""
 
@@ -51,23 +55,23 @@ msgstr ""
 msgid "order_update_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/order_service.py:119
+#: ondestan/services/order_service.py:117
 msgid "plain_new_order_admin_mail"
 msgstr ""
 
 #. Default: Awaiting
-#: ondestan/services/order_service.py:125 ondestan/services/order_service.py:134
+#: ondestan/services/order_service.py:123 ondestan/services/order_service.py:132
 #: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:70
 #: ondestan/templates/orders.pt:79 ondestan/templates/orders.pt:130
 #: ondestan/templates/orders.pt:139
 msgid "order_state_0"
 msgstr ""
 
-#: ondestan/services/order_service.py:128
+#: ondestan/services/order_service.py:126
 msgid "html_new_order_admin_mail"
 msgstr ""
 
-#: ondestan/services/order_service.py:137
+#: ondestan/services/order_service.py:135
 msgid "subject_new_order_admin_mail"
 msgstr ""
 
@@ -107,7 +111,7 @@ msgstr ""
 msgid "subject_signup_mail"
 msgstr ""
 
-#: ondestan/services/user_service.py:190
+#: ondestan/services/user_service.py:191
 msgid "user_profile_updated"
 msgstr ""
 
