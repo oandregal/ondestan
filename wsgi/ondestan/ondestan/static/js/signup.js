@@ -11,7 +11,7 @@ $(function() {
 			login : {
 				required : true,
 				"remote" : {
-					url : 'check_login',
+					url : window.contextVariables.check_login_url,
 					type : 'post',
 					data : {
 						login : function() {
@@ -26,7 +26,7 @@ $(function() {
 				email : true,
 				required : true,
 				"remote" : {
-					url : 'check_email',
+					url : window.contextVariables.check_email_url,
 					type : 'post',
 					data : {
 						email : function() {
