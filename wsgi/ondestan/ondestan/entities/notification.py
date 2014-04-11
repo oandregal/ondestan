@@ -10,6 +10,7 @@ from sqlalchemy.orm import relationship, backref
 from ondestan.entities import Entity
 from ondestan.utils import Base, HtmlContainer
 import logging
+from datetime import datetime
 
 logger = logging.getLogger('ondestan')
 
@@ -22,8 +23,8 @@ class Notification(Entity, Base):
     id = Column(Integer, primary_key=True)
     text = Column(String)
     level = Column(Integer)
-    date = Column(Date)
-    archived = Column(Boolean)
+    date = Column(Date, default=datetime.now())
+    archived = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('notifications',
                                                   order_by=date.desc()))
