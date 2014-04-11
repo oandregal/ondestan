@@ -1,6 +1,7 @@
 # coding=UTF-8
 from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.hybrid import hybrid_property
 
 from ondestan.entities import Entity
 from ondestan.utils import Base
@@ -21,3 +22,17 @@ class User(Entity, Base):
     locale = Column(String)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role")
+
+    @hybrid_property
+    def pending_orders(self):
+        return filter(self.is_pending, self.orders)
+
+    @hybrid_property
+    def processed_orders(self):
+        return filter(self.is_processed, self.orders)
+
+    def is_pending(self, order):
+        return order.is_pending
+
+    def is_processed(self, order):
+        return not order.is_pending

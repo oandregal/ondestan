@@ -232,12 +232,9 @@ def orders(request):
         pending_orders = order_service.get_all_pending_orders()
         processed_orders = order_service.get_all_processed_orders()
     else:
-        pending_orders = order_service.get_all_pending_orders(
-            get_user_login(request))
-        processed_orders = order_service.get_all_processed_orders(
-            get_user_login(request))
-
-    is_admin = check_permission('admin', request)
+        login = get_user_login(request)
+        pending_orders = order_service.get_all_pending_orders(login)
+        processed_orders = order_service.get_all_processed_orders(login)
 
     return dict(
         message=message,
@@ -511,3 +508,58 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for user " + login)
     return geojson
+
+
+@view_config(route_name='json_orders', renderer='json', permission='view')
+def json_orders(request):
+    is_admin = check_permission('admin', request)
+    user = user_service.get_user_by_login(get_user_login(request))
+    if is_admin:
+        pending_orders = order_service.get_all_pending_orders()
+        processed_orders = order_service.get_all_processed_orders()
+    else:
+        pending_orders = user.pending_orders
+        processed_orders = user.processed_orders
+
+    return {
+        'pending': pending_orders,
+        'processed': processed_orders
+    }
+
+
+@view_config(route_name='orders_new', renderer='templates/orders2.pt',
+             permission='view')
+def orders_new(request):
+    message = ''
+    units = ''
+    address = ''
+    if 'form.submitted' in request.params:
+        if 'id' in request.params:
+            order_id = int(request.params['id'])
+            state = int(request.params['state'])
+
+            message = order_service.update_order_state(order_id, state,
+                                                       request)
+        else:
+            message = order_service.create_order(request)
+            if message != '':
+                units = request.params['units']
+                address = request.params['address']
+
+    is_admin = check_permission('admin', request)
+    if is_admin:
+        pending_orders = order_service.get_all_pending_orders()
+        processed_orders = order_service.get_all_processed_orders()
+    else:
+        login = get_user_login(request)
+        pending_orders = order_service.get_all_pending_orders(login)
+        processed_orders = order_service.get_all_processed_orders(login)
+
+    return dict(
+        message=message,
+        units=units,
+        address=address,
+        pending_orders=pending_orders,
+        processed_orders=processed_orders,
+        is_admin=is_admin
+        )

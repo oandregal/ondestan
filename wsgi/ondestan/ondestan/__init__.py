@@ -5,6 +5,10 @@ from ondestan.utils import Config
 import logging
 
 
+def datetime_adapter(obj, request):
+    return obj.isoformat()
+
+
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
@@ -14,6 +18,13 @@ def main(global_config, **settings):
 
     from ondestan.services import user_service
     from ondestan.utils.db import Db
+
+    # register JSON renderer for datetime types
+    import datetime
+    from pyramid.renderers import JSON
+    json_renderer = JSON()
+    json_renderer.add_adapter(datetime.datetime, datetime_adapter)
+    config.add_renderer('json', json_renderer)
 
     Db.instance()
     logger = logging.getLogger('ondestan')
@@ -52,6 +63,9 @@ def main(global_config, **settings):
     config.add_route('json_animals', '/json/animals.json')
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')
     config.add_route('json_plots', '/json/plots.json')
+    config.add_route('json_orders', '/orders.json')
+    config.add_route('orders_new', '/orders_new')
+
     config.scan()
 
     logger.info('Application initialized')
