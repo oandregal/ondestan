@@ -5,6 +5,9 @@ from email.mime.text import MIMEText
 from os.path import expandvars
 
 from ondestan.utils import Config
+import logging
+
+logger = logging.getLogger('ondestan')
 
 
 def send_mail(html, text, subject, destination):
@@ -43,3 +46,12 @@ def send_mail(html, text, subject, destination):
     # and message to send - here it is sent as one string.
     server.sendmail(smtp_mail, destination, msg.as_string())
     server.quit()
+
+    logger.info("E-mail with subject '" + subject + "' has been sent to email "
+                + destination)
+
+
+def send_sms(text, number):
+    # Dummy method
+    logger.info("Sms '" + text + "' has been sent to number " + number)
+    return
