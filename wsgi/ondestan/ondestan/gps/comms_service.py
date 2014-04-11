@@ -1,21 +1,25 @@
 # coding=UTF-8
 import pyproj
-import logging
 #import md5
 from datetime import datetime
 from gps_update_error import GpsUpdateError
 
 from ondestan.services import animal_service
 from ondestan.entities.position import Position
+from ondestan.utils import Config
 
-positions_divider = '|||'
-params_divider = ','
-params_positions = ['imei', 'hor_prec', 'date', 'lat', 'inact', 'vert_prec',
-                    'speed', 'lon', 'battery', 'direction']
-orig_proj = pyproj.Proj("+init=EPSG:4326")
-dest_proj = pyproj.Proj("+init=EPSG:3857")
+import logging
+
 logger = logging.getLogger('ondestan')
-date_format = '%Y%m%d%H%M%S'
+
+data_header = Config.get_string_value('gps.data_header')
+beacon_header = Config.get_string_value('gps.beacon_header')
+positions_divider = Config.get_string_value('gps.positions_divider')
+params_divider = Config.get_string_value('gps.params_divider')
+params_positions = Config.get_string_value('gps.params_positions').split(',')
+date_format =  Config.get_string_value('gps.date_format')
+gps_proj = pyproj.Proj("+init=" + Config.get_string_value('gps.proj'))
+viewer_proj = pyproj.Proj("+init=" + Config.get_string_value('gps.viewer_proj'))
 
 base_data = {
     'imei': None,
@@ -39,23 +43,29 @@ def process_gps_updates(request):
 
 
 def process_gps_params(base_params):
-    positions = base_params.split(positions_divider)
-    for position in positions:
-        params = position.split(params_divider)
-        i = 0
-        data = base_data.copy()
-        # Temporarily return OK if the petition has too many params
-        if len(params) > len(params_positions):
-            logger.warning("Received a GPS update with too many params: '"
-                           + position + "'")
-            continue
-        if (len(params) != len(params_positions)):
-            raise GpsUpdateError('Insufficient POST params', 400)
-        for key in params_positions:
-            if key in data:
-                data[key] = params[i]
-            i += 1
-        process_gps_data(data)
+    if base_params.startswith(beacon_header):
+        logger.info("Answering OK to beacon data: '"
+                       + base_params + "'")
+        return
+    if base_params.startswith(data_header):
+        base_params = base_params.replace(data_header, '').strip()
+        positions = base_params.split(positions_divider)
+        for position in positions:
+            params = position.split(params_divider)
+            i = 0
+            data = base_data.copy()
+            # Temporarily return OK if the petition has too many params
+            if len(params) > len(params_positions):
+                logger.warning("Received a GPS update with too many params: '"
+                               + position + "'")
+                continue
+            if (len(params) != len(params_positions)):
+                raise GpsUpdateError('Insufficient POST params', 400)
+            for key in params_positions:
+                if key in data:
+                    data[key] = params[i]
+                i += 1
+            process_gps_data(data)
 
 
 def process_gps_data(data):
@@ -81,7 +91,7 @@ def process_gps_data_active(data, animal):
     try:
         position = Position()
         try:
-            x, y = pyproj.transform(orig_proj, dest_proj,
+            x, y = pyproj.transform(gps_proj, viewer_proj,
                 float(data['lon']), float(data['lat']))
             position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) +\
             ')'
