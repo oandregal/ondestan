@@ -9,11 +9,25 @@ from pyramid.i18n import (
     )
 
 from ondestan.entities import User
-from ondestan.utils.comms import send_mail
+import ondestan.services
 from ondestan.utils import rand_string
 import logging
 
 logger = logging.getLogger('ondestan')
+
+# We put these 18n strings here so they're detected when parsing files
+_('signup_notification_mail_subject', domain='Ondestan')
+_('signup_notification_mail_html_body', domain='Ondestan')
+_('signup_notification_mail_text_body', domain='Ondestan')
+
+_('login_reminder_notification_mail_subject', domain='Ondestan')
+_('login_reminder_notification_mail_html_body', domain='Ondestan')
+_('login_reminder_notification_mail_text_body', domain='Ondestan')
+
+_('password_reset_notification_web', domain='Ondestan')
+_('password_reset_notification_mail_subject', domain='Ondestan')
+_('password_reset_notification_mail_html_body', domain='Ondestan')
+_('password_reset_notification_mail_text_body', domain='Ondestan')
 
 
 def group_finder(login, request):
@@ -47,23 +61,11 @@ def reset_password(request):
             user.password = sha512(new_password).hexdigest()
             user.save()
 
-            localizer = get_localizer(request)
-
-            # Create the body of the message (a plain-text and an HTML version)
-            url = request.route_url('login')
-            text_ts = _('plain_password_reset_mail', mapping={
-                        'name': user.name, 'password': new_password,
-                        'url': url}, domain='Ondestan')
-            html_ts = _('html_password_reset_mail', mapping={'name': user.name,
-                        'password': new_password, 'url': url},
-                        domain='Ondestan')
-            subject_ts = _('subject_password_reset_mail', domain='Ondestan')
-
-            text = localizer.translate(text_ts)
-            html = localizer.translate(html_ts)
-            subject = localizer.translate(subject_ts)
-
-            send_mail(html, text, subject, user.email)
+            parameters = {'name': user.name, 'password': new_password,
+                          'url': request.route_url('login'),
+                          'url_profile': request.route_url('update_profile')}
+            ondestan.services.notification_service.process_notification(
+                'password_reset', user.login, True, 3, True, False, parameters)
             break
 
 
@@ -72,23 +74,11 @@ def remind_user(request):
     user = User().queryObject().filter(
         User.email == email).scalar()
     if (user != None):
-
-        localizer = get_localizer(request)
-
-        # Create the body of the message (a plain-text and an HTML version).
         url = request.route_url('password_reset',
                                 loginhash=sha512(user.login).hexdigest())
-        text_ts = _('plain_reminder_mail', mapping={'name': user.name,
-                        'url': url, 'login': user.login}, domain='Ondestan')
-        html_ts = _('html_reminder_mail', mapping={'name': user.name,
-                        'url': url, 'login': user.login}, domain='Ondestan')
-        subject_ts = _('subject_reminder_mail', domain='Ondestan')
-
-        text = localizer.translate(text_ts)
-        html = localizer.translate(html_ts)
-        subject = localizer.translate(subject_ts)
-
-        send_mail(html, text, subject, email)
+        parameters = {'name': user.name, 'url': url, 'login': user.login}
+        ondestan.services.notification_service.process_notification(
+            'login_reminder', user.login, False, 0, True, False, parameters)
 
 
 def check_login_request(request):
@@ -136,21 +126,6 @@ def create_user(request):
         msg = _('email_already_use', domain='Ondestan')
         return localizer.translate(msg)
 
-    # Create the body of the message (a plain-text and an HTML version).
-    url = request.route_url('activate_user',
-                            loginhash=sha512(login).hexdigest())
-    text_ts = _('plain_signup_mail', mapping={'name': name, 'url': url},
-                                domain='Ondestan')
-    html_ts = _('html_signup_mail', mapping={'name': name, 'url': url},
-                                domain='Ondestan')
-    subject_ts = _('subject_signup_mail', domain='Ondestan')
-
-    text = localizer.translate(text_ts)
-    html = localizer.translate(html_ts)
-    subject = localizer.translate(subject_ts)
-
-    send_mail(html, text, subject, email)
-
     user = User()
     user.login = login
     user.name = name
@@ -161,6 +136,12 @@ def create_user(request):
     user.password = sha512(request.params['password']).hexdigest()
     user.role_id = 2
     user.save()
+
+    url = request.route_url('activate_user',
+                            loginhash=sha512(login).hexdigest())
+    parameters = {'name': name, 'url': url}
+    ondestan.services.notification_service.process_notification('signup',
+        user.login, False, 0, True, False, parameters)
 
     return ''
 
@@ -180,6 +161,7 @@ def update_user(request):
     if ((user != None) and (user.id != user_id)):
         msg = _('email_already_use', domain='Ondestan')
         return localizer.translate(msg)
+
     user = User().queryObject().filter(User.id == user_id).scalar()
     user.login = login
     user.name = name

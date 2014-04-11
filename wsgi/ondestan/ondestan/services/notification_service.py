@@ -7,7 +7,7 @@ from sqlalchemy import and_
 
 from ondestan.entities import Notification
 from ondestan.security import get_user_login, check_permission
-from ondestan import services
+import ondestan.services
 from ondestan.utils import get_custom_localizer, send_mail, send_sms
 from datetime import datetime
 import logging
@@ -37,7 +37,7 @@ def get_new_notifications_for_logged_user(request):
         notification.archived = True
         notification.update()
     if (not check_permission('admin', request)) and\
-        len(services.order_service.get_all_orders(login)) == 0:
+        len(ondestan.services.order_service.get_all_orders(login)) == 0:
         logger.debug("User " + login + " has no orders. Notification " +
             "about making a first one will be displayed.")
         notification = Notification()
@@ -73,14 +73,14 @@ def process_sms_notification(user, text):
 
 
 def process_email_notification(user, subject, html_body, text_body):
-    logger.debug("Processing mail notification with subject '" + subject + "' for user "
-                 + user.login)
+    logger.debug("Processing mail notification with subject '" + subject +
+                 "' for user " + user.login)
     send_mail(html_body, text_body, subject, user.email)
 
 
 def process_notification(base_id, login, web=False, web_level=0, email=False,
                          sms=False, parameters={}):
-    user = services.user_service.get_user_by_login(login)
+    user = ondestan.services.user_service.get_user_by_login(login)
 
     if base_id == None or base_id == '' or user == None:
         return

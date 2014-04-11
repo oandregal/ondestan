@@ -18,7 +18,7 @@ from ondestan.utils import (
         get_custom_localizer,
         send_mail
         )
-from ondestan.services import notification_service
+import ondestan.services
 
 logger = logging.getLogger('ondestan')
 
@@ -102,7 +102,7 @@ def notify_order_update_to_user(order_state, request):
                  'state': "_('order_state_" + str(order_state.state) +
                  "', domain='Ondestan')"
                  }
-    notification_service.process_notification('order_update',
+    ondestan.services.notification_service.process_notification('order_update',
         order_state.order.user.login, True, 1, True, False, parameters)
 
 
