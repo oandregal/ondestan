@@ -34,6 +34,13 @@ def get_animal_by_id(animal_id):
         return None
 
 
+def get_animal_by_imei(imei):
+    if imei != None:
+        return Animal().queryObject().filter(Animal.imei == imei).scalar()
+    else:
+        return None
+
+
 def get_animal_position_by_date(animal_id, date):
     if animal_id != None and date != None:
         return Position().queryObject().filter(and_(Position.animal_id\
