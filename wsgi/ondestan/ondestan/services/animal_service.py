@@ -1,7 +1,9 @@
 # coding=UTF-8
 from sqlalchemy import and_
 
-from ondestan.entities import Animal, Position
+from ondestan.security import check_permission, get_user_login
+from ondestan.entities import Animal, Position, Order_state
+import ondestan.services
 
 
 def get_all_animals(login=None):
@@ -76,7 +78,13 @@ def delete_animal_by_id(animal_id):
             animal.delete()
 
 
-def activate_animal_by_id(animal_id, login=None):
+def activate_animal_by_id(request):
+    animal_id = request.matchdict['device_id']
+    if check_permission('admin', request):
+        login = None
+    else:
+        login = get_user_login(request)
+
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
         if (login != None):
@@ -85,8 +93,25 @@ def activate_animal_by_id(animal_id, login=None):
         animal.active = True
         animal.update()
 
+        same_order_animals = animal.order.animals
+        all_active = True
+        for animal in same_order_animals:
+            all_active = all_active and animal.active
+        if all_active:
+            active_order_state = Order_state._STATES[len(Order_state._STATES)
+                                                     - 1]
+            if animal.order.states[0].state != active_order_state:
+                ondestan.services.order_service.update_order_state(
+                                animal.order.id, active_order_state, request)
 
-def deactivate_animal_by_id(animal_id, login=None):
+
+def deactivate_animal_by_id(request):
+    animal_id = request.matchdict['device_id']
+    if check_permission('admin', request):
+        login = None
+    else:
+        login = get_user_login(request)
+
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
         if (login != None):

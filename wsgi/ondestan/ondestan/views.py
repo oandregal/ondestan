@@ -312,24 +312,14 @@ def delete_device(request):
 @view_config(route_name='activate_device',
              permission='view')
 def activate_device(request):
-    if check_permission('admin', request):
-        animal_service.activate_animal_by_id(request.matchdict['device_id'])
-    else:
-        animal_service.activate_animal_by_id(request.matchdict['device_id'],
-                                             get_user_login(request))
-
+    animal_service.activate_animal_by_id(request)
     raise HTTPFound(request.route_url("map"))
 
 
 @view_config(route_name='deactivate_device',
              permission='view')
 def deactivate_device(request):
-    if check_permission('admin', request):
-        animal_service.deactivate_animal_by_id(request.matchdict['device_id'])
-    else:
-        animal_service.deactivate_animal_by_id(request.matchdict['device_id'],
-                                               get_user_login(request))
-
+    animal_service.deactivate_animal_by_id(request)
     raise HTTPFound(request.route_url("map"))
 
 
