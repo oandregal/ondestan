@@ -1,6 +1,7 @@
 from os import urandom
 from itertools import islice, imap, repeat
 import string
+from config import Config
 
 from pyramid.interfaces import (
     ILocalizer,
@@ -21,7 +22,7 @@ def rand_string(length=10):
 
 def get_custom_localizer(locale):
     if locale == None:
-        locale = ''
+        locale = Config.get_string_value('pyramid.default_locale_name')
 
     registry = get_current_registry()
     localizer = registry.queryUtility(ILocalizer, name=locale)
