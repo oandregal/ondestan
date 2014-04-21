@@ -13,10 +13,7 @@ from ondestan.entities import Order, User, Order_state
 from ondestan.security import get_user_login, check_permission
 from ondestan.utils import (
         Db,
-        Config,
-        HtmlContainer,
-        get_custom_localizer,
-        send_mail
+        HtmlContainer
         )
 import ondestan.services
 
@@ -79,7 +76,6 @@ def create_order(request):
 
 
 def update_order_state(order_id, state, request):
-
     order_state = Order_state()
     order_state.order_id = order_id
     order_state.state = state

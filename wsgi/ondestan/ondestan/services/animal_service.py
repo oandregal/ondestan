@@ -5,6 +5,10 @@ from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
 import ondestan.services
 
+import logging
+
+logger = logging.getLogger('ondestan')
+
 
 def get_all_animals(login=None):
     if login != None:
@@ -119,3 +123,18 @@ def deactivate_animal_by_id(request):
                 return
         animal.active = False
         animal.update()
+
+
+def save_new_position(position, animal):
+    if animal.active:
+        if get_animal_position_by_date(animal.id, position.date) == None:
+            position.animal_id = animal.id
+            position.save()
+            logger.info('Processed update for IMEI: ' + animal.imei +
+                    ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
+        else:
+            logger.warn('Position already exists for animal: ' + str(animal.id)
+                + ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
+    else:
+        logger.info('Processed update for inactive IMEI: ' + animal.imei +
+                    ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
