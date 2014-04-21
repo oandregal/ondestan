@@ -16,6 +16,8 @@ logger = logging.getLogger('ondestan')
 low_battery_barrier = Config.get_float_value('config.low_battery_barrier')
 medium_battery_barrier = Config.get_float_value(
                                 'config.medium_battery_barrier')
+same_position_max_hours = Config.get_float_value(
+                                'config.same_position_max_hours')
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -24,6 +26,11 @@ _('low_battery_notification_mail_html_body', domain='Ondestan')
 _('low_battery_notification_mail_text_body', domain='Ondestan')
 
 _('medium_battery_notification_web', domain='Ondestan')
+
+_('gps_immobile_notification_web', domain='Ondestan')
+_('gps_immobile_notification_mail_subject', domain='Ondestan')
+_('gps_immobile_notification_mail_html_body', domain='Ondestan')
+_('gps_immobile_notification_mail_text_body', domain='Ondestan')
 
 _('gps_instant_duplicated_notification_web', domain='Ondestan')
 
@@ -178,6 +185,26 @@ def save_new_position(position, animal):
                         notification_service.process_notification(
                             'medium_battery', animal.user.login, True, 2,
                             False, False, parameters)
+            if len(animal.positions) > 1 and animal.positions[0] == position:
+                date_end = position.date
+                date_begin = date_end
+                for pos in animal.positions:
+                    if pos.geom.data == position.geom.data:
+                       date_begin = pos.date
+                    else:
+                        break
+                delta = date_end - date_begin
+                hours_immobile = delta.days * 24 + delta.seconds/3600.0
+                if hours_immobile > same_position_max_hours:
+                    parameters = {'name': animal.user.name,
+                     'animal_name': animal.name if (animal.name != None and
+                                    animal.name != '') else animal.imei,
+                     'date_begin': date_begin.strftime('%d-%m-%Y %H:%M:%S'),
+                     'hours_immobile': int(hours_immobile)
+                     }
+                    ondestan.services.notification_service.process_notification(
+                        'gps_immobile', animal.user.login, True, 2, True,
+                        False, parameters)
             logger.info('Processed update for IMEI: ' + animal.imei +
                     ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
         else:
