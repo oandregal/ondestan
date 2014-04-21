@@ -9,8 +9,8 @@
     var low_battery_devices_popover_content = '';
     var batteryStandards = {
         level: {
-            low: 20.0,
-            middle: 50.0,
+            low: window.contextVariables.low_battery_barrier,
+            middle: window.contextVariables.medium_battery_barrier,
             noData: '--- ',
         },
         color: {
