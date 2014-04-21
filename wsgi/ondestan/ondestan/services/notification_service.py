@@ -101,14 +101,13 @@ def process_notification(base_id, login, web=False, web_level=0, email=False,
         text = localizer.translate(message_ts)
         process_sms_notification(login, text)
     if email:
-        message_ts = _(base_id + '_notification_mail_subject', domain='Ondestan',
-                       mapping=parameters)
+        message_ts = _(base_id + '_notification_mail_subject',
+                       domain='Ondestan', mapping=parameters)
         subject = localizer.translate(message_ts)
-        message_ts = _(base_id + '_notification_mail_html_body', domain='Ondestan',
-                       mapping=parameters)
+        message_ts = _(base_id + '_notification_mail_html_body',
+                       domain='Ondestan', mapping=parameters)
         html_body = localizer.translate(message_ts)
-        message_ts = _(base_id + '_notification_mail_text_body', domain='Ondestan',
-                       mapping=parameters)
+        message_ts = _(base_id + '_notification_mail_text_body',
+                       domain='Ondestan', mapping=parameters)
         text_body = localizer.translate(message_ts)
         process_email_notification(user, subject, html_body, text_body)
-        

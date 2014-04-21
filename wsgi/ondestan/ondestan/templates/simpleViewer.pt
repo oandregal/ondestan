@@ -24,8 +24,8 @@
       window.contextVariables.deactivate_device_url = "${request.route_url('deactivate_device', device_id='__device_id__')}";
       window.contextVariables.update_animal_name_url = "${request.route_url('update_animal_name')}";
       window.contextVariables.edit_image_tooltip = "<tal:block i18n:translate="edit_animal_name_tooltip">Activate</tal:block>";
-      window.contextVariables.low_battery_barrier = ${Config.get_string_value('config.low_battery_barrier')};
-      window.contextVariables.medium_battery_barrier = ${Config.get_string_value('config.medium_battery_barrier')};
+      window.contextVariables.low_battery_barrier = ${Config.get_float_value('config.low_battery_barrier')};
+      window.contextVariables.medium_battery_barrier = ${Config.get_float_value('config.medium_battery_barrier')};
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>

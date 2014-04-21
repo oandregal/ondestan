@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-11 19:20+0200\n"
-"PO-Revision-Date: 2014-04-21 15:14+0100\n"
+"POT-Creation-Date: 2014-04-21 18:09+0200\n"
+"PO-Revision-Date: 2014-04-21 18:24+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,23 +37,54 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
+#: ondestan/services/animal_service.py:21
+msgid "low_battery_notification_web"
+msgstr "<b>¡Urgente!</b> La vaca ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
+
+#: ondestan/services/animal_service.py:22
+msgid "low_battery_notification_mail_subject"
+msgstr "Nivel bajo de batería (${animal_name}) en Ondestán"
+
+#: ondestan/services/animal_service.py:23
+msgid "low_battery_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>Hola ${name}.<br> Según los datos recibidos, el aparato en tu vaca ${animal_name} bajó a un nivel de batería de sólo el ${battery_level}% en ${date}.</p></body></html>"
+
+#: ondestan/services/animal_service.py:24
+msgid "low_battery_notification_mail_text_body"
+msgstr ""
+"Hola ${name}.\n"
+"Según los datos recibidos, el aparato en tu vaca ${animal_name} bajó a un nivel de batería de sólo el ${battery_level}% en ${date}."
+
+#: ondestan/services/animal_service.py:26
+msgid "medium_battery_notification_web"
+msgstr "La vaca ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
+
+#: ondestan/services/animal_service.py:28
+#| msgid "gps_inactive_device_notification_web"
+msgid "gps_instant_duplicated_notification_web"
+msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${date}."
+
+#: ondestan/services/animal_service.py:30
+msgid "gps_inactive_device_notification_web"
+msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
+
 #: ondestan/services/notification_service.py:18
 msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
-#: ondestan/services/order_service.py:26
+#: ondestan/services/order_service.py:23
 msgid "order_update_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado ${state}."
 
-#: ondestan/services/order_service.py:27
+#: ondestan/services/order_service.py:24
 msgid "order_update_notification_mail_subject"
 msgstr "Actualización de tu pedido en Ondestán"
 
-#: ondestan/services/order_service.py:28
+#: ondestan/services/order_service.py:25
 msgid "order_update_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>  Tu pedido de ${units} aparato(s) ha pasado a estado ${state}<br/>Te seguiremos informando de futuros cambios en él. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.  </p></body></html>"
 
-#: ondestan/services/order_service.py:29
+#: ondestan/services/order_service.py:26
 msgid "order_update_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -61,19 +92,19 @@ msgstr ""
 "Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes acceder a la url:\n"
 "${url}"
 
-#: ondestan/services/order_service.py:31
+#: ondestan/services/order_service.py:28
 msgid "new_order_notification_web"
 msgstr "Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con nombre ${name}."
 
-#: ondestan/services/order_service.py:32
+#: ondestan/services/order_service.py:29
 msgid "new_order_notification_mail_subject"
 msgstr "Aviso de nuevo pedido en Ondestán"
 
-#: ondestan/services/order_service.py:33
+#: ondestan/services/order_service.py:30
 msgid "new_order_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con nombre ${name}.<br><a href=\"${url}\">Listado de pedidos</a></p></body></html>"
 
-#: ondestan/services/order_service.py:34
+#: ondestan/services/order_service.py:31
 msgid "new_order_notification_mail_text_body"
 msgstr ""
 "Hay un nuevo pedido de ${units} aparato(s) para el usuario ${login}, con nombre ${name}.\n"
@@ -490,32 +521,32 @@ msgid "simple_viewer_title"
 msgstr "Visor de prueba - Ondestán"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:20
+#: ondestan/templates/simpleViewer.pt:21
 msgid "activate"
 msgstr "Activar"
 
 #. Default: Deactivate
-#: ondestan/templates/simpleViewer.pt:21
+#: ondestan/templates/simpleViewer.pt:22
 msgid "deactivate"
 msgstr "Desactivar"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:25
+#: ondestan/templates/simpleViewer.pt:26
 msgid "edit_animal_name_tooltip"
 msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:44
+#: ondestan/templates/simpleViewer.pt:47
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:48
+#: ondestan/templates/simpleViewer.pt:51
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:52
+#: ondestan/templates/simpleViewer.pt:55
 msgid "dashboard_low_battery"
 msgstr "BATERÍA BAJA"
 

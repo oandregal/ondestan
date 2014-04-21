@@ -1,13 +1,33 @@
 # coding=UTF-8
+from pyramid.i18n import (
+    TranslationString as _
+    )
 from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
+from ondestan.utils import Config
 import ondestan.services
 
 import logging
 
 logger = logging.getLogger('ondestan')
+
+low_battery_barrier = Config.get_float_value('config.low_battery_barrier')
+medium_battery_barrier = Config.get_float_value(
+                                'config.medium_battery_barrier')
+
+# We put these 18n strings here so they're detected when parsing files
+_('low_battery_notification_web', domain='Ondestan')
+_('low_battery_notification_mail_subject', domain='Ondestan')
+_('low_battery_notification_mail_html_body', domain='Ondestan')
+_('low_battery_notification_mail_text_body', domain='Ondestan')
+
+_('medium_battery_notification_web', domain='Ondestan')
+
+_('gps_instant_duplicated_notification_web', domain='Ondestan')
+
+_('gps_inactive_device_notification_web', domain='Ondestan')
 
 
 def get_all_animals(login=None):
@@ -130,11 +150,55 @@ def save_new_position(position, animal):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
+            if position.battery != None and\
+                position.battery < medium_battery_barrier:
+                if position.battery < low_battery_barrier:
+                    if animal.positions[0] == position and (len(animal.positions) == 1 or\
+                        animal.positions[1].battery >= low_battery_barrier):
+                        parameters = {'name': animal.user.name,
+                         'animal_name': animal.name if (animal.name != None and
+                                        animal.name != '') else animal.imei,
+                         'date': position.date.strftime('%d-%m-%Y %H:%M:%S'),
+                         'battery_level': position.battery
+                         }
+                        ondestan.services.\
+                        notification_service.process_notification(
+                            'low_battery', animal.user.login, True, 3,
+                            True, False, parameters)
+                else:
+                    if animal.positions[0] == position and (len(animal.positions) == 1 or\
+                        animal.positions[1].battery >= medium_battery_barrier):
+                        parameters = {'name': animal.user.name,
+                         'animal_name': animal.name if (animal.name != None and
+                                        animal.name != '') else animal.imei,
+                         'date': position.date.strftime('%d-%m-%Y %H:%M:%S'),
+                         'battery_level': position.battery
+                         }
+                        ondestan.services.\
+                        notification_service.process_notification(
+                            'medium_battery', animal.user.login, True, 2,
+                            False, False, parameters)
             logger.info('Processed update for IMEI: ' + animal.imei +
                     ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
         else:
+            parameters = {'name': animal.user.name,
+             'animal_name': animal.name if (animal.name != None and
+                            animal.name != '') else animal.imei,
+             'date': position.date.strftime('%d-%m-%Y %H:%M:%S')
+             }
+            ondestan.services.notification_service.process_notification(
+                'gps_instant_duplicated', animal.user.login, True, 2, False,
+                False, parameters)
             logger.warn('Position already exists for animal: ' + str(animal.id)
                 + ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
     else:
+        parameters = {'name': animal.user.name,
+         'animal_name': animal.name if (animal.name != None and
+                        animal.name != '') else animal.imei,
+         'date': position.date.strftime('%d-%m-%Y %H:%M:%S')
+         }
+        ondestan.services.notification_service.process_notification(
+            'gps_inactive_device', animal.user.login, True, 2, False,
+            False, parameters)
         logger.info('Processed update for inactive IMEI: ' + animal.imei +
                     ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
