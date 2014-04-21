@@ -17,9 +17,10 @@ beacon_header = Config.get_string_value('gps.beacon_header')
 positions_divider = Config.get_string_value('gps.positions_divider')
 params_divider = Config.get_string_value('gps.params_divider')
 params_positions = Config.get_string_value('gps.params_positions').split(',')
-date_format =  Config.get_string_value('gps.date_format')
+date_format = Config.get_string_value('gps.date_format')
 gps_proj = pyproj.Proj("+init=" + Config.get_string_value('gps.proj'))
-viewer_proj = pyproj.Proj("+init=" + Config.get_string_value('gps.viewer_proj'))
+viewer_proj = pyproj.Proj(
+                "+init=" + Config.get_string_value('gps.viewer_proj'))
 
 base_data = {
     'imei': None,
