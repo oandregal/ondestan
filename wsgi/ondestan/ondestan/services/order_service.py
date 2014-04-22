@@ -109,13 +109,13 @@ def notify_order_update_to_user(order_state, request):
 
 def notify_new_order_to_admins(order_state, request):
     admins = ondestan.services.user_service.get_admin_users()
+    parameters = {'name': order_state.order.user.name,
+                 'login': order_state.order.user.login,
+                 'units': order_state.order.units,
+                 'address': order_state.order.address,
+                 'url': request.route_url('orders'),
+                 'state': "_('order_state_0', domain='Ondestán')"}
     for admin in admins:
-        parameters = {'name': order_state.order.user.name,
-                     'login': order_state.order.user.login,
-                     'units': order_state.order.units,
-                     'address': order_state.order.address,
-                     'url': request.route_url('orders'),
-                     'state': "_('order_state_0', domain='Ondestán')"}
         ondestan.services.notification_service.process_notification(
             'new_order', admin.login, True, 1, True, False, parameters)
 
