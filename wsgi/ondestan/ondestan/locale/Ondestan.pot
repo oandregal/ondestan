@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-22 19:24+0200\n"
+"POT-Creation-Date: 2014-04-22 20:17+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,22 @@ msgstr ""
 
 #: ondestan/entities/notification.py:20
 msgid "e-mail"
+msgstr ""
+
+#: ondestan/entities/notification.py:22
+msgid "success"
+msgstr ""
+
+#: ondestan/entities/notification.py:23
+msgid "info"
+msgstr ""
+
+#: ondestan/entities/notification.py:24
+msgid "warning"
+msgstr ""
+
+#: ondestan/entities/notification.py:25
+msgid "danger"
 msgstr ""
 
 #: ondestan/services/animal_service.py:23
@@ -214,34 +230,66 @@ msgstr ""
 msgid "update_profile"
 msgstr ""
 
+#. Default: Notifications Log
+#: ondestan/templates/main.pt:35 ondestan/templates/notifications.pt:12
+msgid "notifications_log"
+msgstr ""
+
 #. Default: Logout
-#: ondestan/templates/main.pt:35
+#: ondestan/templates/main.pt:36
 msgid "logout"
 msgstr ""
 
-#. Default: Notifications list - Ondestán
+#. Default: Notifications Log - Ondestán
 #: ondestan/templates/notifications.pt:8
-msgid "notifications_list_title"
+msgid "notifications_log_title"
 msgstr ""
 
-#. Default: Notifications
-#: ondestan/templates/notifications.pt:12
-msgid "notifications"
+#. Default: ID
+#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:21
+#: ondestan/templates/orderDevices.pt:48 ondestan/templates/orders.pt:52
+#: ondestan/templates/orders.pt:112
+msgid "id"
+msgstr ""
+
+#. Default: User
+#: ondestan/templates/notifications.pt:22 ondestan/templates/orders.pt:53
+msgid "user"
 msgstr ""
 
 #. Default: Issue Date
-#: ondestan/templates/notifications.pt:21
+#: ondestan/templates/notifications.pt:23
 msgid "issue_date"
 msgstr ""
 
 #. Default: Text
-#: ondestan/templates/notifications.pt:22
+#: ondestan/templates/notifications.pt:24
 msgid "text"
 msgstr ""
 
 #. Default: Type
-#: ondestan/templates/notifications.pt:23
+#: ondestan/templates/notifications.pt:25
 msgid "type"
+msgstr ""
+
+#. Default: Level
+#: ondestan/templates/notifications.pt:26
+msgid "level"
+msgstr ""
+
+#. Default: Archived
+#: ondestan/templates/notifications.pt:27
+msgid "archived"
+msgstr ""
+
+#. Default: Yes
+#: ondestan/templates/notifications.pt:39
+msgid "yes"
+msgstr ""
+
+#. Default: No
+#: ondestan/templates/notifications.pt:40
+msgid "no"
 msgstr ""
 
 #. Default: Order devices list - Ondestán
@@ -258,12 +306,6 @@ msgstr ""
 #. Default: Order devices
 #: ondestan/templates/orderDevices.pt:21
 msgid "order_devices"
-msgstr ""
-
-#. Default: ID
-#: ondestan/templates/orderDevices.pt:21 ondestan/templates/orderDevices.pt:48
-#: ondestan/templates/orders.pt:52 ondestan/templates/orders.pt:112
-msgid "id"
 msgstr ""
 
 #. Default: New device
@@ -395,14 +437,14 @@ msgstr ""
 msgid "pending_orders_list"
 msgstr ""
 
-#. Default: User
-#: ondestan/templates/orders.pt:53 ondestan/templates/orders.pt:113
-msgid "order_user"
-msgstr ""
-
 #. Default: Processed orders list
 #: ondestan/templates/orders.pt:104
 msgid "processed_orders_list"
+msgstr ""
+
+#. Default: User
+#: ondestan/templates/orders.pt:113
+msgid "order_user"
 msgstr ""
 
 #. Default: Password reset - Ondestán

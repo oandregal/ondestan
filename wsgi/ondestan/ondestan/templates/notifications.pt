@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+  <tal:block metal:fill-slot="head">
+    <title i18n:translate="notifications_log_title">Notifications Log - Ondestán</title>
+  </tal:block>
+
+  <tal:block metal:fill-slot="content">
+	<h3><tal:block i18n:translate="notifications_log">Notifications Log</tal:block></h3>
+
+    <div>
+      <div class="bottom">
+
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th tal:condition="is_admin" i18n:translate="id">ID</th>
+              <th tal:condition="is_admin" i18n:translate="user">User</th>
+              <th i18n:translate="issue_date">Issue Date</th>
+              <th i18n:translate="text">Text</th>
+              <th i18n:translate="type">Type</th>
+              <th tal:condition="is_admin" i18n:translate="level">Level</th>
+              <th tal:condition="is_admin" i18n:translate="archived">Archived</th>
+            </tr>
+          </thead>
+          <?python from ondestan.utils import format_datetime ?>
+          <tbody>
+            <tr tal:repeat="notification notifications">
+            	<td tal:condition="is_admin" tal:content="notification.id"/>
+            	<td tal:condition="is_admin" tal:content="notification.user.login"/>
+            	<td tal:content="format_datetime(notification.date, request)"/>
+            	<td tal:content="notification.get_translated_text(request)"/>
+            	<td tal:content="notification.get_type_as_text(request)"/>
+            	<td tal:condition="is_admin" tal:content="notification.get_level_as_text(request)"/>
+            	<td tal:condition="is_admin and notification.archived" i18n:translate="yes">Yes</td>
+            	<td tal:condition="is_admin and not notification.archived" i18n:translate="no">No</td>
+            </tr>
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </tal:block>
+
+</html>

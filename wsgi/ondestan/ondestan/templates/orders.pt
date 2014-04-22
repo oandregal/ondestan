@@ -50,7 +50,7 @@
           <thead>
             <tr>
               <th tal:condition="is_admin" i18n:translate="id">ID</th>
-              <th tal:condition="is_admin" i18n:translate="order_user">User</th>
+              <th tal:condition="is_admin" i18n:translate="user">User</th>
               <th i18n:translate="order_state">Order state</th>
               <th i18n:translate="number_units">Number of units</th>
               <th i18n:translate="delivery_address">Delivery address</th>

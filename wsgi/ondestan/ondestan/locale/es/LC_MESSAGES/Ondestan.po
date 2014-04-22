@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-22 19:24+0200\n"
-"PO-Revision-Date: 2014-04-22 19:24+0100\n"
+"POT-Creation-Date: 2014-04-22 20:17+0200\n"
+"PO-Revision-Date: 2014-04-22 20:17+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -48,6 +48,22 @@ msgstr "SMS"
 #: ondestan/entities/notification.py:20
 msgid "e-mail"
 msgstr "E-mail"
+
+#: ondestan/entities/notification.py:22
+msgid "success"
+msgstr "Éxito"
+
+#: ondestan/entities/notification.py:23
+msgid "info"
+msgstr "Información"
+
+#: ondestan/entities/notification.py:24
+msgid "warning"
+msgstr "Aviso"
+
+#: ondestan/entities/notification.py:25
+msgid "danger"
+msgstr "Peligro"
 
 #: ondestan/services/animal_service.py:23
 msgid "low_battery_notification_web"
@@ -239,35 +255,72 @@ msgstr "pedido(s)"
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
-#. Default: Logout
+#. Default: Notifications Log
 #: ondestan/templates/main.pt:35
+#: ondestan/templates/notifications.pt:12
+msgid "notifications_log"
+msgstr "Log de notificaciones"
+
+#. Default: Logout
+#: ondestan/templates/main.pt:36
 msgid "logout"
 msgstr "Salir"
 
-#. Default: Notifications list - Ondestán
+#. Default: Notifications Log - Ondestán
 #: ondestan/templates/notifications.pt:8
-msgid "notifications_list_title"
-msgstr "Listado de notificaciones - Ondestán"
+#| msgid "notifications_list_title"
+msgid "notifications_log_title"
+msgstr "Log de notificaciones - Ondestán"
 
-#. Default: Notifications
-#: ondestan/templates/notifications.pt:12
-msgid "notifications"
-msgstr "Notificaciones"
+#. Default: ID
+#: ondestan/templates/notifications.pt:21
+#: ondestan/templates/orderDevices.pt:21
+#: ondestan/templates/orderDevices.pt:48
+#: ondestan/templates/orders.pt:52
+#: ondestan/templates/orders.pt:112
+msgid "id"
+msgstr "ID"
+
+#. Default: User
+#: ondestan/templates/notifications.pt:22
+#: ondestan/templates/orders.pt:53
+msgid "user"
+msgstr "Usuario"
 
 #. Default: Issue Date
-#: ondestan/templates/notifications.pt:21
+#: ondestan/templates/notifications.pt:23
 msgid "issue_date"
 msgstr "Fecha de emisión"
 
 #. Default: Text
-#: ondestan/templates/notifications.pt:22
+#: ondestan/templates/notifications.pt:24
 msgid "text"
 msgstr "Texto"
 
 #. Default: Type
-#: ondestan/templates/notifications.pt:23
+#: ondestan/templates/notifications.pt:25
 msgid "type"
 msgstr "Tipo"
+
+#. Default: Level
+#: ondestan/templates/notifications.pt:26
+msgid "level"
+msgstr "Nivel"
+
+#. Default: Archived
+#: ondestan/templates/notifications.pt:27
+msgid "archived"
+msgstr "Archivada"
+
+#. Default: Yes
+#: ondestan/templates/notifications.pt:39
+msgid "yes"
+msgstr "Sí"
+
+#. Default: No
+#: ondestan/templates/notifications.pt:40
+msgid "no"
+msgstr "No"
 
 #. Default: Order devices list - Ondestán
 #: ondestan/templates/orderDevices.pt:8
@@ -286,14 +339,6 @@ msgstr "Este campo es obligatorio."
 #: ondestan/templates/orderDevices.pt:21
 msgid "order_devices"
 msgstr "Dispositivos del pedido"
-
-#. Default: ID
-#: ondestan/templates/orderDevices.pt:21
-#: ondestan/templates/orderDevices.pt:48
-#: ondestan/templates/orders.pt:52
-#: ondestan/templates/orders.pt:112
-msgid "id"
-msgstr "ID"
 
 #. Default: New device
 #: ondestan/templates/orderDevices.pt:26
@@ -437,16 +482,15 @@ msgstr "Confirmar pedido"
 msgid "pending_orders_list"
 msgstr "Listado de pedidos pendientes"
 
-#. Default: User
-#: ondestan/templates/orders.pt:53
-#: ondestan/templates/orders.pt:113
-msgid "order_user"
-msgstr "Usuario"
-
 #. Default: Processed orders list
 #: ondestan/templates/orders.pt:104
 msgid "processed_orders_list"
 msgstr "Listado de pedidos procesados"
+
+#. Default: User
+#: ondestan/templates/orders.pt:113
+msgid "order_user"
+msgstr "Usuario"
 
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8
@@ -620,6 +664,3 @@ msgstr "%d-%m-%Y %H:%M:%S"
 #: ondestan/utils/various.py:70
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
-
-#~ msgid "date"
-#~ msgstr "Fecha"

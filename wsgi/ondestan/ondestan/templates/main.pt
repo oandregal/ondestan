@@ -32,6 +32,7 @@
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
+	            <li><a href="${request.route_url('notifications')}" i18n:translate="notifications_log">Notifications Log</a></li>
 	            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
 	          </ul>
 	        </li>

@@ -299,6 +299,16 @@ def order_devices(request):
         )
 
 
+@view_config(route_name='notifications',
+             renderer='templates/notifications.pt',
+             permission='view')
+def notifications(request):
+    return dict(
+        is_admin=check_permission('admin', request),
+        notifications=notification_service.get_all_notifications(request)
+        )
+
+
 @view_config(route_name='delete_device',
              permission='admin')
 def delete_device(request):
@@ -326,13 +336,12 @@ def deactivate_device(request):
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):
-    is_admin = check_permission('admin', request)
     return dict(
         project=u'Ondestán',
         can_edit=check_permission('edit', request),
-        is_admin=is_admin,
+        is_admin=check_permission('admin', request),
         notifications=notification_service.\
-            get_new_notifications_for_logged_user(request)
+            get_new_web_notifications_for_logged_user(request)
     )
 
 
