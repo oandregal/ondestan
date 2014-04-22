@@ -1,3 +1,4 @@
+# coding=UTF-8
 from os import urandom
 from itertools import islice, imap, repeat
 import string
@@ -8,6 +9,8 @@ from pyramid.interfaces import (
     ITranslationDirectories
     )
 from pyramid.i18n import (
+    get_localizer,
+    TranslationString as _,
     get_current_registry,
     make_localizer
     )
@@ -35,3 +38,34 @@ def get_custom_localizer(locale):
         registry.registerUtility(localizer, ILocalizer,
                                  name=locale)
     return localizer
+
+
+def format_date(date, request=None, locale=None):
+    if request != None:
+        localizer = get_localizer(request)
+    else:
+        localizer = get_custom_localizer(locale)
+
+    date_format = localizer.translate(_('meta_date_format', domain='Ondestan'))
+    return date.strftime(date_format)
+
+
+def format_datetime(datetime, request=None, locale=None):
+    if request != None:
+        localizer = get_localizer(request)
+    else:
+        localizer = get_custom_localizer(locale)
+
+    date_format = localizer.translate(_('meta_datetime_format',
+                                        domain='Ondestan'))
+    return datetime.strftime(date_format)
+
+
+def format_time(time, request=None, locale=None):
+    if request != None:
+        localizer = get_localizer(request)
+    else:
+        localizer = get_custom_localizer(locale)
+
+    date_format = localizer.translate(_('meta_time_format', domain='Ondestan'))
+    return time.strftime(date_format)

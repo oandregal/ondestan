@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-21 18:50+0200\n"
+"POT-Creation-Date: 2014-04-22 19:24+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,6 +33,18 @@ msgstr ""
 #: ondestan/views.py:223 ondestan/services/user_service.py:131
 #: ondestan/services/user_service.py:167
 msgid "email_already_use"
+msgstr ""
+
+#: ondestan/entities/notification.py:18
+msgid "web"
+msgstr ""
+
+#: ondestan/entities/notification.py:19
+msgid "sms"
+msgstr ""
+
+#: ondestan/entities/notification.py:20
+msgid "e-mail"
 msgstr ""
 
 #: ondestan/services/animal_service.py:23
@@ -79,7 +91,7 @@ msgstr ""
 msgid "gps_inactive_device_notification_web"
 msgstr ""
 
-#: ondestan/services/notification_service.py:18
+#: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
 msgstr ""
 
@@ -205,6 +217,31 @@ msgstr ""
 #. Default: Logout
 #: ondestan/templates/main.pt:35
 msgid "logout"
+msgstr ""
+
+#. Default: Notifications list - Ondestán
+#: ondestan/templates/notifications.pt:8
+msgid "notifications_list_title"
+msgstr ""
+
+#. Default: Notifications
+#: ondestan/templates/notifications.pt:12
+msgid "notifications"
+msgstr ""
+
+#. Default: Issue Date
+#: ondestan/templates/notifications.pt:21
+msgid "issue_date"
+msgstr ""
+
+#. Default: Text
+#: ondestan/templates/notifications.pt:22
+msgid "text"
+msgstr ""
+
+#. Default: Type
+#: ondestan/templates/notifications.pt:23
+msgid "type"
 msgstr ""
 
 #. Default: Order devices list - Ondestán
@@ -515,5 +552,17 @@ msgstr ""
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
+msgstr ""
+
+#: ondestan/utils/various.py:49
+msgid "meta_date_format"
+msgstr ""
+
+#: ondestan/utils/various.py:59
+msgid "meta_datetime_format"
+msgstr ""
+
+#: ondestan/utils/various.py:70
+msgid "meta_time_format"
 msgstr ""
 

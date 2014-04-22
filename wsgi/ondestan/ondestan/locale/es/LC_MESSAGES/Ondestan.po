@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-21 18:50+0200\n"
-"PO-Revision-Date: 2014-04-21 19:24+0100\n"
+"POT-Creation-Date: 2014-04-22 19:24+0200\n"
+"PO-Revision-Date: 2014-04-22 19:24+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,6 +37,18 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
+#: ondestan/entities/notification.py:18
+msgid "web"
+msgstr "Web"
+
+#: ondestan/entities/notification.py:19
+msgid "sms"
+msgstr "SMS"
+
+#: ondestan/entities/notification.py:20
+msgid "e-mail"
+msgstr "E-mail"
+
 #: ondestan/services/animal_service.py:23
 msgid "low_battery_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
@@ -60,22 +72,18 @@ msgid "medium_battery_notification_web"
 msgstr "La vaca ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
 
 #: ondestan/services/animal_service.py:30
-#| msgid "gps_inactive_device_notification_web"
 msgid "gps_immobile_notification_web"
 msgstr "La vaca ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse, desde el ${date_begin}."
 
 #: ondestan/services/animal_service.py:31
-#| msgid "signup_notification_mail_subject"
 msgid "gps_immobile_notification_mail_subject"
 msgstr "Animal sin movimiento durante largo período (${animal_name}) en Ondestán"
 
 #: ondestan/services/animal_service.py:32
-#| msgid "signup_notification_mail_html_body"
 msgid "gps_immobile_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, tu vaca <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b>, desde el ${date_begin}.</p></body></html>"
 
 #: ondestan/services/animal_service.py:33
-#| msgid "signup_notification_mail_text_body"
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -89,7 +97,7 @@ msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${da
 msgid "gps_inactive_device_notification_web"
 msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
 
-#: ondestan/services/notification_service.py:18
+#: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
@@ -235,6 +243,31 @@ msgstr "Actualizar perfil"
 #: ondestan/templates/main.pt:35
 msgid "logout"
 msgstr "Salir"
+
+#. Default: Notifications list - Ondestán
+#: ondestan/templates/notifications.pt:8
+msgid "notifications_list_title"
+msgstr "Listado de notificaciones - Ondestán"
+
+#. Default: Notifications
+#: ondestan/templates/notifications.pt:12
+msgid "notifications"
+msgstr "Notificaciones"
+
+#. Default: Issue Date
+#: ondestan/templates/notifications.pt:21
+msgid "issue_date"
+msgstr "Fecha de emisión"
+
+#. Default: Text
+#: ondestan/templates/notifications.pt:22
+msgid "text"
+msgstr "Texto"
+
+#. Default: Type
+#: ondestan/templates/notifications.pt:23
+msgid "type"
+msgstr "Tipo"
 
 #. Default: Order devices list - Ondestán
 #: ondestan/templates/orderDevices.pt:8
@@ -576,3 +609,17 @@ msgstr "BATERÍA BAJA"
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
 
+#: ondestan/utils/various.py:49
+msgid "meta_date_format"
+msgstr "%d-%m-%Y"
+
+#: ondestan/utils/various.py:59
+msgid "meta_datetime_format"
+msgstr "%d-%m-%Y %H:%M:%S"
+
+#: ondestan/utils/various.py:70
+msgid "meta_time_format"
+msgstr "%H:%M:%S"
+
+#~ msgid "date"
+#~ msgstr "Fecha"
