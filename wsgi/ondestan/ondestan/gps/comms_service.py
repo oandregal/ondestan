@@ -86,8 +86,11 @@ def process_gps_data(data):
                                  "(IMEI: '" + data['imei'] + "')", 403)
         position = Position()
         try:
-            x, y = pyproj.transform(gps_proj, viewer_proj,
-                float(data['lon']), float(data['lat']))
+            if (gps_proj != viewer_proj):
+                x, y = pyproj.transform(gps_proj, viewer_proj,
+                    float(data['lon']), float(data['lat']))
+            else:
+                x, y = float(data['lon']), float(data['lat'])
             position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) +\
             ')'
         except RuntimeError as e:
