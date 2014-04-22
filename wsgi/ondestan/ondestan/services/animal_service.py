@@ -6,7 +6,7 @@ from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
-from ondestan.utils import Config
+from ondestan.utils import Config, format_datetime
 import ondestan.services
 
 import logging
@@ -165,7 +165,7 @@ def save_new_position(position, animal):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': position.date.strftime('%d-%m-%Y %H:%M:%S'),
+                         'date': format_datetime(position.date, locale=animal.user.locale),
                          'battery_level': position.battery
                          }
                         ondestan.services.\
@@ -178,7 +178,7 @@ def save_new_position(position, animal):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': position.date.strftime('%d-%m-%Y %H:%M:%S'),
+                         'date': format_datetime(position.date, locale=animal.user.locale),
                          'battery_level': position.battery
                          }
                         ondestan.services.\
@@ -196,36 +196,42 @@ def save_new_position(position, animal):
                 delta = date_end - date_begin
                 hours_immobile = delta.days * 24 + delta.seconds/3600.0
                 if hours_immobile > same_position_max_hours:
-                    parameters = {'name': animal.user.name,
-                     'animal_name': animal.name if (animal.name != None and
-                                    animal.name != '') else animal.imei,
-                     'date_begin': date_begin.strftime('%d-%m-%Y %H:%M:%S'),
-                     'hours_immobile': int(hours_immobile)
-                     }
-                    ondestan.services.notification_service.process_notification(
-                        'gps_immobile', animal.user.login, True, 2, True,
-                        False, parameters)
+                    first_immobile = True
+                    if len(animal.positions) > 2:
+                        delta_aux = animal.positions[1].date - date_begin
+                        hours_immobile_aux = delta_aux.days * 24 + delta_aux.seconds/3600.0
+                        first_immobile = hours_immobile_aux <= same_position_max_hours
+                    if first_immobile:
+                        parameters = {'name': animal.user.name,
+                         'animal_name': animal.name if (animal.name != None and
+                                        animal.name != '') else animal.imei,
+                         'date_begin': format_datetime(date_begin, locale=animal.user.locale),
+                         'hours_immobile': int(hours_immobile)
+                         }
+                        ondestan.services.notification_service.process_notification(
+                            'gps_immobile', animal.user.login, True, 2, True,
+                            False, parameters)
             logger.info('Processed update for IMEI: ' + animal.imei +
-                    ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
+                    ' for date ' + str(position.date))
         else:
             parameters = {'name': animal.user.name,
              'animal_name': animal.name if (animal.name != None and
                             animal.name != '') else animal.imei,
-             'date': position.date.strftime('%d-%m-%Y %H:%M:%S')
+             'date': format_datetime(position.date, locale=animal.user.locale)
              }
             ondestan.services.notification_service.process_notification(
                 'gps_instant_duplicated', animal.user.login, True, 2, False,
                 False, parameters)
             logger.warn('Position already exists for animal: ' + str(animal.id)
-                + ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
+                + ' for date ' + str(position.date))
     else:
         parameters = {'name': animal.user.name,
          'animal_name': animal.name if (animal.name != None and
                         animal.name != '') else animal.imei,
-         'date': position.date.strftime('%d-%m-%Y %H:%M:%S')
+         'date': format_datetime(position.date, locale=animal.user.locale)
          }
         ondestan.services.notification_service.process_notification(
             'gps_inactive_device', animal.user.login, True, 2, False,
             False, parameters)
         logger.info('Processed update for inactive IMEI: ' + animal.imei +
-                    ' for date ' + position.date.strftime('%Y-%m-%d %H:%M:%S'))
+                    ' for date ' + str(position.date))
