@@ -1,8 +1,10 @@
 # coding=UTF-8
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date, func
 from sqlalchemy.orm import relationship, backref
+from sqlalchemy.ext.hybrid import hybrid_property
+from sqlalchemy.dialects.postgresql import array
 
-from ondestan.entities import Entity
+from ondestan.entities import Entity, Role, Animal
 from ondestan.utils import Base
 
 
@@ -22,3 +24,31 @@ class User(Entity, Base):
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role", backref=backref('users',
                         order_by=login))
+
+    @hybrid_property
+    def get_bounding_box_as_json(self):
+        positions = []
+        if self.role.name == Role._ADMIN_ROLE:
+            animals = Animal().queryObject().all()
+        else:
+            animals = self.animals
+        for animal in animals:
+            if len(animal.positions) > 0:
+                positions.append(animal.positions[0].geom)
+        return self.session.scalar(func.ST_AsGeoJson(func.ST_Envelope(
+            func.ST_MakeLine(array(positions))))) if len(positions) > 0\
+            else None
+
+    @hybrid_property
+    def get_bounding_box(self):
+        positions = []
+        if self.role.name == Role._ADMIN_ROLE:
+            animals = Animal().queryObject().all()
+        else:
+            animals = self.animals
+        for animal in animals:
+            if len(animal.positions) > 0:
+                positions.append(animal.positions[0].geom)
+        return self.session.scalar(func.ST_Envelope(
+            func.ST_MakeLine(array(positions)))) if len(positions) > 0\
+            else None

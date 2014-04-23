@@ -160,7 +160,21 @@
     }
 
     NS.init = function(){
-        map = L.map('map').setView([42.25, -7.54], 13);
+    	map = L.map('map')
+    	if (window.contextVariables.map_view_json != null) {
+	    	if (window.contextVariables.map_view_json.type == 'Polygon') {
+	    		points = []
+	    		for (i in window.contextVariables.map_view_json.coordinates[0]) {
+	    			points.push([window.contextVariables.map_view_json.coordinates[0][i][1], window.contextVariables.map_view_json.coordinates[0][i][0]]);
+	    		}
+	    		map.fitBounds(points);
+	    	} else {
+	    		point = [window.contextVariables.map_view_json.coordinates[1], window.contextVariables.map_view_json.coordinates[0]]
+	    		map.setView(point, 13);
+	    	}
+    	} else {
+    		map.setView(window.contextVariables.default_view, 13);
+    	}
 
         new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
             onEachFeature: function (feature, layer) {

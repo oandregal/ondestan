@@ -336,10 +336,12 @@ def deactivate_device(request):
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
              permission='view')
 def viewer(request):
+    user = user_service.get_user_by_login(get_user_login(request))
     return dict(
         project=u'Ondestán',
         can_edit=check_permission('edit', request),
         is_admin=check_permission('admin', request),
+        view=user.get_bounding_box_as_json,
         notifications=notification_service.\
             get_new_web_notifications_for_logged_user(request)
     )

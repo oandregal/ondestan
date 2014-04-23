@@ -26,6 +26,8 @@
       window.contextVariables.edit_image_tooltip = "<tal:block i18n:translate="edit_animal_name_tooltip">Activate</tal:block>";
       window.contextVariables.low_battery_barrier = ${Config.get_float_value('config.low_battery_barrier')};
       window.contextVariables.medium_battery_barrier = ${Config.get_float_value('config.medium_battery_barrier')};
+      window.contextVariables.map_view_json = ${view if view != None else 'null'};
+      window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
