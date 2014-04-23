@@ -91,8 +91,8 @@ def process_gps_data(data):
                     float(data['lon']), float(data['lat']))
             else:
                 x, y = float(data['lon']), float(data['lat'])
-            position.geom = 'SRID=3857;POINT(' + str(x) + ' ' + str(y) +\
-            ')'
+            position.geom = 'SRID=' + str(position.srid) + ';POINT(' + str(x)\
+            + ' ' + str(y) + ')'
         except RuntimeError as e:
             raise GpsUpdateError(e.message, 400)
         position.date = datetime.strptime(data['date'], date_format)
