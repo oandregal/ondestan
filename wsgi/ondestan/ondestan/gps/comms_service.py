@@ -18,9 +18,9 @@ positions_divider = Config.get_string_value('gps.positions_divider')
 params_divider = Config.get_string_value('gps.params_divider')
 params_positions = Config.get_string_value('gps.params_positions').split(',')
 date_format = Config.get_string_value('gps.date_format')
-gps_proj = pyproj.Proj("+init=" + Config.get_string_value('gps.proj'))
+gps_proj = pyproj.Proj("+init=EPSG:" + Config.get_string_value('gps.proj'))
 viewer_proj = pyproj.Proj(
-                "+init=" + Config.get_string_value('gps.viewer_proj'))
+                "+init=EPSG:" + Config.get_string_value('config.viewer_proj'))
 
 base_data = {
     'imei': None,
