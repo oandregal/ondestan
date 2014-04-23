@@ -22,10 +22,14 @@ class Position(Entity, Base):
     geom = Column(Geometry('POINT'))
     geojson = column_property(geom.ST_AsGeoJSON())
 
-    @hybrid_property
+    """@hybrid_property
     def outside(self):
         if (self.animal != None and self.animal.plot != None):
             return not self.session.scalar(
                 self.animal.plot.geom.ST_Contains(self.geom)
             )
+        return False"""
+
+    @hybrid_property
+    def outside(self):
         return False
