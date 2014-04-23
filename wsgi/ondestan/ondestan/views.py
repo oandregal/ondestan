@@ -352,6 +352,71 @@ def default(request):
     raise HTTPFound(request.route_url("map"))
 
 
+@view_config(route_name='create_plot', renderer='json',
+             permission='view')
+def create_plot(request):
+    user = user_service.get_user_by_login(get_user_login(request))
+    points = []
+    i = 0
+    while ('x' + str(i)) in request.GET and ('y' + str(i)) in request.GET:
+        points.append([float(request.GET['x' + str(i)]), float(request.GET['y'
+                                                                + str(i)])])
+        i += 1
+    plot = plot_service.create_plot(points, user.id)
+
+    if plot == None:
+        return {'success': False}
+    else:
+        feature = {
+                    "type": "Feature",
+                    "properties": {
+                        "id": plot.id,
+                        "name": plot.name,
+                        "owner": plot.user.login,
+                        "popup": plot.name
+                    },
+                    "geometry": eval(plot.geojson)
+                }
+        return {'success': True, 'feature': feature}
+
+
+@view_config(route_name='update_plot_geom', renderer='json',
+             permission='view')
+def update_plot_geom(request):
+    user = user_service.get_user_by_login(get_user_login(request))
+    points = []
+    i = 0
+    while ('x' + str(i)) in request.GET and ('y' + str(i)) in request.GET:
+        points.append([float(request.GET['x' + str(i)]), float(request.GET['y'
+                                                                + str(i)])])
+        i += 1
+    plot_id = request.GET['id']
+    plot = plot_service.update_plot_geom(points, plot_id, user.id)
+
+    if plot == None:
+        return {'success': False}
+    else:
+        feature = {
+                    "type": "Feature",
+                    "properties": {
+                        "id": plot_id,
+                        "name": plot.name,
+                        "owner": plot.user.login,
+                        "popup": plot.name
+                    },
+                    "geometry": eval(plot.geojson)
+                }
+        return {'success': True, 'feature': feature}
+
+
+@view_config(route_name='delete_plot', renderer='json',
+             permission='view')
+def delete_plot(request):
+    user = user_service.get_user_by_login(get_user_login(request))
+    plot_id = request.GET['id']
+    return {'success': plot_service.delete_plot(plot_id, user.id)}
+
+
 @view_config(route_name='json_animals', renderer='json',
              permission='view')
 def json_animals(request):

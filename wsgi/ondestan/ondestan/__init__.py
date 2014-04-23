@@ -52,6 +52,10 @@ def main(global_config, **settings):
                      '{device_id}')
     config.add_route('update_animal_name', '/animals/update_name')
 
+    config.add_route('create_plot', '/plots/create')
+    config.add_route('update_plot_geom', '/plots/update_geom')
+    config.add_route('delete_plot', '/plots/delete_plot')
+
     config.add_route('map', '/map')
     config.add_route('json_animals', '/json/animals.json')
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')
