@@ -16,5 +16,5 @@ class Plot(Entity, Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('plots',
                                                   order_by=name))
-    geom = Column(Geometry('POLYGON'))
+    geom = Column(Geometry('POLYGON', Entity.srid))
     geojson = column_property(geom.ST_AsGeoJSON())

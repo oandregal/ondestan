@@ -1,10 +1,11 @@
 # coding=UTF-8
-from ondestan.utils import Db
+from ondestan.utils import Db, Config
 
 
 class Entity():
 
     session = Db.instance().session
+    srid = Config.get_string_value('config.viewer_proj')
 
     '''
 

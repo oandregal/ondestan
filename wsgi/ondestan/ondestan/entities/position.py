@@ -19,7 +19,7 @@ class Position(Entity, Base):
     animal_id = Column(Integer, ForeignKey("animals.id"))
     animal = relationship("Animal", backref=backref('positions',
                                                   order_by=date.desc()))
-    geom = Column(Geometry('POINT'))
+    geom = Column(Geometry('POINT', Entity.srid))
     geojson = column_property(geom.ST_AsGeoJSON())
 
     """@hybrid_property
