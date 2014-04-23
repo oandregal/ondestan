@@ -160,7 +160,7 @@
     }
 
     NS.init = function(){
-    	map = L.map('map')
+    	map = L.map('map');
     	if (window.contextVariables.map_view_json != null) {
 	    	if (window.contextVariables.map_view_json.type == 'Polygon') {
 	    		points = []
@@ -176,15 +176,88 @@
     		map.setView(window.contextVariables.default_view, 13);
     	}
 
-        new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
+    	var plots = new L.FeatureGroup();
+		new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
             onEachFeature: function (feature, layer) {
                 layer.bindPopup(feature.properties.popup);
+            	plots.addLayer(layer);
             },
             middleware:function(data){
                 load_animals();
                 return data;
             }
-        }).addTo(map);
+        });
+
+    	map.addLayer(plots);
+
+    	var drawOptions = {
+		    draw: {
+		        polyline: false,
+		        polygon: {
+		        	showArea: true, // Show the area of the drawn polygon
+		            allowIntersection: false, // Restricts shapes to simple polygons
+		            drawError: {
+		                color: '#FF0000', // Color the shape will turn when intersects
+		                message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+		            },
+		            shapeOptions: {
+		                color: '#0033ff'
+		            }
+		        },
+		        circle: false, // Turns off this drawing tool
+		        rectangle: false,
+		        marker: false
+		    },
+		    edit: {
+		    	featureGroup: plots
+		    }
+		};
+
+		map.on('draw:created', function (e) {
+			var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
+			for (i in layer._latlngs) {
+				url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
+			}
+			url = url.substring(0, url.length - 1);
+			$.ajax({url: url,success:function(result){
+				if (result.success) {
+					layer.feature = result.feature;
+	                layer.bindPopup(result.feature.properties.popup);
+	    			plots.addLayer(layer);
+				}
+			}});
+		});
+		map.on('draw:edited', function (e) {
+			var layers = e.layers._layers, url;
+			for (j in layers) {
+				url = window.contextVariables.update_plot_geom_url + "?"
+				layer = layers[j];
+				for (i in layer._latlngs) {
+					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
+				}
+				url += 'id=' + layer.feature.properties.id;
+				$.ajax({url: url,success:function(result){
+					if (result.success) {
+						layer.feature = result.feature;
+					}
+				}});
+			}
+		});
+		map.on('draw:deleted', function (e) {
+			var layers = e.layers._layers, url;
+			for (j in layers) {
+				url = window.contextVariables.delete_plot_url + "?"
+				layer = layers[j];
+				url += 'id=' + layer.feature.properties.id;
+				$.ajax({url: url,success:function(result){
+					if (result.success) {
+					}
+				}});
+			}
+		});
+
+		var drawControl = new L.Control.Draw(drawOptions);
+		map.addControl(drawControl);
 
         L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,

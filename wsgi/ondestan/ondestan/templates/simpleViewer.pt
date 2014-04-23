@@ -10,6 +10,7 @@
 
   <tal:block metal:fill-slot="styles">
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.draw.css')}" />
   </tal:block>
 
   <tal:block metal:fill-slot="javascript">
@@ -17,6 +18,9 @@
     <script type="text/javascript">
       window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
       window.contextVariables.plots_json_url = "${request.route_url('json_plots')}";
+      window.contextVariables.create_plot_url = "${request.route_url('create_plot')}";
+      window.contextVariables.update_plot_geom_url = "${request.route_url('update_plot_geom')}";
+      window.contextVariables.delete_plot_url = "${request.route_url('delete_plot')}";
       window.contextVariables.orders_popover_content = "${orders_popover_content}";
       window.contextVariables.activate_device_msg = "<tal:block i18n:translate="activate">Activate</tal:block>";
       window.contextVariables.deactivate_device_msg = "<tal:block i18n:translate="deactivate">Deactivate</tal:block>";
@@ -31,6 +35,7 @@
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
   </tal:block>
 
