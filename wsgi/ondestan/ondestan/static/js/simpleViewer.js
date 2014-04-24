@@ -160,7 +160,9 @@
     }
 
     NS.init = function(){
-    	map = L.map('map');
+    	map = L.map('map', {zoomControl: false});
+    	zoom = L.control.zoom({zoomInTitle: window.contextVariables.zoom_in_tooltip, zoomOutTitle: window.contextVariables.zoom_out_tooltip});
+    	map.addControl(zoom);
     	if (window.contextVariables.map_view_json != null) {
 	    	if (window.contextVariables.map_view_json.type == 'Polygon') {
 	    		points = []

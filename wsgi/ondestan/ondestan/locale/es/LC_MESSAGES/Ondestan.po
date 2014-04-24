@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-22 20:17+0200\n"
-"PO-Revision-Date: 2014-04-22 20:17+0100\n"
+"POT-Creation-Date: 2014-04-24 21:18+0200\n"
+"PO-Revision-Date: 2014-04-24 21:18+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -268,7 +268,6 @@ msgstr "Salir"
 
 #. Default: Notifications Log - Ondestán
 #: ondestan/templates/notifications.pt:8
-#| msgid "notifications_list_title"
 msgid "notifications_log_title"
 msgstr "Log de notificaciones - Ondestán"
 
@@ -619,32 +618,132 @@ msgid "simple_viewer_title"
 msgstr "Visor de prueba - Ondestán"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:21
+#: ondestan/templates/simpleViewer.pt:28
 msgid "activate"
 msgstr "Activar"
 
 #. Default: Deactivate
-#: ondestan/templates/simpleViewer.pt:22
+#: ondestan/templates/simpleViewer.pt:29
 msgid "deactivate"
 msgstr "Desactivar"
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:26
+#: ondestan/templates/simpleViewer.pt:33
 msgid "edit_animal_name_tooltip"
 msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
-#. Default: ACTIVE
+#. Default: Zoom in
+#: ondestan/templates/simpleViewer.pt:38
+#| msgid "map_tool_undo_tooltip"
+msgid "map_tool_zoom_in_tooltip"
+msgstr "Acercar"
+
+#. Default: Zoom out
+#: ondestan/templates/simpleViewer.pt:39
+#| msgid "map_tool_edit_plot_tooltip"
+msgid "map_tool_zoom_out_tooltip"
+msgstr "Alejar"
+
+#. Default: Draw a new plot
+#: ondestan/templates/simpleViewer.pt:41
+msgid "map_tool_create_plot_tooltip"
+msgstr "Dibujar una nueva finca"
+
+#. Default: Delete last point drawn
+#: ondestan/templates/simpleViewer.pt:42
+msgid "map_tool_undo_tooltip"
+msgstr "Borrar el último punto dibujado"
+
+#. Default: Delete last point
+#: ondestan/templates/simpleViewer.pt:43
+msgid "map_tool_undo_text"
+msgstr "Borrar último punto"
+
+#. Default: Cancel drawing
+#. Default: Cancel
+#: ondestan/templates/simpleViewer.pt:44
+#: ondestan/templates/simpleViewer.pt:45
+#: ondestan/templates/simpleViewer.pt:53
+msgid "map_tool_cancel_text"
+msgstr "Cancelar"
+
+#. Default: Click to start drawing plot.
+#: ondestan/templates/simpleViewer.pt:46
+msgid "map_tool_create_plot_handler_start_tooltip"
+msgstr "Haz click para empezar a dibujar la finca."
+
+#. Default: Click to continue drawing plot.
 #: ondestan/templates/simpleViewer.pt:47
+msgid "map_tool_create_plot_handler_cont_tooltip"
+msgstr "Haz click para continuar dibujando la finca."
+
+#. Default: Click first point to close this plot.
+#: ondestan/templates/simpleViewer.pt:48
+msgid "map_tool_create_plot_handler_end_tooltip"
+msgstr "Haz click en el primer punto para cerrar esta finca."
+
+#. Default: Save changes
+#: ondestan/templates/simpleViewer.pt:50
+msgid "map_tool_save_tooltip"
+msgstr "Guardar cambios"
+
+#. Default: Save
+#: ondestan/templates/simpleViewer.pt:51
+msgid "map_tool_save_text"
+msgstr "Guardar"
+
+#. Default: Cancel editing, discards all changes
+#: ondestan/templates/simpleViewer.pt:52
+msgid "map_tool_cancel_tooltip"
+msgstr "Cancelar la edición, descarta los cambios"
+
+#. Default: Edit plots
+#: ondestan/templates/simpleViewer.pt:55
+msgid "map_tool_edit_plot_tooltip"
+msgstr "Editar fincas"
+
+#. Default: No plots to edit
+#: ondestan/templates/simpleViewer.pt:56
+msgid "map_tool_edit_plot_disabled_tooltip"
+msgstr "No hay fincas que editar"
+
+#. Default: Delete plots
+#: ondestan/templates/simpleViewer.pt:57
+msgid "map_tool_delete_plot_tooltip"
+msgstr "Borrar fincas"
+
+#. Default: No plots to delete
+#: ondestan/templates/simpleViewer.pt:58
+msgid "map_tool_delete_plot_disabled_tooltip"
+msgstr "No hay fincas que borrar"
+
+#. Default: Drag handles to edit the plot.
+#: ondestan/templates/simpleViewer.pt:59
+msgid "map_tool_edit_plot_handler_tooltip"
+msgstr "Arrastra los vértices para editar la finca."
+
+#. Default: Click Cancel to undo changes.
+#: ondestan/templates/simpleViewer.pt:60
+msgid "map_tool_edit_plot_handler_subtooltip"
+msgstr "Haz click en Cancelar para deshacer los cambios."
+
+#. Default: Click on a plot to remove.
+#: ondestan/templates/simpleViewer.pt:61
+msgid "map_tool_delete_plot_handler_tooltip"
+msgstr "Haz click en una finca para borrarla."
+
+#. Default: ACTIVE
+#: ondestan/templates/simpleViewer.pt:78
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:51
+#: ondestan/templates/simpleViewer.pt:82
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:55
+#: ondestan/templates/simpleViewer.pt:86
 msgid "dashboard_low_battery"
 msgstr "BATERÍA BAJA"
 
@@ -664,3 +763,4 @@ msgstr "%d-%m-%Y %H:%M:%S"
 #: ondestan/utils/various.py:70
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
+

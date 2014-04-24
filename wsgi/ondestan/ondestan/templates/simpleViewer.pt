@@ -14,6 +14,9 @@
   </tal:block>
 
   <tal:block metal:fill-slot="javascript">
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
   	<?python from ondestan.utils import Config?>
     <script type="text/javascript">
       window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
@@ -32,10 +35,31 @@
       window.contextVariables.medium_battery_barrier = ${Config.get_float_value('config.medium_battery_barrier')};
       window.contextVariables.map_view_json = ${view if view != None else 'null'};
       window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
+      window.contextVariables.zoom_in_tooltip = "<tal:block i18n:translate="map_tool_zoom_in_tooltip">Zoom in</tal:block>";
+      window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
+
+      L.drawLocal.draw.toolbar.buttons.polygon = "<tal:block i18n:translate="map_tool_create_plot_tooltip">Draw a new plot</tal:block>";
+      L.drawLocal.draw.toolbar.undo.title = "<tal:block i18n:translate="map_tool_undo_tooltip">Delete last point drawn</tal:block>";
+      L.drawLocal.draw.toolbar.undo.text = "<tal:block i18n:translate="map_tool_undo_text">Delete last point</tal:block>";
+      L.drawLocal.draw.toolbar.actions.title = "<tal:block i18n:translate="map_tool_cancel_text">Cancel drawing</tal:block>";
+      L.drawLocal.draw.toolbar.actions.text = "<tal:block i18n:translate="map_tool_cancel_text">Cancel</tal:block>";
+      L.drawLocal.draw.handlers.polygon.tooltip.start = "<tal:block i18n:translate="map_tool_create_plot_handler_start_tooltip">Click to start drawing plot.</tal:block>";
+      L.drawLocal.draw.handlers.polygon.tooltip.cont = "<tal:block i18n:translate="map_tool_create_plot_handler_cont_tooltip">Click to continue drawing plot.</tal:block>";
+      L.drawLocal.draw.handlers.polygon.tooltip.end = "<tal:block i18n:translate="map_tool_create_plot_handler_end_tooltip">Click first point to close this plot.</tal:block>";
+      
+      L.drawLocal.edit.toolbar.actions.save.title = "<tal:block i18n:translate="map_tool_save_tooltip">Save changes</tal:block>";
+      L.drawLocal.edit.toolbar.actions.save.text = "<tal:block i18n:translate="map_tool_save_text">Save</tal:block>";
+      L.drawLocal.edit.toolbar.actions.cancel.title = "<tal:block i18n:translate="map_tool_cancel_tooltip">Cancel editing, discards all changes</tal:block>";
+      L.drawLocal.edit.toolbar.actions.cancel.text = "<tal:block i18n:translate="map_tool_cancel_text">Cancel</tal:block>";
+      
+      L.drawLocal.edit.toolbar.buttons.edit = "<tal:block i18n:translate="map_tool_edit_plot_tooltip">Edit plots</tal:block>";
+      L.drawLocal.edit.toolbar.buttons.editDisabled = "<tal:block i18n:translate="map_tool_edit_plot_disabled_tooltip">No plots to edit</tal:block>";
+      L.drawLocal.edit.toolbar.buttons.remove = "<tal:block i18n:translate="map_tool_delete_plot_tooltip">Delete plots</tal:block>";
+      L.drawLocal.edit.toolbar.buttons.removeDisabled = "<tal:block i18n:translate="map_tool_delete_plot_disabled_tooltip">No plots to delete</tal:block>";
+      L.drawLocal.edit.handlers.edit.tooltip.text = "<tal:block i18n:translate="map_tool_edit_plot_handler_tooltip">Drag handles to edit the plot.</tal:block>";
+      L.drawLocal.edit.handlers.edit.tooltip.subtext = "<tal:block i18n:translate="map_tool_edit_plot_handler_subtooltip">Click Cancel to undo changes.</tal:block>";
+      L.drawLocal.edit.handlers.remove.tooltip.text = "<tal:block i18n:translate="map_tool_delete_plot_handler_tooltip">Click on a plot to remove.</tal:block>";
     </script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
   </tal:block>
 
