@@ -15,7 +15,9 @@ requires = [
     'psycopg2==2.5.2',
     'Babel==1.3',
     'lingua==1.6',
-    'pyproj==1.9.3'
+    'pyproj==1.9.3',
+    'zope.sqlalchemy==0.7.4',
+    'pyramid_tm==0.7'
     ]
 test_requires = [
     'requests==2.2.1'
