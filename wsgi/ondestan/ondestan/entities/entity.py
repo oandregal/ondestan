@@ -15,25 +15,27 @@ class Entity():
 
     def save(self):
 
-        self.session.add(self)
+        result = self.session.add(self)
 
-        self.session.commit()
+        self.session.flush()
 
     def saveMultiple(self, objects=[]):
 
         self.session.add_all(objects)
 
-        self.session.commit()
+        self.session.flush()
 
     def update(self):
 
-        self.session.commit()
+        self.session.merge(self)
+
+        self.session.flush()
 
     def delete(self):
 
         self.session.delete(self)
 
-        self.session.commit()
+        self.session.flush()
 
     def queryObject(self):
 

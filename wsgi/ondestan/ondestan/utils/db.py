@@ -2,10 +2,15 @@
 from ondestan.utils import Config
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from sqlalchemy.orm import (
+    scoped_session,
+    sessionmaker,
+    )
 from os.path import expandvars
 
 from ondestan.utils import Singleton
+
+from zope.sqlalchemy import ZopeTransactionExtension
 
 Base = declarative_base()
 
@@ -28,6 +33,10 @@ class Db(object):
     session = None
 
     def __init__(self):
+
+        self.session = scoped_session(
+            sessionmaker(extension=ZopeTransactionExtension()))
+
         host = expandvars(Config.get_string_value('db.host'))
         port = expandvars(Config.get_string_value('db.port'))
         db = expandvars(Config.get_string_value('db.dbname'))
@@ -40,14 +49,8 @@ class Db(object):
             conn_str,
             echo=True
         )
-
-        Session = sessionmaker(bind=self.engine)
-
-        self.session = Session()
-
-        ## Create all Tables
-
-        Base.metadata.create_all(self.engine)
+        self.session.configure(bind=self.engine)
+        Base.metadata.bind = self.engine
 
     def instance(self, *args, **kwargs):
 
