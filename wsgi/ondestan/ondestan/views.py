@@ -178,9 +178,25 @@ def logout(request):
                      headers=headers)
 
 
-@view_config(route_name='check_imei', renderer='json',
+@view_config(route_name='check_device_phone', renderer='json',
              permission='admin')
-def check_imei(request):
+def check_device_phone(request):
+    if 'phone' in request.params:
+        phone = request.params['phone']
+        animal = animal_service.get_animal_by_phone(phone)
+        if (animal == None):
+            return True
+        if 'id' in request.params:
+            if animal.id == int(request.params['id']):
+                return True
+    localizer = get_localizer(request)
+    message_ts = _('device_phone_already_use', domain='Ondestan')
+    return localizer.translate(message_ts)
+
+
+@view_config(route_name='check_device_imei', renderer='json',
+             permission='admin')
+def check_device_imei(request):
     if 'imei' in request.params:
         imei = request.params['imei']
         animal = animal_service.get_animal_by_imei(imei)
@@ -190,12 +206,12 @@ def check_imei(request):
             if animal.id == int(request.params['id']):
                 return True
     localizer = get_localizer(request)
-    message_ts = _('imei_already_use', domain='Ondestan')
+    message_ts = _('device_imei_already_use', domain='Ondestan')
     return localizer.translate(message_ts)
 
 
-@view_config(route_name='check_login', renderer='json')
-def check_login(request):
+@view_config(route_name='check_user_login', renderer='json')
+def check_user_login(request):
     if 'login' in request.params:
         login = request.params['login']
         user = user_service.get_user_by_login(login)
@@ -205,12 +221,12 @@ def check_login(request):
             if user.id == int(request.params['id']):
                 return True
     localizer = get_localizer(request)
-    message_ts = _('login_already_use', domain='Ondestan')
+    message_ts = _('user_login_already_use', domain='Ondestan')
     return localizer.translate(message_ts)
 
 
-@view_config(route_name='check_email', renderer='json')
-def check_email(request):
+@view_config(route_name='check_user_email', renderer='json')
+def check_user_email(request):
     if 'email' in request.params:
         email = request.params['email']
         user = user_service.get_user_by_email(email)
@@ -220,7 +236,7 @@ def check_email(request):
             if user.id == int(request.params['id']):
                 return True
     localizer = get_localizer(request)
-    message_ts = _('email_already_use', domain='Ondestan')
+    message_ts = _('user_email_already_use', domain='Ondestan')
     return localizer.translate(message_ts)
 
 
@@ -288,11 +304,12 @@ def order_devices(request):
     if (order == None):
         raise HTTPFound(request.route_url("orders"))
     if 'form.submitted' in request.params:
-        if 'imei' in request.params:
+        if 'imei' in request.params and 'phone' in request.params:
             imei = request.params['imei']
+            phone = request.params['phone']
             name = request.params['name']
 
-            animal_service.create_animal(imei, order, name)
+            animal_service.create_animal(imei, phone, order, name)
 
     return dict(
         order=order,

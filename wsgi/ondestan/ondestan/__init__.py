@@ -29,27 +29,28 @@ def main(global_config, **settings):
     config.add_route('default', '/')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
-    config.add_route('reminder', '/reminder')
-    config.add_route('password_reset', '/password_reset/{loginhash}')
-    config.add_route('signup', '/signup')
-    config.add_route('signup_success', '/signup_success')
-    config.add_route('update_profile', '/update_profile')
-    config.add_route('activate_user', '/activate/{loginhash}')
+    config.add_route('reminder', '/users/reminder')
+    config.add_route('password_reset', '/users/password_reset/{loginhash}')
+    config.add_route('signup', '/users/signup')
+    config.add_route('signup_success', '/users/signup_success')
+    config.add_route('update_profile', '/users/update')
+    config.add_route('activate_user', '/users/activate/{loginhash}')
     config.add_route('gps_update', '/gps_update')
 
-    config.add_route('check_login', '/check_login')
-    config.add_route('check_email', '/check_email')
-    config.add_route('check_imei', '/check_imei')
+    config.add_route('check_user_login', '/users/check_login')
+    config.add_route('check_user_email', '/users/check_email')
+    config.add_route('check_device_imei', '/devices/check_imei')
+    config.add_route('check_device_phone', '/devices/check_phone')
 
     config.add_route('orders', '/orders')
     config.add_route('order_state_history', '/orders/history/{order_id}')
     config.add_route('order_devices', '/orders/devices/{order_id}')
-    config.add_route('delete_device', '/orders/devices/delete/{device_id}')
+    config.add_route('delete_device', '/devices/delete/{device_id}')
 
     config.add_route('notifications', '/notifications')
 
-    config.add_route('activate_device', '/orders/devices/activate/{device_id}')
-    config.add_route('deactivate_device', '/orders/devices/deactivate/' +
+    config.add_route('activate_device', '/devices/activate/{device_id}')
+    config.add_route('deactivate_device', '/devices/deactivate/' +
                      '{device_id}')
     config.add_route('update_animal_name', '/animals/update_name')
 

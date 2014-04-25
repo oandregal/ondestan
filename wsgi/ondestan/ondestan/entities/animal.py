@@ -15,6 +15,7 @@ class Animal(Entity, Base):
     name = Column(String)
     type = Column(String)
     imei = Column(String)
+    phone = Column(String)
     active = Column(Boolean)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('animals',

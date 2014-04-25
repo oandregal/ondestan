@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-25 12:45+0200\n"
+"POT-Creation-Date: 2014-04-25 14:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,17 +22,19 @@ msgid "failed_login"
 msgstr ""
 
 #: ondestan/views.py:193
-msgid "imei_already_use"
+msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:208 ondestan/services/user_service.py:127
-#: ondestan/services/user_service.py:163
-msgid "login_already_use"
+#: ondestan/views.py:209
+msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:223 ondestan/services/user_service.py:131
-#: ondestan/services/user_service.py:167
-msgid "email_already_use"
+#: ondestan/views.py:224
+msgid "user_login_already_use"
+msgstr ""
+
+#: ondestan/views.py:239
+msgid "user_email_already_use"
 msgstr ""
 
 #: ondestan/entities/notification.py:18
@@ -187,6 +189,14 @@ msgstr ""
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 
+#: ondestan/services/user_service.py:127 ondestan/services/user_service.py:163
+msgid "login_already_use"
+msgstr ""
+
+#: ondestan/services/user_service.py:131 ondestan/services/user_service.py:167
+msgid "email_already_use"
+msgstr ""
+
 #: ondestan/services/user_service.py:178
 msgid "user_profile_updated"
 msgstr ""
@@ -250,8 +260,8 @@ msgid "notifications_log_title"
 msgstr ""
 
 #. Default: ID
-#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:21
-#: ondestan/templates/orderDevices.pt:48 ondestan/templates/orders.pt:52
+#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:22
+#: ondestan/templates/orderDevices.pt:50 ondestan/templates/orders.pt:52
 #: ondestan/templates/orders.pt:112
 msgid "id"
 msgstr ""
@@ -308,43 +318,49 @@ msgid "required_field"
 msgstr ""
 
 #. Default: Order devices
-#: ondestan/templates/orderDevices.pt:21
+#: ondestan/templates/orderDevices.pt:22
 msgid "order_devices"
 msgstr ""
 
 #. Default: New device
-#: ondestan/templates/orderDevices.pt:26
+#: ondestan/templates/orderDevices.pt:27
 msgid "new_device"
 msgstr ""
 
 #. Default: IMEI
-#: ondestan/templates/orderDevices.pt:32 ondestan/templates/orderDevices.pt:49
+#: ondestan/templates/orderDevices.pt:33 ondestan/templates/orderDevices.pt:51
 msgid "imei"
 msgstr ""
 
+#. Default: Cell phone number
+#: ondestan/templates/orderDevices.pt:34 ondestan/templates/signup.pt:68
+#: ondestan/templates/updateProfile.pt:59
+msgid "cell_phone_number"
+msgstr ""
+
 #. Default: Name
-#: ondestan/templates/orderDevices.pt:33 ondestan/templates/orderDevices.pt:50
+#: ondestan/templates/orderDevices.pt:35 ondestan/templates/orderDevices.pt:52
 msgid "name"
 msgstr ""
 
 #. Default: Add device
-#: ondestan/templates/orderDevices.pt:34
+#: ondestan/templates/orderDevices.pt:36
 msgid "add_device"
 msgstr ""
 
 #. Default: Created devices
-#: ondestan/templates/orderDevices.pt:40
+#: ondestan/templates/orderDevices.pt:42
 msgid "created_devices_list"
 msgstr ""
 
 #. Default: Device cannot be deleted because it is currently active and/or has
 #. stored positions.
-#: ondestan/templates/orderDevices.pt:57
+#: ondestan/templates/orderDevices.pt:59
 msgid "device_cannot_be_deleted_tooltip"
 msgstr ""
 
 #. Default: Delete
-#: ondestan/templates/orderDevices.pt:59
+#: ondestan/templates/orderDevices.pt:61
 msgid "delete"
 msgstr ""
 
@@ -543,11 +559,6 @@ msgstr ""
 #. Default: Full name
 #: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:47
 msgid "full_name"
-msgstr ""
-
-#. Default: Cell phone number
-#: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:59
-msgid "cell_phone_number"
 msgstr ""
 
 #. Default: Password

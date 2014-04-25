@@ -11,9 +11,12 @@
   <tal:block metal:fill-slot="javascript">
     <script type="text/javascript">
       window.contextVariables.required_field_msg = "<tal:block i18n:translate="required_field">This field is required.</tal:block>";
-      window.contextVariables.check_imei_url = "${request.route_url('check_imei')}";
+      window.contextVariables.mobile_field_msg = "<tal:block i18n:translate="mobile_field">Please specify a valid mobile phone number.</tal:block>";
+      window.contextVariables.check_imei_url = "${request.route_url('check_device_imei')}";
+      window.contextVariables.check_phone_url = "${request.route_url('check_device_phone')}";
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate_mobile.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/newDevice.js')}"></script>
   </tal:block>
 
@@ -30,6 +33,7 @@
 		<div class="bottom">
 		  <form class="form-inline" id="form" role="form" action="${request.path}" method="post">
 		    <input class="form-control" type="text" id="imei" name="imei" i18n:attributes="placeholder imei" placeholder="IMEI"/>
+		    <input class="form-control" type="text" id="phone" name="phone" i18n:attributes="placeholder cell_phone_number" placeholder="Cell phone number"/>
 		    <input class="form-control" type="text" id="name" name="name" i18n:attributes="placeholder name" placeholder="Name"/>
 		    <input class="btn btn-default" id="submit" type="submit" name="form.submitted" i18n:attributes="value add_device" value="Add device"/>
 		  </form>
@@ -47,6 +51,7 @@
             <tr>
               <th i18n:translate="id" style="width: 200px;">ID</th>
               <th i18n:translate="imei">IMEI</th>
+              <th i18n:translate="cell_phone_number">Cell phone number</th>
               <th i18n:translate="name">Name</th>
             </tr>
           </thead>
@@ -60,6 +65,7 @@
             		</div>
           		</td>
             	<td tal:content="device.imei"/>
+            	<td tal:content="device.phone"/>
             	<td tal:content="device.name"/>
             </tr>
           </tbody>

@@ -61,6 +61,7 @@ CREATE TABLE animals (
 	name VARCHAR,
 	type VARCHAR DEFAULT 'cow',
 	imei VARCHAR UNIQUE NOT NULL,
+	phone VARCHAR UNIQUE NOT NULL,
 	active BOOL NOT NULL DEFAULT FALSE,
 	user_id INTEGER REFERENCES users NOT NULL,
 	order_id INTEGER REFERENCES orders
@@ -107,10 +108,10 @@ INSERT INTO plots(user_id, name, geom) VALUES
 (2, 'Parcela 1', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.07999 51.51077, -0.10592 51.51611))', 3857)),
 (3, 'Parcela 2', ST_GeomFromText('POLYGON ((-0.10592 51.51611, -0.08532 51.52412, -0.04738 51.51334, -0.10592 51.51611))', 3857));
 
-INSERT INTO animals(user_id, order_id, name, imei, active, plot_id) VALUES
-(2, 1, 'Manuela', '1', TRUE, 1),
-(3, 2, 'Pepa', '2', TRUE, 2),
-(3, 2, 'Rubia', '3', FALSE, 2);
+INSERT INTO animals(user_id, order_id, name, imei, phone, active, plot_id) VALUES
+(2, 1, 'Manuela', '1', '666666666', TRUE, 1),
+(3, 2, 'Pepa', '2', '666666667', TRUE, 2),
+(3, 2, 'Rubia', '3', '666666668', FALSE, 2);
 
 INSERT INTO positions(animal_id, battery, coverage, geom, date) VALUES
 (1, 5, 50, ST_GeomFromText('POINT(-7.55421 42.25482)', 3857), now()),

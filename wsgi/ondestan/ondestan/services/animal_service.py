@@ -76,6 +76,13 @@ def get_animal_by_imei(imei):
         return None
 
 
+def get_animal_by_phone(phone):
+    if phone != None:
+        return Animal().queryObject().filter(Animal.phone == phone).scalar()
+    else:
+        return None
+
+
 def get_animal_position_by_date(animal_id, date):
     if animal_id != None and date != None:
         return Position().queryObject().filter(and_(Position.animal_id\
@@ -84,10 +91,11 @@ def get_animal_position_by_date(animal_id, date):
         return None
 
 
-def create_animal(imei, order, name=''):
+def create_animal(imei, phone, order, name=''):
     animal = Animal()
     animal.active = False
     animal.imei = imei
+    animal.phone = phone
     if (name != None and name != ''):
         animal.name = name
     if (order != None and order.user != None):

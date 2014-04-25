@@ -1,6 +1,8 @@
 $.extend($.validator.messages, {
-	required : window.contextVariables.required_field_msg
+	required : window.contextVariables.required_field_msg,
+	mobile : window.contextVariables.mobile_field_msg
 });
+
 $( "div[data-toggle='tooltip']" ).attr('title', function(index, atr) {
 	return $(this).attr('tooltip-msg');
 });
@@ -24,12 +26,25 @@ $(function() {
 		rules : {
 			imei : {
 				required: true,
-				"remote" : {
+				remote : {
 					url : window.contextVariables.check_imei_url,
 					type : 'post',
 					data : {
 						imei : function() {
 							return $('#form :input[name="imei"]').val();
+						}
+					}
+				}
+			},
+			phone : {
+				mobile: true,
+				required: true,
+				remote : {
+					url : window.contextVariables.check_phone_url,
+					type : 'post',
+					data : {
+						imei : function() {
+							return $('#form :input[name="phone"]').val();
 						}
 					}
 				}
