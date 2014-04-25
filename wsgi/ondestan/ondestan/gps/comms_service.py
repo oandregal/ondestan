@@ -84,6 +84,10 @@ def process_gps_data(data):
         if animal == None:
             raise GpsUpdateError("No animal matches the passed credentials " +
                                  "(IMEI: '" + data['imei'] + "')", 403)
+        no_coverage = False
+        if float(data['lon']) == 0.0 and float(data['lat']) == 0.0:
+            no_coverage = True
+            logger.warning("Received a GPS update with position 0,0")
         position = Position()
         try:
             if (gps_proj != viewer_proj):
@@ -100,6 +104,9 @@ def process_gps_data(data):
             position.battery = float(data['battery'])
         if data['coverage'] != None:
             position.coverage = float(data['coverage'])
-        animal_service.save_new_position(position, animal)
+        if no_coverage:
+            animal_service.process_no_coverage_position(position, animal)
+        else:
+            animal_service.save_new_position(position, animal)
     except ValueError as e:
         raise GpsUpdateError(e.message, 400)

@@ -36,6 +36,8 @@ _('gps_instant_duplicated_notification_web', domain='Ondestan')
 
 _('gps_inactive_device_notification_web', domain='Ondestan')
 
+_('no_gps_coverage_notification_web', domain='Ondestan')
+
 
 def get_all_animals(login=None):
     if login != None:
@@ -157,15 +159,39 @@ def save_new_position(position, animal):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
+    process_position_notifications(position, animal)
+
+
+def process_no_coverage_position(position, animal):
+    if animal.active:
+        if get_animal_position_by_date(animal.id, position.date) == None:
+            parameters = {'name': animal.user.name,
+             'animal_name': animal.name if (animal.name != None and
+                            animal.name != '') else animal.imei,
+             'date': format_datetime(position.date,
+                locale=animal.user.locale)
+             }
+            ondestan.services.\
+            notification_service.process_notification(
+                'no_gps_coverage', animal.user.login, True, 2,
+                False, False, parameters)
+    process_position_notifications(position, animal)
+
+
+def process_position_notifications(position, animal):
+    if animal.active:
+        if get_animal_position_by_date(animal.id, position.date) == None:
             if position.battery != None and\
                 position.battery < medium_battery_barrier:
                 if position.battery < low_battery_barrier:
-                    if animal.positions[0] == position and (len(animal.positions) == 1 or\
+                    if animal.positions[0] == position and\
+                        (len(animal.positions) == 1 or\
                         animal.positions[1].battery >= low_battery_barrier):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': format_datetime(position.date, locale=animal.user.locale),
+                         'date': format_datetime(position.date,
+                            locale=animal.user.locale),
                          'battery_level': position.battery
                          }
                         ondestan.services.\
@@ -173,12 +199,14 @@ def save_new_position(position, animal):
                             'low_battery', animal.user.login, True, 3,
                             True, False, parameters)
                 else:
-                    if animal.positions[0] == position and (len(animal.positions) == 1 or\
+                    if animal.positions[0] == position and\
+                        (len(animal.positions) == 1 or\
                         animal.positions[1].battery >= medium_battery_barrier):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': format_datetime(position.date, locale=animal.user.locale),
+                         'date': format_datetime(position.date,
+                            locale=animal.user.locale),
                          'battery_level': position.battery
                          }
                         ondestan.services.\
@@ -190,26 +218,30 @@ def save_new_position(position, animal):
                 date_begin = date_end
                 for pos in animal.positions:
                     if pos.geom.data == position.geom.data:
-                       date_begin = pos.date
+                        date_begin = pos.date
                     else:
                         break
                 delta = date_end - date_begin
-                hours_immobile = delta.days * 24 + delta.seconds/3600.0
+                hours_immobile = delta.days * 24 + delta.seconds / 3600.0
                 if hours_immobile > same_position_max_hours:
                     first_immobile = True
                     if len(animal.positions) > 2:
                         delta_aux = animal.positions[1].date - date_begin
-                        hours_immobile_aux = delta_aux.days * 24 + delta_aux.seconds/3600.0
-                        first_immobile = hours_immobile_aux <= same_position_max_hours
+                        hours_immobile_aux = delta_aux.days * 24 +\
+                            delta_aux.seconds / 3600.0
+                        first_immobile = hours_immobile_aux <=\
+                            same_position_max_hours
                     if first_immobile:
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date_begin': format_datetime(date_begin, locale=animal.user.locale),
+                         'date_begin': format_datetime(date_begin,
+                            locale=animal.user.locale),
                          'hours_immobile': int(hours_immobile)
                          }
-                        ondestan.services.notification_service.process_notification(
-                            'gps_immobile', animal.user.login, True, 2, True,
+                        ondestan.services.notification_service.\
+                            process_notification('gps_immobile',
+                            animal.user.login, True, 2, True,
                             False, parameters)
             logger.info('Processed update for IMEI: ' + animal.imei +
                     ' for date ' + str(position.date))

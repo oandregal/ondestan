@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-24 21:18+0200\n"
-"PO-Revision-Date: 2014-04-24 21:18+0100\n"
+"POT-Creation-Date: 2014-04-25 12:45+0200\n"
+"PO-Revision-Date: 2014-04-25 13:23+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -112,6 +112,11 @@ msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${da
 #: ondestan/services/animal_service.py:37
 msgid "gps_inactive_device_notification_web"
 msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
+
+#: ondestan/services/animal_service.py:39
+#| msgid "no_orders_notification_web"
+msgid "no_gps_coverage_notification_web"
+msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
 
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
@@ -634,13 +639,11 @@ msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: Zoom in
 #: ondestan/templates/simpleViewer.pt:38
-#| msgid "map_tool_undo_tooltip"
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
 
 #. Default: Zoom out
 #: ondestan/templates/simpleViewer.pt:39
-#| msgid "map_tool_edit_plot_tooltip"
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
 
