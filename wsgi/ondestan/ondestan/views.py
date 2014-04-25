@@ -449,10 +449,11 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
-                    popup_str = name + \
-                                " (" + str(animal.positions[0].battery)\
-                                + "%), property of " + animal.user.name + \
-                                " (" + animal.user.login + ")"
+                    parameters = {'animal_name': name,
+                        'name': animal.user.name,
+                        'battery': str(animal.positions[0].battery)
+                        }
+                    popup_str = _("animal_popup_admin", domain='Ondestan', mapping=parameters);
                     geojson.append({
                         "type": "Feature",
                         "properties": {
@@ -463,7 +464,7 @@ def json_animals(request):
                             "owner": animal.user.login,
                             "active": animal.active,
                             "outside": animal.positions[0].outside,
-                            "popup": popup_str
+                            "popup": get_localizer(request).translate(popup_str)
                         },
                         "geometry": eval(animal.positions[0].geojson)
                     })
@@ -496,8 +497,10 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
-                    popup_str = name + " (" + str(animal.positions[0].
-                        battery) + "%)"
+                    parameters = {'animal_name': name,
+                        'battery': str(animal.positions[0].battery)
+                        }
+                    popup_str = _("animal_popup", domain='Ondestan', mapping=parameters);
                     geojson.append({
                         "type": "Feature",
                         "properties": {
@@ -508,7 +511,7 @@ def json_animals(request):
                             "owner": animal.user.login,
                             "active": animal.active,
                             "outside": animal.positions[0].outside,
-                            "popup": popup_str
+                            "popup": get_localizer(request).translate(popup_str)
                         },
                         "geometry": eval(animal.positions[0].geojson)
                     })
@@ -575,16 +578,17 @@ def json_plots(request):
         if plots != None:
             logger.debug("Found " + str(len(plots)) + " plots for all users")
             for plot in plots:
-                popup_str = plot.name + \
-                            " property of " + plot.user.name + \
-                            " (" + plot.user.login + ")"
+                parameters = {'plot_name': plot.name,
+                    'name': plot.user.name
+                    }
+                popup_str = _("plot_popup_admin", domain='Ondestan', mapping=parameters);
                 geojson.append({
                     "type": "Feature",
                     "properties": {
                         "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
-                        "popup": popup_str
+                        "popup": get_localizer(request).translate(popup_str)
                     },
                     "geometry": eval(plot.geojson)
                 })
@@ -597,13 +601,17 @@ def json_plots(request):
             logger.debug("Found " + str(len(plots)) + " plots " + \
                          "for user " + login)
             for plot in plots:
+                parameters = {'plot_name': plot.name,
+                    'name': plot.user.name
+                    }
+                popup_str = _("plot_popup", domain='Ondestan', mapping=parameters);
                 geojson.append({
                     "type": "Feature",
                     "properties": {
                         "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
-                        "popup": plot.name
+                        "popup": get_localizer(request).translate(popup_str)
                     },
                     "geometry": eval(plot.geojson)
                 })

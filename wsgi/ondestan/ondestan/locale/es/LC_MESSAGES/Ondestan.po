@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-25 17:34+0200\n"
-"PO-Revision-Date: 2014-04-25 17:35+0100\n"
+"POT-Creation-Date: 2014-04-25 18:18+0200\n"
+"PO-Revision-Date: 2014-04-25 18:18+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -36,6 +36,24 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 #: ondestan/views.py:239
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
+
+#: ondestan/views.py:456
+msgid "animal_popup_admin"
+msgstr "${animal_name} (${battery}%) propiedad de ${name}"
+
+#: ondestan/views.py:503
+msgid "animal_popup"
+msgstr "${animal_name} (${battery}%)"
+
+#: ondestan/views.py:584
+#| msgid "animal_popup_admin"
+msgid "plot_popup_admin"
+msgstr "${plot_name} propiedad de ${name}"
+
+#: ondestan/views.py:607
+#| msgid "animal_popup"
+msgid "plot_popup"
+msgstr "${plot_name}"
 
 #: ondestan/entities/notification.py:18
 msgid "web"
@@ -649,7 +667,7 @@ msgstr "Desactivar"
 msgid "edit_animal_name_tooltip"
 msgstr "Editar el nombre (confirma el cambio pulsando intro)."
 
-#. Default: Double click to edit name.
+#. Default: Double click to edit name (confirm change by pressing enter).
 #: ondestan/templates/simpleViewer.pt:38
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
@@ -783,3 +801,4 @@ msgstr "%d-%m-%Y %H:%M:%S"
 #: ondestan/utils/various.py:70
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
+

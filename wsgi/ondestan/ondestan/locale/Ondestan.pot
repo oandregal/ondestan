@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-25 17:34+0200\n"
+"POT-Creation-Date: 2014-04-25 18:18+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,22 @@ msgstr ""
 
 #: ondestan/views.py:239
 msgid "user_email_already_use"
+msgstr ""
+
+#: ondestan/views.py:456
+msgid "animal_popup_admin"
+msgstr ""
+
+#: ondestan/views.py:503
+msgid "animal_popup"
+msgstr ""
+
+#: ondestan/views.py:584
+msgid "plot_popup_admin"
+msgstr ""
+
+#: ondestan/views.py:607
+msgid "plot_popup"
 msgstr ""
 
 #: ondestan/entities/notification.py:18
@@ -592,7 +608,7 @@ msgstr ""
 msgid "edit_animal_name_tooltip"
 msgstr ""
 
-#. Default: Double click to edit name.
+#. Default: Double click to edit name (confirm change by pressing enter).
 #: ondestan/templates/simpleViewer.pt:38
 msgid "edit_name_tooltip"
 msgstr ""
