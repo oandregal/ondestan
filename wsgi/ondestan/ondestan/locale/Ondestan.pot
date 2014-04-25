@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-25 14:21+0200\n"
+"POT-Creation-Date: 2014-04-25 17:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -260,8 +260,8 @@ msgid "notifications_log_title"
 msgstr ""
 
 #. Default: ID
-#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:22
-#: ondestan/templates/orderDevices.pt:50 ondestan/templates/orders.pt:52
+#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:24
+#: ondestan/templates/orderDevices.pt:52 ondestan/templates/orders.pt:52
 #: ondestan/templates/orders.pt:112
 msgid "id"
 msgstr ""
@@ -317,50 +317,56 @@ msgstr ""
 msgid "required_field"
 msgstr ""
 
+#. Default: Please specify a valid mobile phone number.
+#: ondestan/templates/orderDevices.pt:14 ondestan/templates/signup.pt:16
+#: ondestan/templates/updateProfile.pt:16
+msgid "mobile_field"
+msgstr ""
+
 #. Default: Order devices
-#: ondestan/templates/orderDevices.pt:22
+#: ondestan/templates/orderDevices.pt:24
 msgid "order_devices"
 msgstr ""
 
 #. Default: New device
-#: ondestan/templates/orderDevices.pt:27
+#: ondestan/templates/orderDevices.pt:29
 msgid "new_device"
 msgstr ""
 
 #. Default: IMEI
-#: ondestan/templates/orderDevices.pt:33 ondestan/templates/orderDevices.pt:51
+#: ondestan/templates/orderDevices.pt:35 ondestan/templates/orderDevices.pt:53
 msgid "imei"
 msgstr ""
 
 #. Default: Cell phone number
-#: ondestan/templates/orderDevices.pt:34 ondestan/templates/signup.pt:68
-#: ondestan/templates/updateProfile.pt:59
+#: ondestan/templates/orderDevices.pt:36 ondestan/templates/orderDevices.pt:54
+#: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:59
 msgid "cell_phone_number"
 msgstr ""
 
 #. Default: Name
-#: ondestan/templates/orderDevices.pt:35 ondestan/templates/orderDevices.pt:52
+#: ondestan/templates/orderDevices.pt:37 ondestan/templates/orderDevices.pt:55
 msgid "name"
 msgstr ""
 
 #. Default: Add device
-#: ondestan/templates/orderDevices.pt:36
+#: ondestan/templates/orderDevices.pt:38
 msgid "add_device"
 msgstr ""
 
 #. Default: Created devices
-#: ondestan/templates/orderDevices.pt:42
+#: ondestan/templates/orderDevices.pt:44
 msgid "created_devices_list"
 msgstr ""
 
 #. Default: Device cannot be deleted because it is currently active and/or has
 #. stored positions.
-#: ondestan/templates/orderDevices.pt:59
+#: ondestan/templates/orderDevices.pt:62
 msgid "device_cannot_be_deleted_tooltip"
 msgstr ""
 
 #. Default: Delete
-#: ondestan/templates/orderDevices.pt:61
+#: ondestan/templates/orderDevices.pt:64
 msgid "delete"
 msgstr ""
 
@@ -530,11 +536,6 @@ msgstr ""
 msgid "email_field"
 msgstr ""
 
-#. Default: Please specify a valid mobile phone number.
-#: ondestan/templates/signup.pt:16 ondestan/templates/updateProfile.pt:16
-msgid "mobile_field"
-msgstr ""
-
 #. Default: Passwords don't match.
 #: ondestan/templates/signup.pt:17 ondestan/templates/updateProfile.pt:17
 msgid "passwords_dont_match"
@@ -591,115 +592,120 @@ msgstr ""
 msgid "edit_animal_name_tooltip"
 msgstr ""
 
-#. Default: Zoom in
+#. Default: Double click to edit name.
 #: ondestan/templates/simpleViewer.pt:38
+msgid "edit_name_tooltip"
+msgstr ""
+
+#. Default: Zoom in
+#: ondestan/templates/simpleViewer.pt:40
 msgid "map_tool_zoom_in_tooltip"
 msgstr ""
 
 #. Default: Zoom out
-#: ondestan/templates/simpleViewer.pt:39
+#: ondestan/templates/simpleViewer.pt:41
 msgid "map_tool_zoom_out_tooltip"
 msgstr ""
 
 #. Default: Draw a new plot
-#: ondestan/templates/simpleViewer.pt:41
+#: ondestan/templates/simpleViewer.pt:43
 msgid "map_tool_create_plot_tooltip"
 msgstr ""
 
 #. Default: Delete last point drawn
-#: ondestan/templates/simpleViewer.pt:42
+#: ondestan/templates/simpleViewer.pt:44
 msgid "map_tool_undo_tooltip"
 msgstr ""
 
 #. Default: Delete last point
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:45
 msgid "map_tool_undo_text"
 msgstr ""
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/simpleViewer.pt:44 ondestan/templates/simpleViewer.pt:45
-#: ondestan/templates/simpleViewer.pt:53
+#: ondestan/templates/simpleViewer.pt:46 ondestan/templates/simpleViewer.pt:47
+#: ondestan/templates/simpleViewer.pt:55
 msgid "map_tool_cancel_text"
 msgstr ""
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/simpleViewer.pt:46
+#: ondestan/templates/simpleViewer.pt:48
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr ""
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/simpleViewer.pt:47
+#: ondestan/templates/simpleViewer.pt:49
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr ""
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/simpleViewer.pt:48
+#: ondestan/templates/simpleViewer.pt:50
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr ""
 
 #. Default: Save changes
-#: ondestan/templates/simpleViewer.pt:50
+#: ondestan/templates/simpleViewer.pt:52
 msgid "map_tool_save_tooltip"
 msgstr ""
 
 #. Default: Save
-#: ondestan/templates/simpleViewer.pt:51
+#: ondestan/templates/simpleViewer.pt:53
 msgid "map_tool_save_text"
 msgstr ""
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/simpleViewer.pt:52
+#: ondestan/templates/simpleViewer.pt:54
 msgid "map_tool_cancel_tooltip"
 msgstr ""
 
 #. Default: Edit plots
-#: ondestan/templates/simpleViewer.pt:55
+#: ondestan/templates/simpleViewer.pt:57
 msgid "map_tool_edit_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to edit
-#: ondestan/templates/simpleViewer.pt:56
+#: ondestan/templates/simpleViewer.pt:58
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Delete plots
-#: ondestan/templates/simpleViewer.pt:57
+#: ondestan/templates/simpleViewer.pt:59
 msgid "map_tool_delete_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to delete
-#: ondestan/templates/simpleViewer.pt:58
+#: ondestan/templates/simpleViewer.pt:60
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/simpleViewer.pt:59
+#: ondestan/templates/simpleViewer.pt:61
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/simpleViewer.pt:60
+#: ondestan/templates/simpleViewer.pt:62
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr ""
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/simpleViewer.pt:61
+#: ondestan/templates/simpleViewer.pt:63
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:78
+#: ondestan/templates/simpleViewer.pt:80
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:82
+#: ondestan/templates/simpleViewer.pt:84
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:86
+#: ondestan/templates/simpleViewer.pt:88
 msgid "dashboard_low_battery"
 msgstr ""
 

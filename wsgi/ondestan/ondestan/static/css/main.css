@@ -6,11 +6,11 @@
     margin: 2em 0 2em 0;
 }
 
-.data h5{
+.data h5 {
     font-weight: bold;
 }
 
-.data > div > a{
+.data > div > a {
     font-size: 50px;
     padding: 0px 10px;
 }
@@ -23,7 +23,7 @@
 	padding: 8px 5px;
 }
 
-.list-group-item > .badge{
+.list-group-item .badge {
     margin: 0 1em 0 1em;
 }
 
@@ -35,4 +35,22 @@
 
 .popover-content ul {
 	margin: 0px;
+}
+
+.popover-content .list-group-item input {
+	margin-top: -5px;
+	margin-bottom: -5px;
+	height: 23px;
+	padding: 0px;
+}
+
+.popover-content .list-group-item label {
+	margin: 0px;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.popover-content .list-group-item input, .popover-content .list-group-item label {
+	width: 95px;
+	padding-left: 3px;
 }

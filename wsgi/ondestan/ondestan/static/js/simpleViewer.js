@@ -67,13 +67,13 @@
             battery = batteryStandards.level.noData;
         }
         return '<li class="list-group-item">' +
-            ' <a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs '+toggleClass+'">' + activation + '</a> ' +
+        	'<form role="form" class="form-inline" action="' + contextVariables.update_animal_name_url + '" method="post">' +
+            '<input type="hidden" id="id" name="id" style="display: none;" value="' + device.id + '"/>' +
+            '<a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs">' + activation + '</a>' +
             zoomString +
-            '<span class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</span>'+
-            '<span class="badge '+toggleClass+'">' + battery + '%</span>' +
-            '<form role="form" class="form-inline '+toggleClass+'" action="' + contextVariables.update_animal_name_url + '" method="post" style="display: none;">' +
-            '<input type="hidden" id="id" name="id" value="' + device.id + '"/>' +
-            '<input class="form-control" type="text" id="name" name="name" value="' + name + '" />' +
+            '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + name + '" />' +
+            '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
+            '<span class="badge">' + battery + '%</span>' +
             '</form>' +
             '</li>';
     }
