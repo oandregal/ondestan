@@ -1,3 +1,21 @@
+@media (min-width: 1400px) {
+  .container {
+    width: 1350px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    width: 1550px;
+  }
+}
+
+@media (min-width: 1800px) {
+  .container {
+    width: 1750px;
+  }
+}
+
 .header {
   border-bottom: 1px solid #e5e5e5;
 }
@@ -13,6 +31,28 @@
 .data > div > a {
     font-size: 50px;
     padding: 0px 10px;
+}
+
+div#map {
+	height: 300px;
+}
+
+@media (min-height: 685px) {
+  div#map {
+	height: 450px;
+  }
+}
+
+@media (min-height: 835px) {
+  div#map {
+	height: 600px;
+  }
+}
+
+@media (min-height: 985px) {
+  div#map {
+	height: 750px;
+  }
 }
 
 .popover-content {
