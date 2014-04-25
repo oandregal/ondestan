@@ -21,7 +21,7 @@
         },
         opacity:{
             active: 1,
-            inactive: 0.3,
+            inactive: 0.7,
         }
     };
 
@@ -181,8 +181,11 @@
 
     	var plots = new L.FeatureGroup();
 		new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
+		    style: function (feature) {
+		        return {clickable: false};
+		    },
             onEachFeature: function (feature, layer) {
-                layer.bindPopup(feature.properties.popup);
+                // layer.bindPopup(feature.properties.popup);
             	plots.addLayer(layer);
             },
             middleware:function(data){
