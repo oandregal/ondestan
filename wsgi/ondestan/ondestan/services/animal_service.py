@@ -38,6 +38,11 @@ _('gps_inactive_device_notification_web', domain='Ondestan')
 
 _('no_gps_coverage_notification_web', domain='Ondestan')
 
+_('outside_plots_notification_web', domain='Ondestan')
+_('outside_plots_notification_mail_subject', domain='Ondestan')
+_('outside_plots_notification_mail_html_body', domain='Ondestan')
+_('outside_plots_notification_mail_text_body', domain='Ondestan')
+
 
 def get_all_animals(login=None):
     if login != None:
@@ -167,6 +172,19 @@ def save_new_position(position, animal):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
+            if animal.positions[0] == position and animal.positions[0].outside\
+                and ((len(animal.positions) > 1 and not
+                animal.positions[1].outside) or len(animal.positions) == 1):
+                parameters = {'name': animal.user.name,
+                 'animal_name': animal.name if (animal.name != None and
+                                animal.name != '') else animal.imei,
+                 'date': format_datetime(position.date,
+                    locale=animal.user.locale)
+                 }
+                ondestan.services.\
+                notification_service.process_notification(
+                    'outside_plots', animal.user.login, True, 3,
+                    True, False, parameters)
     process_position_general_notifications(position, animal)
 
 

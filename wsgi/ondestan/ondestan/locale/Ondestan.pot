@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-25 18:18+0200\n"
+"POT-Creation-Date: 2014-04-25 19:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -127,6 +127,22 @@ msgstr ""
 
 #: ondestan/services/animal_service.py:39
 msgid "no_gps_coverage_notification_web"
+msgstr ""
+
+#: ondestan/services/animal_service.py:41
+msgid "outside_plots_notification_web"
+msgstr ""
+
+#: ondestan/services/animal_service.py:42
+msgid "outside_plots_notification_mail_subject"
+msgstr ""
+
+#: ondestan/services/animal_service.py:43
+msgid "outside_plots_notification_mail_html_body"
+msgstr ""
+
+#: ondestan/services/animal_service.py:44
+msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 
 #: ondestan/services/notification_service.py:21

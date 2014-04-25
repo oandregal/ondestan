@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-25 18:18+0200\n"
-"PO-Revision-Date: 2014-04-25 18:18+0100\n"
+"POT-Creation-Date: 2014-04-25 19:44+0200\n"
+"PO-Revision-Date: 2014-04-25 19:48+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -46,12 +46,10 @@ msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)"
 
 #: ondestan/views.py:584
-#| msgid "animal_popup_admin"
 msgid "plot_popup_admin"
 msgstr "${plot_name} propiedad de ${name}"
 
 #: ondestan/views.py:607
-#| msgid "animal_popup"
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -134,6 +132,28 @@ msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${d
 #: ondestan/services/animal_service.py:39
 msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
+
+#: ondestan/services/animal_service.py:41
+#| msgid "order_update_notification_web"
+msgid "outside_plots_notification_web"
+msgstr "<b>¡Urgente!</b> La vaca ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
+
+#: ondestan/services/animal_service.py:42
+#| msgid "order_update_notification_mail_subject"
+msgid "outside_plots_notification_mail_subject"
+msgstr "Vaca fuera de fincas (${animal_name}) en Ondestán"
+
+#: ondestan/services/animal_service.py:43
+#| msgid "order_update_notification_mail_html_body"
+msgid "outside_plots_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, tu vaca <b>${animal_name} salió de las fincas designadas</b> en ${date}.</p></body></html>"
+
+#: ondestan/services/animal_service.py:44
+#| msgid "order_update_notification_mail_text_body"
+msgid "outside_plots_notification_mail_text_body"
+msgstr ""
+"¡Hola ${name}!\n"
+"Según los datos recibidos, tu vaca ${animal_name} salió de las fincas designadas en ${date}."
 
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
