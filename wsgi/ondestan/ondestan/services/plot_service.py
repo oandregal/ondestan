@@ -25,7 +25,8 @@ def create_plot(points, user_id):
 
     plot = Plot()
     plot.user_id = user_id
-    plot.geom = 'SRID=' + str(plot.srid) + ';POLYGON((' + geom_coordinates + '))'
+    plot.geom = 'SRID=' + str(plot.srid) + ';POLYGON((' + geom_coordinates\
+        + '))'
     plot.name = 'TEST'
     plot.save()
 
@@ -44,10 +45,11 @@ def update_plot_geom(points, plot_id, user_id):
     plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
                                             == user_id)).scalar()
     if plot == None:
-        logger.error("Cannot update the non-existent plot with id " + str(plot_id)
-                     + " for user id " + str(user_id))
+        logger.error("Cannot update the non-existent plot with id "
+                     + str(plot_id) + " for user id " + str(user_id))
         return None
-    plot.geom = 'SRID=' + str(plot.srid) + ';POLYGON((' + geom_coordinates + '))'
+    plot.geom = 'SRID=' + str(plot.srid) + ';POLYGON((' + geom_coordinates\
+        + '))'
     plot.update()
 
     return plot
@@ -57,8 +59,8 @@ def delete_plot(plot_id, user_id):
     plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
                                             == user_id)).scalar()
     if plot == None:
-        logger.error("Cannot delete the non-existent plot with id " + str(plot_id)
-                     + " for user id " + str(user_id))
+        logger.error("Cannot delete the non-existent plot with id "
+                     + str(plot_id) + " for user id " + str(user_id))
         return False
     plot.delete()
 
