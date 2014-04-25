@@ -71,7 +71,7 @@
             '<input type="hidden" id="id" name="id" style="display: none;" value="' + device.id + '"/>' +
             '<a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs">' + activation + '</a>' +
             zoomString +
-            '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + name + '" />' +
+            '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + (device.name || '') + '" />' +
             '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
             '<span class="badge">' + battery + '%</span>' +
             '</form>' +
