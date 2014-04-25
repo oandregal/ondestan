@@ -32,4 +32,10 @@ class Position(Entity, Base):
 
     @hybrid_property
     def outside(self):
+        if (self.animal != None and self.animal.user != None
+            and self.animal.user.plots != None):
+            for plot in self.animal.user.plots:
+                if self.session.scalar(plot.geom.ST_Contains(self.geom)):
+                    return False
+            return True
         return False

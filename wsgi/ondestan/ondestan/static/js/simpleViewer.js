@@ -11,7 +11,7 @@
         level: {
             low: window.contextVariables.low_battery_barrier,
             middle: window.contextVariables.medium_battery_barrier,
-            noData: '--- ',
+            noData: '---',
         },
         color: {
             high:     "green",
@@ -27,13 +27,15 @@
 
     function getStyleForDevice(feature){
         var device = feature.properties;
-        var optionsDefault = {
+        var opt = {
             stroke: false,
             radius: 8,
             fillColor: batteryStandards.color.high,
-            fillOpacity: batteryStandards.opacity.active
+            fillOpacity: batteryStandards.opacity.active,
+            opacity: 1,
+            color: "black",
+            weight: 3
         };
-        var opt = optionsDefault;
 
         if(!device.active){
             opt.fillColor = batteryStandards.color.inactive;
@@ -42,6 +44,9 @@
             opt.fillColor = batteryStandards.color.low;
         } else if (device.battery < batteryStandards.level.middle) {
             opt.fillColor = batteryStandards.color.middle;
+        }
+        if (device.outside) {
+        	opt.stroke = true;
         }
         return opt;
     };
