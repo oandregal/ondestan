@@ -10,7 +10,7 @@ $(function() {
 		rules : {
 			login : {
 				required : true,
-				"remote" : {
+				remote : {
 					url : window.contextVariables.check_login_url,
 					type : 'post',
 					data : {
@@ -25,7 +25,7 @@ $(function() {
 			email : {
 				email : true,
 				required : true,
-				"remote" : {
+				remote : {
 					url : window.contextVariables.check_email_url,
 					type : 'post',
 					data : {
