@@ -54,7 +54,8 @@
             var lat = feature.geometry.coordinates[1];
             zoomString = '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-search" disabled></span>  </a>';
         }
-        var name = device.name || device.imei;
+        var len = device.imei.length;
+        var name = device.name || device.imei.substring(len-5, len);
         var battery = device.battery || batteryStandards.level.noData;
         var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
         var toggleClass = 'toggle_' + device.id;
