@@ -167,7 +167,7 @@ def save_new_position(position, animal):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
-    process_position_notifications(position, animal)
+    process_position_general_notifications(position, animal)
 
 
 def process_no_coverage_position(position, animal):
@@ -183,12 +183,13 @@ def process_no_coverage_position(position, animal):
             notification_service.process_notification(
                 'no_gps_coverage', animal.user.login, True, 2,
                 False, False, parameters)
-    process_position_notifications(position, animal)
+    process_position_general_notifications(position, animal)
 
 
-def process_position_notifications(position, animal):
+def process_position_general_notifications(position, animal):
     if animal.active:
-        if get_animal_position_by_date(animal.id, position.date) == None:
+        aux = get_animal_position_by_date(animal.id, position.date)
+        if aux == position or aux == None:
             if position.battery != None and\
                 position.battery < medium_battery_barrier:
                 if position.battery < low_battery_barrier:
@@ -224,9 +225,11 @@ def process_position_notifications(position, animal):
             if len(animal.positions) > 1 and animal.positions[0] == position:
                 date_end = position.date
                 date_begin = date_end
+                aux = position
                 for pos in animal.positions:
-                    if pos.geom.data == position.geom.data:
+                    if aux.similar_to_position(pos):
                         date_begin = pos.date
+                        aux = pos
                     else:
                         break
                 delta = date_end - date_begin
