@@ -50,8 +50,6 @@ class Db(object):
         self.session.configure(bind=self.engine)
         Base.metadata.bind = self.engine
 
-        logging.getLogger('sqlalchemy.engine').setLevel(logging.WARNING)
-
     def instance(self, *args, **kwargs):
 
         '''
