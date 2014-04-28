@@ -37,15 +37,33 @@ div#map {
 	height: 300px;
 }
 
+@media (min-height: 610px) {
+  div#map {
+	height: 375px;
+  }
+}
+
 @media (min-height: 685px) {
   div#map {
 	height: 450px;
   }
 }
 
+@media (min-height: 760px) {
+  div#map {
+	height: 525px;
+  }
+}
+
 @media (min-height: 835px) {
   div#map {
 	height: 600px;
+  }
+}
+
+@media (min-height: 910px) {
+  div#map {
+	height: 675px;
   }
 }
 
