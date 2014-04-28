@@ -25,7 +25,6 @@ class User(Entity, Base):
     role = relationship("Role", backref=backref('users',
                         order_by=login))
 
-    @hybrid_property
     def get_bounding_box_as_json(self):
         positions = []
         if self.role.name == Role._ADMIN_ROLE:
@@ -33,13 +32,12 @@ class User(Entity, Base):
         else:
             animals = self.animals
         for animal in animals:
-            if len(animal.positions) > 0:
+            if animal.n_positions > 0:
                 positions.append(animal.positions[0].geom)
         return self.session.scalar(func.ST_AsGeoJson(func.ST_Envelope(
             func.ST_MakeLine(array(positions))))) if len(positions) > 0\
             else None
 
-    @hybrid_property
     def get_bounding_box(self):
         positions = []
         if self.role.name == Role._ADMIN_ROLE:
@@ -47,7 +45,7 @@ class User(Entity, Base):
         else:
             animals = self.animals
         for animal in animals:
-            if len(animal.positions) > 0:
+            if animal.n_positions > 0:
                 positions.append(animal.positions[0].geom)
         return self.session.scalar(func.ST_Envelope(
             func.ST_MakeLine(array(positions)))) if len(positions) > 0\

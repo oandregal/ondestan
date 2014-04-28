@@ -19,20 +19,10 @@ class Position(Entity, Base):
     coverage = Column(Float)
     date = Column(DateTime)
     animal_id = Column(Integer, ForeignKey("animals.id"))
-    animal = relationship("Animal", backref=backref('positions',
-                                                  order_by=date.desc()))
+    animal = relationship("Animal")
     geom = Column(Geometry('POINT', Entity.srid))
     geojson = column_property(geom.ST_AsGeoJSON())
 
-    """@hybrid_property
-    def outside(self):
-        if (self.animal != None and self.animal.plot != None):
-            return not self.session.scalar(
-                self.animal.plot.geom.ST_Contains(self.geom)
-            )
-        return False"""
-
-    @hybrid_property
     def outside(self):
         if (self.animal != None and self.animal.user != None
             and self.animal.user.plots != None):
@@ -42,7 +32,6 @@ class Position(Entity, Base):
             return True
         return False
 
-    @hybrid_method
     def similar_to_position(self, position):
         if type(self.geom) is str and not type(position.geom) is NoneType and not type(position.geom) is str:
             return self.geom == str(self.session.scalar(func.ST_AsEWKT(position.geom)))

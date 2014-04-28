@@ -4,6 +4,7 @@ from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 
 from ondestan.entities import Entity
+from ondestan.entities.position import Position
 from ondestan.utils import Base
 
 
@@ -28,7 +29,21 @@ class Animal(Entity, Base):
                                                   order_by=name))"""
 
     @hybrid_property
+    def n_positions(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).count()
+        return 0
+
+    @hybrid_property
+    def positions(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).order_by(Position.date.desc()).yield_per(100)
+        return []
+
+    @hybrid_property
     def currently_outside(self):
-        if (len(self.positions) > 0):
-            return self.positions[0].outside
+        if self.n_positions > 0:
+            return self.positions[0].outside()
         return None

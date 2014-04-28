@@ -120,7 +120,7 @@ def update_animal_name(animal_id, name):
 def delete_animal_by_id(animal_id):
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
-        if (len(animal.positions) == 0):
+        if animal.n_positions == 0:
             animal.delete()
 
 
@@ -172,9 +172,9 @@ def save_new_position(position, animal):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
-            if animal.positions[0] == position and animal.positions[0].outside\
-                and ((len(animal.positions) > 1 and not
-                animal.positions[1].outside) or len(animal.positions) == 1):
+            if animal.positions[0] == position and animal.positions[0].\
+                outside() and ((animal.n_positions > 1 and not
+                animal.positions[1].outside()) or animal.n_positions == 1):
                 parameters = {'name': animal.user.name,
                  'animal_name': animal.name if (animal.name != None and
                                 animal.name != '') else animal.imei,
@@ -212,7 +212,7 @@ def process_position_general_notifications(position, animal):
                 position.battery < medium_battery_barrier:
                 if position.battery < low_battery_barrier:
                     if animal.positions[0] == position and\
-                        (len(animal.positions) == 1 or\
+                        (animal.n_positions == 1 or\
                         animal.positions[1].battery >= low_battery_barrier):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
@@ -227,7 +227,7 @@ def process_position_general_notifications(position, animal):
                             True, False, parameters)
                 else:
                     if animal.positions[0] == position and\
-                        (len(animal.positions) == 1 or\
+                        (animal.n_positions == 1 or\
                         animal.positions[1].battery >= medium_battery_barrier):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
@@ -240,7 +240,7 @@ def process_position_general_notifications(position, animal):
                         notification_service.process_notification(
                             'medium_battery', animal.user.login, True, 2,
                             False, False, parameters)
-            if len(animal.positions) > 1 and animal.positions[0] == position:
+            if animal.n_positions > 1 and animal.positions[0] == position:
                 date_end = position.date
                 date_begin = date_end
                 aux = position
@@ -254,7 +254,7 @@ def process_position_general_notifications(position, animal):
                 hours_immobile = delta.days * 24 + delta.seconds / 3600.0
                 if hours_immobile > same_position_max_hours:
                     first_immobile = True
-                    if len(animal.positions) > 2:
+                    if animal.n_positions > 2:
                         delta_aux = animal.positions[1].date - date_begin
                         hours_immobile_aux = delta_aux.days * 24 +\
                             delta_aux.seconds / 3600.0

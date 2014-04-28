@@ -358,7 +358,7 @@ def viewer(request):
         project=u'Ondestán',
         can_edit=check_permission('edit', request),
         is_admin=check_permission('admin', request),
-        view=user.get_bounding_box_as_json,
+        view=user.get_bounding_box_as_json(),
         notifications=notification_service.\
             get_new_web_notifications_for_logged_user(request)
     )
@@ -444,7 +444,7 @@ def json_animals(request):
             logger.debug("Found " + str(len(animals)) +
                          " animals for all users")
             for animal in animals:
-                if len(animal.positions) > 0:
+                if animal.n_positions > 0:
                     if animal.name != None and len(animal.name) > 0:
                         name = animal.name
                     else:
@@ -463,7 +463,7 @@ def json_animals(request):
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
-                            "outside": animal.positions[0].outside,
+                            "outside": animal.positions[0].outside(),
                             "popup": get_localizer(request).translate(popup_str)
                         },
                         "geometry": eval(animal.positions[0].geojson)
@@ -492,7 +492,7 @@ def json_animals(request):
             logger.debug("Found " + str(len(animals)) +
                          " animals for user " + login)
             for animal in animals:
-                if len(animal.positions) > 0:
+                if animal.n_positions > 0:
                     if animal.name != None and len(animal.name) > 0:
                         name = animal.name
                     else:
@@ -510,7 +510,7 @@ def json_animals(request):
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
-                            "outside": animal.positions[0].outside,
+                            "outside": animal.positions[0].outside(),
                             "popup": get_localizer(request).translate(popup_str)
                         },
                         "geometry": eval(animal.positions[0].geojson)
