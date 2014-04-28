@@ -1,5 +1,5 @@
 # coding=UTF-8
-from ondestan.utils import Config
+from ondestan.utils import Config, Singleton
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import (
@@ -9,7 +9,7 @@ from sqlalchemy.orm import (
 from zope.sqlalchemy import ZopeTransactionExtension
 from os.path import expandvars
 
-from ondestan.utils import Singleton
+import logging
 
 Base = declarative_base()
 
@@ -45,11 +45,12 @@ class Db(object):
         conn_str = 'postgresql+psycopg2://' + user + ':' + password + \
                          '@' + host + ':' + port + '/' + db
         self.engine = create_engine(
-            conn_str,
-            echo=True
+            conn_str
         )
         self.session.configure(bind=self.engine)
         Base.metadata.bind = self.engine
+
+        logging.getLogger('sqlalchemy.engine').setLevel(logging.WARNING)
 
     def instance(self, *args, **kwargs):
 
