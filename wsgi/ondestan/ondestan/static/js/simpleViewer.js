@@ -208,8 +208,7 @@
 		        	showArea: true, // Show the area of the drawn polygon
 		            allowIntersection: false, // Restricts shapes to simple polygons
 		            drawError: {
-		                color: '#FF0000', // Color the shape will turn when intersects
-		                message: '<strong>Oh snap!<strong> you can\'t draw that!' // Message that will show when intersect
+		                color: '#FF0000' // Color the shape will turn when intersects
 		            },
 		            shapeOptions: {
 		                color: '#0033ff'

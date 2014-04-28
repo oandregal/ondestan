@@ -48,6 +48,7 @@
       L.drawLocal.draw.handlers.polygon.tooltip.start = "<tal:block i18n:translate="map_tool_create_plot_handler_start_tooltip">Click to start drawing plot.</tal:block>";
       L.drawLocal.draw.handlers.polygon.tooltip.cont = "<tal:block i18n:translate="map_tool_create_plot_handler_cont_tooltip">Click to continue drawing plot.</tal:block>";
       L.drawLocal.draw.handlers.polygon.tooltip.end = "<tal:block i18n:translate="map_tool_create_plot_handler_end_tooltip">Click first point to close this plot.</tal:block>";
+      L.drawLocal.draw.handlers.polyline.error = "<tal:block i18n:translate="map_tool_edit_plot_handler_error">Error: plot edges cannot cross!</tal:block>";
       
       L.drawLocal.edit.toolbar.actions.save.title = "<tal:block i18n:translate="map_tool_save_tooltip">Save changes</tal:block>";
       L.drawLocal.edit.toolbar.actions.save.text = "<tal:block i18n:translate="map_tool_save_text">Save</tal:block>";

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-25 19:44+0200\n"
-"PO-Revision-Date: 2014-04-25 19:48+0100\n"
+"POT-Creation-Date: 2014-04-28 19:42+0200\n"
+"PO-Revision-Date: 2014-04-28 19:43+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -134,22 +134,18 @@ msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
 
 #: ondestan/services/animal_service.py:41
-#| msgid "order_update_notification_web"
 msgid "outside_plots_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
 
 #: ondestan/services/animal_service.py:42
-#| msgid "order_update_notification_mail_subject"
 msgid "outside_plots_notification_mail_subject"
 msgstr "Vaca fuera de fincas (${animal_name}) en Ondestán"
 
 #: ondestan/services/animal_service.py:43
-#| msgid "order_update_notification_mail_html_body"
 msgid "outside_plots_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, tu vaca <b>${animal_name} salió de las fincas designadas</b> en ${date}.</p></body></html>"
 
 #: ondestan/services/animal_service.py:44
-#| msgid "order_update_notification_mail_text_body"
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -790,18 +786,24 @@ msgstr "Haz click en Cancelar para deshacer los cambios."
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr "Haz click en una finca para borrarla."
 
+#. Default: Error: plot edges cannot cross!
+#: ondestan/templates/simpleViewer.pt:64
+#| msgid "map_tool_edit_plot_handler_tooltip"
+msgid "map_tool_edit_plot_handler_error"
+msgstr "Error: los lados de la finca no se pueden cruzar."
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:80
+#: ondestan/templates/simpleViewer.pt:81
 msgid "dashboard_active"
 msgstr "ACTIVOS"
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:84
+#: ondestan/templates/simpleViewer.pt:85
 msgid "dashboard_inactive"
 msgstr "INACTIVOS"
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:88
+#: ondestan/templates/simpleViewer.pt:89
 msgid "dashboard_low_battery"
 msgstr "BATERÍA BAJA"
 

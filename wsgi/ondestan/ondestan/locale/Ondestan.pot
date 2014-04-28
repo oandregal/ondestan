@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-25 19:44+0200\n"
+"POT-Creation-Date: 2014-04-28 19:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -726,18 +726,23 @@ msgstr ""
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
+#. Default: Error: plot edges cannot cross!
+#: ondestan/templates/simpleViewer.pt:64
+msgid "map_tool_edit_plot_handler_error"
+msgstr ""
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:80
+#: ondestan/templates/simpleViewer.pt:81
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:84
+#: ondestan/templates/simpleViewer.pt:85
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:88
+#: ondestan/templates/simpleViewer.pt:89
 msgid "dashboard_low_battery"
 msgstr ""
 
