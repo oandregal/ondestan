@@ -141,7 +141,7 @@ def process_notification(base_id, login, web=False, web_level=0, email=False,
     if sms:
         text = "_('" + base_id + "_notification_sms', domain='Ondestan'," +\
                        " mapping=" + str(parameters) + ")"
-        process_sms_notification(login, text)
+        process_sms_notification(user, text)
     if email:
         subject = "_('" + base_id + "_notification_mail_subject'," +\
                        "domain='Ondestan', mapping=" + str(parameters) + ")"
