@@ -2,7 +2,7 @@
 from pyramid.config import Configurator
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
-from ondestan.utils import Config
+from ondestan.config import Config
 import logging
 
 

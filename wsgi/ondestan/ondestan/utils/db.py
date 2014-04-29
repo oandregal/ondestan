@@ -1,5 +1,4 @@
 # coding=UTF-8
-from ondestan.utils import Config, Singleton
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import (
@@ -9,7 +8,8 @@ from sqlalchemy.orm import (
 from zope.sqlalchemy import ZopeTransactionExtension
 from os.path import expandvars
 
-import logging
+from ondestan.config import Config
+from ondestan.utils import Singleton
 
 Base = declarative_base()
 

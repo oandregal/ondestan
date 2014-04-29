@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-29 13:49+0200\n"
+"POT-Creation-Date: 2014-04-29 19:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,19 +37,19 @@ msgstr ""
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:458
+#: ondestan/views.py:466
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:505
+#: ondestan/views.py:513
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:586
+#: ondestan/views.py:594
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:609
+#: ondestan/views.py:617
 msgid "plot_popup"
 msgstr ""
 
@@ -97,51 +97,55 @@ msgstr ""
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:28
+#: ondestan/services/animal_service.py:27
+msgid "low_battery_notification_sms"
+msgstr ""
+
+#: ondestan/services/animal_service.py:29
 msgid "medium_battery_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:30
+#: ondestan/services/animal_service.py:31
 msgid "gps_immobile_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:31
+#: ondestan/services/animal_service.py:32
 msgid "gps_immobile_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/animal_service.py:32
+#: ondestan/services/animal_service.py:33
 msgid "gps_immobile_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:33
+#: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:35
+#: ondestan/services/animal_service.py:36
 msgid "gps_instant_duplicated_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:37
+#: ondestan/services/animal_service.py:38
 msgid "gps_inactive_device_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:39
+#: ondestan/services/animal_service.py:40
 msgid "no_gps_coverage_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:41
+#: ondestan/services/animal_service.py:42
 msgid "outside_plots_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:42
+#: ondestan/services/animal_service.py:43
 msgid "outside_plots_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/animal_service.py:43
+#: ondestan/services/animal_service.py:44
 msgid "outside_plots_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:44
+#: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 

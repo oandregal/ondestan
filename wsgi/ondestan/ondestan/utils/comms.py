@@ -3,19 +3,28 @@ from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from os.path import expandvars
+from twilio.rest import TwilioRestClient
 
-from ondestan.utils import Config
+from ondestan.config import Config
 import logging
 
 logger = logging.getLogger('ondestan')
 
+# put your own credentials here
+account_sid = expandvars(Config.get_string_value('twilio.account_sid'))
+auth_token = expandvars(Config.get_string_value('twilio.auth_token'))
+caller_nr = expandvars(Config.get_string_value('twilio.caller_nr'))
+default_prefix = expandvars(Config.get_string_value('twilio.default_prefix'))
+
+# client = TwilioRestClient(account_sid, auth_token)
+
+smtp_server = expandvars(Config.get_string_value('smtp.server'))
+smtp_port = int(expandvars(Config.get_string_value('smtp.port')))
+smtp_mail = expandvars(Config.get_string_value('smtp.mail'))
+smtp_password = expandvars(Config.get_string_value('smtp.password'))
+
 
 def send_mail(html, text, subject, destination):
-
-    smtp_server = expandvars(Config.get_string_value('smtp.server'))
-    smtp_port = int(expandvars(Config.get_string_value('smtp.port')))
-    smtp_mail = expandvars(Config.get_string_value('smtp.mail'))
-    smtp_password = expandvars(Config.get_string_value('smtp.password'))
 
     # Create message container - the correct MIME type is multipart/alternative
     msg = MIMEMultipart('alternative')
@@ -52,6 +61,10 @@ def send_mail(html, text, subject, destination):
 
 
 def send_sms(text, number):
-    # Dummy method
+    """client.messages.create(
+        to=number if number.startswith('+') else default_prefix + number,
+        from_=caller_nr,
+        body=text
+    )"""
     logger.info("Sms '" + text + "' has been sent to number " + number)
     return

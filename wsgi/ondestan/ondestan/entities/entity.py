@@ -1,5 +1,6 @@
 # coding=UTF-8
-from ondestan.utils import Db, Config
+from ondestan.config import Config
+from ondestan.utils import Db
 
 
 class Entity():

@@ -17,7 +17,8 @@ requires = [
     'lingua==1.6',
     'pyproj==1.9.3',
     'zope.sqlalchemy==0.7.4',
-    'pyramid_tm==0.7'
+    'pyramid_tm==0.7',
+    'twilio==3.6.6'
     ]
 test_requires = [
     'requests==2.2.1'

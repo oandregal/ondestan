@@ -1,9 +1,4 @@
 # coding=UTF-8
-from os import urandom
-from itertools import islice, imap, repeat
-import string
-from config import Config
-
 from pyramid.interfaces import (
     ILocalizer,
     ITranslationDirectories
@@ -14,6 +9,12 @@ from pyramid.i18n import (
     get_current_registry,
     make_localizer
     )
+
+from ondestan.config import Config
+
+from os import urandom
+from itertools import islice, imap, repeat
+import string
 
 
 def rand_string(length=10):

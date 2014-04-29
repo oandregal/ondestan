@@ -6,7 +6,8 @@ from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
-from ondestan.utils import Config, format_datetime
+from ondestan.utils import format_datetime
+from ondestan.config import Config
 import ondestan.services
 
 import logging
@@ -24,6 +25,7 @@ _('low_battery_notification_web', domain='Ondestan')
 _('low_battery_notification_mail_subject', domain='Ondestan')
 _('low_battery_notification_mail_html_body', domain='Ondestan')
 _('low_battery_notification_mail_text_body', domain='Ondestan')
+_('low_battery_notification_sms', domain='Ondestan')
 
 _('medium_battery_notification_web', domain='Ondestan')
 
@@ -224,7 +226,7 @@ def process_position_general_notifications(position, animal):
                         ondestan.services.\
                         notification_service.process_notification(
                             'low_battery', animal.user.login, True, 3,
-                            True, False, parameters)
+                            True, True, parameters)
                 else:
                     if animal.positions[0] == position and\
                         (animal.n_positions == 1 or\

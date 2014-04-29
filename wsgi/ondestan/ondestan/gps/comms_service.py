@@ -6,7 +6,7 @@ from gps_update_error import GpsUpdateError
 
 from ondestan.services import animal_service
 from ondestan.entities.position import Position
-from ondestan.utils import Config
+from ondestan.config import Config
 
 import logging
 
