@@ -112,3 +112,17 @@ div#map {
 	width: 95px;
 	padding-left: 3px;
 }
+
+ .modal-sm {
+ 	width: 230px;
+ }
+ 
+.modal-body {
+ 	text-align: center;
+ 	padding: 10px;
+ }
+ 
+ .modal-footer {
+ 	margin: 0px;
+ 	text-align: center;
+ }

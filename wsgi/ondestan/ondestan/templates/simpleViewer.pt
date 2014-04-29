@@ -17,8 +17,9 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
-  	<?python from ondestan.utils import Config?>
+  	<?python from ondestan.utils import Config; from ondestan.security import check_permission?>
     <script type="text/javascript">
+      window.contextVariables.is_admin = ${str(is_admin).lower()};
       window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
       window.contextVariables.plots_json_url = "${request.route_url('json_plots')}";
       window.contextVariables.create_plot_url = "${request.route_url('create_plot')}";
@@ -90,6 +91,28 @@
         <a href="#" id="low_battery_devices" disabled="disabled">-</a>
       </div>
     </div>
+    
+	<!-- Modal -->
+	<div tal:condition="is_admin" class="modal fade" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel" i18n:translate="select_plot_user_modal_title">Select plot owner</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<select id="user_selector">
+			  <option selected="true" value=""> </option>
+			  <option tal:repeat="user non_admin_users" tal:content="user.login" value="${user.id}"/>
+			</select>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="cancel">Cancel</button>
+	        <button id="accept_btn" type="button" class="btn btn-primary" disabled="true" i18n:translate="accept">Accept</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
     <div id="map" class="col-md-10 col-md-offset-1"></div>
 

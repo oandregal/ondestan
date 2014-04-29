@@ -224,18 +224,39 @@
 		};
 
 		map.on('draw:created', function (e) {
-			var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
-			for (i in layer._latlngs) {
-				url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-			}
-			url = url.substring(0, url.length - 1);
-			$.ajax({url: url,success:function(result){
-				if (result.success) {
-					layer.feature = result.feature;
-	                layer.bindPopup(result.feature.properties.popup);
-	    			plots.addLayer(layer);
+			if (window.contextVariables.is_admin) {
+				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
+				for (i in layer._latlngs) {
+					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
 				}
-			}});
+				var url = url.substring(0, url.length - 1);
+				$('#accept_btn').off();
+				$('#accept_btn').click(function() {
+					$('#my_modal').modal('hide');
+					url += '&userid=' + $('#user_selector').val();
+					$.ajax({url: url,success:function(result){
+						if (result.success) {
+							layer.feature = result.feature;
+			                layer.bindPopup(result.feature.properties.popup);
+			    			plots.addLayer(layer);
+						}
+					}});
+				});
+				$('#my_modal').modal();
+			} else {
+				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
+				for (i in layer._latlngs) {
+					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
+				}
+				url = url.substring(0, url.length - 1);
+				$.ajax({url: url,success:function(result){
+					if (result.success) {
+						layer.feature = result.feature;
+		                layer.bindPopup(result.feature.properties.popup);
+		    			plots.addLayer(layer);
+					}
+				}});
+			}
 		});
 		map.on('draw:edited', function (e) {
 			var layers = e.layers._layers, url;
@@ -263,6 +284,14 @@
 					if (result.success) {
 					}
 				}});
+			}
+		});
+
+		$('#user_selector').change(function() {
+			if ($(this).val() != '') {
+				$('#accept_btn').prop('disabled', false);
+			} else {
+				$('#accept_btn').prop('disabled', true);
 			}
 		});
 

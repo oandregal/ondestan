@@ -354,10 +354,12 @@ def deactivate_device(request):
              permission='view')
 def viewer(request):
     user = user_service.get_user_by_login(get_user_login(request))
+    is_admin = check_permission('admin', request)
     return dict(
         project=u'Ondestán',
         can_edit=check_permission('edit', request),
-        is_admin=check_permission('admin', request),
+        is_admin=is_admin,
+        non_admin_users=user_service.get_non_admin_users() if is_admin else [],
         view=user.get_bounding_box_as_json(),
         notifications=notification_service.\
             get_new_web_notifications_for_logged_user(request)
@@ -372,14 +374,22 @@ def default(request):
 @view_config(route_name='create_plot', renderer='json',
              permission='view')
 def create_plot(request):
-    user = user_service.get_user_by_login(get_user_login(request))
     points = []
     i = 0
     while ('x' + str(i)) in request.GET and ('y' + str(i)) in request.GET:
         points.append([float(request.GET['x' + str(i)]), float(request.GET['y'
                                                                 + str(i)])])
         i += 1
-    plot = plot_service.create_plot(points, user.id)
+
+    if 'userid' in request.GET:
+        if check_permission('admin', request):
+            userid = request.GET['userid']
+        else:
+            return {'success': False}
+    else:
+        userid = user_service.get_user_by_login(get_user_login(request)).id
+
+    plot = plot_service.create_plot(points, userid)
 
     if plot == None:
         return {'success': False}

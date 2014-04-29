@@ -7,6 +7,7 @@ from pyramid.i18n import (
     get_locale_name,
     TranslationString as _
     )
+from sqlalchemy import not_, and_
 
 from ondestan.entities import User, Role
 import ondestan.services
@@ -95,8 +96,13 @@ def check_login_request(request):
 
 
 def get_admin_users():
-    role = Role().queryObject().filter(Role.name == Role._ADMIN_ROLE).scalar()
-    return role.users
+    return User().queryObject().filter(and_(User.role.has(
+            name=Role._ADMIN_ROLE), User.activated == True)).all()
+
+
+def get_non_admin_users():
+    return User().queryObject().filter(and_(not_(User.role.has(
+            name=Role._ADMIN_ROLE)), User.activated == True)).all()
 
 
 def check_user_pass(login, password):

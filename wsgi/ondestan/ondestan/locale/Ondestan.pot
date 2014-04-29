@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-04-28 19:42+0200\n"
+"POT-Creation-Date: 2014-04-29 13:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,19 +37,19 @@ msgstr ""
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:456
+#: ondestan/views.py:458
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:503
+#: ondestan/views.py:505
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:584
+#: ondestan/views.py:586
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:607
+#: ondestan/views.py:609
 msgid "plot_popup"
 msgstr ""
 
@@ -181,55 +181,55 @@ msgstr ""
 msgid "new_order_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:19
+#: ondestan/services/user_service.py:20
 msgid "signup_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:20
+#: ondestan/services/user_service.py:21
 msgid "signup_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:21
+#: ondestan/services/user_service.py:22
 msgid "signup_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:23
+#: ondestan/services/user_service.py:24
 msgid "login_reminder_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:24
+#: ondestan/services/user_service.py:25
 msgid "login_reminder_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:25
+#: ondestan/services/user_service.py:26
 msgid "login_reminder_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:27
+#: ondestan/services/user_service.py:28
 msgid "password_reset_notification_web"
 msgstr ""
 
-#: ondestan/services/user_service.py:28
+#: ondestan/services/user_service.py:29
 msgid "password_reset_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:29
+#: ondestan/services/user_service.py:30
 msgid "password_reset_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:30
+#: ondestan/services/user_service.py:31
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:127 ondestan/services/user_service.py:163
+#: ondestan/services/user_service.py:133 ondestan/services/user_service.py:169
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:131 ondestan/services/user_service.py:167
+#: ondestan/services/user_service.py:137 ondestan/services/user_service.py:173
 msgid "email_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:178
+#: ondestan/services/user_service.py:184
 msgid "user_profile_updated"
 msgstr ""
 
@@ -610,140 +610,155 @@ msgid "simple_viewer_title"
 msgstr ""
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:28
+#: ondestan/templates/simpleViewer.pt:29
 msgid "activate"
 msgstr ""
 
 #. Default: Deactivate
-#: ondestan/templates/simpleViewer.pt:29
+#: ondestan/templates/simpleViewer.pt:30
 msgid "deactivate"
 msgstr ""
 
 #. Default: Activate
-#: ondestan/templates/simpleViewer.pt:33
+#: ondestan/templates/simpleViewer.pt:34
 msgid "edit_animal_name_tooltip"
 msgstr ""
 
 #. Default: Double click to edit name (confirm change by pressing enter).
-#: ondestan/templates/simpleViewer.pt:38
+#: ondestan/templates/simpleViewer.pt:39
 msgid "edit_name_tooltip"
 msgstr ""
 
 #. Default: Zoom in
-#: ondestan/templates/simpleViewer.pt:40
+#: ondestan/templates/simpleViewer.pt:41
 msgid "map_tool_zoom_in_tooltip"
 msgstr ""
 
 #. Default: Zoom out
-#: ondestan/templates/simpleViewer.pt:41
+#: ondestan/templates/simpleViewer.pt:42
 msgid "map_tool_zoom_out_tooltip"
 msgstr ""
 
 #. Default: Draw a new plot
-#: ondestan/templates/simpleViewer.pt:43
+#: ondestan/templates/simpleViewer.pt:44
 msgid "map_tool_create_plot_tooltip"
 msgstr ""
 
 #. Default: Delete last point drawn
-#: ondestan/templates/simpleViewer.pt:44
+#: ondestan/templates/simpleViewer.pt:45
 msgid "map_tool_undo_tooltip"
 msgstr ""
 
 #. Default: Delete last point
-#: ondestan/templates/simpleViewer.pt:45
+#: ondestan/templates/simpleViewer.pt:46
 msgid "map_tool_undo_text"
 msgstr ""
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/simpleViewer.pt:46 ondestan/templates/simpleViewer.pt:47
-#: ondestan/templates/simpleViewer.pt:55
+#: ondestan/templates/simpleViewer.pt:47 ondestan/templates/simpleViewer.pt:48
+#: ondestan/templates/simpleViewer.pt:57
 msgid "map_tool_cancel_text"
 msgstr ""
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/simpleViewer.pt:48
+#: ondestan/templates/simpleViewer.pt:49
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr ""
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/simpleViewer.pt:49
+#: ondestan/templates/simpleViewer.pt:50
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr ""
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/simpleViewer.pt:50
+#: ondestan/templates/simpleViewer.pt:51
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr ""
 
-#. Default: Save changes
+#. Default: Error: plot edges cannot cross!
 #: ondestan/templates/simpleViewer.pt:52
+msgid "map_tool_edit_plot_handler_error"
+msgstr ""
+
+#. Default: Save changes
+#: ondestan/templates/simpleViewer.pt:54
 msgid "map_tool_save_tooltip"
 msgstr ""
 
 #. Default: Save
-#: ondestan/templates/simpleViewer.pt:53
+#: ondestan/templates/simpleViewer.pt:55
 msgid "map_tool_save_text"
 msgstr ""
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/simpleViewer.pt:54
+#: ondestan/templates/simpleViewer.pt:56
 msgid "map_tool_cancel_tooltip"
 msgstr ""
 
 #. Default: Edit plots
-#: ondestan/templates/simpleViewer.pt:57
+#: ondestan/templates/simpleViewer.pt:59
 msgid "map_tool_edit_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to edit
-#: ondestan/templates/simpleViewer.pt:58
+#: ondestan/templates/simpleViewer.pt:60
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Delete plots
-#: ondestan/templates/simpleViewer.pt:59
+#: ondestan/templates/simpleViewer.pt:61
 msgid "map_tool_delete_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to delete
-#: ondestan/templates/simpleViewer.pt:60
+#: ondestan/templates/simpleViewer.pt:62
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/simpleViewer.pt:61
+#: ondestan/templates/simpleViewer.pt:63
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/simpleViewer.pt:62
+#: ondestan/templates/simpleViewer.pt:64
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr ""
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/simpleViewer.pt:63
+#: ondestan/templates/simpleViewer.pt:65
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
-#. Default: Error: plot edges cannot cross!
-#: ondestan/templates/simpleViewer.pt:64
-msgid "map_tool_edit_plot_handler_error"
-msgstr ""
-
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:81
+#: ondestan/templates/simpleViewer.pt:82
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:85
+#: ondestan/templates/simpleViewer.pt:86
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:89
+#: ondestan/templates/simpleViewer.pt:90
 msgid "dashboard_low_battery"
+msgstr ""
+
+#. Default: Select plot owner
+#: ondestan/templates/simpleViewer.pt:101
+msgid "select_plot_user_modal_title"
+msgstr ""
+
+#. Default: Cancel
+#: ondestan/templates/simpleViewer.pt:110
+msgid "cancel"
+msgstr ""
+
+#. Default: Accept
+#: ondestan/templates/simpleViewer.pt:111
+msgid "accept"
 msgstr ""
 
 #. Default: Update profile - Ondestán
