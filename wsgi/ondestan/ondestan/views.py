@@ -289,7 +289,7 @@ def order_state_history(request):
                 request.matchdict['order_id'])
 
     if (order == None):
-        raise HTTPFound(request.route_url("orders"))
+        return HTTPFound(request.route_url("orders"))
     return dict(
         order=order
         )
@@ -302,7 +302,7 @@ def order_devices(request):
     order = order_service.get_order_by_id(
                 request.matchdict['order_id'])
     if (order == None):
-        raise HTTPFound(request.route_url("orders"))
+        return HTTPFound(request.route_url("orders"))
     if 'form.submitted' in request.params:
         if 'imei' in request.params and 'phone' in request.params:
             imei = request.params['imei']
@@ -333,21 +333,21 @@ def delete_device(request):
                .order_id
     animal_service.delete_animal_by_id(
                 request.matchdict['device_id'])
-    raise HTTPFound(request.route_url("order_devices", order_id=order_id))
+    return HTTPFound(request.route_url("order_devices", order_id=order_id))
 
 
 @view_config(route_name='activate_device',
              permission='view')
 def activate_device(request):
     animal_service.activate_animal_by_id(request)
-    raise HTTPFound(request.route_url("map"))
+    return HTTPFound(request.route_url("map"))
 
 
 @view_config(route_name='deactivate_device',
              permission='view')
 def deactivate_device(request):
     animal_service.deactivate_animal_by_id(request)
-    raise HTTPFound(request.route_url("map"))
+    return HTTPFound(request.route_url("map"))
 
 
 @view_config(route_name='map', renderer='templates/simpleViewer.pt',
@@ -368,7 +368,7 @@ def viewer(request):
 
 @view_config(route_name='default')
 def default(request):
-    raise HTTPFound(request.route_url("map"))
+    return HTTPFound(request.route_url("map"))
 
 
 @view_config(route_name='create_plot', renderer='json',
