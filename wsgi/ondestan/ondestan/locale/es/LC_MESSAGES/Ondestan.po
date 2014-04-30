@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-04-29 19:33+0200\n"
-"PO-Revision-Date: 2014-04-29 19:35+0100\n"
+"PO-Revision-Date: 2014-04-30 19:49+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -47,7 +47,7 @@ msgstr "${animal_name} (${battery}%)"
 
 #: ondestan/views.py:594
 msgid "plot_popup_admin"
-msgstr "${plot_name} propiedad de ${name}"
+msgstr "Propiedad de ${name}"
 
 #: ondestan/views.py:617
 msgid "plot_popup"

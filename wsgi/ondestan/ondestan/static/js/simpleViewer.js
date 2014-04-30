@@ -189,7 +189,9 @@
 //		        return {clickable: false};
 //		    },
             onEachFeature: function (feature, layer) {
-                // layer.bindPopup(feature.properties.popup);
+            	if (feature.properties.popup != null && feature.properties.popup != '') {
+            		layer.bindPopup(feature.properties.popup);
+            	}
             	plots.addLayer(layer);
             },
             middleware:function(data){
