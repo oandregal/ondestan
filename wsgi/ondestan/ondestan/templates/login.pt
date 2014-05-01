@@ -24,7 +24,7 @@
       <input type="password" class="form-control" placeholder="Contraseña" name="password" />
       <input class="btn btn-lg btn-block btn-primary" type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/>
       <br/>
-      <a href="/signup" i18n:translate="sign_up">Sign Up</a> | <a href="/reminder" i18n:translate="remember_user_password">Remember user/pass</a>
+      <a href="${request.route_url('signup')}" i18n:translate="sign_up">Sign Up</a> | <a href="${request.route_url('reminder')}" i18n:translate="remember_user_password">Remember user/pass</a>
     </form>
   </tal:block>
 
