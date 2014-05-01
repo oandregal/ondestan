@@ -107,7 +107,7 @@ def signup(request):
         )
 
 
-@view_config(route_name='update_animal_name', renderer='templates/signup.pt')
+@view_config(route_name='update_animal_name')
 def update_animal_name(request):
     if 'name' in request.params and 'id' in request.params:
         animal_service.update_animal_name(request.params['id'],
