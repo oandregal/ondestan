@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-04-29 19:33+0200\n"
-"PO-Revision-Date: 2014-04-30 19:49+0100\n"
+"POT-Creation-Date: 2014-05-05 19:57+0200\n"
+"PO-Revision-Date: 2014-05-05 19:58+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -41,15 +41,15 @@ msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto.
 msgid "animal_popup_admin"
 msgstr "${animal_name} (${battery}%) propiedad de ${name}"
 
-#: ondestan/views.py:513
+#: ondestan/views.py:515
 msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)"
 
-#: ondestan/views.py:594
+#: ondestan/views.py:598
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:617
+#: ondestan/views.py:622
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -81,76 +81,75 @@ msgstr "Aviso"
 msgid "danger"
 msgstr "Peligro"
 
-#: ondestan/services/animal_service.py:23
+#: ondestan/services/animal_service.py:24
 msgid "low_battery_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
 
-#: ondestan/services/animal_service.py:24
+#: ondestan/services/animal_service.py:25
 msgid "low_battery_notification_mail_subject"
 msgstr "Nivel bajo de batería (${animal_name}) en Ondestán"
 
-#: ondestan/services/animal_service.py:25
+#: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, el aparato en tu vaca <b>${animal_name}</b> bajó a un nivel de <b>batería de sólo el ${battery_level}%</b> en ${date}.</p></body></html>"
 
-#: ondestan/services/animal_service.py:26
+#: ondestan/services/animal_service.py:27
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "Según los datos recibidos, el aparato en tu vaca ${animal_name} bajó a un nivel de batería de sólo el ${battery_level}% en ${date}."
 
-#: ondestan/services/animal_service.py:27
-#| msgid "low_battery_notification_web"
+#: ondestan/services/animal_service.py:28
 msgid "low_battery_notification_sms"
 msgstr "Aviso Ondestán: la vaca ${animal_name} pasó a sólo un ${battery_level}% de batería en ${date}."
 
-#: ondestan/services/animal_service.py:29
+#: ondestan/services/animal_service.py:30
 msgid "medium_battery_notification_web"
 msgstr "La vaca ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
 
-#: ondestan/services/animal_service.py:31
+#: ondestan/services/animal_service.py:32
 msgid "gps_immobile_notification_web"
 msgstr "La vaca ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse, desde el ${date_begin}."
 
-#: ondestan/services/animal_service.py:32
+#: ondestan/services/animal_service.py:33
 msgid "gps_immobile_notification_mail_subject"
 msgstr "Animal sin movimiento durante largo período (${animal_name}) en Ondestán"
 
-#: ondestan/services/animal_service.py:33
+#: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, tu vaca <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b>, desde el ${date_begin}.</p></body></html>"
 
-#: ondestan/services/animal_service.py:34
+#: ondestan/services/animal_service.py:35
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "Según los datos recibidos, tu vaca ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse, desde el ${date_begin}."
 
-#: ondestan/services/animal_service.py:36
+#: ondestan/services/animal_service.py:37
 msgid "gps_instant_duplicated_notification_web"
 msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:38
+#: ondestan/services/animal_service.py:39
 msgid "gps_inactive_device_notification_web"
 msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:40
+#: ondestan/services/animal_service.py:41
 msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:42
+#: ondestan/services/animal_service.py:43
 msgid "outside_plots_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
 
-#: ondestan/services/animal_service.py:43
+#: ondestan/services/animal_service.py:44
 msgid "outside_plots_notification_mail_subject"
 msgstr "Vaca fuera de fincas (${animal_name}) en Ondestán"
 
-#: ondestan/services/animal_service.py:44
+#: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br> Según los datos recibidos, tu vaca <b>${animal_name} salió de las fincas designadas</b> en ${date}.</p></body></html>"
 
-#: ondestan/services/animal_service.py:45
+#: ondestan/services/animal_service.py:46
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -303,8 +302,8 @@ msgstr "pedido(s)"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/main.pt:34
-#: ondestan/templates/updateProfile.pt:29
-#: ondestan/templates/updateProfile.pt:76
+#: ondestan/templates/updateProfile.pt:31
+#: ondestan/templates/updateProfile.pt:78
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
@@ -328,14 +327,14 @@ msgstr "Log de notificaciones - Ondestán"
 #: ondestan/templates/notifications.pt:21
 #: ondestan/templates/orderDevices.pt:24
 #: ondestan/templates/orderDevices.pt:52
-#: ondestan/templates/orders.pt:52
-#: ondestan/templates/orders.pt:112
+#: ondestan/templates/orders.pt:56
+#: ondestan/templates/orders.pt:116
 msgid "id"
 msgstr "ID"
 
 #. Default: User
 #: ondestan/templates/notifications.pt:22
-#: ondestan/templates/orders.pt:53
+#: ondestan/templates/orders.pt:57
 msgid "user"
 msgstr "Usuario"
 
@@ -414,7 +413,7 @@ msgstr "IMEI"
 #: ondestan/templates/orderDevices.pt:36
 #: ondestan/templates/orderDevices.pt:54
 #: ondestan/templates/signup.pt:68
-#: ondestan/templates/updateProfile.pt:59
+#: ondestan/templates/updateProfile.pt:61
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
 
@@ -457,8 +456,8 @@ msgstr "Histórico de estados de pedido"
 
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:18
-#: ondestan/templates/orders.pt:54
-#: ondestan/templates/orders.pt:114
+#: ondestan/templates/orders.pt:58
+#: ondestan/templates/orders.pt:118
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -469,37 +468,37 @@ msgstr "Fecha de cambio"
 
 #. Default: Awaiting
 #: ondestan/templates/orderStateHistory.pt:25
-#: ondestan/templates/orders.pt:70
-#: ondestan/templates/orders.pt:79
-#: ondestan/templates/orders.pt:130
-#: ondestan/templates/orders.pt:139
+#: ondestan/templates/orders.pt:74
+#: ondestan/templates/orders.pt:83
+#: ondestan/templates/orders.pt:134
+#: ondestan/templates/orders.pt:143
 msgid "order_state_0"
 msgstr "En espera"
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:26
-#: ondestan/templates/orders.pt:71
-#: ondestan/templates/orders.pt:80
-#: ondestan/templates/orders.pt:131
-#: ondestan/templates/orders.pt:140
+#: ondestan/templates/orders.pt:75
+#: ondestan/templates/orders.pt:84
+#: ondestan/templates/orders.pt:135
+#: ondestan/templates/orders.pt:144
 msgid "order_state_1"
 msgstr "En proceso"
 
 #. Default: Dispatched
 #: ondestan/templates/orderStateHistory.pt:27
-#: ondestan/templates/orders.pt:72
-#: ondestan/templates/orders.pt:81
-#: ondestan/templates/orders.pt:132
-#: ondestan/templates/orders.pt:141
+#: ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:85
+#: ondestan/templates/orders.pt:136
+#: ondestan/templates/orders.pt:145
 msgid "order_state_2"
 msgstr "Enviado"
 
 #. Default: Activated
 #: ondestan/templates/orderStateHistory.pt:28
-#: ondestan/templates/orders.pt:73
-#: ondestan/templates/orders.pt:82
-#: ondestan/templates/orders.pt:133
-#: ondestan/templates/orders.pt:142
+#: ondestan/templates/orders.pt:77
+#: ondestan/templates/orders.pt:86
+#: ondestan/templates/orders.pt:137
+#: ondestan/templates/orders.pt:146
 msgid "order_state_3"
 msgstr "Activado"
 
@@ -526,36 +525,54 @@ msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en 
 #. Default: Nr units
 #. Default: Number of units
 #: ondestan/templates/orders.pt:36
-#: ondestan/templates/orders.pt:55
-#: ondestan/templates/orders.pt:115
+#: ondestan/templates/orders.pt:59
+#: ondestan/templates/orders.pt:119
 msgid "number_units"
 msgstr "Nº de unidades"
 
+#. Default: 1 unit
+#: ondestan/templates/orders.pt:37
+#| msgid "number_units"
+msgid "1_units"
+msgstr "1 unidad"
+
+#. Default: 2 units
+#: ondestan/templates/orders.pt:38
+#| msgid "number_units"
+msgid "2_units"
+msgstr "2 unidades"
+
+#. Default: 3 units
+#: ondestan/templates/orders.pt:39
+#| msgid "number_units"
+msgid "3_units"
+msgstr "3 unidades"
+
 #. Default: Send address
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:37
-#: ondestan/templates/orders.pt:56
-#: ondestan/templates/orders.pt:116
+#: ondestan/templates/orders.pt:41
+#: ondestan/templates/orders.pt:60
+#: ondestan/templates/orders.pt:120
 msgid "delivery_address"
 msgstr "Dirección de envío"
 
 #. Default: Confirm order
-#: ondestan/templates/orders.pt:38
+#: ondestan/templates/orders.pt:42
 msgid "confirm_order"
 msgstr "Confirmar pedido"
 
 #. Default: Pending orders list
-#: ondestan/templates/orders.pt:44
+#: ondestan/templates/orders.pt:48
 msgid "pending_orders_list"
 msgstr "Listado de pedidos pendientes"
 
 #. Default: Processed orders list
-#: ondestan/templates/orders.pt:104
+#: ondestan/templates/orders.pt:108
 msgid "processed_orders_list"
 msgstr "Listado de pedidos procesados"
 
 #. Default: User
-#: ondestan/templates/orders.pt:113
+#: ondestan/templates/orders.pt:117
 msgid "order_user"
 msgstr "Usuario"
 
@@ -600,7 +617,7 @@ msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un r
 #. Default: Email
 #: ondestan/templates/reminder.pt:27
 #: ondestan/templates/signup.pt:61
-#: ondestan/templates/updateProfile.pt:53
+#: ondestan/templates/updateProfile.pt:55
 msgid "email"
 msgstr "E-mail"
 
@@ -646,25 +663,25 @@ msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu 
 
 #. Default: Login
 #: ondestan/templates/signup.pt:47
-#: ondestan/templates/updateProfile.pt:41
+#: ondestan/templates/updateProfile.pt:43
 msgid "username"
 msgstr "Usuario"
 
 #. Default: Full name
 #: ondestan/templates/signup.pt:54
-#: ondestan/templates/updateProfile.pt:47
+#: ondestan/templates/updateProfile.pt:49
 msgid "full_name"
 msgstr "Nombre completo"
 
 #. Default: Password
 #: ondestan/templates/signup.pt:75
-#: ondestan/templates/updateProfile.pt:65
+#: ondestan/templates/updateProfile.pt:67
 msgid "password"
 msgstr "Password"
 
 #. Default: Retype password
 #: ondestan/templates/signup.pt:82
-#: ondestan/templates/updateProfile.pt:71
+#: ondestan/templates/updateProfile.pt:73
 msgid "retype_password"
 msgstr "Repite el password"
 
@@ -831,15 +848,15 @@ msgstr "Aceptar"
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
 
-#: ondestan/utils/various.py:49
+#: ondestan/utils/various.py:50
 msgid "meta_date_format"
 msgstr "%d-%m-%Y"
 
-#: ondestan/utils/various.py:59
+#: ondestan/utils/various.py:60
 msgid "meta_datetime_format"
 msgstr "%d-%m-%Y %H:%M:%S"
 
-#: ondestan/utils/various.py:70
+#: ondestan/utils/various.py:71
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 

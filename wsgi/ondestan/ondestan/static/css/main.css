@@ -126,3 +126,15 @@ div#map {
  	margin: 0px;
  	text-align: center;
  }
+ 
+ .mini-form {
+ 	width: 300px;
+ }
+ 
+ .mini-form input, .mini-form textarea, .mini-form select {
+ 	margin-bottom: 5px;
+ }
+ 
+ .mini-form select {
+ 	width: 150px;
+ }
