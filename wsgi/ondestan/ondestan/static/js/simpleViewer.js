@@ -180,7 +180,7 @@
 	    		map.setView(point, 13);
 	    	}
     	} else {
-    		map.setView(window.contextVariables.default_view, 13);
+    		map.setView(window.contextVariables.default_view, 8);
     	}
 
     	var plots = new L.FeatureGroup();
