@@ -58,7 +58,7 @@
 
           <tbody>
             <tr tal:repeat="device order.animals">
-            	<td tal:define="deletable (not device.active and len(device.positions) == 0)">
+            	<td tal:define="deletable (not device.active and device.n_positions == 0)">
             		<div data-toggle="tooltip" data-placement="left" i18n:attributes="tooltip-msg device_cannot_be_deleted_tooltip" tooltip-msg="Device cannot be deleted because it is currently active and/or has stored positions." tal:attributes="data-toggle 'tooltip' if not deletable else None;">
             			<tal:block tal:content="device.id"/>
             			<a type="button" class="btn btn-default btn-xs" style="float: right;" tal:attributes="disabled (not deletable or None)" href="${request.route_url('delete_device', device_id=device.id)}" i18n:translate="delete">Delete</a>
