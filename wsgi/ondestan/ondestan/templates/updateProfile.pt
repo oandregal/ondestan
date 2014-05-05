@@ -25,19 +25,19 @@
 
   <tal:block metal:fill-slot="content">
 
-    <div id="middle">
-      <div class="middle align-right">
-        <div id="left" class="app-welcome align-left">
-          <h3 i18n:translate="update_profile">Update Profile</h3>
-          <span tal:replace="message"/>
-        </div>
-      </div>
-    </div>
+    <div id="bottom1">
+      <div class="bottom form-block">
 
-    <div id="bottom">
-      <div class="bottom">
+	    <div id="middle">
+	      <div class="middle align-right">
+	        <div id="left" class="app-welcome align-left">
+	          <h3 i18n:translate="update_profile">Update Profile</h3>
+	          <span tal:replace="message1"/>
+	        </div>
+	      </div>
+	    </div>
 
-        <form id="form" class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
+        <form id="form_profile" class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
           <input type="hidden" id="id" name="id" value="${id}"/>
           <div class="form-group">
             <label for="login" class="col-sm-4 control-label" i18n:translate="username">Login</label>
@@ -63,19 +63,45 @@
               <input type="text" class="form-control" id="phone" name="phone" value="${phone}"/>
             </div>
           </div>
+          <input id="submit" class="btn btn-lg col-sm-4 col-sm-offset-5 btn-primary" type="submit" name="form.submitted" i18n:attributes="value update_profile" value="Update Profile"/>
+        </form>
+        
+      </div>
+    </div>
+
+    <div id="bottom2">
+      <div class="bottom form-block">
+
+	    <div id="middle">
+	      <div class="middle align-right">
+	        <div id="left" class="app-welcome align-left">
+	          <h3 i18n:translate="update_password">Update Password</h3>
+	          <span tal:replace="message2"/>
+	        </div>
+	      </div>
+	    </div>
+
+        <form id="form_password" class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
+          <input type="hidden" id="id" name="id" value="${id}"/>
           <div class="form-group">
-            <label for="password1" class="col-sm-4 control-label" i18n:translate="password">Password</label>
+            <label for="password1" class="col-sm-4 control-label" i18n:translate="old_password">Old password</label>
+            <div class="col-sm-6">
+              <input type="password" class="form-control" id="old_password" name="old_password"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password1" class="col-sm-4 control-label" i18n:translate="new_password">New password</label>
             <div class="col-sm-6">
               <input type="password" class="form-control" id="password" name="password"/>
             </div>
           </div>
           <div class="form-group">
-            <label for="password2" class="col-sm-4 control-label" i18n:translate="retype_password">Retype password</label>
+            <label for="password2" class="col-sm-4 control-label" i18n:translate="retype_new_password">Retype new password</label>
             <div class="col-sm-6">
               <input type="password" class="form-control" id="password2" name="password2"/>
             </div>
           </div>
-          <input id="submit" class="btn btn-lg col-sm-4 col-sm-offset-5 btn-primary" type="submit" name="form.submitted" i18n:attributes="value update_profile" value="Update Profile"/>
+          <input id="submit" class="btn btn-lg col-sm-4 col-sm-offset-5 btn-primary" type="submit" name="form.submitted" i18n:attributes="value update_password" value="Update Password"/>
         </form>
 
       </div>

@@ -119,25 +119,37 @@ def update_animal_name(request):
              renderer='templates/updateProfile.pt',
              permission='view')
 def update_profile(request):
-    message = ''
+    message1 = ''
+    message2 = ''
 
     if 'form.submitted' in request.params:
-        message = user_service.update_user(request)
-        login = request.params['login']
-        name = request.params['name']
-        email = request.params['email']
-        phone = request.params['phone']
-        user_id = request.params['id']
+        if 'login' in request.params:
+            message1 = user_service.update_user(request)
+            login = request.params['login']
+            name = request.params['name']
+            email = request.params['email']
+            phone = request.params['phone']
+            user_id = request.params['id']
+        else:
+            if 'password' in request.params:
+                message2 = user_service.update_password(request)
+            user = user_service.get_user_by_login(get_user_login(request))
+            login = user.login
+            user_id = user.id
+            name = user.name
+            email = user.email
+            phone = user.phone
     else:
-        login = get_user_login(request)
-        user = user_service.get_user_by_login(login)
+        user = user_service.get_user_by_login(get_user_login(request))
+        login = user.login
         user_id = user.id
         name = user.name
         email = user.email
         phone = user.phone
 
     return dict(
-        message=message,
+        message1=message1,
+        message2=message2,
         id=user_id,
         login=login,
         name=name,

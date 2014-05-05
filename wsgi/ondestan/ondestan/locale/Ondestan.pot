@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-05 19:57+0200\n"
+"POT-Creation-Date: 2014-05-05 20:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:193
+#: ondestan/views.py:205
 msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:209
+#: ondestan/views.py:221
 msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:224
+#: ondestan/views.py:236
 msgid "user_login_already_use"
 msgstr ""
 
-#: ondestan/views.py:239
+#: ondestan/views.py:251
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:466
+#: ondestan/views.py:478
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:515
+#: ondestan/views.py:527
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:598
+#: ondestan/views.py:610
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:622
+#: ondestan/views.py:634
 msgid "plot_popup"
 msgstr ""
 
@@ -185,56 +185,64 @@ msgstr ""
 msgid "new_order_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:20
+#: ondestan/services/user_service.py:21
 msgid "signup_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:21
+#: ondestan/services/user_service.py:22
 msgid "signup_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:22
+#: ondestan/services/user_service.py:23
 msgid "signup_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:24
+#: ondestan/services/user_service.py:25
 msgid "login_reminder_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:25
+#: ondestan/services/user_service.py:26
 msgid "login_reminder_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:26
+#: ondestan/services/user_service.py:27
 msgid "login_reminder_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:28
+#: ondestan/services/user_service.py:29
 msgid "password_reset_notification_web"
 msgstr ""
 
-#: ondestan/services/user_service.py:29
+#: ondestan/services/user_service.py:30
 msgid "password_reset_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/user_service.py:30
+#: ondestan/services/user_service.py:31
 msgid "password_reset_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:31
+#: ondestan/services/user_service.py:32
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/user_service.py:133 ondestan/services/user_service.py:169
+#: ondestan/services/user_service.py:134 ondestan/services/user_service.py:172
 msgid "login_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:137 ondestan/services/user_service.py:173
+#: ondestan/services/user_service.py:138 ondestan/services/user_service.py:176
 msgid "email_already_use"
 msgstr ""
 
-#: ondestan/services/user_service.py:184
+#: ondestan/services/user_service.py:186
 msgid "user_profile_updated"
+msgstr ""
+
+#: ondestan/services/user_service.py:199
+msgid "wrong_password"
+msgstr ""
+
+#: ondestan/services/user_service.py:203
+msgid "user_password_updated"
 msgstr ""
 
 #. Default: Login - Ondestán
@@ -275,8 +283,8 @@ msgstr ""
 
 #. Default: Update profile
 #. Default: Update Profile
-#: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:31
-#: ondestan/templates/updateProfile.pt:78
+#: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:34
+#: ondestan/templates/updateProfile.pt:66
 msgid "update_profile"
 msgstr ""
 
@@ -614,12 +622,12 @@ msgid "full_name"
 msgstr ""
 
 #. Default: Password
-#: ondestan/templates/signup.pt:75 ondestan/templates/updateProfile.pt:67
+#: ondestan/templates/signup.pt:75
 msgid "password"
 msgstr ""
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:82 ondestan/templates/updateProfile.pt:73
+#: ondestan/templates/signup.pt:82
 msgid "retype_password"
 msgstr ""
 
@@ -783,6 +791,26 @@ msgstr ""
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
+msgstr ""
+
+#. Default: Update Password
+#: ondestan/templates/updateProfile.pt:72 ondestan/templates/updateProfile.pt:98
+msgid "update_password"
+msgstr ""
+
+#. Default: Old password
+#: ondestan/templates/updateProfile.pt:81
+msgid "old_password"
+msgstr ""
+
+#. Default: New password
+#: ondestan/templates/updateProfile.pt:87
+msgid "new_password"
+msgstr ""
+
+#. Default: Retype new password
+#: ondestan/templates/updateProfile.pt:93
+msgid "retype_new_password"
 msgstr ""
 
 #: ondestan/utils/various.py:50

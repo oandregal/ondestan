@@ -7,7 +7,7 @@ $.extend($.validator.messages, {
 });
 
 $(function() {
-	$('#form').validate({
+	$('#form_profile').validate({
 		rules : {
 			login : {
 				required : true,
@@ -41,7 +41,15 @@ $(function() {
 						},
 					}
 				}
-			},
+			}
+		}
+	});
+});
+
+$(function() {
+	$('#form_password').validate({
+		rules : {
+			old_password : "required",
 			password : {
 				required : true,
 				minlength : 6

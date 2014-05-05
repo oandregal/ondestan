@@ -5,23 +5,12 @@ from pyramid.security import (
     has_permission
     )
 
-from ondestan.services import user_service
-
 
 def get_user_login(request):
     principals = effective_principals(request)
     for principal in principals:
         if type(principal) is unicode:
             return principal
-    return None
-
-
-def get_user_id(request):
-    principals = effective_principals(request)
-    for principal in principals:
-        if type(principal) is unicode:
-            user = user_service.get_user_by_login(principal)
-            return user.id
     return None
 
 

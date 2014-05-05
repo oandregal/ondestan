@@ -12,7 +12,7 @@ from sqlalchemy import not_, and_
 from ondestan.entities import User, Role
 import ondestan.services
 from ondestan.utils import rand_string
-from ondestan.security import get_user_id
+from ondestan.security import get_user_login
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -162,7 +162,8 @@ def update_user(request):
     localizer = get_localizer(request)
 
     user_id = int(request.params['id'])
-    if (user_id != get_user_id(request)):
+    user = User().queryObject().filter(User.id == user_id).scalar()
+    if (user.login != get_user_login(request)):
         return
     login = request.params['login']
     name = request.params['name']
@@ -181,8 +182,25 @@ def update_user(request):
     user.name = name
     user.email = email
     user.phone = request.params['phone']
+    user.update()
+    logger.debug('Profile updated for user ' + user.login)
+
+    return localizer.translate(_('user_profile_updated', domain='Ondestan'))
+
+
+def update_password(request):
+    localizer = get_localizer(request)
+
+    user_id = int(request.params['id'])
+    user = User().queryObject().filter(User.id == user_id).scalar()
+    if (user.login != get_user_login(request)):
+        return
+    old_password = request.params['old_password']
+
+    if user.password != sha512(old_password).hexdigest():
+        return localizer.translate(_('wrong_password', domain='Ondestan'))
     user.password = sha512(request.params['password']).hexdigest()
     user.update()
+    logger.debug('Password updated for user ' + user.login)
 
-    msg = _('user_profile_updated', domain='Ondestan')
-    return localizer.translate(msg)
+    return localizer.translate(_('user_password_updated', domain='Ondestan'))

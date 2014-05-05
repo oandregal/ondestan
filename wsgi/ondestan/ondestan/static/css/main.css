@@ -138,3 +138,7 @@ div#map {
  .mini-form select {
  	width: 150px;
  }
+ 
+ .form-block {
+ 	margin-bottom: 150px;
+ }

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-05 19:57+0200\n"
-"PO-Revision-Date: 2014-05-05 19:58+0100\n"
+"POT-Creation-Date: 2014-05-05 20:36+0200\n"
+"PO-Revision-Date: 2014-05-05 20:40+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:193
+#: ondestan/views.py:205
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
-#: ondestan/views.py:209
+#: ondestan/views.py:221
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:224
+#: ondestan/views.py:236
 msgid "user_login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:239
+#: ondestan/views.py:251
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:466
+#: ondestan/views.py:478
 msgid "animal_popup_admin"
 msgstr "${animal_name} (${battery}%) propiedad de ${name}"
 
-#: ondestan/views.py:515
+#: ondestan/views.py:527
 msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)"
 
-#: ondestan/views.py:598
+#: ondestan/views.py:610
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:622
+#: ondestan/views.py:634
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -198,69 +198,79 @@ msgstr ""
 "Listado de pedidos:\n"
 "${url}"
 
-#: ondestan/services/user_service.py:20
+#: ondestan/services/user_service.py:21
 msgid "signup_notification_mail_subject"
 msgstr "Alta en Ondestán"
 
-#: ondestan/services/user_service.py:21
+#: ondestan/services/user_service.py:22
 msgid "signup_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Haz click en <a href=\"${url}\">este enlace</a> para activar tu cuenta de Ondestán.     </p></body></html>"
 
-#: ondestan/services/user_service.py:22
+#: ondestan/services/user_service.py:23
 msgid "signup_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "Haz click en el siguiente enlace para activar tu cuenta de Ondestán:\n"
 "${url}"
 
-#: ondestan/services/user_service.py:24
+#: ondestan/services/user_service.py:25
 msgid "login_reminder_notification_mail_subject"
 msgstr "Recordatorio de usuario de Ondestán"
 
-#: ondestan/services/user_service.py:25
-msgid "login_reminder_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu password, pulsa en <a href=\"${url}\">este enlace</a> para resetearlo a uno nuevo que te comunicaremos por e-mail a esta misma dirección.     </p></body></html>"
-
 #: ondestan/services/user_service.py:26
+msgid "login_reminder_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>    Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu contraseña, pulsa en <a href=\"${url}\">este enlace</a> para resetearla a una nueva que te comunicaremos por e-mail a esta misma dirección.     </p></body></html>"
+
+#: ondestan/services/user_service.py:27
 msgid "login_reminder_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
-"Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu password, pulsa en el siguiente enlace para resetearlo a uno nuevo que te comunicaremos por e-mail a esta misma dirección.\n"
+"Tu usuario asociado a este correo es ${login}, y en caso de que hayas olvidado tu contraseña, pulsa en el siguiente enlace para resetearla a una nueva que te comunicaremos por e-mail a esta misma dirección.\n"
 "${url}"
 
-#: ondestan/services/user_service.py:28
+#: ondestan/services/user_service.py:29
 msgid "password_reset_notification_web"
 msgstr "<b>Tu contraseña ha sido reseteada.</b>  Entra lo antes posible en la <a href=${url_profile}>página de tu perfil</a> para actualizar a una nueva."
 
-#: ondestan/services/user_service.py:29
-msgid "password_reset_notification_mail_subject"
-msgstr "Reseteo de password de Ondestán"
-
 #: ondestan/services/user_service.py:30
+msgid "password_reset_notification_mail_subject"
+msgstr "Reseteo de contraseña de Ondestán"
+
+#: ondestan/services/user_service.py:31
 msgid "password_reset_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br>   El password de tu cuenta asociada a este correo ha sido reseteado a ${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta en Ondestán</a> y cambies tu password a uno nuevo lo antes posible.    </p></body></html>"
 
-#: ondestan/services/user_service.py:31
+#: ondestan/services/user_service.py:32
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
-"El password de tu cuenta asociada a este correo ha sido reseteado a ${password}\n"
-"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu password a uno nuevo lo antes posible.\n"
+"La contraseña de tu cuenta asociada a este correo ha sido reseteada a ${password}\n"
+"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu contraseña a una nueva lo antes posible.\n"
 "${url}"
 
-#: ondestan/services/user_service.py:133
-#: ondestan/services/user_service.py:169
+#: ondestan/services/user_service.py:134
+#: ondestan/services/user_service.py:172
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/services/user_service.py:137
-#: ondestan/services/user_service.py:173
+#: ondestan/services/user_service.py:138
+#: ondestan/services/user_service.py:176
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/services/user_service.py:184
+#: ondestan/services/user_service.py:186
 msgid "user_profile_updated"
 msgstr "Perfil de usuario actualizado"
+
+#: ondestan/services/user_service.py:199
+#| msgid "password"
+msgid "wrong_password"
+msgstr "Contraseña incorrecta"
+
+#: ondestan/services/user_service.py:203
+#| msgid "user_password_reminder"
+msgid "user_password_updated"
+msgstr "Contraseña actualizada"
 
 #. Default: Login - Ondestán
 #: ondestan/templates/login.pt:8
@@ -302,8 +312,8 @@ msgstr "pedido(s)"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/main.pt:34
-#: ondestan/templates/updateProfile.pt:31
-#: ondestan/templates/updateProfile.pt:78
+#: ondestan/templates/updateProfile.pt:34
+#: ondestan/templates/updateProfile.pt:66
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
@@ -532,19 +542,16 @@ msgstr "Nº de unidades"
 
 #. Default: 1 unit
 #: ondestan/templates/orders.pt:37
-#| msgid "number_units"
 msgid "1_units"
 msgstr "1 unidad"
 
 #. Default: 2 units
 #: ondestan/templates/orders.pt:38
-#| msgid "number_units"
 msgid "2_units"
 msgstr "2 unidades"
 
 #. Default: 3 units
 #: ondestan/templates/orders.pt:39
-#| msgid "number_units"
 msgid "3_units"
 msgstr "3 unidades"
 
@@ -579,27 +586,27 @@ msgstr "Usuario"
 #. Default: Password reset - Ondestán
 #: ondestan/templates/passwordReset.pt:8
 msgid "password_reset_title"
-msgstr "Reseteo de password - Ondestán"
+msgstr "Reseteo de contraseña - Ondestán"
 
 #. Default: Password reset
 #: ondestan/templates/passwordReset.pt:12
 msgid "password_reset"
-msgstr "Reseteo de password"
+msgstr "Reseteo de contraseña"
 
 #. Default: Please check your e-mail inbox for the password reset.
 #: ondestan/templates/passwordReset.pt:15
 msgid "password_reset_sent"
-msgstr "Comprueba tu bandeja de entrada del e-mail para ver tu nuevo password."
+msgstr "Comprueba tu bandeja de entrada del e-mail para ver tu nueva contraseña."
 
 #. Default: User/password reminder - Ondestán
 #: ondestan/templates/reminder.pt:8
 msgid "user_password_reminder_title"
-msgstr "Recordatorio de usuario/password - Ondestán"
+msgstr "Recordatorio de usuario/contraseña - Ondestán"
 
 #. Default: User/password reminder
 #: ondestan/templates/reminder.pt:12
 msgid "user_password_reminder"
-msgstr "Recordatorio de usuario/password"
+msgstr "Recordatorio de usuario/contraseña"
 
 #. Default: Please check your e-mail inbox for the reminder.
 #: ondestan/templates/reminder.pt:19
@@ -611,7 +618,7 @@ msgstr "Comprueba tu bandeja de entrada del e-mail para ver el recordatorio."
 #. you a reminder on your user/password.
 #: ondestan/templates/reminder.pt:24
 msgid "user_password_reminder_msg"
-msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un recordatorio para tu usuario/password."
+msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un recordatorio para tu usuario/contraseña."
 
 #. Default: E-mail
 #. Default: Email
@@ -647,7 +654,7 @@ msgstr "Por favor, introduce una dirección de e-mail válida."
 #: ondestan/templates/signup.pt:17
 #: ondestan/templates/updateProfile.pt:17
 msgid "passwords_dont_match"
-msgstr "Los passwords no coinciden"
+msgstr "Las contraseñas no coinciden"
 
 #. Default: Successful Sign Up
 #: ondestan/templates/signup.pt:30
@@ -675,15 +682,13 @@ msgstr "Nombre completo"
 
 #. Default: Password
 #: ondestan/templates/signup.pt:75
-#: ondestan/templates/updateProfile.pt:67
 msgid "password"
-msgstr "Password"
+msgstr "Contraseña"
 
 #. Default: Retype password
 #: ondestan/templates/signup.pt:82
-#: ondestan/templates/updateProfile.pt:73
 msgid "retype_password"
-msgstr "Repite el password"
+msgstr "Repite la contraseña"
 
 #. Default: Viewer - Ondestán
 #: ondestan/templates/simpleViewer.pt:8
@@ -847,6 +852,31 @@ msgstr "Aceptar"
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
+
+#. Default: Update Password
+#: ondestan/templates/updateProfile.pt:72
+#: ondestan/templates/updateProfile.pt:98
+#| msgid "retype_password"
+msgid "update_password"
+msgstr "Actualizar contraseña"
+
+#. Default: Old password
+#: ondestan/templates/updateProfile.pt:81
+#| msgid "password"
+msgid "old_password"
+msgstr "Contraseña actual"
+
+#. Default: New password
+#: ondestan/templates/updateProfile.pt:87
+#| msgid "password"
+msgid "new_password"
+msgstr "Contraseña nueva"
+
+#. Default: Retype new password
+#: ondestan/templates/updateProfile.pt:93
+#| msgid "retype_password"
+msgid "retype_new_password"
+msgstr "Repite la contraseña nueva"
 
 #: ondestan/utils/various.py:50
 msgid "meta_date_format"
