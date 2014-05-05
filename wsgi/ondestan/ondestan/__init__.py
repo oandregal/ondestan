@@ -4,13 +4,24 @@ from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from ondestan.config import Config
 import logging
+from pyramid.request import Request
+
+
+def request_factory(environ):
+    req = Request(environ)
+    for key in req.POST:
+        req.POST[key] = req.POST[key].encode(req.url_encoding)
+    for key in req.GET:
+        req.GET[key] = req.GET[key].encode(req.url_encoding)
+    return req
 
 
 def main(global_config, **settings):
     """ This function returns a Pyramid WSGI application.
     """
     config = Configurator(settings=settings,
-                          root_factory='ondestan.models.RootFactory')
+                          root_factory='ondestan.models.RootFactory',
+                          request_factory=request_factory)
     Config.init_settings(settings)
 
     from ondestan.services import user_service
