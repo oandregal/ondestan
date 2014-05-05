@@ -131,8 +131,9 @@ def process_notification(base_id, login, web=False, web_level=0, email=False,
     localizer = get_custom_localizer(user.locale)
     # We check the parameters for translatable strings
     for i in parameters:
-        if str(parameters[i]).startswith("_("):
-            parameters[i] = localizer.translate(eval(parameters[i]))
+        if isinstance(parameters[i], basestring):
+            if parameters[i].startswith("_("):
+                parameters[i] = localizer.translate(eval(parameters[i]))
 
     if web:
         text = "_('" + base_id + "_notification_web', domain='Ondestan'," +\
