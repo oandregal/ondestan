@@ -12,6 +12,7 @@ from sqlalchemy import not_, and_
 from ondestan.entities import User, Role
 import ondestan.services
 from ondestan.utils import rand_string
+from ondestan.security import get_user_id
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -161,6 +162,8 @@ def update_user(request):
     localizer = get_localizer(request)
 
     user_id = int(request.params['id'])
+    if (user_id != get_user_id(request)):
+        return
     login = request.params['login']
     name = request.params['name']
     email = request.params['email']
