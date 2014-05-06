@@ -26,6 +26,7 @@
             <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
             <tal:block tal:case="2" i18n:translate="order_state_2">Dispatched</tal:block>
             <tal:block tal:case="3" i18n:translate="order_state_3">Activated</tal:block>
+            <tal:block tal:case="4" i18n:translate="order_state_4">Cancelled</tal:block>
           </tal:block>
         </td>
         <td tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/>

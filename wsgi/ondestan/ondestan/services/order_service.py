@@ -34,9 +34,9 @@ _('new_order_notification_mail_text_body', domain='Ondestan')
 def get_orders(request):
     is_admin = check_permission('admin', request)
     if is_admin:
-        new_orders = get_all_unprocessed_orders()
+        new_orders = get_all_pending_orders()
     else:
-        new_orders = get_all_unprocessed_orders(
+        new_orders = get_all_pending_orders(
             get_user_login(request))
     return new_orders
 
@@ -146,33 +146,14 @@ def get_all_pending_orders(login=None):
     if login != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login), Order_state.state != Order_state._STATES
-        [len(Order_state._STATES) - 1])).order_by(Order_state.state,\
+        Order.user.has(login=login), Order_state.state < Order_state._STATES
+        [len(Order_state._STATES) - 2])).order_by(Order_state.state,\
         desc(Order_state.date)).all()
     else:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery)),
-        Order_state.state != Order_state._STATES[len(Order_state._STATES)\
-        - 1]).order_by(Order_state.state, desc(Order_state.date)).all()
-
-
-def get_all_unprocessed_orders(login=None):
-    session = Db.instance().session
-    # Create subquery for retrieving the last state of each order
-    subquery = session.query(
-        Order_state.order_id, func.max(Order_state.date)
-    ).group_by(Order_state.order_id).subquery()
-    if login != None:
-        return Order().queryObject().join(Order_state).filter(and_(
-        tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login), Order_state.state != Order_state._STATES
-        [len(Order_state._STATES) - 1])).order_by(Order_state.state,\
-        desc(Order_state.date)).all()
-    else:
-        return Order().queryObject().join(Order_state).filter(and_(
-        tuple_(Order_state.order_id, Order_state.date).in_(subquery)),
-        Order_state.state != Order_state._STATES[len(Order_state._STATES)\
-        - 1]).order_by(Order_state.state, desc(Order_state.date)).all()
+        Order_state.state < Order_state._STATES[len(Order_state._STATES)\
+        - 2]).order_by(Order_state.state, desc(Order_state.date)).all()
 
 
 def get_all_processed_orders(login=None):
@@ -184,14 +165,14 @@ def get_all_processed_orders(login=None):
     if login != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login), Order_state.state == Order_state._STATES
-        [len(Order_state._STATES) - 1])).order_by(Order_state.state,\
+        Order.user.has(login=login), Order_state.state >= Order_state._STATES
+        [len(Order_state._STATES) - 2])).order_by(Order_state.state,\
         desc(Order_state.date)).all()
     else:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery)),
-        Order_state.state == Order_state._STATES[len(Order_state._STATES)\
-        - 1]).order_by(Order_state.state, desc(Order_state.date)).all()
+        Order_state.state >= Order_state._STATES[len(Order_state._STATES)\
+        - 2]).order_by(Order_state.state, desc(Order_state.date)).all()
 
 
 def get_all_orders(login=None):

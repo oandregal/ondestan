@@ -9,7 +9,7 @@ from ondestan.utils import Base
 class Order_state(Entity, Base):
 
     __tablename__ = "order_states"
-    _STATES = [0, 1, 2, 3]
+    _STATES = [0, 1, 2, 3, 4]
 
     id = Column(Integer, primary_key=True)
     state = Column(Integer)

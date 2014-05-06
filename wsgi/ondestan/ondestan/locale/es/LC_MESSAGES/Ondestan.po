@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-05 20:36+0200\n"
-"PO-Revision-Date: 2014-05-05 20:40+0100\n"
+"POT-Creation-Date: 2014-05-06 17:26+0200\n"
+"PO-Revision-Date: 2014-05-06 17:26+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:205
+#: ondestan/views.py:203
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
-#: ondestan/views.py:221
+#: ondestan/views.py:219
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:236
+#: ondestan/views.py:234
 msgid "user_login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:251
+#: ondestan/views.py:249
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:478
+#: ondestan/views.py:476
 msgid "animal_popup_admin"
 msgstr "${animal_name} (${battery}%) propiedad de ${name}"
 
-#: ondestan/views.py:527
+#: ondestan/views.py:525
 msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)"
 
-#: ondestan/views.py:610
+#: ondestan/views.py:608
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:634
+#: ondestan/views.py:632
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -248,29 +248,25 @@ msgstr ""
 "Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu contraseña a una nueva lo antes posible.\n"
 "${url}"
 
-#: ondestan/services/user_service.py:134
-#: ondestan/services/user_service.py:172
-msgid "login_already_use"
-msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
-
-#: ondestan/services/user_service.py:138
-#: ondestan/services/user_service.py:176
-msgid "email_already_use"
-msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
-
-#: ondestan/services/user_service.py:186
+#: ondestan/services/user_service.py:34
 msgid "user_profile_updated"
 msgstr "Perfil de usuario actualizado"
 
-#: ondestan/services/user_service.py:199
-#| msgid "password"
+#: ondestan/services/user_service.py:35
+msgid "user_password_updated"
+msgstr "Contraseña actualizada"
+
+#: ondestan/services/user_service.py:36
 msgid "wrong_password"
 msgstr "Contraseña incorrecta"
 
-#: ondestan/services/user_service.py:203
-#| msgid "user_password_reminder"
-msgid "user_password_updated"
-msgstr "Contraseña actualizada"
+#: ondestan/services/user_service.py:138
+msgid "login_already_use"
+msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
+
+#: ondestan/services/user_service.py:142
+msgid "email_already_use"
+msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
 #. Default: Login - Ondestán
 #: ondestan/templates/login.pt:8
@@ -312,8 +308,8 @@ msgstr "pedido(s)"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/main.pt:34
-#: ondestan/templates/updateProfile.pt:34
-#: ondestan/templates/updateProfile.pt:66
+#: ondestan/templates/updateProfile.pt:40
+#: ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
@@ -338,7 +334,7 @@ msgstr "Log de notificaciones - Ondestán"
 #: ondestan/templates/orderDevices.pt:24
 #: ondestan/templates/orderDevices.pt:52
 #: ondestan/templates/orders.pt:56
-#: ondestan/templates/orders.pt:116
+#: ondestan/templates/orders.pt:118
 msgid "id"
 msgstr "ID"
 
@@ -423,7 +419,7 @@ msgstr "IMEI"
 #: ondestan/templates/orderDevices.pt:36
 #: ondestan/templates/orderDevices.pt:54
 #: ondestan/templates/signup.pt:68
-#: ondestan/templates/updateProfile.pt:61
+#: ondestan/templates/updateProfile.pt:66
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
 
@@ -467,7 +463,7 @@ msgstr "Histórico de estados de pedido"
 #. Default: Order state
 #: ondestan/templates/orderStateHistory.pt:18
 #: ondestan/templates/orders.pt:58
-#: ondestan/templates/orders.pt:118
+#: ondestan/templates/orders.pt:120
 msgid "order_state"
 msgstr "Estado del pedido"
 
@@ -479,36 +475,36 @@ msgstr "Fecha de cambio"
 #. Default: Awaiting
 #: ondestan/templates/orderStateHistory.pt:25
 #: ondestan/templates/orders.pt:74
-#: ondestan/templates/orders.pt:83
-#: ondestan/templates/orders.pt:134
-#: ondestan/templates/orders.pt:143
+#: ondestan/templates/orders.pt:84
+#: ondestan/templates/orders.pt:136
+#: ondestan/templates/orders.pt:146
 msgid "order_state_0"
 msgstr "En espera"
 
 #. Default: In process
 #: ondestan/templates/orderStateHistory.pt:26
 #: ondestan/templates/orders.pt:75
-#: ondestan/templates/orders.pt:84
-#: ondestan/templates/orders.pt:135
-#: ondestan/templates/orders.pt:144
+#: ondestan/templates/orders.pt:85
+#: ondestan/templates/orders.pt:137
+#: ondestan/templates/orders.pt:147
 msgid "order_state_1"
 msgstr "En proceso"
 
 #. Default: Dispatched
 #: ondestan/templates/orderStateHistory.pt:27
 #: ondestan/templates/orders.pt:76
-#: ondestan/templates/orders.pt:85
-#: ondestan/templates/orders.pt:136
-#: ondestan/templates/orders.pt:145
+#: ondestan/templates/orders.pt:86
+#: ondestan/templates/orders.pt:138
+#: ondestan/templates/orders.pt:148
 msgid "order_state_2"
 msgstr "Enviado"
 
 #. Default: Activated
 #: ondestan/templates/orderStateHistory.pt:28
 #: ondestan/templates/orders.pt:77
-#: ondestan/templates/orders.pt:86
-#: ondestan/templates/orders.pt:137
-#: ondestan/templates/orders.pt:146
+#: ondestan/templates/orders.pt:87
+#: ondestan/templates/orders.pt:139
+#: ondestan/templates/orders.pt:149
 msgid "order_state_3"
 msgstr "Activado"
 
@@ -536,7 +532,7 @@ msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en 
 #. Default: Number of units
 #: ondestan/templates/orders.pt:36
 #: ondestan/templates/orders.pt:59
-#: ondestan/templates/orders.pt:119
+#: ondestan/templates/orders.pt:121
 msgid "number_units"
 msgstr "Nº de unidades"
 
@@ -559,7 +555,7 @@ msgstr "3 unidades"
 #. Default: Delivery address
 #: ondestan/templates/orders.pt:41
 #: ondestan/templates/orders.pt:60
-#: ondestan/templates/orders.pt:120
+#: ondestan/templates/orders.pt:122
 msgid "delivery_address"
 msgstr "Dirección de envío"
 
@@ -573,13 +569,22 @@ msgstr "Confirmar pedido"
 msgid "pending_orders_list"
 msgstr "Listado de pedidos pendientes"
 
+#. Default: Cancelled
+#: ondestan/templates/orders.pt:78
+#: ondestan/templates/orders.pt:88
+#: ondestan/templates/orders.pt:140
+#: ondestan/templates/orders.pt:150
+#| msgid "order_state_3"
+msgid "order_state_4"
+msgstr "Cancelado"
+
 #. Default: Processed orders list
-#: ondestan/templates/orders.pt:108
+#: ondestan/templates/orders.pt:110
 msgid "processed_orders_list"
 msgstr "Listado de pedidos procesados"
 
 #. Default: User
-#: ondestan/templates/orders.pt:117
+#: ondestan/templates/orders.pt:119
 msgid "order_user"
 msgstr "Usuario"
 
@@ -624,7 +629,7 @@ msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un r
 #. Default: Email
 #: ondestan/templates/reminder.pt:27
 #: ondestan/templates/signup.pt:61
-#: ondestan/templates/updateProfile.pt:55
+#: ondestan/templates/updateProfile.pt:60
 msgid "email"
 msgstr "E-mail"
 
@@ -670,13 +675,13 @@ msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu 
 
 #. Default: Login
 #: ondestan/templates/signup.pt:47
-#: ondestan/templates/updateProfile.pt:43
+#: ondestan/templates/updateProfile.pt:48
 msgid "username"
 msgstr "Usuario"
 
 #. Default: Full name
 #: ondestan/templates/signup.pt:54
-#: ondestan/templates/updateProfile.pt:49
+#: ondestan/templates/updateProfile.pt:54
 msgid "full_name"
 msgstr "Nombre completo"
 
@@ -854,27 +859,23 @@ msgid "update_profile_title"
 msgstr "Actualizar perfil - Ondestán"
 
 #. Default: Update Password
-#: ondestan/templates/updateProfile.pt:72
-#: ondestan/templates/updateProfile.pt:98
-#| msgid "retype_password"
+#: ondestan/templates/updateProfile.pt:83
+#: ondestan/templates/updateProfile.pt:108
 msgid "update_password"
 msgstr "Actualizar contraseña"
 
 #. Default: Old password
-#: ondestan/templates/updateProfile.pt:81
-#| msgid "password"
+#: ondestan/templates/updateProfile.pt:91
 msgid "old_password"
 msgstr "Contraseña actual"
 
 #. Default: New password
-#: ondestan/templates/updateProfile.pt:87
-#| msgid "password"
+#: ondestan/templates/updateProfile.pt:97
 msgid "new_password"
 msgstr "Contraseña nueva"
 
 #. Default: Retype new password
-#: ondestan/templates/updateProfile.pt:93
-#| msgid "retype_password"
+#: ondestan/templates/updateProfile.pt:103
 msgid "retype_new_password"
 msgstr "Repite la contraseña nueva"
 

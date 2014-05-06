@@ -75,6 +75,7 @@
                     <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
                     <option value="2" tal:attributes="selected 'selected' if order.states[0].state == 2 else None" i18n:translate="order_state_2">Dispatched</option>
                     <option value="3" tal:attributes="selected 'selected' if order.states[0].state == 3 else None" i18n:translate="order_state_3">Activated</option>
+                    <option value="4" tal:attributes="selected 'selected' if order.states[0].state == 4 else None" i18n:translate="order_state_4">Cancelled</option>
                   </select>
                   <input type="submit" name="form.submitted" style="display: none;"/>
                 </form>
@@ -84,6 +85,7 @@
                     <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
                     <tal:block tal:case="2" i18n:translate="order_state_2">Dispatched</tal:block>
                     <tal:block tal:case="3" i18n:translate="order_state_3">Activated</tal:block>
+                    <tal:block tal:case="4" i18n:translate="order_state_4">Cancelled</tal:block>
                   </tal:block>
                 </tal:block>
               </td>
@@ -135,6 +137,7 @@
                     <option value="1" tal:attributes="selected 'selected' if order.states[0].state == 1 else None" i18n:translate="order_state_1">In process</option>
                     <option value="2" tal:attributes="selected 'selected' if order.states[0].state == 2 else None" i18n:translate="order_state_2">Dispatched</option>
                     <option value="3" tal:attributes="selected 'selected' if order.states[0].state == 3 else None" i18n:translate="order_state_3">Activated</option>
+                    <option value="4" tal:attributes="selected 'selected' if order.states[0].state == 4 else None" i18n:translate="order_state_4">Cancelled</option>
                   </select>
                   <input type="submit" name="form.submitted" style="display: none;"/>
                 </form>
@@ -144,6 +147,7 @@
                     <tal:block tal:case="1" i18n:translate="order_state_1">In process</tal:block>
                     <tal:block tal:case="2" i18n:translate="order_state_2">Dispatched</tal:block>
                     <tal:block tal:case="3" i18n:translate="order_state_3">Activated</tal:block>
+                    <tal:block tal:case="4" i18n:translate="order_state_4">Cancelled</tal:block>
                   </tal:block>
                 </tal:block>
               </td>
