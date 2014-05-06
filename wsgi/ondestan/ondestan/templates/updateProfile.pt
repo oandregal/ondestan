@@ -25,6 +25,12 @@
 
   <tal:block metal:fill-slot="content">
 
+  	<div tal:condition="len(notifications) > 0" class="alerts-panel">
+  		<tal:block tal:repeat="notification notifications">
+  			${notification.get_html(request)}
+  		</tal:block>
+	</div>
+
     <div id="bottom1">
       <div class="bottom form-block">
 
@@ -32,7 +38,6 @@
 	      <div class="middle align-right">
 	        <div id="left" class="app-welcome align-left">
 	          <h3 i18n:translate="update_profile">Update Profile</h3>
-	          <span tal:replace="message1"/>
 	        </div>
 	      </div>
 	    </div>
@@ -76,7 +81,6 @@
 	      <div class="middle align-right">
 	        <div id="left" class="app-welcome align-left">
 	          <h3 i18n:translate="update_password">Update Password</h3>
-	          <span tal:replace="message2"/>
 	        </div>
 	      </div>
 	    </div>

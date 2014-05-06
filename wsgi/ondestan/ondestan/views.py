@@ -119,12 +119,11 @@ def update_animal_name(request):
              renderer='templates/updateProfile.pt',
              permission='view')
 def update_profile(request):
-    message1 = ''
-    message2 = ''
+    notifications = []
 
     if 'form.submitted' in request.params:
         if 'login' in request.params:
-            message1 = user_service.update_user(request)
+            notifications.append(user_service.update_user(request))
             login = request.params['login']
             name = request.params['name']
             email = request.params['email']
@@ -132,7 +131,7 @@ def update_profile(request):
             user_id = request.params['id']
         else:
             if 'password' in request.params:
-                message2 = user_service.update_password(request)
+                notifications.append(user_service.update_password(request))
             user = user_service.get_user_by_login(get_user_login(request))
             login = user.login
             user_id = user.id
@@ -148,8 +147,7 @@ def update_profile(request):
         phone = user.phone
 
     return dict(
-        message1=message1,
-        message2=message2,
+        notifications=notifications,
         id=user_id,
         login=login,
         name=name,

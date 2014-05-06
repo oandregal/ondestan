@@ -9,7 +9,7 @@ from pyramid.i18n import (
     )
 from sqlalchemy import not_, and_
 
-from ondestan.entities import User, Role
+from ondestan.entities import User, Role, Notification
 import ondestan.services
 from ondestan.utils import rand_string
 from ondestan.security import get_user_login
@@ -30,6 +30,10 @@ _('password_reset_notification_web', domain='Ondestan')
 _('password_reset_notification_mail_subject', domain='Ondestan')
 _('password_reset_notification_mail_html_body', domain='Ondestan')
 _('password_reset_notification_mail_text_body', domain='Ondestan')
+
+_('user_profile_updated', domain='Ondestan')
+_('user_password_updated', domain='Ondestan')
+_('wrong_password', domain='Ondestan')
 
 
 def group_finder(login, request):
@@ -159,8 +163,6 @@ def create_user(request):
 
 
 def update_user(request):
-    localizer = get_localizer(request)
-
     user_id = int(request.params['id'])
     user = User().queryObject().filter(User.id == user_id).scalar()
     if (user.login != get_user_login(request)):
@@ -170,12 +172,16 @@ def update_user(request):
     email = request.params['email']
     user = User().queryObject().filter(User.login == login).scalar()
     if ((user != None) and (user.id != user_id)):
-        msg = _('login_already_use', domain='Ondestan')
-        return localizer.translate(msg)
+        notification = Notification()
+        notification.text = "_('login_already_use', domain='Ondestan')"
+        notification.level = 3
+        return notification
     user = User().queryObject().filter(User.email == email).scalar()
     if ((user != None) and (user.id != user_id)):
-        msg = _('email_already_use', domain='Ondestan')
-        return localizer.translate(msg)
+        notification = Notification()
+        notification.text = "_('email_already_use', domain='Ondestan')"
+        notification.level = 3
+        return notification
 
     user = User().queryObject().filter(User.id == user_id).scalar()
     user.login = login
@@ -185,12 +191,13 @@ def update_user(request):
     user.update()
     logger.debug('Profile updated for user ' + user.login)
 
-    return localizer.translate(_('user_profile_updated', domain='Ondestan'))
+    notification = Notification()
+    notification.text = "_('user_profile_updated', domain='Ondestan')"
+    notification.level = 0
+    return notification
 
 
 def update_password(request):
-    localizer = get_localizer(request)
-
     user_id = int(request.params['id'])
     user = User().queryObject().filter(User.id == user_id).scalar()
     if (user.login != get_user_login(request)):
@@ -198,9 +205,15 @@ def update_password(request):
     old_password = request.params['old_password']
 
     if user.password != sha512(old_password).hexdigest():
-        return localizer.translate(_('wrong_password', domain='Ondestan'))
+        notification = Notification()
+        notification.text = "_('wrong_password', domain='Ondestan')"
+        notification.level = 3
+        return notification
     user.password = sha512(request.params['password']).hexdigest()
     user.update()
     logger.debug('Password updated for user ' + user.login)
 
-    return localizer.translate(_('user_password_updated', domain='Ondestan'))
+    notification = Notification()
+    notification.text = "_('user_password_updated', domain='Ondestan')"
+    notification.level = 0
+    return notification
