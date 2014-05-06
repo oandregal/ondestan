@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-06 17:26+0200\n"
+"POT-Creation-Date: 2014-05-06 18:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -463,6 +463,13 @@ msgstr ""
 msgid "order_state_3"
 msgstr ""
 
+#. Default: Cancelled
+#: ondestan/templates/orderStateHistory.pt:29 ondestan/templates/orders.pt:78
+#: ondestan/templates/orders.pt:88 ondestan/templates/orders.pt:140
+#: ondestan/templates/orders.pt:150
+msgid "order_state_4"
+msgstr ""
+
 #. Default: Orders list - Ondestán
 #: ondestan/templates/orders.pt:8
 msgid "orders_list_title"
@@ -520,12 +527,6 @@ msgstr ""
 #. Default: Pending orders list
 #: ondestan/templates/orders.pt:48
 msgid "pending_orders_list"
-msgstr ""
-
-#. Default: Cancelled
-#: ondestan/templates/orders.pt:78 ondestan/templates/orders.pt:88
-#: ondestan/templates/orders.pt:140 ondestan/templates/orders.pt:150
-msgid "order_state_4"
 msgstr ""
 
 #. Default: Processed orders list
@@ -764,33 +765,38 @@ msgstr ""
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
+#. Default: Hide/show plot management tools
+#: ondestan/templates/simpleViewer.pt:67
+msgid "hide_show_draw_tools_tooltip"
+msgstr ""
+
 #. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:82
+#: ondestan/templates/simpleViewer.pt:84
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:86
+#: ondestan/templates/simpleViewer.pt:88
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:90
+#: ondestan/templates/simpleViewer.pt:92
 msgid "dashboard_low_battery"
 msgstr ""
 
 #. Default: Select plot owner
-#: ondestan/templates/simpleViewer.pt:101
+#: ondestan/templates/simpleViewer.pt:103
 msgid "select_plot_user_modal_title"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/simpleViewer.pt:110
+#: ondestan/templates/simpleViewer.pt:112
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/simpleViewer.pt:111
+#: ondestan/templates/simpleViewer.pt:113
 msgid "accept"
 msgstr ""
 

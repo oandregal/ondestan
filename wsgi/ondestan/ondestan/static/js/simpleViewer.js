@@ -202,6 +202,46 @@
 
     	map.addLayer(plots);
 
+		$('#user_selector').change(function() {
+			if ($(this).val() != '') {
+				$('#accept_btn').prop('disabled', false);
+			} else {
+				$('#accept_btn').prop('disabled', true);
+			}
+		});
+
+		toggleDrawControl = function(theToggleDrawFunction) {
+
+		    var control = new (L.Control.extend({
+		    options: { position: 'topright' },
+		    onAdd: function (map) {
+		        controlDiv = L.DomUtil.create('div', 'toggle-draw-button');
+		        L.DomEvent
+		            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+		            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+		            .addListener(controlDiv, 'click', this.ToggleDrawFunction);
+
+		        // Set CSS for the control border
+		        var controlUI = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar leaflet-draw-toolbar-top', controlDiv);
+		        controlUI.title = window.contextVariables.hide_show_draw_tools_tooltip;
+
+		        // Set CSS for the control interior
+		        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-draw-draw-rectangle', controlUI);
+		        controlText.href = '#';
+
+		        return controlDiv;
+		    }
+		    }));
+
+		    control.ToggleDrawFunction = theToggleDrawFunction;
+
+		    return control;
+		};
+
+		ToggleDrawFunction = function () { $('.leaflet-draw').toggle();};
+
+		map.addControl(toggleDrawControl(ToggleDrawFunction));
+
     	var drawOptions = {
 		    draw: {
 		        polyline: false,
@@ -221,8 +261,12 @@
 		    },
 		    edit: {
 		    	featureGroup: plots
-		    }
+		    },
+		    position: 'topright'
 		};
+
+		var drawControl = new L.Control.Draw(drawOptions);
+		map.addControl(drawControl);
 
 		map.on('draw:created', function (e) {
 			if (window.contextVariables.is_admin) {
@@ -288,17 +332,6 @@
 			}
 		});
 
-		$('#user_selector').change(function() {
-			if ($(this).val() != '') {
-				$('#accept_btn').prop('disabled', false);
-			} else {
-				$('#accept_btn').prop('disabled', true);
-			}
-		});
-
-		var drawControl = new L.Control.Draw(drawOptions);
-		map.addControl(drawControl);
-
         L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -308,6 +341,7 @@
     // Init on document ready
     $(function(){
         NS.init();
+        $('.leaflet-draw').hide();
     });
 
 })(window.OE = window.OE || {});
