@@ -129,6 +129,9 @@ def update_profile(request):
             email = request.params['email']
             phone = request.params['phone']
             user_id = request.params['id']
+            headers = remember(request, login)
+            request.response.headerlist.extend(headers)
+
         else:
             if 'password' in request.params:
                 notifications.append(user_service.update_password(request))
