@@ -164,7 +164,7 @@
 
                 background-color: #000; top: 0px; left: 0px;width: 100%; height:100%;"> 
             </div> 
-            <div style="position: absolute; display: block; background: url(img/loading.gif) no-repeat center center;
+            <div style="position: absolute; display: block; background: ${request.static_url('ondestan:static/img/loading.gif')} no-repeat center center;
 
                 top: 0px; left: 0px;width: 100%;height:100%;">
             </div> 
