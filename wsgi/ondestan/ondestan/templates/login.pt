@@ -16,6 +16,23 @@
           href="${request.static_url('ondestan:static/css/slider.css')}"
           type="text/css" media="screen" />
   </tal:block>
+  
+  <tal:block metal:fill-slot="header_menu">
+      <ul tal:condition="user_id == None" class="nav navbar-nav pull-right">
+      	<li><a class="big-font" href="${request.route_url('signup')}"><span i18n:translate="sign_up">Sign Up</span></a></li>
+        <li class="dropdown active">
+          <a href="#" class="dropdown-toggle big-font" data-toggle="dropdown"><span i18n:translate="log_in">Log in</span> <b class="caret"></b></a>
+		  <form class="form-signin dropdown-menu dropdown-menu-right" role="form" action="${request.route_url('login')}" method="post">
+			  <span tal:replace="message"/>
+			  <input type="hidden" name="came_from" value="${came_from}"/>
+			  <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
+			  <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+			  <input class="btn btn-block btn-primary" type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/><br/>
+			  <a href="${request.route_url('reminder')}" style="margin-top: 5px;" i18n:translate="remember_user_password">Remember user/pass</a>
+		  </form>
+        </li>
+      </ul>
+  </tal:block>
 
   <tal:block metal:fill-slot="javascript">
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jssor.slider.mini.js')}"></script>
