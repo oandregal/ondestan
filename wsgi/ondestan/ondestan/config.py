@@ -1,4 +1,5 @@
 # coding=UTF-8
+from pyramid.settings import asbool
 
 
 class Config:
@@ -15,7 +16,7 @@ class Config:
 
     @staticmethod
     def get_boolean_value(field):
-        return bool(Config.config[field])
+        return asbool(Config.config[field])
 
     @staticmethod
     def get_int_value(field):
