@@ -33,7 +33,7 @@ def create_plot(points, user_id):
     return plot
 
 
-def update_plot_geom(points, plot_id, user_id):
+def update_plot_geom(points, plot_id, user_id=None):
     if len(points) < 3:
         logger.error('A plot with less than 3 points cannot be saved...')
         return None
@@ -42,8 +42,11 @@ def update_plot_geom(points, plot_id, user_id):
         geom_coordinates += str(point[0]) + ' ' + str(point[1]) + ','
     geom_coordinates += str(points[0][0]) + ' ' + str(points[0][1])
 
-    plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
+    if user_id != None:
+        plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
                                             == user_id)).scalar()
+    else:
+        plot = Plot().queryObject().filter(Plot.id == plot_id).scalar()
     if plot == None:
         logger.error("Cannot update the non-existent plot with id "
                      + str(plot_id) + " for user id " + str(user_id))
@@ -55,9 +58,12 @@ def update_plot_geom(points, plot_id, user_id):
     return plot
 
 
-def delete_plot(plot_id, user_id):
-    plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
+def delete_plot(plot_id, user_id=None):
+    if user_id != None:
+        plot = Plot().queryObject().filter(and_(Plot.id == plot_id, Plot.user_id
                                             == user_id)).scalar()
+    else:
+        plot = Plot().queryObject().filter(Plot.id == plot_id).scalar()
     if plot == None:
         logger.error("Cannot delete the non-existent plot with id "
                      + str(plot_id) + " for user id " + str(user_id))

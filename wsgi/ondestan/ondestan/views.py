@@ -423,7 +423,6 @@ def create_plot(request):
 @view_config(route_name='update_plot_geom', renderer='json',
              permission='view')
 def update_plot_geom(request):
-    user = user_service.get_user_by_login(get_user_login(request))
     points = []
     i = 0
     while ('x' + str(i)) in request.GET and ('y' + str(i)) in request.GET:
@@ -431,7 +430,11 @@ def update_plot_geom(request):
                                                                 + str(i)])])
         i += 1
     plot_id = request.GET['id']
-    plot = plot_service.update_plot_geom(points, plot_id, user.id)
+    if check_permission('admin', request):
+        plot = plot_service.update_plot_geom(points, plot_id)
+    else:
+        user = user_service.get_user_by_login(get_user_login(request))
+        plot = plot_service.update_plot_geom(points, plot_id, user.id)
 
     if plot == None:
         return {'success': False}
@@ -452,9 +455,12 @@ def update_plot_geom(request):
 @view_config(route_name='delete_plot', renderer='json',
              permission='view')
 def delete_plot(request):
-    user = user_service.get_user_by_login(get_user_login(request))
     plot_id = request.GET['id']
-    return {'success': plot_service.delete_plot(plot_id, user.id)}
+    if check_permission('admin', request):
+        return {'success': plot_service.delete_plot(plot_id)}
+    else:
+        user = user_service.get_user_by_login(get_user_login(request))
+        return {'success': plot_service.delete_plot(plot_id, user.id)}
 
 
 @view_config(route_name='json_animals', renderer='json',
