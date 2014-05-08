@@ -27,7 +27,17 @@
 	<div class="container">
 	    <div class="header">
 	      <ul tal:condition="user_id != None" class="nav navbar-nav pull-right">
-                <li id="new_devices"><a href="${request.route_url('orders')}">${len(orders)} <span i18n:translate="orders_menu">order(s)</span></a></li>
+            <li id="new_devices"><a href="${request.route_url('orders')}">${len(orders)} <span i18n:translate="orders_menu">order(s)</span></a></li>
+	        <li class="dropdown active">
+	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
+	          <ul class="dropdown-menu">
+	            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
+	            <li><a href="${request.route_url('notifications')}" i18n:translate="notifications_log">Notifications Log</a></li>
+	            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
+	          </ul>
+	        </li>
+	      </ul>
+	      <ul tal:condition="user_id == None" class="nav navbar-nav pull-right">
 	        <li class="dropdown active">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
@@ -42,9 +52,12 @@
 
 		<div class="col-md-10 col-md-offset-1">
 	    <tal:block metal:define-slot="content"/>
+		    <div class="footer">
+		   		<tal:block metal:define-slot="footer"/>
+		   		<a href="http://www.cesareox.com/info_contacto/" i18n:translate="contact">Contact</a> | <a href="http://www.cesareox.com/trabajo/proyectos/oe" i18n:translate="about">About</a>
+		    </div>
 	    </div>
     </div>
-    <div metal:define-slot="footer"></div>
     <div>
     	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     	<script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>

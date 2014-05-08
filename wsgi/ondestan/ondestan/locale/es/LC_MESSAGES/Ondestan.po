@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-06 18:51+0200\n"
-"PO-Revision-Date: 2014-05-06 18:52+0100\n"
+"POT-Creation-Date: 2014-05-08 12:11+0200\n"
+"PO-Revision-Date: 2014-05-08 12:12+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:203
+#: ondestan/views.py:206
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
-#: ondestan/views.py:219
+#: ondestan/views.py:222
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:234
+#: ondestan/views.py:237
 msgid "user_login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:249
+#: ondestan/views.py:252
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:476
+#: ondestan/views.py:479
 msgid "animal_popup_admin"
 msgstr "${animal_name} (${battery}%) propiedad de ${name}"
 
-#: ondestan/views.py:525
+#: ondestan/views.py:528
 msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)"
 
-#: ondestan/views.py:608
+#: ondestan/views.py:611
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:632
+#: ondestan/views.py:635
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -274,29 +274,29 @@ msgid "login_title"
 msgstr "Autenticación - Ondestán"
 
 #. Default: Login
-#: ondestan/templates/login.pt:19
+#: ondestan/templates/login.pt:224
 msgid "login"
 msgstr "Autenticación"
 
 #. Default: Thank you. Your account has been activated and you may now log in.
-#: ondestan/templates/login.pt:20
+#: ondestan/templates/login.pt:225
 msgid "account_activated"
 msgstr "Gracias. Tu cuenta ha sido activada y ya puedes entrar en la aplicación."
 
 #. Default: Log in
-#: ondestan/templates/login.pt:25
+#: ondestan/templates/login.pt:230
 msgid "log_in"
 msgstr "Entrar"
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:27
+#: ondestan/templates/login.pt:232
 #: ondestan/templates/signup.pt:32
 #: ondestan/templates/signup.pt:88
 msgid "sign_up"
 msgstr "Darse de alta"
 
 #. Default: Remember user/pass
-#: ondestan/templates/login.pt:27
+#: ondestan/templates/login.pt:232
 msgid "remember_user_password"
 msgstr "Recordar usuario/contraseña"
 
@@ -308,6 +308,7 @@ msgstr "pedido(s)"
 #. Default: Update profile
 #. Default: Update Profile
 #: ondestan/templates/main.pt:34
+#: ondestan/templates/main.pt:44
 #: ondestan/templates/updateProfile.pt:40
 #: ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
@@ -315,14 +316,26 @@ msgstr "Actualizar perfil"
 
 #. Default: Notifications Log
 #: ondestan/templates/main.pt:35
+#: ondestan/templates/main.pt:45
 #: ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr "Log de notificaciones"
 
 #. Default: Logout
 #: ondestan/templates/main.pt:36
+#: ondestan/templates/main.pt:46
 msgid "logout"
 msgstr "Salir"
+
+#. Default: Contact
+#: ondestan/templates/main.pt:57
+msgid "contact"
+msgstr "Contacto"
+
+#. Default: About
+#: ondestan/templates/main.pt:57
+msgid "about"
+msgstr "Acerca de"
 
 #. Default: Notifications Log - Ondestán
 #: ondestan/templates/notifications.pt:8
@@ -825,7 +838,6 @@ msgstr "Haz click en una finca para borrarla."
 
 #. Default: Hide/show plot management tools
 #: ondestan/templates/simpleViewer.pt:67
-#| msgid "map_tool_save_tooltip"
 msgid "hide_show_draw_tools_tooltip"
 msgstr "Mostrar/ocultar herramientas de gestión de fincas"
 

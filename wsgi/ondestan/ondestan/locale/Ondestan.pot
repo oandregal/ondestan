@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-06 18:51+0200\n"
+"POT-Creation-Date: 2014-05-08 12:11+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,35 +21,35 @@ msgstr ""
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:203
+#: ondestan/views.py:206
 msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:219
+#: ondestan/views.py:222
 msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:234
+#: ondestan/views.py:237
 msgid "user_login_already_use"
 msgstr ""
 
-#: ondestan/views.py:249
+#: ondestan/views.py:252
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:476
+#: ondestan/views.py:479
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:525
+#: ondestan/views.py:528
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:608
+#: ondestan/views.py:611
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:632
+#: ondestan/views.py:635
 msgid "plot_popup"
 msgstr ""
 
@@ -251,28 +251,28 @@ msgid "login_title"
 msgstr ""
 
 #. Default: Login
-#: ondestan/templates/login.pt:19
+#: ondestan/templates/login.pt:224
 msgid "login"
 msgstr ""
 
 #. Default: Thank you. Your account has been activated and you may now log in.
-#: ondestan/templates/login.pt:20
+#: ondestan/templates/login.pt:225
 msgid "account_activated"
 msgstr ""
 
 #. Default: Log in
-#: ondestan/templates/login.pt:25
+#: ondestan/templates/login.pt:230
 msgid "log_in"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:27 ondestan/templates/signup.pt:32
+#: ondestan/templates/login.pt:232 ondestan/templates/signup.pt:32
 #: ondestan/templates/signup.pt:88
 msgid "sign_up"
 msgstr ""
 
 #. Default: Remember user/pass
-#: ondestan/templates/login.pt:27
+#: ondestan/templates/login.pt:232
 msgid "remember_user_password"
 msgstr ""
 
@@ -283,19 +283,30 @@ msgstr ""
 
 #. Default: Update profile
 #. Default: Update Profile
-#: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:40
-#: ondestan/templates/updateProfile.pt:71
+#: ondestan/templates/main.pt:34 ondestan/templates/main.pt:44
+#: ondestan/templates/updateProfile.pt:40 ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
 msgstr ""
 
 #. Default: Notifications Log
-#: ondestan/templates/main.pt:35 ondestan/templates/notifications.pt:12
+#: ondestan/templates/main.pt:35 ondestan/templates/main.pt:45
+#: ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr ""
 
 #. Default: Logout
-#: ondestan/templates/main.pt:36
+#: ondestan/templates/main.pt:36 ondestan/templates/main.pt:46
 msgid "logout"
+msgstr ""
+
+#. Default: Contact
+#: ondestan/templates/main.pt:57
+msgid "contact"
+msgstr ""
+
+#. Default: About
+#: ondestan/templates/main.pt:57
+msgid "about"
 msgstr ""
 
 #. Default: Notifications Log - Ondestán
