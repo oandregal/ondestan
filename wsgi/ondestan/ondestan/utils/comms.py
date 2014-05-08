@@ -16,7 +16,10 @@ auth_token = expandvars(Config.get_string_value('twilio.auth_token'))
 caller_nr = expandvars(Config.get_string_value('twilio.caller_nr'))
 default_prefix = expandvars(Config.get_string_value('twilio.default_prefix'))
 
-# client = TwilioRestClient(account_sid, auth_token)
+if Config.get_boolean_value('twilio.send_sms'):
+    client = TwilioRestClient(account_sid, auth_token)
+else:
+    client = None
 
 smtp_server = expandvars(Config.get_string_value('smtp.server'))
 smtp_port = int(expandvars(Config.get_string_value('smtp.port')))
@@ -61,10 +64,14 @@ def send_mail(html, text, subject, destination):
 
 
 def send_sms(text, number):
-    """client.messages.create(
-        to=number if number.startswith('+') else default_prefix + number,
-        from_=caller_nr,
-        body=text
-    )"""
-    logger.info("Sms '" + text + "' has been sent to number " + number)
+    if client != None:
+        client.messages.create(
+            to=number if number.startswith('+') else default_prefix + number,
+            from_=caller_nr,
+            body=text
+        )
+        logger.info("Sms '" + text + "' has been sent to number " + number)
+    else:
+        logger.info("Sms '" + text + "' has been processed but not sent to" +
+                    " number " + number)
     return
