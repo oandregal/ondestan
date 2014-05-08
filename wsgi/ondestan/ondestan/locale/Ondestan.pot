@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-08 14:06+0200\n"
+"POT-Creation-Date: 2014-05-08 20:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,298 +17,369 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:59
+#: build/lib.linux-i686-2.7/ondestan/views.py:59 ondestan/views.py:59
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:206
+#: build/lib.linux-i686-2.7/ondestan/views.py:206 ondestan/views.py:206
 msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:222
+#: build/lib.linux-i686-2.7/ondestan/views.py:222 ondestan/views.py:222
 msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:237
+#: build/lib.linux-i686-2.7/ondestan/views.py:237 ondestan/views.py:237
 msgid "user_login_already_use"
 msgstr ""
 
-#: ondestan/views.py:252
+#: build/lib.linux-i686-2.7/ondestan/views.py:252 ondestan/views.py:252
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:479
+#: build/lib.linux-i686-2.7/ondestan/views.py:485 ondestan/views.py:485
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:528
+#: build/lib.linux-i686-2.7/ondestan/views.py:534 ondestan/views.py:534
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:611
+#: build/lib.linux-i686-2.7/ondestan/views.py:617 ondestan/views.py:617
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:635
+#: build/lib.linux-i686-2.7/ondestan/views.py:641 ondestan/views.py:641
 msgid "plot_popup"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:18
 #: ondestan/entities/notification.py:18
 msgid "web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:19
 #: ondestan/entities/notification.py:19
 msgid "sms"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:20
 #: ondestan/entities/notification.py:20
 msgid "e-mail"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:22
 #: ondestan/entities/notification.py:22
 msgid "success"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:23
 #: ondestan/entities/notification.py:23
 msgid "info"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:24
 #: ondestan/entities/notification.py:24
 msgid "warning"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/entities/notification.py:25
 #: ondestan/entities/notification.py:25
 msgid "danger"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:24
 #: ondestan/services/animal_service.py:24
 msgid "low_battery_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:25
 #: ondestan/services/animal_service.py:25
 msgid "low_battery_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:26
 #: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:27
 #: ondestan/services/animal_service.py:27
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:28
 #: ondestan/services/animal_service.py:28
 msgid "low_battery_notification_sms"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:30
 #: ondestan/services/animal_service.py:30
 msgid "medium_battery_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:32
 #: ondestan/services/animal_service.py:32
 msgid "gps_immobile_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:33
 #: ondestan/services/animal_service.py:33
 msgid "gps_immobile_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:34
 #: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:35
 #: ondestan/services/animal_service.py:35
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:37
 #: ondestan/services/animal_service.py:37
 msgid "gps_instant_duplicated_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:39
 #: ondestan/services/animal_service.py:39
 msgid "gps_inactive_device_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:41
 #: ondestan/services/animal_service.py:41
 msgid "no_gps_coverage_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:43
 #: ondestan/services/animal_service.py:43
 msgid "outside_plots_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:44
 #: ondestan/services/animal_service.py:44
 msgid "outside_plots_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:45
 #: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:46
 #: ondestan/services/animal_service.py:46
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/notification_service.py:21
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:23
 #: ondestan/services/order_service.py:23
 msgid "order_update_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:24
 #: ondestan/services/order_service.py:24
 msgid "order_update_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:25
 #: ondestan/services/order_service.py:25
 msgid "order_update_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:26
 #: ondestan/services/order_service.py:26
 msgid "order_update_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:28
 #: ondestan/services/order_service.py:28
 msgid "new_order_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:29
 #: ondestan/services/order_service.py:29
 msgid "new_order_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:30
 #: ondestan/services/order_service.py:30
 msgid "new_order_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/order_service.py:31
 #: ondestan/services/order_service.py:31
 msgid "new_order_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:21
 #: ondestan/services/user_service.py:21
 msgid "signup_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:22
 #: ondestan/services/user_service.py:22
 msgid "signup_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:23
 #: ondestan/services/user_service.py:23
 msgid "signup_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:25
 #: ondestan/services/user_service.py:25
 msgid "login_reminder_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:26
 #: ondestan/services/user_service.py:26
 msgid "login_reminder_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:27
 #: ondestan/services/user_service.py:27
 msgid "login_reminder_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:29
 #: ondestan/services/user_service.py:29
 msgid "password_reset_notification_web"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:30
 #: ondestan/services/user_service.py:30
 msgid "password_reset_notification_mail_subject"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:31
 #: ondestan/services/user_service.py:31
 msgid "password_reset_notification_mail_html_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:32
 #: ondestan/services/user_service.py:32
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:34
 #: ondestan/services/user_service.py:34
 msgid "user_profile_updated"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:35
 #: ondestan/services/user_service.py:35
 msgid "user_password_updated"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:36
 #: ondestan/services/user_service.py:36
 msgid "wrong_password"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:138
 #: ondestan/services/user_service.py:138
 msgid "login_already_use"
 msgstr ""
 
+#: build/lib.linux-i686-2.7/ondestan/services/user_service.py:142
 #: ondestan/services/user_service.py:142
 msgid "email_already_use"
 msgstr ""
 
 #. Default: Login - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:8
 #: ondestan/templates/login.pt:8
 msgid "login_title"
 msgstr ""
 
+#. Default: Sign Up
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:22
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:32
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:88
+#: ondestan/templates/login.pt:22 ondestan/templates/signup.pt:32
+#: ondestan/templates/signup.pt:88
+msgid "sign_up"
+msgstr ""
+
+#. Default: Log in
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:24
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:30
+#: ondestan/templates/login.pt:24 ondestan/templates/login.pt:30
+msgid "log_in"
+msgstr ""
+
+#. Default: Remember user/pass
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:31
+#: ondestan/templates/login.pt:31
+msgid "remember_user_password"
+msgstr ""
+
 #. Default: Thank you. Your account has been activated and you may now log in.
-#: ondestan/templates/login.pt:156
+#: build/lib.linux-i686-2.7/ondestan/templates/login.pt:173
+#: ondestan/templates/login.pt:173
 msgid "account_activated"
 msgstr ""
 
 #. Default: order(s)
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:30
 #: ondestan/templates/main.pt:30
 msgid "orders_menu"
 msgstr ""
 
 #. Default: Update profile
 #. Default: Update Profile
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:34
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:40
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:71
 #: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:40
 #: ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
 msgstr ""
 
 #. Default: Notifications Log
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:35
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:12
 #: ondestan/templates/main.pt:35 ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr ""
 
 #. Default: Logout
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:36
 #: ondestan/templates/main.pt:36
 msgid "logout"
 msgstr ""
 
-#. Default: Log in
-#: ondestan/templates/main.pt:42 ondestan/templates/main.pt:48
-msgid "log_in"
-msgstr ""
-
-#. Default: Remember user/pass
-#: ondestan/templates/main.pt:49
-msgid "remember_user_password"
-msgstr ""
-
-#. Default: Sign Up
-#: ondestan/templates/main.pt:52 ondestan/templates/signup.pt:32
-#: ondestan/templates/signup.pt:88
-msgid "sign_up"
-msgstr ""
-
-#. Default: Contact
-#: ondestan/templates/main.pt:63
-msgid "contact"
-msgstr ""
-
 #. Default: About
-#: ondestan/templates/main.pt:63
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:49
 msgid "about"
 msgstr ""
 
+#. Default: Contact
+#: build/lib.linux-i686-2.7/ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:49
+msgid "contact"
+msgstr ""
+
 #. Default: Notifications Log - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:8
 #: ondestan/templates/notifications.pt:8
 msgid "notifications_log_title"
 msgstr ""
 
 #. Default: ID
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:21
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:24
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:52
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:56
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:118
 #: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:24
 #: ondestan/templates/orderDevices.pt:52 ondestan/templates/orders.pt:56
 #: ondestan/templates/orders.pt:118
@@ -316,131 +387,173 @@ msgid "id"
 msgstr ""
 
 #. Default: User
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:22
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:57
 #: ondestan/templates/notifications.pt:22 ondestan/templates/orders.pt:57
 msgid "user"
 msgstr ""
 
 #. Default: Issue Date
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:23
 #: ondestan/templates/notifications.pt:23
 msgid "issue_date"
 msgstr ""
 
 #. Default: Text
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:24
 #: ondestan/templates/notifications.pt:24
 msgid "text"
 msgstr ""
 
 #. Default: Type
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:25
 #: ondestan/templates/notifications.pt:25
 msgid "type"
 msgstr ""
 
 #. Default: Level
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:26
 #: ondestan/templates/notifications.pt:26
 msgid "level"
 msgstr ""
 
 #. Default: Archived
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:27
 #: ondestan/templates/notifications.pt:27
 msgid "archived"
 msgstr ""
 
 #. Default: Yes
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:39
 #: ondestan/templates/notifications.pt:39
 msgid "yes"
 msgstr ""
 
 #. Default: No
+#: build/lib.linux-i686-2.7/ondestan/templates/notifications.pt:40
 #: ondestan/templates/notifications.pt:40
 msgid "no"
 msgstr ""
 
 #. Default: Order devices list - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:8
 #: ondestan/templates/orderDevices.pt:8
 msgid "order_devices_list_title"
 msgstr ""
 
 #. Default: This field is required.
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:13
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:13
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:13
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:13
 #: ondestan/templates/orderDevices.pt:13 ondestan/templates/orders.pt:13
 #: ondestan/templates/signup.pt:13 ondestan/templates/updateProfile.pt:13
 msgid "required_field"
 msgstr ""
 
 #. Default: Please specify a valid mobile phone number.
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:14
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:16
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:16
 #: ondestan/templates/orderDevices.pt:14 ondestan/templates/signup.pt:16
 #: ondestan/templates/updateProfile.pt:16
 msgid "mobile_field"
 msgstr ""
 
 #. Default: Order devices
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:24
 #: ondestan/templates/orderDevices.pt:24
 msgid "order_devices"
 msgstr ""
 
 #. Default: New device
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:29
 #: ondestan/templates/orderDevices.pt:29
 msgid "new_device"
 msgstr ""
 
 #. Default: IMEI
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:35
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:53
 #: ondestan/templates/orderDevices.pt:35 ondestan/templates/orderDevices.pt:53
 msgid "imei"
 msgstr ""
 
 #. Default: Cell phone number
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:36
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:54
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:68
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:66
 #: ondestan/templates/orderDevices.pt:36 ondestan/templates/orderDevices.pt:54
 #: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:66
 msgid "cell_phone_number"
 msgstr ""
 
 #. Default: Name
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:37
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:55
 #: ondestan/templates/orderDevices.pt:37 ondestan/templates/orderDevices.pt:55
 msgid "name"
 msgstr ""
 
 #. Default: Add device
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:38
 #: ondestan/templates/orderDevices.pt:38
 msgid "add_device"
 msgstr ""
 
 #. Default: Created devices
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:44
 #: ondestan/templates/orderDevices.pt:44
 msgid "created_devices_list"
 msgstr ""
 
 #. Default: Device cannot be deleted because it is currently active and/or has
 #. stored positions.
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:62
 #: ondestan/templates/orderDevices.pt:62
 msgid "device_cannot_be_deleted_tooltip"
 msgstr ""
 
 #. Default: Delete
+#: build/lib.linux-i686-2.7/ondestan/templates/orderDevices.pt:64
 #: ondestan/templates/orderDevices.pt:64
 msgid "delete"
 msgstr ""
 
 #. Default: Order state history - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:8
 #: ondestan/templates/orderStateHistory.pt:8
 msgid "order_state_history_title"
 msgstr ""
 
 #. Default: Order state history
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:13
 #: ondestan/templates/orderStateHistory.pt:13
 msgid "order_state_history"
 msgstr ""
 
 #. Default: Order state
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:18
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:58
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:120
 #: ondestan/templates/orderStateHistory.pt:18 ondestan/templates/orders.pt:58
 #: ondestan/templates/orders.pt:120
 msgid "order_state"
 msgstr ""
 
 #. Default: Change date
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:19
 #: ondestan/templates/orderStateHistory.pt:19
 msgid "change_date"
 msgstr ""
 
 #. Default: Awaiting
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:25
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:74
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:84
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:136
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:146
 #: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:74
 #: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:136
 #: ondestan/templates/orders.pt:146
@@ -448,6 +561,11 @@ msgid "order_state_0"
 msgstr ""
 
 #. Default: In process
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:26
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:75
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:85
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:137
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:147
 #: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:75
 #: ondestan/templates/orders.pt:85 ondestan/templates/orders.pt:137
 #: ondestan/templates/orders.pt:147
@@ -455,6 +573,11 @@ msgid "order_state_1"
 msgstr ""
 
 #. Default: Dispatched
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:27
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:76
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:86
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:138
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:148
 #: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:76
 #: ondestan/templates/orders.pt:86 ondestan/templates/orders.pt:138
 #: ondestan/templates/orders.pt:148
@@ -462,6 +585,11 @@ msgid "order_state_2"
 msgstr ""
 
 #. Default: Activated
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:28
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:77
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:87
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:139
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:149
 #: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:77
 #: ondestan/templates/orders.pt:87 ondestan/templates/orders.pt:139
 #: ondestan/templates/orders.pt:149
@@ -469,6 +597,11 @@ msgid "order_state_3"
 msgstr ""
 
 #. Default: Cancelled
+#: build/lib.linux-i686-2.7/ondestan/templates/orderStateHistory.pt:29
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:78
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:88
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:140
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:150
 #: ondestan/templates/orderStateHistory.pt:29 ondestan/templates/orders.pt:78
 #: ondestan/templates/orders.pt:88 ondestan/templates/orders.pt:140
 #: ondestan/templates/orders.pt:150
@@ -476,369 +609,460 @@ msgid "order_state_4"
 msgstr ""
 
 #. Default: Orders list - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:8
 #: ondestan/templates/orders.pt:8
 msgid "orders_list_title"
 msgstr ""
 
 #. Default: Please enter only digits.
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:14
 #: ondestan/templates/orders.pt:14
 msgid "digits_field"
 msgstr ""
 
 #. Default: New order
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:25
 #: ondestan/templates/orders.pt:25
 msgid "new_order"
 msgstr ""
 
 #. Default: Thanks for your order! Our team will get in touch with you soon.
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:31
 #: ondestan/templates/orders.pt:31
 msgid "new_order_instructions"
 msgstr ""
 
 #. Default: Nr units
 #. Default: Number of units
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:36
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:59
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:121
 #: ondestan/templates/orders.pt:36 ondestan/templates/orders.pt:59
 #: ondestan/templates/orders.pt:121
 msgid "number_units"
 msgstr ""
 
 #. Default: 1 unit
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:37
 #: ondestan/templates/orders.pt:37
 msgid "1_units"
 msgstr ""
 
 #. Default: 2 units
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:38
 #: ondestan/templates/orders.pt:38
 msgid "2_units"
 msgstr ""
 
 #. Default: 3 units
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:39
 #: ondestan/templates/orders.pt:39
 msgid "3_units"
 msgstr ""
 
 #. Default: Send address
 #. Default: Delivery address
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:41
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:60
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:122
 #: ondestan/templates/orders.pt:41 ondestan/templates/orders.pt:60
 #: ondestan/templates/orders.pt:122
 msgid "delivery_address"
 msgstr ""
 
 #. Default: Confirm order
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:42
 #: ondestan/templates/orders.pt:42
 msgid "confirm_order"
 msgstr ""
 
 #. Default: Pending orders list
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:48
 #: ondestan/templates/orders.pt:48
 msgid "pending_orders_list"
 msgstr ""
 
 #. Default: Processed orders list
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:110
 #: ondestan/templates/orders.pt:110
 msgid "processed_orders_list"
 msgstr ""
 
 #. Default: User
+#: build/lib.linux-i686-2.7/ondestan/templates/orders.pt:119
 #: ondestan/templates/orders.pt:119
 msgid "order_user"
 msgstr ""
 
 #. Default: Password reset - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/passwordReset.pt:8
 #: ondestan/templates/passwordReset.pt:8
 msgid "password_reset_title"
 msgstr ""
 
 #. Default: Password reset
+#: build/lib.linux-i686-2.7/ondestan/templates/passwordReset.pt:12
 #: ondestan/templates/passwordReset.pt:12
 msgid "password_reset"
 msgstr ""
 
 #. Default: Please check your e-mail inbox for the password reset.
+#: build/lib.linux-i686-2.7/ondestan/templates/passwordReset.pt:15
 #: ondestan/templates/passwordReset.pt:15
 msgid "password_reset_sent"
 msgstr ""
 
 #. Default: User/password reminder - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:8
 #: ondestan/templates/reminder.pt:8
 msgid "user_password_reminder_title"
 msgstr ""
 
 #. Default: User/password reminder
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:12
 #: ondestan/templates/reminder.pt:12
 msgid "user_password_reminder"
 msgstr ""
 
 #. Default: Please check your e-mail inbox for the reminder.
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:19
 #: ondestan/templates/reminder.pt:19
 msgid "user_password_reminder_sent"
 msgstr ""
 
 #. Default: Please write below the e-mail you used for registration and we'll send
 #. you a reminder on your user/password.
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:24
 #: ondestan/templates/reminder.pt:24
 msgid "user_password_reminder_msg"
 msgstr ""
 
 #. Default: E-mail
 #. Default: Email
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:27
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:61
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:60
 #: ondestan/templates/reminder.pt:27 ondestan/templates/signup.pt:61
 #: ondestan/templates/updateProfile.pt:60
 msgid "email"
 msgstr ""
 
 #. Default: Send e-mail
+#: build/lib.linux-i686-2.7/ondestan/templates/reminder.pt:29
 #: ondestan/templates/reminder.pt:29
 msgid "send_email"
 msgstr ""
 
 #. Default: Sign Up - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:8
 #: ondestan/templates/signup.pt:8
 msgid "sign_up_title"
 msgstr ""
 
 #. Default: Please enter at least {0} characters.
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:14
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:14
 #: ondestan/templates/signup.pt:14 ondestan/templates/updateProfile.pt:14
 msgid "minlength_field"
 msgstr ""
 
 #. Default: Please enter a valid email address.
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:15
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:15
 #: ondestan/templates/signup.pt:15 ondestan/templates/updateProfile.pt:15
 msgid "email_field"
 msgstr ""
 
 #. Default: Passwords don't match.
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:17
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:17
 #: ondestan/templates/signup.pt:17 ondestan/templates/updateProfile.pt:17
 msgid "passwords_dont_match"
 msgstr ""
 
 #. Default: Successful Sign Up
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:30
 #: ondestan/templates/signup.pt:30
 msgid "successful_sign_up"
 msgstr ""
 
 #. Default: We have sent you an email with the instructions for activating your new
 #. account.<dynamic element>Welcome to Ondestán!!
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:39
 #: ondestan/templates/signup.pt:39
 msgid "sign_up_instructions"
 msgstr ""
 
 #. Default: Login
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:47
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:48
 #: ondestan/templates/signup.pt:47 ondestan/templates/updateProfile.pt:48
 msgid "username"
 msgstr ""
 
 #. Default: Full name
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:54
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:54
 #: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:54
 msgid "full_name"
 msgstr ""
 
 #. Default: Password
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:75
 #: ondestan/templates/signup.pt:75
 msgid "password"
 msgstr ""
 
 #. Default: Retype password
+#: build/lib.linux-i686-2.7/ondestan/templates/signup.pt:82
 #: ondestan/templates/signup.pt:82
 msgid "retype_password"
 msgstr ""
 
 #. Default: Viewer - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:8
 #: ondestan/templates/simpleViewer.pt:8
 msgid "simple_viewer_title"
 msgstr ""
 
 #. Default: Activate
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:29
 #: ondestan/templates/simpleViewer.pt:29
 msgid "activate"
 msgstr ""
 
 #. Default: Deactivate
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:30
 #: ondestan/templates/simpleViewer.pt:30
 msgid "deactivate"
 msgstr ""
 
 #. Default: Activate
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:34
 #: ondestan/templates/simpleViewer.pt:34
 msgid "edit_animal_name_tooltip"
 msgstr ""
 
 #. Default: Double click to edit name (confirm change by pressing enter).
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:39
 #: ondestan/templates/simpleViewer.pt:39
 msgid "edit_name_tooltip"
 msgstr ""
 
 #. Default: Zoom in
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:41
 #: ondestan/templates/simpleViewer.pt:41
 msgid "map_tool_zoom_in_tooltip"
 msgstr ""
 
 #. Default: Zoom out
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:42
 #: ondestan/templates/simpleViewer.pt:42
 msgid "map_tool_zoom_out_tooltip"
 msgstr ""
 
 #. Default: Draw a new plot
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:44
 #: ondestan/templates/simpleViewer.pt:44
 msgid "map_tool_create_plot_tooltip"
 msgstr ""
 
 #. Default: Delete last point drawn
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:45
 #: ondestan/templates/simpleViewer.pt:45
 msgid "map_tool_undo_tooltip"
 msgstr ""
 
 #. Default: Delete last point
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:46
 #: ondestan/templates/simpleViewer.pt:46
 msgid "map_tool_undo_text"
 msgstr ""
 
 #. Default: Cancel drawing
 #. Default: Cancel
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:47
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:48
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:57
 #: ondestan/templates/simpleViewer.pt:47 ondestan/templates/simpleViewer.pt:48
 #: ondestan/templates/simpleViewer.pt:57
 msgid "map_tool_cancel_text"
 msgstr ""
 
 #. Default: Click to start drawing plot.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:49
 #: ondestan/templates/simpleViewer.pt:49
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr ""
 
 #. Default: Click to continue drawing plot.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:50
 #: ondestan/templates/simpleViewer.pt:50
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr ""
 
 #. Default: Click first point to close this plot.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:51
 #: ondestan/templates/simpleViewer.pt:51
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr ""
 
 #. Default: Error: plot edges cannot cross!
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:52
 #: ondestan/templates/simpleViewer.pt:52
 msgid "map_tool_edit_plot_handler_error"
 msgstr ""
 
 #. Default: Save changes
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:54
 #: ondestan/templates/simpleViewer.pt:54
 msgid "map_tool_save_tooltip"
 msgstr ""
 
 #. Default: Save
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:55
 #: ondestan/templates/simpleViewer.pt:55
 msgid "map_tool_save_text"
 msgstr ""
 
 #. Default: Cancel editing, discards all changes
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:56
 #: ondestan/templates/simpleViewer.pt:56
 msgid "map_tool_cancel_tooltip"
 msgstr ""
 
 #. Default: Edit plots
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:59
 #: ondestan/templates/simpleViewer.pt:59
 msgid "map_tool_edit_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to edit
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:60
 #: ondestan/templates/simpleViewer.pt:60
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Delete plots
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:61
 #: ondestan/templates/simpleViewer.pt:61
 msgid "map_tool_delete_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to delete
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:62
 #: ondestan/templates/simpleViewer.pt:62
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Drag handles to edit the plot.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:63
 #: ondestan/templates/simpleViewer.pt:63
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Click Cancel to undo changes.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:64
 #: ondestan/templates/simpleViewer.pt:64
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr ""
 
 #. Default: Click on a plot to remove.
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:65
 #: ondestan/templates/simpleViewer.pt:65
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Hide/show plot management tools
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:67
 #: ondestan/templates/simpleViewer.pt:67
 msgid "hide_show_draw_tools_tooltip"
 msgstr ""
 
 #. Default: ACTIVE
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:84
 #: ondestan/templates/simpleViewer.pt:84
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: INACTIVE
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:88
 #: ondestan/templates/simpleViewer.pt:88
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: LOW BATTERY
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:92
 #: ondestan/templates/simpleViewer.pt:92
 msgid "dashboard_low_battery"
 msgstr ""
 
 #. Default: Select plot owner
-#: ondestan/templates/simpleViewer.pt:103
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:103
+#: ondestan/templates/simpleViewer.pt:107
 msgid "select_plot_user_modal_title"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/simpleViewer.pt:112
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:112
+#: ondestan/templates/simpleViewer.pt:116
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/simpleViewer.pt:113
+#: build/lib.linux-i686-2.7/ondestan/templates/simpleViewer.pt:113
+#: ondestan/templates/simpleViewer.pt:117
 msgid "accept"
 msgstr ""
 
 #. Default: Update profile - Ondestán
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:8
 #: ondestan/templates/updateProfile.pt:8
 msgid "update_profile_title"
 msgstr ""
 
 #. Default: Update Password
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:83
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:108
 #: ondestan/templates/updateProfile.pt:83 ondestan/templates/updateProfile.pt:108
 msgid "update_password"
 msgstr ""
 
 #. Default: Old password
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:91
 #: ondestan/templates/updateProfile.pt:91
 msgid "old_password"
 msgstr ""
 
 #. Default: New password
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:97
 #: ondestan/templates/updateProfile.pt:97
 msgid "new_password"
 msgstr ""
 
 #. Default: Retype new password
+#: build/lib.linux-i686-2.7/ondestan/templates/updateProfile.pt:103
 #: ondestan/templates/updateProfile.pt:103
 msgid "retype_new_password"
 msgstr ""
 
-#: ondestan/utils/various.py:50
+#: build/lib.linux-i686-2.7/ondestan/utils/various.py:56
+#: ondestan/utils/various.py:56
 msgid "meta_date_format"
 msgstr ""
 
-#: ondestan/utils/various.py:60
+#: build/lib.linux-i686-2.7/ondestan/utils/various.py:67
+#: ondestan/utils/various.py:67
 msgid "meta_datetime_format"
 msgstr ""
 
-#: ondestan/utils/various.py:71
+#: build/lib.linux-i686-2.7/ondestan/utils/various.py:79
+#: ondestan/utils/various.py:79
 msgid "meta_time_format"
+msgstr ""
+
+#. Default: OUTSIDE PLOTS
+#: ondestan/templates/simpleViewer.pt:96
+msgid "dashboard_outside_plots"
 msgstr ""
 

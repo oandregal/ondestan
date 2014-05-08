@@ -7,6 +7,8 @@
     var inactive_devices_popover_content = '';
     var low_battery_devices = [];
     var low_battery_devices_popover_content = '';
+    var outside_plots_devices = [];
+    var outside_plots_devices_popover_content = '';
     var batteryStandards = {
         level: {
             low: window.contextVariables.low_battery_barrier,
@@ -104,6 +106,10 @@
                             low_battery_devices.push(data[i]);
                             low_battery_devices_popover_content += addToPopover(data[i]);
                         }
+                        if (device.outside) {
+                            outside_plots_devices.push(data[i]);
+                            outside_plots_devices_popover_content += addToPopover(data[i]);
+                        }
                         active_devices.push(data[i]);
                         active_devices_popover_content += addToPopover(data[i]);
                     } else {
@@ -156,6 +162,17 @@
                     placement: 'bottom',
                     trigger: 'click',
                     content: '<ul class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
+                });
+            }
+
+            $('#outside_plots_devices').text(outside_plots_devices.length);
+            if (outside_plots_devices_popover_content != '') {
+                $('#outside_plots_devices').removeAttr('disabled');
+                $('#outside_plots_devices').popover({
+                    html: true,
+                    placement: 'bottom',
+                    trigger: 'click',
+                    content: '<ul class="list-unstyled">' + outside_plots_devices_popover_content + '</ul>',
                 });
             }
 

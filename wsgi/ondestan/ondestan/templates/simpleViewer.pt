@@ -80,17 +80,21 @@
 	  		</tal:block>
 		</div>
 
-      <div class="col-md-4 text-center">
+      <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
         <a href="#" id="active_devices" disabled="disabled">-</a>
       </div>
-      <div class="col-md-4 text-center">
+      <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_inactive">INACTIVE</h5>
         <a href="#" id="inactive_devices" disabled="disabled">-</a>
       </div>
-      <div class="col-md-4 text-center">
+      <div class="col-md-3 text-center">
         <h5 class="text-muted" i18n:translate="dashboard_low_battery">LOW BATTERY</h5>
         <a href="#" id="low_battery_devices" disabled="disabled">-</a>
+      </div>
+      <div class="col-md-3 text-center">
+        <h5 class="text-muted" i18n:translate="dashboard_outside_plots">OUTSIDE PLOTS</h5>
+        <a href="#" id="outside_plots_devices" disabled="disabled">-</a>
       </div>
     </div>
     
