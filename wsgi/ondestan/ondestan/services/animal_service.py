@@ -6,7 +6,7 @@ from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
-from ondestan.utils import format_datetime
+from ondestan.utils import format_utcdatetime
 from ondestan.config import Config
 import ondestan.services
 
@@ -180,7 +180,7 @@ def save_new_position(position, animal):
                 parameters = {'name': animal.user.name,
                  'animal_name': animal.name if (animal.name != None and
                                 animal.name != '') else animal.imei,
-                 'date': format_datetime(position.date,
+                 'date': format_utcdatetime(position.date,
                     locale=animal.user.locale)
                  }
                 ondestan.services.\
@@ -196,7 +196,7 @@ def process_no_coverage_position(position, animal):
             parameters = {'name': animal.user.name,
              'animal_name': animal.name if (animal.name != None and
                             animal.name != '') else animal.imei,
-             'date': format_datetime(position.date,
+             'date': format_utcdatetime(position.date,
                 locale=animal.user.locale)
              }
             ondestan.services.\
@@ -219,7 +219,7 @@ def process_position_general_notifications(position, animal):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': format_datetime(position.date,
+                         'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
                          'battery_level': position.battery
                          }
@@ -234,7 +234,7 @@ def process_position_general_notifications(position, animal):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date': format_datetime(position.date,
+                         'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
                          'battery_level': position.battery
                          }
@@ -266,7 +266,7 @@ def process_position_general_notifications(position, animal):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
-                         'date_begin': format_datetime(date_begin,
+                         'date_begin': format_utcdatetime(date_begin,
                             locale=animal.user.locale),
                          'hours_immobile': int(hours_immobile)
                          }
@@ -280,7 +280,8 @@ def process_position_general_notifications(position, animal):
             parameters = {'name': animal.user.name,
              'animal_name': animal.name if (animal.name != None and
                             animal.name != '') else animal.imei,
-             'date': format_datetime(position.date, locale=animal.user.locale)
+             'date': format_utcdatetime(position.date,
+                                        locale=animal.user.locale)
              }
             ondestan.services.notification_service.process_notification(
                 'gps_instant_duplicated', animal.user.login, True, 2, False,
@@ -291,7 +292,7 @@ def process_position_general_notifications(position, animal):
         parameters = {'name': animal.user.name,
          'animal_name': animal.name if (animal.name != None and
                         animal.name != '') else animal.imei,
-         'date': format_datetime(position.date, locale=animal.user.locale)
+         'date': format_utcdatetime(position.date, locale=animal.user.locale)
          }
         ondestan.services.notification_service.process_notification(
             'gps_inactive_device', animal.user.login, True, 2, False,

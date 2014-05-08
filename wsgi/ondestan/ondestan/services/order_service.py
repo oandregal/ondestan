@@ -6,7 +6,7 @@ from pyramid.i18n import (
     TranslationString as _
     )
 
-import datetime
+from datetime import datetime
 import logging
 
 from ondestan.entities import Order, User, Order_state
@@ -79,7 +79,7 @@ def update_order_state(order_id, state, request):
     order_state = Order_state()
     order_state.order_id = order_id
     order_state.state = state
-    order_state.date = datetime.datetime.now()
+    order_state.date = datetime.utcnow()
     order_state.save()
 
     notify_order_update(order_state, request)

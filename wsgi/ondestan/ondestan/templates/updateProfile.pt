@@ -27,7 +27,7 @@
 
   	<div tal:condition="len(notifications) > 0" class="alerts-panel">
   		<tal:block tal:repeat="notification notifications">
-  			${notification.get_html(request)}
+  			${notification.get_full_html(request)}
   		</tal:block>
 	</div>
 

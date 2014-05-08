@@ -27,13 +27,13 @@
               <th tal:condition="is_admin" i18n:translate="archived">Archived</th>
             </tr>
           </thead>
-          <?python from ondestan.utils import format_datetime ?>
+          <?python from ondestan.utils import format_utcdatetime ?>
           <tbody>
             <tr tal:repeat="notification notifications">
             	<td tal:condition="is_admin" tal:content="notification.id"/>
             	<td tal:condition="is_admin" tal:content="notification.user.login"/>
-            	<td tal:content="format_datetime(notification.date, request)"/>
-            	<td tal:content="notification.get_translated_text(request)"/>
+            	<td tal:content="format_utcdatetime(notification.date, request)"/>
+            	<td tal:content="notification.get_simple_html(request)"/>
             	<td tal:content="notification.get_type_as_text(request)"/>
             	<td tal:condition="is_admin" tal:content="notification.get_level_as_text(request)"/>
             	<td tal:condition="is_admin and notification.archived" i18n:translate="yes">Yes</td>

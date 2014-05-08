@@ -48,7 +48,7 @@ def get_new_web_notifications_for_logged_user(request):
         notification = Notification()
         notification.level = 0
         notification.type = web_type
-        notification.date = datetime.now()
+        notification.date = datetime.utcnow()
         notification.archived = False
         notification.text = "_('no_orders_notification_web'," +\
             " mapping={'url': '" + request.route_url('orders') +\
@@ -77,7 +77,7 @@ def process_web_notification(user, text, level):
         notification.text = text
         notification.level = level
         notification.type = web_type
-        notification.date = datetime.now()
+        notification.date = datetime.utcnow()
         notification.save()
 
 
@@ -97,7 +97,7 @@ def process_sms_notification(user, text):
         notification.user_id = user.id
         notification.text = text
         notification.type = sms_type
-        notification.date = datetime.now()
+        notification.date = datetime.utcnow()
         notification.archived = True
         notification.save()
 
@@ -116,7 +116,7 @@ def process_email_notification(user, subject, html_body, text_body):
         notification.user_id = user.id
         notification.text = subject
         notification.type = mail_type
-        notification.date = datetime.now()
+        notification.date = datetime.utcnow()
         notification.archived = True
         notification.save()
 

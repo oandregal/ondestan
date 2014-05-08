@@ -35,13 +35,13 @@ class Notification(Entity, Base):
     text = Column(String)
     level = Column(Integer)
     type = Column(Integer)
-    date = Column(Date, default=datetime.now())
+    date = Column(Date)
     archived = Column(Boolean, default=False)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('notifications',
                                                   order_by=date.desc()))
 
-    def get_html(self, request=None):
+    def get_full_html(self, request=None):
         # If the request is passed, then we can try to translate the message
         if request != None:
             text = self.get_translated_text(request)
@@ -57,6 +57,14 @@ class Notification(Entity, Base):
             ' alert-dismissable"><button type="button" class="close" \
             data-dismiss="alert" aria-hidden="true">&times;</button>' +
             text + '</div>')
+
+    def get_simple_html(self, request=None):
+        # If the request is passed, then we can try to translate the message
+        if request != None:
+            text = self.get_translated_text(request)
+        else:
+            text = self.text
+        return HtmlContainer(text)
 
     def get_translated_text(self, request):
         try:

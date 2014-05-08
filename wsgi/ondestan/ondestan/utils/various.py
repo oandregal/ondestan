@@ -15,6 +15,11 @@ from ondestan.config import Config
 from os import urandom
 from itertools import islice, imap, repeat
 import string
+import datetime
+from dateutil import tz
+
+utc_timezone = tz.tzutc()
+default_timezone=tz.gettz(Config.get_string_value('config.default_timezone'))
 
 
 def rand_string(length=10):
@@ -41,7 +46,8 @@ def get_custom_localizer(locale):
     return localizer
 
 
-def format_date(date, request=None, locale=None):
+def format_utcdate(date, request=None, locale=None):
+    local_date = date.replace(tzinfo=utc_timezone).astimezone(default_timezone)
     if request != None:
         localizer = get_localizer(request)
     else:
@@ -51,7 +57,8 @@ def format_date(date, request=None, locale=None):
     return date.strftime(date_format)
 
 
-def format_datetime(datetime, request=None, locale=None):
+def format_utcdatetime(datetime, request=None, locale=None):
+    local_datetime = datetime.replace(tzinfo=utc_timezone).astimezone(default_timezone)
     if request != None:
         localizer = get_localizer(request)
     else:
@@ -59,14 +66,15 @@ def format_datetime(datetime, request=None, locale=None):
 
     date_format = localizer.translate(_('meta_datetime_format',
                                         domain='Ondestan'))
-    return datetime.strftime(date_format)
+    return local_datetime.strftime(date_format)
 
 
-def format_time(time, request=None, locale=None):
+def format_utctime(time, request=None, locale=None):
+    local_time = time.replace(tzinfo=utc_timezone).astimezone(default_timezone)
     if request != None:
         localizer = get_localizer(request)
     else:
         localizer = get_custom_localizer(locale)
 
     date_format = localizer.translate(_('meta_time_format', domain='Ondestan'))
-    return time.strftime(date_format)
+    return local_time.strftime(date_format)

@@ -18,7 +18,7 @@
         <th i18n:translate="order_state">Order state</th>
         <th i18n:translate="change_date">Change date</th>
       </tr>
-      <?python from babel.dates import format_datetime; from pyramid.i18n import get_locale_name; ?>
+      <?python from ondestan.utils import format_utcdatetime; from pyramid.i18n import get_locale_name; ?>
       <tr tal:repeat="state order.states">
         <td>
           <tal:block tal:switch="state.state">
@@ -29,7 +29,7 @@
             <tal:block tal:case="4" i18n:translate="order_state_4">Cancelled</tal:block>
           </tal:block>
         </td>
-        <td tal:content="format_datetime(state.date, format='short', locale=get_locale_name(request))"/>
+        <td tal:content="format_utcdatetime(state.date, request)"/>
       </tr>
     </table>
 

@@ -91,7 +91,7 @@ def check_login_request(request):
     login = request.params['login']
     if (check_user_pass(login, request.params['password'])):
         user = get_user_by_login(login)
-        user.last_login = datetime.now()
+        user.last_login = datetime.utcnow()
         user.locale = get_locale_name(request)
         user.update()
         logger.debug('Updating last_login and locale for user ' + login)
