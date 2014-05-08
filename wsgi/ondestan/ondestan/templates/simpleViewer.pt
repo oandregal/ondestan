@@ -17,7 +17,7 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
-  	<?python from ondestan.security import check_permission?>
+  	<?python from ondestan.config import Config; from ondestan.security import check_permission?>
     <script type="text/javascript">
       window.contextVariables.is_admin = ${str(is_admin).lower()};
       window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
