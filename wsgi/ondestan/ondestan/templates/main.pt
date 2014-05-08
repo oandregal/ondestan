@@ -39,12 +39,18 @@
 	      </ul>
 	      <ul tal:condition="user_id == None" class="nav navbar-nav pull-right">
 	        <li class="dropdown active">
-	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
-	          <ul class="dropdown-menu">
-	            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update profile</a></li>
-	            <li><a href="${request.route_url('notifications')}" i18n:translate="notifications_log">Notifications Log</a></li>
-	            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
-	          </ul>
+	          <a href="#" class="dropdown-toggle big-font" data-toggle="dropdown"><span i18n:translate="log_in">Log in</span> <b class="caret"></b></a>
+			  <form class="form-signin dropdown-menu dropdown-menu-right" role="form" action="${request.route_url('login')}" method="post">
+				  <span tal:replace="message"/>
+				  <input type="hidden" name="came_from" value="${came_from}"/>
+				  <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
+				  <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+				  <input class="btn btn-block btn-primary" type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/>
+				  <a href="${request.route_url('reminder')}" class="small-font" i18n:translate="remember_user_password">Remember user/pass</a>
+				  <br/>
+				  <br/>
+				  <a class="btn btn-primary" href="${request.route_url('signup')}" i18n:translate="sign_up">Sign Up</a>
+			  </form>
 	        </li>
 	      </ul>
 	      <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>

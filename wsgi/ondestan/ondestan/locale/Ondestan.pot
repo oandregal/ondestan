@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-08 12:11+0200\n"
+"POT-Creation-Date: 2014-05-08 13:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -250,30 +250,9 @@ msgstr ""
 msgid "login_title"
 msgstr ""
 
-#. Default: Login
-#: ondestan/templates/login.pt:224
-msgid "login"
-msgstr ""
-
 #. Default: Thank you. Your account has been activated and you may now log in.
-#: ondestan/templates/login.pt:225
+#: ondestan/templates/login.pt:156
 msgid "account_activated"
-msgstr ""
-
-#. Default: Log in
-#: ondestan/templates/login.pt:230
-msgid "log_in"
-msgstr ""
-
-#. Default: Sign Up
-#: ondestan/templates/login.pt:232 ondestan/templates/signup.pt:32
-#: ondestan/templates/signup.pt:88
-msgid "sign_up"
-msgstr ""
-
-#. Default: Remember user/pass
-#: ondestan/templates/login.pt:232
-msgid "remember_user_password"
 msgstr ""
 
 #. Default: order(s)
@@ -283,29 +262,44 @@ msgstr ""
 
 #. Default: Update profile
 #. Default: Update Profile
-#: ondestan/templates/main.pt:34 ondestan/templates/main.pt:44
-#: ondestan/templates/updateProfile.pt:40 ondestan/templates/updateProfile.pt:71
+#: ondestan/templates/main.pt:34 ondestan/templates/updateProfile.pt:40
+#: ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
 msgstr ""
 
 #. Default: Notifications Log
-#: ondestan/templates/main.pt:35 ondestan/templates/main.pt:45
-#: ondestan/templates/notifications.pt:12
+#: ondestan/templates/main.pt:35 ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr ""
 
 #. Default: Logout
-#: ondestan/templates/main.pt:36 ondestan/templates/main.pt:46
+#: ondestan/templates/main.pt:36
 msgid "logout"
 msgstr ""
 
+#. Default: Log in
+#: ondestan/templates/main.pt:42 ondestan/templates/main.pt:48
+msgid "log_in"
+msgstr ""
+
+#. Default: Remember user/pass
+#: ondestan/templates/main.pt:49
+msgid "remember_user_password"
+msgstr ""
+
+#. Default: Sign Up
+#: ondestan/templates/main.pt:52 ondestan/templates/signup.pt:32
+#: ondestan/templates/signup.pt:88
+msgid "sign_up"
+msgstr ""
+
 #. Default: Contact
-#: ondestan/templates/main.pt:57
+#: ondestan/templates/main.pt:63
 msgid "contact"
 msgstr ""
 
 #. Default: About
-#: ondestan/templates/main.pt:57
+#: ondestan/templates/main.pt:63
 msgid "about"
 msgstr ""
 

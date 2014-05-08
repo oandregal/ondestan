@@ -152,6 +152,8 @@
   </tal:block>
 
   <tal:block metal:fill-slot="content">
+      
+    <label tal:condition="activated" i18n:translate="account_activated">Thank you. Your account has been activated and you may now log in.</label>
 
   <!-- Jssor Slider Begin -->
     <!-- You can move inline styles (except 'top', 'left', 'width' and 'height') to css file or css block. --> 
@@ -219,18 +221,6 @@
         <a style="display: none" href="http://www.jssor.com">jQuery Slider</a> 
     </div> 
     <!-- Jssor Slider End -->
-
-    <form class="form-signin" role="form" action="${request.route_url('login')}" method="post">
-      <h2 class="form-signin-heading" i18n:translate="login">Login</h2>
-      <label tal:condition="activated" i18n:translate="account_activated">Thank you. Your account has been activated and you may now log in.</label>
-      <span tal:replace="message"/>
-      <input type="hidden" name="came_from" value="${came_from}"/>
-      <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
-      <input type="password" class="form-control" placeholder="Contraseña" name="password" />
-      <input class="btn btn-lg btn-block btn-primary" type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/>
-      <br/>
-      <a href="${request.route_url('signup')}" i18n:translate="sign_up">Sign Up</a> | <a href="${request.route_url('reminder')}" i18n:translate="remember_user_password">Remember user/pass</a>
-    </form>
   </tal:block>
 
 </html>
