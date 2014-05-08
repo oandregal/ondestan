@@ -294,8 +294,9 @@ def process_position_general_notifications(position, animal):
                         animal.name != '') else animal.imei,
          'date': format_utcdatetime(position.date, locale=animal.user.locale)
          }
-        ondestan.services.notification_service.process_notification(
+        # This notification is considered rather confusing than useful
+        """ondestan.services.notification_service.process_notification(
             'gps_inactive_device', animal.user.login, True, 2, False,
-            False, parameters)
-        logger.info('Processed update for inactive IMEI: ' + animal.imei +
+            False, parameters)"""
+        logger.warn('Processed update for inactive IMEI: ' + animal.imei +
                     ' for date ' + str(position.date))
