@@ -1,11 +1,18 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 from pyramid.config import Configurator
+from pyramid.events import BeforeRender
 from pyramid.authentication import AuthTktAuthenticationPolicy
 from pyramid.authorization import ACLAuthorizationPolicy
 from ondestan.config import Config
+import helpers
 import logging
 import sys
+
+
+def add_renderer_globals(event):
+    """ add helpers """
+    event['h'] = helpers
 
 
 def main(global_config, **settings):
@@ -29,6 +36,7 @@ def main(global_config, **settings):
         'ondestan', callback=user_service.group_finder
     )
     authz_policy = ACLAuthorizationPolicy()
+    config.add_subscriber(add_renderer_globals, BeforeRender)
     config.add_static_view('static', 'static', cache_max_age=3600)
     config.set_authentication_policy(authn_policy)
     config.set_authorization_policy(authz_policy)

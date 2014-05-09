@@ -21,12 +21,14 @@ from pyramid.i18n import (
     get_localizer,
     TranslationString as _
     )
+from webhelpers.paginate import Page
 
 from ondestan.security import get_user_login, check_permission
 from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
+from ondestan.utils import Customizable_PageURL_WebOb
 
 import logging
 
@@ -274,13 +276,29 @@ def orders(request):
 
     is_admin = check_permission('admin', request)
     if is_admin:
-        pending_orders = order_service.get_all_pending_orders()
-        processed_orders = order_service.get_all_processed_orders()
+        query1 = order_service.get_all_pending_orders()
+        pending_orders = Page(query1,
+            page=int(request.params.get('p1', 1)),
+            items_per_page=10,
+            url=Customizable_PageURL_WebOb(request, get_param='p1'))
+        query2 = order_service.get_all_processed_orders()
+        processed_orders = Page(query2,
+            page=int(request.params.get('p2', 1)),
+            items_per_page=10,
+            url=Customizable_PageURL_WebOb(request, get_param='p2'))
     else:
-        pending_orders = order_service.get_all_pending_orders(
+        query1 = order_service.get_all_pending_orders(
             get_user_login(request))
-        processed_orders = order_service.get_all_processed_orders(
+        pending_orders = Page(query1,
+            page=int(request.params.get('p1', 1)),
+            items_per_page=10,
+            url=Customizable_PageURL_WebOb(request, get_param='p1'))
+        query2 = order_service.get_all_processed_orders(
             get_user_login(request))
+        processed_orders = Page(query2,
+            page=int(request.params.get('p2', 1)),
+            items_per_page=10,
+            url=Customizable_PageURL_WebOb(request, get_param='p2'))
 
     is_admin = check_permission('admin', request)
 
@@ -300,11 +318,14 @@ def orders(request):
 def order_state_history(request):
     order = order_service.get_order_by_id(
                 request.matchdict['order_id'])
-
     if (order == None):
         return HTTPFound(request.route_url("orders"))
+    states = Page(order.states,
+            page=int(request.params.get('p', 1)),
+            items_per_page=20,
+            url=Customizable_PageURL_WebOb(request, get_param='p'))
     return dict(
-        order=order
+        states=states
         )
 
 
@@ -333,9 +354,14 @@ def order_devices(request):
              renderer='templates/notifications.pt',
              permission='view')
 def notifications(request):
+    query = notification_service.get_all_notifications(request)
+    notifications = Page(query,
+        page=int(request.params.get('p', 1)),
+        items_per_page=20,
+        url=Customizable_PageURL_WebOb(request, get_param='p'))
     return dict(
         is_admin=check_permission('admin', request),
-        notifications=notification_service.get_all_notifications(request)
+        notifications=notifications
         )
 
 
