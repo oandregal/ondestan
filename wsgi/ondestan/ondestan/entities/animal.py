@@ -22,7 +22,7 @@ class Animal(Entity, Base):
     user = relationship("User", backref=backref('animals',
                                                   order_by=name))
     order_id = Column(Integer, ForeignKey("orders.id"))
-    order = relationship("Order", backref=backref('animals',
+    order = relationship("Order", backref=backref('devices',
                                                   order_by=name))
     """plot_id = Column(Integer, ForeignKey("plots.id"))
     plot = relationship("Plot", backref=backref('animals',

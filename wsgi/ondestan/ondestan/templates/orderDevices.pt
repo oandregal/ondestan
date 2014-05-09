@@ -57,7 +57,7 @@
           </thead>
 
           <tbody>
-            <tr tal:repeat="device order.animals">
+            <tr tal:repeat="device order.devices">
             	<td tal:define="deletable (not device.active and device.n_positions == 0)">
             		<div data-toggle="tooltip" data-placement="left" i18n:attributes="tooltip-msg device_cannot_be_deleted_tooltip" tooltip-msg="Device cannot be deleted because it is currently active and/or has stored positions." tal:attributes="data-toggle 'tooltip' if not deletable else None;">
             			<tal:block tal:content="device.id"/>
