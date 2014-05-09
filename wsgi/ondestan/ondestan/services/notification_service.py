@@ -87,7 +87,7 @@ def process_sms_notification(user, text):
     logger.debug("Processing SMS notification '" + text + "' for user "
                  + user.login)
     if user.phone == None or user.phone == '':
-        logger.warn("Can't send SMS notification to user "
+        logger.warn("Can't send SMS notification to without-phone user "
                      + user.login)
     else:
         send_sms(localized, user.phone)

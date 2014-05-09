@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-08 20:13+0200\n"
+"POT-Creation-Date: 2014-05-09 12:42+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1059,6 +1059,10 @@ msgstr ""
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:79
 #: ondestan/utils/various.py:79
 msgid "meta_time_format"
+msgstr ""
+
+#: ondestan/services/animal_service.py:47
+msgid "outside_plots_notification_sms"
 msgstr ""
 
 #. Default: OUTSIDE PLOTS

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-08 20:13+0200\n"
-"PO-Revision-Date: 2014-05-08 20:13+0100\n"
+"POT-Creation-Date: 2014-05-09 12:42+0200\n"
+"PO-Revision-Date: 2014-05-09 12:43+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -1130,14 +1130,12 @@ msgstr "%d-%m-%Y %H:%M:%S"
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 
+#: ondestan/services/animal_service.py:47
+#| msgid "outside_plots_notification_web"
+msgid "outside_plots_notification_sms"
+msgstr "Aviso Ondestán: la vaca ${animal_name} salió de las fincas designadas en ${date}."
+
 #. Default: OUTSIDE PLOTS
 #: ondestan/templates/simpleViewer.pt:96
-#| msgid "dashboard_outside_plot"
 msgid "dashboard_outside_plots"
 msgstr "FUERA DE FINCAS"
-
-#~ msgid "close"
-#~ msgstr ""
-
-#~ msgid "login"
-#~ msgstr "Autenticación"

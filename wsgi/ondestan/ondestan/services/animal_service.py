@@ -44,6 +44,7 @@ _('outside_plots_notification_web', domain='Ondestan')
 _('outside_plots_notification_mail_subject', domain='Ondestan')
 _('outside_plots_notification_mail_html_body', domain='Ondestan')
 _('outside_plots_notification_mail_text_body', domain='Ondestan')
+_('outside_plots_notification_sms', domain='Ondestan')
 
 
 def get_all_animals(login=None):
@@ -186,7 +187,7 @@ def save_new_position(position, animal):
                 ondestan.services.\
                 notification_service.process_notification(
                     'outside_plots', animal.user.login, True, 3,
-                    True, False, parameters)
+                    True, True, parameters)
     process_position_general_notifications(position, animal)
 
 
