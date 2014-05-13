@@ -38,6 +38,9 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jssor.slider.mini.js')}"></script>
     <script>
         $(function ($) {
+        	<tal:block tal:condition="message != None and message != ''">
+         	$("a.dropdown-toggle").dropdown("toggle");
+         	</tal:block>
             //Reference http://www.jssor.com/development/slider-with-slideshow.html
             //Reference http://www.jssor.com/development/tool-slideshow-transition-viewer.html
 
