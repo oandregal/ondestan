@@ -92,7 +92,7 @@ div#map {
 }
 
 .alerts-panel {
-    max-height: 100px;
+    max-height: 205px;
     overflow-y: auto;
     padding: 5px;
 }
