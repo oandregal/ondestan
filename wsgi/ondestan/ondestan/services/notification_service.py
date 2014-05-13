@@ -26,13 +26,15 @@ def get_web_notifications(login, archived=None):
         return Notification().queryObject().filter(and_(
                         Notification.user.has(login=login),
                         Notification.type == web_type)).\
-                        order_by(desc(Notification.date)).all()
+                        order_by(desc(Notification.level),
+                                 desc(Notification.date)).all()
     else:
         return Notification().queryObject().filter(and_(
                         Notification.user.has(login=login),
                         Notification.type == web_type,
                         Notification.archived == archived)).\
-                        order_by(desc(Notification.date)).all()
+                        order_by(desc(Notification.level),
+                                 desc(Notification.date)).all()
 
 
 def get_new_web_notifications_for_logged_user(request):
