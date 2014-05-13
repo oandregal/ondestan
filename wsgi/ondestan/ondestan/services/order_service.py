@@ -25,10 +25,14 @@ _('order_update_notification_mail_subject', domain='Ondestan')
 _('order_update_notification_mail_html_body', domain='Ondestan')
 _('order_update_notification_mail_text_body', domain='Ondestan')
 
-_('new_order_notification_web', domain='Ondestan')
-_('new_order_notification_mail_subject', domain='Ondestan')
-_('new_order_notification_mail_html_body', domain='Ondestan')
-_('new_order_notification_mail_text_body', domain='Ondestan')
+_('new_order_user_notification_mail_subject', domain='Ondestan')
+_('new_order_user_notification_mail_html_body', domain='Ondestan')
+_('new_order_user_notification_mail_text_body', domain='Ondestan')
+
+_('new_order_admin_notification_web', domain='Ondestan')
+_('new_order_admin_notification_mail_subject', domain='Ondestan')
+_('new_order_admin_notification_mail_html_body', domain='Ondestan')
+_('new_order_admin_notification_mail_text_body', domain='Ondestan')
 
 
 def get_orders(request):
@@ -70,7 +74,13 @@ def create_order(request):
         order.user_id = user.id
         order.save()
 
-        update_order_state(order.id, Order_state._STATES[0], request)
+        order_state = Order_state()
+        order_state.order_id = order.id
+        order_state.state = Order_state._STATES[0]
+        order_state.date = datetime.utcnow()
+        order_state.save()
+
+        notify_new_order(order_state, request)
 
     return ''
 
@@ -88,13 +98,6 @@ def update_order_state(order_id, state, request):
 
 
 def notify_order_update(order_state, request):
-    if order_state.state == 0:
-        notify_new_order_to_admins(order_state, request)
-    else:
-        notify_order_update_to_user(order_state, request)
-
-
-def notify_order_update_to_user(order_state, request):
     parameters = {'name': order_state.order.user.name,
                  'login': order_state.order.user.login,
                  'units': order_state.order.units,
@@ -107,7 +110,17 @@ def notify_order_update_to_user(order_state, request):
         order_state.order.user.login, True, 1, True, False, parameters)
 
 
-def notify_new_order_to_admins(order_state, request):
+def notify_new_order(order_state, request):
+    parameters = {'name': order_state.order.user.name,
+                 'login': order_state.order.user.login,
+                 'units': order_state.order.units,
+                 'address': order_state.order.address,
+                 'url': request.route_url('orders'),
+                 'state': "_('order_state_0', domain='Ondestán')"}
+    ondestan.services.notification_service.process_notification(
+        'new_order_user', order_state.order.user.login, False, 0, True, False,
+        parameters)
+
     admins = ondestan.services.user_service.get_admin_users()
     parameters = {'name': order_state.order.user.name,
                  'login': order_state.order.user.login,
@@ -117,7 +130,7 @@ def notify_new_order_to_admins(order_state, request):
                  'state': "_('order_state_0', domain='Ondestán')"}
     for admin in admins:
         ondestan.services.notification_service.process_notification(
-            'new_order', admin.login, True, 1, True, False, parameters)
+            'new_order_admin', admin.login, True, 1, True, False, parameters)
 
 
 def get_order_by_id(order_id):
