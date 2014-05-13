@@ -97,7 +97,7 @@ div#map {
     padding: 5px;
 }
 
-.popover-content ul {
+.data .popover-content ul {
 	margin: 0px;
 	min-width: 260px;
 }
