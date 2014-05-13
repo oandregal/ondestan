@@ -39,7 +39,7 @@
         <label i18n:translate="sign_up_instructions">We have sent you an email with the instructions for activating your new account.<br/>Welcome to Ondestán!!</label>
       </div>
 
-      <div class="bottom" tal:case="False">
+      <div class="bottom form-block" tal:case="False">
 
         <form role="form" id="form" class="form-horizontal" action="${request.route_url('signup')}" method="post">
 

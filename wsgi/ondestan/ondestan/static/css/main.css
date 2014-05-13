@@ -146,7 +146,8 @@ div#map {
  }
  
  .form-block {
- 	margin-bottom: 150px;
+ 	width: 50%;
+ 	margin: 0 auto 150px;
  }
  
 .big-font {

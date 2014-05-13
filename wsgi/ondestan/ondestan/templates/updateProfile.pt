@@ -34,7 +34,7 @@
     <div id="bottom1">
       <div class="bottom form-block">
 
-	    <div id="middle">
+	    <div id="middle col-md-5 col-md-offset-4">
 	      <div class="middle align-right">
 	        <div id="left" class="app-welcome align-left">
 	          <h3 i18n:translate="update_profile">Update Profile</h3>
