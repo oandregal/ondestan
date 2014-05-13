@@ -99,6 +99,7 @@ div#map {
 
 .popover-content ul {
 	margin: 0px;
+	min-width: 260px;
 }
 
 .popover-content .list-group-item input {
