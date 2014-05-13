@@ -1,14 +1,16 @@
 (function(NS) {
 
+	var animals_layer;
+	var plots;
     var map;
-    var active_devices = [];
-    var active_devices_popover_content = '';
-    var inactive_devices = [];
-    var inactive_devices_popover_content = '';
-    var low_battery_devices = [];
-    var low_battery_devices_popover_content = '';
-    var outside_plots_devices = [];
-    var outside_plots_devices_popover_content = '';
+    var active_devices;
+    var active_devices_popover_content;
+    var inactive_devices;
+    var inactive_devices_popover_content;
+    var low_battery_devices;
+    var low_battery_devices_popover_content;
+    var outside_plots_devices;
+    var outside_plots_devices_popover_content;
     var batteryStandards = {
         level: {
             low: window.contextVariables.low_battery_barrier,
@@ -92,9 +94,34 @@
         map.fitBounds(bounds);
     };
 
-    function load_animals() {
+    function load_plots() {
+    	plots = new L.FeatureGroup();
+		new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
+//		    style: function (feature) {
+//		        return {clickable: false};
+//		    },
+            onEachFeature: function (feature, layer) {
+            	if (feature.properties.popup != null && feature.properties.popup != '') {
+            		layer.bindPopup(feature.properties.popup);
+            	}
+            	plots.addLayer(layer);
+            }
+        });
 
-        layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
+    	map.addLayer(plots);
+    }
+
+    function load_animals() {
+        active_devices = [];
+        active_devices_popover_content = '';
+        inactive_devices = [];
+        inactive_devices_popover_content = '';
+        low_battery_devices = [];
+        low_battery_devices_popover_content = '';
+        outside_plots_devices = [];
+        outside_plots_devices_popover_content = '';
+
+    	animals_layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
             pointToLayer: function (feature, latlng) {
                 return new L.CircleMarker(latlng, getStyleForDevice(feature));
             },
@@ -124,7 +151,7 @@
             }
         });
 
-        layer.on('data:loaded', function(e) {
+    	animals_layer.on('data:loaded', function(e) {
 
             $('#active_devices').text(active_devices.length);
             if (active_devices_popover_content != '') {
@@ -178,7 +205,7 @@
 
         });
 
-        layer.addTo(map);
+    	animals_layer.addTo(map);
     }
 
     NS.init = function(){
@@ -200,24 +227,8 @@
     		map.setView(window.contextVariables.default_view, 8);
     	}
 
-    	var plots = new L.FeatureGroup();
-		new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
-//		    style: function (feature) {
-//		        return {clickable: false};
-//		    },
-            onEachFeature: function (feature, layer) {
-            	if (feature.properties.popup != null && feature.properties.popup != '') {
-            		layer.bindPopup(feature.properties.popup);
-            	}
-            	plots.addLayer(layer);
-            },
-            middleware:function(data){
-                load_animals();
-                return data;
-            }
-        });
-
-    	map.addLayer(plots);
+        load_plots();
+        load_animals();
 
 		$('#user_selector').change(function() {
 			if ($(this).val() != '') {
@@ -316,6 +327,8 @@
 						layer.feature = result.feature;
 		                layer.bindPopup(result.feature.properties.popup);
 		    			plots.addLayer(layer);
+		    			map.removeLayer(animals_layer);
+		    			load_animals();
 					}
 				}});
 			}
@@ -332,6 +345,8 @@
 				$.ajax({url: url,success:function(result){
 					if (result.success) {
 						layer.feature = result.feature;
+		    			map.removeLayer(animals_layer);
+		    			load_animals();
 					}
 				}});
 			}
@@ -344,6 +359,8 @@
 				url += 'id=' + layer.feature.properties.id;
 				$.ajax({url: url,success:function(result){
 					if (result.success) {
+		    			map.removeLayer(animals_layer);
+		    			load_animals();
 					}
 				}});
 			}
