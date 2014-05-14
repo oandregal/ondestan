@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-14 15:28+0200\n"
-"PO-Revision-Date: 2014-05-14 16:45+0100\n"
+"POT-Creation-Date: 2014-05-14 18:07+0200\n"
+"PO-Revision-Date: 2014-05-14 18:07+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -182,22 +182,18 @@ msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
 #: ondestan/services/order_service.py:23
-#| msgid "order_update_notification_web"
 msgid "order_update_state_0_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'."
 
 #: ondestan/services/order_service.py:24
-#| msgid "order_update_notification_mail_subject"
 msgid "order_update_state_0_notification_mail_subject"
 msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En espera')"
 
 #: ondestan/services/order_service.py:25
-#| msgid "order_update_notification_mail_html_body"
 msgid "order_update_state_0_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'.<br/>Por ahora no tienes que realizar ninguna acción.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:26
-#| msgid "order_update_notification_mail_text_body"
 msgid "order_update_state_0_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -211,22 +207,18 @@ msgstr ""
 "www.ondeestan.com"
 
 #: ondestan/services/order_service.py:28
-#| msgid "order_update_notification_web"
 msgid "order_update_state_1_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'."
 
 #: ondestan/services/order_service.py:29
-#| msgid "order_update_notification_mail_subject"
 msgid "order_update_state_1_notification_mail_subject"
 msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En proceso')"
 
 #: ondestan/services/order_service.py:30
-#| msgid "order_update_notification_mail_html_body"
 msgid "order_update_state_1_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'.<br/>Por ahora no tienes que realizar ninguna acción, nos pondremos en contacto contigo en caso de que sea necesario.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:31
-#| msgid "order_update_notification_mail_text_body"
 msgid "order_update_state_1_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -240,22 +232,18 @@ msgstr ""
 "www.ondeestan.com"
 
 #: ondestan/services/order_service.py:33
-#| msgid "order_update_notification_web"
 msgid "order_update_state_2_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'."
 
 #: ondestan/services/order_service.py:34
-#| msgid "order_update_notification_mail_subject"
 msgid "order_update_state_2_notification_mail_subject"
 msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Enviado')"
 
 #: ondestan/services/order_service.py:35
-#| msgid "order_update_notification_mail_html_body"
 msgid "order_update_state_2_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'.<br/>En el <a href=\"${map_url}\">mapa</a>, en la fila superior, deberían aparecer los dispositivos que te hemos enviado como inactivos con un código identificativo. Una vez que los recibas, puedes identificarlos con dicho código mediante la pegatina en la parte posterior. Una vez que los hayas encendido y colocado en tus animales, en la interfaz web podrás activarlos para que empiece a almacenar y mostrar posiciones y asignarles un nombre que te resulte más intuitivo identificarlos (haciendo doble click sobre el código identificativo).<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:36
-#| msgid "order_update_notification_mail_text_body"
 msgid "order_update_state_2_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -269,22 +257,18 @@ msgstr ""
 "www.ondeestan.com"
 
 #: ondestan/services/order_service.py:38
-#| msgid "order_update_notification_web"
 msgid "order_update_state_3_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'."
 
 #: ondestan/services/order_service.py:39
-#| msgid "order_update_notification_mail_subject"
 msgid "order_update_state_3_notification_mail_subject"
 msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Activado')"
 
 #: ondestan/services/order_service.py:40
-#| msgid "order_update_notification_mail_html_body"
 msgid "order_update_state_3_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'.<br/>Todos tus dispositivos han sido activados, a partir de ahora podrás ver en tiempo real la situación de tus animales en el <a href=\"${map_url}\">mapa</a>.<br>En caso de que tengas cualquier problema no dudes en ponerte en contacto con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo a través del <a href=\"${url}\">mismo formulario</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:41
-#| msgid "order_update_notification_mail_text_body"
 msgid "order_update_state_3_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -298,22 +282,18 @@ msgstr ""
 "www.ondeestan.com"
 
 #: ondestan/services/order_service.py:43
-#| msgid "order_update_notification_web"
 msgid "order_update_state_4_notification_web"
 msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'."
 
 #: ondestan/services/order_service.py:44
-#| msgid "order_update_notification_mail_subject"
 msgid "order_update_state_4_notification_mail_subject"
 msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Cancelado')"
 
 #: ondestan/services/order_service.py:45
-#| msgid "order_update_notification_mail_html_body"
 msgid "order_update_state_4_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'.<br/>En caso de que no hayas pedido explícitamente la cancelación de tu pedido, contacta con nuestro equipo para recibir más información.<br>Para consultar tus pedidos puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:46
-#| msgid "order_update_notification_mail_text_body"
 msgid "order_update_state_4_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -1054,6 +1034,51 @@ msgstr "Cancelar"
 #: ondestan/templates/simpleViewer.pt:117
 msgid "accept"
 msgstr "Aceptar"
+
+#. Default: Map legend
+#: ondestan/templates/simpleViewer.pt:131
+msgid "map_legend"
+msgstr "Leyenda del mapa"
+
+#. Default: Battery Level (color)
+#: ondestan/templates/simpleViewer.pt:134
+msgid "battery_level_legend"
+msgstr "Nivel de batería (color)"
+
+#. Default: Low battery level
+#: ondestan/templates/simpleViewer.pt:137
+msgid "low_battery_level"
+msgstr "Nivel de batería bajo"
+
+#. Default: Medium battery level
+#: ondestan/templates/simpleViewer.pt:140
+msgid "medium_battery_level"
+msgstr "Nivel de batería medio"
+
+#. Default: High battery level
+#: ondestan/templates/simpleViewer.pt:143
+msgid "high_battery_level"
+msgstr "Nivel de batería alto"
+
+#. Default: Inside/Outside Plots (border)
+#: ondestan/templates/simpleViewer.pt:147
+msgid "inside_outside_plots_legend"
+msgstr "Dentro/fuera de fincas (borde)"
+
+#. Default: Inside plots
+#: ondestan/templates/simpleViewer.pt:150
+msgid "inside_plots"
+msgstr "Dentro de fincas"
+
+#. Default: Outside plots
+#: ondestan/templates/simpleViewer.pt:153
+msgid "outside_plots"
+msgstr "Fuera de fincas"
+
+#. Default: Close
+#: ondestan/templates/simpleViewer.pt:158
+msgid "close"
+msgstr "Cerrar"
 
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8

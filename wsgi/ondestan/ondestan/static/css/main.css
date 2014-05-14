@@ -120,7 +120,7 @@ div#map {
 	padding-left: 3px;
 }
 
- .modal-sm {
+ .modal-xsm {
  	width: 230px;
  }
  
@@ -157,4 +157,54 @@ div#map {
  
 .small-font {
 	font-size: 12px;
+}
+
+#legend-modal h5 {
+	font-weight: bold;
+}
+
+#legend-modal ul {
+	list-style:none;
+	padding-left: 5px;
+}
+
+#legend-modal li {
+	text-align: left;
+	padding-top: 3px;
+}
+
+#legend-modal li div, #legend-modal li span {
+	display: inline-block;
+}
+
+#legend-modal .circle {
+	width: 15px;
+	height: 15px;
+	margin-right: 5px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#legend-modal #low-battery.circle {
+	background: red;
+}
+
+#legend-modal #medium-battery.circle {
+	background: yellow;
+}
+
+#legend-modal #high-battery.circle {
+	background: green;
+}
+
+#legend-modal #outside-plots.circle, #legend-modal #inside-plots.circle {
+	background: yellow;
+}
+
+#legend-modal #outside-plots.circle {
+	width: 18px;
+	height: 18px;
+	border-style:solid;
+	border-width: 3px;
 }

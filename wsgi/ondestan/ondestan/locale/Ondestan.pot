@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-14 15:28+0200\n"
+"POT-Creation-Date: 2014-05-14 18:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -888,6 +888,51 @@ msgstr ""
 #. Default: Accept
 #: ondestan/templates/simpleViewer.pt:117
 msgid "accept"
+msgstr ""
+
+#. Default: Map legend
+#: ondestan/templates/simpleViewer.pt:131
+msgid "map_legend"
+msgstr ""
+
+#. Default: Battery Level (color)
+#: ondestan/templates/simpleViewer.pt:134
+msgid "battery_level_legend"
+msgstr ""
+
+#. Default: Low battery level
+#: ondestan/templates/simpleViewer.pt:137
+msgid "low_battery_level"
+msgstr ""
+
+#. Default: Medium battery level
+#: ondestan/templates/simpleViewer.pt:140
+msgid "medium_battery_level"
+msgstr ""
+
+#. Default: High battery level
+#: ondestan/templates/simpleViewer.pt:143
+msgid "high_battery_level"
+msgstr ""
+
+#. Default: Inside/Outside Plots (border)
+#: ondestan/templates/simpleViewer.pt:147
+msgid "inside_outside_plots_legend"
+msgstr ""
+
+#. Default: Inside plots
+#: ondestan/templates/simpleViewer.pt:150
+msgid "inside_plots"
+msgstr ""
+
+#. Default: Outside plots
+#: ondestan/templates/simpleViewer.pt:153
+msgid "outside_plots"
+msgstr ""
+
+#. Default: Close
+#: ondestan/templates/simpleViewer.pt:158
+msgid "close"
 msgstr ""
 
 #. Default: Update profile - Ondestán

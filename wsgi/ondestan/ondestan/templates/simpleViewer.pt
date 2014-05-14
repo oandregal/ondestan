@@ -65,12 +65,13 @@
       L.drawLocal.edit.handlers.remove.tooltip.text = "<tal:block i18n:translate="map_tool_delete_plot_handler_tooltip">Click on a plot to remove.</tal:block>";
 
       window.contextVariables.hide_show_draw_tools_tooltip = "<tal:block i18n:translate="hide_show_draw_tools_tooltip">Hide/show plot management tools</tal:block>";
+      window.contextVariables.show_map_legend_tooltip = "<tal:block i18n:translate="map_legend">Map legend</tal:block>";
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
   </tal:block>
 
   <tal:block metal:fill-slot="content">
-  
+  	<?python from ondestan.config import Config; from ondestan.security import check_permission?>
 
     <div class="row data">
 
@@ -98,9 +99,9 @@
       </div>
     </div>
     
-	<!-- Modal -->
-	<div tal:condition="is_admin" class="modal fade" id="my_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-dialog modal-sm">
+	<!-- Select user modal -->
+	<div tal:condition="is_admin" class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm modal-xsm">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -115,6 +116,45 @@
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="cancel">Cancel</button>
 	        <button id="accept_btn" type="button" class="btn btn-primary" disabled="true" i18n:translate="accept">Accept</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Legend modal -->	
+	<div class="modal fade bs-example-modal-sm" id="legend-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel" i18n:translate="map_legend">Map legend</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<h5 i18n:translate="battery_level_legend">Battery Level (color)</h5>
+	      	<ul>
+		      	<li>
+		      		<div id="low-battery" class="circle" ></div><span><tal:block i18n:translate="low_battery_level">Low battery level</tal:block> (&lt; ${Config.get_float_value('config.low_battery_barrier')}%)</span>
+		      	</li>
+		      	<li>
+		      		<div id="medium-battery" class="circle"></div><span><tal:block i18n:translate="medium_battery_level">Medium battery level</tal:block> (${Config.get_float_value('config.low_battery_barrier')}% - ${Config.get_float_value('config.medium_battery_barrier')}%)</span>
+		      	</li>
+		      	<li>
+		      		<div id="high-battery" class="circle"></div><span><tal:block i18n:translate="high_battery_level">High battery level</tal:block> (&gt; ${Config.get_float_value('config.medium_battery_barrier')}%)</span>
+		      	</li>
+	      	</ul>
+	      	<hr/>
+	      	<h5 i18n:translate="inside_outside_plots_legend">Inside/Outside Plots (border)</h5>
+	      	<ul>
+		      	<li>
+		      		<div id="inside-plots" class="circle"></div><span i18n:translate="inside_plots">Inside plots</span>
+		      	</li>
+		      	<li>
+		      		<div id="outside-plots" class="circle"></div><span i18n:translate="outside_plots">Outside plots</span>
+		      	</li>
+	      	</ul>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
 	      </div>
 	    </div>
 	  </div>

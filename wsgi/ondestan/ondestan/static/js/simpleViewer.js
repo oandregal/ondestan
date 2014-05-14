@@ -238,6 +238,39 @@
 			}
 		});
 
+		displayLegendControl = function(theDisplayLegendFunction) {
+
+		    var control = new (L.Control.extend({
+		    options: { position: 'topright' },
+		    onAdd: function (map) {
+		        controlDiv = L.DomUtil.create('div', 'display-legend-button');
+		        L.DomEvent
+		            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+		            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+		            .addListener(controlDiv, 'click', this.DisplayLegendFunction);
+
+		        // Set CSS for the control border
+		        var controlUI = L.DomUtil.create('div', 'display-legend-toolbar leaflet-bar display-legend-toolbar-top', controlDiv);
+		        controlUI.title = window.contextVariables.show_map_legend_tooltip;
+
+		        // Set CSS for the control interior
+		        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-control-zoom-in', controlUI);
+		        controlText.href = '#';
+		        controlText.text = '?';
+
+		        return controlDiv;
+		    }
+		    }));
+
+		    control.DisplayLegendFunction = theDisplayLegendFunction;
+
+		    return control;
+		};
+
+		DisplayLegendFunction = function () { $('#legend-modal').modal();};
+
+		map.addControl(displayLegendControl(DisplayLegendFunction));
+
 		toggleDrawControl = function(theToggleDrawFunction) {
 
 		    var control = new (L.Control.extend({
@@ -305,7 +338,7 @@
 				var url = url.substring(0, url.length - 1);
 				$('#accept_btn').off();
 				$('#accept_btn').click(function() {
-					$('#my_modal').modal('hide');
+					$('#my-modal').modal('hide');
 					url += '&userid=' + $('#user_selector').val();
 					$.ajax({url: url,success:function(result){
 						if (result.success) {
@@ -315,7 +348,7 @@
 						}
 					}});
 				});
-				$('#my_modal').modal();
+				$('#my-modal').modal();
 			} else {
 				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
 				for (i in layer._latlngs) {
