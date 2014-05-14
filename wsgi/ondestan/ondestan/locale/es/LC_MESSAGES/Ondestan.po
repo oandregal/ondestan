@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-13 19:08+0200\n"
-"PO-Revision-Date: 2014-05-14 15:08+0100\n"
+"POT-Creation-Date: 2014-05-14 15:28+0200\n"
+"PO-Revision-Date: 2014-05-14 16:22+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -81,19 +81,19 @@ msgstr "Aviso"
 msgid "danger"
 msgstr "Peligro"
 
-#: ondestan/services/animal_service.py:24
+#: ondestan/services/animal_service.py:25
 msgid "low_battery_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
 
-#: ondestan/services/animal_service.py:25
+#: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_mail_subject"
 msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
-#: ondestan/services/animal_service.py:26
-msgid "low_battery_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de ${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través de <a href=\"${url}\">este enlace</a>.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
-
 #: ondestan/services/animal_service.py:27
+msgid "low_battery_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de ${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/animal_service.py:28
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -105,27 +105,27 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/animal_service.py:28
+#: ondestan/services/animal_service.py:29
 msgid "low_battery_notification_sms"
 msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
-#: ondestan/services/animal_service.py:30
+#: ondestan/services/animal_service.py:31
 msgid "medium_battery_notification_web"
 msgstr "La vaca ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
 
-#: ondestan/services/animal_service.py:32
+#: ondestan/services/animal_service.py:33
 msgid "gps_immobile_notification_web"
 msgstr "La vaca ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse (desde el ${date_begin})."
 
-#: ondestan/services/animal_service.py:33
+#: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} parece que no se está moviendo"
 
-#: ondestan/services/animal_service.py:34
-msgid "gps_immobile_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu vaca <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
-
 #: ondestan/services/animal_service.py:35
+msgid "gps_immobile_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu vaca <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/animal_service.py:36
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -138,31 +138,31 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/animal_service.py:37
+#: ondestan/services/animal_service.py:38
 msgid "gps_instant_duplicated_notification_web"
 msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:39
+#: ondestan/services/animal_service.py:40
 msgid "gps_inactive_device_notification_web"
 msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:41
+#: ondestan/services/animal_service.py:42
 msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
 
-#: ondestan/services/animal_service.py:43
+#: ondestan/services/animal_service.py:44
 msgid "outside_plots_notification_web"
 msgstr "<b>¡Urgente!</b> La vaca ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
 
-#: ondestan/services/animal_service.py:44
+#: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} fuera de las fincas"
 
-#: ondestan/services/animal_service.py:45
-msgid "outside_plots_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : ${animal_name} parece que salió de las fincas</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
-
 #: ondestan/services/animal_service.py:46
+msgid "outside_plots_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : ${animal_name} parece que salió de las fincas</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/animal_service.py:47
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -173,7 +173,7 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/animal_service.py:47
+#: ondestan/services/animal_service.py:48
 msgid "outside_plots_notification_sms"
 msgstr "[Onde Estan] ${date}: ${animal_name} salió de las fincas"
 
@@ -182,38 +182,159 @@ msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
 #: ondestan/services/order_service.py:23
-msgid "order_update_notification_web"
-msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado ${state}."
+#| msgid "order_update_notification_web"
+msgid "order_update_state_0_notification_web"
+msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'."
 
 #: ondestan/services/order_service.py:24
-msgid "order_update_notification_mail_subject"
-msgstr "Actualización de tu pedido en Ondestán"
+#| msgid "order_update_notification_mail_subject"
+msgid "order_update_state_0_notification_mail_subject"
+msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En espera')"
 
 #: ondestan/services/order_service.py:25
-msgid "order_update_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado ${state}<br/>Te seguiremos informando de futuros cambios en él. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+#| msgid "order_update_notification_mail_html_body"
+msgid "order_update_state_0_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'.<br/>Por ahora no tienes que realizar ninguna acción.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:26
-msgid "order_update_notification_mail_text_body"
+#| msgid "order_update_notification_mail_text_body"
+msgid "order_update_state_0_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
-"Tu pedido de ${units} aparato(s) ha pasado a estado ${state}\n"
-"Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes acceder a la url:\n"
-"${url}\n"
+"\n"
+"Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'.\n"
+"Por ahora no tienes que realizar ninguna acción.\n"
+"Te seguiremos informando de futuros cambios tu pedido . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
 #: ondestan/services/order_service.py:28
+#| msgid "order_update_notification_web"
+msgid "order_update_state_1_notification_web"
+msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'."
+
+#: ondestan/services/order_service.py:29
+#| msgid "order_update_notification_mail_subject"
+msgid "order_update_state_1_notification_mail_subject"
+msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En proceso')"
+
+#: ondestan/services/order_service.py:30
+#| msgid "order_update_notification_mail_html_body"
+msgid "order_update_state_1_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'.<br/>Por ahora no tienes que realizar ninguna acción, nos pondremos en contacto contigo en caso de que sea necesario.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/order_service.py:31
+#| msgid "order_update_notification_mail_text_body"
+msgid "order_update_state_1_notification_mail_text_body"
+msgstr ""
+"¡Hola ${name}!\n"
+"\n"
+"Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'.\n"
+"Por ahora no tienes que realizar ninguna acción, nos pondremos en contacto contigo en caso de que sea necesario.\n"
+"Te seguiremos informando de futuros cambios en tu pedido . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"\n"
+"Saludos\n"
+"Equipo OndeEstán\n"
+"www.ondeestan.com"
+
+#: ondestan/services/order_service.py:33
+#| msgid "order_update_notification_web"
+msgid "order_update_state_2_notification_web"
+msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'."
+
+#: ondestan/services/order_service.py:34
+#| msgid "order_update_notification_mail_subject"
+msgid "order_update_state_2_notification_mail_subject"
+msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Enviado')"
+
+#: ondestan/services/order_service.py:35
+#| msgid "order_update_notification_mail_html_body"
+msgid "order_update_state_2_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'.<br/>En el <a href=\"${map_url}\">mapa</a>, en la fila superior, deberían aparecer los dispositivos que te hemos enviado como inactivos con un código identificativo. Una vez que los recibas, puedes identificarlos con dicho código mediante la pegatina en la parte posterior. Una vez que los hayas encendido y colocado en tus animales, en la interfaz web podrás activarlos para que empiece a almacenar y mostrar posiciones y asignarles un nombre que te resulte más intuitivo identificarlos (haciendo doble click sobre el código identificativo).<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/order_service.py:36
+#| msgid "order_update_notification_mail_text_body"
+msgid "order_update_state_2_notification_mail_text_body"
+msgstr ""
+"¡Hola ${name}!\n"
+"\n"
+"Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'.\n"
+"En el mapa (${map_url}), en la fila superior, deberían aparecer los dispositivos que te hemos enviado como inactivos con un código identificativo. Una vez que los recibas, puedes identificarlos con dicho código mediante la pegatina en la parte posterior. Una vez que los hayas encendido y colocado en tus animales, en la interfaz web podrás activarlos para que empiece a almacenar y mostrar posiciones y asignarles un nombre que te resulte más intuitivo identificarlos (haciendo doble click sobre el código identificativo).\n"
+"Te seguiremos informando de futuros cambios en tu pedido. Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"\n"
+"Saludos\n"
+"Equipo OndeEstán\n"
+"www.ondeestan.com"
+
+#: ondestan/services/order_service.py:38
+#| msgid "order_update_notification_web"
+msgid "order_update_state_3_notification_web"
+msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'."
+
+#: ondestan/services/order_service.py:39
+#| msgid "order_update_notification_mail_subject"
+msgid "order_update_state_3_notification_mail_subject"
+msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Activado')"
+
+#: ondestan/services/order_service.py:40
+#| msgid "order_update_notification_mail_html_body"
+msgid "order_update_state_3_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'.<br/>Todos tus dispositivos han sido activados, a partir de ahora podrás ver en tiempo real la situación de tus animales en el <a href=\"${map_url}\">mapa</a>.<br>En caso de que tengas cualquier problema no dudes en ponerte en contacto con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo a través del <a href=\"${url}\">mismo formulario</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/order_service.py:41
+#| msgid "order_update_notification_mail_text_body"
+msgid "order_update_state_3_notification_mail_text_body"
+msgstr ""
+"¡Hola ${name}!\n"
+"\n"
+"Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'.\n"
+"Todos tus dispositivos han sido activados, a partir de ahora podrás ver en tiempo real la situación de tus animales en el mapa (${map_url}).\n"
+"En caso de que tengas cualquier problema no dudes en ponerte en contacto con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo a través del mismo formulario: ${url}\n"
+"\n"
+"Saludos\n"
+"Equipo OndeEstán\n"
+"www.ondeestan.com"
+
+#: ondestan/services/order_service.py:43
+#| msgid "order_update_notification_web"
+msgid "order_update_state_4_notification_web"
+msgstr "Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'."
+
+#: ondestan/services/order_service.py:44
+#| msgid "order_update_notification_mail_subject"
+msgid "order_update_state_4_notification_mail_subject"
+msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Cancelado')"
+
+#: ondestan/services/order_service.py:45
+#| msgid "order_update_notification_mail_html_body"
+msgid "order_update_state_4_notification_mail_html_body"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'.<br/>En caso de que no hayas pedido explícitamente la cancelación de tu pedido, contacta con nuestro equipo para recibir más información.<br>Para consultar tus pedidos puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+
+#: ondestan/services/order_service.py:46
+#| msgid "order_update_notification_mail_text_body"
+msgid "order_update_state_4_notification_mail_text_body"
+msgstr ""
+"¡Hola ${name}!\n"
+"\n"
+"Tu pedido de ${units} aparato(s) ha pasado a estado'Cancelado'.\n"
+"En caso de que no hayas pedido explícitamente la cancelación de tu pedido, contacta con nuestro equipo para recibir más información.\n"
+"Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"\n"
+"Saludos\n"
+"Equipo OndeEstán\n"
+"www.ondeestan.com"
+
+#: ondestan/services/order_service.py:48
 msgid "new_order_user_notification_mail_subject"
 msgstr "[Onde Están] Confirmación de Pedido"
 
-#: ondestan/services/order_service.py:29
+#: ondestan/services/order_service.py:49
 msgid "new_order_user_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>   <p>¡Hola ${name}!<br><br>Tu nuevo pedido de ${units} aparato(s) se ha registrado correctamente.<br>En breve nuestro equipo se pondrá en contacto contigo para acordar el método de pago.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
-#: ondestan/services/order_service.py:30
+#: ondestan/services/order_service.py:50
 msgid "new_order_user_notification_mail_text_body"
 msgstr ""
 "Hola ${name}!\n"
@@ -225,19 +346,19 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/order_service.py:32
+#: ondestan/services/order_service.py:52
 msgid "new_order_admin_notification_web"
 msgstr "Nuevo pedido de ${units} unidades para ${login} (${name})"
 
-#: ondestan/services/order_service.py:33
+#: ondestan/services/order_service.py:53
 msgid "new_order_admin_notification_mail_subject"
 msgstr "[Onde Están] Nuevo Pedido"
 
-#: ondestan/services/order_service.py:34
+#: ondestan/services/order_service.py:54
 msgid "new_order_admin_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>Nuevo pedido de ${units} aparato(s) para ${login} (${name}).<br><a href=\"${url}\">Listado de pedidos</a></p></body></html>"
 
-#: ondestan/services/order_service.py:35
+#: ondestan/services/order_service.py:55
 msgid "new_order_admin_notification_mail_text_body"
 msgstr ""
 "Nuevo pedido de ${units} aparato(s) para ${login} (${name}).\n"
@@ -274,7 +395,7 @@ msgstr "[Onde Están] Este es tu usuario (${login})"
 
 #: ondestan/services/user_service.py:26
 msgid "login_reminder_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El usuario asociado a este correo es «${login}», y en caso de que hayas olvidado tu contraseña, pulsa en <a href=\"${url}\">este enlace</a> para resetearla a una nueva que te comunicaremos por e-mail a esta misma dirección.<br><br>Y recuerda que puedes editar tu perfil <a href=\"${url_profile}\">aquí</a>.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El usuario asociado a este correo es «${login}», y en caso de que hayas olvidado tu contraseña, pulsa en <a href=\"${url}\">este enlace</a> para resetearla a una nueva que te comunicaremos por e-mail a esta misma dirección.<br><br>Y recuerda que puedes editar tu perfil <a href=\"${url_profile}\">aquí</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/user_service.py:27
 msgid "login_reminder_notification_mail_text_body"
@@ -299,7 +420,7 @@ msgstr "[Onde Están] Reseteo de contraseña"
 
 #: ondestan/services/user_service.py:31
 msgid "password_reset_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>La contraseña de tu cuenta asociada a este correo ha sido reseteada a ${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta en Ondestán</a> y cambies tu contraseña a una nueva lo antes posible.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>La contraseña de tu cuenta asociada a este correo ha sido reseteada a ${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta en Ondestán</a> y cambies tu contraseña a una nueva lo antes posible.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/user_service.py:32
 msgid "password_reset_notification_mail_text_body"
@@ -325,11 +446,11 @@ msgstr "Contraseña actualizada"
 msgid "wrong_password"
 msgstr "Contraseña incorrecta"
 
-#: ondestan/services/user_service.py:138
+#: ondestan/services/user_service.py:139
 msgid "login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/services/user_service.py:142
+#: ondestan/services/user_service.py:143
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 

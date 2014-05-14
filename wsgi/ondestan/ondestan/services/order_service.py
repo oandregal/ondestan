@@ -20,10 +20,30 @@ import ondestan.services
 logger = logging.getLogger('ondestan')
 
 # We put these 18n strings here so they're detected when parsing files
-_('order_update_notification_web', domain='Ondestan')
-_('order_update_notification_mail_subject', domain='Ondestan')
-_('order_update_notification_mail_html_body', domain='Ondestan')
-_('order_update_notification_mail_text_body', domain='Ondestan')
+_('order_update_state_0_notification_web', domain='Ondestan')
+_('order_update_state_0_notification_mail_subject', domain='Ondestan')
+_('order_update_state_0_notification_mail_html_body', domain='Ondestan')
+_('order_update_state_0_notification_mail_text_body', domain='Ondestan')
+
+_('order_update_state_1_notification_web', domain='Ondestan')
+_('order_update_state_1_notification_mail_subject', domain='Ondestan')
+_('order_update_state_1_notification_mail_html_body', domain='Ondestan')
+_('order_update_state_1_notification_mail_text_body', domain='Ondestan')
+
+_('order_update_state_2_notification_web', domain='Ondestan')
+_('order_update_state_2_notification_mail_subject', domain='Ondestan')
+_('order_update_state_2_notification_mail_html_body', domain='Ondestan')
+_('order_update_state_2_notification_mail_text_body', domain='Ondestan')
+
+_('order_update_state_3_notification_web', domain='Ondestan')
+_('order_update_state_3_notification_mail_subject', domain='Ondestan')
+_('order_update_state_3_notification_mail_html_body', domain='Ondestan')
+_('order_update_state_3_notification_mail_text_body', domain='Ondestan')
+
+_('order_update_state_4_notification_web', domain='Ondestan')
+_('order_update_state_4_notification_mail_subject', domain='Ondestan')
+_('order_update_state_4_notification_mail_html_body', domain='Ondestan')
+_('order_update_state_4_notification_mail_text_body', domain='Ondestan')
 
 _('new_order_user_notification_mail_subject', domain='Ondestan')
 _('new_order_user_notification_mail_html_body', domain='Ondestan')
@@ -102,11 +122,11 @@ def notify_order_update(order_state, request):
                  'login': order_state.order.user.login,
                  'units': order_state.order.units,
                  'address': order_state.order.address,
-                 'url': request.route_url('orders'),
-                 'state': "_('order_state_" + str(order_state.state) +
-                 "', domain='Ondestan')"
+                 'map_url': request.route_url('map'),
+                 'url': request.route_url('orders')
                  }
-    ondestan.services.notification_service.process_notification('order_update',
+    ondestan.services.notification_service.process_notification(
+        'order_update_state_' + str(order_state.state),
         order_state.order.user.login, True, 1, True, False, parameters)
 
 
