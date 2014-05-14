@@ -82,7 +82,8 @@ def remind_user(request):
     if (user != None):
         url = request.route_url('password_reset',
                                 loginhash=sha512(user.login).hexdigest())
-        parameters = {'name': user.name, 'url': url, 'login': user.login}
+        parameters = {'name': user.name, 'url': url, 'login': user.login,
+                      'url_profile': request.route_url('update_profile')}
         ondestan.services.notification_service.process_notification(
             'login_reminder', user.login, False, 0, True, False, parameters)
 

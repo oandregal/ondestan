@@ -1,4 +1,5 @@
 # coding=UTF-8
+from pyramid import url
 from pyramid.i18n import (
     TranslationString as _
     )
@@ -170,7 +171,7 @@ def deactivate_animal_by_id(request):
         animal.update()
 
 
-def save_new_position(position, animal):
+def save_new_position(position, animal, request):
     if animal.active:
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
@@ -191,7 +192,7 @@ def save_new_position(position, animal):
     process_position_general_notifications(position, animal)
 
 
-def process_no_coverage_position(position, animal):
+def process_no_coverage_position(position, animal, request):
     if animal.active:
         if get_animal_position_by_date(animal.id, position.date) == None:
             parameters = {'name': animal.user.name,
@@ -204,10 +205,10 @@ def process_no_coverage_position(position, animal):
             notification_service.process_notification(
                 'no_gps_coverage', animal.user.login, True, 2,
                 False, False, parameters)
-    process_position_general_notifications(position, animal)
+    process_position_general_notifications(position, animal, request)
 
 
-def process_position_general_notifications(position, animal):
+def process_position_general_notifications(position, animal, request):
     if animal.active:
         aux = get_animal_position_by_date(animal.id, position.date)
         if aux == position or aux == None:
@@ -222,7 +223,8 @@ def process_position_general_notifications(position, animal):
                                         animal.name != '') else animal.imei,
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
-                         'battery_level': position.battery
+                         'battery_level': position.battery,
+                         'url': request.route_url('map')
                          }
                         ondestan.services.\
                         notification_service.process_notification(

@@ -40,10 +40,10 @@ def process_gps_updates(request):
     expected_md5 = request._headers['content-md5']
     if expected_md5 != md5.new(request.params.keys()[0]).hexdigest():
         raise GpsUpdateError('Wrong MD5', 400)"""
-    process_gps_params(request.params.keys()[0])
+    process_gps_params(request.params.keys()[0], request)
 
 
-def process_gps_params(base_params):
+def process_gps_params(base_params, request):
     logger.debug("Received a GPS update with body: '"
                                + base_params + "'")
     if base_params.startswith(beacon_header):
@@ -68,12 +68,12 @@ def process_gps_params(base_params):
                 if key in data:
                     data[key] = params[i]
                 i += 1
-            process_gps_data(data)
+            process_gps_data(data, request)
     else:
         raise GpsUpdateError('Unaccepted data header', 400)
 
 
-def process_gps_data(data):
+def process_gps_data(data, request):
     try:
         if data['imei'] == None or data['imei'] == '' or data['date'] == None\
         or data['date'] == '' or data['lon'] == None or\
@@ -105,8 +105,9 @@ def process_gps_data(data):
         if data['coverage'] != None:
             position.coverage = float(data['coverage'])
         if no_coverage:
-            animal_service.process_no_coverage_position(position, animal)
+            animal_service.process_no_coverage_position(position, animal,
+                                                        request)
         else:
-            animal_service.save_new_position(position, animal)
+            animal_service.save_new_position(position, animal, request)
     except ValueError as e:
         raise GpsUpdateError(e.message, 400)
