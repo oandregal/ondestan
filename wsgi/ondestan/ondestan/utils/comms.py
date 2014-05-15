@@ -6,7 +6,7 @@ from os.path import expandvars
 from twilio.rest import TwilioRestClient
 
 from ondestan.config import Config
-import logging
+import logging, sys
 
 logger = logging.getLogger('ondestan')
 
@@ -46,21 +46,19 @@ def send_mail(html, text, subject, destination):
     msg.attach(part2)
 
     server = SMTP(smtp_server, smtp_port)
-    server.starttls()
+    try:
+        server.starttls()
 
-    #Next, log in to the server
-    server.login(smtp_mail, smtp_password)
+        server.login(smtp_mail, smtp_password)
 
-    #Send the mail
-    # sendmail function takes 3 arguments:
-    # sender's address
-    # recipient's address
-    # and message to send - here it is sent as one string.
-    server.sendmail(smtp_mail, destination, msg.as_string())
-    server.quit()
-
-    logger.info("E-mail with subject '" + subject + "' has been sent to email "
-                + destination)
+        server.sendmail(smtp_mail, destination, msg.as_string())
+        logger.info("E-mail with subject '" + subject + "' has been sent to " +
+                    "email " + destination)
+    except Exception, e:
+        logger.error("E-mail with subject '" + subject + "' couldn't be sent "
+                     + "to email " + destination + " due to error " + str(type(e)) + ":" + str(e))
+    finally:
+        server.quit()
 
 
 def send_sms(text, number):
