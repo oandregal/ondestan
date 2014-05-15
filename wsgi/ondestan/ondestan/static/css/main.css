@@ -262,3 +262,9 @@ div#map {
  a:hover.alert {
 	color: #C50E0E;
 }
+
+.captionOrange {
+	font-size: 40px;
+	padding-top: 10px;
+	line-height: 1;
+}

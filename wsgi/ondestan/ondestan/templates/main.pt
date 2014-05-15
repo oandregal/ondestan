@@ -41,6 +41,8 @@
 	      <h3 class="text-muted"><a href="${request.route_url('default')}">Onde Están</a></h3>
 	    </div>
 
+		<tal:block metal:define-slot="background"/>
+
 		<div class="col-md-10 col-md-offset-1">
 	    	<tal:block metal:define-slot="content"/>
 	    </div>
