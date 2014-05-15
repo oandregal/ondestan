@@ -30,11 +30,11 @@
     margin: 2em 0 2em 0;
 }
 
-.data h5 {
+.data h5, .data h4 {
     font-weight: bold;
 }
 
-.data > div > a {
+.data div > a {
     font-size: 50px;
     padding: 0px 10px;
 }
@@ -253,4 +253,12 @@ div#map {
 .leaflet-right .leaflet-draw-actions-top, .leaflet-right .leaflet-draw-actions {
 	right: 35px;
 	padding-top: 5px;
+}
+
+.alert {
+	color: #FF0000;
+}
+
+ a:hover.alert {
+	color: #C50E0E;
 }

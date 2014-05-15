@@ -1000,83 +1000,95 @@ msgstr "Haz click en una finca para borrarla."
 msgid "hide_show_draw_tools_tooltip"
 msgstr "Mostrar/ocultar herramientas de gestión de fincas"
 
-#. Default: ACTIVE
-#: ondestan/templates/simpleViewer.pt:84
+#. Default: Map legend
+#: ondestan/templates/simpleViewer.pt:68
+#: ondestan/templates/simpleViewer.pt:140
+msgid "map_legend"
+msgstr "Leyenda del mapa"
+
+#. Default: Devices
+#: ondestan/templates/simpleViewer.pt:86
+#| msgid "new_device"
+msgid "devices"
+msgstr "Dispositivos"
+
+#. Default: Active
+#: ondestan/templates/simpleViewer.pt:89
 msgid "dashboard_active"
-msgstr "ACTIVOS"
+msgstr "Activos"
 
-#. Default: INACTIVE
-#: ondestan/templates/simpleViewer.pt:88
+#. Default: Inactive
+#: ondestan/templates/simpleViewer.pt:93
 msgid "dashboard_inactive"
-msgstr "INACTIVOS"
+msgstr "Inactivos"
 
-#. Default: LOW BATTERY
-#: ondestan/templates/simpleViewer.pt:92
+#. Default: Alerts
+#: ondestan/templates/simpleViewer.pt:99
+msgid "alerts"
+msgstr "Alertas"
+
+#. Default: Low Battery
+#: ondestan/templates/simpleViewer.pt:102
 msgid "dashboard_low_battery"
-msgstr "BATERÍA BAJA"
+msgstr "Batería baja"
 
-#. Default: OUTSIDE PLOTS
-#: ondestan/templates/simpleViewer.pt:96
+#. Default: Outside Plots
+#: ondestan/templates/simpleViewer.pt:106
 msgid "dashboard_outside_plots"
-msgstr "FUERA DE FINCAS"
+msgstr "Fuera de fincas"
 
 #. Default: Select plot owner
-#: ondestan/templates/simpleViewer.pt:107
+#: ondestan/templates/simpleViewer.pt:118
 msgid "select_plot_user_modal_title"
 msgstr "Selecciona el dueño"
 
 #. Default: Cancel
-#: ondestan/templates/simpleViewer.pt:116
+#: ondestan/templates/simpleViewer.pt:127
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/simpleViewer.pt:117
+#: ondestan/templates/simpleViewer.pt:128
 msgid "accept"
 msgstr "Aceptar"
 
-#. Default: Map legend
-#: ondestan/templates/simpleViewer.pt:131
-msgid "map_legend"
-msgstr "Leyenda del mapa"
-
 #. Default: Battery Level (color)
-#: ondestan/templates/simpleViewer.pt:134
+#: ondestan/templates/simpleViewer.pt:143
 msgid "battery_level_legend"
 msgstr "Nivel de batería (color)"
 
 #. Default: Low battery level
-#: ondestan/templates/simpleViewer.pt:137
+#: ondestan/templates/simpleViewer.pt:146
 msgid "low_battery_level"
 msgstr "Nivel de batería bajo"
 
 #. Default: Medium battery level
-#: ondestan/templates/simpleViewer.pt:140
+#: ondestan/templates/simpleViewer.pt:149
 msgid "medium_battery_level"
 msgstr "Nivel de batería medio"
 
 #. Default: High battery level
-#: ondestan/templates/simpleViewer.pt:143
+#: ondestan/templates/simpleViewer.pt:152
 msgid "high_battery_level"
 msgstr "Nivel de batería alto"
 
 #. Default: Inside/Outside Plots (border)
-#: ondestan/templates/simpleViewer.pt:147
+#: ondestan/templates/simpleViewer.pt:156
 msgid "inside_outside_plots_legend"
 msgstr "Dentro/fuera de fincas (borde)"
 
 #. Default: Inside plots
-#: ondestan/templates/simpleViewer.pt:150
+#: ondestan/templates/simpleViewer.pt:159
 msgid "inside_plots"
 msgstr "Dentro de fincas"
 
 #. Default: Outside plots
-#: ondestan/templates/simpleViewer.pt:153
+#: ondestan/templates/simpleViewer.pt:162
 msgid "outside_plots"
 msgstr "Fuera de fincas"
 
 #. Default: Close
-#: ondestan/templates/simpleViewer.pt:158
+#: ondestan/templates/simpleViewer.pt:167
 msgid "close"
 msgstr "Cerrar"
 

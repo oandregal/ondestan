@@ -181,6 +181,9 @@
                 })
             }
 
+            if (low_battery_devices.length > 0) {
+            	$('#low_battery_devices').addClass('alert');
+            }
             $('#low_battery_devices').text(low_battery_devices.length);
             if (low_battery_devices_popover_content != '') {
                 $('#low_battery_devices').removeAttr('disabled');
@@ -192,6 +195,9 @@
                 });
             }
 
+            if (outside_plots_devices.length > 0) {
+            	$('#outside_plots_devices').addClass('alert');
+            }
             $('#outside_plots_devices').text(outside_plots_devices.length);
             if (outside_plots_devices_popover_content != '') {
                 $('#outside_plots_devices').removeAttr('disabled');

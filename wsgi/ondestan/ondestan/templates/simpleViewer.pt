@@ -81,21 +81,31 @@
 	  		</tal:block>
 		</div>
 
-      <div class="col-md-3 text-center">
-        <h5 class="text-muted" i18n:translate="dashboard_active">ACTIVE</h5>
-        <a href="#" id="active_devices" disabled="disabled">-</a>
+      <div class="col-md-3 text-center col-md-offset-1" style="border: 1px solid #C0C0C0; padding: 5px 0 0;">
+      	  <div style="position: absolute; left: 50%; top: -20px; ">
+		  	<h4 class="text-muted" align="center" style="position: relative; left: -50%; padding: 0 5px;background-color: white;" i18n:translate="devices">Devices</h4>
+		  </div>
+	      <div class="col-md-6" style="padding: 0;">
+	        <a href="#" id="active_devices" disabled="disabled">-</a>
+	        <h5 i18n:translate="dashboard_active" style="margin: 0 0 5px; color: #555555;">Active</h5>
+	      </div>
+	      <div class="col-md-6" style="padding: 0;">
+	        <a href="#" id="inactive_devices" disabled="disabled">-</a>
+	        <h5 i18n:translate="dashboard_inactive" style="margin: 0 0 5px; color: #555555;">Inactive</h5>
+	      </div>
       </div>
-      <div class="col-md-3 text-center">
-        <h5 class="text-muted" i18n:translate="dashboard_inactive">INACTIVE</h5>
-        <a href="#" id="inactive_devices" disabled="disabled">-</a>
-      </div>
-      <div class="col-md-3 text-center">
-        <h5 class="text-muted" i18n:translate="dashboard_low_battery">LOW BATTERY</h5>
-        <a href="#" id="low_battery_devices" disabled="disabled">-</a>
-      </div>
-      <div class="col-md-3 text-center">
-        <h5 class="text-muted" i18n:translate="dashboard_outside_plots">OUTSIDE PLOTS</h5>
-        <a href="#" id="outside_plots_devices" disabled="disabled">-</a>
+      <div class="col-md-3 text-center col-md-offset-4" style="border: 1px solid #C0C0C0; padding: 5px 0 0;">
+      	  <div style="position: absolute; left: 50%; top: -20px; ">
+		  	<h4 class="text-muted" align="center" style="position: relative; left: -50%; padding: 0 5px;background-color: white;" i18n:translate="alerts">Alerts</h4>
+		  </div>
+	      <div class="col-md-6" style="padding: 0;">
+	        <a href="#" id="low_battery_devices" disabled="disabled">-</a>
+	        <h5 i18n:translate="dashboard_low_battery" style="margin: 0 0 5px; color: #555555;">Low Battery</h5>
+	      </div>
+	      <div class="col-md-6" style="padding: 0;">
+	        <a href="#" id="outside_plots_devices" disabled="disabled">-</a>
+	        <h5 i18n:translate="dashboard_outside_plots" style="margin: 0 0 5px; color: #555555;">Outside Plots</h5>
+	      </div>
       </div>
     </div>
     
