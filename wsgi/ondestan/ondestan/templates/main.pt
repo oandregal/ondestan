@@ -12,13 +12,13 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
     <meta name="keywords" content="web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2" />
     <meta name="description" content="cows position monitoring web app" />
+    <tal:block metal:define-slot="styles"/>
     <link rel="stylesheet"
           href="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/css/bootstrap.css')}"
           type="text/css" media="screen" charset="utf-8" />
     <link rel="stylesheet"
           href="${request.static_url('ondestan:static/css/main.css')}"
           type="text/css" media="screen" />
-    <tal:block metal:define-slot="styles"/>
   </head>
 
   <?python from ondestan.security import get_user_login; from ondestan.services.order_service import get_orders, get_orders_popover ?>
