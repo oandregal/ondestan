@@ -256,7 +256,7 @@
 		        // Set CSS for the control interior
 		        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-control-zoom-in', controlUI);
 		        controlText.href = '#';
-		        controlText.text = '?';
+		        controlText.innerHTML = '?';
 
 		        return controlDiv;
 		    }
