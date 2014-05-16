@@ -42,6 +42,7 @@ def main(global_config, **settings):
     config.set_authorization_policy(authz_policy)
     config.add_translation_dirs('ondestan:locale')
     config.add_route('default', '/')
+    config.add_route('tour', '/tour')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
     config.add_route('reminder', '/users/reminder')

@@ -42,7 +42,8 @@ def login(request):
     if 'activated' in request.params:
         activated = request.params['activated'].lower() == 'true'
     referrer = request.url
-    base_referrer = referrer[0:referrer.find('?')] if referrer.find('?') != -1 else referrer
+    base_referrer = referrer[0:referrer.find('?')] if referrer.find('?') != -1\
+        else referrer
     if base_referrer == request.route_url('login'):
         # never use the login form itself as came_from
         # use main view instead
@@ -67,6 +68,11 @@ def login(request):
         login=login,
         activated=activated
         )
+
+
+@view_config(route_name='tour', renderer='templates/tour.pt')
+def tour(request):
+    return dict()
 
 
 @view_config(route_name='gps_update')

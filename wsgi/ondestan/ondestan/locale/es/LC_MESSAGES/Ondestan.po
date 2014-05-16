@@ -17,39 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:61
+#: ondestan/views.py:62
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:208
+#: ondestan/views.py:214
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
-#: ondestan/views.py:224
+#: ondestan/views.py:230
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:239
+#: ondestan/views.py:245
 msgid "user_login_already_use"
 msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:254
+#: ondestan/views.py:260
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:511
+#: ondestan/views.py:517
 msgid "animal_popup_admin"
 msgstr "${animal_name} (${battery}%) propiedad de ${name}<br>${date}"
 
-#: ondestan/views.py:560
+#: ondestan/views.py:566
 msgid "animal_popup"
 msgstr "${animal_name} (${battery}%)<br>${date}"
 
-#: ondestan/views.py:643
+#: ondestan/views.py:649
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:667
+#: ondestan/views.py:673
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -486,13 +486,18 @@ msgstr "Log de notificaciones"
 msgid "logout"
 msgstr "Salir"
 
+#. Default: Functionalities Tour
+#: ondestan/templates/main.pt:51
+msgid "functionalities_tour"
+msgstr "Tour de funcionalidades"
+
 #. Default: About
-#: ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:51
 msgid "about"
 msgstr "Acerca de"
 
 #. Default: Contact
-#: ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:51
 msgid "contact"
 msgstr "Contacto"
 
@@ -1008,17 +1013,16 @@ msgstr "Leyenda del mapa"
 
 #. Default: Devices
 #: ondestan/templates/simpleViewer.pt:86
-#| msgid "new_device"
 msgid "devices"
 msgstr "Dispositivos"
 
 #. Default: Active
-#: ondestan/templates/simpleViewer.pt:89
+#: ondestan/templates/simpleViewer.pt:90
 msgid "dashboard_active"
 msgstr "Activos"
 
 #. Default: Inactive
-#: ondestan/templates/simpleViewer.pt:93
+#: ondestan/templates/simpleViewer.pt:94
 msgid "dashboard_inactive"
 msgstr "Inactivos"
 
@@ -1028,12 +1032,12 @@ msgid "alerts"
 msgstr "Alertas"
 
 #. Default: Low Battery
-#: ondestan/templates/simpleViewer.pt:102
+#: ondestan/templates/simpleViewer.pt:103
 msgid "dashboard_low_battery"
 msgstr "Batería baja"
 
 #. Default: Outside Plots
-#: ondestan/templates/simpleViewer.pt:106
+#: ondestan/templates/simpleViewer.pt:107
 msgid "dashboard_outside_plots"
 msgstr "Fuera de fincas"
 
@@ -1091,6 +1095,11 @@ msgstr "Fuera de fincas"
 #: ondestan/templates/simpleViewer.pt:167
 msgid "close"
 msgstr "Cerrar"
+
+#. Default: Tour - Ondestán
+#: ondestan/templates/tour.pt:8
+msgid "tour_title"
+msgstr "Tour de funcionalidades - Ondestán"
 
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8

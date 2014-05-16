@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-14 19:58+0200\n"
+"POT-Creation-Date: 2014-05-16 12:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,39 +17,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:61
+#: ondestan/views.py:62
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:208
+#: ondestan/views.py:214
 msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:224
+#: ondestan/views.py:230
 msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:239
+#: ondestan/views.py:245
 msgid "user_login_already_use"
 msgstr ""
 
-#: ondestan/views.py:254
+#: ondestan/views.py:260
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:511
+#: ondestan/views.py:517
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:560
+#: ondestan/views.py:566
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:643
+#: ondestan/views.py:649
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:667
+#: ondestan/views.py:673
 msgid "plot_popup"
 msgstr ""
 
@@ -373,13 +373,18 @@ msgstr ""
 msgid "logout"
 msgstr ""
 
+#. Default: Functionalities Tour
+#: ondestan/templates/main.pt:51
+msgid "functionalities_tour"
+msgstr ""
+
 #. Default: About
-#: ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:51
 msgid "about"
 msgstr ""
 
 #. Default: Contact
-#: ondestan/templates/main.pt:49
+#: ondestan/templates/main.pt:51
 msgid "contact"
 msgstr ""
 
@@ -866,12 +871,12 @@ msgid "devices"
 msgstr ""
 
 #. Default: Active
-#: ondestan/templates/simpleViewer.pt:89
+#: ondestan/templates/simpleViewer.pt:90
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: Inactive
-#: ondestan/templates/simpleViewer.pt:93
+#: ondestan/templates/simpleViewer.pt:94
 msgid "dashboard_inactive"
 msgstr ""
 
@@ -881,12 +886,12 @@ msgid "alerts"
 msgstr ""
 
 #. Default: Low Battery
-#: ondestan/templates/simpleViewer.pt:102
+#: ondestan/templates/simpleViewer.pt:103
 msgid "dashboard_low_battery"
 msgstr ""
 
 #. Default: Outside Plots
-#: ondestan/templates/simpleViewer.pt:106
+#: ondestan/templates/simpleViewer.pt:107
 msgid "dashboard_outside_plots"
 msgstr ""
 
@@ -943,6 +948,11 @@ msgstr ""
 #. Default: Close
 #: ondestan/templates/simpleViewer.pt:167
 msgid "close"
+msgstr ""
+
+#. Default: Tour - Ondestán
+#: ondestan/templates/tour.pt:8
+msgid "tour_title"
 msgstr ""
 
 #. Default: Update profile - Ondestán

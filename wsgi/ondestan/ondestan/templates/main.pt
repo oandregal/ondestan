@@ -48,7 +48,7 @@
 	    </div>
 	    <div class="footer col-md-10 col-md-offset-1">
 	   		<tal:block metal:define-slot="footer"/>
-	   		<a href="http://www.cesareox.com/trabajo/proyectos/oe" i18n:translate="about">About</a> | <a href="http://www.cesareox.com/info_contacto/" i18n:translate="contact">Contact</a>
+	   		<a href="${request.route_url('tour')}" i18n:translate="functionalities_tour">Functionalities Tour</a> | <a href="http://www.cesareox.com/trabajo/proyectos/oe" i18n:translate="about">About</a> | <a href="http://www.cesareox.com/info_contacto/" i18n:translate="contact">Contact</a>
 	    </div>
     </div>
     <div>

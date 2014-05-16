@@ -1,10 +1,11 @@
 .captionOrange, .captionBlack
 {
-	color: #fff;
-	font-size: 20px;
-	line-height: 30px;
-	text-align: center;
-	border-radius: 4px;
+	font-size: 40px;
+	padding-top: 10px;
+	line-height: 1;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
 }
 .captionOrange
 {
@@ -13,7 +14,6 @@
 }
 .captionBlack
 {
-	font-size:16px;
 	background: #000;
 	background-color: rgba(0, 0, 0, 0.4);
 }
