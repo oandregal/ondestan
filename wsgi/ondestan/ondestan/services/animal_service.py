@@ -143,14 +143,14 @@ def activate_animal_by_id(request):
         animal.active = True
         animal.update()
 
-        same_order_animals = animal.order.animals
+        same_order_devices = animal.order.devices
         all_active = True
-        for animal in same_order_animals:
-            all_active = all_active and animal.active
+        for device in same_order_devices:
+            all_active = all_active and device.active
         if all_active:
             active_order_state = Order_state._STATES[len(Order_state._STATES)
                                                      - 1]
-            if animal.order.states[0].state != active_order_state:
+            if device.order.states[0].state != active_order_state:
                 ondestan.services.order_service.update_order_state(
                                 animal.order.id, active_order_state, request)
 
