@@ -510,12 +510,14 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
-                    parameters = {'animal_name': name,
+                    parameters = {
+                        'animal_name': name,
                         'name': animal.user.name,
+                        'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': format_utcdatetime(animal.positions[0].date,
                                                    request)
-                        }
+                    }
                     popup_str = _("animal_popup_admin", domain='Ondestan',
                                   mapping=parameters)
                     geojson.append({
@@ -562,11 +564,13 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
-                    parameters = {'animal_name': name,
+                    parameters = {
+                        'animal_name': name,
+                        'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': format_utcdatetime(animal.positions[0].date,
                                                    request)
-                        }
+                    }
                     popup_str = _("animal_popup", domain='Ondestan',
                                   mapping=parameters)
                     geojson.append({
@@ -647,9 +651,10 @@ def json_plots(request):
         if plots != None:
             logger.debug("Found " + str(len(plots)) + " plots for all users")
             for plot in plots:
-                parameters = {'plot_name': plot.name,
+                parameters = {
+                    'plot_name': plot.name,
                     'name': plot.user.name
-                    }
+                }
                 popup_str = _("plot_popup_admin", domain='Ondestan',
                               mapping=parameters)
                 geojson.append({
@@ -671,9 +676,10 @@ def json_plots(request):
             logger.debug("Found " + str(len(plots)) + " plots " + \
                          "for user " + login)
             for plot in plots:
-                parameters = {'plot_name': plot.name,
+                parameters = {
+                    'plot_name': plot.name,
                     'name': plot.user.name
-                    }
+                }
                 popup_str = _("plot_popup", domain='Ondestan',
                               mapping=parameters)
                 geojson.append({

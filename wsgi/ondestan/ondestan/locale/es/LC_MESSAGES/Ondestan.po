@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-05-14 18:07+0200\n"
-"PO-Revision-Date: 2014-05-16 13:55+0100\n"
-"Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
+"PO-Revision-Date: 2014-05-16 17:59+0100\n"
+"Last-Translator: \n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 "MIME-Version: 1.0\n"
@@ -39,11 +39,11 @@ msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto.
 
 #: ondestan/views.py:517
 msgid "animal_popup_admin"
-msgstr "${animal_name} (${battery}%) propiedad de ${name}<br>${date}"
+msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
 #: ondestan/views.py:566
 msgid "animal_popup"
-msgstr "${animal_name} (${battery}%)<br>${date}"
+msgstr "<strong>Nombre:</strong> ${animal_name} (${imei}) <br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
 #: ondestan/views.py:649
 msgid "plot_popup_admin"
