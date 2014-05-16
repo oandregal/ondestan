@@ -351,6 +351,8 @@
 							layer.feature = result.feature;
 			                layer.bindPopup(result.feature.properties.popup);
 			    			plots.addLayer(layer);
+			    			map.removeLayer(animals_layer);
+			    			load_animals();
 						}
 					}});
 				});
