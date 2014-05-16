@@ -282,14 +282,14 @@
 		    var control = new (L.Control.extend({
 		    options: { position: 'topright' },
 		    onAdd: function (map) {
-		        controlDiv = L.DomUtil.create('div', 'leaflet-retina toggle-draw-button');
+		        controlDiv = L.DomUtil.create('div', 'toggle-draw-button');
 		        L.DomEvent
 		            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
 		            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
 		            .addListener(controlDiv, 'click', this.ToggleDrawFunction);
 
 		        // Set CSS for the control border
-		        var controlUI = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar leaflet-draw-toolbar-top leaflet-toggle-controls-toolbar', controlDiv);
+		        var controlUI = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar leaflet-draw-toolbar-top', controlDiv);
 		        controlUI.title = window.contextVariables.hide_show_draw_tools_tooltip;
 
 		        // Set CSS for the control interior
@@ -415,7 +415,6 @@
     $(function(){
         NS.init();
         $('.leaflet-draw').hide();
-        $('.leaflet-draw').addClass('leaflet-retina');
     });
 
 })(window.OE = window.OE || {});

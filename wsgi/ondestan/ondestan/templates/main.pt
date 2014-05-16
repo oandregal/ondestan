@@ -19,6 +19,7 @@
     <link rel="stylesheet"
           href="${request.static_url('ondestan:static/css/main.css')}"
           type="text/css" media="screen" />
+    <tal:block metal:define-slot="styles"/>
   </head>
 
   <?python from ondestan.security import get_user_login; from ondestan.services.order_service import get_orders, get_orders_popover ?>
