@@ -91,6 +91,33 @@ div#map {
     margin: 0 1em 0 1em;
 }
 
+.devices-block {
+	border: 1px solid #C0C0C0;
+	padding: 5px 0 0;
+}
+
+.devices-block-title {
+	position: absolute;
+	left: 50%;
+	top: -20px;
+}
+
+.devices-block-title > h4 {
+	position: relative;
+	left: -50%;
+	padding: 0 5px;
+	background-color: white;
+}
+
+.devices-block-content {
+	padding: 0;
+}
+
+.devices-block-content > h5 {
+	margin: 0 0 5px;
+	color: #555555;
+}
+
 .alerts-panel {
     max-height: 205px;
     overflow-y: auto;
@@ -259,7 +286,7 @@ div#map {
 	color: #FF0000;
 }
 
- a:hover.alert {
+ a:hover.alert, a:focus.alert {
 	color: #C50E0E;
 }
 
