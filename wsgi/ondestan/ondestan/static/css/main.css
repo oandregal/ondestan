@@ -34,9 +34,45 @@
     font-weight: bold;
 }
 
-.data div > a {
+.devices-block {
+	border: 1px solid #C0C0C0;
+	padding: 5px 0 0;
+	margin-top: 10px;
+}
+
+.devices-block-title {
+	position: absolute;
+	left: 50%;
+	top: -20px;
+}
+
+.devices-block-title > h4 {
+	position: relative;
+	left: -50%;
+	padding: 0 5px;
+	background-color: white;
+}
+
+.devices-block-content {
+	padding: 0;
+}
+
+.devices-block-content > h5 {
+	margin: 0 0 5px;
+	color: #555555;
+}
+
+.data div.devices-block a {
     font-size: 50px;
     padding: 0px 10px;
+}
+
+.devices-alert {
+	color: #FF0000;
+}
+
+ a:hover.devices-alert, a:focus.devices-alert {
+	color: #C50E0E;
 }
 
 div#map {
@@ -89,33 +125,6 @@ div#map {
 
 .list-group-item .badge {
     margin: 0 1em 0 1em;
-}
-
-.devices-block {
-	border: 1px solid #C0C0C0;
-	padding: 5px 0 0;
-}
-
-.devices-block-title {
-	position: absolute;
-	left: 50%;
-	top: -20px;
-}
-
-.devices-block-title > h4 {
-	position: relative;
-	left: -50%;
-	padding: 0 5px;
-	background-color: white;
-}
-
-.devices-block-content {
-	padding: 0;
-}
-
-.devices-block-content > h5 {
-	margin: 0 0 5px;
-	color: #555555;
 }
 
 .alerts-panel {
@@ -280,14 +289,6 @@ div#map {
 .leaflet-right .leaflet-draw-actions-top, .leaflet-right .leaflet-draw-actions {
 	right: 35px;
 	padding-top: 5px;
-}
-
-.alert {
-	color: #FF0000;
-}
-
- a:hover.alert, a:focus.alert {
-	color: #C50E0E;
 }
 
 .captionOrange {
