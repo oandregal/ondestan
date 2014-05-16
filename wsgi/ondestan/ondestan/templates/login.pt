@@ -151,6 +151,7 @@
             };
 
             var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+       		$('.captionOrange, .captionBlack').show();
             //responsive code begin
             //you can remove responsive code if you don't want the slider scales while window resizes
             function ScaleSlider() {
@@ -194,7 +195,7 @@
 	
 	
 	        <!-- Slides Container --> 
-	        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1911px; height: 936px;
+	        <div id="slides" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1911px; height: 936px;
 	            overflow: hidden;">
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/one-standing.jpg')}" style="z-index: -1;"/>

@@ -128,6 +128,7 @@
             };
 
             var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+       		$('.captionOrange, .captionBlack').show();
             //responsive code begin
             //you can remove responsive code if you don't want the slider scales while window resizes
             //$('#slides').show();
