@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-05-14 18:07+0200\n"
-"PO-Revision-Date: 2014-05-16 17:59+0100\n"
+"PO-Revision-Date: 2014-05-16 18:04+0100\n"
 "Last-Translator: \n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -489,7 +489,7 @@ msgstr "Salir"
 #. Default: Functionalities Tour
 #: ondestan/templates/main.pt:51
 msgid "functionalities_tour"
-msgstr "Tour de funcionalidades"
+msgstr "Tour"
 
 #. Default: About
 #: ondestan/templates/main.pt:51
@@ -1099,7 +1099,7 @@ msgstr "Cerrar"
 #. Default: Tour - Ondestán
 #: ondestan/templates/tour.pt:8
 msgid "tour_title"
-msgstr "Tour de funcionalidades - Ondestán"
+msgstr "Tour - Ondestán"
 
 #. Default: Update profile - Ondestán
 #: ondestan/templates/updateProfile.pt:8
