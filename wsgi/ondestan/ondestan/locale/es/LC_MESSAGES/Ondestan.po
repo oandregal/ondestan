@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-14 18:07+0200\n"
-"PO-Revision-Date: 2014-05-16 18:04+0100\n"
+"POT-Creation-Date: 2014-05-16 18:39+0200\n"
+"PO-Revision-Date: 2014-05-16 18:41+0100\n"
 "Last-Translator: \n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,19 +37,19 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:517
+#: ondestan/views.py:521
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:566
+#: ondestan/views.py:574
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name} (${imei}) <br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
-#: ondestan/views.py:649
+#: ondestan/views.py:658
 msgid "plot_popup_admin"
 msgstr "Propiedad de ${name}"
 
-#: ondestan/views.py:673
+#: ondestan/views.py:683
 msgid "plot_popup"
 msgstr "${plot_name}"
 
@@ -1091,8 +1091,14 @@ msgstr "Dentro de fincas"
 msgid "outside_plots"
 msgstr "Fuera de fincas"
 
+#. Default: Inactive devices
+#: ondestan/templates/simpleViewer.pt:168
+#| msgid "battery_level_legend"
+msgid "inactive_device_legend"
+msgstr "Dispositivos inactivos"
+
 #. Default: Close
-#: ondestan/templates/simpleViewer.pt:167
+#: ondestan/templates/simpleViewer.pt:173
 msgid "close"
 msgstr "Cerrar"
 
@@ -1131,11 +1137,11 @@ msgstr "Repite la contraseña nueva"
 msgid "meta_date_format"
 msgstr "%d-%m-%Y"
 
-#: ondestan/utils/various.py:67
+#: ondestan/utils/various.py:68
 msgid "meta_datetime_format"
 msgstr "%d-%m-%Y %H:%M:%S"
 
-#: ondestan/utils/various.py:79
+#: ondestan/utils/various.py:80
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 

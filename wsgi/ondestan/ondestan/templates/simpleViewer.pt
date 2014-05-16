@@ -37,7 +37,7 @@
       window.contextVariables.map_view_json = ${view if view != None else 'null'};
       window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
       window.contextVariables.edit_name_tooltip = "<tal:block i18n:translate="edit_name_tooltip">Double click to edit name (confirm change by pressing enter).</tal:block>";
-      
+
       window.contextVariables.zoom_in_tooltip = "<tal:block i18n:translate="map_tool_zoom_in_tooltip">Zoom in</tal:block>";
       window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
 
@@ -50,12 +50,12 @@
       L.drawLocal.draw.handlers.polygon.tooltip.cont = "<tal:block i18n:translate="map_tool_create_plot_handler_cont_tooltip">Click to continue drawing plot.</tal:block>";
       L.drawLocal.draw.handlers.polygon.tooltip.end = "<tal:block i18n:translate="map_tool_create_plot_handler_end_tooltip">Click first point to close this plot.</tal:block>";
       L.drawLocal.draw.handlers.polyline.error = "<tal:block i18n:translate="map_tool_edit_plot_handler_error">Error: plot edges cannot cross!</tal:block>";
-      
+
       L.drawLocal.edit.toolbar.actions.save.title = "<tal:block i18n:translate="map_tool_save_tooltip">Save changes</tal:block>";
       L.drawLocal.edit.toolbar.actions.save.text = "<tal:block i18n:translate="map_tool_save_text">Save</tal:block>";
       L.drawLocal.edit.toolbar.actions.cancel.title = "<tal:block i18n:translate="map_tool_cancel_tooltip">Cancel editing, discards all changes</tal:block>";
       L.drawLocal.edit.toolbar.actions.cancel.text = "<tal:block i18n:translate="map_tool_cancel_text">Cancel</tal:block>";
-      
+
       L.drawLocal.edit.toolbar.buttons.edit = "<tal:block i18n:translate="map_tool_edit_plot_tooltip">Edit plots</tal:block>";
       L.drawLocal.edit.toolbar.buttons.editDisabled = "<tal:block i18n:translate="map_tool_edit_plot_disabled_tooltip">No plots to edit</tal:block>";
       L.drawLocal.edit.toolbar.buttons.remove = "<tal:block i18n:translate="map_tool_delete_plot_tooltip">Delete plots</tal:block>";
@@ -108,7 +108,7 @@
 	      </div>
       </div>
     </div>
-    
+
 	<!-- Select user modal -->
 	<div tal:condition="is_admin" class="modal fade" id="user-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-sm modal-xsm">
@@ -131,7 +131,7 @@
 	  </div>
 	</div>
 
-	<!-- Legend modal -->	
+	<!-- Legend modal -->
 	<div class="modal fade bs-example-modal-sm" id="legend-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-sm">
 	    <div class="modal-content">
@@ -160,6 +160,12 @@
 		      	</li>
 		      	<li>
 		      		<div id="outside-plots" class="circle"></div><span i18n:translate="outside_plots">Outside plots</span>
+		      	</li>
+	      	</ul>
+	      	<hr/>
+	      	<ul>
+		      	<li>
+		      		<div id="inactive-devices" class="circle"></div><span i18n:translate="inactive_device_legend">Inactive devices</span>
 		      	</li>
 	      	</ul>
 	      </div>

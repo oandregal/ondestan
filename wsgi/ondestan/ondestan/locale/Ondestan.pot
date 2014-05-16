@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-16 12:56+0200\n"
+"POT-Creation-Date: 2014-05-16 18:39+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,19 +37,19 @@ msgstr ""
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:517
+#: ondestan/views.py:521
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:566
+#: ondestan/views.py:574
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:649
+#: ondestan/views.py:658
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:673
+#: ondestan/views.py:683
 msgid "plot_popup"
 msgstr ""
 
@@ -945,8 +945,13 @@ msgstr ""
 msgid "outside_plots"
 msgstr ""
 
+#. Default: Inactive devices
+#: ondestan/templates/simpleViewer.pt:168
+msgid "inactive_device_legend"
+msgstr ""
+
 #. Default: Close
-#: ondestan/templates/simpleViewer.pt:167
+#: ondestan/templates/simpleViewer.pt:173
 msgid "close"
 msgstr ""
 
@@ -984,11 +989,11 @@ msgstr ""
 msgid "meta_date_format"
 msgstr ""
 
-#: ondestan/utils/various.py:67
+#: ondestan/utils/various.py:68
 msgid "meta_datetime_format"
 msgstr ""
 
-#: ondestan/utils/various.py:79
+#: ondestan/utils/various.py:80
 msgid "meta_time_format"
 msgstr ""
 

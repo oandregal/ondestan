@@ -159,38 +159,38 @@ div#map {
  .modal-xsm {
  	width: 230px;
  }
- 
+
 .modal-body {
  	text-align: center;
  	padding: 10px;
  }
- 
+
  .modal-footer {
  	margin: 0px;
  	text-align: center;
  }
- 
+
  .mini-form {
  	width: 300px;
  }
- 
+
  .mini-form input, .mini-form textarea, .mini-form select {
  	margin-bottom: 5px;
  }
- 
+
  .mini-form select {
  	width: 150px;
  }
- 
+
  .form-block {
  	max-width: 700px;
  	margin: 0 auto 150px;
  }
- 
+
 .big-font {
 	font-size: 18px;
 }
- 
+
 .small-font {
 	font-size: 12px;
 }
@@ -223,19 +223,23 @@ div#map {
 }
 
 #legend-modal #low-battery.circle {
-	background: red;
+	background: #de2d26;
 }
 
 #legend-modal #medium-battery.circle {
-	background: yellow;
+	background: #feb24c;
 }
 
 #legend-modal #high-battery.circle {
-	background: green;
+	background: #a1d99b;
+}
+
+#legend-modal #inactive-devices.circle {
+	background: #bdbdbd;
 }
 
 #legend-modal #outside-plots.circle, #legend-modal #inside-plots.circle {
-	background: yellow;
+	background: #bdbdbd;
 }
 
 #legend-modal #outside-plots.circle {

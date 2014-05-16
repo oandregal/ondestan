@@ -18,10 +18,10 @@
             noData: '---',
         },
         color: {
-            high:     "green",
-            middle:   "yellow",
-            low:      "red",
-            inactive: "grey",
+            high:     "#a1d99b", // green, kindof
+            middle:   "#feb24c",  // orange, kindof
+            low:      "#de2d26", // red, kindof
+            inactive: "#bdbdbd", // grey, kindof
         },
         opacity:{
             active: 1,
