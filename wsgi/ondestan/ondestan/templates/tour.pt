@@ -173,7 +173,7 @@
 	        <div id="slides" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1911px; height: 936px;
 	            overflow: hidden;">
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa1.jpg')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/mapa4.jpg')}" style="z-index: -1;"/>
 					<canvas id="myCanvas" width="1911" height="936"></canvas>
 	                <div u="caption" class="captionOrange" style="position:absolute; left:525px; top: 95px; width:980px; height:65px;"> 
 	                Visualiza la posición de tus animales en tiempo real.
@@ -189,7 +189,7 @@
 	                </div>
 	            </div>
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa2.jpg')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/mapa2.jpg')}" style="z-index: -1;"/>
 	                <div u="caption" class="captionOrange" style="position:absolute; left:260px; top: 255px; width:1445px; height:65px;"> 
 	                Define un vallado virtual y obtén notificaciones cuando tus animales salen de él.
 	                </div>
@@ -201,7 +201,7 @@
 	                </div>
                 </div>
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa3.jpg')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/mapa3.jpg')}" style="z-index: -1;"/>
 	                <div u="caption" class="captionBlack" style="position:absolute; left:895px; top: 18px; width:870px; height:100px;"> 
 	                Todos los eventos son notificados por la web. Los más importantes, también por e-mail y SMS.
 	                </div>

@@ -199,24 +199,24 @@
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/one-standing.jpg')}" style="z-index: -1;"/>
 	                <div u="caption" class="captionOrange" style="position:absolute; left:1280px; top: 25px; width:600px; height:140px;"> 
-	                <i>Onde Están</i> es la aplicación web que te permite tener a tus vacas bajo control en todo momento.
+	                <i>«Onde Están»</i> te permite tener a tus animales bajo control en tiempo real.
 	                </div>
 	            </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/mapa1.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:1280px; top: 25px; width:600px; height:102px;"> 
+	                <div u="caption" class="captionOrange" style="position:absolute; left:560px; top: 235px; width:805px; height:65px;"> 
 	                Visualiza la posición actual de tus animales.
 	                </div>
 	            </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/mapa2.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:1280px; top: 25px; width:600px; height:140px;"> 
+	                <div u="caption" class="captionOrange" style="position:absolute; left:660px; top: 235px; width:600px; height:140px;"> 
 	                Define un vallado virtual y recibe alertas cuando el animal sale fuera.
 	                </div>
 	            </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/mapa3.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:1280px; top: 25px; width:600px; height:102px;"> 
+	                <div u="caption" class="captionOrange" style="position:absolute; left:1185px; top: 50px; width:610px; height:105px;"> 
 	                Recibe notificaciones por mail, SMS y web de todo lo que ocurra.
 	                </div>
 	            </div>
