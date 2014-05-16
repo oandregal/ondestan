@@ -62,7 +62,7 @@
 	color: #555555;
 }
 
-.data div.devices-block a {
+.data div.devices-block-content > a {
     font-size: 50px;
     padding: 0px 10px;
 }
