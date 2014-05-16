@@ -54,11 +54,12 @@ def format_utcdate(date, request=None, locale=None):
         localizer = get_custom_localizer(locale)
 
     date_format = localizer.translate(_('meta_date_format', domain='Ondestan'))
-    return date.strftime(date_format)
+    return local_date.strftime(date_format)
 
 
 def format_utcdatetime(datetime, request=None, locale=None):
-    local_datetime = datetime.replace(tzinfo=utc_timezone).astimezone(default_timezone)
+    local_datetime = datetime.replace(tzinfo=utc_timezone).astimezone(
+                                                        default_timezone)
     if request != None:
         localizer = get_localizer(request)
     else:
