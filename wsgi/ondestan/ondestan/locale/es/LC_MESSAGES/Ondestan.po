@@ -83,7 +83,7 @@ msgstr "Peligro"
 
 #: ondestan/services/animal_service.py:25
 msgid "low_battery_notification_web"
-msgstr "<b>¡Urgente!</b> La vaca ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
+msgstr "<b>¡Urgente!</b> El animal ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> en ${date}."
 
 #: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_mail_subject"
@@ -111,11 +111,11 @@ msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
 #: ondestan/services/animal_service.py:31
 msgid "medium_battery_notification_web"
-msgstr "La vaca ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
+msgstr "El animal ${animal_name} pasó a un ${battery_level}% de batería en ${date}."
 
 #: ondestan/services/animal_service.py:33
 msgid "gps_immobile_notification_web"
-msgstr "La vaca ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse (desde el ${date_begin})."
+msgstr "El animal ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse (desde el ${date_begin})."
 
 #: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_mail_subject"
@@ -123,7 +123,7 @@ msgstr "[Onde Están] ${animal_name} parece que no se está moviendo"
 
 #: ondestan/services/animal_service.py:35
 msgid "gps_immobile_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu vaca <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/animal_service.py:36
 msgid "gps_immobile_notification_mail_text_body"
@@ -140,19 +140,19 @@ msgstr ""
 
 #: ondestan/services/animal_service.py:38
 msgid "gps_instant_duplicated_notification_web"
-msgstr "Se ha recibido más de una posición para la vaca ${animal_name} en ${date}."
+msgstr "Se ha recibido más de una posición para el animal ${animal_name} en ${date}."
 
 #: ondestan/services/animal_service.py:40
 msgid "gps_inactive_device_notification_web"
-msgstr "Se ha recibido una posición para la vaca inactiva ${animal_name} en ${date}."
+msgstr "Se ha recibido una posición para el animal inactivo ${animal_name} en ${date}."
 
 #: ondestan/services/animal_service.py:42
 msgid "no_gps_coverage_notification_web"
-msgstr "Se ha recibido una actualización sin cobertura GPS para la vaca ${animal_name} en ${date}."
+msgstr "Se ha recibido una actualización sin cobertura GPS para el animal ${animal_name} en ${date}."
 
 #: ondestan/services/animal_service.py:44
 msgid "outside_plots_notification_web"
-msgstr "<b>¡Urgente!</b> La vaca ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
+msgstr "<b>¡Urgente!</b> El animal ${animal_name} <b>salió de las fincas designadas</b> en ${date}."
 
 #: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_mail_subject"

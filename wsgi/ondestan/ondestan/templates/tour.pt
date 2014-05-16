@@ -130,6 +130,7 @@
             var jssor_slider1 = new $JssorSlider$("slider1_container", options);
             //responsive code begin
             //you can remove responsive code if you don't want the slider scales while window resizes
+            //$('#slides').show();
             function ScaleSlider() {
                 var parentWidth = jssor_slider1.$Elmt.parentNode.clientWidth;
                 if (parentWidth)
@@ -169,66 +170,51 @@
 	
 	
 	        <!-- Slides Container --> 
-	        <div u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1911px; height: 936px;
+	        <div id="slides" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 1911px; height: 936px;
 	            overflow: hidden;">
-	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/running-cows.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:80px; top: 50px; width:440px; height:140px;"> 
-	                ¿Alguna vez tus vacas te han dado un susto saliendo de tu finca?
-	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="500" style="position:absolute; left:1360px; top: 50px; width: 475px; height:140px;"> 
-	                ¿Te gustaría no tener que vigilarlas en persona continuamente?
-	                </div>
-	                <div u="caption" class="captionOrange" t="FADE" du="750" d="500" style="position:absolute; left:570px; top: 260px; width:715px; height:100px;"> 
-	                <i>Onde Están</i> es la aplicación web que ofrece solución a estos problemas.
-	                </div>
-	            </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa1.jpg')}" style="z-index: -1;"/>
 					<canvas id="myCanvas" width="1911" height="936"></canvas>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:525px; top: 95px; width:485px; height:140px;"> 
-	                Comprueba la posición de tus vacas en un mapa en tiempo real.
+	                <div u="caption" class="captionOrange" style="position:absolute; left:525px; top: 95px; width:980px; height:65px;"> 
+	                Visualiza la posición de tus animales en tiempo real.
 	                </div>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:1350px; top: 125px; width:515px; height:140px;"> 
-	                Define fincas para que se te notifique cuando se detecte que han salido de ellas.
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 225px; width:520px; height:105px;"> 
+	                El rojo indica que la batería está baja (< 20%).
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="500" style="position:absolute; left:390px; top: 380px; width:445px; height:180px;"> 
-	                El borde negro nos indica que la vaca se encuentra fuera de las fincas de su dueño.
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 405px; width:520px; height:105px;"> 
+	                El naranja que está a un nivel medio (20% - 50%).
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 475px; width:435px; height:180px;"> 
-	                El color rojo nos avisa de que debemos recargar la batería del aparato localizador.
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 565px; width:520px; height:105px;"> 
+	                El verde que está a un nivel alto (> 50%).
 	                </div>
 	            </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa2.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionBlack" style="position:absolute; left:490px; top:30px; width:955px; height:140px;"> 
-	                Podemos definir todas las fincas que queramos, con cualquier forma y en cualquier lugar del mapa para poder saber cuándo las vacas salen de ellas.
+	                <div u="caption" class="captionOrange" style="position:absolute; left:260px; top: 255px; width:1445px; height:65px;"> 
+	                Define un vallado virtual y obtén notificaciones cuando tus animales salen de él.
 	                </div>
-	            </div>
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:900px; top: 465px; width:520px; height:105px;"> 
+	                El borde negro indica que el animal está fuera.
+	                </div>
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1100px; top: 665px; width:520px; height:105px;"> 
+	                Se te notificará por e-mail y SMS.
+	                </div>
+                </div>
 	            <div>
 	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa3.jpg')}" style="z-index: -1;"/>
-	                <div u="caption" class="captionOrange" style="position:absolute; left:990px; top: 18px; width:660px; height:180px;"> 
-	                Todos los eventos reseñables son notificados por la web, y los más importantes también a través de e-mail y SMS.
+	                <div u="caption" class="captionBlack" style="position:absolute; left:895px; top: 18px; width:870px; height:100px;"> 
+	                Todos los eventos son notificados por la web. Los más importantes, también por e-mail y SMS.
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:80px; top: 210px; width:485px; height:180px;"> 
-	                Los animales activos son aquéllos de los cuales recibimos su posición actualmente.
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1000" style="position:absolute; left:90px; top: 200px; width:375px; height:135px;"> 
+	                Podemos nombrar a los animales para identificarlos.
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:680px; top: 210px; width:505px; height:180px;"> 
-	                Los animales inactivos son aquéllos de los cuales no estamos guardando nuevas posiciones.
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1000" style="position:absolute; left:470px; top: 355px; width:485px; height:140px;"> 
+	                Si desactivamos un dispositivo, sus posiciones no se almacenarán.
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:640px; top: 500px; width:485px; height:180px;"> 
-	                Los botones <i>Activar</i> y <i>Desactivar</i> nos permiten pasar un animal de un estado al otro fácilmente.
-	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:1365px; top: 210px; width:435px; height:180px;"> 
-	                Éstos son los animales con aparatos que deberemos recargar lo antes posible.
-	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:130px; top: 500px; width:375px; height:180px;"> 
-	                Podemos poner los nombres reales de los animales para identificarlos.
-	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:1270px; top: 500px; width:260px; height:220px;"> 
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1000" style="position:absolute; left:1060px; top: 410px; width:360px; height:140px;"> 
 	                La lupa nos permite centrar el mapa en el animal.
 	                </div>
-	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1500" style="position:absolute; left:1580px; top: 500px; width:260px; height:180px;"> 
+	                <div u="caption" class="captionBlack" t="FADE" du="750" d="1000" style="position:absolute; left:1560px; top: 485px; width:260px; height:180px;"> 
 	                El porcentaje nos indica la batería restante.
 	                </div>
 	            </div>
