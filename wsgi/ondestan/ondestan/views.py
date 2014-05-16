@@ -28,7 +28,7 @@ from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
-from ondestan.utils import Customizable_PageURL_WebOb
+from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime
 
 import logging
 
@@ -506,7 +506,9 @@ def json_animals(request):
                         name = animal.imei
                     parameters = {'animal_name': name,
                         'name': animal.user.name,
-                        'battery': str(animal.positions[0].battery)
+                        'battery': str(animal.positions[0].battery),
+                        'date': format_utcdatetime(animal.positions[0].date,
+                                                   request)
                         }
                     popup_str = _("animal_popup_admin", domain='Ondestan',
                                   mapping=parameters)
@@ -555,7 +557,9 @@ def json_animals(request):
                     else:
                         name = animal.imei
                     parameters = {'animal_name': name,
-                        'battery': str(animal.positions[0].battery)
+                        'battery': str(animal.positions[0].battery),
+                        'date': format_utcdatetime(animal.positions[0].date,
+                                                   request)
                         }
                     popup_str = _("animal_popup", domain='Ondestan',
                                   mapping=parameters)
