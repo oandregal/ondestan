@@ -344,7 +344,7 @@
 				var url = url.substring(0, url.length - 1);
 				$('#accept_btn').off();
 				$('#accept_btn').click(function() {
-					$('#my-modal').modal('hide');
+					$('#user-modal').modal('hide');
 					url += '&userid=' + $('#user_selector').val();
 					$.ajax({url: url,success:function(result){
 						if (result.success) {
@@ -354,7 +354,7 @@
 						}
 					}});
 				});
-				$('#my-modal').modal();
+				$('#user-modal').modal();
 			} else {
 				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
 				for (i in layer._latlngs) {
