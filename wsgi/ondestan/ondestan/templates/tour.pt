@@ -184,7 +184,7 @@
 	                </div>
 	            </div>
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa1.png')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa1.jpg')}" style="z-index: -1;"/>
 					<canvas id="myCanvas" width="1911" height="936"></canvas>
 	                <div u="caption" class="captionOrange" style="position:absolute; left:525px; top: 95px; width:485px; height:140px;"> 
 	                Comprueba la posición de tus vacas en un mapa en tiempo real.
@@ -200,13 +200,13 @@
 	                </div>
 	            </div>
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa2.png')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa2.jpg')}" style="z-index: -1;"/>
 	                <div u="caption" class="captionBlack" style="position:absolute; left:490px; top:30px; width:955px; height:140px;"> 
 	                Podemos definir todas las fincas que queramos, con cualquier forma y en cualquier lugar del mapa para poder saber cuándo las vacas salen de ellas.
 	                </div>
 	            </div>
 	            <div>
-	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa3.png')}" style="z-index: -1;"/>
+	                <img u="image" src="${request.static_url('ondestan:static/img/tour_mapa3.jpg')}" style="z-index: -1;"/>
 	                <div u="caption" class="captionOrange" style="position:absolute; left:990px; top: 18px; width:660px; height:180px;"> 
 	                Todos los eventos reseñables son notificados por la web, y los más importantes también a través de e-mail y SMS.
 	                </div>
