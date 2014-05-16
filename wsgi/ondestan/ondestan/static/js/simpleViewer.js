@@ -129,7 +129,7 @@
                 for (i = 0, len = data.length; i < len; i++) {
                     var device = data[i].properties;
                     if (device.active) {
-                        if (device.battery < batteryStandards.level.low) {
+                        if ((device.battery != null) && (device.battery < batteryStandards.level.low)) {
                             low_battery_devices.push(data[i]);
                             low_battery_devices_popover_content += addToPopover(data[i]);
                         }
