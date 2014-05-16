@@ -149,7 +149,7 @@ def activate_animal_by_id(request):
             all_active = all_active and device.active
         if all_active:
             active_order_state = Order_state._STATES[len(Order_state._STATES)
-                                                     - 1]
+                                                     - 2]
             if device.order.states[0].state != active_order_state:
                 ondestan.services.order_service.update_order_state(
                                 animal.order.id, active_order_state, request)
@@ -189,7 +189,7 @@ def save_new_position(position, animal, request):
                 notification_service.process_notification(
                     'outside_plots', animal.user.login, True, 3,
                     True, True, parameters)
-    process_position_general_notifications(position, animal)
+    process_position_general_notifications(position, animal, request)
 
 
 def process_no_coverage_position(position, animal, request):
