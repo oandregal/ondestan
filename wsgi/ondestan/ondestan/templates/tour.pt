@@ -180,13 +180,13 @@
 	                Visualiza la posición de tus animales en tiempo real.
 	                </div>
 	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 225px; width:520px; height:105px;"> 
-	                El rojo indica que la batería está baja (< 20%).
+	                El rojo indica que la batería está baja (&lt; 20%).
 	                </div>
 	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 405px; width:520px; height:105px;"> 
 	                El naranja que está a un nivel medio (20% - 50%).
 	                </div>
 	                <div u="caption" class="captionBlack" t="FADE" du="750" d="0" style="position:absolute; left:1200px; top: 565px; width:520px; height:105px;"> 
-	                El verde que está a un nivel alto (> 50%).
+	                El verde que está a un nivel alto (&gt; 50%).
 	                </div>
 	            </div>
 	            <div>
