@@ -395,7 +395,7 @@ def deactivate_device(request):
     return HTTPFound(request.route_url("map"))
 
 
-@view_config(route_name='map', renderer='templates/simpleViewer.pt',
+@view_config(route_name='map', renderer='templates/mainViewer.pt',
              permission='view')
 def viewer(request):
     user = user_service.get_user_by_login(get_user_login(request))

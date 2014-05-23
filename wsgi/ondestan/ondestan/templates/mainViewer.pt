@@ -67,7 +67,7 @@
       window.contextVariables.hide_show_draw_tools_tooltip = "<tal:block i18n:translate="hide_show_draw_tools_tooltip">Hide/show plot management tools</tal:block>";
       window.contextVariables.show_map_legend_tooltip = "<tal:block i18n:translate="map_legend">Map legend</tal:block>";
     </script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/simpleViewer.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/mainViewer.js')}"></script>
   </tal:block>
 
   <tal:block metal:fill-slot="content">
