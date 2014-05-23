@@ -113,12 +113,20 @@ def create_animal(imei, phone, order, name=''):
         animal.save()
 
 
-def update_animal_name(animal_id, name):
+def update_animal_name(animal_id, name, user_id=None):
     if (id != None and name != None):
-        animal = get_animal_by_id(animal_id)
-        if (animal != None):
+        if user_id != None:
+            animal = Animal().queryObject().filter(and_(Animal.id == animal_id,
+                    Animal.user_id == user_id)).scalar()
+        else:
+            animal = Animal().queryObject().filter(Animal.id ==
+                    animal_id).scalar()
+        if animal != None:
             animal.name = name
             animal.update()
+        else:
+            logger.error("Cannot update the non-existent animal with id "
+                     + str(animal_id) + " for user id " + str(user_id))
 
 
 def delete_animal_by_id(animal_id):

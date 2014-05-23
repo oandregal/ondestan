@@ -7,11 +7,35 @@ import logging
 logger = logging.getLogger('ondestan')
 
 
+def get_plot_by_id(plot_id):
+    if plot_id != None:
+        return Plot().queryObject().filter(Plot.id == plot_id).scalar()
+    else:
+        return None
+
+
 def get_all_plots(login=None):
     if login != None:
-        return Plot().queryObject().filter(Plot.user.has(login=login)).all()
+        return Plot().queryObject().filter(Plot.user.has(login=login)).\
+            order_by(Plot.name).all()
     else:
-        return Plot().queryObject().all()
+        return Plot().queryObject().order_by(Plot.name).all()
+
+
+def update_plot_name(plot_id, name, user_id=None):
+    if (id != None and name != None):
+        if user_id != None:
+            plot = Plot().queryObject().filter(and_(Plot.id == plot_id,
+                    Plot.user_id == user_id)).scalar()
+        else:
+            plot = Plot().queryObject().filter(Plot.id ==
+                    plot_id).scalar()
+        if plot != None:
+            plot.name = name
+            plot.update()
+        else:
+            logger.error("Cannot update the non-existent plot with id "
+                     + str(plot_id) + " for user id " + str(user_id))
 
 
 def create_plot(points, user_id):

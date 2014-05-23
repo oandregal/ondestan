@@ -236,14 +236,6 @@
         load_plots();
         load_animals();
 
-		$('#user_selector').change(function() {
-			if ($(this).val() != '') {
-				$('#accept_btn').prop('disabled', false);
-			} else {
-				$('#accept_btn').prop('disabled', true);
-			}
-		});
-
 		displayLegendControl = function(theDisplayLegendFunction) {
 
 		    var control = new (L.Control.extend({
@@ -277,136 +269,6 @@
 
 		map.addControl(displayLegendControl(DisplayLegendFunction));
 
-		toggleDrawControl = function(theToggleDrawFunction) {
-
-		    var control = new (L.Control.extend({
-		    options: { position: 'topright' },
-		    onAdd: function (map) {
-		        controlDiv = L.DomUtil.create('div', 'toggle-draw-button');
-		        L.DomEvent
-		            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
-		            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
-		            .addListener(controlDiv, 'click', this.ToggleDrawFunction);
-
-		        // Set CSS for the control border
-		        var controlUI = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar leaflet-draw-toolbar-top', controlDiv);
-		        controlUI.title = window.contextVariables.hide_show_draw_tools_tooltip;
-
-		        // Set CSS for the control interior
-		        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-draw-draw-rectangle', controlUI);
-		        controlText.href = '#';
-
-		        return controlDiv;
-		    }
-		    }));
-
-		    control.ToggleDrawFunction = theToggleDrawFunction;
-
-		    return control;
-		};
-
-		ToggleDrawFunction = function () { $('.leaflet-draw').toggle();};
-
-		map.addControl(toggleDrawControl(ToggleDrawFunction));
-
-    	var drawOptions = {
-		    draw: {
-		        polyline: false,
-		        polygon: {
-		        	showArea: true, // Show the area of the drawn polygon
-		            allowIntersection: false, // Restricts shapes to simple polygons
-		            drawError: {
-		                color: '#FF0000' // Color the shape will turn when intersects
-		            },
-		            shapeOptions: {
-		                color: '#0033ff'
-		            }
-		        },
-		        circle: false, // Turns off this drawing tool
-		        rectangle: false,
-		        marker: false
-		    },
-		    edit: {
-		    	featureGroup: plots
-		    },
-		    position: 'topright'
-		};
-
-		var drawControl = new L.Control.Draw(drawOptions);
-		map.addControl(drawControl);
-
-		map.on('draw:created', function (e) {
-			if (window.contextVariables.is_admin) {
-				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
-				for (i in layer._latlngs) {
-					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-				}
-				var url = url.substring(0, url.length - 1);
-				$('#accept_btn').off();
-				$('#accept_btn').click(function() {
-					$('#user-modal').modal('hide');
-					url += '&userid=' + $('#user_selector').val();
-					$.ajax({url: url,success:function(result){
-						if (result.success) {
-							layer.feature = result.feature;
-			                layer.bindPopup(result.feature.properties.popup);
-			    			plots.addLayer(layer);
-			    			map.removeLayer(animals_layer);
-			    			load_animals();
-						}
-					}});
-				});
-				$('#user-modal').modal();
-			} else {
-				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
-				for (i in layer._latlngs) {
-					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-				}
-				url = url.substring(0, url.length - 1);
-				$.ajax({url: url,success:function(result){
-					if (result.success) {
-						layer.feature = result.feature;
-		                layer.bindPopup(result.feature.properties.popup);
-		    			plots.addLayer(layer);
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
-					}
-				}});
-			}
-		});
-		map.on('draw:edited', function (e) {
-			var layers = e.layers._layers, url;
-			for (j in layers) {
-				url = window.contextVariables.update_plot_geom_url + "?"
-				layer = layers[j];
-				for (i in layer._latlngs) {
-					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-				}
-				url += 'id=' + layer.feature.properties.id;
-				$.ajax({url: url,success:function(result){
-					if (result.success) {
-						layer.feature = result.feature;
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
-					}
-				}});
-			}
-		});
-		map.on('draw:deleted', function (e) {
-			var layers = e.layers._layers, url;
-			for (j in layers) {
-				url = window.contextVariables.delete_plot_url + "?"
-				layer = layers[j];
-				url += 'id=' + layer.feature.properties.id;
-				$.ajax({url: url,success:function(result){
-					if (result.success) {
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
-					}
-				}});
-			}
-		});
-
         L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
@@ -416,7 +278,6 @@
     // Init on document ready
     $(function(){
         NS.init();
-        $('.leaflet-draw').hide();
     });
 
 })(window.OE = window.OE || {});

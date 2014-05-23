@@ -18,3 +18,5 @@ class Plot(Entity, Base):
                                                   order_by=name))
     geom = Column(Geometry('POLYGON', Entity.srid))
     geojson = column_property(geom.ST_AsGeoJSON())
+    centroid = column_property(geom.ST_Centroid())
+    centroid_geojson = column_property(geom.ST_Centroid().ST_AsGeoJSON())

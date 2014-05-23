@@ -115,11 +115,16 @@ def signup(request):
         )
 
 
-@view_config(route_name='update_animal_name')
+@view_config(route_name='update_animal_name', permission='view')
 def update_animal_name(request):
     if 'name' in request.params and 'id' in request.params:
-        animal_service.update_animal_name(request.params['id'],
+        if check_permission('admin', request):
+            animal_service.update_animal_name(request.params['id'],
                                           request.params['name'])
+        else:
+            user = user_service.get_user_by_login(get_user_login(request))
+            animal_service.update_animal_name(request.params['id'],
+                                          request.params['name'], user.id)
     return HTTPFound(location=request.route_url('map'))
 
 
@@ -395,25 +400,45 @@ def deactivate_device(request):
     return HTTPFound(request.route_url("map"))
 
 
-@view_config(route_name='map', renderer='templates/mainViewer.pt',
+@view_config(route_name='map', renderer='templates/animalViewer.pt',
              permission='view')
-def viewer(request):
+def animal_viewer(request):
+    user = user_service.get_user_by_login(get_user_login(request))
+    return dict(
+        view=user.get_animals_bounding_box_as_json(),
+        notifications=notification_service.\
+            get_new_web_notifications_for_logged_user(request)
+    )
+
+
+@view_config(route_name='plot_manager', renderer='templates/plotManager.pt',
+             permission='view')
+def plot_manager(request):
     user = user_service.get_user_by_login(get_user_login(request))
     is_admin = check_permission('admin', request)
     return dict(
-        project=u'Ondestán',
-        can_edit=check_permission('edit', request),
         is_admin=is_admin,
         non_admin_users=user_service.get_non_admin_users() if is_admin else [],
-        view=user.get_bounding_box_as_json(),
-        notifications=notification_service.\
-            get_new_web_notifications_for_logged_user(request)
+        view=user.get_plots_bounding_box_as_json()
     )
 
 
 @view_config(route_name='default')
 def default(request):
     return HTTPFound(request.route_url("map"))
+
+
+@view_config(route_name='update_plot_name', permission='view')
+def update_plot_name(request):
+    if 'name' in request.params and 'id' in request.params:
+        if check_permission('admin', request):
+            plot_service.update_plot_name(request.params['id'],
+                                          request.params['name'])
+        else:
+            user = user_service.get_user_by_login(get_user_login(request))
+            plot_service.update_plot_name(request.params['id'],
+                                          request.params['name'], user.id)
+    return HTTPFound(location=request.route_url('plot_manager'))
 
 
 @view_config(route_name='create_plot', renderer='json',
@@ -663,6 +688,7 @@ def json_plots(request):
                         "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
+                        "centroid": eval(plot.centroid_geojson),
                         "popup": get_localizer(request).translate(popup_str)
                     },
                     "geometry": eval(plot.geojson)
@@ -688,8 +714,8 @@ def json_plots(request):
                         "id": plot.id,
                         "name": plot.name,
                         "owner": plot.user.login,
-                        "popup": ''
-                        # "popup": get_localizer(request).translate(popup_str)
+                        "centroid": eval(plot.centroid_geojson),
+                        "popup": get_localizer(request).translate(popup_str)
                     },
                     "geometry": eval(plot.geojson)
                 })
