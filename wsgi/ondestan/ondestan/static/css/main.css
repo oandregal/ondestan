@@ -115,6 +115,46 @@ div#map {
   }
 }
 
+div#map_plots {
+	height: 465px;
+}
+
+@media (min-height: 610px) {
+  div#map_plots {
+	height: 540px;
+  }
+}
+
+@media (min-height: 685px) {
+  div#map_plots {
+	height: 615px;
+  }
+}
+
+@media (min-height: 760px) {
+  div#map_plots {
+	height: 690px;
+  }
+}
+
+@media (min-height: 835px) {
+  div#map_plots {
+	height: 765px;
+  }
+}
+
+@media (min-height: 910px) {
+  div#map_plots {
+	height: 840px;
+  }
+}
+
+@media (min-height: 985px) {
+  div#map_plots {
+	height: 915px;
+  }
+}
+
 .popover-content {
     padding: 5px;
 }
@@ -151,7 +191,7 @@ div#map {
 	cursor: pointer;
 }
 
-.list-group-item input, .list-group-item label {
+.list-group-item .form-inline input, .list-group-item label {
 	width: 90px;
 	padding-left: 3px;
 }
@@ -251,4 +291,8 @@ div#map {
 
 #no_plots_message label {
 	font-style: italic;
+}
+
+.leaflet-top .leaflet-draw.leaflet-control {
+	margin-top: 20px;
 }

@@ -56,6 +56,7 @@
     	plots_layer.on('data:loaded', function(e) {
     		if (plots_list_content != '') {
     			$('#plots_list_content').html(plots_list_content);
+    			$( "[data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
     		} else {
     			$('#no_plots_message').show();
     		}
@@ -65,7 +66,7 @@
     }
 
     NS.init = function(){
-    	map = L.map('map', {zoomControl: false});
+    	map = L.map('map_plots', {zoomControl: false});
     	zoom = L.control.zoom({zoomInTitle: window.contextVariables.zoom_in_tooltip, zoomOutTitle: window.contextVariables.zoom_out_tooltip});
     	map.addControl(zoom);
     	if (window.contextVariables.map_view_json != null) {

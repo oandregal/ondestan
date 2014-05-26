@@ -191,8 +191,11 @@
                     html: true,
                     placement: 'bottom',
                     trigger: 'click',
-                    content: '<ul class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
+                    content: '<ul id="low_battery_devices_popover_content" class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
                 });
+                $('#low_battery_devices').on('shown.bs.popover', function () {
+                    $( "#low_battery_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
+                })
             }
 
             if (outside_plots_devices.length > 0) {
@@ -205,8 +208,11 @@
                     html: true,
                     placement: 'bottom',
                     trigger: 'click',
-                    content: '<ul class="list-unstyled">' + outside_plots_devices_popover_content + '</ul>',
+                    content: '<ul id="outside_plots_devices_popover_content" class="list-unstyled">' + outside_plots_devices_popover_content + '</ul>',
                 });
+                $('#outside_plots_devices').on('shown.bs.popover', function () {
+                    $( "#outside_plots_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
+                })
             }
 
         });
