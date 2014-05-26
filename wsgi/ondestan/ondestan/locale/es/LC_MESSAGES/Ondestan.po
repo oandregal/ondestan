@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-23 18:56+0200\n"
-"PO-Revision-Date: 2014-05-23 18:57+0100\n"
+"POT-Creation-Date: 2014-05-26 17:27+0200\n"
+"PO-Revision-Date: 2014-05-26 19:38+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -43,15 +43,15 @@ msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${ani
 
 #: ondestan/views.py:599
 msgid "animal_popup"
-msgstr "<strong>Nombre:</strong> ${animal_name} (${imei}) <br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
+msgstr "<strong>Nombre:</strong> ${animal_name} (${imei})<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
 #: ondestan/views.py:683
 msgid "plot_popup_admin"
-msgstr "Propiedad de ${name}"
+msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
 #: ondestan/views.py:709
 msgid "plot_popup"
-msgstr "${plot_name}"
+msgstr "<strong>Nombre:</strong> ${plot_name}"
 
 #: ondestan/entities/notification.py:18
 msgid "web"
@@ -726,6 +726,7 @@ msgstr "Teléfono móvil"
 #. Default: Name
 #: ondestan/templates/orderDevices.pt:37
 #: ondestan/templates/orderDevices.pt:55
+#: ondestan/templates/plotManager.pt:73
 msgid "name"
 msgstr "Nombre"
 
@@ -1001,30 +1002,34 @@ msgstr "Haz click en Cancelar para deshacer los cambios."
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr "Haz click en una finca para borrarla."
 
-#. Default: Select plot owner
+#. Default: Plot Data
 #: ondestan/templates/plotManager.pt:70
-msgid "select_plot_user_modal_title"
-msgstr "Selecciona el dueño"
+#| msgid "specify_plot_data_modal_title"
+msgid "plot_data_modal_title"
+msgstr "Datos de la finca"
+
+#. Default: Owner
+#: ondestan/templates/plotManager.pt:74
+msgid "owner"
+msgstr "Dueño"
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:79
+#: ondestan/templates/plotManager.pt:80
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:80
+#: ondestan/templates/plotManager.pt:81
 msgid "accept"
 msgstr "Aceptar"
 
-#. Default: Fincas actuales
-#: ondestan/templates/plotManager.pt:87
-#| msgid "outside_plots"
+#. Default: Current Plots
+#: ondestan/templates/plotManager.pt:88
 msgid "current_plots"
 msgstr "Fincas actuales"
 
-#. Default: Sin fincas
-#: ondestan/templates/plotManager.pt:90
-#| msgid "inside_plots"
+#. Default: No Plots
+#: ondestan/templates/plotManager.pt:91
 msgid "no_plots"
 msgstr "Sin fincas"
 

@@ -451,15 +451,16 @@ def create_plot(request):
                                                                 + str(i)])])
         i += 1
 
-    if 'userid' in request.GET:
-        if check_permission('admin', request):
-            userid = request.GET['userid']
-        else:
-            return {'success': False}
+    if 'name' in request.GET:
+        name = request.GET['name']
+    else:
+        name = ''
+    if 'userid' in request.GET and check_permission('admin', request):
+        userid = request.GET['userid']
     else:
         userid = user_service.get_user_by_login(get_user_login(request)).id
 
-    plot = plot_service.create_plot(points, userid)
+    plot = plot_service.create_plot(points, name, userid)
 
     if plot == None:
         return {'success': False}
@@ -537,7 +538,7 @@ def json_animals(request):
                         name = animal.imei
                     parameters = {
                         'animal_name': name,
-                        'name': animal.user.name,
+                        'name': animal.user.login,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': format_utcdatetime(animal.positions[0].date,
@@ -591,6 +592,7 @@ def json_animals(request):
                         name = animal.imei
                     parameters = {
                         'animal_name': name,
+                        'name': animal.user.login,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': format_utcdatetime(animal.positions[0].date,
@@ -678,7 +680,7 @@ def json_plots(request):
             for plot in plots:
                 parameters = {
                     'plot_name': plot.name,
-                    'name': plot.user.name
+                    'name': plot.user.login
                 }
                 popup_str = _("plot_popup_admin", domain='Ondestan',
                               mapping=parameters)
@@ -704,7 +706,7 @@ def json_plots(request):
             for plot in plots:
                 parameters = {
                     'plot_name': plot.name,
-                    'name': plot.user.name
+                    'name': plot.user.login
                 }
                 popup_str = _("plot_popup", domain='Ondestan',
                               mapping=parameters)

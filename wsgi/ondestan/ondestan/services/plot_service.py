@@ -38,7 +38,7 @@ def update_plot_name(plot_id, name, user_id=None):
                      + str(plot_id) + " for user id " + str(user_id))
 
 
-def create_plot(points, user_id):
+def create_plot(points, name, user_id):
     if len(points) < 3:
         logger.error('A plot with less than 3 points cannot be saved...')
         return None
@@ -51,7 +51,7 @@ def create_plot(points, user_id):
     plot.user_id = user_id
     plot.geom = 'SRID=' + str(plot.srid) + ';POLYGON((' + geom_coordinates\
         + '))'
-    plot.name = 'TEST'
+    plot.name = name
     plot.save()
 
     return plot

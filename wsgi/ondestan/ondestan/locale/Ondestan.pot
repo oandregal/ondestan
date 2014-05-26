@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-23 18:56+0200\n"
+"POT-Creation-Date: 2014-05-26 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -599,6 +599,7 @@ msgstr ""
 
 #. Default: Name
 #: ondestan/templates/orderDevices.pt:37 ondestan/templates/orderDevices.pt:55
+#: ondestan/templates/plotManager.pt:73
 msgid "name"
 msgstr ""
 
@@ -860,28 +861,33 @@ msgstr ""
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
-#. Default: Select plot owner
+#. Default: Plot Data
 #: ondestan/templates/plotManager.pt:70
-msgid "select_plot_user_modal_title"
+msgid "plot_data_modal_title"
+msgstr ""
+
+#. Default: Owner
+#: ondestan/templates/plotManager.pt:74
+msgid "owner"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:79
+#: ondestan/templates/plotManager.pt:80
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:80
+#: ondestan/templates/plotManager.pt:81
 msgid "accept"
 msgstr ""
 
-#. Default: Fincas actuales
-#: ondestan/templates/plotManager.pt:87
+#. Default: Current Plots
+#: ondestan/templates/plotManager.pt:88
 msgid "current_plots"
 msgstr ""
 
-#. Default: Sin fincas
-#: ondestan/templates/plotManager.pt:90
+#. Default: No Plots
+#: ondestan/templates/plotManager.pt:91
 msgid "no_plots"
 msgstr ""
 

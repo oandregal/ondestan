@@ -289,10 +289,27 @@ div#map_plots {
 	border-width: 3px;
 }
 
-#no_plots_message label {
+#plots_list_content #no_plots_message label {
 	font-style: italic;
+}
+
+#plots_list_content .list-group-item span.plot_owner {
+	font-style: italic;
+	padding-left: 10px;
+}
+
+#plots_list_content .list-group-item .form-inline input, #plots_list_content .list-group-item label {
+	width: 100px;
 }
 
 .leaflet-top .leaflet-draw.leaflet-control {
 	margin-top: 20px;
+}
+
+#plot_modal input {
+	width: 130px;
+}
+
+#plot_modal label {
+	margin-right: 10px;
 }

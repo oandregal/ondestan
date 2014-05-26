@@ -3,6 +3,15 @@
 	var plots;
     var map;
 
+    function validatePlotData() {
+    	if (( $('#plot_owner').val() != '' || !$('#plot_owner').is(":visible") ) && $('#plot_name').val() != '') {
+			$('#accept_btn').prop('disabled', false);
+		} else {
+			$('#accept_btn').prop('disabled', true);
+		}
+    }
+    validatePlotData();
+
     function addToList(feature){
         var plot = feature.properties;
         var zoomString = '<span class="glyphicon glyphicon-search"></span> ';
@@ -18,7 +27,8 @@
             '<input type="hidden" id="id" name="id" style="display: none;" value="' + plot.id + '"/>' +
             zoomString +
             '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + (plot.name || '') + '" />' +
-            '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
+            '<label data-toggle="tooltip" data-placement="top" title="' + contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
+            (contextVariables.is_admin ? ('<span class="plot_owner">' + plot.owner + '</span>') : '') +
             '</form>' +
             '</li>';
     }
@@ -30,11 +40,10 @@
         bounds = L.latLngBounds(southWest, northEast);
         map.fitBounds(bounds);
     };
-
-    function load_plots() {
+    
+    function request_plots_layer() {
         plots_list_content = '';
-
-    	plots = new L.FeatureGroup();
+    	var plots = new L.FeatureGroup();
 		plots_layer = new L.GeoJSON.AJAX(contextVariables.plots_json_url,{
 //		    style: function (feature) {
 //		        return {clickable: false};
@@ -62,6 +71,11 @@
     		}
     	});
 
+    	return plots;
+    }
+
+    function load_plots() {
+    	plots = request_plots_layer();
     	map.addLayer(plots);
     }
 
@@ -86,13 +100,8 @@
 
         load_plots();
 
-		$('#user_selector').change(function() {
-			if ($(this).val() != '') {
-				$('#accept_btn').prop('disabled', false);
-			} else {
-				$('#accept_btn').prop('disabled', true);
-			}
-		});
+		$('#plot_owner').change(validatePlotData);
+		$('#plot_name').keyup(validatePlotData);
 
     	var drawOptions = {
 		    draw: {
@@ -114,50 +123,33 @@
 		    edit: {
 		    	featureGroup: plots
 		    },
-		    position: 'topright'
+		    position: 'topleft'
 		};
 
 		var drawControl = new L.Control.Draw(drawOptions);
 		map.addControl(drawControl);
 
 		map.on('draw:created', function (e) {
-			if (window.contextVariables.is_admin) {
-				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
-				for (i in layer._latlngs) {
-					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-				}
-				var url = url.substring(0, url.length - 1);
-				$('#accept_btn').off();
-				$('#accept_btn').click(function() {
-					$('#user-modal').modal('hide');
-					url += '&userid=' + $('#user_selector').val();
-					$.ajax({url: url,success:function(result){
-						if (result.success) {
-							layer.feature = result.feature;
-			                layer.bindPopup(result.feature.properties.popup);
-			    			plots.addLayer(layer);
-			    			map.removeLayer(animals_layer);
-			    			load_animals();
-						}
-					}});
-				});
-				$('#user-modal').modal();
-			} else {
-				var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
-				for (i in layer._latlngs) {
-					url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
-				}
-				url = url.substring(0, url.length - 1);
+			var layer = e.layer, url = window.contextVariables.create_plot_url + "?";
+			for (i in layer._latlngs) {
+				url += 'x' + i + '=' + layer._latlngs[i].lng + '&y' + i + '=' + layer._latlngs[i].lat + '&'
+			}
+			var url = url.substring(0, url.length - 1);
+			$('#accept_btn').off();
+			$('#accept_btn').click(function() {
+				$('#plot_modal').modal('hide');
+				url += '&name=' + $('#plot_name').val();
+				url += '&userid=' + $('#plot_owner').val();
 				$.ajax({url: url,success:function(result){
 					if (result.success) {
 						layer.feature = result.feature;
 		                layer.bindPopup(result.feature.properties.popup);
 		    			plots.addLayer(layer);
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
+						request_plots_layer();
 					}
 				}});
-			}
+			});
+			$('#plot_modal').modal();
 		});
 		map.on('draw:edited', function (e) {
 			var layers = e.layers._layers, url;
@@ -171,8 +163,7 @@
 				$.ajax({url: url,success:function(result){
 					if (result.success) {
 						layer.feature = result.feature;
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
+						request_plots_layer();
 					}
 				}});
 			}
@@ -185,8 +176,7 @@
 				url += 'id=' + layer.feature.properties.id;
 				$.ajax({url: url,success:function(result){
 					if (result.success) {
-		    			map.removeLayer(animals_layer);
-		    			load_animals();
+						request_plots_layer();
 					}
 				}});
 			}
