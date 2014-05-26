@@ -61,7 +61,7 @@
         if (feature.geometry){
             var lng = feature.geometry.coordinates[0];
             var lat = feature.geometry.coordinates[1];
-            zoomString = '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-search" disabled></span>  </a>';
+            zoomString = '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-screenshot" disabled></span>  </a>';
         }
         var name = device.name || device.imei;
         var battery = device.battery || batteryStandards.level.noData;
