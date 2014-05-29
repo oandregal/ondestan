@@ -86,10 +86,14 @@
 
     <div id="list" class="col-md-2">
     	<h3><tal:block i18n:translate="current_plots">Current Plots</tal:block>:</h3>
-	    <ul id="plots_list_content" class="list-group">
-		    <li id="no_plots_message" class="list-group-item" style="display: none;">
-				<label i18n:translate="no_plots">No Plots</label>
-			</li>
+	    <ul class="list-group">
+	    	<div id="plots_list_content">
+	    	</div>
+	    	<div id="no_plots_message" style="display: none;">
+			    <li class="list-group-item">
+					<label i18n:translate="no_plots">No Plots</label>
+				</li>
+			</div>
 		</ul>
     </div>
 

@@ -64,9 +64,11 @@
 
     	plots_layer.on('data:loaded', function(e) {
     		if (plots_list_content != '') {
+    			$('#no_plots_message').hide();
     			$('#plots_list_content').html(plots_list_content);
     			$( "[data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
     		} else {
+    			$('#plots_list_content').html('');
     			$('#no_plots_message').show();
     		}
     	});

@@ -289,7 +289,7 @@ div#map_plots {
 	border-width: 3px;
 }
 
-#plots_list_content #no_plots_message label {
+ul.list-group #no_plots_message label {
 	font-style: italic;
 }
 
