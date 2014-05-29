@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-26 17:27+0200\n"
-"PO-Revision-Date: 2014-05-26 19:38+0100\n"
+"POT-Creation-Date: 2014-05-29 13:40+0200\n"
+"PO-Revision-Date: 2014-05-29 13:54+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,19 +37,19 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:546
+#: ondestan/views.py:547
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:599
+#: ondestan/views.py:601
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name} (${imei})<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
-#: ondestan/views.py:683
+#: ondestan/views.py:685
 msgid "plot_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
-#: ondestan/views.py:709
+#: ondestan/views.py:711
 msgid "plot_popup"
 msgstr "<strong>Nombre:</strong> ${plot_name}"
 
@@ -180,6 +180,11 @@ msgstr "[Onde Estan] ${date}: ${animal_name} salió de las fincas"
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
+
+#: ondestan/services/notification_service.py:22
+#| msgid "outside_plots_notification_web"
+msgid "no_plots_notification_web"
+msgstr "Parece que actualmente no tienes fincas definidas para tener bajo control a tus animales. Puedes hacerlo a través de este <a href=\"${url}\">enlace</a> o con el menú de la esquina superior derecha."
 
 #: ondestan/services/order_service.py:23
 msgid "order_update_state_0_notification_web"
@@ -1004,7 +1009,6 @@ msgstr "Haz click en una finca para borrarla."
 
 #. Default: Plot Data
 #: ondestan/templates/plotManager.pt:70
-#| msgid "specify_plot_data_modal_title"
 msgid "plot_data_modal_title"
 msgstr "Datos de la finca"
 

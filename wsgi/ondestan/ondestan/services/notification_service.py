@@ -19,6 +19,7 @@ sms_type = Notification._TYPES.index('sms')
 
 # We put these 18n strings here so they're detected when parsing files
 _('no_orders_notification_web', domain='Ondestan')
+_('no_plots_notification_web', domain='Ondestan')
 
 
 def get_web_notifications(login, archived=None):
@@ -43,19 +44,39 @@ def get_new_web_notifications_for_logged_user(request):
     for notification in notifications:
         notification.archived = True
         notification.update()
-    if (not check_permission('admin', request)) and\
-        len(ondestan.services.order_service.get_all_orders(login)) == 0:
-        logger.debug("User " + login + " has no orders. Notification " +
-            "about making a first one will be displayed.")
-        notification = Notification()
-        notification.level = 0
-        notification.type = web_type
-        notification.date = datetime.utcnow()
-        notification.archived = False
-        notification.text = "_('no_orders_notification_web'," +\
-            " mapping={'url': '" + request.route_url('orders') +\
-            "'}, domain='Ondestan')"
-        notifications.append(notification)
+    if (not check_permission('admin', request)):
+        if len(ondestan.services.order_service.get_all_orders(login)) == 0:
+            logger.debug("User " + login + " has no orders. Notification " +
+                "about making a first one will be displayed.")
+            notification = Notification()
+            notification.level = 0
+            notification.type = web_type
+            notification.date = datetime.utcnow()
+            notification.archived = False
+            notification.text = "_('no_orders_notification_web'," +\
+                " mapping={'url': '" + request.route_url('orders') +\
+                "'}, domain='Ondestan')"
+            notifications.append(notification)
+        animals = ondestan.services.animal_service.get_all_animals(login)
+        active_animals = False
+        for animal in animals:
+            if animal.active:
+                active_animals = True
+                break
+        if active_animals and len(
+                ondestan.services.plot_service.get_all_plots(login)) == 0:
+            logger.debug("User " + login + " has animals with positions, but"
+                + " no plots. Notification about creating a first one will be"
+                + " displayed.")
+            notification = Notification()
+            notification.level = 0
+            notification.type = web_type
+            notification.date = datetime.utcnow()
+            notification.archived = False
+            notification.text = "_('no_plots_notification_web'," +\
+                " mapping={'url': '" + request.route_url('plot_manager') +\
+                "'}, domain='Ondestan')"
+            notifications.append(notification)
     return notifications
 
 

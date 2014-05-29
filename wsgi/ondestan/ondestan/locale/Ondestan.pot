@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-05-26 17:27+0200\n"
+"POT-Creation-Date: 2014-05-29 13:43+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,19 +37,19 @@ msgstr ""
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:546
+#: ondestan/views.py:547
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:599
+#: ondestan/views.py:601
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:683
+#: ondestan/views.py:685
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:709
+#: ondestan/views.py:711
 msgid "plot_popup"
 msgstr ""
 
@@ -155,6 +155,10 @@ msgstr ""
 
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
+msgstr ""
+
+#: ondestan/services/notification_service.py:22
+msgid "no_plots_notification_web"
 msgstr ""
 
 #: ondestan/services/order_service.py:23
