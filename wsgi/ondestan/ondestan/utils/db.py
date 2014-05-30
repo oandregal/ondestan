@@ -45,7 +45,7 @@ class Db(object):
         conn_str = 'postgresql+psycopg2://' + user + ':' + password + \
                          '@' + host + ':' + port + '/' + db
         self.engine = create_engine(
-            conn_str
+            conn_str, echo=False
         )
         self.session.configure(bind=self.engine)
         Base.metadata.bind = self.engine
