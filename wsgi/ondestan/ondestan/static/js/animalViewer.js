@@ -58,7 +58,7 @@
     };
 
     function checkBaseLayer() {
-    	if (map.getZoom() > 13) {
+    	if (map.getZoom() > 15) {
     		if (!map.hasLayer(google_layer)) {
     			map.removeLayer(osm_layer);
     			map.addLayer(google_layer);
