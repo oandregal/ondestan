@@ -15,11 +15,10 @@ from ondestan.config import Config
 from os import urandom
 from itertools import islice, imap, repeat
 import string
-import datetime
 from dateutil import tz
 
 utc_timezone = tz.tzutc()
-default_timezone=tz.gettz(Config.get_string_value('config.default_timezone'))
+default_timezone = tz.gettz(Config.get_string_value('config.default_timezone'))
 
 
 def rand_string(length=10):
