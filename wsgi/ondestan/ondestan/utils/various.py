@@ -15,10 +15,12 @@ from ondestan.config import Config
 from os import urandom
 from itertools import islice, imap, repeat
 import string
+from datetime import datetime
 from dateutil import tz
 
 utc_timezone = tz.tzutc()
 default_timezone = tz.gettz(Config.get_string_value('config.default_timezone'))
+date_format = Config.get_string_value('config.get_date_format')
 
 
 def rand_string(length=10):
@@ -78,3 +80,10 @@ def format_utctime(time, request=None, locale=None):
 
     date_format = localizer.translate(_('meta_time_format', domain='Ondestan'))
     return local_time.strftime(date_format)
+
+
+def parse_to_utcdatetime(dttm):
+    local_datetime = datetime.strptime(dttm, date_format)
+    utc_datetime = local_datetime.replace(tzinfo=default_timezone).\
+        astimezone(utc_timezone).replace(tzinfo=None)
+    return utc_datetime

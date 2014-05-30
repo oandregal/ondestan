@@ -115,42 +115,42 @@ div#map {
   }
 }
 
-div#map_plots {
+div#map_plots, div#map_history {
 	height: 465px;
 }
 
 @media (min-height: 610px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 540px;
   }
 }
 
 @media (min-height: 685px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 615px;
   }
 }
 
 @media (min-height: 760px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 690px;
   }
 }
 
 @media (min-height: 835px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 765px;
   }
 }
 
 @media (min-height: 910px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 840px;
   }
 }
 
 @media (min-height: 985px) {
-  div#map_plots {
+  div#map_plots, div#map_history {
 	height: 915px;
   }
 }
@@ -164,7 +164,7 @@ div#map_plots {
 }
 
 .list-group-item .badge {
-    margin: 0 1em 0 1em;
+    margin: 0 0 0 1em;
 }
 
 .alerts-panel {
@@ -194,6 +194,10 @@ div#map_plots {
 .list-group-item .form-inline input, .list-group-item label {
 	width: 90px;
 	padding-left: 3px;
+}
+
+.list-group-item .history-link {
+	margin: 1px 2px 0 2px;;
 }
 
  .modal-xsm {
@@ -311,5 +315,57 @@ ul.list-group #no_plots_message label {
 }
 
 #plot_modal label {
+	margin-right: 10px;
+}
+
+#history_controls {
+	padding-top: 10px;
+	width: 100%;
+}
+
+#current_date {
+    padding: 1px 2px 2px;
+    display: block;
+    float: left;
+    width: 145px;
+}
+
+#pause {
+    background-color: #FFFFFF;
+    background-image: url("img/play.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+    cursor: pointer;
+    height: 26px;
+    padding: 1px 2px 2px;
+    width: 28px;
+    display: block;
+    float: left;
+    border: 1px solid black;
+}
+
+#pause.playing {
+    background-color: #FFFFFF;
+    background-image: url("img/pause.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#slider {
+	margin-left: 185px;
+	margin-top: 7px;
+}
+
+#date_selectors {
+	padding: 5px 0px 10px;
+	text-align: right;
+}
+
+#date_selectors label {
+	margin-right: 5px;
+}
+
+#date_selectors input {
 	margin-right: 10px;
 }

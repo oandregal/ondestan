@@ -2,6 +2,11 @@
 
 	var google_layer;
 	var osm_layer;
+	var timer;
+	var interval = 2000;
+	var animals_sublayers;
+	var animals_features;
+	var current_sublayer = null;
 	var animals_layer;
 	var plots;
     var map;
@@ -30,6 +35,33 @@
             inactive: 0.7,
         }
     };
+
+    
+    /**
+	* inits slider and a small play/pause button
+	*/
+	function init_slider() {
+		$("#slider").slider({
+			disabled: false,
+			min: 0,
+			max: animals_sublayers.length - 1,
+			value: 0,
+			step: 1,
+			slide: function(event, ui){
+				var step = ui.value;
+				load_sublayer(step);
+			}
+		});
+		$("#pause").unbind('click');
+		// play-pause toggle
+		$("#pause").click(function(){
+			clearInterval(timer);
+			$(this).toggleClass('playing');
+			if ($(this).hasClass('playing')) {
+				timer = setInterval(load_next_sublayer, interval);
+			}
+		});
+	}; 
 
     function getStyleForDevice(feature){
         var device = feature.properties;
@@ -73,15 +105,11 @@
 
     function addToPopover(feature){
         var device = feature.properties;
-        var zoomString = '<span class="glyphicon glyphicon-screenshot" disabled></span> ';
-        var historyString = '<span class="history-link glyphicon glyphicon-calendar pull-right" disabled></span> ';
+        var zoomString = '<span class="glyphicon glyphicon-search"></span> ';
         if (feature.geometry){
             var lng = feature.geometry.coordinates[0];
             var lat = feature.geometry.coordinates[1];
-            zoomString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.center_view_on_animal_tooltip + '"' +
-            	' href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-screenshot"></span>  </a>';
-            historyString = '<a href="' + window.contextVariables.positions_history_url + device.id + '"><span data-toggle="tooltip" data-placement="top" title="' +
-            	window.contextVariables.view_positions_history_tooltip + '" class="history-link glyphicon glyphicon-calendar pull-right"></span>  </a>';
+            zoomString = '<a href="#" onclick="window.OE.zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-screenshot" disabled></span>  </a>';
         }
         var name = device.name || device.imei;
         var battery = device.battery || batteryStandards.level.noData;
@@ -102,7 +130,6 @@
             '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + (device.name || '') + '" />' +
             '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
             '<span class="badge">' + battery + '%</span>' +
-            historyString +
             '</form>' +
             '</li>';
     }
@@ -132,117 +159,89 @@
     	map.addLayer(plots);
     }
 
-    function load_animals() {
-        active_devices = [];
-        active_devices_popover_content = '';
-        inactive_devices = [];
-        inactive_devices_popover_content = '';
-        low_battery_devices = [];
-        low_battery_devices_popover_content = '';
-        outside_plots_devices = [];
-        outside_plots_devices_popover_content = '';
+    function load_next_sublayer() {
+    	if ((current_sublayer + 1) >= animals_sublayers.length) {
+    		load_sublayer(0);
+    	} else {
+    		load_sublayer(current_sublayer + 1);
+    	}
+    }
+    
+    function load_sublayer(i) {
+    	if (current_sublayer != null) {
+    		map.removeLayer(animals_sublayers[current_sublayer]);
+    	}
+    	current_sublayer = i;
+    	map.addLayer(animals_sublayers[i]);
+    	$("#slider" ).slider({ value: i });
+    	$("#current_date" ).html(animals_features[i].properties.date);
+    }
 
-    	animals_layer = new L.GeoJSON.AJAX(contextVariables.animals_json_url,{
+    function format_date(date) {
+    	month = (date.getMonth() + 1).toString();
+    	day = date.getDate().toString();
+    	hours = date.getHours().toString();
+    	minutes = date.getMinutes().toString();
+    	seconds = date.getSeconds().toString();
+    	return date.getFullYear().toString() + (month.length < 2 ? '0' + month : month) + (day.length < 2 ? '0' + day : day) + (hours.length < 2 ? '0' + hours : hours) +
+    	(minutes.length < 2 ? '0' + minutes : minutes) + (seconds.length < 2 ? '0' + seconds : seconds);
+    }
+
+    function load_animals(start, end) {
+        url = contextVariables.animals_json_url + '?';
+        if (start != null) {
+        	url += 'start=' + format_date(start) + '&'
+        }
+        if (end != null) {
+        	url += 'end=' + format_date(end) + '&'
+        }
+
+    	animals_layer = new L.GeoJSON.AJAX(url,{
             pointToLayer: function (feature, latlng) {
                 return new L.CircleMarker(latlng, getStyleForDevice(feature));
             },
             middleware: function(data) {
-                for (i = 0, len = data.length; i < len; i++) {
-                    var device = data[i].properties;
-                    if (device.active) {
-                        if ((device.battery != null) && (device.battery < batteryStandards.level.low)) {
-                            low_battery_devices.push(data[i]);
-                            low_battery_devices_popover_content += addToPopover(data[i]);
-                        }
-                        if (device.outside) {
-                            outside_plots_devices.push(data[i]);
-                            outside_plots_devices_popover_content += addToPopover(data[i]);
-                        }
-                        active_devices.push(data[i]);
-                        active_devices_popover_content += addToPopover(data[i]);
-                    } else {
-                        inactive_devices.push(data[i]);
-                        inactive_devices_popover_content += addToPopover(data[i]);
-                    }
-                }
-                return data;
+            	if (current_sublayer != null) {
+            		map.removeLayer(animals_sublayers[current_sublayer]);
+            		current_sublayer = null;
+            	}
+    			clearInterval(timer);
+            	animals_sublayers = [];
+            	animals_features = [];
+            	return data;
             },
             onEachFeature: function (feature, layer) {
+            	animals_sublayers.push(layer);
+            	animals_features.push(feature);
                 layer.bindPopup(feature.properties.popup);
             }
         });
 
     	animals_layer.on('data:loaded', function(e) {
-
-            $('#active_devices').text(active_devices.length);
-            if (active_devices_popover_content != '') {
-                $('#active_devices').removeAttr('disabled');
-                $('#active_devices').popover({
-                    html: true,
-                    placement: 'bottom',
-                    trigger: 'click',
-                    content: '<ul id="active_devices_popover_content" class="list-group">' + active_devices_popover_content + '</ul>',
-                });
-                $('#active_devices').on('shown.bs.popover', function () {
-                    $( "#active_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
-                })
+            load_sublayer(0);
+            if ($('#pause').hasClass('playing')) {
+            	timer = setInterval(load_next_sublayer, interval);
             }
-
-            $('#inactive_devices').text(inactive_devices.length);
-            if (inactive_devices_popover_content != '') {
-                $('#inactive_devices').removeAttr('disabled');
-                $('#inactive_devices').popover({
-                    html: true,
-                    placement: 'bottom',
-                    trigger: 'click',
-                    content: '<ul id="inactive_devices_popover_content" class="list-unstyled">' + inactive_devices_popover_content + '</ul>',
-                });
-                $('#inactive_devices').on('shown.bs.popover', function () {
-                    $( "#inactive_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
-                })
-            }
-
-            if (low_battery_devices.length > 0) {
-            	$('#low_battery_devices').addClass('devices-alert');
-            }
-            $('#low_battery_devices').text(low_battery_devices.length);
-            if (low_battery_devices_popover_content != '') {
-                $('#low_battery_devices').removeAttr('disabled');
-                $('#low_battery_devices').popover({
-                    html: true,
-                    placement: 'bottom',
-                    trigger: 'click',
-                    content: '<ul id="low_battery_devices_popover_content" class="list-unstyled">' + low_battery_devices_popover_content + '</ul>',
-                });
-                $('#low_battery_devices').on('shown.bs.popover', function () {
-                    $( "#low_battery_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
-                })
-            }
-
-            if (outside_plots_devices.length > 0) {
-            	$('#outside_plots_devices').addClass('devices-alert');
-            }
-            $('#outside_plots_devices').text(outside_plots_devices.length);
-            if (outside_plots_devices_popover_content != '') {
-                $('#outside_plots_devices').removeAttr('disabled');
-                $('#outside_plots_devices').popover({
-                    html: true,
-                    placement: 'bottom',
-                    trigger: 'click',
-                    content: '<ul id="outside_plots_devices_popover_content" class="list-unstyled">' + outside_plots_devices_popover_content + '</ul>',
-                });
-                $('#outside_plots_devices').on('shown.bs.popover', function () {
-                    $( "#outside_plots_devices_popover_content [data-toggle='tooltip']" ).tooltip({delay: {show: 750, hide: 0}});
-                })
-            }
-
+            init_slider();
         });
-
-    	animals_layer.addTo(map);
     }
 
     NS.init = function(){
-    	map = L.map('map', {zoomControl: false});
+    	$("#slider").slider({disabled: true});
+        $( ".datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
+        $("#pause").prop('disabled', true);
+		$("#update_time").click(function(){
+			start = $('#startdate').datepicker('getDate');
+			if (start != null) {
+				start = new Date(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(),  start.getUTCHours(), start.getUTCMinutes(), start.getUTCSeconds());
+			}
+			end = $('#enddate').datepicker('getDate');
+			if (end != null) {
+				end = new Date(end.getUTCFullYear(), end.getUTCMonth(), end.getUTCDate()+1,  end.getUTCHours(), end.getUTCMinutes(), end.getUTCSeconds());
+			}
+			load_animals(start, end);
+		});
+    	map = L.map('map_history', {zoomControl: false});
     	zoom = L.control.zoom({zoomInTitle: window.contextVariables.zoom_in_tooltip, zoomOutTitle: window.contextVariables.zoom_out_tooltip});
     	map.addControl(zoom);
     	if (window.contextVariables.map_view_json != null) {

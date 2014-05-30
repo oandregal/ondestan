@@ -28,7 +28,7 @@ from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
-from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime
+from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime, parse_to_utcdatetime
 
 import logging
 
@@ -411,6 +411,27 @@ def animal_viewer(request):
     )
 
 
+@view_config(route_name='history_map',
+             renderer='templates/animalHistoryViewer.pt',
+             permission='view')
+def animal_history_viewer(request):
+    animal_id = request.matchdict['animal_id']
+    login = get_user_login(request)
+    is_admin = check_permission('admin', request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    if (animal == None) or (not is_admin and animal.user.login != login):
+        return HTTPFound(request.route_url("map"))
+    return dict(
+        view=animal.get_bounding_box_as_json(),
+        animal_id=animal_id
+    )
+
+
 @view_config(route_name='plot_manager', renderer='templates/plotManager.pt',
              permission='view')
 def plot_manager(request):
@@ -632,6 +653,97 @@ def json_animals(request):
                     })
         else:
             logger.debug("Found no animals for user " + login)
+    return geojson
+
+
+@view_config(route_name='json_animal_positions', renderer='json',
+             permission='view')
+def json_animal_positions(request):
+    animal_id = request.matchdict['animal_id']
+    login = get_user_login(request)
+    is_admin = check_permission('admin', request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    geojson = []
+    if animal != None and (is_admin or animal.user.login == login):
+        start = None
+        end = None
+        if 'start' in request.GET:
+            try:
+                start = parse_to_utcdatetime(request.GET['start'])
+            except ValueError:
+                pass
+        if 'end' in request.GET:
+            try:
+                end = parse_to_utcdatetime(request.GET['end'])
+            except ValueError:
+                pass
+
+        n_positions = animal.n_filter_positions(start, end)
+        logger.debug("Found " + str(n_positions) +
+                     " positions for animal " + str(animal_id))
+        if n_positions > 0:
+            if animal.name != None and len(animal.name) > 0:
+                name = animal.name
+            else:
+                name = animal.imei
+            positions = animal.filter_positions(start, end)
+            for position in positions:
+                parameters = {
+                    'animal_name': name,
+                    'name': animal.user.login,
+                    'imei': animal.imei,
+                    'battery': str(position.battery),
+                    'date': format_utcdatetime(position.date,
+                                               request)
+                }
+                if is_admin:
+                    popup_str = _("animal_popup_admin", domain='Ondestan',
+                                  mapping=parameters)
+                else:
+                    popup_str = _("animal_popup", domain='Ondestan',
+                                  mapping=parameters)
+                geojson.append({
+                    "type": "Feature",
+                    "properties": {
+                        "id": animal.id,
+                        "name": animal.name,
+                        "imei": animal.imei,
+                        "battery": position.battery,
+                        "owner": animal.user.login,
+                        "active": animal.active,
+                        "outside": position.outside(),
+                        "date": format_utcdatetime(position.date,
+                                               request),
+                        "popup": get_localizer(request).translate(
+                                                            popup_str)
+                    },
+                    "geometry": eval(position.geojson)
+                })
+                if len(geojson) == 300:
+                    logger.warning("Too many positions requested for animal "
+                        + str(animal_id) + ", only the last 300 will be returned")
+                    break;
+        else:
+            geojson.append({
+                "type": "Feature",
+                "properties": {
+                    "id": animal.id,
+                    "name": animal.name,
+                    "imei": animal.imei,
+                    "battery": None,
+                    "owner": animal.user.login,
+                    "active": animal.active,
+                    "outside": None,
+                    "date": None,
+                    "popup": None
+                },
+                "geometry": None
+            })
     return geojson
 
 

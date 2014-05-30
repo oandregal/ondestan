@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-05-29 13:40+0200\n"
-"PO-Revision-Date: 2014-05-29 13:54+0100\n"
+"POT-Creation-Date: 2014-05-30 20:51+0200\n"
+"PO-Revision-Date: 2014-05-30 20:51+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,19 +37,21 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:547
+#: ondestan/views.py:568
+#: ondestan/views.py:705
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:601
+#: ondestan/views.py:622
+#: ondestan/views.py:708
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name} (${imei})<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
-#: ondestan/views.py:685
+#: ondestan/views.py:797
 msgid "plot_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
-#: ondestan/views.py:711
+#: ondestan/views.py:823
 msgid "plot_popup"
 msgstr "<strong>Nombre:</strong> ${plot_name}"
 
@@ -182,7 +184,6 @@ msgid "no_orders_notification_web"
 msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
 #: ondestan/services/notification_service.py:22
-#| msgid "outside_plots_notification_web"
 msgid "no_plots_notification_web"
 msgstr "Parece que actualmente no tienes fincas definidas para tener bajo control a tus animales. Puedes hacerlo a través de este <a href=\"${url}\">enlace</a> o con el menú de la esquina superior derecha."
 
@@ -439,119 +440,164 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
+#. Default: Animal History Viewer - Ondestán
+#: ondestan/templates/animalHistoryViewer.pt:8
+msgid "animal_history_viewer_title"
+msgstr "Visor de histórico de posiciones - Ondestán"
+
+#. Default: Double click to edit name (confirm change by pressing enter).
+#: ondestan/templates/animalHistoryViewer.pt:34
+#: ondestan/templates/animalViewer.pt:37
+#: ondestan/templates/plotManager.pt:33
+msgid "edit_name_tooltip"
+msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
+
+#. Default: Zoom in
+#: ondestan/templates/animalHistoryViewer.pt:36
+#: ondestan/templates/animalViewer.pt:41
+#: ondestan/templates/plotManager.pt:35
+msgid "map_tool_zoom_in_tooltip"
+msgstr "Acercar"
+
+#. Default: Zoom out
+#: ondestan/templates/animalHistoryViewer.pt:37
+#: ondestan/templates/animalViewer.pt:42
+#: ondestan/templates/plotManager.pt:36
+msgid "map_tool_zoom_out_tooltip"
+msgstr "Alejar"
+
+#. Default: Map legend
+#: ondestan/templates/animalHistoryViewer.pt:38
+#: ondestan/templates/animalHistoryViewer.pt:52
+#: ondestan/templates/animalViewer.pt:43
+#: ondestan/templates/animalViewer.pt:93
+msgid "map_legend"
+msgstr "Leyenda del mapa"
+
+#. Default: Battery Level (color)
+#: ondestan/templates/animalHistoryViewer.pt:55
+#: ondestan/templates/animalViewer.pt:96
+msgid "battery_level_legend"
+msgstr "Nivel de batería (color)"
+
+#. Default: Low battery level
+#: ondestan/templates/animalHistoryViewer.pt:58
+#: ondestan/templates/animalViewer.pt:99
+msgid "low_battery_level"
+msgstr "Nivel de batería bajo"
+
+#. Default: Medium battery level
+#: ondestan/templates/animalHistoryViewer.pt:61
+#: ondestan/templates/animalViewer.pt:102
+msgid "medium_battery_level"
+msgstr "Nivel de batería medio"
+
+#. Default: High battery level
+#: ondestan/templates/animalHistoryViewer.pt:64
+#: ondestan/templates/animalViewer.pt:105
+msgid "high_battery_level"
+msgstr "Nivel de batería alto"
+
+#. Default: Inside/Outside Plots (border)
+#: ondestan/templates/animalHistoryViewer.pt:68
+#: ondestan/templates/animalViewer.pt:109
+msgid "inside_outside_plots_legend"
+msgstr "Dentro/fuera de fincas (borde)"
+
+#. Default: Inside plots
+#: ondestan/templates/animalHistoryViewer.pt:71
+#: ondestan/templates/animalViewer.pt:112
+msgid "inside_plots"
+msgstr "Dentro de fincas"
+
+#. Default: Outside plots
+#: ondestan/templates/animalHistoryViewer.pt:74
+#: ondestan/templates/animalViewer.pt:115
+msgid "outside_plots"
+msgstr "Fuera de fincas"
+
+#. Default: Inactive devices
+#: ondestan/templates/animalHistoryViewer.pt:80
+#: ondestan/templates/animalViewer.pt:121
+msgid "inactive_device_legend"
+msgstr "Dispositivos inactivos"
+
+#. Default: Close
+#: ondestan/templates/animalHistoryViewer.pt:85
+#: ondestan/templates/animalViewer.pt:126
+msgid "close"
+msgstr "Cerrar"
+
+#. Default: Start Date
+#: ondestan/templates/animalHistoryViewer.pt:92
+msgid "start_date"
+msgstr "Fecha de inicio"
+
+#. Default: End Date
+#: ondestan/templates/animalHistoryViewer.pt:93
+msgid "end_date"
+msgstr "Fecha de fin"
+
+#. Default: Update
+#: ondestan/templates/animalHistoryViewer.pt:94
+msgid "update"
+msgstr "Actualizar"
+
 #. Default: Viewer - Ondestán
 #: ondestan/templates/animalViewer.pt:8
 msgid "animal_viewer_title"
 msgstr "Visor de animales - Ondestán"
 
 #. Default: Activate
-#: ondestan/templates/animalViewer.pt:25
+#: ondestan/templates/animalViewer.pt:27
 msgid "activate"
 msgstr "Activar"
 
 #. Default: Deactivate
-#: ondestan/templates/animalViewer.pt:26
+#: ondestan/templates/animalViewer.pt:28
 msgid "deactivate"
 msgstr "Desactivar"
 
-#. Default: Double click to edit name (confirm change by pressing enter).
-#: ondestan/templates/animalViewer.pt:34
-#: ondestan/templates/plotManager.pt:31
-msgid "edit_name_tooltip"
-msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
-
-#. Default: Zoom in
-#: ondestan/templates/animalViewer.pt:36
-#: ondestan/templates/plotManager.pt:33
-msgid "map_tool_zoom_in_tooltip"
-msgstr "Acercar"
-
-#. Default: Zoom out
-#: ondestan/templates/animalViewer.pt:37
-#: ondestan/templates/plotManager.pt:34
-msgid "map_tool_zoom_out_tooltip"
-msgstr "Alejar"
-
-#. Default: Map legend
+#. Default: Click to center view onto this animal.
 #: ondestan/templates/animalViewer.pt:38
-#: ondestan/templates/animalViewer.pt:88
-msgid "map_legend"
-msgstr "Leyenda del mapa"
+#| msgid "edit_name_tooltip"
+msgid "center_view_on_animal_tooltip"
+msgstr "Click para centrar la vista en este animal."
+
+#. Default: Click to view this animal's position history.
+#: ondestan/templates/animalViewer.pt:39
+msgid "view_positions_history_tooltip"
+msgstr "Click para ver el histórico de posiciones de este animal."
 
 #. Default: Devices
-#: ondestan/templates/animalViewer.pt:56
+#: ondestan/templates/animalViewer.pt:61
 msgid "devices"
 msgstr "Dispositivos"
 
 #. Default: Active
-#: ondestan/templates/animalViewer.pt:60
+#: ondestan/templates/animalViewer.pt:65
 msgid "dashboard_active"
 msgstr "Activos"
 
 #. Default: Inactive
-#: ondestan/templates/animalViewer.pt:64
+#: ondestan/templates/animalViewer.pt:69
 msgid "dashboard_inactive"
 msgstr "Inactivos"
 
 #. Default: Alerts
-#: ondestan/templates/animalViewer.pt:69
+#: ondestan/templates/animalViewer.pt:74
 msgid "alerts"
 msgstr "Alertas"
 
 #. Default: Low Battery
-#: ondestan/templates/animalViewer.pt:73
+#: ondestan/templates/animalViewer.pt:78
 msgid "dashboard_low_battery"
 msgstr "Batería baja"
 
 #. Default: Outside Plots
-#: ondestan/templates/animalViewer.pt:77
+#: ondestan/templates/animalViewer.pt:82
 msgid "dashboard_outside_plots"
 msgstr "Fuera de fincas"
-
-#. Default: Battery Level (color)
-#: ondestan/templates/animalViewer.pt:91
-msgid "battery_level_legend"
-msgstr "Nivel de batería (color)"
-
-#. Default: Low battery level
-#: ondestan/templates/animalViewer.pt:94
-msgid "low_battery_level"
-msgstr "Nivel de batería bajo"
-
-#. Default: Medium battery level
-#: ondestan/templates/animalViewer.pt:97
-msgid "medium_battery_level"
-msgstr "Nivel de batería medio"
-
-#. Default: High battery level
-#: ondestan/templates/animalViewer.pt:100
-msgid "high_battery_level"
-msgstr "Nivel de batería alto"
-
-#. Default: Inside/Outside Plots (border)
-#: ondestan/templates/animalViewer.pt:104
-msgid "inside_outside_plots_legend"
-msgstr "Dentro/fuera de fincas (borde)"
-
-#. Default: Inside plots
-#: ondestan/templates/animalViewer.pt:107
-msgid "inside_plots"
-msgstr "Dentro de fincas"
-
-#. Default: Outside plots
-#: ondestan/templates/animalViewer.pt:110
-msgid "outside_plots"
-msgstr "Fuera de fincas"
-
-#. Default: Inactive devices
-#: ondestan/templates/animalViewer.pt:116
-msgid "inactive_device_legend"
-msgstr "Dispositivos inactivos"
-
-#. Default: Close
-#: ondestan/templates/animalViewer.pt:121
-msgid "close"
-msgstr "Cerrar"
 
 #. Default: Login - Ondestán
 #: ondestan/templates/login.pt:8
@@ -731,7 +777,7 @@ msgstr "Teléfono móvil"
 #. Default: Name
 #: ondestan/templates/orderDevices.pt:37
 #: ondestan/templates/orderDevices.pt:55
-#: ondestan/templates/plotManager.pt:73
+#: ondestan/templates/plotManager.pt:75
 msgid "name"
 msgstr "Nombre"
 
@@ -915,125 +961,125 @@ msgid "plot_manager_title"
 msgstr "Gestor de fincas - Ondestán"
 
 #. Default: Draw a new plot
-#: ondestan/templates/plotManager.pt:36
+#: ondestan/templates/plotManager.pt:38
 msgid "map_tool_create_plot_tooltip"
 msgstr "Dibujar una nueva finca"
 
 #. Default: Delete last point drawn
-#: ondestan/templates/plotManager.pt:37
+#: ondestan/templates/plotManager.pt:39
 msgid "map_tool_undo_tooltip"
 msgstr "Borrar el último punto dibujado"
 
 #. Default: Delete last point
-#: ondestan/templates/plotManager.pt:38
+#: ondestan/templates/plotManager.pt:40
 msgid "map_tool_undo_text"
 msgstr "Borrar último punto"
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:39
-#: ondestan/templates/plotManager.pt:40
-#: ondestan/templates/plotManager.pt:49
+#: ondestan/templates/plotManager.pt:41
+#: ondestan/templates/plotManager.pt:42
+#: ondestan/templates/plotManager.pt:51
 msgid "map_tool_cancel_text"
 msgstr "Cancelar"
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/plotManager.pt:41
+#: ondestan/templates/plotManager.pt:43
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr "Haz click para empezar a dibujar la finca."
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/plotManager.pt:42
+#: ondestan/templates/plotManager.pt:44
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr "Haz click para continuar dibujando la finca."
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/plotManager.pt:43
+#: ondestan/templates/plotManager.pt:45
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr "Haz click en el primer punto para cerrar esta finca."
 
 #. Default: Error: plot edges cannot cross!
-#: ondestan/templates/plotManager.pt:44
+#: ondestan/templates/plotManager.pt:46
 msgid "map_tool_edit_plot_handler_error"
 msgstr "Error: los lados de la finca no se pueden cruzar."
 
 #. Default: Save changes
-#: ondestan/templates/plotManager.pt:46
+#: ondestan/templates/plotManager.pt:48
 msgid "map_tool_save_tooltip"
 msgstr "Guardar cambios"
 
 #. Default: Save
-#: ondestan/templates/plotManager.pt:47
+#: ondestan/templates/plotManager.pt:49
 msgid "map_tool_save_text"
 msgstr "Guardar"
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/plotManager.pt:48
+#: ondestan/templates/plotManager.pt:50
 msgid "map_tool_cancel_tooltip"
 msgstr "Cancelar la edición, descarta los cambios"
 
 #. Default: Edit plots
-#: ondestan/templates/plotManager.pt:51
+#: ondestan/templates/plotManager.pt:53
 msgid "map_tool_edit_plot_tooltip"
 msgstr "Editar fincas"
 
 #. Default: No plots to edit
-#: ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:54
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr "No hay fincas que editar"
 
 #. Default: Delete plots
-#: ondestan/templates/plotManager.pt:53
+#: ondestan/templates/plotManager.pt:55
 msgid "map_tool_delete_plot_tooltip"
 msgstr "Borrar fincas"
 
 #. Default: No plots to delete
-#: ondestan/templates/plotManager.pt:54
+#: ondestan/templates/plotManager.pt:56
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr "No hay fincas que borrar"
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/plotManager.pt:55
+#: ondestan/templates/plotManager.pt:57
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr "Arrastra los vértices para editar la finca."
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/plotManager.pt:56
+#: ondestan/templates/plotManager.pt:58
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr "Haz click en Cancelar para deshacer los cambios."
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/plotManager.pt:57
+#: ondestan/templates/plotManager.pt:59
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr "Haz click en una finca para borrarla."
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:70
+#: ondestan/templates/plotManager.pt:72
 msgid "plot_data_modal_title"
 msgstr "Datos de la finca"
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:74
+#: ondestan/templates/plotManager.pt:76
 msgid "owner"
 msgstr "Dueño"
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:80
+#: ondestan/templates/plotManager.pt:82
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:81
+#: ondestan/templates/plotManager.pt:83
 msgid "accept"
 msgstr "Aceptar"
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:88
+#: ondestan/templates/plotManager.pt:90
 msgid "current_plots"
 msgstr "Fincas actuales"
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:91
+#: ondestan/templates/plotManager.pt:96
 msgid "no_plots"
 msgstr "Sin fincas"
 
@@ -1160,15 +1206,15 @@ msgstr "Contraseña nueva"
 msgid "retype_new_password"
 msgstr "Repite la contraseña nueva"
 
-#: ondestan/utils/various.py:56
+#: ondestan/utils/various.py:57
 msgid "meta_date_format"
 msgstr "%d-%m-%Y"
 
-#: ondestan/utils/various.py:68
+#: ondestan/utils/various.py:69
 msgid "meta_datetime_format"
 msgstr "%d-%m-%Y %H:%M:%S"
 
-#: ondestan/utils/various.py:80
+#: ondestan/utils/various.py:81
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 

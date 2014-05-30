@@ -5,15 +5,18 @@
       i18n:domain="Ondestan" metal:use-macro="load: main.pt">
 
   <tal:block metal:fill-slot="head">
-    <title i18n:translate="animal_viewer_title">Viewer - Ondestán</title>
+    <title i18n:translate="animal_history_viewer_title">Animal History Viewer - Ondestán</title>
   </tal:block>
 
   <tal:block metal:fill-slot="styles">
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.css')}" />
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.draw.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/jquery-ui/jquery-ui-1.10.4.min.css')}" />
   </tal:block>
 
   <tal:block metal:fill-slot="javascript">
+   	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-1.10.4.min.js')}"></script>
+   	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-datepicker-spanish.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
@@ -21,68 +24,24 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/Google.js')}"></script>
     <?python from ondestan.config import Config?>
     <script type="text/javascript">
-      window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
+      window.contextVariables.animals_json_url = "${request.route_url('json_animal_positions', animal_id=animal_id)}";
       window.contextVariables.plots_json_url = "${request.route_url('json_plots')}";
       window.contextVariables.orders_popover_content = "${orders_popover_content}";
-      window.contextVariables.activate_device_msg = "<tal:block i18n:translate="activate">Activate</tal:block>";
-      window.contextVariables.deactivate_device_msg = "<tal:block i18n:translate="deactivate">Deactivate</tal:block>";
-      window.contextVariables.activate_device_url = "${request.route_url('activate_device', device_id='__device_id__')}";
-      window.contextVariables.deactivate_device_url = "${request.route_url('deactivate_device', device_id='__device_id__')}";
-      window.contextVariables.update_animal_name_url = "${request.route_url('update_animal_name')}";
       window.contextVariables.low_battery_barrier = ${Config.get_float_value('config.low_battery_barrier')};
       window.contextVariables.medium_battery_barrier = ${Config.get_float_value('config.medium_battery_barrier')};
       window.contextVariables.map_view_json = ${view if view != None else 'null'};
       window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
-      window.contextVariables.positions_history_url = "${request.route_url('history_map', animal_id="")}";
       window.contextVariables.edit_name_tooltip = "<tal:block i18n:translate="edit_name_tooltip">Double click to edit name (confirm change by pressing enter).</tal:block>";
-      window.contextVariables.center_view_on_animal_tooltip = "<tal:block i18n:translate="center_view_on_animal_tooltip">Click to center view onto this animal.</tal:block>";
-      window.contextVariables.view_positions_history_tooltip = "<tal:block i18n:translate="view_positions_history_tooltip">Click to view this animal's position history.</tal:block>";
 
       window.contextVariables.zoom_in_tooltip = "<tal:block i18n:translate="map_tool_zoom_in_tooltip">Zoom in</tal:block>";
       window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
       window.contextVariables.show_map_legend_tooltip = "<tal:block i18n:translate="map_legend">Map legend</tal:block>";
     </script>
-    <script type="text/javascript" src="${request.static_url('ondestan:static/js/animalViewer.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/animalHistoryViewer.js')}"></script>
   </tal:block>
 
   <tal:block metal:fill-slot="content">
     <?python from ondestan.config import Config?>
-
-    <div class="row data">
-
-	  	<div tal:condition="len(notifications) > 0" class="alerts-panel">
-	  		<tal:block tal:repeat="notification notifications">
-	  			${notification.get_full_html(request)}
-	  		</tal:block>
-		</div>
-
-      <div class="col-md-3 text-center col-md-offset-1 devices-block">
-      	  <div class="devices-block-title">
-		  	<h4 class="text-muted" align="center" i18n:translate="devices">Devices</h4>
-		  </div>
-	      <div class="col-md-6 devices-block-content">
-	        <a href="#" id="active_devices" disabled="disabled">-</a>
-	        <h5 i18n:translate="dashboard_active">Active</h5>
-	      </div>
-	      <div class="col-md-6 devices-block-content">
-	        <a href="#" id="inactive_devices" disabled="disabled">-</a>
-	        <h5 i18n:translate="dashboard_inactive">Inactive</h5>
-	      </div>
-      </div>
-      <div class="col-md-3 text-center col-md-offset-4 devices-block">
-      	  <div class="devices-block-title">
-		  	<h4 class="text-muted" align="center" i18n:translate="alerts">Alerts</h4>
-		  </div>
-	      <div class="col-md-6 devices-block-content">
-	        <a href="#" id="low_battery_devices" disabled="disabled">-</a>
-	        <h5 i18n:translate="dashboard_low_battery">Low Battery</h5>
-	      </div>
-	      <div class="col-md-6 devices-block-content">
-	        <a href="#" id="outside_plots_devices" disabled="disabled">-</a>
-	        <h5 i18n:translate="dashboard_outside_plots">Outside Plots</h5>
-	      </div>
-      </div>
-    </div>
 
 	<!-- Legend modal -->
 	<div class="modal fade bs-example-modal-sm" id="legend-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -129,7 +88,17 @@
 	  </div>
 	</div>
 
-    <div id="map"></div>
+	<div id="date_selectors">
+		<label><tal:block i18n:translate="start_date">Start Date</tal:block>:</label><input type="text" class="datepicker" id="startdate"/>
+		<label><tal:block i18n:translate="end_date">End Date</tal:block>:</label><input type="text" class="datepicker" id="enddate"/>
+		<button type="button" id="update_time" class="btn btn-default" i18n:translate="update">Update</button>
+	</div>
+	<div id="map_history"></div>
+    <div id="history_controls">
+    	<div id="current_date">---</div>
+		<a id="pause" class="playing"></a>
+    	<div id="slider"></div>
+	</div>
 
   </tal:block>
 
