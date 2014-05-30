@@ -17,7 +17,7 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
-    <script src="http://maps.google.com/maps/api/js?v=3&sensor=false"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/Google.js')}"></script>
     <?python from ondestan.config import Config?>
     <script type="text/javascript">

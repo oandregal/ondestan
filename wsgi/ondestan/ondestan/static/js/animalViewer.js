@@ -292,7 +292,7 @@
 		map.addControl(displayLegendControl(DisplayLegendFunction));
 		
 		google_layer = new L.Google('SATELLITE');
-        osm_layer = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        osm_layer = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
         })
