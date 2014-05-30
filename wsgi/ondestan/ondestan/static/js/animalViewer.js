@@ -1,5 +1,7 @@
 (function(NS) {
 
+	var google_layer;
+	var osm_layer;
 	var animals_layer;
 	var plots;
     var map;
@@ -53,6 +55,20 @@
         	opt.stroke = true;
         }
         return opt;
+    };
+
+    function checkBaseLayer() {
+    	if (map.getZoom() > 13) {
+    		if (!map.hasLayer(google_layer)) {
+    			map.removeLayer(osm_layer);
+    			map.addLayer(google_layer);
+    		}
+    	} else {
+    		if (!map.hasLayer(osm_layer)) {
+    			map.removeLayer(google_layer);
+    			map.addLayer(osm_layer);
+    		}
+    	}
     };
 
     function addToPopover(feature){
@@ -274,11 +290,17 @@
 		DisplayLegendFunction = function () { $('#legend-modal').modal();};
 
 		map.addControl(displayLegendControl(DisplayLegendFunction));
-
-        L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		
+		google_layer = new L.Google('SATELLITE');
+        osm_layer = L.tileLayer('http://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             maxZoom: 18,
             attribution: '<a href="http://openstreetmap.org">OpenStreetMap</a> contributors'
-        }).addTo(map);
+        })
+
+        checkBaseLayer();
+        map.on('zoomend', function() {
+        	checkBaseLayer();
+        });
     };
 
     // Init on document ready
