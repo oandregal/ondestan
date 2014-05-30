@@ -9,8 +9,8 @@
   </tal:block>
 
   <tal:block metal:fill-slot="styles">
-    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.css')}" />
-    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet.draw.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.draw.css')}" />
   </tal:block>
 
   <tal:block metal:fill-slot="javascript">
