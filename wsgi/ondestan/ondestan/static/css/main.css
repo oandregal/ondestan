@@ -115,43 +115,83 @@ div#map {
   }
 }
 
-div#map_plots, div#map_history {
+div#map_plots {
 	height: 465px;
 }
 
 @media (min-height: 610px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 540px;
   }
 }
 
 @media (min-height: 685px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 615px;
   }
 }
 
 @media (min-height: 760px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 690px;
   }
 }
 
 @media (min-height: 835px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 765px;
   }
 }
 
 @media (min-height: 910px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 840px;
   }
 }
 
 @media (min-height: 985px) {
-  div#map_plots, div#map_history {
+  div#map_plots {
 	height: 915px;
+  }
+}
+
+div#map_history {
+	height: 425px;
+}
+
+@media (min-height: 610px) {
+  div#map_history {
+	height: 500px;
+  }
+}
+
+@media (min-height: 685px) {
+  div#map_history {
+	height: 575px;
+  }
+}
+
+@media (min-height: 760px) {
+  div#map_history {
+	height: 650px;
+  }
+}
+
+@media (min-height: 835px) {
+  div#map_history {
+	height: 725px;
+  }
+}
+
+@media (min-height: 910px) {
+  div#map_history {
+	height: 800px;
+  }
+}
+
+@media (min-height: 985px) {
+  div#map_history {
+	height: 875px;
   }
 }
 
@@ -359,13 +399,40 @@ ul.list-group #no_plots_message label {
 
 #date_selectors {
 	padding: 5px 0px 10px;
-	text-align: right;
+	display: table;
+	margin: 0 auto;
 }
 
-#date_selectors label {
-	margin-right: 5px;
-}
-
-#date_selectors input {
+#date_selectors input.datepicker {
 	margin-right: 10px;
+	margin-left: 5px;
+}
+
+#custom_dates {
+	display: inline;
+}
+
+#custom_dates label {
+	font-style: italic;
+	font-weight: normal;
+}
+
+#custom_dates label, #custom_dates input {
+	font-size: 14px;
+}
+
+#custom_dates label:first-child {
+	margin-left: 20px;
+}
+
+.grey-font {
+	color: grey;
+}
+
+#update_time_custom {
+	padding: 5px 16px;
+}
+
+#current_date {
+	text-align: center;
 }

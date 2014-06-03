@@ -41,26 +41,43 @@
 	* inits slider and a small play/pause button
 	*/
 	function init_slider() {
-		$("#slider").slider({
-			disabled: false,
-			min: 0,
-			max: animals_sublayers.length - 1,
-			value: 0,
-			step: 1,
-			slide: function(event, ui){
-				var step = ui.value;
-				load_sublayer(step);
-			}
-		});
 		$("#pause").unbind('click');
 		// play-pause toggle
-		$("#pause").click(function(){
-			clearInterval(timer);
-			$(this).toggleClass('playing');
-			if ($(this).hasClass('playing')) {
-				timer = setInterval(load_next_sublayer, interval);
+		if (animals_sublayers.length >= 1) {
+			$("#slider").slider({
+				disabled: false,
+				min: 0,
+				max: animals_sublayers.length - 1,
+				value: 0,
+				step: 1,
+				slide: function(event, ui){
+					var step = ui.value;
+					load_sublayer(step);
+				}
+			});
+			$("#pause").click(function(){
+				clearInterval(timer);
+				$(this).toggleClass('playing');
+				if ($(this).hasClass('playing')) {
+					timer = setInterval(load_next_sublayer, interval);
+				}
+			});
+            if ($('#pause').hasClass('playing')) {
+            	timer = setInterval(load_next_sublayer, interval);
+            }
+		} else {
+			if (!$("#pause").hasClass('playing')) {
+				clearInterval(timer);
 			}
-		});
+			$("#slider").slider({
+				disabled: true,
+				min: 0,
+				max: 0,
+				value: 0,
+				step: 1
+			});
+			$("#current_date").html('----------');
+		}
 	}; 
 
     function getStyleForDevice(feature){
@@ -218,19 +235,67 @@
         });
 
     	animals_layer.on('data:loaded', function(e) {
-            load_sublayer(0);
-            if ($('#pause').hasClass('playing')) {
-            	timer = setInterval(load_next_sublayer, interval);
-            }
             init_slider();
+        	if (animals_sublayers.length > 0) {
+        		load_sublayer(0);
+        	} else {
+        		$('#no-positions-modal').modal();
+        	}
         });
+    }
+
+    function toggle_custom_date_form(enabled) {
+    	if (enabled) {
+			$("#custom_dates input").attr('disabled', false);
+			$("#custom_dates button").attr('disabled', false);
+			$("#custom_dates label").removeClass('grey-font');
+    	} else {
+			$("#custom_dates input").attr('disabled', true);
+			$("#custom_dates button").attr('disabled', true);
+			$("#custom_dates label").addClass('grey-font');
+    	}
+    }
+    
+    function load_today_animals() {
+		today = new Date();
+		today.setHours(0);
+		today.setMinutes(0);
+		today.setSeconds(0);
+		load_animals(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()),
+				new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()+1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
     }
 
     NS.init = function(){
     	$("#slider").slider({disabled: true});
         $( ".datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
         $("#pause").prop('disabled', true);
-		$("#update_time").click(function(){
+		$("#update_time_today").click(function(){
+			toggle_custom_date_form(false);
+			load_today_animals();
+		});
+		$("#update_time_yesterday").click(function(){
+			toggle_custom_date_form(false);
+			today = new Date();
+			today.setHours(0);
+			today.setMinutes(0);
+			today.setSeconds(0);
+			load_animals(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()-1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()),
+					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
+		});
+		$("#update_time_last_week").click(function(){
+			toggle_custom_date_form(false);
+			today = new Date();
+			today.setHours(0);
+			today.setMinutes(0);
+			today.setSeconds(0);
+			load_animals(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()-6, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()),
+					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()+1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
+		});
+		$("#update_time_custom").click(function(){
+			toggle_custom_date_form(true);
+		});
+		$("#update_time_custom_confirm").click(function(){
+			toggle_custom_date_form(false);
 			start = $('#startdate').datepicker('getDate');
 			if (start != null) {
 				start = new Date(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(),  start.getUTCHours(), start.getUTCMinutes(), start.getUTCSeconds());
@@ -260,7 +325,7 @@
     	}
 
         load_plots();
-        load_animals();
+        load_today_animals();
 
 		displayLegendControl = function(theDisplayLegendFunction) {
 

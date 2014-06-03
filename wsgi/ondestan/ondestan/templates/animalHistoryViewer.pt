@@ -17,6 +17,8 @@
   <tal:block metal:fill-slot="javascript">
    	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-1.10.4.min.js')}"></script>
    	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-datepicker-spanish.js')}"></script>
+   	<!-- We must load Bootstrap after jQueryUI to avoid some problems. -->
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
@@ -87,15 +89,41 @@
 	    </div>
 	  </div>
 	</div>
-
-	<div id="date_selectors">
-		<label><tal:block i18n:translate="start_date">Start Date</tal:block>:</label><input type="text" class="datepicker" id="startdate"/>
-		<label><tal:block i18n:translate="end_date">End Date</tal:block>:</label><input type="text" class="datepicker" id="enddate"/>
-		<button type="button" id="update_time" class="btn btn-default" i18n:translate="update">Update</button>
+	<!-- No positions modal -->
+	<div class="modal fade bs-example-modal-sm" id="no-positions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	<p i18n:translate="no_positions_in_selected_time_interval">There are no positions in the selected time interval.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div id="date_selectors" class="btn-group btn-toggle btn-group-lg" data-toggle="buttons">
+	  <label id="update_time_today" class="btn btn-default active">
+	    <input name="options" value="option1" checked="true" type="radio"/><tal:block i18n:translate="today">Today</tal:block>
+	  </label>
+	  <label id="update_time_yesterday" class="btn btn-default">
+	    <input name="options" value="option2" type="radio"/><tal:block i18n:translate="yesterday">Yesterday</tal:block>
+	  </label>
+	  <label id="update_time_last_week" class="btn btn-default">
+	    <input name="options" value="option3" type="radio"/><tal:block i18n:translate="last_week">Last Week</tal:block>
+	  </label>
+	  <label id="update_time_custom" class="btn btn-default">
+	    <input name="options" value="option4" type="radio"/><tal:block i18n:translate="choose_dates">Choose Dates</tal:block>:
+	    <div id="custom_dates">
+			<label class="grey-font" for="startdate"><tal:block i18n:translate="start_date">Start Date</tal:block></label><input autocomplete="off" type="text" disabled="true" class="datepicker" id="startdate"/>
+			<label class="grey-font" for="enddate"><tal:block i18n:translate="end_date">End Date</tal:block></label><input autocomplete="off" type="text" disabled="true" class="datepicker" id="enddate"/>
+			<button type="button" id="update_time_custom_confirm" disabled="true" class="btn btn-primary" i18n:translate="update">Update</button>
+		</div>
+	  </label>
 	</div>
 	<div id="map_history"></div>
     <div id="history_controls">
-    	<div id="current_date">---</div>
+    	<div id="current_date">----------</div>
 		<a id="pause" class="playing"></a>
     	<div id="slider"></div>
 	</div>
