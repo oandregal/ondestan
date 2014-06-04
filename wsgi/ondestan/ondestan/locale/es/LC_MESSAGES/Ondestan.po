@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-06-04 12:48+0200\n"
-"PO-Revision-Date: 2014-06-04 12:48+0100\n"
+"POT-Creation-Date: 2014-06-04 17:53+0200\n"
+"PO-Revision-Date: 2014-06-04 17:59+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -37,21 +37,26 @@ msgstr "Ya existe un usuario con ese login. Por favor, selecciona uno distinto."
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:568
-#: ondestan/views.py:705
+#: ondestan/views.py:432
+#| msgid "no_positions_in_selected_time_interval"
+msgid "too_many_positions_in_selected_time_interval"
+msgstr "Demasiadas posiciones para mostrar simultáneamente en el intervalo de tiempo seleccionado. Se mostrarán las ${max_positions} más recientes."
+
+#: ondestan/views.py:574
+#: ondestan/views.py:711
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:622
-#: ondestan/views.py:708
+#: ondestan/views.py:628
+#: ondestan/views.py:714
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name} (${imei})<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
-#: ondestan/views.py:797
+#: ondestan/views.py:803
 msgid "plot_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
-#: ondestan/views.py:823
+#: ondestan/views.py:829
 msgid "plot_popup"
 msgstr "<strong>Nombre:</strong> ${plot_name}"
 
@@ -446,126 +451,127 @@ msgid "animal_history_viewer_title"
 msgstr "Visor de histórico de posiciones - Ondestán"
 
 #. Default: Double click to edit name (confirm change by pressing enter).
-#: ondestan/templates/animalHistoryViewer.pt:36
+#: ondestan/templates/animalHistoryViewer.pt:39
 #: ondestan/templates/animalViewer.pt:37
 #: ondestan/templates/plotManager.pt:33
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: Zoom in
-#: ondestan/templates/animalHistoryViewer.pt:38
+#: ondestan/templates/animalHistoryViewer.pt:41
 #: ondestan/templates/animalViewer.pt:41
 #: ondestan/templates/plotManager.pt:35
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
 
 #. Default: Zoom out
-#: ondestan/templates/animalHistoryViewer.pt:39
+#: ondestan/templates/animalHistoryViewer.pt:42
 #: ondestan/templates/animalViewer.pt:42
 #: ondestan/templates/plotManager.pt:36
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
 
 #. Default: Map legend
-#: ondestan/templates/animalHistoryViewer.pt:40
-#: ondestan/templates/animalHistoryViewer.pt:54
+#: ondestan/templates/animalHistoryViewer.pt:43
+#: ondestan/templates/animalHistoryViewer.pt:57
 #: ondestan/templates/animalViewer.pt:43
 #: ondestan/templates/animalViewer.pt:93
 msgid "map_legend"
 msgstr "Leyenda del mapa"
 
 #. Default: Battery Level (color)
-#: ondestan/templates/animalHistoryViewer.pt:57
+#: ondestan/templates/animalHistoryViewer.pt:60
 #: ondestan/templates/animalViewer.pt:96
 msgid "battery_level_legend"
 msgstr "Nivel de batería (color)"
 
 #. Default: Low battery level
-#: ondestan/templates/animalHistoryViewer.pt:60
+#: ondestan/templates/animalHistoryViewer.pt:63
 #: ondestan/templates/animalViewer.pt:99
 msgid "low_battery_level"
 msgstr "Nivel de batería bajo"
 
 #. Default: Medium battery level
-#: ondestan/templates/animalHistoryViewer.pt:63
+#: ondestan/templates/animalHistoryViewer.pt:66
 #: ondestan/templates/animalViewer.pt:102
 msgid "medium_battery_level"
 msgstr "Nivel de batería medio"
 
 #. Default: High battery level
-#: ondestan/templates/animalHistoryViewer.pt:66
+#: ondestan/templates/animalHistoryViewer.pt:69
 #: ondestan/templates/animalViewer.pt:105
 msgid "high_battery_level"
 msgstr "Nivel de batería alto"
 
 #. Default: Inside/Outside Plots (border)
-#: ondestan/templates/animalHistoryViewer.pt:70
+#: ondestan/templates/animalHistoryViewer.pt:73
 #: ondestan/templates/animalViewer.pt:109
 msgid "inside_outside_plots_legend"
 msgstr "Dentro/fuera de fincas (borde)"
 
 #. Default: Inside plots
-#: ondestan/templates/animalHistoryViewer.pt:73
+#: ondestan/templates/animalHistoryViewer.pt:76
 #: ondestan/templates/animalViewer.pt:112
 msgid "inside_plots"
 msgstr "Dentro de fincas"
 
 #. Default: Outside plots
-#: ondestan/templates/animalHistoryViewer.pt:76
+#: ondestan/templates/animalHistoryViewer.pt:79
 #: ondestan/templates/animalViewer.pt:115
 msgid "outside_plots"
 msgstr "Fuera de fincas"
 
 #. Default: Inactive devices
-#: ondestan/templates/animalHistoryViewer.pt:82
+#: ondestan/templates/animalHistoryViewer.pt:85
 #: ondestan/templates/animalViewer.pt:121
 msgid "inactive_device_legend"
 msgstr "Dispositivos inactivos"
 
 #. Default: Close
-#: ondestan/templates/animalHistoryViewer.pt:87
-#: ondestan/templates/animalHistoryViewer.pt:100
+#: ondestan/templates/animalHistoryViewer.pt:90
+#: ondestan/templates/animalHistoryViewer.pt:103
+#: ondestan/templates/animalHistoryViewer.pt:116
 #: ondestan/templates/animalViewer.pt:126
 msgid "close"
 msgstr "Cerrar"
 
 #. Default: There are no positions in the selected time interval.
-#: ondestan/templates/animalHistoryViewer.pt:97
+#: ondestan/templates/animalHistoryViewer.pt:100
 msgid "no_positions_in_selected_time_interval"
 msgstr "No hay posiciones en el intervalo de tiempo seleccionado."
 
 #. Default: Today
-#: ondestan/templates/animalHistoryViewer.pt:107
+#: ondestan/templates/animalHistoryViewer.pt:124
 msgid "today"
 msgstr "Hoy"
 
 #. Default: Yesterday
-#: ondestan/templates/animalHistoryViewer.pt:110
+#: ondestan/templates/animalHistoryViewer.pt:127
 msgid "yesterday"
 msgstr "Ayer"
 
 #. Default: Last Week
-#: ondestan/templates/animalHistoryViewer.pt:113
+#: ondestan/templates/animalHistoryViewer.pt:130
 msgid "last_week"
 msgstr "Última semana"
 
 #. Default: Custom
-#: ondestan/templates/animalHistoryViewer.pt:116
+#: ondestan/templates/animalHistoryViewer.pt:135
 msgid "custom"
 msgstr "Personalizado"
 
 #. Default: Start
-#: ondestan/templates/animalHistoryViewer.pt:118
+#: ondestan/templates/animalHistoryViewer.pt:137
 msgid "start_date"
 msgstr "Inicio"
 
 #. Default: End
-#: ondestan/templates/animalHistoryViewer.pt:119
+#: ondestan/templates/animalHistoryViewer.pt:138
 msgid "end_date"
 msgstr "Fin"
 
 #. Default: Confirm
-#: ondestan/templates/animalHistoryViewer.pt:120
+#: ondestan/templates/animalHistoryViewer.pt:141
 msgid "confirm"
 msgstr "Confirmar"
 
@@ -1248,3 +1254,6 @@ msgstr "%H:%M:%S"
 
 #~ msgid "choose_dates"
 #~ msgstr "Elegir fechas"
+
+#~ msgid "too_many_positions"
+#~ msgstr ""

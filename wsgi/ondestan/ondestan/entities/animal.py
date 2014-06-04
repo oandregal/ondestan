@@ -7,6 +7,9 @@ from sqlalchemy.dialects.postgresql import array
 from ondestan.entities import Entity
 from ondestan.entities.position import Position
 from ondestan.utils import Base
+from ondestan.config import Config
+
+max_positions = Config.get_int_value('config.history_max_positions')
 
 
 class Animal(Entity, Base):
@@ -75,7 +78,9 @@ class Animal(Entity, Base):
         positions = []
         for position in self.positions:
             positions.append(position.geom)
-            if len(positions) == 300:
+            # We return the max number of positions plus one, so it can detect
+            # there are more and not just the barrier number
+            if len(positions) == (max_positions + 1):
                 break
         return self.session.scalar(func.ST_AsGeoJson(func.ST_Envelope(
             func.ST_MakeLine(array(positions))))) if len(positions) > 0\
@@ -85,7 +90,9 @@ class Animal(Entity, Base):
         positions = []
         for position in self.positions:
             positions.append(position.geom)
-            if len(positions) == 300:
+            # We return the max number of positions plus one, so it can detect
+            # there are more and not just the barrier number
+            if len(positions) == (max_positions + 1):
                 break
         return self.session.scalar(func.ST_Envelope(
             func.ST_MakeLine(array(positions)))) if len(positions) > 0\

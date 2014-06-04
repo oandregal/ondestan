@@ -29,6 +29,9 @@ from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
 from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime, parse_to_utcdatetime
+from ondestan.config import Config
+
+max_positions = Config.get_int_value('config.history_max_positions')
 
 import logging
 
@@ -426,9 +429,15 @@ def animal_history_viewer(request):
             pass
     if (animal == None) or (not is_admin and animal.user.login != login):
         return HTTPFound(request.route_url("map"))
+    parameters = {
+        'max_positions' : max_positions
+    }
+    too_many_positions_msg = _("too_many_positions_in_selected_time_interval", domain='Ondestan',
+                  mapping=parameters)
     return dict(
         view=animal.get_bounding_box_as_json(),
-        animal_id=animal_id
+        animal_id=animal_id,
+        too_many_positions_msg=get_localizer(request).translate(too_many_positions_msg)
     )
 
 
@@ -724,9 +733,10 @@ def json_animal_positions(request):
                     },
                     "geometry": eval(position.geojson)
                 })
-                if len(geojson) == 300:
+                # We return the max number of positions plus one, so it can detect there are more and not just the barrier number
+                if len(geojson) == (max_positions + 1):
                     logger.warning("Too many positions requested for animal "
-                        + str(animal_id) + ", only the last 300 will be returned")
+                        + str(animal_id) + ", only the last " + str(max_positions + 1) + " will be returned")
                     break;
         else:
             geojson.append({

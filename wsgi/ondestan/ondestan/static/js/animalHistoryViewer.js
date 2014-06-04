@@ -5,6 +5,7 @@
 	var osm_layer;
 	var timer;
 	var interval = 2000;
+	var too_many_positions = false;
 	var animals_sublayers;
 	var animals_features;
 	var current_sublayer = null;
@@ -224,14 +225,19 @@
             		current_sublayer = null;
             	}
     			clearInterval(timer);
+    			too_many_positions = false;
             	animals_sublayers = [];
             	animals_features = [];
             	return data;
             },
             onEachFeature: function (feature, layer) {
-            	animals_sublayers.push(layer);
-            	animals_features.push(feature);
-                layer.bindPopup(feature.properties.popup);
+            	if (animals_sublayers.length < window.contextVariables.max_positions) {
+	            	animals_sublayers.push(layer);
+	            	animals_features.push(feature);
+	                layer.bindPopup(feature.properties.popup);
+            	} else {
+            		too_many_positions = true;
+            	}
             }
         });
 
@@ -239,6 +245,9 @@
     		stop_spinner();
             init_slider();
         	if (animals_sublayers.length > 0) {
+        		if (too_many_positions) {
+        			$('#too-many-positions-modal').modal();
+        		}
         		load_sublayer(0);
         	} else {
         		$('#no-positions-modal').modal();
