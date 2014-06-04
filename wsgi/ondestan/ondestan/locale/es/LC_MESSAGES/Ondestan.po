@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-06-03 19:29+0200\n"
-"PO-Revision-Date: 2014-06-03 19:30+0100\n"
+"POT-Creation-Date: 2014-06-04 12:48+0200\n"
+"PO-Revision-Date: 2014-06-04 12:48+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -549,25 +549,25 @@ msgstr "Ayer"
 msgid "last_week"
 msgstr "Última semana"
 
-#. Default: Choose Dates
+#. Default: Custom
 #: ondestan/templates/animalHistoryViewer.pt:116
-msgid "choose_dates"
-msgstr "Elegir fechas"
+msgid "custom"
+msgstr "Personalizado"
 
-#. Default: Start Date
+#. Default: Start
 #: ondestan/templates/animalHistoryViewer.pt:118
 msgid "start_date"
-msgstr "Fecha de inicio"
+msgstr "Inicio"
 
-#. Default: End Date
+#. Default: End
 #: ondestan/templates/animalHistoryViewer.pt:119
 msgid "end_date"
-msgstr "Fecha de fin"
+msgstr "Fin"
 
-#. Default: Update
+#. Default: Confirm
 #: ondestan/templates/animalHistoryViewer.pt:120
-msgid "update"
-msgstr "Actualizar"
+msgid "confirm"
+msgstr "Confirmar"
 
 #. Default: Viewer - Ondestán
 #: ondestan/templates/animalViewer.pt:8
@@ -1242,3 +1242,9 @@ msgstr "%d-%m-%Y %H:%M:%S"
 #: ondestan/utils/various.py:81
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
+
+#~ msgid "update"
+#~ msgstr "Actualizar"
+
+#~ msgid "choose_dates"
+#~ msgstr "Elegir fechas"

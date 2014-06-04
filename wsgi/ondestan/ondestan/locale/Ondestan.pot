@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-06-03 19:29+0200\n"
+"POT-Creation-Date: 2014-06-04 12:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -434,24 +434,24 @@ msgstr ""
 msgid "last_week"
 msgstr ""
 
-#. Default: Choose Dates
+#. Default: Custom
 #: ondestan/templates/animalHistoryViewer.pt:116
-msgid "choose_dates"
+msgid "custom"
 msgstr ""
 
-#. Default: Start Date
+#. Default: Start
 #: ondestan/templates/animalHistoryViewer.pt:118
 msgid "start_date"
 msgstr ""
 
-#. Default: End Date
+#. Default: End
 #: ondestan/templates/animalHistoryViewer.pt:119
 msgid "end_date"
 msgstr ""
 
-#. Default: Update
+#. Default: Confirm
 #: ondestan/templates/animalHistoryViewer.pt:120
-msgid "update"
+msgid "confirm"
 msgstr ""
 
 #. Default: Viewer - Ondestán

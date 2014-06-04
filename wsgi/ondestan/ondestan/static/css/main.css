@@ -397,10 +397,9 @@ ul.list-group #no_plots_message label {
 	margin-top: 7px;
 }
 
-#date_selectors {
-	padding: 5px 0px 10px;
-	display: table;
-	margin: 0 auto;
+#date_selectors > div {
+	margin-top: 5px;
+	margin-bottom: 10px;
 }
 
 #date_selectors input.datepicker {
@@ -425,12 +424,29 @@ ul.list-group #no_plots_message label {
 	margin-left: 20px;
 }
 
-.grey-font {
-	color: grey;
+#update_time_custom {
+	padding: 9px 16px 8px;
+	cursor: default;
 }
 
-#update_time_custom {
-	padding: 5px 16px;
+#update_time_custom.inactive:hover, #update_time_custom.inactive:focus, #update_time_custom.inactive.active, #update_time_custom.inactive:active {
+	background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    color: #333333;
+    box-shadow: none;
+    outline: 0 none;
+}
+
+#update_time_custom_confirm:hover, #update_time_custom_confirm:focus:hover {
+	background-color: #EBEBEB;
+	border-color: #ADADAD;
+	color: #333333;
+}
+
+#update_time_custom_confirm:focus {
+	background-color: #FFFFFF;
+    border-color: #CCCCCC;
+    color: #333333;
 }
 
 #current_date {

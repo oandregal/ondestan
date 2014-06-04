@@ -244,15 +244,14 @@
         });
     }
 
-    function toggle_custom_date_form(enabled) {
-    	if (enabled) {
-			$("#custom_dates input").attr('disabled', false);
-			$("#custom_dates button").attr('disabled', false);
-			$("#custom_dates label").removeClass('grey-font');
+    function toggle_custom_time(active) {
+    	if (active) {
+			$("#date_selectors .active").removeClass('active');
+			$("#update_time_custom").removeClass('inactive');
+			$("#update_time_custom").addClass('active');
     	} else {
-			$("#custom_dates input").attr('disabled', true);
-			$("#custom_dates button").attr('disabled', true);
-			$("#custom_dates label").addClass('grey-font');
+			$("#update_time_custom").removeClass('active');
+			$("#update_time_custom").addClass('inactive');
     	}
     }
     
@@ -270,11 +269,11 @@
         $( ".datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
         $("#pause").prop('disabled', true);
 		$("#update_time_today").click(function(){
-			toggle_custom_date_form(false);
+			toggle_custom_time(false);
 			load_today_animals();
 		});
 		$("#update_time_yesterday").click(function(){
-			toggle_custom_date_form(false);
+			toggle_custom_time(false);
 			today = new Date();
 			today.setHours(0);
 			today.setMinutes(0);
@@ -283,7 +282,7 @@
 					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
 		});
 		$("#update_time_last_week").click(function(){
-			toggle_custom_date_form(false);
+			toggle_custom_time(false);
 			today = new Date();
 			today.setHours(0);
 			today.setMinutes(0);
@@ -291,11 +290,8 @@
 			load_animals(new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()-6, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()),
 					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()+1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
 		});
-		$("#update_time_custom").click(function(){
-			toggle_custom_date_form(true);
-		});
 		$("#update_time_custom_confirm").click(function(){
-			toggle_custom_date_form(false);
+			toggle_custom_time(true);
 			start = $('#startdate').datepicker('getDate');
 			if (start != null) {
 				start = new Date(start.getUTCFullYear(), start.getUTCMonth(), start.getUTCDate(),  start.getUTCHours(), start.getUTCMinutes(), start.getUTCSeconds());

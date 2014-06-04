@@ -102,24 +102,28 @@
 	    </div>
 	  </div>
 	</div>
-	<div id="date_selectors" class="btn-group btn-toggle btn-group-lg" data-toggle="buttons">
-	  <label id="update_time_today" class="btn btn-default active">
-	    <input name="options" value="option1" checked="true" type="radio"/><tal:block i18n:translate="today">Today</tal:block>
-	  </label>
-	  <label id="update_time_yesterday" class="btn btn-default">
-	    <input name="options" value="option2" type="radio"/><tal:block i18n:translate="yesterday">Yesterday</tal:block>
-	  </label>
-	  <label id="update_time_last_week" class="btn btn-default">
-	    <input name="options" value="option3" type="radio"/><tal:block i18n:translate="last_week">Last Week</tal:block>
-	  </label>
-	  <label id="update_time_custom" class="btn btn-default">
-	    <input name="options" value="option4" type="radio"/><tal:block i18n:translate="choose_dates">Choose Dates</tal:block>:
-	    <div id="custom_dates">
-			<label class="grey-font" for="startdate"><tal:block i18n:translate="start_date">Start Date</tal:block></label><input autocomplete="off" type="text" disabled="true" class="datepicker" id="startdate"/>
-			<label class="grey-font" for="enddate"><tal:block i18n:translate="end_date">End Date</tal:block></label><input autocomplete="off" type="text" disabled="true" class="datepicker" id="enddate"/>
-			<button type="button" id="update_time_custom_confirm" disabled="true" class="btn btn-primary" i18n:translate="update">Update</button>
+	<div id="date_selectors" class="btn-toolbar" role="toolbar">
+		<div class="btn-group btn-toggle btn-group-lg" data-toggle="buttons" style="float: left; margin-left: 5%;">
+		  <label id="update_time_today" class="btn btn-default active">
+		    <input name="options" value="option1" checked="true" type="radio"/><tal:block i18n:translate="today">Today</tal:block>
+		  </label>
+		  <label id="update_time_yesterday" class="btn btn-default">
+		    <input name="options" value="option2" type="radio"/><tal:block i18n:translate="yesterday">Yesterday</tal:block>
+		  </label>
+		  <label id="update_time_last_week" class="btn btn-default">
+		    <input name="options" value="option3" type="radio"/><tal:block i18n:translate="last_week">Last Week</tal:block>
+		  </label>
 		</div>
-	  </label>
+		<div id="update_time_custom_btn_group" class="btn-group btn-group-lg col-md-offset-1" data-toggle="buttons" style="float: right; margin-right: 5%;">
+		  <label id="update_time_custom" class="btn btn-default inactive">
+		    <input name="options" value="option4" type="radio"/><tal:block i18n:translate="custom">Custom</tal:block>:
+		    <div id="custom_dates">
+				<label for="startdate"><tal:block i18n:translate="start_date">Start</tal:block></label><input autocomplete="off" type="text" class="datepicker" id="startdate"/>
+				<label for="enddate"><tal:block i18n:translate="end_date">End</tal:block></label><input autocomplete="off" type="text" class="datepicker" id="enddate"/>
+			</div>
+		  </label>
+		  <button autocomplete="off" type="button" id="update_time_custom_confirm" class="btn btn-default" i18n:translate="confirm">Confirm</button>
+		</div>
 	</div>
 	<div id="map_history"></div>
     <div id="history_controls">
