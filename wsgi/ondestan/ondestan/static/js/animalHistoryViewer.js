@@ -1,5 +1,6 @@
 (function(NS) {
 
+	var ladda;
 	var google_layer;
 	var osm_layer;
 	var timer;
@@ -235,6 +236,7 @@
         });
 
     	animals_layer.on('data:loaded', function(e) {
+    		stop_spinner();
             init_slider();
         	if (animals_sublayers.length > 0) {
         		load_sublayer(0);
@@ -256,6 +258,8 @@
     }
     
     function load_today_animals() {
+		start_spinner($("#update_time_today")[0]);
+		toggle_custom_time(false);
 		today = new Date();
 		today.setHours(0);
 		today.setMinutes(0);
@@ -264,15 +268,28 @@
 				new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()+1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
     }
 
+    function start_spinner(component) {
+    	stop_spinner();
+		ladda = Ladda.create(component);
+	 	ladda.start();
+    }
+
+    function stop_spinner() {
+    	if (ladda != null) {
+    		ladda.stop();
+    		ladda = null;
+    	}
+    }
+
     NS.init = function(){
     	$("#slider").slider({disabled: true});
         $( ".datepicker" ).datepicker( $.datepicker.regional[ "es" ] );
         $("#pause").prop('disabled', true);
 		$("#update_time_today").click(function(){
-			toggle_custom_time(false);
 			load_today_animals();
 		});
 		$("#update_time_yesterday").click(function(){
+			start_spinner(this);
 			toggle_custom_time(false);
 			today = new Date();
 			today.setHours(0);
@@ -282,6 +299,7 @@
 					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate(), today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
 		});
 		$("#update_time_last_week").click(function(){
+			start_spinner(this);
 			toggle_custom_time(false);
 			today = new Date();
 			today.setHours(0);
@@ -291,6 +309,7 @@
 					new Date(today.getUTCFullYear(), today.getUTCMonth(), today.getUTCDate()+1, today.getUTCHours(), today.getUTCMinutes(), today.getUTCSeconds()));
 		});
 		$("#update_time_custom_confirm").click(function(){
+			start_spinner(this);
 			toggle_custom_time(true);
 			start = $('#startdate').datepicker('getDate');
 			if (start != null) {

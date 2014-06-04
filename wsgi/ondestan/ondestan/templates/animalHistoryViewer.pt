@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.css')}" />
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.draw.css')}" />
     <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/jquery-ui/jquery-ui-1.10.4.min.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/ladda-themeless.min.css')}" />
   </tal:block>
 
   <tal:block metal:fill-slot="javascript">
@@ -19,6 +20,8 @@
    	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-datepicker-spanish.js')}"></script>
    	<!-- We must load Bootstrap after jQueryUI to avoid some problems. -->
     <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/spin.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/ladda.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
@@ -104,14 +107,14 @@
 	</div>
 	<div id="date_selectors" class="btn-toolbar" role="toolbar">
 		<div class="btn-group btn-toggle btn-group-lg" data-toggle="buttons" style="float: left; margin-left: 5%;">
-		  <label id="update_time_today" class="btn btn-default active">
-		    <input name="options" value="option1" checked="true" type="radio"/><tal:block i18n:translate="today">Today</tal:block>
+		  <label id="update_time_today" class="btn btn-default ladda-button active" autocomplete="off" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option1" checked="true" type="radio"/><span class="ladda-label" i18n:translate="today">Today</span>
 		  </label>
-		  <label id="update_time_yesterday" class="btn btn-default">
-		    <input name="options" value="option2" type="radio"/><tal:block i18n:translate="yesterday">Yesterday</tal:block>
+		  <label id="update_time_yesterday" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option2" type="radio"/><span class="ladda-label" i18n:translate="yesterday">Yesterday</span>
 		  </label>
-		  <label id="update_time_last_week" class="btn btn-default">
-		    <input name="options" value="option3" type="radio"/><tal:block i18n:translate="last_week">Last Week</tal:block>
+		  <label id="update_time_last_week" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option3" type="radio"/><span class="ladda-label" i18n:translate="last_week">Last Week</span>
 		  </label>
 		</div>
 		<div id="update_time_custom_btn_group" class="btn-group btn-group-lg col-md-offset-1" data-toggle="buttons" style="float: right; margin-right: 5%;">
@@ -122,7 +125,7 @@
 				<label for="enddate"><tal:block i18n:translate="end_date">End</tal:block></label><input autocomplete="off" type="text" class="datepicker" id="enddate"/>
 			</div>
 		  </label>
-		  <button autocomplete="off" type="button" id="update_time_custom_confirm" class="btn btn-default" i18n:translate="confirm">Confirm</button>
+		  <button autocomplete="off" type="button" id="update_time_custom_confirm" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000"><span class="ladda-label" i18n:translate="confirm">Confirm</span></button>
 		</div>
 	</div>
 	<div id="map_history"></div>
