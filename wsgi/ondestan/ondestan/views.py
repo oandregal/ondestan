@@ -28,7 +28,8 @@ from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
-from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime, parse_to_utcdatetime
+from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime
+from ondestan.utils import parse_to_utcdatetime, get_fancy_time_from_utc
 from ondestan.config import Config
 
 max_positions = Config.get_int_value('config.history_max_positions')
@@ -430,14 +431,16 @@ def animal_history_viewer(request):
     if (animal == None) or (not is_admin and animal.user.login != login):
         return HTTPFound(request.route_url("map"))
     parameters = {
-        'max_positions' : max_positions
+        'max_positions': max_positions
     }
-    too_many_positions_msg = _("too_many_positions_in_selected_time_interval", domain='Ondestan',
-                  mapping=parameters)
+    too_many_positions_msg = _("too_many_positions_in_selected_time_interval",
+                               domain='Ondestan',
+                               mapping=parameters)
     return dict(
         view=animal.get_bounding_box_as_json(),
         animal_id=animal_id,
-        too_many_positions_msg=get_localizer(request).translate(too_many_positions_msg)
+        too_many_positions_msg=get_localizer(request).\
+            translate(too_many_positions_msg)
     )
 
 
@@ -566,13 +569,17 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
+                    fancy_date = get_fancy_time_from_utc(animal.positions[0].\
+                                                        date, request=request)
+                    if fancy_date == None:
+                        fancy_date = format_utcdatetime(animal.positions[0].\
+                                                        date, request)
                     parameters = {
                         'animal_name': name,
                         'name': animal.user.login,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
-                        'date': format_utcdatetime(animal.positions[0].date,
-                                                   request)
+                        'date': fancy_date
                     }
                     popup_str = _("animal_popup_admin", domain='Ondestan',
                                   mapping=parameters)
@@ -585,6 +592,10 @@ def json_animals(request):
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
+                            "last_date": format_utcdatetime(animal.\
+                                                            positions[0].date,
+                                                            request),
+                            "fancy_last_date": fancy_date,
                             "outside": animal.positions[0].outside(),
                             "popup": get_localizer(request).translate(
                                                                 popup_str)
@@ -601,6 +612,8 @@ def json_animals(request):
                             "battery": None,
                             "owner": animal.user.login,
                             "active": animal.active,
+                            "last_date": None,
+                            "fancy_last_date": None,
                             "outside": None,
                             "popup": None
                         },
@@ -620,13 +633,17 @@ def json_animals(request):
                         name = animal.name
                     else:
                         name = animal.imei
+                    fancy_date = get_fancy_time_from_utc(animal.positions[0].\
+                                                        date, request=request)
+                    if fancy_date == None:
+                        fancy_date = format_utcdatetime(animal.positions[0].\
+                                                        date, request)
                     parameters = {
                         'animal_name': name,
                         'name': animal.user.login,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
-                        'date': format_utcdatetime(animal.positions[0].date,
-                                                   request)
+                        'date': fancy_date
                     }
                     popup_str = _("animal_popup", domain='Ondestan',
                                   mapping=parameters)
@@ -639,6 +656,10 @@ def json_animals(request):
                             "battery": animal.positions[0].battery,
                             "owner": animal.user.login,
                             "active": animal.active,
+                            "last_date": format_utcdatetime(animal.\
+                                                            positions[0].date,
+                                                            request),
+                            "fancy_last_date": fancy_date,
                             "outside": animal.positions[0].outside(),
                             "popup": get_localizer(request).translate(
                                                                 popup_str)
@@ -655,6 +676,8 @@ def json_animals(request):
                             "battery": None,
                             "owner": animal.user.login,
                             "active": animal.active,
+                            "last_date": None,
+                            "fancy_last_date": None,
                             "outside": None,
                             "popup": None
                         },
@@ -702,13 +725,17 @@ def json_animal_positions(request):
                 name = animal.imei
             positions = animal.filter_positions(start, end)
             for position in positions:
+                fancy_date = get_fancy_time_from_utc(position.\
+                                                    date, request=request)
+                if fancy_date == None:
+                    fancy_date = format_utcdatetime(position.\
+                                                    date, request)
                 parameters = {
                     'animal_name': name,
                     'name': animal.user.login,
                     'imei': animal.imei,
                     'battery': str(position.battery),
-                    'date': format_utcdatetime(position.date,
-                                               request)
+                    'date': fancy_date
                 }
                 if is_admin:
                     popup_str = _("animal_popup_admin", domain='Ondestan',
@@ -728,16 +755,19 @@ def json_animal_positions(request):
                         "outside": position.outside(),
                         "date": format_utcdatetime(position.date,
                                                request),
+                        "fancy_date": fancy_date,
                         "popup": get_localizer(request).translate(
                                                             popup_str)
                     },
                     "geometry": eval(position.geojson)
                 })
-                # We return the max number of positions plus one, so it can detect there are more and not just the barrier number
+                # We return the max number of positions plus one, so it can
+                # detect there are more and not just the barrier number
                 if len(geojson) == (max_positions + 1):
                     logger.warning("Too many positions requested for animal "
-                        + str(animal_id) + ", only the last " + str(max_positions + 1) + " will be returned")
-                    break;
+                        + str(animal_id) + ", only the last "
+                        + str(max_positions + 1) + " will be returned")
+                    break
         else:
             geojson.append({
                 "type": "Feature",
@@ -750,6 +780,7 @@ def json_animal_positions(request):
                     "active": animal.active,
                     "outside": None,
                     "date": None,
+                    "fancy_date": None,
                     "popup": None
                 },
                 "geometry": None

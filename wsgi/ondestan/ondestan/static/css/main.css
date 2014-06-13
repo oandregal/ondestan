@@ -367,7 +367,8 @@ ul.list-group #no_plots_message label {
     padding: 1px 2px 2px;
     display: block;
     float: left;
-    width: 145px;
+    width: 215px;
+	text-align: center;
 }
 
 #pause {
@@ -393,7 +394,7 @@ ul.list-group #no_plots_message label {
 }
 
 #slider {
-	margin-left: 185px;
+	margin-left: 255px;
 	margin-top: 7px;
 }
 
@@ -447,8 +448,4 @@ ul.list-group #no_plots_message label {
 	background-color: #FFFFFF;
     border-color: #CCCCCC;
     color: #333333;
-}
-
-#current_date {
-	text-align: center;
 }

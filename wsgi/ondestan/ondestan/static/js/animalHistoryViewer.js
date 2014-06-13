@@ -193,7 +193,7 @@
     	current_sublayer = i;
     	map.addLayer(animals_sublayers[i]);
     	$("#slider" ).slider({ value: i });
-    	$("#current_date" ).html(animals_features[i].properties.date);
+    	$("#current_date" ).html(animals_features[i].properties.fancy_date);
     }
 
     function format_date(date) {
