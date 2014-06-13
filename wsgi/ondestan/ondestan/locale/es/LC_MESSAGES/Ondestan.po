@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-06-13 13:38+0200\n"
-"PO-Revision-Date: 2014-06-13 16:36+0100\n"
+"PO-Revision-Date: 2014-06-13 17:52+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -113,7 +113,7 @@ msgstr ""
 
 #: ondestan/services/animal_service.py:29
 msgid "low_battery_notification_sms"
-msgstr "[Onde Están] Batería con nivel bajo (${animal_name}) desde ${fancy_date}"
+msgstr "[Onde Están] Batería con nivel bajo (${animal_name}) desde el ${date}"
 
 #: ondestan/services/animal_service.py:31
 msgid "medium_battery_notification_web"
@@ -181,7 +181,7 @@ msgstr ""
 
 #: ondestan/services/animal_service.py:48
 msgid "outside_plots_notification_sms"
-msgstr "[Onde Estan] ${animal_name} salió de las fincas ${fancy_date}"
+msgstr "[Onde Estan] ${animal_name} salió de las fincas en ${date}"
 
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
