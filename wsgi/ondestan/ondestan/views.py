@@ -571,9 +571,6 @@ def json_animals(request):
                         name = animal.imei
                     fancy_date = get_fancy_time_from_utc(animal.positions[0].\
                                                         date, request=request)
-                    if fancy_date == None:
-                        fancy_date = format_utcdatetime(animal.positions[0].\
-                                                        date, request)
                     parameters = {
                         'animal_name': name,
                         'name': animal.user.login,
@@ -635,9 +632,6 @@ def json_animals(request):
                         name = animal.imei
                     fancy_date = get_fancy_time_from_utc(animal.positions[0].\
                                                         date, request=request)
-                    if fancy_date == None:
-                        fancy_date = format_utcdatetime(animal.positions[0].\
-                                                        date, request)
                     parameters = {
                         'animal_name': name,
                         'name': animal.user.login,
@@ -727,9 +721,6 @@ def json_animal_positions(request):
             for position in positions:
                 fancy_date = get_fancy_time_from_utc(position.\
                                                     date, request=request)
-                if fancy_date == None:
-                    fancy_date = format_utcdatetime(position.\
-                                                    date, request)
                 parameters = {
                     'animal_name': name,
                     'name': animal.user.login,

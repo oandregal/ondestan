@@ -1,12 +1,12 @@
 # coding=UTF-8
 import pyproj
 #import md5
-from datetime import datetime
 from gps_update_error import GpsUpdateError
 
 from ondestan.services import animal_service
 from ondestan.entities.position import Position
 from ondestan.config import Config
+from ondestan.utils import internal_parse_datetime
 
 import logging
 
@@ -17,7 +17,6 @@ beacon_header = Config.get_string_value('gps.beacon_header')
 positions_divider = Config.get_string_value('gps.positions_divider')
 params_divider = Config.get_string_value('gps.params_divider')
 params_positions = Config.get_string_value('gps.params_positions').split(',')
-date_format = Config.get_string_value('gps.date_format')
 gps_proj = pyproj.Proj("+init=EPSG:" + Config.get_string_value('gps.proj'))
 viewer_proj = pyproj.Proj(
                 "+init=EPSG:" + Config.get_string_value('config.viewer_proj'))
@@ -99,7 +98,7 @@ def process_gps_data(data, request):
             ('%.12g' % x) + ' ' + ('%.12g' % y) + ')'
         except RuntimeError as e:
             raise GpsUpdateError(e.message, 400)
-        position.date = datetime.strptime(data['date'], date_format)
+        position.date = internal_parse_datetime(data['date'])
         if data['battery'] != None:
             position.battery = float(data['battery'])
         if data['coverage'] != None:

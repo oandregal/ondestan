@@ -8,7 +8,7 @@ from sqlalchemy import and_
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
 from ondestan.utils import format_utcdatetime, escape_code_to_eval
-from ondestan.utils import internal_format_utcdatetime, get_fancy_time_from_utc
+from ondestan.utils import internal_format_datetime, get_fancy_time_from_utc
 from ondestan.config import Config
 import ondestan.services
 
@@ -194,8 +194,8 @@ def save_new_position(position, animal, request):
                  'fancy_date': get_fancy_time_from_utc(position.date,
                                 locale=animal.user.locale),
                  'fancy_date_eval': escape_code_to_eval(
-                    "get_fancy_time_from_utc(parse_to_utcdatetime('"
-                    + internal_format_utcdatetime(position.date)
+                    "get_fancy_time_from_utc(internal_parse_datetime('"
+                    + internal_format_datetime(position.date)
                     + "'), request=request)"),
                  'date': format_utcdatetime(position.date,
                     locale=animal.user.locale)
@@ -239,8 +239,8 @@ def process_position_general_notifications(position, animal, request):
                          'fancy_date': get_fancy_time_from_utc(position.date,
                                         locale=animal.user.locale),
                          'fancy_date_eval': escape_code_to_eval(
-                            "get_fancy_time_from_utc(parse_to_utcdatetime('"
-                            + internal_format_utcdatetime(position.date)
+                            "get_fancy_time_from_utc(internal_parse_datetime('"
+                            + internal_format_datetime(position.date)
                             + "'), request=request)"),
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
@@ -261,8 +261,8 @@ def process_position_general_notifications(position, animal, request):
                          'fancy_date': get_fancy_time_from_utc(position.date,
                                         locale=animal.user.locale),
                          'fancy_date_eval': escape_code_to_eval(
-                            "get_fancy_time_from_utc(parse_to_utcdatetime('"
-                            + internal_format_utcdatetime(position.date)
+                            "get_fancy_time_from_utc(internal_parse_datetime('"
+                            + internal_format_datetime(position.date)
                             + "'), request=request)"),
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
@@ -326,8 +326,8 @@ def process_position_general_notifications(position, animal, request):
          'fancy_date': get_fancy_time_from_utc(position.date,
                         locale=animal.user.locale),
          'fancy_date_eval': escape_code_to_eval(
-            "get_fancy_time_from_utc(parse_to_utcdatetime('"
-            + internal_format_utcdatetime(position.date)
+            "get_fancy_time_from_utc(internal_parse_datetime('"
+            + internal_format_datetime(position.date)
             + "'), request=request)"),
          'date': format_utcdatetime(position.date, locale=animal.user.locale)
          }

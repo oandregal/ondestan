@@ -118,7 +118,7 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
             return localizer.translate(_("fancy_time_one_unit",
                                          domain='Ondestan',
                                          mapping=parameters))
-    return None
+    return format_utcdatetime(d.astimezone(utc_timezone), request=request, locale=locale)
 
 
 def get_fancy_time_from_utc(d, display_full_version=True, request=None, locale=None):
@@ -170,11 +170,15 @@ def format_utctime(time, request=None, locale=None):
 
 
 def parse_to_utcdatetime(dttm):
-    local_datetime = datetime.strptime(dttm, date_format)
+    local_datetime = internal_parse_datetime(dttm)
     return convert_to_utc(local_datetime, default_timezone)
 
 
-def internal_format_utcdatetime(dttm):
+def internal_parse_datetime(dttm):
+    return datetime.strptime(dttm, date_format)
+
+
+def internal_format_datetime(dttm):
     return dttm.strftime(date_format)
 
 
