@@ -172,3 +172,15 @@ def format_utctime(time, request=None, locale=None):
 def parse_to_utcdatetime(dttm):
     local_datetime = datetime.strptime(dttm, date_format)
     return convert_to_utc(local_datetime, default_timezone)
+
+
+def internal_format_utcdatetime(dttm):
+    return dttm.strftime(date_format)
+
+
+def escape_code_to_eval(str):
+    return 'eval[' + str + ']eval'
+
+
+def unescape_code_to_eval(str):
+    return str.replace("'eval[", '').replace('"eval[', '').replace("]eval'", '').replace(']eval"', '')
