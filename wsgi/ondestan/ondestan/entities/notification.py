@@ -8,7 +8,7 @@ from sqlalchemy import Column, Integer, ForeignKey, String, Date, Boolean
 from sqlalchemy.orm import relationship, backref
 
 from ondestan.entities import Entity
-from ondestan.utils import Base, HtmlContainer
+from ondestan.utils import *
 import logging
 from datetime import datetime
 
@@ -69,7 +69,7 @@ class Notification(Entity, Base):
     def get_translated_text(self, request):
         try:
             localizer = get_localizer(request)
-            return localizer.translate(eval(self.text))
+            return localizer.translate(eval(unescape_code_to_eval(self.text)))
         except:
             logger.error("Couldn't eval content of notification:'" +
                         self.text + "'")

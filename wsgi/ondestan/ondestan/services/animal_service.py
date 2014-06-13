@@ -7,7 +7,8 @@ from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_login
 from ondestan.entities import Animal, Position, Order_state
-from ondestan.utils import format_utcdatetime
+from ondestan.utils import format_utcdatetime, escape_code_to_eval
+from ondestan.utils import internal_format_utcdatetime, get_fancy_time_from_utc
 from ondestan.config import Config
 import ondestan.services
 
@@ -190,6 +191,12 @@ def save_new_position(position, animal, request):
                 parameters = {'name': animal.user.name,
                  'animal_name': animal.name if (animal.name != None and
                                 animal.name != '') else animal.imei,
+                 'fancy_date': get_fancy_time_from_utc(position.date,
+                                locale=animal.user.locale),
+                 'fancy_date_eval': escape_code_to_eval(
+                    "get_fancy_time_from_utc(parse_to_utcdatetime('"
+                    + internal_format_utcdatetime(position.date)
+                    + "'), request=request)"),
                  'date': format_utcdatetime(position.date,
                     locale=animal.user.locale)
                  }
@@ -229,6 +236,12 @@ def process_position_general_notifications(position, animal, request):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
+                         'fancy_date': get_fancy_time_from_utc(position.date,
+                                        locale=animal.user.locale),
+                         'fancy_date_eval': escape_code_to_eval(
+                            "get_fancy_time_from_utc(parse_to_utcdatetime('"
+                            + internal_format_utcdatetime(position.date)
+                            + "'), request=request)"),
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
                          'battery_level': position.battery,
@@ -245,6 +258,12 @@ def process_position_general_notifications(position, animal, request):
                         parameters = {'name': animal.user.name,
                          'animal_name': animal.name if (animal.name != None and
                                         animal.name != '') else animal.imei,
+                         'fancy_date': get_fancy_time_from_utc(position.date,
+                                        locale=animal.user.locale),
+                         'fancy_date_eval': escape_code_to_eval(
+                            "get_fancy_time_from_utc(parse_to_utcdatetime('"
+                            + internal_format_utcdatetime(position.date)
+                            + "'), request=request)"),
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
                          'battery_level': position.battery
@@ -300,13 +319,19 @@ def process_position_general_notifications(position, animal, request):
             logger.warn('Position already exists for animal: ' + str(animal.id)
                 + ' for date ' + str(position.date))
     else:
-        parameters = {'name': animal.user.name,
+        # This notification is considered rather confusing than useful
+        """parameters = {'name': animal.user.name,
          'animal_name': animal.name if (animal.name != None and
                         animal.name != '') else animal.imei,
+         'fancy_date': get_fancy_time_from_utc(position.date,
+                        locale=animal.user.locale),
+         'fancy_date_eval': escape_code_to_eval(
+            "get_fancy_time_from_utc(parse_to_utcdatetime('"
+            + internal_format_utcdatetime(position.date)
+            + "'), request=request)"),
          'date': format_utcdatetime(position.date, locale=animal.user.locale)
          }
-        # This notification is considered rather confusing than useful
-        """ondestan.services.notification_service.process_notification(
+        ondestan.services.notification_service.process_notification(
             'gps_inactive_device', animal.user.login, True, 2, False,
             False, parameters)"""
         logger.warn('Processed update for inactive IMEI: ' + animal.imei +
