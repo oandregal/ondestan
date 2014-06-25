@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-06-13 13:38+0200\n"
+"POT-Creation-Date: 2014-06-20 12:13+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,43 +17,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:65
+#: ondestan/views.py:66
 msgid "failed_login"
 msgstr ""
 
-#: ondestan/views.py:222
+#: ondestan/views.py:223
 msgid "device_phone_already_use"
 msgstr ""
 
-#: ondestan/views.py:238
+#: ondestan/views.py:239
 msgid "device_imei_already_use"
 msgstr ""
 
-#: ondestan/views.py:253
+#: ondestan/views.py:254
 msgid "user_login_already_use"
 msgstr ""
 
-#: ondestan/views.py:268
+#: ondestan/views.py:269
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:435
+#: ondestan/views.py:436
 msgid "too_many_positions_in_selected_time_interval"
 msgstr ""
 
-#: ondestan/views.py:579 ondestan/views.py:716
+#: ondestan/views.py:581 ondestan/views.py:732
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:633 ondestan/views.py:719
+#: ondestan/views.py:642 ondestan/views.py:735
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:809
+#: ondestan/views.py:829
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:835
+#: ondestan/views.py:855
 msgid "plot_popup"
 msgstr ""
 
@@ -85,75 +85,75 @@ msgstr ""
 msgid "danger"
 msgstr ""
 
-#: ondestan/services/animal_service.py:25
+#: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:26
+#: ondestan/services/animal_service.py:27
 msgid "low_battery_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/animal_service.py:27
+#: ondestan/services/animal_service.py:28
 msgid "low_battery_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:28
+#: ondestan/services/animal_service.py:29
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:29
+#: ondestan/services/animal_service.py:30
 msgid "low_battery_notification_sms"
 msgstr ""
 
-#: ondestan/services/animal_service.py:31
+#: ondestan/services/animal_service.py:32
 msgid "medium_battery_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:33
+#: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:34
+#: ondestan/services/animal_service.py:35
 msgid "gps_immobile_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/animal_service.py:35
+#: ondestan/services/animal_service.py:36
 msgid "gps_immobile_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:36
+#: ondestan/services/animal_service.py:37
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:38
+#: ondestan/services/animal_service.py:39
 msgid "gps_instant_duplicated_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:40
+#: ondestan/services/animal_service.py:41
 msgid "gps_inactive_device_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:42
+#: ondestan/services/animal_service.py:43
 msgid "no_gps_coverage_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:44
+#: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_web"
 msgstr ""
 
-#: ondestan/services/animal_service.py:45
+#: ondestan/services/animal_service.py:46
 msgid "outside_plots_notification_mail_subject"
 msgstr ""
 
-#: ondestan/services/animal_service.py:46
+#: ondestan/services/animal_service.py:47
 msgid "outside_plots_notification_mail_html_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:47
+#: ondestan/services/animal_service.py:48
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 
-#: ondestan/services/animal_service.py:48
+#: ondestan/services/animal_service.py:49
 msgid "outside_plots_notification_sms"
 msgstr ""
 
@@ -346,68 +346,68 @@ msgstr ""
 
 #. Default: Zoom in
 #: ondestan/templates/animalHistoryViewer.pt:42
-#: ondestan/templates/animalViewer.pt:41 ondestan/templates/plotManager.pt:35
+#: ondestan/templates/animalViewer.pt:43 ondestan/templates/plotManager.pt:35
 msgid "map_tool_zoom_in_tooltip"
 msgstr ""
 
 #. Default: Zoom out
 #: ondestan/templates/animalHistoryViewer.pt:43
-#: ondestan/templates/animalViewer.pt:42 ondestan/templates/plotManager.pt:36
+#: ondestan/templates/animalViewer.pt:44 ondestan/templates/plotManager.pt:36
 msgid "map_tool_zoom_out_tooltip"
 msgstr ""
 
 #. Default: Map legend
 #: ondestan/templates/animalHistoryViewer.pt:44
 #: ondestan/templates/animalHistoryViewer.pt:58
-#: ondestan/templates/animalViewer.pt:43 ondestan/templates/animalViewer.pt:93
+#: ondestan/templates/animalViewer.pt:45 ondestan/templates/animalViewer.pt:95
 msgid "map_legend"
 msgstr ""
 
 #. Default: Battery Level (color)
 #: ondestan/templates/animalHistoryViewer.pt:61
-#: ondestan/templates/animalViewer.pt:96
+#: ondestan/templates/animalViewer.pt:98
 msgid "battery_level_legend"
 msgstr ""
 
 #. Default: Low battery level
 #: ondestan/templates/animalHistoryViewer.pt:64
-#: ondestan/templates/animalViewer.pt:99
+#: ondestan/templates/animalViewer.pt:101
 msgid "low_battery_level"
 msgstr ""
 
 #. Default: Medium battery level
 #: ondestan/templates/animalHistoryViewer.pt:67
-#: ondestan/templates/animalViewer.pt:102
+#: ondestan/templates/animalViewer.pt:104
 msgid "medium_battery_level"
 msgstr ""
 
 #. Default: High battery level
 #: ondestan/templates/animalHistoryViewer.pt:70
-#: ondestan/templates/animalViewer.pt:105
+#: ondestan/templates/animalViewer.pt:107
 msgid "high_battery_level"
 msgstr ""
 
 #. Default: Inside/Outside Plots (border)
 #: ondestan/templates/animalHistoryViewer.pt:74
-#: ondestan/templates/animalViewer.pt:109
+#: ondestan/templates/animalViewer.pt:111
 msgid "inside_outside_plots_legend"
 msgstr ""
 
 #. Default: Inside plots
 #: ondestan/templates/animalHistoryViewer.pt:77
-#: ondestan/templates/animalViewer.pt:112
+#: ondestan/templates/animalViewer.pt:114
 msgid "inside_plots"
 msgstr ""
 
 #. Default: Outside plots
 #: ondestan/templates/animalHistoryViewer.pt:80
-#: ondestan/templates/animalViewer.pt:115
+#: ondestan/templates/animalViewer.pt:117
 msgid "outside_plots"
 msgstr ""
 
 #. Default: Inactive devices
 #: ondestan/templates/animalHistoryViewer.pt:86
-#: ondestan/templates/animalViewer.pt:121
+#: ondestan/templates/animalViewer.pt:123
 msgid "inactive_device_legend"
 msgstr ""
 
@@ -415,7 +415,7 @@ msgstr ""
 #: ondestan/templates/animalHistoryViewer.pt:91
 #: ondestan/templates/animalHistoryViewer.pt:104
 #: ondestan/templates/animalHistoryViewer.pt:117
-#: ondestan/templates/animalViewer.pt:126
+#: ondestan/templates/animalViewer.pt:128
 msgid "close"
 msgstr ""
 
@@ -484,33 +484,43 @@ msgstr ""
 msgid "view_positions_history_tooltip"
 msgstr ""
 
+#. Default: Center map onto your current position.
+#: ondestan/templates/animalViewer.pt:40
+msgid "center_on_user_position_tooltip"
+msgstr ""
+
+#. Default: Geolocation is not supported by this browser.
+#: ondestan/templates/animalViewer.pt:41
+msgid "geolocation_not_supported"
+msgstr ""
+
 #. Default: Devices
-#: ondestan/templates/animalViewer.pt:61
+#: ondestan/templates/animalViewer.pt:63
 msgid "devices"
 msgstr ""
 
 #. Default: Active
-#: ondestan/templates/animalViewer.pt:65
+#: ondestan/templates/animalViewer.pt:67
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: Inactive
-#: ondestan/templates/animalViewer.pt:69
+#: ondestan/templates/animalViewer.pt:71
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: Alerts
-#: ondestan/templates/animalViewer.pt:74
+#: ondestan/templates/animalViewer.pt:76
 msgid "alerts"
 msgstr ""
 
 #. Default: Low Battery
-#: ondestan/templates/animalViewer.pt:78
+#: ondestan/templates/animalViewer.pt:80
 msgid "dashboard_low_battery"
 msgstr ""
 
 #. Default: Outside Plots
-#: ondestan/templates/animalViewer.pt:82
+#: ondestan/templates/animalViewer.pt:84
 msgid "dashboard_outside_plots"
 msgstr ""
 
@@ -1132,23 +1142,23 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
-#: ondestan/utils/various.py:109
-msgid "fancy_time_one_unit"
-msgstr ""
-
-#: ondestan/utils/various.py:116
+#: ondestan/utils/various.py:111
 msgid "fancy_time_two_units"
 msgstr ""
 
-#: ondestan/utils/various.py:129
+#: ondestan/utils/various.py:118
+msgid "fancy_time_one_unit"
+msgstr ""
+
+#: ondestan/utils/various.py:145
 msgid "meta_date_format"
 msgstr ""
 
-#: ondestan/utils/various.py:141
+#: ondestan/utils/various.py:156
 msgid "meta_datetime_format"
 msgstr ""
 
-#: ondestan/utils/various.py:153
+#: ondestan/utils/various.py:168
 msgid "meta_time_format"
 msgstr ""
 

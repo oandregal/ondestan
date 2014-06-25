@@ -11,6 +11,24 @@ function zoom(lng, lat) {
     map.fitBounds(bounds);
 }
 
+function centerMapOnUser(position) {
+	if (user_position != null) {
+		map.removeLayer(user_position);
+	}
+	pos = new L.LatLng(position.coords.latitude, position.coords.longitude);
+	user_position = new L.marker(pos);
+	user_position.addTo(map);
+    map.panTo(pos);
+}
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(centerMapOnUser);
+    } else { 
+        window.alert(window.contextVariables.geolocation_not_supported);
+    }
+}
+
 function checkBaseLayer() {
 	if (map.getZoom() > 15) {
 		if (!map.hasLayer(google_layer)) {
@@ -43,6 +61,36 @@ function init(){
 	} else {
 		map.setView(window.contextVariables.default_view, 8);
 	}
+
+	centerOnUserLocationControl = function(theCenterOnUserFunction) {
+
+	    var control = new (L.Control.extend({
+	    options: { position: 'topleft' },
+	    onAdd: function (map) {
+	        controlDiv = L.DomUtil.create('div', 'display-legend-button');
+	        L.DomEvent
+	            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+	            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+	            .addListener(controlDiv, 'click', this.CenterOnUserFunction);
+
+	        // Set CSS for the control border
+	        var controlUI = L.DomUtil.create('div', 'leaflet-draw-toolbar leaflet-bar leaflet-draw-toolbar-top', controlDiv);
+	        controlUI.title = window.contextVariables.center_on_user_position;
+
+	        // Set CSS for the control interior
+	        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-draw-draw-marker', controlUI);
+	        controlText.href = '#';
+
+	        return controlDiv;
+	    }
+	    }));
+
+	    control.CenterOnUserFunction = theCenterOnUserFunction;
+
+	    return control;
+	};
+
+	map.addControl(centerOnUserLocationControl(getLocation));
 
 	load_data();
 	

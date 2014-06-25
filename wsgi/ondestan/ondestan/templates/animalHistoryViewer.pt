@@ -38,6 +38,8 @@
       window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
       window.contextVariables.edit_name_tooltip = "<tal:block i18n:translate="edit_name_tooltip">Double click to edit name (confirm change by pressing enter).</tal:block>";
       window.contextVariables.max_positions = ${Config.get_int_value('config.history_max_positions')};
+      window.contextVariables.center_on_user_position = "<tal:block i18n:translate="center_on_user_position_tooltip">Center map onto your current position.</tal:block>";
+      window.contextVariables.geolocation_not_supported = "<tal:block i18n:translate="geolocation_not_supported">Geolocation is not supported by this browser.</tal:block>";
 
       window.contextVariables.zoom_in_tooltip = "<tal:block i18n:translate="map_tool_zoom_in_tooltip">Zoom in</tal:block>";
       window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
