@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-06-20 12:13+0200\n"
+"POT-Creation-Date: 2014-06-27 18:55+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -344,118 +344,130 @@ msgstr ""
 msgid "edit_name_tooltip"
 msgstr ""
 
-#. Default: Zoom in
+#. Default: Center map onto your current position.
+#: ondestan/templates/animalHistoryViewer.pt:41
+#: ondestan/templates/animalViewer.pt:40 ondestan/templates/plotManager.pt:37
+msgid "center_on_user_position_tooltip"
+msgstr ""
+
+#. Default: Geolocation is not supported by this browser.
 #: ondestan/templates/animalHistoryViewer.pt:42
+#: ondestan/templates/animalViewer.pt:41 ondestan/templates/plotManager.pt:38
+msgid "geolocation_not_supported"
+msgstr ""
+
+#. Default: Zoom in
+#: ondestan/templates/animalHistoryViewer.pt:44
 #: ondestan/templates/animalViewer.pt:43 ondestan/templates/plotManager.pt:35
 msgid "map_tool_zoom_in_tooltip"
 msgstr ""
 
 #. Default: Zoom out
-#: ondestan/templates/animalHistoryViewer.pt:43
+#: ondestan/templates/animalHistoryViewer.pt:45
 #: ondestan/templates/animalViewer.pt:44 ondestan/templates/plotManager.pt:36
 msgid "map_tool_zoom_out_tooltip"
 msgstr ""
 
 #. Default: Map legend
-#: ondestan/templates/animalHistoryViewer.pt:44
-#: ondestan/templates/animalHistoryViewer.pt:58
-#: ondestan/templates/animalViewer.pt:45 ondestan/templates/animalViewer.pt:95
+#: ondestan/templates/animalHistoryViewer.pt:46
+#: ondestan/templates/animalHistoryViewer.pt:62
+#: ondestan/templates/animalViewer.pt:45 ondestan/templates/animalViewer.pt:97
 msgid "map_legend"
 msgstr ""
 
 #. Default: Battery Level (color)
-#: ondestan/templates/animalHistoryViewer.pt:61
-#: ondestan/templates/animalViewer.pt:98
+#: ondestan/templates/animalHistoryViewer.pt:65
+#: ondestan/templates/animalViewer.pt:100
 msgid "battery_level_legend"
 msgstr ""
 
 #. Default: Low battery level
-#: ondestan/templates/animalHistoryViewer.pt:64
-#: ondestan/templates/animalViewer.pt:101
+#: ondestan/templates/animalHistoryViewer.pt:68
+#: ondestan/templates/animalViewer.pt:103
 msgid "low_battery_level"
 msgstr ""
 
 #. Default: Medium battery level
-#: ondestan/templates/animalHistoryViewer.pt:67
-#: ondestan/templates/animalViewer.pt:104
+#: ondestan/templates/animalHistoryViewer.pt:71
+#: ondestan/templates/animalViewer.pt:106
 msgid "medium_battery_level"
 msgstr ""
 
 #. Default: High battery level
-#: ondestan/templates/animalHistoryViewer.pt:70
-#: ondestan/templates/animalViewer.pt:107
+#: ondestan/templates/animalHistoryViewer.pt:74
+#: ondestan/templates/animalViewer.pt:109
 msgid "high_battery_level"
 msgstr ""
 
 #. Default: Inside/Outside Plots (border)
-#: ondestan/templates/animalHistoryViewer.pt:74
-#: ondestan/templates/animalViewer.pt:111
+#: ondestan/templates/animalHistoryViewer.pt:78
+#: ondestan/templates/animalViewer.pt:113
 msgid "inside_outside_plots_legend"
 msgstr ""
 
 #. Default: Inside plots
-#: ondestan/templates/animalHistoryViewer.pt:77
-#: ondestan/templates/animalViewer.pt:114
+#: ondestan/templates/animalHistoryViewer.pt:81
+#: ondestan/templates/animalViewer.pt:116
 msgid "inside_plots"
 msgstr ""
 
 #. Default: Outside plots
-#: ondestan/templates/animalHistoryViewer.pt:80
-#: ondestan/templates/animalViewer.pt:117
+#: ondestan/templates/animalHistoryViewer.pt:84
+#: ondestan/templates/animalViewer.pt:119
 msgid "outside_plots"
 msgstr ""
 
 #. Default: Inactive devices
-#: ondestan/templates/animalHistoryViewer.pt:86
-#: ondestan/templates/animalViewer.pt:123
+#: ondestan/templates/animalHistoryViewer.pt:90
+#: ondestan/templates/animalViewer.pt:125
 msgid "inactive_device_legend"
 msgstr ""
 
 #. Default: Close
-#: ondestan/templates/animalHistoryViewer.pt:91
-#: ondestan/templates/animalHistoryViewer.pt:104
-#: ondestan/templates/animalHistoryViewer.pt:117
-#: ondestan/templates/animalViewer.pt:128
+#: ondestan/templates/animalHistoryViewer.pt:95
+#: ondestan/templates/animalHistoryViewer.pt:108
+#: ondestan/templates/animalHistoryViewer.pt:121
+#: ondestan/templates/animalViewer.pt:130
 msgid "close"
 msgstr ""
 
 #. Default: There are no positions in the selected time interval.
-#: ondestan/templates/animalHistoryViewer.pt:101
+#: ondestan/templates/animalHistoryViewer.pt:105
 msgid "no_positions_in_selected_time_interval"
 msgstr ""
 
 #. Default: Today
-#: ondestan/templates/animalHistoryViewer.pt:125
+#: ondestan/templates/animalHistoryViewer.pt:129
 msgid "today"
 msgstr ""
 
 #. Default: Yesterday
-#: ondestan/templates/animalHistoryViewer.pt:128
+#: ondestan/templates/animalHistoryViewer.pt:132
 msgid "yesterday"
 msgstr ""
 
 #. Default: Last Week
-#: ondestan/templates/animalHistoryViewer.pt:131
+#: ondestan/templates/animalHistoryViewer.pt:135
 msgid "last_week"
 msgstr ""
 
 #. Default: Custom
-#: ondestan/templates/animalHistoryViewer.pt:136
+#: ondestan/templates/animalHistoryViewer.pt:140
 msgid "custom"
 msgstr ""
 
 #. Default: Start
-#: ondestan/templates/animalHistoryViewer.pt:138
+#: ondestan/templates/animalHistoryViewer.pt:142
 msgid "start_date"
 msgstr ""
 
 #. Default: End
-#: ondestan/templates/animalHistoryViewer.pt:139
+#: ondestan/templates/animalHistoryViewer.pt:143
 msgid "end_date"
 msgstr ""
 
 #. Default: Confirm
-#: ondestan/templates/animalHistoryViewer.pt:142
+#: ondestan/templates/animalHistoryViewer.pt:146
 msgid "confirm"
 msgstr ""
 
@@ -484,44 +496,102 @@ msgstr ""
 msgid "view_positions_history_tooltip"
 msgstr ""
 
-#. Default: Center map onto your current position.
-#: ondestan/templates/animalViewer.pt:40
-msgid "center_on_user_position_tooltip"
-msgstr ""
-
-#. Default: Geolocation is not supported by this browser.
-#: ondestan/templates/animalViewer.pt:41
-msgid "geolocation_not_supported"
-msgstr ""
-
 #. Default: Devices
-#: ondestan/templates/animalViewer.pt:63
+#: ondestan/templates/animalViewer.pt:65
 msgid "devices"
 msgstr ""
 
 #. Default: Active
-#: ondestan/templates/animalViewer.pt:67
+#: ondestan/templates/animalViewer.pt:69
 msgid "dashboard_active"
 msgstr ""
 
 #. Default: Inactive
-#: ondestan/templates/animalViewer.pt:71
+#: ondestan/templates/animalViewer.pt:73
 msgid "dashboard_inactive"
 msgstr ""
 
 #. Default: Alerts
-#: ondestan/templates/animalViewer.pt:76
+#: ondestan/templates/animalViewer.pt:78
 msgid "alerts"
 msgstr ""
 
 #. Default: Low Battery
-#: ondestan/templates/animalViewer.pt:80
+#: ondestan/templates/animalViewer.pt:82
 msgid "dashboard_low_battery"
 msgstr ""
 
 #. Default: Outside Plots
-#: ondestan/templates/animalViewer.pt:84
+#: ondestan/templates/animalViewer.pt:86
 msgid "dashboard_outside_plots"
+msgstr ""
+
+#. Default: Animals list - Ondestán
+#: ondestan/templates/animalsList.pt:8
+msgid "animals_list_title"
+msgstr ""
+
+#. Default: Animals list
+#. Default: Animals List
+#: ondestan/templates/animalsList.pt:17 ondestan/templates/main.pt:36
+msgid "animals_list"
+msgstr ""
+
+#. Default: ID
+#: ondestan/templates/animalsList.pt:25 ondestan/templates/notifications.pt:21
+#: ondestan/templates/orderDevices.pt:24 ondestan/templates/orderDevices.pt:52
+#: ondestan/templates/orders.pt:56 ondestan/templates/orders.pt:127
+msgid "id"
+msgstr ""
+
+#. Default: User
+#: ondestan/templates/animalsList.pt:26 ondestan/templates/notifications.pt:22
+#: ondestan/templates/orders.pt:57
+msgid "user"
+msgstr ""
+
+#. Default: Name
+#: ondestan/templates/animalsList.pt:27 ondestan/templates/orderDevices.pt:37
+#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:79
+msgid "name"
+msgstr ""
+
+#. Default: Active
+#: ondestan/templates/animalsList.pt:28
+msgid "active"
+msgstr ""
+
+#. Default: Battery
+#: ondestan/templates/animalsList.pt:29
+msgid "battery"
+msgstr ""
+
+#. Default: IMEI
+#: ondestan/templates/animalsList.pt:30 ondestan/templates/orderDevices.pt:35
+#: ondestan/templates/orderDevices.pt:53
+msgid "imei"
+msgstr ""
+
+#. Default: Cell phone number
+#: ondestan/templates/animalsList.pt:31 ondestan/templates/orderDevices.pt:36
+#: ondestan/templates/orderDevices.pt:54 ondestan/templates/signup.pt:68
+#: ondestan/templates/updateProfile.pt:66
+msgid "cell_phone_number"
+msgstr ""
+
+#. Default: Positions History
+#: ondestan/templates/animalsList.pt:39
+msgid "positions_history"
+msgstr ""
+
+#. Default: Yes
+#: ondestan/templates/animalsList.pt:41 ondestan/templates/notifications.pt:39
+msgid "yes"
+msgstr ""
+
+#. Default: No
+#: ondestan/templates/animalsList.pt:42 ondestan/templates/notifications.pt:40
+msgid "no"
 msgstr ""
 
 #. Default: Login - Ondestán
@@ -561,56 +631,44 @@ msgid "animal_viewer"
 msgstr ""
 
 #. Default: Plot Manager
-#: ondestan/templates/main.pt:36
+#: ondestan/templates/main.pt:37
 msgid "plot_manager"
 msgstr ""
 
 #. Default: Update Profile
-#: ondestan/templates/main.pt:37 ondestan/templates/updateProfile.pt:40
+#: ondestan/templates/main.pt:38 ondestan/templates/updateProfile.pt:40
 #: ondestan/templates/updateProfile.pt:71
 msgid "update_profile"
 msgstr ""
 
 #. Default: Notifications Log
-#: ondestan/templates/main.pt:38 ondestan/templates/notifications.pt:12
+#: ondestan/templates/main.pt:39 ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr ""
 
 #. Default: Logout
-#: ondestan/templates/main.pt:39
+#: ondestan/templates/main.pt:40
 msgid "logout"
 msgstr ""
 
 #. Default: Functionalities Tour
-#: ondestan/templates/main.pt:54
+#: ondestan/templates/main.pt:55
 msgid "functionalities_tour"
 msgstr ""
 
 #. Default: About
-#: ondestan/templates/main.pt:54
+#: ondestan/templates/main.pt:55
 msgid "about"
 msgstr ""
 
 #. Default: Contact
-#: ondestan/templates/main.pt:54
+#: ondestan/templates/main.pt:55
 msgid "contact"
 msgstr ""
 
 #. Default: Notifications Log - Ondestán
 #: ondestan/templates/notifications.pt:8
 msgid "notifications_log_title"
-msgstr ""
-
-#. Default: ID
-#: ondestan/templates/notifications.pt:21 ondestan/templates/orderDevices.pt:24
-#: ondestan/templates/orderDevices.pt:52 ondestan/templates/orders.pt:56
-#: ondestan/templates/orders.pt:127
-msgid "id"
-msgstr ""
-
-#. Default: User
-#: ondestan/templates/notifications.pt:22 ondestan/templates/orders.pt:57
-msgid "user"
 msgstr ""
 
 #. Default: Issue Date
@@ -638,16 +696,6 @@ msgstr ""
 msgid "archived"
 msgstr ""
 
-#. Default: Yes
-#: ondestan/templates/notifications.pt:39
-msgid "yes"
-msgstr ""
-
-#. Default: No
-#: ondestan/templates/notifications.pt:40
-msgid "no"
-msgstr ""
-
 #. Default: Order devices list - Ondestán
 #: ondestan/templates/orderDevices.pt:8
 msgid "order_devices_list_title"
@@ -673,23 +721,6 @@ msgstr ""
 #. Default: New device
 #: ondestan/templates/orderDevices.pt:29
 msgid "new_device"
-msgstr ""
-
-#. Default: IMEI
-#: ondestan/templates/orderDevices.pt:35 ondestan/templates/orderDevices.pt:53
-msgid "imei"
-msgstr ""
-
-#. Default: Cell phone number
-#: ondestan/templates/orderDevices.pt:36 ondestan/templates/orderDevices.pt:54
-#: ondestan/templates/signup.pt:68 ondestan/templates/updateProfile.pt:66
-msgid "cell_phone_number"
-msgstr ""
-
-#. Default: Name
-#: ondestan/templates/orderDevices.pt:37 ondestan/templates/orderDevices.pt:55
-#: ondestan/templates/plotManager.pt:75
-msgid "name"
 msgstr ""
 
 #. Default: Add device
@@ -859,124 +890,124 @@ msgid "plot_manager_title"
 msgstr ""
 
 #. Default: Draw a new plot
-#: ondestan/templates/plotManager.pt:38
+#: ondestan/templates/plotManager.pt:40
 msgid "map_tool_create_plot_tooltip"
 msgstr ""
 
 #. Default: Delete last point drawn
-#: ondestan/templates/plotManager.pt:39
+#: ondestan/templates/plotManager.pt:41
 msgid "map_tool_undo_tooltip"
 msgstr ""
 
 #. Default: Delete last point
-#: ondestan/templates/plotManager.pt:40
+#: ondestan/templates/plotManager.pt:42
 msgid "map_tool_undo_text"
 msgstr ""
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:41 ondestan/templates/plotManager.pt:42
-#: ondestan/templates/plotManager.pt:51
+#: ondestan/templates/plotManager.pt:43 ondestan/templates/plotManager.pt:44
+#: ondestan/templates/plotManager.pt:53
 msgid "map_tool_cancel_text"
 msgstr ""
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/plotManager.pt:43
+#: ondestan/templates/plotManager.pt:45
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr ""
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/plotManager.pt:44
+#: ondestan/templates/plotManager.pt:46
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr ""
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/plotManager.pt:45
+#: ondestan/templates/plotManager.pt:47
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr ""
 
 #. Default: Error: plot edges cannot cross!
-#: ondestan/templates/plotManager.pt:46
+#: ondestan/templates/plotManager.pt:48
 msgid "map_tool_edit_plot_handler_error"
 msgstr ""
 
 #. Default: Save changes
-#: ondestan/templates/plotManager.pt:48
+#: ondestan/templates/plotManager.pt:50
 msgid "map_tool_save_tooltip"
 msgstr ""
 
 #. Default: Save
-#: ondestan/templates/plotManager.pt:49
+#: ondestan/templates/plotManager.pt:51
 msgid "map_tool_save_text"
 msgstr ""
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/plotManager.pt:50
+#: ondestan/templates/plotManager.pt:52
 msgid "map_tool_cancel_tooltip"
 msgstr ""
 
 #. Default: Edit plots
-#: ondestan/templates/plotManager.pt:53
+#: ondestan/templates/plotManager.pt:55
 msgid "map_tool_edit_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to edit
-#: ondestan/templates/plotManager.pt:54
+#: ondestan/templates/plotManager.pt:56
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Delete plots
-#: ondestan/templates/plotManager.pt:55
+#: ondestan/templates/plotManager.pt:57
 msgid "map_tool_delete_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to delete
-#: ondestan/templates/plotManager.pt:56
+#: ondestan/templates/plotManager.pt:58
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/plotManager.pt:57
+#: ondestan/templates/plotManager.pt:59
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/plotManager.pt:58
+#: ondestan/templates/plotManager.pt:60
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr ""
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/plotManager.pt:59
+#: ondestan/templates/plotManager.pt:61
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:72
+#: ondestan/templates/plotManager.pt:76
 msgid "plot_data_modal_title"
 msgstr ""
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:76
+#: ondestan/templates/plotManager.pt:80
 msgid "owner"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:82
+#: ondestan/templates/plotManager.pt:86
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:83
+#: ondestan/templates/plotManager.pt:87
 msgid "accept"
 msgstr ""
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:90
+#: ondestan/templates/plotManager.pt:94
 msgid "current_plots"
 msgstr ""
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:96
+#: ondestan/templates/plotManager.pt:100
 msgid "no_plots"
 msgstr ""
 

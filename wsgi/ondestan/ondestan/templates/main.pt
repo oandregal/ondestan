@@ -33,6 +33,7 @@
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
 	          <ul class="dropdown-menu">
 	            <li><a href="${request.route_url('map')}" i18n:translate="animal_viewer">Animal Viewer</a></li>
+	            <li><a href="${request.route_url('animals_list')}" i18n:translate="animals_list">Animals List</a></li>
 	            <li><a href="${request.route_url('plot_manager')}" i18n:translate="plot_manager">Plot Manager</a></li>
 	            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update Profile</a></li>
 	            <li><a href="${request.route_url('notifications')}" i18n:translate="notifications_log">Notifications Log</a></li>

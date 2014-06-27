@@ -449,3 +449,7 @@ ul.list-group #no_plots_message label {
     border-color: #CCCCCC;
     color: #333333;
 }
+
+.auto-width {
+	width: auto;
+}

@@ -868,3 +868,19 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for user " + login)
     return geojson
+
+
+@view_config(route_name='animals_list',
+             renderer='templates/animalsList.pt')
+def animals_list(request):
+    is_admin = check_permission('admin', request)
+    if is_admin:
+        animals = animal_service.get_all_animals()
+    else:
+        login = get_user_login(request)
+        animals = animal_service.get_all_animals(login)
+
+    return dict(
+        is_admin=is_admin,
+        animals=animals,
+        )

@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+  <tal:block metal:fill-slot="head">
+    <title i18n:translate="animals_list_title">Animals list - Ondestán</title>
+  </tal:block>
+
+  <tal:block metal:fill-slot="javascript">
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate_mobile.js')}"></script>
+  </tal:block>
+
+  <tal:block metal:fill-slot="content">
+	<h3><tal:block i18n:translate="animals_list">Animals list</tal:block></h3>
+
+      <div class="bottom">
+
+        <table class="table table-bordered table-hover auto-width">
+
+          <thead>
+            <tr>
+              <th tal:condition="is_admin" i18n:translate="id">ID</th>
+              <th tal:condition="is_admin" i18n:translate="user">User</th>
+              <th i18n:translate="name">Name</th>
+              <th i18n:translate="active">Active</th>
+              <th i18n:translate="battery">Battery</th>
+              <th i18n:translate="imei">IMEI</th>
+              <th i18n:translate="cell_phone_number">Cell phone number</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr tal:repeat="animal animals">
+              	<td tal:condition="is_admin" tal:content="animal.id"/>
+              	<td tal:condition="is_admin" tal:content="animal.user.login"/>
+            	<td>${animal.name}<a href="${request.route_url('history_map', animal_id=animal.id)}" style="margin-left: 50px;" type="button" class="pull-right btn btn-default btn-xs" i18n:translate="positions_history">Positions History</a></td>
+            	<td>
+            		<tal:block tal:condition="animal.active" i18n:translate="yes">Yes</tal:block>
+            		<tal:block tal:condition="not animal.active" i18n:translate="no">No</tal:block>
+            	</td>
+            	<td>
+            		<tal:block tal:condition="animal.n_positions > 0" tal:content="animal.positions[0].battery"/>
+            		<tal:block tal:condition="animal.n_positions == 0">---</tal:block>
+            	</td>
+            	<td tal:content="animal.imei"/>
+            	<td tal:content="animal.phone"/>
+            </tr>
+          </tbody>
+
+        </table>
+
+    </div>
+
+  </tal:block>
+
+</html>

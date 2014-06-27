@@ -82,6 +82,7 @@ def main(global_config, **settings):
     config.add_route('json_animal_positions', '/json/positions/{animal_id}.json')
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')
     config.add_route('json_plots', '/json/plots.json')
+    config.add_route('animals_list', '/animals')
     config.scan()
 
     logger.info('Application initialized')
