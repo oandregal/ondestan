@@ -80,6 +80,9 @@
     	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-1.8.2.min.js')}"></script>
     	<script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
 	    <script type="text/javascript">
+		  $(function(){
+			$(".dropdown-toggle").dropdown();
+		  });
 	      window.contextVariables = {};
 		  window.contextVariables.orders_popover_content = "${orders_popover_content}";
 	    </script>
