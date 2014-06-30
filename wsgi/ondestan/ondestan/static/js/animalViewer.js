@@ -69,10 +69,9 @@ function addToPopover(feature){
     var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
     var toggleClass = 'toggle_' + device.id;
     var activation = contextVariables.deactivate_device_msg;
-    if(!device.active){
+    if (!device.active){
         url = contextVariables.activate_device_url.replace('__device_id__', device.id);
         activation = contextVariables.activate_device_msg;
-        zoomString = '<span class="glyphicon glyphicon-search"></span> ';
         battery = batteryStandards.level.noData;
     }
     return '<li class="list-group-item">' +
