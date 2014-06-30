@@ -5,7 +5,7 @@ from pyramid.i18n import (
     )
 from sqlalchemy import and_
 
-from ondestan.security import check_permission, get_user_login
+from ondestan.security import check_permission, get_user_email
 from ondestan.entities import Animal, Position, Order_state
 from ondestan.utils import format_utcdatetime, escape_code_to_eval
 from ondestan.utils import internal_format_datetime, get_fancy_time_from_utc
@@ -49,17 +49,17 @@ _('outside_plots_notification_mail_text_body', domain='Ondestan')
 _('outside_plots_notification_sms', domain='Ondestan')
 
 
-def get_all_animals(login=None):
-    if login != None:
-        return Animal().queryObject().filter(Animal.user.has(login=login)).\
+def get_all_animals(email=None):
+    if email != None:
+        return Animal().queryObject().filter(Animal.user.has(email=email)).\
             order_by(Animal.name).all()
     else:
         return Animal().queryObject().order_by(Animal.name).all()
 
 
-def get_inactive_animals(login=None):
-    if login != None:
-        return Animal().queryObject().filter(and_(Animal.user.has(login=login),
+def get_inactive_animals(email=None):
+    if email != None:
+        return Animal().queryObject().filter(and_(Animal.user.has(email=email),
                                                 Animal.active == False)).all()
     else:
         return Animal().queryObject().filter(Animal.active == False).all()
@@ -140,14 +140,14 @@ def delete_animal_by_id(animal_id):
 def activate_animal_by_id(request):
     animal_id = request.matchdict['device_id']
     if check_permission('admin', request):
-        login = None
+        email = None
     else:
-        login = get_user_login(request)
+        email = get_user_email(request)
 
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
-        if (login != None):
-            if (animal.user.login != login):
+        if (email != None):
+            if (animal.user.email != email):
                 return
         animal.active = True
         animal.update()
@@ -167,14 +167,14 @@ def activate_animal_by_id(request):
 def deactivate_animal_by_id(request):
     animal_id = request.matchdict['device_id']
     if check_permission('admin', request):
-        login = None
+        email = None
     else:
-        login = get_user_login(request)
+        email = get_user_email(request)
 
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()
-        if (login != None):
-            if (animal.user.login != login):
+        if (email != None):
+            if (animal.user.email != email):
                 return
         animal.active = False
         animal.update()
@@ -202,7 +202,7 @@ def save_new_position(position, animal, request):
                  }
                 ondestan.services.\
                 notification_service.process_notification(
-                    'outside_plots', animal.user.login, True, 3,
+                    'outside_plots', animal.user.email, True, 3,
                     True, True, parameters)
     process_position_general_notifications(position, animal, request)
 
@@ -218,7 +218,7 @@ def process_no_coverage_position(position, animal, request):
              }
             ondestan.services.\
             notification_service.process_notification(
-                'no_gps_coverage', animal.user.login, True, 2,
+                'no_gps_coverage', animal.user.email, True, 2,
                 False, False, parameters)
     process_position_general_notifications(position, animal, request)
 
@@ -249,7 +249,7 @@ def process_position_general_notifications(position, animal, request):
                          }
                         ondestan.services.\
                         notification_service.process_notification(
-                            'low_battery', animal.user.login, True, 3,
+                            'low_battery', animal.user.email, True, 3,
                             True, True, parameters)
                 else:
                     if animal.positions[0] == position and\
@@ -270,7 +270,7 @@ def process_position_general_notifications(position, animal, request):
                          }
                         ondestan.services.\
                         notification_service.process_notification(
-                            'medium_battery', animal.user.login, True, 2,
+                            'medium_battery', animal.user.email, True, 2,
                             False, False, parameters)
             if animal.n_positions > 1 and animal.positions[0] == position:
                 date_end = position.date
@@ -302,7 +302,7 @@ def process_position_general_notifications(position, animal, request):
                          }
                         ondestan.services.notification_service.\
                             process_notification('gps_immobile',
-                            animal.user.login, True, 2, True,
+                            animal.user.email, True, 2, True,
                             False, parameters)
             logger.info('Processed update for IMEI: ' + animal.imei +
                     ' for date ' + str(position.date))
@@ -314,7 +314,7 @@ def process_position_general_notifications(position, animal, request):
                                         locale=animal.user.locale)
              }
             ondestan.services.notification_service.process_notification(
-                'gps_instant_duplicated', animal.user.login, True, 2, False,
+                'gps_instant_duplicated', animal.user.email, True, 2, False,
                 False, parameters)
             logger.warn('Position already exists for animal: ' + str(animal.id)
                 + ' for date ' + str(position.date))
@@ -332,7 +332,7 @@ def process_position_general_notifications(position, animal, request):
          'date': format_utcdatetime(position.date, locale=animal.user.locale)
          }
         ondestan.services.notification_service.process_notification(
-            'gps_inactive_device', animal.user.login, True, 2, False,
+            'gps_inactive_device', animal.user.email, True, 2, False,
             False, parameters)"""
         logger.warn('Processed update for inactive IMEI: ' + animal.imei +
                     ' for date ' + str(position.date))

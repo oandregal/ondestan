@@ -23,7 +23,7 @@ from pyramid.i18n import (
     )
 from webhelpers.paginate import Page
 
-from ondestan.security import get_user_login, check_permission
+from ondestan.security import get_user_email, check_permission
 from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
@@ -54,11 +54,11 @@ def login(request):
         referrer = 'map'
     came_from = request.params.get('came_from', referrer)
     message = ''
-    login = ''
+    email = ''
     if 'form.submitted' in request.params:
-        login = request.params['login']
+        email = request.params['email']
         if user_service.check_login_request(request):
-            headers = remember(request, login)
+            headers = remember(request, email)
             return HTTPFound(location=came_from,
                              headers=headers)
 
@@ -69,7 +69,7 @@ def login(request):
     return dict(
         message=message,
         came_from=came_from,
-        login=login,
+        email=email,
         activated=activated
         )
 
@@ -98,21 +98,18 @@ def gps_update(request):
 @view_config(route_name='signup', renderer='templates/signup.pt')
 def signup(request):
     message = ''
-    login = ''
     name = ''
     email = ''
     phone = ''
     if 'form.submitted' in request.params:
         message = user_service.create_user(request)
         if message != '':
-            login = request.params['login']
             name = request.params['name']
             email = request.params['email']
             phone = request.params['phone']
 
     return dict(
         message=message,
-        login=login,
         name=name,
         email=email,
         phone=phone,
@@ -126,7 +123,7 @@ def update_animal_name(request):
             animal_service.update_animal_name(request.params['id'],
                                           request.params['name'])
         else:
-            user = user_service.get_user_by_login(get_user_login(request))
+            user = user_service.get_user_by_email(get_user_email(request))
             animal_service.update_animal_name(request.params['id'],
                                           request.params['name'], user.id)
     return HTTPFound(location=request.route_url('map'))
@@ -139,28 +136,25 @@ def update_profile(request):
     notifications = []
 
     if 'form.submitted' in request.params:
-        if 'login' in request.params:
+        if 'email' in request.params:
             notifications.append(user_service.update_user(request))
-            login = request.params['login']
             name = request.params['name']
             email = request.params['email']
             phone = request.params['phone']
             user_id = request.params['id']
-            headers = remember(request, login)
+            headers = remember(request, email)
             request.response.headerlist.extend(headers)
 
         else:
             if 'password' in request.params:
                 notifications.append(user_service.update_password(request))
-            user = user_service.get_user_by_login(get_user_login(request))
-            login = user.login
+            user = user_service.get_user_by_email(get_user_email(request))
             user_id = user.id
             name = user.name
             email = user.email
             phone = user.phone
     else:
-        user = user_service.get_user_by_login(get_user_login(request))
-        login = user.login
+        user = user_service.get_user_by_email(get_user_email(request))
         user_id = user.id
         name = user.name
         email = user.email
@@ -169,18 +163,18 @@ def update_profile(request):
     return dict(
         notifications=notifications,
         id=user_id,
-        login=login,
         name=name,
         email=email,
         phone=phone
         )
 
 
-@view_config(route_name='reminder', renderer='templates/reminder.pt')
-def reminder(request):
+@view_config(route_name='password_reset',
+             renderer='templates/passwordReset.pt')
+def password_reset(request):
     email = ''
     if 'form.submitted' in request.params:
-        user_service.remind_user(request)
+        user_service.reset_password(request)
         email = request.params['email']
 
     return dict(
@@ -192,13 +186,6 @@ def reminder(request):
 def activate_usr(request):
     user_service.activate_user(request)
     return HTTPFound(location=request.route_url('login') + '?activated=true')
-
-
-@view_config(route_name='password_reset',
-             renderer='templates/passwordReset.pt')
-def reset_password(request):
-    user_service.reset_password(request)
-    return dict()
 
 
 @view_config(route_name='logout')
@@ -237,21 +224,6 @@ def check_device_imei(request):
                 return True
     localizer = get_localizer(request)
     message_ts = _('device_imei_already_use', domain='Ondestan')
-    return localizer.translate(message_ts)
-
-
-@view_config(route_name='check_user_login', renderer='json')
-def check_user_login(request):
-    if 'login' in request.params:
-        login = request.params['login']
-        user = user_service.get_user_by_login(login)
-        if (user == None):
-            return True
-        if 'id' in request.params:
-            if user.id == int(request.params['id']):
-                return True
-    localizer = get_localizer(request)
-    message_ts = _('user_login_already_use', domain='Ondestan')
     return localizer.translate(message_ts)
 
 
@@ -303,13 +275,13 @@ def orders(request):
             url=Customizable_PageURL_WebOb(request, get_param='p2'))
     else:
         query1 = order_service.get_all_pending_orders(
-            get_user_login(request))
+            get_user_email(request))
         pending_orders = Page(query1,
             page=int(request.params.get('p1', 1)),
             items_per_page=10,
             url=Customizable_PageURL_WebOb(request, get_param='p1'))
         query2 = order_service.get_all_processed_orders(
-            get_user_login(request))
+            get_user_email(request))
         processed_orders = Page(query2,
             page=int(request.params.get('p2', 1)),
             items_per_page=10,
@@ -407,7 +379,7 @@ def deactivate_device(request):
 @view_config(route_name='map', renderer='templates/animalViewer.pt',
              permission='view')
 def animal_viewer(request):
-    user = user_service.get_user_by_login(get_user_login(request))
+    user = user_service.get_user_by_email(get_user_email(request))
     return dict(
         view=user.get_animals_bounding_box_as_json(),
         notifications=notification_service.\
@@ -420,7 +392,7 @@ def animal_viewer(request):
              permission='view')
 def animal_history_viewer(request):
     animal_id = request.matchdict['animal_id']
-    login = get_user_login(request)
+    email = get_user_email(request)
     is_admin = check_permission('admin', request)
     animal = None
     if animal_id != None:
@@ -428,7 +400,7 @@ def animal_history_viewer(request):
             animal = animal_service.get_animal_by_id(int(animal_id))
         except ValueError:
             pass
-    if (animal == None) or (not is_admin and animal.user.login != login):
+    if (animal == None) or (not is_admin and animal.user.email != email):
         return HTTPFound(request.route_url("map"))
     parameters = {
         'max_positions': max_positions
@@ -447,7 +419,7 @@ def animal_history_viewer(request):
 @view_config(route_name='plot_manager', renderer='templates/plotManager.pt',
              permission='view')
 def plot_manager(request):
-    user = user_service.get_user_by_login(get_user_login(request))
+    user = user_service.get_user_by_email(get_user_email(request))
     is_admin = check_permission('admin', request)
     return dict(
         is_admin=is_admin,
@@ -468,7 +440,7 @@ def update_plot_name(request):
             plot_service.update_plot_name(request.params['id'],
                                           request.params['name'])
         else:
-            user = user_service.get_user_by_login(get_user_login(request))
+            user = user_service.get_user_by_email(get_user_email(request))
             plot_service.update_plot_name(request.params['id'],
                                           request.params['name'], user.id)
     return HTTPFound(location=request.route_url('plot_manager'))
@@ -491,7 +463,7 @@ def create_plot(request):
     if 'userid' in request.GET and check_permission('admin', request):
         userid = request.GET['userid']
     else:
-        userid = user_service.get_user_by_login(get_user_login(request)).id
+        userid = user_service.get_user_by_email(get_user_email(request)).id
 
     plot = plot_service.create_plot(points, name, userid)
 
@@ -503,7 +475,7 @@ def create_plot(request):
                     "properties": {
                         "id": plot.id,
                         "name": plot.name,
-                        "owner": plot.user.login,
+                        "owner": plot.user.email,
                         "popup": plot.name
                     },
                     "geometry": eval(plot.geojson)
@@ -524,7 +496,7 @@ def update_plot_geom(request):
     if check_permission('admin', request):
         plot = plot_service.update_plot_geom(points, plot_id)
     else:
-        user = user_service.get_user_by_login(get_user_login(request))
+        user = user_service.get_user_by_email(get_user_email(request))
         plot = plot_service.update_plot_geom(points, plot_id, user.id)
 
     if plot == None:
@@ -535,7 +507,7 @@ def update_plot_geom(request):
                     "properties": {
                         "id": plot_id,
                         "name": plot.name,
-                        "owner": plot.user.login,
+                        "owner": plot.user.email,
                         "popup": plot.name
                     },
                     "geometry": eval(plot.geojson)
@@ -550,7 +522,7 @@ def delete_plot(request):
     if check_permission('admin', request):
         return {'success': plot_service.delete_plot(plot_id)}
     else:
-        user = user_service.get_user_by_login(get_user_login(request))
+        user = user_service.get_user_by_email(get_user_email(request))
         return {'success': plot_service.delete_plot(plot_id, user.id)}
 
 
@@ -573,7 +545,7 @@ def json_animals(request):
                                                         date, request=request)
                     parameters = {
                         'animal_name': name,
-                        'name': animal.user.login,
+                        'name': animal.user.email,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': fancy_date
@@ -587,7 +559,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": animal.positions[0].battery,
-                            "owner": animal.user.login,
+                            "owner": animal.user.email,
                             "active": animal.active,
                             "last_date": format_utcdatetime(animal.\
                                                             positions[0].date,
@@ -607,7 +579,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": None,
-                            "owner": animal.user.login,
+                            "owner": animal.user.email,
                             "active": animal.active,
                             "last_date": None,
                             "fancy_last_date": None,
@@ -619,11 +591,11 @@ def json_animals(request):
         else:
             logger.debug("Found no animals for any user")
     else:
-        login = get_user_login(request)
-        animals = animal_service.get_all_animals(login)
+        email = get_user_email(request)
+        animals = animal_service.get_all_animals(email)
         if animals != None:
             logger.debug("Found " + str(len(animals)) +
-                         " animals for user " + login)
+                         " animals for user " + email)
             for animal in animals:
                 if animal.n_positions > 0:
                     if animal.name != None and len(animal.name) > 0:
@@ -634,7 +606,7 @@ def json_animals(request):
                                                         date, request=request)
                     parameters = {
                         'animal_name': name,
-                        'name': animal.user.login,
+                        'name': animal.user.email,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
                         'date': fancy_date
@@ -648,7 +620,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": animal.positions[0].battery,
-                            "owner": animal.user.login,
+                            "owner": animal.user.email,
                             "active": animal.active,
                             "last_date": format_utcdatetime(animal.\
                                                             positions[0].date,
@@ -668,7 +640,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": None,
-                            "owner": animal.user.login,
+                            "owner": animal.user.email,
                             "active": animal.active,
                             "last_date": None,
                             "fancy_last_date": None,
@@ -678,7 +650,7 @@ def json_animals(request):
                         "geometry": None
                     })
         else:
-            logger.debug("Found no animals for user " + login)
+            logger.debug("Found no animals for user " + email)
     return geojson
 
 
@@ -686,7 +658,7 @@ def json_animals(request):
              permission='view')
 def json_animal_positions(request):
     animal_id = request.matchdict['animal_id']
-    login = get_user_login(request)
+    email = get_user_email(request)
     is_admin = check_permission('admin', request)
     animal = None
     if animal_id != None:
@@ -695,7 +667,7 @@ def json_animal_positions(request):
         except ValueError:
             pass
     geojson = []
-    if animal != None and (is_admin or animal.user.login == login):
+    if animal != None and (is_admin or animal.user.email == email):
         start = None
         end = None
         if 'start' in request.GET:
@@ -723,7 +695,7 @@ def json_animal_positions(request):
                                                     date, request=request)
                 parameters = {
                     'animal_name': name,
-                    'name': animal.user.login,
+                    'name': animal.user.email,
                     'imei': animal.imei,
                     'battery': str(position.battery),
                     'date': fancy_date
@@ -741,7 +713,7 @@ def json_animal_positions(request):
                         "name": animal.name,
                         "imei": animal.imei,
                         "battery": position.battery,
-                        "owner": animal.user.login,
+                        "owner": animal.user.email,
                         "active": animal.active,
                         "outside": position.outside(),
                         "date": format_utcdatetime(position.date,
@@ -767,7 +739,7 @@ def json_animal_positions(request):
                     "name": animal.name,
                     "imei": animal.imei,
                     "battery": None,
-                    "owner": animal.user.login,
+                    "owner": animal.user.email,
                     "active": animal.active,
                     "outside": None,
                     "date": None,
@@ -792,24 +764,24 @@ def json_inactive_animals(request):
                 json.append({
                     "id": animal.id,
                     "name": animal.name,
-                    "owner": animal.user.login,
+                    "owner": animal.user.email,
                 })
         else:
             logger.debug("Found no inactive animals for any user")
     else:
-        login = get_user_login(request)
-        animals = animal_service.get_inactive_animals(login)
+        email = get_user_email(request)
+        animals = animal_service.get_inactive_animals(email)
         if animals != None:
             logger.debug("Found " + str(len(animals)) +
-                         " inactive animals for user " + login)
+                         " inactive animals for user " + email)
             for animal in animals:
                 json.append({
                     "id": animal.id,
                     "name": animal.name,
-                    "owner": animal.user.login,
+                    "owner": animal.user.email,
                 })
         else:
-            logger.debug("Found no inactive animals for user " + login)
+            logger.debug("Found no inactive animals for user " + email)
     return json
 
 
@@ -824,7 +796,7 @@ def json_plots(request):
             for plot in plots:
                 parameters = {
                     'plot_name': plot.name,
-                    'name': plot.user.login
+                    'name': plot.user.email
                 }
                 popup_str = _("plot_popup_admin", domain='Ondestan',
                               mapping=parameters)
@@ -833,7 +805,7 @@ def json_plots(request):
                     "properties": {
                         "id": plot.id,
                         "name": plot.name,
-                        "owner": plot.user.login,
+                        "owner": plot.user.email,
                         "centroid": eval(plot.centroid_geojson),
                         "popup": get_localizer(request).translate(popup_str)
                     },
@@ -842,15 +814,15 @@ def json_plots(request):
         else:
             logger.debug("Found no plots for any user")
     else:
-        login = get_user_login(request)
-        plots = plot_service.get_all_plots(login)
+        email = get_user_email(request)
+        plots = plot_service.get_all_plots(email)
         if plots != None:
             logger.debug("Found " + str(len(plots)) + " plots " + \
-                         "for user " + login)
+                         "for user " + email)
             for plot in plots:
                 parameters = {
                     'plot_name': plot.name,
-                    'name': plot.user.login
+                    'name': plot.user.email
                 }
                 popup_str = _("plot_popup", domain='Ondestan',
                               mapping=parameters)
@@ -859,14 +831,14 @@ def json_plots(request):
                     "properties": {
                         "id": plot.id,
                         "name": plot.name,
-                        "owner": plot.user.login,
+                        "owner": plot.user.email,
                         "centroid": eval(plot.centroid_geojson),
                         "popup": get_localizer(request).translate(popup_str)
                     },
                     "geometry": eval(plot.geojson)
                 })
         else:
-            logger.debug("Found no plots for user " + login)
+            logger.debug("Found no plots for user " + email)
     return geojson
 
 
@@ -877,8 +849,8 @@ def animals_list(request):
     if is_admin:
         animals = animal_service.get_all_animals()
     else:
-        login = get_user_login(request)
-        animals = animal_service.get_all_animals(login)
+        email = get_user_email(request)
+        animals = animal_service.get_all_animals(email)
 
     return dict(
         is_admin=is_admin,

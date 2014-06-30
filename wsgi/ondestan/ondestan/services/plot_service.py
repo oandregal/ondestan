@@ -14,9 +14,9 @@ def get_plot_by_id(plot_id):
         return None
 
 
-def get_all_plots(login=None):
-    if login != None:
-        return Plot().queryObject().filter(Plot.user.has(login=login)).\
+def get_all_plots(email=None):
+    if email != None:
+        return Plot().queryObject().filter(Plot.user.has(email=email)).\
             order_by(Plot.name).all()
     else:
         return Plot().queryObject().order_by(Plot.name).all()

@@ -79,7 +79,7 @@
 	      	<label><tal:block i18n:translate="name">Name</tal:block>:</label><input type="text" id="plot_name" name="name"/>
 	      	<label style="display: none;" tal:attributes="style (default if not is_admin else None)"><tal:block i18n:translate="owner">Owner</tal:block>:</label><select id="plot_owner" style="display: none;" tal:attributes="style (default if not is_admin else None)">
 			  <option selected="true" value=""> </option>
-			  <option tal:repeat="user non_admin_users" tal:content="user.login" value="${user.id}"/>
+			  <option tal:repeat="user non_admin_users" tal:content="user.email" value="${user.id}"/>
 			</select>
 	      </div>
 	      <div class="modal-footer">
@@ -90,7 +90,7 @@
 	  </div>
 	</div>
 
-    <div id="list" class="col-md-2">
+    <div id="list" class="col-md-3">
     	<h3><tal:block i18n:translate="current_plots">Current Plots</tal:block>:</h3>
 	    <ul class="list-group">
 	    	<div id="plots_list_content">
@@ -103,7 +103,7 @@
 		</ul>
     </div>
 
-    <div id="map_plots" class="col-md-10"></div>
+    <div id="map_plots" class="col-md-9"></div>
 
   </tal:block>
 

@@ -12,7 +12,7 @@ from sqlalchemy import not_, and_
 from ondestan.entities import User, Role, Notification
 import ondestan.services
 from ondestan.utils import rand_string
-from ondestan.security import get_user_login
+from ondestan.security import get_user_email
 import logging
 
 logger = logging.getLogger('ondestan')
@@ -21,10 +21,6 @@ logger = logging.getLogger('ondestan')
 _('signup_notification_mail_subject', domain='Ondestan')
 _('signup_notification_mail_html_body', domain='Ondestan')
 _('signup_notification_mail_text_body', domain='Ondestan')
-
-_('login_reminder_notification_mail_subject', domain='Ondestan')
-_('login_reminder_notification_mail_html_body', domain='Ondestan')
-_('login_reminder_notification_mail_text_body', domain='Ondestan')
 
 _('password_reset_notification_web', domain='Ondestan')
 _('password_reset_notification_mail_subject', domain='Ondestan')
@@ -36,9 +32,9 @@ _('user_password_updated', domain='Ondestan')
 _('wrong_password', domain='Ondestan')
 
 
-def group_finder(login, request):
+def group_finder(email, request):
     user = User().queryObject().filter(
-        User.login == login, User.activated == True
+        User.email == email, User.activated == True
     ).scalar()
     if ((user != None) and (user.role != None)):
         return ['role:' + user.role.name]
@@ -49,20 +45,21 @@ def activate_user(request):
     loginhash = request.matchdict['loginhash']
     users = User().queryObject().all()
     for user in users:
-        if sha512(user.login).hexdigest() == loginhash:
-            logger.info('User ' + user.login + ' has been activated')
+        if sha512(user.email).hexdigest() == loginhash:
+            logger.info('User ' + user.email + ' has been activated')
             user.activated = True
             user.save()
             break
 
 
 def reset_password(request):
-    loginhash = request.matchdict['loginhash']
-    users = User().queryObject().all()
-    for user in users:
-        if sha512(user.login).hexdigest() == loginhash:
-            new_password = rand_string(10)
-            logger.info('Password of user ' + user.login +
+    email = request.params['email']
+    if email != None:
+        user = get_user_by_email(email)
+        if user != None:
+            # new_password = rand_string(10)
+            new_password = user.email
+            logger.info('Password of user ' + user.email +
                         ' has been reset to ' + new_password)
             user.password = sha512(new_password).hexdigest()
             user.save()
@@ -71,31 +68,17 @@ def reset_password(request):
                           'url': request.route_url('login'),
                           'url_profile': request.route_url('update_profile')}
             ondestan.services.notification_service.process_notification(
-                'password_reset', user.login, True, 3, True, False, parameters)
-            break
-
-
-def remind_user(request):
-    email = request.params['email']
-    user = User().queryObject().filter(
-        User.email == email).scalar()
-    if (user != None):
-        url = request.route_url('password_reset',
-                                loginhash=sha512(user.login).hexdigest())
-        parameters = {'name': user.name, 'url': url, 'login': user.login,
-                      'url_profile': request.route_url('update_profile')}
-        ondestan.services.notification_service.process_notification(
-            'login_reminder', user.login, False, 0, True, False, parameters)
+                'password_reset', user.email, True, 3, True, False, parameters)
 
 
 def check_login_request(request):
-    login = request.params['login']
-    if (check_user_pass(login, request.params['password'])):
-        user = get_user_by_login(login)
+    email = request.params['email']
+    if (check_user_pass(email, request.params['password'])):
+        user = get_user_by_email(email)
         user.last_login = datetime.utcnow()
         user.locale = get_locale_name(request)
         user.update()
-        logger.debug('Updating last_login and locale for user ' + login)
+        logger.debug('Updating last_login and locale for user ' + email)
         return True
     else:
         return False
@@ -111,17 +94,13 @@ def get_non_admin_users():
             name=Role._ADMIN_ROLE)), User.activated == True)).all()
 
 
-def check_user_pass(login, password):
+def check_user_pass(email, password):
     user = User().queryObject().filter(
-        User.login == login, User.activated == True
+        User.email == email, User.activated == True
     ).scalar()
     if (user != None):
         return user.password == sha512(password).hexdigest()
     return False
-
-
-def get_user_by_login(login):
-    return User().queryObject().filter(User.login == login).scalar()
 
 
 def get_user_by_email(email):
@@ -131,20 +110,14 @@ def get_user_by_email(email):
 def create_user(request):
     localizer = get_localizer(request)
 
-    login = request.params['login']
     name = request.params['name']
     email = request.params['email']
-    user = User().queryObject().filter(User.login == login).scalar()
-    if (user != None):
-        msg = _('login_already_use', domain='Ondestan')
-        return localizer.translate(msg)
     user = User().queryObject().filter(User.email == email).scalar()
     if (user != None):
         msg = _('email_already_use', domain='Ondestan')
         return localizer.translate(msg)
 
     user = User()
-    user.login = login
     user.name = name
     user.email = email
     user.locale = get_locale_name(request)
@@ -155,10 +128,10 @@ def create_user(request):
     user.save()
 
     url = request.route_url('activate_user',
-                            loginhash=sha512(login).hexdigest())
+                            loginhash=sha512(email).hexdigest())
     parameters = {'name': name, 'url': url}
     ondestan.services.notification_service.process_notification('signup',
-        user.login, False, 0, True, False, parameters)
+        user.email, False, 0, True, False, parameters)
 
     return ''
 
@@ -166,17 +139,10 @@ def create_user(request):
 def update_user(request):
     user_id = int(request.params['id'])
     user = User().queryObject().filter(User.id == user_id).scalar()
-    if (user.login != get_user_login(request)):
+    if (user.email != get_user_email(request)):
         return
-    login = request.params['login']
     name = request.params['name']
     email = request.params['email']
-    user = User().queryObject().filter(User.login == login).scalar()
-    if ((user != None) and (user.id != user_id)):
-        notification = Notification()
-        notification.text = "_('login_already_use', domain='Ondestan')"
-        notification.level = 3
-        return notification
     user = User().queryObject().filter(User.email == email).scalar()
     if ((user != None) and (user.id != user_id)):
         notification = Notification()
@@ -185,12 +151,11 @@ def update_user(request):
         return notification
 
     user = User().queryObject().filter(User.id == user_id).scalar()
-    user.login = login
     user.name = name
     user.email = email
     user.phone = request.params['phone']
     user.update()
-    logger.debug('Profile updated for user ' + user.login)
+    logger.debug('Profile updated for user ' + user.email)
 
     notification = Notification()
     notification.text = "_('user_profile_updated', domain='Ondestan')"
@@ -201,7 +166,7 @@ def update_user(request):
 def update_password(request):
     user_id = int(request.params['id'])
     user = User().queryObject().filter(User.id == user_id).scalar()
-    if (user.login != get_user_login(request)):
+    if (user.email != get_user_email(request)):
         return
     old_password = request.params['old_password']
 
@@ -212,7 +177,7 @@ def update_password(request):
         return notification
     user.password = sha512(request.params['password']).hexdigest()
     user.update()
-    logger.debug('Password updated for user ' + user.login)
+    logger.debug('Password updated for user ' + user.email)
 
     notification = Notification()
     notification.text = "_('user_password_updated', domain='Ondestan')"

@@ -6,7 +6,7 @@ from pyramid.security import (
     )
 
 
-def get_user_login(request):
+def get_user_email(request):
     principals = effective_principals(request)
     for principal in principals:
         if type(principal) is unicode:

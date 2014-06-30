@@ -8,18 +8,6 @@ $.extend($.validator.messages, {
 $(function() {
 	$('#form').validate({
 		rules : {
-			login : {
-				required : true,
-				remote : {
-					url : window.contextVariables.check_login_url,
-					type : 'post',
-					data : {
-						login : function() {
-							return $('#form :input[name="login"]').val();
-						}
-					}
-				}
-			},
 			name : "required",
 			phone : "mobile",
 			email : {

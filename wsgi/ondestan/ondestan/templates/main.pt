@@ -22,8 +22,8 @@
     <tal:block metal:define-slot="styles"/>
   </head>
 
-  <?python from ondestan.security import get_user_login; from ondestan.services.order_service import get_orders, get_orders_popover ?>
-  <body tal:define="user_id get_user_login(request); orders get_orders(request); orders_popover_content get_orders_popover(request, orders)">
+  <?python from ondestan.security import get_user_email; from ondestan.services.order_service import get_orders, get_orders_popover ?>
+  <body tal:define="user_id get_user_email(request); orders get_orders(request); orders_popover_content get_orders_popover(request, orders)">
 
 	<div class="container">
 	    <div class="header">
@@ -31,7 +31,7 @@
             <li id="new_devices"><a href="${request.route_url('orders')}">${len(orders)} <span i18n:translate="orders_menu">order(s)</span></a></li>
 	        <li class="dropdown active">
 	          <a href="#" class="dropdown-toggle" data-toggle="dropdown">${user_id} <b class="caret"></b></a>
-	          <ul class="dropdown-menu">
+	          <ul class="dropdown-menu dropdown-menu-right">
 	            <li><a href="${request.route_url('map')}" i18n:translate="animal_viewer">Animal Viewer</a></li>
 	            <li><a href="${request.route_url('animals_list')}" i18n:translate="animals_list">Animals List</a></li>
 	            <li><a href="${request.route_url('plot_manager')}" i18n:translate="plot_manager">Plot Manager</a></li>

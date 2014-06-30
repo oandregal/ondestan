@@ -25,10 +25,10 @@
 		  <form class="form-signin dropdown-menu dropdown-menu-right" role="form" action="${request.route_url('login')}" method="post">
 			  <span tal:replace="message"/>
 			  <input type="hidden" name="came_from" value="${came_from}"/>
-			  <input type="text" class="form-control" placeholder="Usuario" name="login" value="${login}" autofocus="autofocus"/>
-			  <input type="password" class="form-control" placeholder="Contraseña" name="password" />
+			  <input type="text" class="form-control" i18n:attributes="placeholder email" placeholder="E-mail" name="email" value="${email}" autofocus="autofocus"/>
+			  <input type="password" class="form-control" i18n:attributes="placeholder password" placeholder="Contraseña" name="password" />
 			  <input class="btn btn-block btn-primary" type="submit" name="form.submitted" i18n:attributes="value log_in" value="Log in"/><br/>
-			  <a href="${request.route_url('reminder')}" style="margin-top: 5px;" i18n:translate="remember_user_password">Remember user/pass</a>
+			  <a href="${request.route_url('password_reset')}" style="margin-top: 5px;" i18n:translate="forgot_password">Forgot your password?</a>
 		  </form>
         </li>
       </ul>

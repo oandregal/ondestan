@@ -9,21 +9,6 @@ $.extend($.validator.messages, {
 $(function() {
 	$('#form_profile').validate({
 		rules : {
-			login : {
-				required : true,
-				"remote" : {
-					url : window.contextVariables.check_login_url,
-					type : 'post',
-					data : {
-						login : function() {
-							return $('#form :input[name="login"]').val();
-						},
-						id : function() {
-							return $('#form :input[name="id"]').val();
-						},
-					}
-				}
-			},
 			name : "required",
 			phone : "mobile",
 			email : {

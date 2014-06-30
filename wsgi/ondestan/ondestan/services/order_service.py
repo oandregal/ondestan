@@ -10,7 +10,7 @@ from datetime import datetime
 import logging
 
 from ondestan.entities import Order, User, Order_state
-from ondestan.security import get_user_login, check_permission
+from ondestan.security import get_user_email, check_permission
 from ondestan.utils import (
         Db,
         HtmlContainer
@@ -61,7 +61,7 @@ def get_orders(request):
         new_orders = get_all_pending_orders()
     else:
         new_orders = get_all_pending_orders(
-            get_user_login(request))
+            get_user_email(request))
     return new_orders
 
 
@@ -83,10 +83,10 @@ def get_orders_popover(request, new_orders):
 
 
 def create_order(request):
-    login = get_user_login(request)
+    email = get_user_email(request)
     units = int(request.params['units'])
     address = request.params['address']
-    user = User().queryObject().filter(User.login == login).scalar()
+    user = User().queryObject().filter(User.email == email).scalar()
     if (user != None):
         order = Order()
         order.units = units
@@ -119,7 +119,7 @@ def update_order_state(order_id, state, request):
 
 def notify_order_update(order_state, request):
     parameters = {'name': order_state.order.user.name,
-                 'login': order_state.order.user.login,
+                 'login': order_state.order.user.email,
                  'units': order_state.order.units,
                  'address': order_state.order.address,
                  'map_url': request.route_url('map'),
@@ -127,30 +127,24 @@ def notify_order_update(order_state, request):
                  }
     ondestan.services.notification_service.process_notification(
         'order_update_state_' + str(order_state.state),
-        order_state.order.user.login, True, 1, True, False, parameters)
+        order_state.order.user.email, True, 1, True, False, parameters)
 
 
 def notify_new_order(order_state, request):
     parameters = {'name': order_state.order.user.name,
-                 'login': order_state.order.user.login,
+                 'login': order_state.order.user.email,
                  'units': order_state.order.units,
                  'address': order_state.order.address,
                  'url': request.route_url('orders'),
                  'state': "_('order_state_0', domain='Ondestán')"}
     ondestan.services.notification_service.process_notification(
-        'new_order_user', order_state.order.user.login, False, 0, True, False,
+        'new_order_user', order_state.order.user.email, False, 0, True, False,
         parameters)
 
     admins = ondestan.services.user_service.get_admin_users()
-    parameters = {'name': order_state.order.user.name,
-                 'login': order_state.order.user.login,
-                 'units': order_state.order.units,
-                 'address': order_state.order.address,
-                 'url': request.route_url('orders'),
-                 'state': "_('order_state_0', domain='Ondestán')"}
     for admin in admins:
         ondestan.services.notification_service.process_notification(
-            'new_order_admin', admin.login, True, 1, True, False, parameters)
+            'new_order_admin', admin.email, True, 1, True, False, parameters)
 
 
 def get_order_by_id(order_id):
@@ -170,16 +164,16 @@ def get_all_new_orders():
         desc(Order_state.date)).all()
 
 
-def get_all_pending_orders(login=None):
+def get_all_pending_orders(email=None):
     session = Db.instance().session
     # Create subquery for retrieving the last state of each order
     subquery = session.query(
         Order_state.order_id, func.max(Order_state.date)
     ).group_by(Order_state.order_id).subquery()
-    if login != None:
+    if email != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login), Order_state.state < Order_state._STATES
+        Order.user.has(email=email), Order_state.state < Order_state._STATES
         [len(Order_state._STATES) - 2])).order_by(Order_state.state,\
         desc(Order_state.date)).all()
     else:
@@ -189,16 +183,16 @@ def get_all_pending_orders(login=None):
         - 2]).order_by(Order_state.state, desc(Order_state.date)).all()
 
 
-def get_all_processed_orders(login=None):
+def get_all_processed_orders(email=None):
     session = Db.instance().session
     # Create subquery for retrieving the last state of each order
     subquery = session.query(
         Order_state.order_id, func.max(Order_state.date)
     ).group_by(Order_state.order_id).subquery()
-    if login != None:
+    if email != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login), Order_state.state >= Order_state._STATES
+        Order.user.has(email=email), Order_state.state >= Order_state._STATES
         [len(Order_state._STATES) - 2])).order_by(Order_state.state,\
         desc(Order_state.date)).all()
     else:
@@ -208,16 +202,16 @@ def get_all_processed_orders(login=None):
         - 2]).order_by(Order_state.state, desc(Order_state.date)).all()
 
 
-def get_all_orders(login=None):
+def get_all_orders(email=None):
     session = Db.instance().session
     # Create subquery for retrieving the last state of each order
     subquery = session.query(
         Order_state.order_id, func.max(Order_state.date)
     ).group_by(Order_state.order_id).subquery()
-    if login != None:
+    if email != None:
         return Order().queryObject().join(Order_state).filter(and_(
         tuple_(Order_state.order_id, Order_state.date).in_(subquery),
-        Order.user.has(login=login))).order_by(Order_state.state,\
+        Order.user.has(email=email))).order_by(Order_state.state,\
         desc(Order_state.date)).all()
     else:
         return Order().queryObject().join(Order_state).filter(

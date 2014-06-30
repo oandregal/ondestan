@@ -12,7 +12,6 @@ class User(Entity, Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True)
-    login = Column(String, unique=True)
     name = Column(String)
     email = Column(String, unique=True)
     phone = Column(String)
@@ -22,7 +21,7 @@ class User(Entity, Base):
     locale = Column(String)
     role_id = Column(Integer, ForeignKey("roles.id"))
     role = relationship("Role", backref=backref('users',
-                        order_by=login))
+                        order_by=email))
 
     def get_plots_bounding_box_as_json(self):
         positions = []

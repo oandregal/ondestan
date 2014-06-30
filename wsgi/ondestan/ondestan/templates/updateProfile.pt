@@ -16,7 +16,6 @@
       window.contextVariables.mobile_field_msg = "<tal:block i18n:translate="mobile_field">Please specify a valid mobile phone number.</tal:block>";
       window.contextVariables.passwords_dont_match_msg = "<tal:block i18n:translate="passwords_dont_match">Passwords don't match.</tal:block>";
       window.contextVariables.check_email_url = "${request.route_url('check_user_email')}";
-      window.contextVariables.check_login_url = "${request.route_url('check_user_login')}";
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate.min.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery.validate_mobile.js')}"></script>
@@ -45,21 +44,15 @@
         <form id="form_profile" class="form-horizontal" role="form" action="${request.route_url('update_profile')}" method="post">
           <input type="hidden" id="id" name="id" value="${id}"/>
           <div class="form-group">
-            <label for="login" class="col-sm-4 control-label" i18n:translate="username">Login</label>
+            <label for="email" class="col-sm-4 control-label" i18n:translate="email">Email</label>
             <div class="col-sm-6">
-              <input type="text" class="form-control" id="login" name="login" value="${login}"/>
+              <input type="text" class="form-control" id="email" name="email" value="${email}"/>
             </div>
           </div>
           <div class="form-group">
             <label for="name" class="col-sm-4 control-label" i18n:translate="full_name">Full name</label>
             <div class="col-sm-6">
               <input type="text" class="form-control" id="name" name="name" value="${name}"/>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="col-sm-4 control-label" i18n:translate="email">Email</label>
-            <div class="col-sm-6">
-              <input type="text" class="form-control" id="email" name="email" value="${email}"/>
             </div>
           </div>
           <div class="form-group">

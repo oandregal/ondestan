@@ -17,7 +17,7 @@ logger = logging.getLogger('ondestan')
 # We put these 18n strings here so they're detected when parsing files
 _('web', domain='Ondestan')
 _('sms', domain='Ondestan')
-_('e-mail', domain='Ondestan')
+_('email', domain='Ondestan')
 
 _('success', domain='Ondestan')
 _('info', domain='Ondestan')
@@ -29,7 +29,7 @@ class Notification(Entity, Base):
 
     __tablename__ = "notifications"
     _LEVELS = ['success', 'info', 'warning', 'danger']
-    _TYPES = ['web', 'e-mail', 'sms']
+    _TYPES = ['web', 'email', 'sms']
 
     id = Column(Integer, primary_key=True)
     text = Column(String)

@@ -343,7 +343,7 @@ ul.list-group #no_plots_message label {
 }
 
 #plots_list_content .list-group-item .form-inline input, #plots_list_content .list-group-item label {
-	width: 100px;
+	width: 80px;
 }
 
 .leaflet-top .leaflet-draw.leaflet-control {
