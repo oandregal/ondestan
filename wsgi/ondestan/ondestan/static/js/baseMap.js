@@ -4,6 +4,9 @@ var osm_layer;
 var map;
 
 function zoom(lng, lat) {
+	$('html, body').animate({
+	    scrollTop: ($('#' + window.contextVariables.map_widget_id).offset().top)
+	},250);
     var offset = 0.002;
     var southWest = L.latLng(lat-offset, lng-offset),
     northEast = L.latLng(lat+offset, lng+offset),
