@@ -453,3 +453,8 @@ ul.list-group #no_plots_message label {
 .auto-width {
 	width: auto;
 }
+
+.btn > .history-link {
+	color: #428bca;
+	margin-right: 5px;
+}
