@@ -22,6 +22,9 @@ function centerMapOnUser(position) {
 	user_position = new L.marker(pos);
 	user_position.addTo(map);
     map.panTo(pos);
+    if (map.getZoom() < 12) {
+    	map.setZoom(14);
+    }
 }
 
 function getLocation() {
@@ -63,6 +66,7 @@ function init(){
     	}
 	} else {
 		map.setView(window.contextVariables.default_view, 8);
+		getLocation();
 	}
 
 	centerOnUserLocationControl = function(theCenterOnUserFunction) {
