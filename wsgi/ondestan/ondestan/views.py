@@ -380,8 +380,9 @@ def deactivate_device(request):
              permission='view')
 def animal_viewer(request):
     user = user_service.get_user_by_email(get_user_email(request))
+    view = user.get_animals_bounding_box_as_json()
     return dict(
-        view=user.get_animals_bounding_box_as_json(),
+        view=view if view != None else user.get_plots_bounding_box_as_json(),
         notifications=notification_service.\
             get_new_web_notifications_for_logged_user(request)
     )
