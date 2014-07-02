@@ -458,3 +458,7 @@ ul.list-group #no_plots_message label {
 	color: #428bca;
 	margin-right: 5px;
 }
+
+#plot_locator_options > button:not(:last-child) {
+	margin-bottom: 5px;
+}

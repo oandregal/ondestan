@@ -14,6 +14,14 @@ function zoom(lng, lat) {
     map.fitBounds(bounds);
 }
 
+function centerMapOnPosition(lat, lon) {
+	pos = new L.LatLng(lat, lon);
+    map.panTo(pos);
+    if (map.getZoom() < 12) {
+    	map.setZoom(14);
+    }
+}
+
 function centerMapOnUser(position) {
 	if (user_position != null) {
 		map.removeLayer(user_position);
@@ -21,10 +29,7 @@ function centerMapOnUser(position) {
 	pos = new L.LatLng(position.coords.latitude, position.coords.longitude);
 	user_position = new L.marker(pos);
 	user_position.addTo(map);
-    map.panTo(pos);
-    if (map.getZoom() < 12) {
-    	map.setZoom(14);
-    }
+	centerMapOnPosition(position.coords.latitude, position.coords.longitude);
 }
 
 function getLocation() {

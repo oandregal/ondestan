@@ -154,3 +154,36 @@ function additionalControls() {
 
 $('#plot_owner').change(validatePlotData);
 $('#plot_name').keyup(validatePlotData);
+
+$('#plot_locator_btn').click(function() {
+	$('#plot_locator_options').show();
+	$('.plot_locator_option').hide();
+	$('#plot_locator_accept_btn').prop('disabled', true);
+	$('#plot_locator_modal').modal();
+});
+$('#plot_locator_option_current_position').click(function() {
+	getLocation();
+	$('#plot_locator_modal').modal('hide');
+});
+$('#location').bind("enterKey",function(e){
+	$('#plot_locator_accept_btn').click();
+});
+$('#location').keyup(function(e){
+    if(e.keyCode == 13)
+    {
+        $(this).trigger("enterKey");
+    }
+});
+$('#plot_locator_option_town_name').click(function() {
+	$('#plot_locator_options').hide();
+	$('#plot_locator_town').show();
+	$('#plot_locator_accept_btn').off();
+	$('#plot_locator_accept_btn').prop('disabled', false);
+	$('#plot_locator_accept_btn').click(function() {
+		$.getJSON( "http://nominatim.openstreetmap.org/search?state=galicia&country=españa&format=json&limit=1&city=" + $('#location').val(), function( data ) {
+			centerMapOnPosition(data[0].lat, data[0].lon);
+		});
+		$('#plot_locator_modal').modal('hide');
+	});
+	$('#plot_locator_modal').modal();
+});

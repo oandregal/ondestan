@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-06-30 19:56+0200\n"
+"POT-Creation-Date: 2014-07-02 16:54+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,23 +33,23 @@ msgstr ""
 msgid "user_email_already_use"
 msgstr ""
 
-#: ondestan/views.py:408
+#: ondestan/views.py:409
 msgid "too_many_positions_in_selected_time_interval"
 msgstr ""
 
-#: ondestan/views.py:553 ondestan/views.py:704
+#: ondestan/views.py:554 ondestan/views.py:705
 msgid "animal_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:614 ondestan/views.py:707
+#: ondestan/views.py:615 ondestan/views.py:708
 msgid "animal_popup"
 msgstr ""
 
-#: ondestan/views.py:801
+#: ondestan/views.py:802
 msgid "plot_popup_admin"
 msgstr ""
 
-#: ondestan/views.py:827
+#: ondestan/views.py:828
 msgid "plot_popup"
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 #. Default: E-mail
 #. Default: Email
 #: ondestan/entities/notification.py:20 ondestan/templates/login.pt:28
-#: ondestan/templates/passwordReset.pt:27 ondestan/templates/signup.pt:47
+#: ondestan/templates/passwordReset.pt:27 ondestan/templates/signup.pt:46
 #: ondestan/templates/updateProfile.pt:47
 msgid "email"
 msgstr ""
@@ -536,7 +536,7 @@ msgstr ""
 
 #. Default: Name
 #: ondestan/templates/animalsList.pt:27 ondestan/templates/orderDevices.pt:37
-#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:79
+#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:104
 msgid "name"
 msgstr ""
 
@@ -558,7 +558,7 @@ msgstr ""
 
 #. Default: Cell phone number
 #: ondestan/templates/animalsList.pt:31 ondestan/templates/orderDevices.pt:36
-#: ondestan/templates/orderDevices.pt:54 ondestan/templates/signup.pt:61
+#: ondestan/templates/orderDevices.pt:54 ondestan/templates/signup.pt:60
 #: ondestan/templates/updateProfile.pt:59
 msgid "cell_phone_number"
 msgstr ""
@@ -584,8 +584,8 @@ msgid "login_title"
 msgstr ""
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:22 ondestan/templates/signup.pt:32
-#: ondestan/templates/signup.pt:81
+#: ondestan/templates/login.pt:22 ondestan/templates/signup.pt:31
+#: ondestan/templates/signup.pt:80
 msgid "sign_up"
 msgstr ""
 
@@ -596,7 +596,7 @@ msgstr ""
 
 #. Default: Contraseña
 #. Default: Password
-#: ondestan/templates/login.pt:29 ondestan/templates/signup.pt:68
+#: ondestan/templates/login.pt:29 ondestan/templates/signup.pt:67
 msgid "password"
 msgstr ""
 
@@ -982,34 +982,59 @@ msgstr ""
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
-#. Default: Plot Data
+#. Default: Plot Locator
 #: ondestan/templates/plotManager.pt:76
-msgid "plot_data_modal_title"
+msgid "plot_locator_modal_title"
 msgstr ""
 
-#. Default: Owner
+#. Default: By your current position
 #: ondestan/templates/plotManager.pt:80
-msgid "owner"
+msgid "plot_locator_current_position"
+msgstr ""
+
+#. Default: By a town name
+#: ondestan/templates/plotManager.pt:81
+msgid "plot_locator_town_name"
+msgstr ""
+
+#. Default: Town
+#: ondestan/templates/plotManager.pt:84
+msgid "town"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:86
+#: ondestan/templates/plotManager.pt:88 ondestan/templates/plotManager.pt:111
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:87
+#: ondestan/templates/plotManager.pt:89 ondestan/templates/plotManager.pt:112
 msgid "accept"
 msgstr ""
 
+#. Default: Plot Data
+#: ondestan/templates/plotManager.pt:101
+msgid "plot_data_modal_title"
+msgstr ""
+
+#. Default: Owner
+#: ondestan/templates/plotManager.pt:105
+msgid "owner"
+msgstr ""
+
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:94
+#: ondestan/templates/plotManager.pt:119
 msgid "current_plots"
 msgstr ""
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:100
+#: ondestan/templates/plotManager.pt:125
 msgid "no_plots"
+msgstr ""
+
+#. Default: Help locating plots
+#: ondestan/templates/plotManager.pt:129
+msgid "help_locating_plots"
 msgstr ""
 
 #. Default: Sign Up - Ondestán
@@ -1033,23 +1058,23 @@ msgid "passwords_dont_match"
 msgstr ""
 
 #. Default: Successful Sign Up
-#: ondestan/templates/signup.pt:30
+#: ondestan/templates/signup.pt:29
 msgid "successful_sign_up"
 msgstr ""
 
 #. Default: We have sent you an email with the instructions for activating your new
 #. account.<dynamic element>Welcome to Ondestán!!
-#: ondestan/templates/signup.pt:39
+#: ondestan/templates/signup.pt:38
 msgid "sign_up_instructions"
 msgstr ""
 
 #. Default: Full name
-#: ondestan/templates/signup.pt:54 ondestan/templates/updateProfile.pt:53
+#: ondestan/templates/signup.pt:53 ondestan/templates/updateProfile.pt:53
 msgid "full_name"
 msgstr ""
 
 #. Default: Retype password
-#: ondestan/templates/signup.pt:75
+#: ondestan/templates/signup.pt:74
 msgid "retype_password"
 msgstr ""
 

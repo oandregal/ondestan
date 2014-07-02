@@ -67,6 +67,32 @@
 
   <tal:block metal:fill-slot="content">
 
+	<!-- Plot locator modal -->
+	<div class="modal fade" id="plot_locator_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel" i18n:translate="plot_locator_modal_title">Plot Locator</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<div id="plot_locator_options" class="text-left">
+	      		<button id="plot_locator_option_current_position" type="button" class="btn btn-default" i18n:translate="plot_locator_current_position">By your current position</button>
+	      		<button id="plot_locator_option_town_name" type="button" class="btn btn-default" i18n:translate="plot_locator_town_name">By a town name</button>
+	      	</div>
+	      	<div id="plot_locator_town" class="plot_locator_option">
+	      		<label style="margin-right: 5px;"><tal:block i18n:translate="town">Town</tal:block>:</label><input id="location" name="location" type="text" style="width: 150px;"/><br/>
+	      		<a href="http://nominatim.openstreetmap.org/" class="small"><em i18n:translate="powered_by_nominatim">Powered by Nominatim</em></a>
+	      	</div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="cancel">Cancel</button>
+	        <button id="plot_locator_accept_btn" type="button" class="btn btn-primary" disabled="true" i18n:translate="accept">Accept</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
 	<!-- Select user modal -->
 	<div class="modal fade" id="plot_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="modal-dialog modal-sm modal-xsm">
@@ -101,6 +127,7 @@
 				</li>
 			</div>
 		</ul>
+    	<button id="plot_locator_btn" type="button" class="btn btn-lg btn-default" i18n:translate="help_locating_plots">Help locating plots</button>
     </div>
 
     <div id="map_plots" class="col-md-9"></div>
