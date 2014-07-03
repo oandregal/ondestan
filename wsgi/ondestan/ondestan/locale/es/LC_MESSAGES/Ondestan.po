@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-02 16:54+0200\n"
-"PO-Revision-Date: 2014-07-02 16:54+0100\n"
+"POT-Creation-Date: 2014-07-03 11:01+0200\n"
+"PO-Revision-Date: 2014-07-03 11:25+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -653,7 +653,7 @@ msgstr "Usuario"
 #: ondestan/templates/animalsList.pt:27
 #: ondestan/templates/orderDevices.pt:37
 #: ondestan/templates/orderDevices.pt:55
-#: ondestan/templates/plotManager.pt:104
+#: ondestan/templates/plotManager.pt:105
 msgid "name"
 msgstr "Nombre"
 
@@ -1134,13 +1134,11 @@ msgstr "Localizador de fincas"
 
 #. Default: By your current position
 #: ondestan/templates/plotManager.pt:80
-#| msgid "plot_locator_modal_title"
 msgid "plot_locator_current_position"
 msgstr "Por tu posición actual"
 
 #. Default: By a town name
 #: ondestan/templates/plotManager.pt:81
-#| msgid "plot_locator_modal_title"
 msgid "plot_locator_town_name"
 msgstr "Por nombre de ayuntamiento"
 
@@ -1149,40 +1147,45 @@ msgstr "Por nombre de ayuntamiento"
 msgid "town"
 msgstr "Ayuntamiento"
 
+#. Default: Powered by Nominatim
+#: ondestan/templates/plotManager.pt:85
+msgid "powered_by_nominatim"
+msgstr "Con la tecnología de Nominatim"
+
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:88
-#: ondestan/templates/plotManager.pt:111
+#: ondestan/templates/plotManager.pt:89
+#: ondestan/templates/plotManager.pt:112
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:89
-#: ondestan/templates/plotManager.pt:112
+#: ondestan/templates/plotManager.pt:90
+#: ondestan/templates/plotManager.pt:113
 msgid "accept"
 msgstr "Aceptar"
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:101
+#: ondestan/templates/plotManager.pt:102
 msgid "plot_data_modal_title"
 msgstr "Datos de la finca"
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:105
+#: ondestan/templates/plotManager.pt:106
 msgid "owner"
 msgstr "Dueño"
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:119
+#: ondestan/templates/plotManager.pt:120
 msgid "current_plots"
 msgstr "Fincas actuales"
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:125
+#: ondestan/templates/plotManager.pt:126
 msgid "no_plots"
 msgstr "Sin fincas"
 
 #. Default: Help locating plots
-#: ondestan/templates/plotManager.pt:129
+#: ondestan/templates/plotManager.pt:130
 msgid "help_locating_plots"
 msgstr "Ayuda para localizar fincas"
 

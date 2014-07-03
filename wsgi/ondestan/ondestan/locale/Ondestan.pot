@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-02 16:54+0200\n"
+"POT-Creation-Date: 2014-07-03 11:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -536,7 +536,7 @@ msgstr ""
 
 #. Default: Name
 #: ondestan/templates/animalsList.pt:27 ondestan/templates/orderDevices.pt:37
-#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:104
+#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:105
 msgid "name"
 msgstr ""
 
@@ -1002,38 +1002,43 @@ msgstr ""
 msgid "town"
 msgstr ""
 
+#. Default: Powered by Nominatim
+#: ondestan/templates/plotManager.pt:85
+msgid "powered_by_nominatim"
+msgstr ""
+
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:88 ondestan/templates/plotManager.pt:111
+#: ondestan/templates/plotManager.pt:89 ondestan/templates/plotManager.pt:112
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:89 ondestan/templates/plotManager.pt:112
+#: ondestan/templates/plotManager.pt:90 ondestan/templates/plotManager.pt:113
 msgid "accept"
 msgstr ""
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:101
+#: ondestan/templates/plotManager.pt:102
 msgid "plot_data_modal_title"
 msgstr ""
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:105
+#: ondestan/templates/plotManager.pt:106
 msgid "owner"
 msgstr ""
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:119
+#: ondestan/templates/plotManager.pt:120
 msgid "current_plots"
 msgstr ""
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:125
+#: ondestan/templates/plotManager.pt:126
 msgid "no_plots"
 msgstr ""
 
 #. Default: Help locating plots
-#: ondestan/templates/plotManager.pt:129
+#: ondestan/templates/plotManager.pt:130
 msgid "help_locating_plots"
 msgstr ""
 
