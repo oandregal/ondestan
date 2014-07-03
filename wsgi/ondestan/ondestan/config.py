@@ -1,5 +1,6 @@
 # coding=UTF-8
 from pyramid.settings import asbool
+from os.path import expandvars
 
 
 class Config:
@@ -12,16 +13,16 @@ class Config:
 
     @staticmethod
     def get_string_value(field):
-        return str(Config.config[field])
+        return str(expandvars(Config.config[field]))
 
     @staticmethod
     def get_boolean_value(field):
-        return asbool(Config.config[field])
+        return asbool(expandvars(Config.config[field]))
 
     @staticmethod
     def get_int_value(field):
-        return int(Config.config[field])
+        return int(expandvars(Config.config[field]))
 
     @staticmethod
     def get_float_value(field):
-        return float(Config.config[field])
+        return float(expandvars(Config.config[field]))

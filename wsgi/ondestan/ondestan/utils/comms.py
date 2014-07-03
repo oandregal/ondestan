@@ -2,7 +2,6 @@
 from smtplib import SMTP
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from os.path import expandvars
 from twilio.rest import TwilioRestClient
 
 from ondestan.config import Config
@@ -11,20 +10,20 @@ import logging, sys
 logger = logging.getLogger('ondestan')
 
 # put your own credentials here
-account_sid = expandvars(Config.get_string_value('twilio.account_sid'))
-auth_token = expandvars(Config.get_string_value('twilio.auth_token'))
-caller_nr = expandvars(Config.get_string_value('twilio.caller_nr'))
-default_prefix = expandvars(Config.get_string_value('twilio.default_prefix'))
+account_sid = Config.get_string_value('twilio.account_sid')
+auth_token =Config.get_string_value('twilio.auth_token')
+caller_nr = Config.get_string_value('twilio.caller_nr')
+default_prefix = Config.get_string_value('twilio.default_prefix')
 
 if Config.get_boolean_value('twilio.send_sms'):
     client = TwilioRestClient(account_sid, auth_token)
 else:
     client = None
 
-smtp_server = expandvars(Config.get_string_value('smtp.server'))
-smtp_port = int(expandvars(Config.get_string_value('smtp.port')))
-smtp_mail = expandvars(Config.get_string_value('smtp.mail'))
-smtp_password = expandvars(Config.get_string_value('smtp.password'))
+smtp_server = Config.get_string_value('smtp.server')
+smtp_port = int(Config.get_string_value('smtp.port'))
+smtp_mail = Config.get_string_value('smtp.mail')
+smtp_password = Config.get_string_value('smtp.password')
 
 
 def send_mail(html, text, subject, destination):
@@ -56,7 +55,8 @@ def send_mail(html, text, subject, destination):
                     "email " + destination)
     except Exception, e:
         logger.error("E-mail with subject '" + subject + "' couldn't be sent "
-                     + "to email " + destination + " due to error " + str(type(e)) + ":" + str(e))
+                     + "to email " + destination + " due to error "
+                     + str(type(e)) + ":" + str(e))
     finally:
         server.quit()
 

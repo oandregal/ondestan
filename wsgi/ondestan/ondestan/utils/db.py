@@ -6,7 +6,6 @@ from sqlalchemy.orm import (
     sessionmaker,
     )
 from zope.sqlalchemy import ZopeTransactionExtension
-from os.path import expandvars
 
 from ondestan.config import Config
 from ondestan.utils import Singleton
@@ -36,11 +35,11 @@ class Db(object):
         self.session = scoped_session(
             sessionmaker(extension=ZopeTransactionExtension()))
 
-        host = expandvars(Config.get_string_value('db.host'))
-        port = expandvars(Config.get_string_value('db.port'))
-        db = expandvars(Config.get_string_value('db.dbname'))
-        user = expandvars(Config.get_string_value('db.user'))
-        password = expandvars(Config.get_string_value('db.password'))
+        host = Config.get_string_value('db.host')
+        port = Config.get_string_value('db.port')
+        db = Config.get_string_value('db.dbname')
+        user = Config.get_string_value('db.user')
+        password = Config.get_string_value('db.password')
 
         conn_str = 'postgresql+psycopg2://' + user + ':' + password + \
                          '@' + host + ':' + port + '/' + db
