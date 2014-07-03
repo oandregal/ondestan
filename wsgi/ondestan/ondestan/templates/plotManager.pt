@@ -36,6 +36,9 @@
       window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
       window.contextVariables.center_on_user_position = "<tal:block i18n:translate="center_on_user_position_tooltip">Center map onto your current position.</tal:block>";
       window.contextVariables.geolocation_not_supported = "<tal:block i18n:translate="geolocation_not_supported">Geolocation is not supported by this browser.</tal:block>";
+      
+      window.contextVariables.map_widget_id = "map_plots";
+      window.contextVariables.admin_mail = "${Config.get_string_value('smtp.mail')}";
 
       L.drawLocal.draw.toolbar.buttons.polygon = "<tal:block i18n:translate="map_tool_create_plot_tooltip">Draw a new plot</tal:block>";
       L.drawLocal.draw.toolbar.undo.title = "<tal:block i18n:translate="map_tool_undo_tooltip">Delete last point drawn</tal:block>";
@@ -59,7 +62,6 @@
       L.drawLocal.edit.handlers.edit.tooltip.text = "<tal:block i18n:translate="map_tool_edit_plot_handler_tooltip">Drag handles to edit the plot.</tal:block>";
       L.drawLocal.edit.handlers.edit.tooltip.subtext = "<tal:block i18n:translate="map_tool_edit_plot_handler_subtooltip">Click Cancel to undo changes.</tal:block>";
       L.drawLocal.edit.handlers.remove.tooltip.text = "<tal:block i18n:translate="map_tool_delete_plot_handler_tooltip">Click on a plot to remove.</tal:block>";
-      window.contextVariables.map_widget_id = "map_plots";
     </script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/plotManager.js')}"></script>
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/baseMap.js')}"></script>

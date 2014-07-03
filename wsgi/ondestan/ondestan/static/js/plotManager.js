@@ -1,4 +1,7 @@
 var plots;
+var nominatimBaseUrl = (window.contextVariables.admin_mail != "") ?
+		"http://nominatim.openstreetmap.org/search?email=" + window.contextVariables.admin_mail + "&state=galicia&country=españa&format=json&limit=1" :
+			"http://nominatim.openstreetmap.org/search?state=galicia&country=españa&format=json&limit=1" ;
 
 function validatePlotData() {
 	if (( $('#plot_owner').val() != '' || !$('#plot_owner').is(":visible") ) && $('#plot_name').val() != '') {
@@ -180,7 +183,7 @@ $('#plot_locator_option_town_name').click(function() {
 	$('#plot_locator_accept_btn').off();
 	$('#plot_locator_accept_btn').prop('disabled', false);
 	$('#plot_locator_accept_btn').click(function() {
-		$.getJSON( "http://nominatim.openstreetmap.org/search?state=galicia&country=españa&format=json&limit=1&city=" + $('#location').val(), function( data ) {
+		$.getJSON( nominatimBaseUrl + '&city=' + $('#location').val(), function( data ) {
 			centerMapOnPosition(data[0].lat, data[0].lon);
 		});
 		$('#plot_locator_modal').modal('hide');
