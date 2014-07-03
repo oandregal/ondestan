@@ -459,10 +459,6 @@ ul.list-group #no_plots_message label {
 	margin-right: 5px;
 }
 
-#plot_locator_options > button:not(:last-child) {
-	margin-bottom: 5px;
-}
-
 table td .btn.pull-right {
 	margin-left: 50px;
 }

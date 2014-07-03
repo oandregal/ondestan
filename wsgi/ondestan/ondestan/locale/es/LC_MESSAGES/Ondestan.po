@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-03 11:01+0200\n"
-"PO-Revision-Date: 2014-07-03 11:25+0100\n"
+"POT-Creation-Date: 2014-07-03 15:30+0200\n"
+"PO-Revision-Date: 2014-07-03 15:30+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -429,35 +429,35 @@ msgstr "Visor de histórico de posiciones - Ondestán"
 #. Default: Double click to edit name (confirm change by pressing enter).
 #: ondestan/templates/animalHistoryViewer.pt:39
 #: ondestan/templates/animalViewer.pt:37
-#: ondestan/templates/plotManager.pt:33
+#: ondestan/templates/plotManager.pt:36
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: Center map onto your current position.
 #: ondestan/templates/animalHistoryViewer.pt:41
 #: ondestan/templates/animalViewer.pt:40
-#: ondestan/templates/plotManager.pt:37
+#: ondestan/templates/plotManager.pt:40
 msgid "center_on_user_position_tooltip"
 msgstr "Click para centrar la vista en tu posición actual."
 
 #. Default: Geolocation is not supported by this browser.
 #: ondestan/templates/animalHistoryViewer.pt:42
 #: ondestan/templates/animalViewer.pt:41
-#: ondestan/templates/plotManager.pt:38
+#: ondestan/templates/plotManager.pt:41
 msgid "geolocation_not_supported"
 msgstr "Este navegador no permite localizarte."
 
 #. Default: Zoom in
 #: ondestan/templates/animalHistoryViewer.pt:44
 #: ondestan/templates/animalViewer.pt:43
-#: ondestan/templates/plotManager.pt:35
+#: ondestan/templates/plotManager.pt:38
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
 
 #. Default: Zoom out
 #: ondestan/templates/animalHistoryViewer.pt:45
 #: ondestan/templates/animalViewer.pt:44
-#: ondestan/templates/plotManager.pt:36
+#: ondestan/templates/plotManager.pt:39
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
 
@@ -653,7 +653,7 @@ msgstr "Usuario"
 #: ondestan/templates/animalsList.pt:27
 #: ondestan/templates/orderDevices.pt:37
 #: ondestan/templates/orderDevices.pt:55
-#: ondestan/templates/plotManager.pt:105
+#: ondestan/templates/plotManager.pt:116
 msgid "name"
 msgstr "Nombre"
 
@@ -1035,157 +1035,163 @@ msgid "plot_manager_title"
 msgstr "Gestor de fincas - Ondestán"
 
 #. Default: Draw a new plot
-#: ondestan/templates/plotManager.pt:40
+#: ondestan/templates/plotManager.pt:46
 msgid "map_tool_create_plot_tooltip"
 msgstr "Dibujar una nueva finca"
 
 #. Default: Delete last point drawn
-#: ondestan/templates/plotManager.pt:41
+#: ondestan/templates/plotManager.pt:47
 msgid "map_tool_undo_tooltip"
 msgstr "Borrar el último punto dibujado"
 
 #. Default: Delete last point
-#: ondestan/templates/plotManager.pt:42
+#: ondestan/templates/plotManager.pt:48
 msgid "map_tool_undo_text"
 msgstr "Borrar último punto"
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:43
-#: ondestan/templates/plotManager.pt:44
-#: ondestan/templates/plotManager.pt:53
+#: ondestan/templates/plotManager.pt:49
+#: ondestan/templates/plotManager.pt:50
+#: ondestan/templates/plotManager.pt:59
 msgid "map_tool_cancel_text"
 msgstr "Cancelar"
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/plotManager.pt:45
+#: ondestan/templates/plotManager.pt:51
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr "Haz click para empezar a dibujar la finca."
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/plotManager.pt:46
+#: ondestan/templates/plotManager.pt:52
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr "Haz click para continuar dibujando la finca."
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/plotManager.pt:47
+#: ondestan/templates/plotManager.pt:53
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr "Haz click en el primer punto para cerrar esta finca."
 
 #. Default: Error: plot edges cannot cross!
-#: ondestan/templates/plotManager.pt:48
+#: ondestan/templates/plotManager.pt:54
 msgid "map_tool_edit_plot_handler_error"
 msgstr "Error: los lados de la finca no se pueden cruzar."
 
 #. Default: Save changes
-#: ondestan/templates/plotManager.pt:50
+#: ondestan/templates/plotManager.pt:56
 msgid "map_tool_save_tooltip"
 msgstr "Guardar cambios"
 
 #. Default: Save
-#: ondestan/templates/plotManager.pt:51
+#: ondestan/templates/plotManager.pt:57
 msgid "map_tool_save_text"
 msgstr "Guardar"
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:58
 msgid "map_tool_cancel_tooltip"
 msgstr "Cancelar la edición, descarta los cambios"
 
 #. Default: Edit plots
-#: ondestan/templates/plotManager.pt:55
+#: ondestan/templates/plotManager.pt:61
 msgid "map_tool_edit_plot_tooltip"
 msgstr "Editar fincas"
 
 #. Default: No plots to edit
-#: ondestan/templates/plotManager.pt:56
+#: ondestan/templates/plotManager.pt:62
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr "No hay fincas que editar"
 
 #. Default: Delete plots
-#: ondestan/templates/plotManager.pt:57
+#: ondestan/templates/plotManager.pt:63
 msgid "map_tool_delete_plot_tooltip"
 msgstr "Borrar fincas"
 
 #. Default: No plots to delete
-#: ondestan/templates/plotManager.pt:58
+#: ondestan/templates/plotManager.pt:64
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr "No hay fincas que borrar"
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/plotManager.pt:59
+#: ondestan/templates/plotManager.pt:65
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr "Arrastra los vértices para editar la finca."
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/plotManager.pt:60
+#: ondestan/templates/plotManager.pt:66
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr "Haz click en Cancelar para deshacer los cambios."
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/plotManager.pt:61
+#: ondestan/templates/plotManager.pt:67
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr "Haz click en una finca para borrarla."
 
 #. Default: Plot Locator
-#: ondestan/templates/plotManager.pt:76
+#: ondestan/templates/plotManager.pt:81
 msgid "plot_locator_modal_title"
 msgstr "Localizador de fincas"
 
 #. Default: By your current position
-#: ondestan/templates/plotManager.pt:80
+#: ondestan/templates/plotManager.pt:86
 msgid "plot_locator_current_position"
 msgstr "Por tu posición actual"
 
-#. Default: By a town name
-#: ondestan/templates/plotManager.pt:81
-msgid "plot_locator_town_name"
-msgstr "Por nombre de ayuntamiento"
+#. Default: By a place name
+#: ondestan/templates/plotManager.pt:87
+msgid "plot_locator_place_name"
+msgstr "Por nombre de lugar"
 
-#. Default: Town
-#: ondestan/templates/plotManager.pt:84
-msgid "town"
-msgstr "Ayuntamiento"
+#. Default: Place
+#: ondestan/templates/plotManager.pt:91
+msgid "place"
+msgstr "Lugar"
 
 #. Default: Powered by Nominatim
-#: ondestan/templates/plotManager.pt:85
+#: ondestan/templates/plotManager.pt:92
 msgid "powered_by_nominatim"
 msgstr "Con la tecnología de Nominatim"
 
+#. Default: Select place
+#: ondestan/templates/plotManager.pt:95
+#| msgid "select"
+msgid "select_place"
+msgstr "Selecciona lugar"
+
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:89
-#: ondestan/templates/plotManager.pt:112
+#: ondestan/templates/plotManager.pt:100
+#: ondestan/templates/plotManager.pt:123
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:90
-#: ondestan/templates/plotManager.pt:113
+#: ondestan/templates/plotManager.pt:101
+#: ondestan/templates/plotManager.pt:124
 msgid "accept"
 msgstr "Aceptar"
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:102
+#: ondestan/templates/plotManager.pt:113
 msgid "plot_data_modal_title"
 msgstr "Datos de la finca"
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:106
+#: ondestan/templates/plotManager.pt:117
 msgid "owner"
 msgstr "Dueño"
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:120
+#: ondestan/templates/plotManager.pt:131
 msgid "current_plots"
 msgstr "Fincas actuales"
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:126
+#: ondestan/templates/plotManager.pt:137
 msgid "no_plots"
 msgstr "Sin fincas"
 
 #. Default: Help locating plots
-#: ondestan/templates/plotManager.pt:130
+#: ondestan/templates/plotManager.pt:141
 msgid "help_locating_plots"
 msgstr "Ayuda para localizar fincas"
 

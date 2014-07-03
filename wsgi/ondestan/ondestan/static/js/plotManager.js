@@ -1,7 +1,41 @@
+var ladda;
 var plots;
-var nominatimBaseUrl = (window.contextVariables.admin_mail != "") ?
-		"http://nominatim.openstreetmap.org/search?email=" + window.contextVariables.admin_mail + "&state=galicia&country=españa&format=json&limit=1" :
-			"http://nominatim.openstreetmap.org/search?state=galicia&country=españa&format=json&limit=1" ;
+var nominatimResults;
+var nominatimItems = [];
+var nominatimBaseUrl = "http://nominatim.openstreetmap.org/search?format=json&limit=5";
+if (window.contextVariables.admin_mail != "") {
+	nominatimBaseUrl += "&email=" + window.contextVariables.admin_mail;
+}
+
+function centerOnNominatimResult(i) {
+	$('#plot_locator_modal').modal('hide');
+	centerMapOnPosition(nominatimResults[i].lat, nominatimResults[i].lon);
+}
+
+function displayNominatimResults() {
+	nominatimItems = [];
+	content = "";
+	for (i = 0, len = nominatimResults.length; i < len; i++) {
+		if (!(nominatimResults[i].display_name in nominatimItems)) {
+			content += '<a href="#" class="list-group-item" onclick="centerOnNominatimResult(' + i + ')">' + nominatimResults[i].display_name + '</a>';
+			nominatimItems[nominatimResults[i].display_name] = true;
+		}
+	}
+	$('#plot_locator_place_results_list').html(content);
+}
+
+function startSpinner(component) {
+	stopSpinner();
+	ladda = Ladda.create(component);
+ 	ladda.start();
+}
+
+function stopSpinner() {
+	if (ladda != null) {
+		ladda.stop();
+		ladda = null;
+	}
+}
 
 function validatePlotData() {
 	if (( $('#plot_owner').val() != '' || !$('#plot_owner').is(":visible") ) && $('#plot_name').val() != '') {
@@ -177,16 +211,21 @@ $('#location').keyup(function(e){
         $(this).trigger("enterKey");
     }
 });
-$('#plot_locator_option_town_name').click(function() {
+$('#plot_locator_option_place_name').click(function() {
 	$('#plot_locator_options').hide();
-	$('#plot_locator_town').show();
+	$('#plot_locator_place').show();
 	$('#plot_locator_accept_btn').off();
 	$('#plot_locator_accept_btn').prop('disabled', false);
 	$('#plot_locator_accept_btn').click(function() {
-		$.getJSON( nominatimBaseUrl + '&city=' + $('#location').val(), function( data ) {
-			centerMapOnPosition(data[0].lat, data[0].lon);
+		startSpinner(this);
+		$.getJSON( nominatimBaseUrl + '&q=' + $('#location').val(), function( data ) {
+			stopSpinner();
+			nominatimResults = data;
+			displayNominatimResults();
+			$('#plot_locator_place').hide();
+			$('#plot_locator_place_results').show();
+			$('#plot_locator_accept_btn').prop('disabled', true);
 		});
-		$('#plot_locator_modal').modal('hide');
 	});
 	$('#plot_locator_modal').modal();
 });
