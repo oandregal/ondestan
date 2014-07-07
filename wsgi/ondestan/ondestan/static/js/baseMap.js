@@ -17,9 +17,7 @@ function zoom(lng, lat) {
 function centerMapOnPosition(lat, lon) {
 	pos = new L.LatLng(lat, lon);
     map.panTo(pos);
-    if (map.getZoom() < 12) {
-    	map.setZoom(14);
-    }
+    map.setZoom(14);
 }
 
 function centerMapOnUser(position) {
