@@ -462,3 +462,10 @@ ul.list-group #no_plots_message label {
 table td .btn.pull-right {
 	margin-left: 50px;
 }
+
+.locate-plot-toolbar.leaflet-bar a, .locate-plot-toolbar.leaflet-bar a:hover {
+	height: 52px;
+	width: 85px;
+	font-weight: normal;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+} 

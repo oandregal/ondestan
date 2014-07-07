@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-03 15:30+0200\n"
-"PO-Revision-Date: 2014-07-03 15:30+0100\n"
+"POT-Creation-Date: 2014-07-07 12:48+0200\n"
+"PO-Revision-Date: 2014-07-07 12:42+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -35,21 +35,28 @@ msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto.
 
 #: ondestan/views.py:409
 msgid "too_many_positions_in_selected_time_interval"
-msgstr "Demasiadas posiciones para mostrar simultáneamente en el intervalo de tiempo seleccionado. Se mostrarán las ${max_positions} más recientes."
+msgstr ""
+"Demasiadas posiciones para mostrar simultáneamente en el intervalo de "
+"tiempo seleccionado. Se mostrarán las ${max_positions} más recientes."
 
-#: ondestan/views.py:554
-#: ondestan/views.py:705
+#: ondestan/views.py:554 ondestan/views.py:705
 msgid "animal_popup_admin"
-msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
+msgstr ""
+"<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> "
+"${animal_name} (${imei}) <br/><strong>Batería:</strong> "
+"${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:615
-#: ondestan/views.py:708
+#: ondestan/views.py:615 ondestan/views.py:708
 msgid "animal_popup"
-msgstr "<strong>Nombre:</strong> ${animal_name}<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
+msgstr ""
+"<strong>Nombre:</strong> ${animal_name}<br/><strong>Batería</strong>: "
+"${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
 #: ondestan/views.py:802
 msgid "plot_popup_admin"
-msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
+msgstr ""
+"<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> "
+"${plot_name}"
 
 #: ondestan/views.py:828
 msgid "plot_popup"
@@ -65,10 +72,8 @@ msgstr "SMS"
 
 #. Default: E-mail
 #. Default: Email
-#: ondestan/entities/notification.py:20
-#: ondestan/templates/login.pt:28
-#: ondestan/templates/passwordReset.pt:27
-#: ondestan/templates/signup.pt:46
+#: ondestan/entities/notification.py:20 ondestan/templates/login.pt:28
+#: ondestan/templates/passwordReset.pt:27 ondestan/templates/signup.pt:46
 #: ondestan/templates/updateProfile.pt:47
 msgid "email"
 msgstr "E-mail"
@@ -91,7 +96,9 @@ msgstr "Peligro"
 
 #: ondestan/services/animal_service.py:26
 msgid "low_battery_notification_web"
-msgstr "<b>¡Urgente!</b> El animal ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> ${fancy_date_eval}."
+msgstr ""
+"<b>¡Urgente!</b> El animal ${animal_name} pasó a <b>sólo un "
+"${battery_level}% de batería</b> ${fancy_date_eval}."
 
 #: ondestan/services/animal_service.py:27
 msgid "low_battery_notification_mail_subject"
@@ -99,14 +106,21 @@ msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
 #: ondestan/services/animal_service.py:28
 msgid "low_battery_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de ${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El "
+"dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de "
+"${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través "
+"de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/animal_service.py:29
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "\n"
-"El dispositivo en ${animal_name} bajó a un nivel de batería de ${battery_level}% a las ${date}.\n"
+"El dispositivo en ${animal_name} bajó a un nivel de batería de "
+"${battery_level}% a las ${date}.\n"
 "Recuerda que puedes ver el mapa en ${url}\n"
 "\n"
 "Saludos\n"
@@ -119,11 +133,15 @@ msgstr "[Onde Están] Batería con nivel bajo (${animal_name}) desde el ${date}"
 
 #: ondestan/services/animal_service.py:32
 msgid "medium_battery_notification_web"
-msgstr "El animal ${animal_name} pasó a un ${battery_level}% de batería ${fancy_date_eval}."
+msgstr ""
+"El animal ${animal_name} pasó a un ${battery_level}% de batería "
+"${fancy_date_eval}."
 
 #: ondestan/services/animal_service.py:34
 msgid "gps_immobile_notification_web"
-msgstr "El animal ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse."
+msgstr ""
+"El animal ${animal_name} parece llevar al menos ${hours_immobile} horas "
+"sin moverse."
 
 #: ondestan/services/animal_service.py:35
 msgid "gps_immobile_notification_mail_subject"
@@ -131,14 +149,23 @@ msgstr "[Onde Están] ${animal_name} parece que no se está moviendo"
 
 #: ondestan/services/animal_service.py:36
 msgid "gps_immobile_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los "
+"datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos "
+"<b>${hours_immobile} horas sin moverse</b> (desde el "
+"${date_begin}).<br>Puede ser un error técnico, pero mejor que lo "
+"compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a "
+"través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/animal_service.py:37
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "\n"
-"${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse (desde el ${date_begin}).\n"
+"${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse"
+" (desde el ${date_begin}).\n"
 "Puede ser un error técnico, pero mejor que lo compruebes por si acaso.\n"
 "Recuerda que puedes acceder a tu mapa a través de este enlace: ${url}\n"
 "\n"
@@ -148,19 +175,27 @@ msgstr ""
 
 #: ondestan/services/animal_service.py:39
 msgid "gps_instant_duplicated_notification_web"
-msgstr "Se ha recibido más de una posición para el animal ${animal_name} en ${date}."
+msgstr ""
+"Se ha recibido más de una posición para el animal ${animal_name} en "
+"${date}."
 
 #: ondestan/services/animal_service.py:41
 msgid "gps_inactive_device_notification_web"
-msgstr "Se recibió una posición para el animal inactivo ${animal_name} ${fancy_date_eval}."
+msgstr ""
+"Se recibió una posición para el animal inactivo ${animal_name} "
+"${fancy_date_eval}."
 
 #: ondestan/services/animal_service.py:43
 msgid "no_gps_coverage_notification_web"
-msgstr "Se ha recibido una actualización sin cobertura GPS para el animal ${animal_name} en ${date}."
+msgstr ""
+"Se ha recibido una actualización sin cobertura GPS para el animal "
+"${animal_name} en ${date}."
 
 #: ondestan/services/animal_service.py:45
 msgid "outside_plots_notification_web"
-msgstr "<b>¡Urgente!</b> El animal ${animal_name} <b>salió de las fincas designadas</b> ${fancy_date_eval}."
+msgstr ""
+"<b>¡Urgente!</b> El animal ${animal_name} <b>salió de las fincas "
+"designadas</b> ${fancy_date_eval}."
 
 #: ondestan/services/animal_service.py:46
 msgid "outside_plots_notification_mail_subject"
@@ -168,7 +203,11 @@ msgstr "[Onde Están] ${animal_name} fuera de las fincas"
 
 #: ondestan/services/animal_service.py:47
 msgid "outside_plots_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : ${animal_name} parece que salió de las fincas</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : "
+"${animal_name} parece que salió de las fincas</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/animal_service.py:48
 msgid "outside_plots_notification_mail_text_body"
@@ -187,11 +226,16 @@ msgstr "[Onde Estan] ${animal_name} salió de las fincas en ${date}"
 
 #: ondestan/services/notification_service.py:21
 msgid "no_orders_notification_web"
-msgstr "<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de dispositivos a través de este <a href=\"${url}\">enlace</a>."
+msgstr ""
+"<b>¡Bienvenido a Ondestán!</b> Puedes hacer tu primer pedido de "
+"dispositivos a través de este <a href=\"${url}\">enlace</a>."
 
 #: ondestan/services/notification_service.py:22
 msgid "no_plots_notification_web"
-msgstr "Parece que actualmente no tienes fincas definidas para tener bajo control a tus animales. Puedes hacerlo a través de este <a href=\"${url}\">enlace</a> o con el menú de la esquina superior derecha."
+msgstr ""
+"Parece que actualmente no tienes fincas definidas para tener bajo control"
+" a tus animales. Puedes hacerlo a través de este <a "
+"href=\"${url}\">enlace</a> o con el menú de la esquina superior derecha."
 
 #: ondestan/services/order_service.py:23
 msgid "order_update_state_0_notification_web"
@@ -203,7 +247,14 @@ msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En espera')"
 
 #: ondestan/services/order_service.py:25
 msgid "order_update_state_0_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'.<br/>Por ahora no tienes que realizar ninguna acción.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido "
+"de ${units} aparato(s) ha pasado a estado 'En espera'.<br/>Por ahora no "
+"tienes que realizar ninguna acción.<br>Te seguiremos informando de "
+"futuros cambios en tu pedido. Para consultar tus pedidos también puedes "
+"seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:26
 msgid "order_update_state_0_notification_mail_text_body"
@@ -212,7 +263,8 @@ msgstr ""
 "\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado 'En espera'.\n"
 "Por ahora no tienes que realizar ninguna acción.\n"
-"Te seguiremos informando de futuros cambios tu pedido . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"Te seguiremos informando de futuros cambios tu pedido . Para consultar "
+"tus pedidos también puedes acceder a la url: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -228,7 +280,14 @@ msgstr "[Onde Están] Actualización de tu pedido (ahora: 'En proceso')"
 
 #: ondestan/services/order_service.py:30
 msgid "order_update_state_1_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'.<br/>Por ahora no tienes que realizar ninguna acción, nos pondremos en contacto contigo en caso de que sea necesario.<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido "
+"de ${units} aparato(s) ha pasado a estado 'En proceso'.<br/>Por ahora no "
+"tienes que realizar ninguna acción, nos pondremos en contacto contigo en "
+"caso de que sea necesario.<br>Te seguiremos informando de futuros cambios"
+" en tu pedido. Para consultar tus pedidos también puedes seguir <a "
+"href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:31
 msgid "order_update_state_1_notification_mail_text_body"
@@ -236,8 +295,10 @@ msgstr ""
 "¡Hola ${name}!\n"
 "\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado 'En proceso'.\n"
-"Por ahora no tienes que realizar ninguna acción, nos pondremos en contacto contigo en caso de que sea necesario.\n"
-"Te seguiremos informando de futuros cambios en tu pedido . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"Por ahora no tienes que realizar ninguna acción, nos pondremos en "
+"contacto contigo en caso de que sea necesario.\n"
+"Te seguiremos informando de futuros cambios en tu pedido . Para consultar"
+" tus pedidos también puedes acceder a la url: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -253,7 +314,21 @@ msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Enviado')"
 
 #: ondestan/services/order_service.py:35
 msgid "order_update_state_2_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'.<br/>En el <a href=\"${map_url}\">mapa</a>, en la fila superior, deberían aparecer los dispositivos que te hemos enviado como inactivos con un código identificativo. Una vez que los recibas, puedes identificarlos con dicho código mediante la pegatina en la parte posterior. Una vez que los hayas encendido y colocado en tus animales, en la interfaz web podrás activarlos para que empiece a almacenar y mostrar posiciones y asignarles un nombre que te resulte más intuitivo identificarlos (haciendo doble click sobre el código identificativo).<br>Te seguiremos informando de futuros cambios en tu pedido. Para consultar tus pedidos también puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido "
+"de ${units} aparato(s) ha pasado a estado 'Enviado'.<br/>En el <a "
+"href=\"${map_url}\">mapa</a>, en la fila superior, deberían aparecer los "
+"dispositivos que te hemos enviado como inactivos con un código "
+"identificativo. Una vez que los recibas, puedes identificarlos con dicho "
+"código mediante la pegatina en la parte posterior. Una vez que los hayas "
+"encendido y colocado en tus animales, en la interfaz web podrás "
+"activarlos para que empiece a almacenar y mostrar posiciones y asignarles"
+" un nombre que te resulte más intuitivo identificarlos (haciendo doble "
+"click sobre el código identificativo).<br>Te seguiremos informando de "
+"futuros cambios en tu pedido. Para consultar tus pedidos también puedes "
+"seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:36
 msgid "order_update_state_2_notification_mail_text_body"
@@ -261,8 +336,17 @@ msgstr ""
 "¡Hola ${name}!\n"
 "\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado 'Enviado'.\n"
-"En el mapa (${map_url}), en la fila superior, deberían aparecer los dispositivos que te hemos enviado como inactivos con un código identificativo. Una vez que los recibas, puedes identificarlos con dicho código mediante la pegatina en la parte posterior. Una vez que los hayas encendido y colocado en tus animales, en la interfaz web podrás activarlos para que empiece a almacenar y mostrar posiciones y asignarles un nombre que te resulte más intuitivo identificarlos (haciendo doble click sobre el código identificativo).\n"
-"Te seguiremos informando de futuros cambios en tu pedido. Te seguiremos informando de futuros cambios en él . Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
+"En el mapa (${map_url}), en la fila superior, deberían aparecer los "
+"dispositivos que te hemos enviado como inactivos con un código "
+"identificativo. Una vez que los recibas, puedes identificarlos con dicho "
+"código mediante la pegatina en la parte posterior. Una vez que los hayas "
+"encendido y colocado en tus animales, en la interfaz web podrás "
+"activarlos para que empiece a almacenar y mostrar posiciones y asignarles"
+" un nombre que te resulte más intuitivo identificarlos (haciendo doble "
+"click sobre el código identificativo).\n"
+"Te seguiremos informando de futuros cambios en tu pedido. Te seguiremos "
+"informando de futuros cambios en él . Para consultar tus pedidos también "
+"puedes acceder a la url: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -278,7 +362,17 @@ msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Activado')"
 
 #: ondestan/services/order_service.py:40
 msgid "order_update_state_3_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'.<br/>Todos tus dispositivos han sido activados, a partir de ahora podrás ver en tiempo real la situación de tus animales en el <a href=\"${map_url}\">mapa</a>.<br>En caso de que tengas cualquier problema no dudes en ponerte en contacto con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo a través del <a href=\"${url}\">mismo formulario</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido "
+"de ${units} aparato(s) ha pasado a estado 'Activado'.<br/>Todos tus "
+"dispositivos han sido activados, a partir de ahora podrás ver en tiempo "
+"real la situación de tus animales en el <a "
+"href=\"${map_url}\">mapa</a>.<br>En caso de que tengas cualquier problema"
+" no dudes en ponerte en contacto con nuestro equipo. Y si quieres "
+"realizar un nuevo pedido, puedes hacerlo a través del <a "
+"href=\"${url}\">mismo formulario</a>.</p><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:41
 msgid "order_update_state_3_notification_mail_text_body"
@@ -286,8 +380,11 @@ msgstr ""
 "¡Hola ${name}!\n"
 "\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado 'Activado'.\n"
-"Todos tus dispositivos han sido activados, a partir de ahora podrás ver en tiempo real la situación de tus animales en el mapa (${map_url}).\n"
-"En caso de que tengas cualquier problema no dudes en ponerte en contacto con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo a través del mismo formulario: ${url}\n"
+"Todos tus dispositivos han sido activados, a partir de ahora podrás ver "
+"en tiempo real la situación de tus animales en el mapa (${map_url}).\n"
+"En caso de que tengas cualquier problema no dudes en ponerte en contacto "
+"con nuestro equipo. Y si quieres realizar un nuevo pedido, puedes hacerlo"
+" a través del mismo formulario: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -303,7 +400,14 @@ msgstr "[Onde Están] Actualización de tu pedido (ahora: 'Cancelado')"
 
 #: ondestan/services/order_service.py:45
 msgid "order_update_state_4_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'.<br/>En caso de que no hayas pedido explícitamente la cancelación de tu pedido, contacta con nuestro equipo para recibir más información.<br>Para consultar tus pedidos puedes seguir <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Tu pedido "
+"de ${units} aparato(s) ha pasado a estado 'Cancelado'.<br/>En caso de que"
+" no hayas pedido explícitamente la cancelación de tu pedido, contacta con"
+" nuestro equipo para recibir más información.<br>Para consultar tus "
+"pedidos puedes seguir <a href=\"${url}\">este "
+"enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:46
 msgid "order_update_state_4_notification_mail_text_body"
@@ -311,7 +415,8 @@ msgstr ""
 "¡Hola ${name}!\n"
 "\n"
 "Tu pedido de ${units} aparato(s) ha pasado a estado 'Cancelado'.\n"
-"En caso de que no hayas pedido explícitamente la cancelación de tu pedido, contacta con nuestro equipo para recibir más información.\n"
+"En caso de que no hayas pedido explícitamente la cancelación de tu "
+"pedido, contacta con nuestro equipo para recibir más información.\n"
 "Para consultar tus pedidos también puedes acceder a la url: ${url}\n"
 "\n"
 "Saludos\n"
@@ -324,7 +429,12 @@ msgstr "[Onde Están] Confirmación de Pedido"
 
 #: ondestan/services/order_service.py:49
 msgid "new_order_user_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>   <p>¡Hola ${name}!<br><br>Tu nuevo pedido de ${units} aparato(s) se ha registrado correctamente.<br>En breve nuestro equipo se pondrá en contacto contigo para acordar el método de pago.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>   <p>¡Hola ${name}!<br><br>Tu nuevo "
+"pedido de ${units} aparato(s) se ha registrado correctamente.<br>En breve"
+" nuestro equipo se pondrá en contacto contigo para acordar el método de "
+"pago.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/order_service.py:50
 msgid "new_order_user_notification_mail_text_body"
@@ -332,7 +442,8 @@ msgstr ""
 "Hola ${name}!\n"
 "\n"
 "Tu nuevo pedido de ${units} aparato(s) se ha registrado correctamente.\n"
-"En breve nuestro equipo se pondrá en contacto contigo para acordar el método de pago.\n"
+"En breve nuestro equipo se pondrá en contacto contigo para acordar el "
+"método de pago.\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -348,7 +459,10 @@ msgstr "[Onde Están] Nuevo Pedido"
 
 #: ondestan/services/order_service.py:54
 msgid "new_order_admin_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>Nuevo pedido de ${units} aparato(s) para ${login} (${name}).<br><a href=\"${url}\">Listado de pedidos</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>Nuevo pedido de ${units} "
+"aparato(s) para ${login} (${name}).<br><a href=\"${url}\">Listado de "
+"pedidos</a></p></body></html>"
 
 #: ondestan/services/order_service.py:55
 msgid "new_order_admin_notification_mail_text_body"
@@ -366,14 +480,21 @@ msgstr "[Onde Están] Confirma tu Alta"
 
 #: ondestan/services/user_service.py:22
 msgid "signup_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Gracias por tu registro en Onde Están. Trabajamos para darte la mejor información de tu explotación.<br><br>Confirma tu alta pulsando en <a href=\"${url}\">este enlace</a>.</p><br><br><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Gracias por"
+" tu registro en Onde Están. Trabajamos para darte la mejor información de"
+" tu explotación.<br><br>Confirma tu alta pulsando en <a "
+"href=\"${url}\">este enlace</a>.</p><br><br><p>Saludos<br>Equipo "
+"OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/user_service.py:23
 msgid "signup_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "\n"
-"Gracias por tu registro en Onde Están. Trabajamos para darte la mejor información de tu explotación.\n"
+"Gracias por tu registro en Onde Están. Trabajamos para darte la mejor "
+"información de tu explotación.\n"
 "\n"
 "Confirma tu alta en: ${url}\n"
 "\n"
@@ -383,7 +504,9 @@ msgstr ""
 
 #: ondestan/services/user_service.py:25
 msgid "password_reset_notification_web"
-msgstr "<b>Tu contraseña ha sido reseteada.</b>  Entra lo antes posible en la <a href=${url_profile}>página de tu perfil</a> para actualizar a una nueva."
+msgstr ""
+"<b>Tu contraseña ha sido reseteada.</b>  Entra lo antes posible en la <a "
+"href=${url_profile}>página de tu perfil</a> para actualizar a una nueva."
 
 #: ondestan/services/user_service.py:26
 msgid "password_reset_notification_mail_subject"
@@ -391,15 +514,23 @@ msgstr "[Onde Están] Reseteo de contraseña"
 
 #: ondestan/services/user_service.py:27
 msgid "password_reset_notification_mail_html_body"
-msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>La contraseña de tu cuenta asociada a este correo ha sido reseteada a ${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta en Ondestán</a> y cambies tu contraseña a una nueva lo antes posible.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
+msgstr ""
+"<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>La "
+"contraseña de tu cuenta asociada a este correo ha sido reseteada a "
+"${password}<br/>Te aconsejamos que <a href=\"${url}\">entres a tu cuenta "
+"en Ondestán</a> y cambies tu contraseña a una nueva lo antes "
+"posible.</p><p>Saludos<br>Equipo OndeEstán<br><a "
+"href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: ondestan/services/user_service.py:28
 msgid "password_reset_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
 "\n"
-"La contraseña de tu cuenta asociada a este correo ha sido reseteada a ${password}\n"
-"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu contraseña a una nueva lo antes posible: ${url}\n"
+"La contraseña de tu cuenta asociada a este correo ha sido reseteada a "
+"${password}\n"
+"Te aconsejamos que entres a tu cuenta en Ondestán y cambies tu contraseña"
+" a una nueva lo antes posible: ${url}\n"
 "\n"
 "Saludos\n"
 "Equipo OndeEstán\n"
@@ -428,44 +559,38 @@ msgstr "Visor de histórico de posiciones - Ondestán"
 
 #. Default: Double click to edit name (confirm change by pressing enter).
 #: ondestan/templates/animalHistoryViewer.pt:39
-#: ondestan/templates/animalViewer.pt:37
-#: ondestan/templates/plotManager.pt:36
+#: ondestan/templates/animalViewer.pt:37 ondestan/templates/plotManager.pt:36
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: Center map onto your current position.
 #: ondestan/templates/animalHistoryViewer.pt:41
-#: ondestan/templates/animalViewer.pt:40
-#: ondestan/templates/plotManager.pt:40
+#: ondestan/templates/animalViewer.pt:40 ondestan/templates/plotManager.pt:40
 msgid "center_on_user_position_tooltip"
 msgstr "Click para centrar la vista en tu posición actual."
 
 #. Default: Geolocation is not supported by this browser.
 #: ondestan/templates/animalHistoryViewer.pt:42
-#: ondestan/templates/animalViewer.pt:41
-#: ondestan/templates/plotManager.pt:41
+#: ondestan/templates/animalViewer.pt:41 ondestan/templates/plotManager.pt:41
 msgid "geolocation_not_supported"
 msgstr "Este navegador no permite localizarte."
 
 #. Default: Zoom in
 #: ondestan/templates/animalHistoryViewer.pt:44
-#: ondestan/templates/animalViewer.pt:43
-#: ondestan/templates/plotManager.pt:38
+#: ondestan/templates/animalViewer.pt:43 ondestan/templates/plotManager.pt:38
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
 
 #. Default: Zoom out
 #: ondestan/templates/animalHistoryViewer.pt:45
-#: ondestan/templates/animalViewer.pt:44
-#: ondestan/templates/plotManager.pt:39
+#: ondestan/templates/animalViewer.pt:44 ondestan/templates/plotManager.pt:39
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
 
 #. Default: Map legend
 #: ondestan/templates/animalHistoryViewer.pt:46
 #: ondestan/templates/animalHistoryViewer.pt:62
-#: ondestan/templates/animalViewer.pt:45
-#: ondestan/templates/animalViewer.pt:97
+#: ondestan/templates/animalViewer.pt:45 ondestan/templates/animalViewer.pt:97
 msgid "map_legend"
 msgstr "Leyenda del mapa"
 
@@ -627,33 +752,26 @@ msgstr "Listado de animales - Ondestán"
 
 #. Default: Animals list
 #. Default: Animals List
-#: ondestan/templates/animalsList.pt:17
-#: ondestan/templates/main.pt:36
+#: ondestan/templates/animalsList.pt:17 ondestan/templates/main.pt:36
 msgid "animals_list"
 msgstr "Listado de animales"
 
 #. Default: ID
-#: ondestan/templates/animalsList.pt:25
-#: ondestan/templates/notifications.pt:21
-#: ondestan/templates/orderDevices.pt:24
-#: ondestan/templates/orderDevices.pt:52
-#: ondestan/templates/orders.pt:56
-#: ondestan/templates/orders.pt:127
+#: ondestan/templates/animalsList.pt:25 ondestan/templates/notifications.pt:21
+#: ondestan/templates/orderDevices.pt:24 ondestan/templates/orderDevices.pt:52
+#: ondestan/templates/orders.pt:56 ondestan/templates/orders.pt:127
 msgid "id"
 msgstr "ID"
 
 #. Default: User
-#: ondestan/templates/animalsList.pt:26
-#: ondestan/templates/notifications.pt:22
+#: ondestan/templates/animalsList.pt:26 ondestan/templates/notifications.pt:22
 #: ondestan/templates/orders.pt:57
 msgid "user"
 msgstr "Usuario"
 
 #. Default: Name
-#: ondestan/templates/animalsList.pt:27
-#: ondestan/templates/orderDevices.pt:37
-#: ondestan/templates/orderDevices.pt:55
-#: ondestan/templates/plotManager.pt:116
+#: ondestan/templates/animalsList.pt:27 ondestan/templates/orderDevices.pt:37
+#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:118
 msgid "name"
 msgstr "Nombre"
 
@@ -668,17 +786,14 @@ msgid "battery"
 msgstr "Batería"
 
 #. Default: IMEI
-#: ondestan/templates/animalsList.pt:30
-#: ondestan/templates/orderDevices.pt:35
+#: ondestan/templates/animalsList.pt:30 ondestan/templates/orderDevices.pt:35
 #: ondestan/templates/orderDevices.pt:53
 msgid "imei"
 msgstr "IMEI"
 
 #. Default: Cell phone number
-#: ondestan/templates/animalsList.pt:31
-#: ondestan/templates/orderDevices.pt:36
-#: ondestan/templates/orderDevices.pt:54
-#: ondestan/templates/signup.pt:60
+#: ondestan/templates/animalsList.pt:31 ondestan/templates/orderDevices.pt:36
+#: ondestan/templates/orderDevices.pt:54 ondestan/templates/signup.pt:60
 #: ondestan/templates/updateProfile.pt:59
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
@@ -689,14 +804,12 @@ msgid "positions_history"
 msgstr "Histórico de posiciones"
 
 #. Default: Yes
-#: ondestan/templates/animalsList.pt:41
-#: ondestan/templates/notifications.pt:39
+#: ondestan/templates/animalsList.pt:41 ondestan/templates/notifications.pt:39
 msgid "yes"
 msgstr "Sí"
 
 #. Default: No
-#: ondestan/templates/animalsList.pt:42
-#: ondestan/templates/notifications.pt:40
+#: ondestan/templates/animalsList.pt:42 ondestan/templates/notifications.pt:40
 msgid "no"
 msgstr "No"
 
@@ -706,22 +819,19 @@ msgid "login_title"
 msgstr "Autenticación - Ondestán"
 
 #. Default: Sign Up
-#: ondestan/templates/login.pt:22
-#: ondestan/templates/signup.pt:31
+#: ondestan/templates/login.pt:22 ondestan/templates/signup.pt:31
 #: ondestan/templates/signup.pt:80
 msgid "sign_up"
 msgstr "Darse de alta"
 
 #. Default: Log in
-#: ondestan/templates/login.pt:24
-#: ondestan/templates/login.pt:30
+#: ondestan/templates/login.pt:24 ondestan/templates/login.pt:30
 msgid "log_in"
 msgstr "Entrar"
 
 #. Default: Contraseña
 #. Default: Password
-#: ondestan/templates/login.pt:29
-#: ondestan/templates/signup.pt:67
+#: ondestan/templates/login.pt:29 ondestan/templates/signup.pt:67
 msgid "password"
 msgstr "Contraseña"
 
@@ -751,15 +861,13 @@ msgid "plot_manager"
 msgstr "Gestor de fincas"
 
 #. Default: Update Profile
-#: ondestan/templates/main.pt:38
-#: ondestan/templates/updateProfile.pt:39
+#: ondestan/templates/main.pt:38 ondestan/templates/updateProfile.pt:39
 #: ondestan/templates/updateProfile.pt:64
 msgid "update_profile"
 msgstr "Actualizar perfil"
 
 #. Default: Notifications Log
-#: ondestan/templates/main.pt:39
-#: ondestan/templates/notifications.pt:12
+#: ondestan/templates/main.pt:39 ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr "Log de notificaciones"
 
@@ -819,16 +927,13 @@ msgid "order_devices_list_title"
 msgstr "Dispositivos del pedido - Ondestán"
 
 #. Default: This field is required.
-#: ondestan/templates/orderDevices.pt:13
-#: ondestan/templates/orders.pt:13
-#: ondestan/templates/signup.pt:13
-#: ondestan/templates/updateProfile.pt:13
+#: ondestan/templates/orderDevices.pt:13 ondestan/templates/orders.pt:13
+#: ondestan/templates/signup.pt:13 ondestan/templates/updateProfile.pt:13
 msgid "required_field"
 msgstr "Este campo es obligatorio."
 
 #. Default: Please specify a valid mobile phone number.
-#: ondestan/templates/orderDevices.pt:14
-#: ondestan/templates/signup.pt:16
+#: ondestan/templates/orderDevices.pt:14 ondestan/templates/signup.pt:16
 #: ondestan/templates/updateProfile.pt:16
 msgid "mobile_field"
 msgstr "Por favor, introduce un número de telf. móvil válido."
@@ -857,7 +962,9 @@ msgstr "Listado de dispositivos"
 #. stored positions.
 #: ondestan/templates/orderDevices.pt:62
 msgid "device_cannot_be_deleted_tooltip"
-msgstr "El dispositivo no se puede borrar porque se encuentra actualmente activo y/o tiene posiciones asociadas."
+msgstr ""
+"El dispositivo no se puede borrar porque se encuentra actualmente activo "
+"y/o tiene posiciones asociadas."
 
 #. Default: Delete
 #: ondestan/templates/orderDevices.pt:64
@@ -875,8 +982,7 @@ msgid "order_state_history"
 msgstr "Histórico de estados de pedido"
 
 #. Default: Order state
-#: ondestan/templates/orderStateHistory.pt:18
-#: ondestan/templates/orders.pt:58
+#: ondestan/templates/orderStateHistory.pt:18 ondestan/templates/orders.pt:58
 #: ondestan/templates/orders.pt:129
 msgid "order_state"
 msgstr "Estado del pedido"
@@ -887,46 +993,36 @@ msgid "change_date"
 msgstr "Fecha de cambio"
 
 #. Default: Awaiting
-#: ondestan/templates/orderStateHistory.pt:25
-#: ondestan/templates/orders.pt:74
-#: ondestan/templates/orders.pt:84
-#: ondestan/templates/orders.pt:145
+#: ondestan/templates/orderStateHistory.pt:25 ondestan/templates/orders.pt:74
+#: ondestan/templates/orders.pt:84 ondestan/templates/orders.pt:145
 #: ondestan/templates/orders.pt:155
 msgid "order_state_0"
 msgstr "En espera"
 
 #. Default: In process
-#: ondestan/templates/orderStateHistory.pt:26
-#: ondestan/templates/orders.pt:75
-#: ondestan/templates/orders.pt:85
-#: ondestan/templates/orders.pt:146
+#: ondestan/templates/orderStateHistory.pt:26 ondestan/templates/orders.pt:75
+#: ondestan/templates/orders.pt:85 ondestan/templates/orders.pt:146
 #: ondestan/templates/orders.pt:156
 msgid "order_state_1"
 msgstr "En proceso"
 
 #. Default: Dispatched
-#: ondestan/templates/orderStateHistory.pt:27
-#: ondestan/templates/orders.pt:76
-#: ondestan/templates/orders.pt:86
-#: ondestan/templates/orders.pt:147
+#: ondestan/templates/orderStateHistory.pt:27 ondestan/templates/orders.pt:76
+#: ondestan/templates/orders.pt:86 ondestan/templates/orders.pt:147
 #: ondestan/templates/orders.pt:157
 msgid "order_state_2"
 msgstr "Enviado"
 
 #. Default: Activated
-#: ondestan/templates/orderStateHistory.pt:28
-#: ondestan/templates/orders.pt:77
-#: ondestan/templates/orders.pt:87
-#: ondestan/templates/orders.pt:148
+#: ondestan/templates/orderStateHistory.pt:28 ondestan/templates/orders.pt:77
+#: ondestan/templates/orders.pt:87 ondestan/templates/orders.pt:148
 #: ondestan/templates/orders.pt:158
 msgid "order_state_3"
 msgstr "Activado"
 
 #. Default: Cancelled
-#: ondestan/templates/orderStateHistory.pt:29
-#: ondestan/templates/orders.pt:78
-#: ondestan/templates/orders.pt:88
-#: ondestan/templates/orders.pt:149
+#: ondestan/templates/orderStateHistory.pt:29 ondestan/templates/orders.pt:78
+#: ondestan/templates/orders.pt:88 ondestan/templates/orders.pt:149
 #: ondestan/templates/orders.pt:159
 msgid "order_state_4"
 msgstr "Cancelado"
@@ -949,12 +1045,13 @@ msgstr "Nuevo pedido"
 #. Default: Thanks for your order! Our team will get in touch with you soon.
 #: ondestan/templates/orders.pt:31
 msgid "new_order_instructions"
-msgstr "¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en contacto contigo."
+msgstr ""
+"¡Gracias por tu pedido!<br/>Nuestro equipo se pondrá próximamente en "
+"contacto contigo."
 
 #. Default: Nr units
 #. Default: Number of units
-#: ondestan/templates/orders.pt:36
-#: ondestan/templates/orders.pt:59
+#: ondestan/templates/orders.pt:36 ondestan/templates/orders.pt:59
 #: ondestan/templates/orders.pt:130
 msgid "number_units"
 msgstr "Nº de unidades"
@@ -976,8 +1073,7 @@ msgstr "3 unidades"
 
 #. Default: Send address
 #. Default: Delivery address
-#: ondestan/templates/orders.pt:41
-#: ondestan/templates/orders.pt:60
+#: ondestan/templates/orders.pt:41 ondestan/templates/orders.pt:60
 #: ondestan/templates/orders.pt:131
 msgid "delivery_address"
 msgstr "Dirección de envío"
@@ -1022,7 +1118,9 @@ msgstr "Comprueba tu bandeja de entrada del e-mail para ver tu nueva contraseña
 #. you a mail with a new password.
 #: ondestan/templates/passwordReset.pt:24
 msgid "user_password_reset_msg"
-msgstr "Escribe debajo el e-mail con el cual te registraste y te enviaremos un correo con una contraseña nueva."
+msgstr ""
+"Escribe debajo el e-mail con el cual te registraste y te enviaremos un "
+"correo con una contraseña nueva."
 
 #. Default: Send e-mail
 #: ondestan/templates/passwordReset.pt:29
@@ -1034,166 +1132,167 @@ msgstr "Enviar e-mail"
 msgid "plot_manager_title"
 msgstr "Gestor de fincas - Ondestán"
 
-#. Default: Draw a new plot
+#. Default: Help locating plots
+#: ondestan/templates/plotManager.pt:45
+msgid "map_tool_locate_plot_tooltip"
+msgstr "Ayuda para localizar fincas"
+
+#. Default: Locate plot
 #: ondestan/templates/plotManager.pt:46
+msgid "map_tool_locate_plot_text"
+msgstr "Localizar finca"
+
+#. Default: Draw a new plot
+#: ondestan/templates/plotManager.pt:48
 msgid "map_tool_create_plot_tooltip"
 msgstr "Dibujar una nueva finca"
 
 #. Default: Delete last point drawn
-#: ondestan/templates/plotManager.pt:47
+#: ondestan/templates/plotManager.pt:49
 msgid "map_tool_undo_tooltip"
 msgstr "Borrar el último punto dibujado"
 
 #. Default: Delete last point
-#: ondestan/templates/plotManager.pt:48
+#: ondestan/templates/plotManager.pt:50
 msgid "map_tool_undo_text"
 msgstr "Borrar último punto"
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:49
-#: ondestan/templates/plotManager.pt:50
-#: ondestan/templates/plotManager.pt:59
+#: ondestan/templates/plotManager.pt:51 ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:61
 msgid "map_tool_cancel_text"
 msgstr "Cancelar"
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/plotManager.pt:51
+#: ondestan/templates/plotManager.pt:53
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr "Haz click para empezar a dibujar la finca."
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:54
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr "Haz click para continuar dibujando la finca."
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/plotManager.pt:53
+#: ondestan/templates/plotManager.pt:55
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr "Haz click en el primer punto para cerrar esta finca."
 
 #. Default: Error: plot edges cannot cross!
-#: ondestan/templates/plotManager.pt:54
+#: ondestan/templates/plotManager.pt:56
 msgid "map_tool_edit_plot_handler_error"
 msgstr "Error: los lados de la finca no se pueden cruzar."
 
 #. Default: Save changes
-#: ondestan/templates/plotManager.pt:56
+#: ondestan/templates/plotManager.pt:58
 msgid "map_tool_save_tooltip"
 msgstr "Guardar cambios"
 
 #. Default: Save
-#: ondestan/templates/plotManager.pt:57
+#: ondestan/templates/plotManager.pt:59
 msgid "map_tool_save_text"
 msgstr "Guardar"
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/plotManager.pt:58
+#: ondestan/templates/plotManager.pt:60
 msgid "map_tool_cancel_tooltip"
 msgstr "Cancelar la edición, descarta los cambios"
 
 #. Default: Edit plots
-#: ondestan/templates/plotManager.pt:61
+#: ondestan/templates/plotManager.pt:63
 msgid "map_tool_edit_plot_tooltip"
 msgstr "Editar fincas"
 
 #. Default: No plots to edit
-#: ondestan/templates/plotManager.pt:62
+#: ondestan/templates/plotManager.pt:64
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr "No hay fincas que editar"
 
 #. Default: Delete plots
-#: ondestan/templates/plotManager.pt:63
+#: ondestan/templates/plotManager.pt:65
 msgid "map_tool_delete_plot_tooltip"
 msgstr "Borrar fincas"
 
 #. Default: No plots to delete
-#: ondestan/templates/plotManager.pt:64
+#: ondestan/templates/plotManager.pt:66
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr "No hay fincas que borrar"
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/plotManager.pt:65
+#: ondestan/templates/plotManager.pt:67
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr "Arrastra los vértices para editar la finca."
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/plotManager.pt:66
+#: ondestan/templates/plotManager.pt:68
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr "Haz click en Cancelar para deshacer los cambios."
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/plotManager.pt:67
+#: ondestan/templates/plotManager.pt:69
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr "Haz click en una finca para borrarla."
 
 #. Default: Plot Locator
-#: ondestan/templates/plotManager.pt:81
+#: ondestan/templates/plotManager.pt:83
 msgid "plot_locator_modal_title"
 msgstr "Localizador de fincas"
 
 #. Default: By your current position
-#: ondestan/templates/plotManager.pt:86
+#: ondestan/templates/plotManager.pt:88
 msgid "plot_locator_current_position"
 msgstr "Por tu posición actual"
 
 #. Default: By a place name
-#: ondestan/templates/plotManager.pt:87
+#: ondestan/templates/plotManager.pt:89
 msgid "plot_locator_place_name"
 msgstr "Por nombre de lugar"
 
 #. Default: Place
-#: ondestan/templates/plotManager.pt:91
+#: ondestan/templates/plotManager.pt:93
 msgid "place"
 msgstr "Lugar"
 
 #. Default: Powered by Nominatim
-#: ondestan/templates/plotManager.pt:92
+#: ondestan/templates/plotManager.pt:94
 msgid "powered_by_nominatim"
 msgstr "Con la tecnología de Nominatim"
 
 #. Default: Select place
-#: ondestan/templates/plotManager.pt:95
-#| msgid "select"
+#: ondestan/templates/plotManager.pt:97
 msgid "select_place"
 msgstr "Selecciona lugar"
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:100
-#: ondestan/templates/plotManager.pt:123
+#: ondestan/templates/plotManager.pt:102 ondestan/templates/plotManager.pt:125
 msgid "cancel"
 msgstr "Cancelar"
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:101
-#: ondestan/templates/plotManager.pt:124
+#: ondestan/templates/plotManager.pt:103 ondestan/templates/plotManager.pt:126
 msgid "accept"
 msgstr "Aceptar"
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:113
+#: ondestan/templates/plotManager.pt:115
 msgid "plot_data_modal_title"
 msgstr "Datos de la finca"
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:117
+#: ondestan/templates/plotManager.pt:119
 msgid "owner"
 msgstr "Dueño"
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:131
+#: ondestan/templates/plotManager.pt:133
 msgid "current_plots"
 msgstr "Fincas actuales"
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:137
+#: ondestan/templates/plotManager.pt:139
 msgid "no_plots"
 msgstr "Sin fincas"
-
-#. Default: Help locating plots
-#: ondestan/templates/plotManager.pt:141
-msgid "help_locating_plots"
-msgstr "Ayuda para localizar fincas"
 
 #. Default: Sign Up - Ondestán
 #: ondestan/templates/signup.pt:8
@@ -1201,20 +1300,17 @@ msgid "sign_up_title"
 msgstr "Darse de alta - Ondestán"
 
 #. Default: Please enter at least {0} characters.
-#: ondestan/templates/signup.pt:14
-#: ondestan/templates/updateProfile.pt:14
+#: ondestan/templates/signup.pt:14 ondestan/templates/updateProfile.pt:14
 msgid "minlength_field"
 msgstr "Por favor, introduce al menos {0} caracteres."
 
 #. Default: Please enter a valid email address.
-#: ondestan/templates/signup.pt:15
-#: ondestan/templates/updateProfile.pt:15
+#: ondestan/templates/signup.pt:15 ondestan/templates/updateProfile.pt:15
 msgid "email_field"
 msgstr "Por favor, introduce una dirección de e-mail válida."
 
 #. Default: Passwords don't match.
-#: ondestan/templates/signup.pt:17
-#: ondestan/templates/updateProfile.pt:17
+#: ondestan/templates/signup.pt:17 ondestan/templates/updateProfile.pt:17
 msgid "passwords_dont_match"
 msgstr "Las contraseñas no coinciden"
 
@@ -1228,11 +1324,12 @@ msgstr "Proceso de alta exitoso"
 #. account.<dynamic element>Welcome to Ondestán!!
 #: ondestan/templates/signup.pt:38
 msgid "sign_up_instructions"
-msgstr "Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu nueva cuenta.<br/>¡¡Bienvenido a Ondestán!!"
+msgstr ""
+"Acabamos de enviarte un e-mail con instrucciones sobre cómo activar tu "
+"nueva cuenta.<br/>¡¡Bienvenido a Ondestán!!"
 
 #. Default: Full name
-#: ondestan/templates/signup.pt:53
-#: ondestan/templates/updateProfile.pt:53
+#: ondestan/templates/signup.pt:53 ondestan/templates/updateProfile.pt:53
 msgid "full_name"
 msgstr "Nombre completo"
 

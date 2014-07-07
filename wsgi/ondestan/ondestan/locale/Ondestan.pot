@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-03 15:30+0200\n"
+"POT-Creation-Date: 2014-07-07 12:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -536,7 +536,7 @@ msgstr ""
 
 #. Default: Name
 #: ondestan/templates/animalsList.pt:27 ondestan/templates/orderDevices.pt:37
-#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:116
+#: ondestan/templates/orderDevices.pt:55 ondestan/templates/plotManager.pt:118
 msgid "name"
 msgstr ""
 
@@ -890,161 +890,166 @@ msgstr ""
 msgid "plot_manager_title"
 msgstr ""
 
-#. Default: Draw a new plot
+#. Default: Help locating plots
+#: ondestan/templates/plotManager.pt:45
+msgid "map_tool_locate_plot_tooltip"
+msgstr ""
+
+#. Default: Locate plot
 #: ondestan/templates/plotManager.pt:46
+msgid "map_tool_locate_plot_text"
+msgstr ""
+
+#. Default: Draw a new plot
+#: ondestan/templates/plotManager.pt:48
 msgid "map_tool_create_plot_tooltip"
 msgstr ""
 
 #. Default: Delete last point drawn
-#: ondestan/templates/plotManager.pt:47
+#: ondestan/templates/plotManager.pt:49
 msgid "map_tool_undo_tooltip"
 msgstr ""
 
 #. Default: Delete last point
-#: ondestan/templates/plotManager.pt:48
+#: ondestan/templates/plotManager.pt:50
 msgid "map_tool_undo_text"
 msgstr ""
 
 #. Default: Cancel drawing
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:49 ondestan/templates/plotManager.pt:50
-#: ondestan/templates/plotManager.pt:59
+#: ondestan/templates/plotManager.pt:51 ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:61
 msgid "map_tool_cancel_text"
 msgstr ""
 
 #. Default: Click to start drawing plot.
-#: ondestan/templates/plotManager.pt:51
+#: ondestan/templates/plotManager.pt:53
 msgid "map_tool_create_plot_handler_start_tooltip"
 msgstr ""
 
 #. Default: Click to continue drawing plot.
-#: ondestan/templates/plotManager.pt:52
+#: ondestan/templates/plotManager.pt:54
 msgid "map_tool_create_plot_handler_cont_tooltip"
 msgstr ""
 
 #. Default: Click first point to close this plot.
-#: ondestan/templates/plotManager.pt:53
+#: ondestan/templates/plotManager.pt:55
 msgid "map_tool_create_plot_handler_end_tooltip"
 msgstr ""
 
 #. Default: Error: plot edges cannot cross!
-#: ondestan/templates/plotManager.pt:54
+#: ondestan/templates/plotManager.pt:56
 msgid "map_tool_edit_plot_handler_error"
 msgstr ""
 
 #. Default: Save changes
-#: ondestan/templates/plotManager.pt:56
+#: ondestan/templates/plotManager.pt:58
 msgid "map_tool_save_tooltip"
 msgstr ""
 
 #. Default: Save
-#: ondestan/templates/plotManager.pt:57
+#: ondestan/templates/plotManager.pt:59
 msgid "map_tool_save_text"
 msgstr ""
 
 #. Default: Cancel editing, discards all changes
-#: ondestan/templates/plotManager.pt:58
+#: ondestan/templates/plotManager.pt:60
 msgid "map_tool_cancel_tooltip"
 msgstr ""
 
 #. Default: Edit plots
-#: ondestan/templates/plotManager.pt:61
+#: ondestan/templates/plotManager.pt:63
 msgid "map_tool_edit_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to edit
-#: ondestan/templates/plotManager.pt:62
+#: ondestan/templates/plotManager.pt:64
 msgid "map_tool_edit_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Delete plots
-#: ondestan/templates/plotManager.pt:63
+#: ondestan/templates/plotManager.pt:65
 msgid "map_tool_delete_plot_tooltip"
 msgstr ""
 
 #. Default: No plots to delete
-#: ondestan/templates/plotManager.pt:64
+#: ondestan/templates/plotManager.pt:66
 msgid "map_tool_delete_plot_disabled_tooltip"
 msgstr ""
 
 #. Default: Drag handles to edit the plot.
-#: ondestan/templates/plotManager.pt:65
+#: ondestan/templates/plotManager.pt:67
 msgid "map_tool_edit_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Click Cancel to undo changes.
-#: ondestan/templates/plotManager.pt:66
+#: ondestan/templates/plotManager.pt:68
 msgid "map_tool_edit_plot_handler_subtooltip"
 msgstr ""
 
 #. Default: Click on a plot to remove.
-#: ondestan/templates/plotManager.pt:67
+#: ondestan/templates/plotManager.pt:69
 msgid "map_tool_delete_plot_handler_tooltip"
 msgstr ""
 
 #. Default: Plot Locator
-#: ondestan/templates/plotManager.pt:81
+#: ondestan/templates/plotManager.pt:83
 msgid "plot_locator_modal_title"
 msgstr ""
 
 #. Default: By your current position
-#: ondestan/templates/plotManager.pt:86
+#: ondestan/templates/plotManager.pt:88
 msgid "plot_locator_current_position"
 msgstr ""
 
 #. Default: By a place name
-#: ondestan/templates/plotManager.pt:87
+#: ondestan/templates/plotManager.pt:89
 msgid "plot_locator_place_name"
 msgstr ""
 
 #. Default: Place
-#: ondestan/templates/plotManager.pt:91
+#: ondestan/templates/plotManager.pt:93
 msgid "place"
 msgstr ""
 
 #. Default: Powered by Nominatim
-#: ondestan/templates/plotManager.pt:92
+#: ondestan/templates/plotManager.pt:94
 msgid "powered_by_nominatim"
 msgstr ""
 
 #. Default: Select place
-#: ondestan/templates/plotManager.pt:95
+#: ondestan/templates/plotManager.pt:97
 msgid "select_place"
 msgstr ""
 
 #. Default: Cancel
-#: ondestan/templates/plotManager.pt:100 ondestan/templates/plotManager.pt:123
+#: ondestan/templates/plotManager.pt:102 ondestan/templates/plotManager.pt:125
 msgid "cancel"
 msgstr ""
 
 #. Default: Accept
-#: ondestan/templates/plotManager.pt:101 ondestan/templates/plotManager.pt:124
+#: ondestan/templates/plotManager.pt:103 ondestan/templates/plotManager.pt:126
 msgid "accept"
 msgstr ""
 
 #. Default: Plot Data
-#: ondestan/templates/plotManager.pt:113
+#: ondestan/templates/plotManager.pt:115
 msgid "plot_data_modal_title"
 msgstr ""
 
 #. Default: Owner
-#: ondestan/templates/plotManager.pt:117
+#: ondestan/templates/plotManager.pt:119
 msgid "owner"
 msgstr ""
 
 #. Default: Current Plots
-#: ondestan/templates/plotManager.pt:131
+#: ondestan/templates/plotManager.pt:133
 msgid "current_plots"
 msgstr ""
 
 #. Default: No Plots
-#: ondestan/templates/plotManager.pt:137
+#: ondestan/templates/plotManager.pt:139
 msgid "no_plots"
-msgstr ""
-
-#. Default: Help locating plots
-#: ondestan/templates/plotManager.pt:141
-msgid "help_locating_plots"
 msgstr ""
 
 #. Default: Sign Up - Ondestán

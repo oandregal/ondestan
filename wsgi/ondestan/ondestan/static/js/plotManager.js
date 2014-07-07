@@ -186,18 +186,51 @@ function additionalControls() {
 			}});
 		}
 	});
+
+	locatePlotControl = function(theLocatePlotFunction) {
+
+	    var control = new (L.Control.extend({
+	    options: { position: 'topright' },
+	    onAdd: function (map) {
+	        controlDiv = L.DomUtil.create('div', 'locate-plot-button');
+	        L.DomEvent
+	            .addListener(controlDiv, 'click', L.DomEvent.stopPropagation)
+	            .addListener(controlDiv, 'click', L.DomEvent.preventDefault)
+	            .addListener(controlDiv, 'click', this.LocatePlotFunction);
+
+	        // Set CSS for the control border
+	        var controlUI = L.DomUtil.create('div', 'locate-plot-toolbar leaflet-bar locate-plot-toolbar-top', controlDiv);
+	        controlUI.title = window.contextVariables.locate_plot_tool_tooltip;
+
+	        // Set CSS for the control interior
+	        var controlText = L.DomUtil.create('a', 'leaflet-div-icon leaflet-control-zoom-in', controlUI);
+	        controlText.href = '#';
+	        controlText.innerHTML = window.contextVariables.locate_plot_tool_text;
+
+	        return controlDiv;
+	    }
+	    }));
+
+	    control.LocatePlotFunction = theLocatePlotFunction;
+
+	    return control;
+	};
+
+	LocatePlotFunction = function () {
+		$('#plot_locator_options').show();
+		$('.plot_locator_option').hide();
+		$('#plot_locator_accept_btn').prop('disabled', true);
+		$('#plot_locator_modal').modal();
+	};
+
+	controls.push(locatePlotControl(LocatePlotFunction));
+
 	return controls
 }
 
 $('#plot_owner').change(validatePlotData);
 $('#plot_name').keyup(validatePlotData);
 
-$('#plot_locator_btn').click(function() {
-	$('#plot_locator_options').show();
-	$('.plot_locator_option').hide();
-	$('#plot_locator_accept_btn').prop('disabled', true);
-	$('#plot_locator_modal').modal();
-});
 $('#plot_locator_option_current_position').click(function() {
 	getLocation();
 	$('#plot_locator_modal').modal('hide');
