@@ -37,6 +37,7 @@ max_positions = Config.get_int_value('config.history_max_positions')
 import logging, json, urllib2
 
 logger = logging.getLogger('ondestan')
+logger_nominatim = logging.getLogger('nominatim')
 
 
 @view_config(route_name='login', renderer='templates/login.pt')
@@ -866,5 +867,6 @@ def nominatim_request_by_name(request):
     result = []
     if 'q' in request.GET:
         query = request.GET['q']
+        logger_nominatim.info('Nominatim request: «' + query + '»')
         result = json.load(urllib2.urlopen('http://nominatim.openstreetmap.org/search?format=json&limit=5&email=' + Config.get_string_value('smtp.mail') + '&q=' + query))
     return result
