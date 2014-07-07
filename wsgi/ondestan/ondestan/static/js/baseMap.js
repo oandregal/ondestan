@@ -1,4 +1,4 @@
-var user_position = null;
+var position = null;
 var google_layer;
 var osm_layer;
 var map;
@@ -15,18 +15,17 @@ function zoom(lng, lat) {
 }
 
 function centerMapOnPosition(lat, lon) {
+	if (position != null) {
+		map.removeLayer(position);
+	}
 	pos = new L.LatLng(lat, lon);
+	position = new L.marker(pos);
+	position.addTo(map);
     map.panTo(pos);
     map.setZoom(14);
 }
 
 function centerMapOnUser(position) {
-	if (user_position != null) {
-		map.removeLayer(user_position);
-	}
-	pos = new L.LatLng(position.coords.latitude, position.coords.longitude);
-	user_position = new L.marker(pos);
-	user_position.addTo(map);
 	centerMapOnPosition(position.coords.latitude, position.coords.longitude);
 }
 
