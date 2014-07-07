@@ -2,10 +2,7 @@ var ladda;
 var plots;
 var nominatimResults;
 var nominatimItems = [];
-var nominatimBaseUrl = "http://nominatim.openstreetmap.org/search?format=json&limit=5";
-if (window.contextVariables.admin_mail != "") {
-	nominatimBaseUrl += "&email=" + window.contextVariables.admin_mail;
-}
+var nominatimBaseUrl = window.contextVariables.nominatim_request_by_name_url;
 
 function centerOnNominatimResult(i) {
 	$('#plot_locator_modal').modal('hide');
@@ -251,7 +248,7 @@ $('#plot_locator_option_place_name').click(function() {
 	$('#plot_locator_accept_btn').prop('disabled', false);
 	$('#plot_locator_accept_btn').click(function() {
 		startSpinner(this);
-		$.getJSON( nominatimBaseUrl + '&q=' + $('#location').val(), function( data ) {
+		$.getJSON( nominatimBaseUrl + '?q=' + $('#location').val(), function( data ) {
 			stopSpinner();
 			nominatimResults = data;
 			displayNominatimResults();

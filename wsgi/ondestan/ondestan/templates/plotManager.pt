@@ -29,6 +29,7 @@
       window.contextVariables.create_plot_url = "${request.route_url('create_plot')}";
       window.contextVariables.update_plot_geom_url = "${request.route_url('update_plot_geom')}";
       window.contextVariables.delete_plot_url = "${request.route_url('delete_plot')}";
+      window.contextVariables.nominatim_request_by_name_url = "${request.route_url('nominatim_request_by_name')}";
       window.contextVariables.orders_popover_content = "${orders_popover_content}";
       window.contextVariables.update_plot_name_url = "${request.route_url('update_plot_name')}";
       window.contextVariables.map_view_json = ${view if view != None else 'null'};
@@ -41,7 +42,6 @@
       window.contextVariables.geolocation_not_supported = "<tal:block i18n:translate="geolocation_not_supported">Geolocation is not supported by this browser.</tal:block>";
       
       window.contextVariables.map_widget_id = "map_plots";
-      window.contextVariables.admin_mail = "${Config.get_string_value('smtp.mail')}";
       window.contextVariables.locate_plot_tool_tooltip = "<tal:block i18n:translate="map_tool_locate_plot_tooltip">Help locating plots</tal:block>";
       window.contextVariables.locate_plot_tool_text = "<tal:block i18n:translate="map_tool_locate_plot_text">Locate plot</tal:block>";
 

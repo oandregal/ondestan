@@ -81,6 +81,7 @@ def main(global_config, **settings):
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')
     config.add_route('json_plots', '/json/plots.json')
     config.add_route('animals_list', '/animals')
+    config.add_route('nominatim_request_by_name', '/nominatim/request_by_name')
     config.scan()
 
     logger.info('Application initialized')

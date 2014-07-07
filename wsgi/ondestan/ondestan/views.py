@@ -34,7 +34,7 @@ from ondestan.config import Config
 
 max_positions = Config.get_int_value('config.history_max_positions')
 
-import logging
+import logging, json, urllib2
 
 logger = logging.getLogger('ondestan')
 
@@ -844,7 +844,8 @@ def json_plots(request):
 
 
 @view_config(route_name='animals_list',
-             renderer='templates/animalsList.pt')
+             renderer='templates/animalsList.pt',
+             permission='view')
 def animals_list(request):
     is_admin = check_permission('admin', request)
     if is_admin:
@@ -857,3 +858,13 @@ def animals_list(request):
         is_admin=is_admin,
         animals=animals,
         )
+
+
+@view_config(route_name='nominatim_request_by_name', renderer='json',
+             permission='view')
+def nominatim_request_by_name(request):
+    result = []
+    if 'q' in request.GET:
+        query = request.GET['q']
+        result = json.load(urllib2.urlopen('http://nominatim.openstreetmap.org/search?format=json&limit=5&email=' + Config.get_string_value('smtp.mail') + '&q=' + query))
+    return result
