@@ -89,6 +89,8 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
     now = datetime.utcnow()
     now = now.replace(tzinfo=utc_timezone)
     rdelta = relativedelta(now, d)  # capture the date difference
+    time_format = localizer.translate(_('meta_time_format', domain='Ondestan'))
+    exact_time = convert_from_utc(d, default_timezone).strftime(time_format)
     for idx, tm_unit in enumerate(tm_units):
         first_unit_val = getattr(rdelta, tm_unit)
         if first_unit_val > 0:
@@ -106,14 +108,16 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
                         'primary_val': first_unit_val,
                         'primary_unit': primary_unit,
                         'secondary_val': second_unit_val,
-                        'secondary_unit': secondary_unit
+                        'secondary_unit': secondary_unit,
+                        'exact_time': exact_time
                     }
                     return localizer.translate(_("fancy_time_two_units",
                                                  domain='Ondestan',
                                                  mapping=parameters))
             parameters = {
                 'primary_val': first_unit_val,
-                'primary_unit': primary_unit
+                'primary_unit': primary_unit,
+                'exact_time': exact_time
             }
             return localizer.translate(_("fancy_time_one_unit",
                                          domain='Ondestan',
