@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-07-11 16:27+0200\n"
-"PO-Revision-Date: 2014-07-11 16:27+0100\n"
+"PO-Revision-Date: 2014-07-11 17:16+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -755,13 +755,13 @@ msgstr "pedido(s)"
 #: ondestan/templates/updateProfile.pt:39
 #: ondestan/templates/updateProfile.pt:64
 msgid "update_profile"
-msgstr "Actualizar perfil"
+msgstr "Ver perfil"
 
 #. Default: Notifications Log
 #: ondestan/templates/main.pt:39
 #: ondestan/templates/notifications.pt:12
 msgid "notifications_log"
-msgstr "Log de notificaciones"
+msgstr "Notificaciones"
 
 #. Default: Logout
 #: ondestan/templates/main.pt:40
