@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-07 12:48+0200\n"
-"PO-Revision-Date: 2014-07-11 13:41+0100\n"
+"POT-Creation-Date: 2014-07-11 16:27+0200\n"
+"PO-Revision-Date: 2014-07-11 16:27+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -17,41 +17,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 1.3\n"
 
-#: ondestan/views.py:66
+#: ondestan/views.py:67
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
-#: ondestan/views.py:210
+#: ondestan/views.py:211
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
-#: ondestan/views.py:226
+#: ondestan/views.py:227
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
-#: ondestan/views.py:241
+#: ondestan/views.py:242
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
-#: ondestan/views.py:409
+#: ondestan/views.py:410
 msgid "too_many_positions_in_selected_time_interval"
 msgstr "Demasiadas posiciones para mostrar simultáneamente en el intervalo de tiempo seleccionado. Se mostrarán las ${max_positions} más recientes."
 
-#: ondestan/views.py:554
-#: ondestan/views.py:705
+#: ondestan/views.py:555
+#: ondestan/views.py:706
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
-#: ondestan/views.py:615
-#: ondestan/views.py:708
+#: ondestan/views.py:616
+#: ondestan/views.py:709
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name}<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
-#: ondestan/views.py:802
+#: ondestan/views.py:803
 msgid "plot_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
-#: ondestan/views.py:828
+#: ondestan/views.py:829
 msgid "plot_popup"
 msgstr "<strong>Nombre:</strong> ${plot_name}"
 
@@ -429,35 +429,35 @@ msgstr "Visor de histórico de posiciones - Ondestán"
 #. Default: Double click to edit name (confirm change by pressing enter).
 #: ondestan/templates/animalHistoryViewer.pt:39
 #: ondestan/templates/animalViewer.pt:37
-#: ondestan/templates/plotManager.pt:36
+#: ondestan/templates/plotManager.pt:37
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
 
 #. Default: Center map onto your current position.
 #: ondestan/templates/animalHistoryViewer.pt:41
 #: ondestan/templates/animalViewer.pt:40
-#: ondestan/templates/plotManager.pt:40
+#: ondestan/templates/plotManager.pt:41
 msgid "center_on_user_position_tooltip"
 msgstr "Click para centrar la vista en tu posición actual."
 
 #. Default: Geolocation is not supported by this browser.
 #: ondestan/templates/animalHistoryViewer.pt:42
 #: ondestan/templates/animalViewer.pt:41
-#: ondestan/templates/plotManager.pt:41
+#: ondestan/templates/plotManager.pt:42
 msgid "geolocation_not_supported"
 msgstr "Este navegador no permite localizarte."
 
 #. Default: Zoom in
 #: ondestan/templates/animalHistoryViewer.pt:44
 #: ondestan/templates/animalViewer.pt:43
-#: ondestan/templates/plotManager.pt:38
+#: ondestan/templates/plotManager.pt:39
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
 
 #. Default: Zoom out
 #: ondestan/templates/animalHistoryViewer.pt:45
 #: ondestan/templates/animalViewer.pt:44
-#: ondestan/templates/plotManager.pt:39
+#: ondestan/templates/plotManager.pt:40
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
 
@@ -626,9 +626,9 @@ msgid "animals_list_title"
 msgstr "Listado de animales - Ondestán"
 
 #. Default: Animals list
-#. Default: Animals List
+#. Default: Animals
 #: ondestan/templates/animalsList.pt:17
-#: ondestan/templates/main.pt:36
+#: ondestan/templates/main.pt:32
 msgid "animals_list"
 msgstr "Animales"
 
@@ -735,20 +735,20 @@ msgstr "¿Has olvidado tu contraseña?"
 msgid "account_activated"
 msgstr "Gracias. Tu cuenta ha sido activada y ya puedes entrar en la aplicación."
 
-#. Default: order(s)
+#. Default: Map
 #: ondestan/templates/main.pt:31
-msgid "orders_menu"
-msgstr "pedido(s)"
-
-#. Default: Animal Viewer
-#: ondestan/templates/main.pt:35
 msgid "animal_viewer"
 msgstr "Mapa"
 
-#. Default: Plot Manager
-#: ondestan/templates/main.pt:37
+#. Default: Plots
+#: ondestan/templates/main.pt:33
 msgid "plot_manager"
 msgstr "Fincas"
+
+#. Default: order(s)
+#: ondestan/templates/main.pt:34
+msgid "orders_menu"
+msgstr "pedido(s)"
 
 #. Default: Update Profile
 #: ondestan/templates/main.pt:38
@@ -1324,23 +1324,28 @@ msgstr "segundo"
 msgid "seconds"
 msgstr "segundos"
 
-#: ondestan/utils/various.py:111
+#: ondestan/utils/various.py:92
+#| msgid "meta_time_format"
+msgid "meta_time_format_wo_seconds"
+msgstr "%H:%M"
+
+#: ondestan/utils/various.py:114
 msgid "fancy_time_two_units"
 msgstr "hace ${primary_val} ${primary_unit} y ${secondary_val} ${secondary_unit} (a las ${exact_time})"
 
-#: ondestan/utils/various.py:118
+#: ondestan/utils/various.py:122
 msgid "fancy_time_one_unit"
 msgstr "hace ${primary_val} ${primary_unit} (a las ${exact_time})"
 
-#: ondestan/utils/various.py:145
+#: ondestan/utils/various.py:149
 msgid "meta_date_format"
 msgstr "%d-%m-%Y"
 
-#: ondestan/utils/various.py:156
+#: ondestan/utils/various.py:160
 msgid "meta_datetime_format"
 msgstr "%d-%m-%Y %H:%M:%S"
 
-#: ondestan/utils/various.py:168
+#: ondestan/utils/various.py:172
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 

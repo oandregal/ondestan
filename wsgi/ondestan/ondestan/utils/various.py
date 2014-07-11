@@ -89,7 +89,7 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
     now = datetime.utcnow()
     now = now.replace(tzinfo=utc_timezone)
     rdelta = relativedelta(now, d)  # capture the date difference
-    time_format = localizer.translate(_('meta_time_format', domain='Ondestan'))
+    time_format = localizer.translate(_('meta_time_format_wo_seconds', domain='Ondestan'))
     exact_time = convert_from_utc(d, default_timezone).strftime(time_format)
     for idx, tm_unit in enumerate(tm_units):
         first_unit_val = getattr(rdelta, tm_unit)
