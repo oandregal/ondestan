@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
 "POT-Creation-Date: 2014-07-07 12:48+0200\n"
-"PO-Revision-Date: 2014-07-10 17:18+0100\n"
+"PO-Revision-Date: 2014-07-11 13:41+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -630,7 +630,7 @@ msgstr "Listado de animales - Ondestán"
 #: ondestan/templates/animalsList.pt:17
 #: ondestan/templates/main.pt:36
 msgid "animals_list"
-msgstr "Listado de animales"
+msgstr "Animales"
 
 #. Default: ID
 #: ondestan/templates/animalsList.pt:25
@@ -743,12 +743,12 @@ msgstr "pedido(s)"
 #. Default: Animal Viewer
 #: ondestan/templates/main.pt:35
 msgid "animal_viewer"
-msgstr "Visor de animales"
+msgstr "Mapa"
 
 #. Default: Plot Manager
 #: ondestan/templates/main.pt:37
 msgid "plot_manager"
-msgstr "Gestor de fincas"
+msgstr "Fincas"
 
 #. Default: Update Profile
 #: ondestan/templates/main.pt:38
