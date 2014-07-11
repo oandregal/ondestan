@@ -130,6 +130,40 @@ def update_animal_name(animal_id, name, user_id=None):
                      + str(animal_id) + " for user id " + str(user_id))
 
 
+def update_animal_plot(animal_id, plot_id, user_id=None):
+    if animal_id != None:
+        if user_id != None:
+            animal = Animal().queryObject().filter(and_(Animal.id == animal_id,
+                    Animal.user_id == user_id)).scalar()
+        else:
+            animal = Animal().queryObject().filter(Animal.id == animal_id)\
+                .scalar()
+        if animal != None:
+            if plot_id == None or plot_id == '':
+                animal.plot_id = None
+                animal.update()
+            else:
+                plot = ondestan.services.plot_service.get_plot_by_id(plot_id)
+                if plot != None:
+                    if user_id != None:
+                        if plot.user_id != user_id:
+                            logger.error("Cannot assign the non-existent plot "
+                                 + "with id " + str(plot_id)
+                                 + " to animal with id "
+                                 + str(animal_id) + " for user id "
+                                 + str(user_id))
+                        return
+                    animal.plot_id = plot_id
+                    animal.update()
+                else:
+                    logger.error("Cannot assign the non-existent plot with id "
+                         + str(plot_id) + " to animal with id "
+                         + str(animal_id) + " for user id " + str(user_id))
+        else:
+            logger.error("Cannot update the non-existent animal with id "
+                         + str(animal_id) + " for user id " + str(user_id))
+
+
 def delete_animal_by_id(animal_id):
     if animal_id != None:
         animal = Animal().queryObject().filter(Animal.id == animal_id).scalar()

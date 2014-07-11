@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-14 17:50+0200\n"
+"POT-Creation-Date: 2014-07-16 12:14+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -563,18 +563,23 @@ msgstr ""
 msgid "cell_phone_number"
 msgstr ""
 
+#. Default: Assigned plot
+#: ondestan/templates/animalsList.pt:32
+msgid "assigned_plot"
+msgstr ""
+
 #. Default: Positions History
-#: ondestan/templates/animalsList.pt:39
+#: ondestan/templates/animalsList.pt:40
 msgid "positions_history"
 msgstr ""
 
 #. Default: Yes
-#: ondestan/templates/animalsList.pt:41 ondestan/templates/notifications.pt:39
+#: ondestan/templates/animalsList.pt:42 ondestan/templates/notifications.pt:39
 msgid "yes"
 msgstr ""
 
 #. Default: No
-#: ondestan/templates/animalsList.pt:42 ondestan/templates/notifications.pt:40
+#: ondestan/templates/animalsList.pt:43 ondestan/templates/notifications.pt:40
 msgid "no"
 msgstr ""
 

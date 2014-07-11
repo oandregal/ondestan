@@ -550,7 +550,9 @@ def json_animals(request):
                         'name': animal.user.email,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
-                        'date': fancy_date
+                        'date': fancy_date,
+                        'plot': animal.plot.name if animal.plot != None\
+                                else '---'
                     }
                     popup_str = _("animal_popup_admin", domain='Ondestan',
                                   mapping=parameters)
@@ -611,7 +613,9 @@ def json_animals(request):
                         'name': animal.user.email,
                         'imei': animal.imei,
                         'battery': str(animal.positions[0].battery),
-                        'date': fancy_date
+                        'date': fancy_date,
+                        'plot': animal.plot.name if animal.plot != None\
+                                else '---'
                     }
                     popup_str = _("animal_popup", domain='Ondestan',
                                   mapping=parameters)
@@ -700,7 +704,8 @@ def json_animal_positions(request):
                     'name': animal.user.email,
                     'imei': animal.imei,
                     'battery': str(position.battery),
-                    'date': fancy_date
+                    'date': fancy_date,
+                    'plot': animal.plot.name if animal.plot != None else '---'
                 }
                 if is_admin:
                     popup_str = _("animal_popup_admin", domain='Ondestan',
@@ -849,6 +854,14 @@ def json_plots(request):
              permission='view')
 def animals_list(request):
     is_admin = check_permission('admin', request)
+    if 'form.submitted' in request.params:
+        if 'id' in request.params:
+            user_id = None if is_admin else user_service.get_user_by_email(
+                                            get_user_email(request)).id
+            animal_id = int(request.params['id'])
+            plot_id = None if request.params['plot'] == '' or\
+                request.params['plot'] == None else int(request.params['plot'])
+            animal_service.update_animal_plot(animal_id, plot_id, user_id)
     if is_admin:
         animals = animal_service.get_all_animals()
     else:

@@ -28,9 +28,9 @@ class Animal(Entity, Base):
     order_id = Column(Integer, ForeignKey("orders.id"))
     order = relationship("Order", backref=backref('devices',
                                                   order_by=name))
-    """plot_id = Column(Integer, ForeignKey("plots.id"))
+    plot_id = Column(Integer, ForeignKey("plots.id"))
     plot = relationship("Plot", backref=backref('animals',
-                                                  order_by=name))"""
+                                                  order_by=name))
 
     @hybrid_property
     def n_positions(self):

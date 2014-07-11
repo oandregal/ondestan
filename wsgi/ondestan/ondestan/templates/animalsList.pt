@@ -29,6 +29,7 @@
               <th i18n:translate="battery">Battery</th>
               <th i18n:translate="imei">IMEI</th>
               <th i18n:translate="cell_phone_number">Cell phone number</th>
+              <th i18n:translate="assigned_plot">Assigned plot</th>
             </tr>
           </thead>
 
@@ -47,6 +48,16 @@
             	</td>
             	<td tal:content="animal.imei"/>
             	<td tal:content="animal.phone"/>
+            	<td>
+                	<form name="form_animal_${animal.id}" action="${request.path}" method="post">
+                  		<input type="hidden" name="id" value="${animal.id}"/>
+	            		<select name="plot" onchange="document.form_animal_${animal.id}['form.submitted'].click();">
+	            			<option value=""> </option>
+	            			<option tal:repeat="plot animal.user.plots" value="${plot.id}" selected="${animal.plot != None and plot.id == animal.plot.id}">${plot.name}</option>
+	            		</select>
+                  		<input type="submit" name="form.submitted" style="display: none;"/>
+	            	</form>
+            	</td>
             </tr>
           </tbody>
 

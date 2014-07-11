@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-14 17:50+0200\n"
-"PO-Revision-Date: 2014-07-14 17:51+0100\n"
+"POT-Creation-Date: 2014-07-16 12:14+0200\n"
+"PO-Revision-Date: 2014-07-16 13:44+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -40,12 +40,12 @@ msgstr "Demasiadas posiciones para mostrar simultáneamente en el intervalo de t
 #: ondestan/views.py:555
 #: ondestan/views.py:706
 msgid "animal_popup_admin"
-msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei}) <br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
+msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei})<br/><strong>Finca designada:</strong> ${plot}<br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
 #: ondestan/views.py:616
 #: ondestan/views.py:709
 msgid "animal_popup"
-msgstr "<strong>Nombre:</strong> ${animal_name}<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
+msgstr "<strong>Nombre:</strong> ${animal_name}<br/><strong>Finca designada:</strong> ${plot}<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
 #: ondestan/views.py:803
 msgid "plot_popup_admin"
@@ -683,19 +683,25 @@ msgstr "IMEI"
 msgid "cell_phone_number"
 msgstr "Teléfono móvil"
 
+#. Default: Assigned plot
+#: ondestan/templates/animalsList.pt:32
+#| msgid "inside_plots"
+msgid "assigned_plot"
+msgstr "Finca designada"
+
 #. Default: Positions History
-#: ondestan/templates/animalsList.pt:39
+#: ondestan/templates/animalsList.pt:40
 msgid "positions_history"
 msgstr "Histórico de posiciones"
 
 #. Default: Yes
-#: ondestan/templates/animalsList.pt:41
+#: ondestan/templates/animalsList.pt:42
 #: ondestan/templates/notifications.pt:39
 msgid "yes"
 msgstr "Sí"
 
 #. Default: No
-#: ondestan/templates/animalsList.pt:42
+#: ondestan/templates/animalsList.pt:43
 #: ondestan/templates/notifications.pt:40
 msgid "no"
 msgstr "No"
@@ -747,13 +753,11 @@ msgstr "Fincas"
 
 #. Default: order(s)
 #: ondestan/templates/main.pt:37
-#| msgid "pending_orders_list"
 msgid "pending_orders_menu"
 msgstr "pedido(s) pendiente(s)"
 
 #. Default: New order
 #: ondestan/templates/main.pt:38
-#| msgid "orders_menu"
 msgid "new_order_menu"
 msgstr "Nuevo pedido"
 
