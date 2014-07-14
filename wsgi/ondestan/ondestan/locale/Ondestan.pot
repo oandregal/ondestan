@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-07-11 16:27+0200\n"
+"POT-Creation-Date: 2014-07-14 17:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -517,7 +517,7 @@ msgstr ""
 
 #. Default: Animals list
 #. Default: Animals
-#: ondestan/templates/animalsList.pt:17 ondestan/templates/main.pt:32
+#: ondestan/templates/animalsList.pt:17 ondestan/templates/main.pt:31
 msgid "animals_list"
 msgstr ""
 
@@ -611,48 +611,53 @@ msgid "account_activated"
 msgstr ""
 
 #. Default: Map
-#: ondestan/templates/main.pt:31
+#: ondestan/templates/main.pt:30
 msgid "animal_viewer"
 msgstr ""
 
 #. Default: Plots
-#: ondestan/templates/main.pt:33
+#: ondestan/templates/main.pt:32
 msgid "plot_manager"
 msgstr ""
 
 #. Default: order(s)
-#: ondestan/templates/main.pt:34
-msgid "orders_menu"
+#: ondestan/templates/main.pt:37
+msgid "pending_orders_menu"
+msgstr ""
+
+#. Default: New order
+#: ondestan/templates/main.pt:38
+msgid "new_order_menu"
 msgstr ""
 
 #. Default: Update Profile
-#: ondestan/templates/main.pt:38 ondestan/templates/updateProfile.pt:39
+#: ondestan/templates/main.pt:40 ondestan/templates/updateProfile.pt:39
 #: ondestan/templates/updateProfile.pt:64
 msgid "update_profile"
 msgstr ""
 
 #. Default: Notifications Log
-#: ondestan/templates/main.pt:39 ondestan/templates/notifications.pt:12
+#: ondestan/templates/main.pt:41 ondestan/templates/notifications.pt:12
 msgid "notifications_log"
 msgstr ""
 
 #. Default: Logout
-#: ondestan/templates/main.pt:40
+#: ondestan/templates/main.pt:42
 msgid "logout"
 msgstr ""
 
 #. Default: Functionalities Tour
-#: ondestan/templates/main.pt:55
+#: ondestan/templates/main.pt:57
 msgid "functionalities_tour"
 msgstr ""
 
 #. Default: About
-#: ondestan/templates/main.pt:55
+#: ondestan/templates/main.pt:57
 msgid "about"
 msgstr ""
 
 #. Default: Contact
-#: ondestan/templates/main.pt:55
+#: ondestan/templates/main.pt:57
 msgid "contact"
 msgstr ""
 
