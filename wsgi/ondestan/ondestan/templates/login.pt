@@ -18,7 +18,7 @@
   </tal:block>
   
   <tal:block metal:fill-slot="header_menu">
-      <ul tal:condition="user == None" class="nav navbar-nav pull-right">
+      <ul tal:condition="user_id == None" class="nav navbar-nav pull-right">
       	<li><a class="big-font" href="${request.route_url('signup')}"><span i18n:translate="sign_up">Sign Up</span></a></li>
         <li class="dropdown active">
           <a href="#" class="dropdown-toggle big-font" data-toggle="dropdown"><span i18n:translate="log_in">Log in</span> <b class="caret"></b></a>
