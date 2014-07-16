@@ -153,7 +153,7 @@ def update_animal_plot(animal_id, plot_id, user_id=None):
                                  + " to animal with id "
                                  + str(animal_id) + " for user id "
                                  + str(user_id))
-                        return
+                            return
                     animal.plot_id = plot_id
                     animal.update()
                 else:
