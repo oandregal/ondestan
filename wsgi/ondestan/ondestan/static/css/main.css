@@ -472,4 +472,5 @@ table td .btn.pull-right {
 
 .dropdown-menu {
     min-width: 100px;
+    z-index: 1001;
 }
