@@ -52,17 +52,18 @@ _('outside_plots_notification_sms', domain='Ondestan')
 def get_all_animals(email=None):
     if email != None:
         return Animal().queryObject().filter(Animal.user.has(email=email)).\
-            order_by(Animal.name).all()
+            order_by(Animal.name, Animal.id).all()
     else:
-        return Animal().queryObject().order_by(Animal.name).all()
+        return Animal().queryObject().order_by(Animal.name, Animal.id).all()
 
 
 def get_inactive_animals(email=None):
     if email != None:
         return Animal().queryObject().filter(and_(Animal.user.has(email=email),
-                                                Animal.active == False)).all()
+            Animal.active == False)).order_by(Animal.name, Animal.id).all()
     else:
-        return Animal().queryObject().filter(Animal.active == False).all()
+        return Animal().queryObject().filter(Animal.active == False).\
+            order_by(Animal.name, Animal.id).all()
 
 
 def get_animal(imei):

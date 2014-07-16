@@ -17,9 +17,9 @@ def get_plot_by_id(plot_id):
 def get_all_plots(email=None):
     if email != None:
         return Plot().queryObject().filter(Plot.user.has(email=email)).\
-            order_by(Plot.name).all()
+            order_by(Plot.name, Plot.id).all()
     else:
-        return Plot().queryObject().order_by(Plot.name).all()
+        return Plot().queryObject().order_by(Plot.name, Plot.id).all()
 
 
 def update_plot_name(plot_id, name, user_id=None):
