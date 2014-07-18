@@ -1,15 +1,21 @@
 # coding=UTF-8
 from pyramid.settings import asbool
 from os.path import expandvars
+from apscheduler.scheduler import Scheduler
 
 
 class Config:
 
     config = {}
+    sched = Scheduler()
+    registry = None
 
     @staticmethod
-    def init_settings(settings):
+    def init_settings(settings, registry):
         Config.config = settings
+        Config.sched.configure(settings)
+        Config.sched.start()
+        Config.registry = registry
 
     @staticmethod
     def get_string_value(field):

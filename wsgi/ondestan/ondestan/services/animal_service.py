@@ -9,10 +9,13 @@ from ondestan.security import check_permission, get_user_email
 from ondestan.entities import Animal, Position, Order_state
 from ondestan.utils import format_utcdatetime, escape_code_to_eval
 from ondestan.utils import internal_format_datetime, get_fancy_time_from_utc
+from ondestan.utils import compare_datetime_ago_from_utc
 from ondestan.config import Config
 import ondestan.services
 
 import logging
+import transaction
+from dateutil.relativedelta import relativedelta
 
 logger = logging.getLogger('ondestan')
 
@@ -21,6 +24,8 @@ medium_battery_barrier = Config.get_float_value(
                                 'config.medium_battery_barrier')
 same_position_max_hours = Config.get_float_value(
                                 'config.same_position_max_hours')
+no_positions_max_hours = Config.get_float_value(
+                                'config.no_positions_max_hours')
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -48,6 +53,16 @@ _('outside_plots_notification_mail_html_body', domain='Ondestan')
 _('outside_plots_notification_mail_text_body', domain='Ondestan')
 _('outside_plots_notification_sms', domain='Ondestan')
 
+_('gps_no_positions_notification_web', domain='Ondestan')
+_('gps_no_positions_notification_mail_subject', domain='Ondestan')
+_('gps_no_positions_notification_mail_html_body', domain='Ondestan')
+_('gps_no_positions_notification_mail_text_body', domain='Ondestan')
+
+_('gps_no_positions_admin_notification_web', domain='Ondestan')
+_('gps_no_positions_admin_notification_mail_subject', domain='Ondestan')
+_('gps_no_positions_admin_notification_mail_html_body', domain='Ondestan')
+_('gps_no_positions_admin_notification_mail_text_body', domain='Ondestan')
+
 
 def get_all_animals(email=None):
     if email != None:
@@ -55,6 +70,15 @@ def get_all_animals(email=None):
             order_by(Animal.name, Animal.id).all()
     else:
         return Animal().queryObject().order_by(Animal.name, Animal.id).all()
+
+
+def get_active_animals(email=None):
+    if email != None:
+        return Animal().queryObject().filter(and_(Animal.user.has(email=email),
+            Animal.active == True)).order_by(Animal.name, Animal.id).all()
+    else:
+        return Animal().queryObject().filter(Animal.active == True).\
+            order_by(Animal.name, Animal.id).all()
 
 
 def get_inactive_animals(email=None):
@@ -301,7 +325,8 @@ def process_position_general_notifications(position, animal, request):
                             + "'), request=request)"),
                          'date': format_utcdatetime(position.date,
                             locale=animal.user.locale),
-                         'battery_level': position.battery
+                         'battery_level': position.battery,
+                         'url': request.route_url('map')
                          }
                         ondestan.services.\
                         notification_service.process_notification(
@@ -333,7 +358,8 @@ def process_position_general_notifications(position, animal, request):
                                         animal.name != '') else animal.imei,
                          'date_begin': format_utcdatetime(date_begin,
                             locale=animal.user.locale),
-                         'hours_immobile': int(hours_immobile)
+                         'hours_immobile': int(hours_immobile),
+                         'url': request.route_url('map')
                          }
                         ondestan.services.notification_service.\
                             process_notification('gps_immobile',
@@ -346,7 +372,8 @@ def process_position_general_notifications(position, animal, request):
              'animal_name': animal.name if (animal.name != None and
                             animal.name != '') else animal.imei,
              'date': format_utcdatetime(position.date,
-                                        locale=animal.user.locale)
+                                        locale=animal.user.locale),
+             'url': request.route_url('map')
              }
             ondestan.services.notification_service.process_notification(
                 'gps_instant_duplicated', animal.user.email, True, 2, False,
@@ -364,10 +391,45 @@ def process_position_general_notifications(position, animal, request):
             "get_fancy_time_from_utc(internal_parse_datetime('"
             + internal_format_datetime(position.date)
             + "'), request=request)"),
-         'date': format_utcdatetime(position.date, locale=animal.user.locale)
+         'date': format_utcdatetime(position.date, locale=animal.user.locale),
+         'url': request.route_url('map')
          }
         ondestan.services.notification_service.process_notification(
             'gps_inactive_device', animal.user.email, True, 2, False,
             False, parameters)"""
         logger.warn('Processed update for inactive IMEI: ' + animal.imei +
                     ' for date ' + str(position.date))
+
+
+@Config.sched.cron_schedule(hour='*')
+def check_non_communicating_animals():
+    manager = transaction.manager
+    manager.begin()
+    logger.debug('Checking animals for non communicating ones.')
+    animals = get_active_animals()
+    for animal in animals:
+        if animal.n_positions > 0 and animal.positions[0].date != None:
+            if compare_datetime_ago_from_utc(animal.positions[0].date,
+                relativedelta(hours=+no_positions_max_hours)):
+                logger.info('Animal with id ' + str(animal.id) +
+                               ' has not sent new positions in at least ' +
+                               str(no_positions_max_hours) + ' hours.')
+                parameters = {'name': animal.user.name,
+                 'email': animal.user.email,
+                 'animal_name': animal.name if (animal.name != None and
+                                animal.name != '') else animal.imei,
+                 'date_last_position': format_utcdatetime(
+                    animal.positions[0].date, locale=animal.user.locale),
+                 'hours_wo_positions': no_positions_max_hours
+                 }
+                ondestan.services.notification_service.\
+                    process_notification('gps_no_positions',
+                    animal.user.email, True, 2, True,
+                    False, parameters)
+
+                admins = ondestan.services.user_service.get_admin_users()
+                for admin in admins:
+                    ondestan.services.notification_service.\
+                    process_notification('gps_no_positions_admin', admin.email,
+                                         True, 2, True, False, parameters)
+    manager.commit()

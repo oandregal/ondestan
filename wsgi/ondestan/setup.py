@@ -20,7 +20,9 @@ requires = [
     'pyramid_tm==0.7',
     'twilio==3.6.6',
     'python-dateutil>=1.5',
-    'webhelpers==1.3'
+    'webhelpers==1.3',
+    'apscheduler==2.1.2',
+    'transaction==1.4.3'
     ]
 test_requires = [
     'requests==2.2.1'

@@ -6,7 +6,6 @@ from pyramid.interfaces import (
 from pyramid.i18n import (
     get_localizer,
     TranslationString as _,
-    get_current_registry,
     make_localizer
     )
 
@@ -49,7 +48,7 @@ def get_custom_localizer(locale):
     if locale == None:
         locale = Config.get_string_value('pyramid.default_locale_name')
 
-    registry = get_current_registry()
+    registry = Config.registry
     localizer = registry.queryUtility(ILocalizer, name=locale)
 
     if localizer is None:
@@ -60,6 +59,26 @@ def get_custom_localizer(locale):
         registry.registerUtility(localizer, ILocalizer,
                                  name=locale)
     return localizer
+
+
+def get_time_difference_now_from_utc(date):
+    return get_time_difference_now(date.replace(tzinfo=utc_timezone))
+
+
+def get_time_difference_now(date):
+    now = datetime.utcnow()
+    now = now.replace(tzinfo=utc_timezone)
+    return relativedelta(now, date)  # capture the date difference
+
+
+def compare_datetime_ago_from_utc(date, rdelta):
+    return compare_datetime_ago(date.replace(tzinfo=utc_timezone), rdelta)
+
+
+def compare_datetime_ago(date, rdelta):
+    now = datetime.utcnow()
+    now = now.replace(tzinfo=utc_timezone)
+    return (date + rdelta) < now
 
 
 def get_fancy_time(d, display_full_version=True, request=None, locale=None):
@@ -86,10 +105,9 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
     #time units we are interested in descending order of significance
     tm_units = ['years', 'months', 'days', 'hours', 'minutes', 'seconds']
 
-    now = datetime.utcnow()
-    now = now.replace(tzinfo=utc_timezone)
-    rdelta = relativedelta(now, d)  # capture the date difference
-    time_format = localizer.translate(_('meta_time_format_wo_seconds', domain='Ondestan'))
+    rdelta = get_time_difference_now(d)  # capture the date difference
+    time_format = localizer.translate(_('meta_time_format_wo_seconds',
+                                        domain='Ondestan'))
     exact_time = convert_from_utc(d, default_timezone).strftime(time_format)
     for idx, tm_unit in enumerate(tm_units):
         first_unit_val = getattr(rdelta, tm_unit)
@@ -122,11 +140,14 @@ def get_fancy_time(d, display_full_version=True, request=None, locale=None):
             return localizer.translate(_("fancy_time_one_unit",
                                          domain='Ondestan',
                                          mapping=parameters))
-    return format_utcdatetime(d.astimezone(utc_timezone), request=request, locale=locale)
+    return format_utcdatetime(d.astimezone(utc_timezone), request=request,
+                              locale=locale)
 
 
-def get_fancy_time_from_utc(d, display_full_version=True, request=None, locale=None):
-    return get_fancy_time(d.replace(tzinfo=utc_timezone), display_full_version, request, locale)
+def get_fancy_time_from_utc(d, display_full_version=True, request=None,
+                            locale=None):
+    return get_fancy_time(d.replace(tzinfo=utc_timezone), display_full_version,
+                          request, locale)
 
 
 def convert_to_utc(d, from_tz):
@@ -186,9 +207,10 @@ def internal_format_datetime(dttm):
     return dttm.strftime(date_format)
 
 
-def escape_code_to_eval(str):
-    return 'eval[' + str + ']eval'
+def escape_code_to_eval(st):
+    return 'eval[' + st + ']eval'
 
 
-def unescape_code_to_eval(str):
-    return str.replace("'eval[", '').replace('"eval[', '').replace("]eval'", '').replace(']eval"', '')
+def unescape_code_to_eval(st):
+    return st.replace("'eval[", '').replace('"eval[', '').\
+        replace("]eval'", '').replace(']eval"', '')

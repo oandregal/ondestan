@@ -20,7 +20,7 @@ def main(global_config, **settings):
     """
     config = Configurator(settings=settings,
                           root_factory='ondestan.models.RootFactory')
-    Config.init_settings(settings)
+    Config.init_settings(settings, config.registry)
 
     encoding = Config.get_string_value('config.default_encoding')
     if encoding != '' and encoding != None:
@@ -77,7 +77,8 @@ def main(global_config, **settings):
     config.add_route('map', '/map')
     config.add_route('history_map', '/history_map/{animal_id}')
     config.add_route('json_animals', '/json/animals.json')
-    config.add_route('json_animal_positions', '/json/positions/{animal_id}.json')
+    config.add_route('json_animal_positions',
+                     '/json/positions/{animal_id}.json')
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')
     config.add_route('json_plots', '/json/plots.json')
     config.add_route('animals_list', '/animals')
