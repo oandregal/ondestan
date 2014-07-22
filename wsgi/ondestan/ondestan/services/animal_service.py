@@ -15,6 +15,7 @@ import ondestan.services
 
 import logging
 import transaction
+import os.path
 from dateutil.relativedelta import relativedelta
 
 logger = logging.getLogger('ondestan')
@@ -32,6 +33,9 @@ no_positions_mail_checks = Config.get_int_value(
                                 'config.no_positions_mail_checks')
 no_positions_sms_checks = Config.get_int_value(
                                 'config.no_positions_sms_checks')
+check_non_communicating_animals_lockfile = '.check_non_communicating_animals.lock'
+# We remove the lock file in case the application was shut down in the middle of the process
+os.remove(check_non_communicating_animals_lockfile)
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -415,39 +419,49 @@ def process_position_general_notifications(position, animal, request):
 
 @Config.sched.cron_schedule(hour='*')
 def check_non_communicating_animals():
+    if os.path.isfile(check_non_communicating_animals_lockfile):
+        logger.debug('There is already another check_non_communicating_animals process working...')
+        return
+    open(check_non_communicating_animals_lockfile, 'a').close()
     manager = transaction.manager
     manager.begin()
-    logger.debug('Checking animals for non communicating ones.')
-    animals = get_active_animals()
-    for animal in animals:
-        if animal.n_positions > 0 and animal.positions[0].date != None:
-            if compare_datetime_ago_from_utc(animal.positions[0].date,
-                relativedelta(hours=+no_positions_max_hours)):
-                animal.checks_wo_pos += 1
-                animal.update()
-                logger.info('Animal with id ' + str(animal.id) +
-                               ' has not sent new positions in at least ' +
-                               str(no_positions_max_hours) + ' hours.')
-                parameters = {'name': animal.user.name,
-                 'email': animal.user.email,
-                 'animal_name': animal.name if (animal.name != None and
-                                animal.name != '') else animal.imei,
-                 'date_last_position': format_utcdatetime(
-                    animal.positions[0].date, locale=animal.user.locale),
-                 'hours_wo_positions': no_positions_max_hours
-                 }
-                ondestan.services.notification_service.\
-                    process_notification('gps_no_positions',
-                    animal.user.email, animal.checks_wo_pos ==
-                    no_positions_web_checks, 2, animal.checks_wo_pos ==
-                    no_positions_mail_checks, animal.checks_wo_pos ==
-                    no_positions_sms_checks, parameters)
-
-                admins = ondestan.services.user_service.get_admin_users()
-                for admin in admins:
+    try:
+        logger.debug('Checking animals for non communicating ones.')
+        animals = get_active_animals()
+        for animal in animals:
+            if animal.n_positions > 0 and animal.positions[0].date != None:
+                if compare_datetime_ago_from_utc(animal.positions[0].date,
+                    relativedelta(hours=+no_positions_max_hours)):
+                    animal.checks_wo_pos += 1
+                    animal.update()
+                    logger.info('Animal with id ' + str(animal.id) +
+                                   ' has not sent new positions in at least ' +
+                                   str(no_positions_max_hours) + ' hours.')
+                    parameters = {'name': animal.user.name,
+                     'email': animal.user.email,
+                     'animal_name': animal.name if (animal.name != None and
+                                    animal.name != '') else animal.imei,
+                     'date_last_position': format_utcdatetime(
+                        animal.positions[0].date, locale=animal.user.locale),
+                     'hours_wo_positions': no_positions_max_hours
+                     }
                     ondestan.services.notification_service.\
-                    process_notification('gps_no_positions_admin',
-                        admin.email, animal.checks_wo_pos ==
+                        process_notification('gps_no_positions',
+                        animal.user.email, animal.checks_wo_pos ==
                         no_positions_web_checks, 2, animal.checks_wo_pos ==
-                        no_positions_mail_checks, False, parameters)
-    manager.commit()
+                        no_positions_mail_checks, animal.checks_wo_pos ==
+                        no_positions_sms_checks, parameters)
+
+                    admins = ondestan.services.user_service.get_admin_users()
+                    for admin in admins:
+                        ondestan.services.notification_service.\
+                        process_notification('gps_no_positions_admin',
+                            admin.email, animal.checks_wo_pos ==
+                            no_positions_web_checks, 2, animal.checks_wo_pos ==
+                            no_positions_mail_checks, False, parameters)
+        manager.commit()
+    except:
+        manager.abort()
+        raise
+    finally:
+        os.remove(check_non_communicating_animals_lockfile)
