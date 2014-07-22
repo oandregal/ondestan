@@ -26,6 +26,12 @@ same_position_max_hours = Config.get_float_value(
                                 'config.same_position_max_hours')
 no_positions_max_hours = Config.get_float_value(
                                 'config.no_positions_max_hours')
+no_positions_web_checks = Config.get_int_value(
+                                'config.no_positions_web_checks')
+no_positions_mail_checks = Config.get_int_value(
+                                'config.no_positions_mail_checks')
+no_positions_sms_checks = Config.get_int_value(
+                                'config.no_positions_sms_checks')
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -57,6 +63,7 @@ _('gps_no_positions_notification_web', domain='Ondestan')
 _('gps_no_positions_notification_mail_subject', domain='Ondestan')
 _('gps_no_positions_notification_mail_html_body', domain='Ondestan')
 _('gps_no_positions_notification_mail_text_body', domain='Ondestan')
+_('gps_no_positions_notification_sms', domain='Ondestan')
 
 _('gps_no_positions_admin_notification_web', domain='Ondestan')
 _('gps_no_positions_admin_notification_mail_subject', domain='Ondestan')
@@ -263,6 +270,11 @@ def save_new_position(position, animal, request):
                 notification_service.process_notification(
                     'outside_plots', animal.user.email, True, 3,
                     True, True, parameters)
+            if position.date != None:
+                if not compare_datetime_ago_from_utc(position.date,
+                    relativedelta(hours=+no_positions_max_hours)):
+                    animal.checks_wo_pos = 0
+                    animal.update()
     process_position_general_notifications(position, animal, request)
 
 
@@ -411,6 +423,8 @@ def check_non_communicating_animals():
         if animal.n_positions > 0 and animal.positions[0].date != None:
             if compare_datetime_ago_from_utc(animal.positions[0].date,
                 relativedelta(hours=+no_positions_max_hours)):
+                animal.checks_wo_pos += 1
+                animal.update()
                 logger.info('Animal with id ' + str(animal.id) +
                                ' has not sent new positions in at least ' +
                                str(no_positions_max_hours) + ' hours.')
@@ -424,12 +438,16 @@ def check_non_communicating_animals():
                  }
                 ondestan.services.notification_service.\
                     process_notification('gps_no_positions',
-                    animal.user.email, True, 2, True,
-                    False, parameters)
+                    animal.user.email, animal.checks_wo_pos ==
+                    no_positions_web_checks, 2, animal.checks_wo_pos ==
+                    no_positions_mail_checks, animal.checks_wo_pos ==
+                    no_positions_sms_checks, parameters)
 
                 admins = ondestan.services.user_service.get_admin_users()
                 for admin in admins:
                     ondestan.services.notification_service.\
-                    process_notification('gps_no_positions_admin', admin.email,
-                                         True, 2, True, False, parameters)
+                    process_notification('gps_no_positions_admin',
+                        admin.email, animal.checks_wo_pos ==
+                        no_positions_web_checks, 2, animal.checks_wo_pos ==
+                        no_positions_mail_checks, False, parameters)
     manager.commit()

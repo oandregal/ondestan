@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-18 19:30+0200\n"
-"PO-Revision-Date: 2014-07-18 19:40+0100\n"
+"POT-Creation-Date: 2014-07-22 12:33+0200\n"
+"PO-Revision-Date: 2014-07-22 12:38+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -112,22 +112,22 @@ msgid "danger"
 msgstr "Peligro"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:26
-#: ondestan/services/animal_service.py:30
+#: ondestan/services/animal_service.py:37
 msgid "low_battery_notification_web"
 msgstr "<b>¡Urgente!</b> El animal ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:27
-#: ondestan/services/animal_service.py:31
+#: ondestan/services/animal_service.py:38
 msgid "low_battery_notification_mail_subject"
 msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:28
-#: ondestan/services/animal_service.py:32
+#: ondestan/services/animal_service.py:39
 msgid "low_battery_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de ${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:29
-#: ondestan/services/animal_service.py:33
+#: ondestan/services/animal_service.py:40
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -140,32 +140,32 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:30
-#: ondestan/services/animal_service.py:34
+#: ondestan/services/animal_service.py:41
 msgid "low_battery_notification_sms"
-msgstr "[Onde Están] Batería con nivel bajo (${animal_name}) desde el ${date}"
+msgstr "[Onde Estan] Bateria con nivel bajo (${animal_name}) desde el ${date}"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:32
-#: ondestan/services/animal_service.py:36
+#: ondestan/services/animal_service.py:43
 msgid "medium_battery_notification_web"
 msgstr "El animal ${animal_name} pasó a un ${battery_level}% de batería ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:34
-#: ondestan/services/animal_service.py:38
+#: ondestan/services/animal_service.py:45
 msgid "gps_immobile_notification_web"
 msgstr "El animal ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:35
-#: ondestan/services/animal_service.py:39
+#: ondestan/services/animal_service.py:46
 msgid "gps_immobile_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} parece que no se está moviendo"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:36
-#: ondestan/services/animal_service.py:40
+#: ondestan/services/animal_service.py:47
 msgid "gps_immobile_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:37
-#: ondestan/services/animal_service.py:41
+#: ondestan/services/animal_service.py:48
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -179,37 +179,37 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:39
-#: ondestan/services/animal_service.py:43
+#: ondestan/services/animal_service.py:50
 msgid "gps_instant_duplicated_notification_web"
 msgstr "Se ha recibido más de una posición para el animal ${animal_name} en ${date}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:41
-#: ondestan/services/animal_service.py:45
+#: ondestan/services/animal_service.py:52
 msgid "gps_inactive_device_notification_web"
 msgstr "Se recibió una posición para el animal inactivo ${animal_name} ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:43
-#: ondestan/services/animal_service.py:47
+#: ondestan/services/animal_service.py:54
 msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para el animal ${animal_name} en ${date}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:45
-#: ondestan/services/animal_service.py:49
+#: ondestan/services/animal_service.py:56
 msgid "outside_plots_notification_web"
 msgstr "<b>¡Urgente!</b> El animal ${animal_name} <b>salió de las fincas designadas</b> ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:46
-#: ondestan/services/animal_service.py:50
+#: ondestan/services/animal_service.py:57
 msgid "outside_plots_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} fuera de las fincas"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:47
-#: ondestan/services/animal_service.py:51
+#: ondestan/services/animal_service.py:58
 msgid "outside_plots_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : ${animal_name} parece que salió de las fincas</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:48
-#: ondestan/services/animal_service.py:52
+#: ondestan/services/animal_service.py:59
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -221,9 +221,9 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:49
-#: ondestan/services/animal_service.py:53
+#: ondestan/services/animal_service.py:60
 msgid "outside_plots_notification_sms"
-msgstr "[Onde Estan] ${animal_name} salió de las fincas en ${date}"
+msgstr "[Onde Estan] ${animal_name} salio de las fincas en ${date}"
 
 #: build/lib.linux-i686-2.7/ondestan/services/notification_service.py:21
 #: ondestan/services/notification_service.py:21
@@ -1606,108 +1606,108 @@ msgid "retype_new_password"
 msgstr "Repite la contraseña nueva"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:23
-#: ondestan/utils/various.py:23
+#: ondestan/utils/various.py:22
 msgid "year"
 msgstr "año"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:24
-#: ondestan/utils/various.py:24
+#: ondestan/utils/various.py:23
 msgid "years"
 msgstr "años"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:25
-#: ondestan/utils/various.py:25
+#: ondestan/utils/various.py:24
 msgid "month"
 msgstr "mes"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:26
-#: ondestan/utils/various.py:26
+#: ondestan/utils/various.py:25
 msgid "months"
 msgstr "meses"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:27
-#: ondestan/utils/various.py:27
+#: ondestan/utils/various.py:26
 msgid "day"
 msgstr "día"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:28
-#: ondestan/utils/various.py:28
+#: ondestan/utils/various.py:27
 msgid "days"
 msgstr "días"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:29
-#: ondestan/utils/various.py:29
+#: ondestan/utils/various.py:28
 msgid "hour"
 msgstr "hora"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:30
-#: ondestan/utils/various.py:30
+#: ondestan/utils/various.py:29
 msgid "hours"
 msgstr "horas"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:31
-#: ondestan/utils/various.py:31
+#: ondestan/utils/various.py:30
 msgid "minute"
 msgstr "minuto"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:32
-#: ondestan/utils/various.py:32
+#: ondestan/utils/various.py:31
 msgid "minutes"
 msgstr "minutos"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:33
-#: ondestan/utils/various.py:33
+#: ondestan/utils/various.py:32
 msgid "second"
 msgstr "segundo"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:34
-#: ondestan/utils/various.py:34
+#: ondestan/utils/various.py:33
 msgid "seconds"
 msgstr "segundos"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:92
-#: ondestan/utils/various.py:110
+#: ondestan/utils/various.py:109
 msgid "meta_time_format_wo_seconds"
 msgstr "%H:%M"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:114
-#: ondestan/utils/various.py:133
+#: ondestan/utils/various.py:132
 msgid "fancy_time_two_units"
 msgstr "hace ${primary_val} ${primary_unit} y ${secondary_val} ${secondary_unit} (a las ${exact_time})"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:122
-#: ondestan/utils/various.py:141
+#: ondestan/utils/various.py:140
 msgid "fancy_time_one_unit"
 msgstr "hace ${primary_val} ${primary_unit} (a las ${exact_time})"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:149
-#: ondestan/utils/various.py:171
+#: ondestan/utils/various.py:170
 msgid "meta_date_format"
 msgstr "%d-%m-%Y"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:160
-#: ondestan/utils/various.py:182
+#: ondestan/utils/various.py:181
 msgid "meta_datetime_format"
 msgstr "%d-%m-%Y %H:%M:%S"
 
 #: build/lib.linux-i686-2.7/ondestan/utils/various.py:172
-#: ondestan/utils/various.py:194
+#: ondestan/utils/various.py:193
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 
-#: ondestan/services/animal_service.py:55
+#: ondestan/services/animal_service.py:62
 msgid "gps_no_positions_notification_web"
 msgstr "El animal ${animal_name} parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones."
 
-#: ondestan/services/animal_service.py:56
+#: ondestan/services/animal_service.py:63
 msgid "gps_no_positions_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} parece que no envía posiciones nuevas"
 
-#: ondestan/services/animal_service.py:57
+#: ondestan/services/animal_service.py:64
 msgid "gps_no_positions_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_wo_positions} horas sin enviar posiciones</b> (desde el ${date_last_position}).<br>Puede ser que el aparato simplemente no tenga mucha cobertura, pero mejor que lo compruebes por si acaso y que contactes con nuestro equipo técnico si es necesario.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
-#: ondestan/services/animal_service.py:58
+#: ondestan/services/animal_service.py:65
 msgid "gps_no_positions_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -1719,23 +1719,24 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/animal_service.py:60
+#: ondestan/services/animal_service.py:66
 #| msgid "gps_no_positions_notification_web"
+msgid "gps_no_positions_notification_sms"
+msgstr "[Onde Estan] ${animal_name} lleva al menos ${hours_wo_positions} horas sin enviar posiciones"
+
+#: ondestan/services/animal_service.py:68
 msgid "gps_no_positions_admin_notification_web"
 msgstr "El animal ${animal_name}, del usuario ${email}, parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones."
 
-#: ondestan/services/animal_service.py:61
-#| msgid "gps_no_positions_notification_mail_subject"
+#: ondestan/services/animal_service.py:69
 msgid "gps_no_positions_admin_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name}, de ${email}, parece que no envía posiciones nuevas"
 
-#: ondestan/services/animal_service.py:62
-#| msgid "gps_no_positions_notification_mail_html_body"
+#: ondestan/services/animal_service.py:70
 msgid "gps_no_positions_admin_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>Según los datos recibidos, el animal <b>${animal_name}</b> del usuario ${email} parece llevar al menos <b>${hours_wo_positions} horas sin enviar posiciones</b> (desde el ${date_last_position}).</p><p><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
-#: ondestan/services/animal_service.py:63
-#| msgid "gps_no_positions_notification_mail_text_body"
+#: ondestan/services/animal_service.py:71
 msgid "gps_no_positions_admin_notification_mail_text_body"
 msgstr ""
 "Según los datos recibidos, el animal ${animal_name} del usuario ${email} parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones (desde el ${date_last_position}).\n"

@@ -1,5 +1,5 @@
 # coding=UTF-8
-from sqlalchemy import Column, Integer, ForeignKey, String, Boolean, func, and_
+from sqlalchemy import Column, Integer, ForeignKey, String, Boolean, func
 from sqlalchemy.orm import relationship, backref
 from sqlalchemy.ext.hybrid import hybrid_property
 from sqlalchemy.dialects.postgresql import array
@@ -22,6 +22,7 @@ class Animal(Entity, Base):
     imei = Column(String)
     phone = Column(String)
     active = Column(Boolean)
+    checks_wo_pos = Column(Integer)
     user_id = Column(Integer, ForeignKey("users.id"))
     user = relationship("User", backref=backref('animals',
                                                   order_by=name))
