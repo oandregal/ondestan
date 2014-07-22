@@ -33,7 +33,8 @@ no_positions_mail_checks = Config.get_int_value(
                                 'config.no_positions_mail_checks')
 no_positions_sms_checks = Config.get_int_value(
                                 'config.no_positions_sms_checks')
-check_non_communicating_animals_lockfile = '.check_non_communicating_animals.lock'
+check_non_communicating_animals_lockfile = Config.get_string_value(
+    'config.lockfiles_folder') + '.check_non_communicating_animals.lock'
 # We remove the lock file in case the application was shut down in the middle of the process
 if os.path.isfile(check_non_communicating_animals_lockfile):
     os.remove(check_non_communicating_animals_lockfile)
