@@ -35,7 +35,8 @@ no_positions_sms_checks = Config.get_int_value(
                                 'config.no_positions_sms_checks')
 check_non_communicating_animals_lockfile = '.check_non_communicating_animals.lock'
 # We remove the lock file in case the application was shut down in the middle of the process
-os.remove(check_non_communicating_animals_lockfile)
+if os.path.isfile(check_non_communicating_animals_lockfile):
+    os.remove(check_non_communicating_animals_lockfile)
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -464,4 +465,5 @@ def check_non_communicating_animals():
         manager.abort()
         raise
     finally:
-        os.remove(check_non_communicating_animals_lockfile)
+        if os.path.isfile(check_non_communicating_animals_lockfile):
+            os.remove(check_non_communicating_animals_lockfile)
