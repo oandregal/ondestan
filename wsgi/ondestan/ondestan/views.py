@@ -1,10 +1,6 @@
 # coding=UTF-8
 from pyramid.httpexceptions import (
-    HTTPFound,
-    HTTPOk,
-    HTTPBadRequest,
-    HTTPForbidden,
-    HTTPMethodNotAllowed
+    HTTPFound
     )
 
 from pyramid.view import (
@@ -82,18 +78,7 @@ def tour(request):
 
 @view_config(route_name='gps_update')
 def gps_update(request):
-    if request.method == 'POST':
-        response = 'fabi:0,0,0,0'
-        try:
-            comms_service.process_gps_updates(request)
-            return HTTPOk(body_template=response)
-        except GpsUpdateError as e:
-            logger.error("Gps update couldn't be processed: " + e.msg)
-            if e.code == 403:
-                return HTTPForbidden(detail=e.msg, body_template=response)
-            return HTTPBadRequest(detail=e.msg, body_template=response)
-    logger.warning("Gps update requested with wrong method.")
-    return HTTPMethodNotAllowed()
+    return comms_service.process_update_request(request)
 
 
 @view_config(route_name='signup', renderer='templates/signup.pt')
