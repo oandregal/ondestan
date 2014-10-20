@@ -1,3 +1,4 @@
+# coding=UTF-8
 import os
 
 from setuptools import setup, find_packages
@@ -42,10 +43,10 @@ setup(name='Ondestan',
             ('**.py', 'lingua_python', None),
             ('**.pt', 'lingua_xml', None)
             ]},
-      author='',
-      author_email='',
+      author='Jorge López Fernández',
+      author_email='jlopez@cartolab.es',
       url='',
-      keywords='web python pyramid pylons cows gps monitoring sqlalchemy geoalchemy2',
+      keywords='web python pyramid pylons animals gps monitoring sqlalchemy geoalchemy2',
       packages=find_packages(),
       include_package_data=True,
       zip_safe=False,
