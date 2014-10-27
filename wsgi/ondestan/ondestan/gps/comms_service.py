@@ -47,6 +47,14 @@ base_header_data = {
 }
 
 base_data = {
+    'date': None,
+    'lat': None,
+    'lon': None,
+    'battery': None,
+    'coverage': None
+}
+
+legacy_base_data = {
     'imei': None,
     'date': None,
     'lat': None,
@@ -114,25 +122,31 @@ def process_gps_params(base_params, request):
         params = position.split(params_divider)
         j = 0
         if i == 0:
-            if (len(params) != len(header_params_positions)):
-                raise GpsUpdateError(
-                        'Insufficient POST inner header params', 400)
             if len(params) > len(header_params_positions):
-                logger.warning("Received a GPS update with too many"
+                logger.info("Received a GPS update with too many"
                                + " inner header params: '"
                                + position + "'")
+            if (len(params) < len(header_params_positions)):
+                logger.info("Received a GPS update with fewer inner"
+                            + " header params than configured: '" + position
+                            + "'")
             for key in header_params_positions:
+                if j >= len(params):
+                    break
                 if key in header:
                     header[key] = params[j]
                 j += 1
         else:
             data = base_data.copy()
             if len(params) > len(body_params_positions):
-                logger.warning("Received a GPS update with too many params: '"
+                logger.info("Received a GPS update with too many params: '"
                                + position + "'")
             if (len(params) < len(body_params_positions)):
-                raise GpsUpdateError('Insufficient POST params', 400)
+                logger.info("Received a GPS update with fewer params "
+                            + "than configured: '" + position + "'")
             for key in body_params_positions:
+                if j >= len(params):
+                    break
                 if key in data:
                     data[key] = params[j]
                 j += 1
@@ -144,7 +158,8 @@ def process_gps_data(data, header, request):
     try:
         if header['imei'] == None or header['imei'] == '' or\
         data['date'] == None or data['date'] == '' or data['lon'] == None or\
-        data['lon'] == '' or data['lat'] == None or data['lat'] == '':
+        data['lon'] == '' or data['lat'] == None or data['lat'] == '' or\
+        data['battery'] == None or data['battery'] == '':
             raise GpsUpdateError('Insufficient POST params', 400)
         animal = animal_service.get_animal(header['imei'])
         if animal == None:
@@ -186,7 +201,7 @@ def process_gps_params_legacy(base_params, request):
     for position in positions:
         params = position.split(legacy_params_divider)
         i = 0
-        data = base_data.copy()
+        data = legacy_base_data.copy()
         if (len(params) < len(legacy_params_positions)):
             raise GpsUpdateError('Insufficient POST params', 400)
         if len(params) > len(legacy_params_positions):
