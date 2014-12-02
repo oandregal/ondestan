@@ -86,15 +86,16 @@ function addToPopover(feature){
     var device = feature.properties;
     var zoomString = '<span class="glyphicon glyphicon-screenshot" disabled></span> ';
     var historyString = '<span class="history-link glyphicon glyphicon-calendar pull-right" disabled></span> ';
+    var approxPositionString = '<span class="glyphicon glyphicon-hand-down" disabled></span>';
     if (feature.geometry){
         var lng = feature.geometry.coordinates[0];
         var lat = feature.geometry.coordinates[1];
         zoomString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.center_view_on_animal_tooltip + '"' +
         	' href="#" onclick="zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-screenshot"></span>  </a>';
-        approxPositionString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.show_animal_current_approx_position_tooltip + '"' +
-    	' href="#" onclick="show_current_approx_position(' + device.id + ')"><span class="glyphicon glyphicon-hand-down"></span>  </a>';
         historyString = '<a href="' + window.contextVariables.positions_history_url + device.id + '"><span data-toggle="tooltip" data-placement="top" title="' +
         	window.contextVariables.view_positions_history_tooltip + '" class="history-link glyphicon glyphicon-calendar pull-right"></span>  </a>';
+        approxPositionString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.show_animal_current_approx_position_tooltip + '"' +
+        ' href="#" onclick="show_current_approx_position(' + device.id + ')"><span class="glyphicon glyphicon-hand-down"></span>  </a>';
     }
     var name = device.name || device.imei;
     var battery = device.battery || batteryStandards.level.noData;
