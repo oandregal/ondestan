@@ -21,6 +21,7 @@
     <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/Google.js')}"></script>
     <?python from ondestan.config import Config?>
     <script type="text/javascript">
+      window.contextVariables.animal_approx_position_json_url = "${request.route_url('json_animal_approx_position', animal_id='__animal_id__')}";
       window.contextVariables.animals_json_url = "${request.route_url('json_animals')}";
       window.contextVariables.plots_json_url = "${request.route_url('json_plots')}";
       window.contextVariables.orders_popover_content = "${orders_popover_content}";
@@ -35,7 +36,8 @@
       window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
       window.contextVariables.positions_history_url = "${request.route_url('history_map', animal_id="")}";
       window.contextVariables.edit_name_tooltip = "<tal:block i18n:translate="edit_name_tooltip">Double click to edit name (confirm change by pressing enter).</tal:block>";
-      window.contextVariables.center_view_on_animal_tooltip = "<tal:block i18n:translate="center_view_on_animal_tooltip">Click to center view onto this animal.</tal:block>";
+      window.contextVariables.center_view_on_animal_tooltip = "<tal:block i18n:translate="center_view_on_animal_tooltip">Click to center view onto this animal's latest position.</tal:block>";
+      window.contextVariables.show_animal_current_approx_position_tooltip = "<tal:block i18n:translate="show_animal_current_approx_position_tooltip">Click to show this animal's approximate current position (based on previous data).</tal:block>";
       window.contextVariables.view_positions_history_tooltip = "<tal:block i18n:translate="view_positions_history_tooltip">Click to view this animal's position history.</tal:block>";
       window.contextVariables.center_on_user_position = "<tal:block i18n:translate="center_on_user_position_tooltip">Center map onto your current position.</tal:block>";
       window.contextVariables.geolocation_not_supported = "<tal:block i18n:translate="geolocation_not_supported">Geolocation is not supported by this browser.</tal:block>";
@@ -125,6 +127,24 @@
 		      		<div id="inactive-devices" class="circle"></div><span i18n:translate="inactive_device_legend">Inactive devices</span>
 		      	</li>
 	      	</ul>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+
+	<!-- Not enough info for app position -->
+	<div class="modal fade bs-example-modal-sm" id="no-info-app-position-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel" i18n:translate="no_info_app_position_title">Not enough data</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<span i18n:translate="no_info_app_position_msg">Sorry, we don't have enough data for computing an approximate position for that animal at this instant.</span>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: jlopez@cartolab.es\n"
-"POT-Creation-Date: 2014-07-22 12:33+0200\n"
-"PO-Revision-Date: 2014-07-22 12:38+0100\n"
+"POT-Creation-Date: 2014-12-01 20:19+0100\n"
+"PO-Revision-Date: 2014-12-01 20:31+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -18,51 +18,51 @@ msgstr ""
 "Generated-By: Babel 1.3\n"
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:67
-#: ondestan/views.py:67
+#: ondestan/views.py:66
 msgid "failed_login"
 msgstr "Autenticación fallida"
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:211
-#: ondestan/views.py:211
+#: ondestan/views.py:199
 msgid "device_phone_already_use"
 msgstr "El número ya se encuentra en uso."
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:227
-#: ondestan/views.py:227
+#: ondestan/views.py:215
 msgid "device_imei_already_use"
 msgstr "El IMEI ya se encuentra en uso."
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:242
-#: ondestan/views.py:242
+#: ondestan/views.py:230
 msgid "user_email_already_use"
 msgstr "Ya existe un usuario con ese e-mail. Por favor, selecciona uno distinto."
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:410
-#: ondestan/views.py:410
+#: ondestan/views.py:398
 msgid "too_many_positions_in_selected_time_interval"
 msgstr "Demasiadas posiciones para mostrar simultáneamente en el intervalo de tiempo seleccionado. Se mostrarán las ${max_positions} más recientes."
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:557
 #: build/lib.linux-i686-2.7/ondestan/views.py:711
-#: ondestan/views.py:557
-#: ondestan/views.py:711
+#: ondestan/views.py:593
+#: ondestan/views.py:747
 msgid "animal_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei})<br/><strong>Finca designada:</strong> ${plot}<br/><strong>Batería:</strong> ${battery}%<br/><strong>Fecha de la posición:</strong> ${date}"
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:620
 #: build/lib.linux-i686-2.7/ondestan/views.py:714
-#: ondestan/views.py:620
-#: ondestan/views.py:714
+#: ondestan/views.py:656
+#: ondestan/views.py:750
 msgid "animal_popup"
 msgstr "<strong>Nombre:</strong> ${animal_name}<br/><strong>Finca designada:</strong> ${plot}<br/><strong>Batería</strong>: ${battery}%<br/><strong>Fecha de la posición</strong>: ${date}"
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:808
-#: ondestan/views.py:808
+#: ondestan/views.py:844
 msgid "plot_popup_admin"
 msgstr "<strong>Propietario:</strong> ${name}<br/><strong>Nombre:</strong> ${plot_name}"
 
 #: build/lib.linux-i686-2.7/ondestan/views.py:834
-#: ondestan/views.py:834
+#: ondestan/views.py:870
 msgid "plot_popup"
 msgstr "<strong>Nombre:</strong> ${plot_name}"
 
@@ -112,22 +112,22 @@ msgid "danger"
 msgstr "Peligro"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:26
-#: ondestan/services/animal_service.py:37
+#: ondestan/services/animal_service.py:43
 msgid "low_battery_notification_web"
 msgstr "<b>¡Urgente!</b> El animal ${animal_name} pasó a <b>sólo un ${battery_level}% de batería</b> ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:27
-#: ondestan/services/animal_service.py:38
+#: ondestan/services/animal_service.py:44
 msgid "low_battery_notification_mail_subject"
 msgstr "[Onde Están] Batería con Nivel bajo (${animal_name})"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:28
-#: ondestan/services/animal_service.py:39
+#: ondestan/services/animal_service.py:45
 msgid "low_battery_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>El dispositivo en <b>${animal_name}</b> bajó a un nivel de <b>batería de ${battery_level}%</b> a las ${date}.<br>Puedes acceder al mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:29
-#: ondestan/services/animal_service.py:40
+#: ondestan/services/animal_service.py:46
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -140,32 +140,32 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:30
-#: ondestan/services/animal_service.py:41
+#: ondestan/services/animal_service.py:47
 msgid "low_battery_notification_sms"
 msgstr "[Onde Estan] Bateria con nivel bajo (${animal_name}) desde el ${date}"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:32
-#: ondestan/services/animal_service.py:43
+#: ondestan/services/animal_service.py:49
 msgid "medium_battery_notification_web"
 msgstr "El animal ${animal_name} pasó a un ${battery_level}% de batería ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:34
-#: ondestan/services/animal_service.py:45
+#: ondestan/services/animal_service.py:51
 msgid "gps_immobile_notification_web"
 msgstr "El animal ${animal_name} parece llevar al menos ${hours_immobile} horas sin moverse."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:35
-#: ondestan/services/animal_service.py:46
+#: ondestan/services/animal_service.py:52
 msgid "gps_immobile_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} parece que no se está moviendo"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:36
-#: ondestan/services/animal_service.py:47
+#: ondestan/services/animal_service.py:53
 msgid "gps_immobile_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_immobile} horas sin moverse</b> (desde el ${date_begin}).<br>Puede ser un error técnico, pero mejor que lo compruebes por si acaso.<br>Recuerda que puedes acceder a tu mapa a través de <a href=\"${url}\">este enlace</a>.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:37
-#: ondestan/services/animal_service.py:48
+#: ondestan/services/animal_service.py:54
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -179,37 +179,37 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:39
-#: ondestan/services/animal_service.py:50
+#: ondestan/services/animal_service.py:56
 msgid "gps_instant_duplicated_notification_web"
 msgstr "Se ha recibido más de una posición para el animal ${animal_name} en ${date}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:41
-#: ondestan/services/animal_service.py:52
+#: ondestan/services/animal_service.py:58
 msgid "gps_inactive_device_notification_web"
 msgstr "Se recibió una posición para el animal inactivo ${animal_name} ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:43
-#: ondestan/services/animal_service.py:54
+#: ondestan/services/animal_service.py:60
 msgid "no_gps_coverage_notification_web"
 msgstr "Se ha recibido una actualización sin cobertura GPS para el animal ${animal_name} en ${date}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:45
-#: ondestan/services/animal_service.py:56
+#: ondestan/services/animal_service.py:62
 msgid "outside_plots_notification_web"
 msgstr "<b>¡Urgente!</b> El animal ${animal_name} <b>salió de las fincas designadas</b> ${fancy_date_eval}."
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:46
-#: ondestan/services/animal_service.py:57
+#: ondestan/services/animal_service.py:63
 msgid "outside_plots_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} fuera de las fincas"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:47
-#: ondestan/services/animal_service.py:58
+#: ondestan/services/animal_service.py:64
 msgid "outside_plots_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>${date} : ${animal_name} parece que salió de las fincas</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:48
-#: ondestan/services/animal_service.py:59
+#: ondestan/services/animal_service.py:65
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -221,7 +221,7 @@ msgstr ""
 "www.ondeestan.com"
 
 #: build/lib.linux-i686-2.7/ondestan/services/animal_service.py:49
-#: ondestan/services/animal_service.py:60
+#: ondestan/services/animal_service.py:66
 msgid "outside_plots_notification_sms"
 msgstr "[Onde Estan] ${animal_name} salio de las fincas en ${date}"
 
@@ -508,7 +508,7 @@ msgstr "Visor de histórico de posiciones - Ondestán"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:37
 #: build/lib.linux-i686-2.7/ondestan/templates/plotManager.pt:37
 #: ondestan/templates/animalHistoryViewer.pt:39
-#: ondestan/templates/animalViewer.pt:37
+#: ondestan/templates/animalViewer.pt:38
 #: ondestan/templates/plotManager.pt:37
 msgid "edit_name_tooltip"
 msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
@@ -518,7 +518,7 @@ msgstr "Doble click para editar el nombre (confirma el cambio pulsando intro)."
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:40
 #: build/lib.linux-i686-2.7/ondestan/templates/plotManager.pt:41
 #: ondestan/templates/animalHistoryViewer.pt:41
-#: ondestan/templates/animalViewer.pt:40
+#: ondestan/templates/animalViewer.pt:42
 #: ondestan/templates/plotManager.pt:41
 msgid "center_on_user_position_tooltip"
 msgstr "Click para centrar la vista en tu posición actual."
@@ -528,7 +528,7 @@ msgstr "Click para centrar la vista en tu posición actual."
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:41
 #: build/lib.linux-i686-2.7/ondestan/templates/plotManager.pt:42
 #: ondestan/templates/animalHistoryViewer.pt:42
-#: ondestan/templates/animalViewer.pt:41
+#: ondestan/templates/animalViewer.pt:43
 #: ondestan/templates/plotManager.pt:42
 msgid "geolocation_not_supported"
 msgstr "Este navegador no permite localizarte."
@@ -538,7 +538,7 @@ msgstr "Este navegador no permite localizarte."
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:43
 #: build/lib.linux-i686-2.7/ondestan/templates/plotManager.pt:39
 #: ondestan/templates/animalHistoryViewer.pt:44
-#: ondestan/templates/animalViewer.pt:43
+#: ondestan/templates/animalViewer.pt:45
 #: ondestan/templates/plotManager.pt:39
 msgid "map_tool_zoom_in_tooltip"
 msgstr "Acercar"
@@ -548,7 +548,7 @@ msgstr "Acercar"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:44
 #: build/lib.linux-i686-2.7/ondestan/templates/plotManager.pt:40
 #: ondestan/templates/animalHistoryViewer.pt:45
-#: ondestan/templates/animalViewer.pt:44
+#: ondestan/templates/animalViewer.pt:46
 #: ondestan/templates/plotManager.pt:40
 msgid "map_tool_zoom_out_tooltip"
 msgstr "Alejar"
@@ -560,8 +560,8 @@ msgstr "Alejar"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:97
 #: ondestan/templates/animalHistoryViewer.pt:46
 #: ondestan/templates/animalHistoryViewer.pt:62
-#: ondestan/templates/animalViewer.pt:45
-#: ondestan/templates/animalViewer.pt:97
+#: ondestan/templates/animalViewer.pt:47
+#: ondestan/templates/animalViewer.pt:99
 msgid "map_legend"
 msgstr "Leyenda del mapa"
 
@@ -569,7 +569,7 @@ msgstr "Leyenda del mapa"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:65
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:100
 #: ondestan/templates/animalHistoryViewer.pt:65
-#: ondestan/templates/animalViewer.pt:100
+#: ondestan/templates/animalViewer.pt:102
 msgid "battery_level_legend"
 msgstr "Nivel de batería (color)"
 
@@ -577,7 +577,7 @@ msgstr "Nivel de batería (color)"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:68
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:103
 #: ondestan/templates/animalHistoryViewer.pt:68
-#: ondestan/templates/animalViewer.pt:103
+#: ondestan/templates/animalViewer.pt:105
 msgid "low_battery_level"
 msgstr "Nivel de batería bajo"
 
@@ -585,7 +585,7 @@ msgstr "Nivel de batería bajo"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:71
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:106
 #: ondestan/templates/animalHistoryViewer.pt:71
-#: ondestan/templates/animalViewer.pt:106
+#: ondestan/templates/animalViewer.pt:108
 msgid "medium_battery_level"
 msgstr "Nivel de batería medio"
 
@@ -593,7 +593,7 @@ msgstr "Nivel de batería medio"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:74
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:109
 #: ondestan/templates/animalHistoryViewer.pt:74
-#: ondestan/templates/animalViewer.pt:109
+#: ondestan/templates/animalViewer.pt:111
 msgid "high_battery_level"
 msgstr "Nivel de batería alto"
 
@@ -601,7 +601,7 @@ msgstr "Nivel de batería alto"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:78
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:113
 #: ondestan/templates/animalHistoryViewer.pt:78
-#: ondestan/templates/animalViewer.pt:113
+#: ondestan/templates/animalViewer.pt:115
 msgid "inside_outside_plots_legend"
 msgstr "Dentro/fuera de fincas (borde)"
 
@@ -609,7 +609,7 @@ msgstr "Dentro/fuera de fincas (borde)"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:81
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:116
 #: ondestan/templates/animalHistoryViewer.pt:81
-#: ondestan/templates/animalViewer.pt:116
+#: ondestan/templates/animalViewer.pt:118
 msgid "inside_plots"
 msgstr "Dentro de fincas"
 
@@ -617,7 +617,7 @@ msgstr "Dentro de fincas"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:84
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:119
 #: ondestan/templates/animalHistoryViewer.pt:84
-#: ondestan/templates/animalViewer.pt:119
+#: ondestan/templates/animalViewer.pt:121
 msgid "outside_plots"
 msgstr "Fuera de fincas"
 
@@ -625,7 +625,7 @@ msgstr "Fuera de fincas"
 #: build/lib.linux-i686-2.7/ondestan/templates/animalHistoryViewer.pt:90
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:125
 #: ondestan/templates/animalHistoryViewer.pt:90
-#: ondestan/templates/animalViewer.pt:125
+#: ondestan/templates/animalViewer.pt:127
 msgid "inactive_device_legend"
 msgstr "Dispositivos inactivos"
 
@@ -637,7 +637,8 @@ msgstr "Dispositivos inactivos"
 #: ondestan/templates/animalHistoryViewer.pt:95
 #: ondestan/templates/animalHistoryViewer.pt:108
 #: ondestan/templates/animalHistoryViewer.pt:121
-#: ondestan/templates/animalViewer.pt:130
+#: ondestan/templates/animalViewer.pt:132
+#: ondestan/templates/animalViewer.pt:150
 msgid "close"
 msgstr "Cerrar"
 
@@ -697,61 +698,62 @@ msgstr "Visor de animales - Ondestán"
 
 #. Default: Activate
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:27
-#: ondestan/templates/animalViewer.pt:27
+#: ondestan/templates/animalViewer.pt:28
 msgid "activate"
 msgstr "Activar"
 
 #. Default: Deactivate
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:28
-#: ondestan/templates/animalViewer.pt:28
+#: ondestan/templates/animalViewer.pt:29
 msgid "deactivate"
 msgstr "Desactivar"
 
 #. Default: Click to center view onto this animal.
+#. Default: Click to center view onto this animal's latest position.
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:38
-#: ondestan/templates/animalViewer.pt:38
+#: ondestan/templates/animalViewer.pt:39
 msgid "center_view_on_animal_tooltip"
-msgstr "Click para centrar la vista en este animal."
+msgstr "Click para centrar la vista en la posición más reciente de este animal."
 
 #. Default: Click to view this animal's position history.
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:39
-#: ondestan/templates/animalViewer.pt:39
+#: ondestan/templates/animalViewer.pt:41
 msgid "view_positions_history_tooltip"
 msgstr "Click para ver el histórico de posiciones de este animal."
 
 #. Default: Devices
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:65
-#: ondestan/templates/animalViewer.pt:65
+#: ondestan/templates/animalViewer.pt:67
 msgid "devices"
 msgstr "Dispositivos"
 
 #. Default: Active
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:69
-#: ondestan/templates/animalViewer.pt:69
+#: ondestan/templates/animalViewer.pt:71
 msgid "dashboard_active"
 msgstr "Activos"
 
 #. Default: Inactive
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:73
-#: ondestan/templates/animalViewer.pt:73
+#: ondestan/templates/animalViewer.pt:75
 msgid "dashboard_inactive"
 msgstr "Inactivos"
 
 #. Default: Alerts
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:78
-#: ondestan/templates/animalViewer.pt:78
+#: ondestan/templates/animalViewer.pt:80
 msgid "alerts"
 msgstr "Alertas"
 
 #. Default: Low Battery
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:82
-#: ondestan/templates/animalViewer.pt:82
+#: ondestan/templates/animalViewer.pt:84
 msgid "dashboard_low_battery"
 msgstr "Batería baja"
 
 #. Default: Outside Plots
 #: build/lib.linux-i686-2.7/ondestan/templates/animalViewer.pt:86
-#: ondestan/templates/animalViewer.pt:86
+#: ondestan/templates/animalViewer.pt:88
 msgid "dashboard_outside_plots"
 msgstr "Fuera de fincas"
 
@@ -1695,19 +1697,29 @@ msgstr "%d-%m-%Y %H:%M:%S"
 msgid "meta_time_format"
 msgstr "%H:%M:%S"
 
-#: ondestan/services/animal_service.py:62
+#: ondestan/views.py:543
+#| msgid "animal_popup_admin"
+msgid "animal_app_position_popup_admin"
+msgstr "<strong>Posición aproximada</strong><br/><strong>Propietario:</strong> ${name}<br/><strong>Animal:</strong> ${animal_name} (${imei})<br/><strong>Fecha:</strong> ${date}"
+
+#: ondestan/views.py:546
+#| msgid "no_info_app_position_msg"
+msgid "animal_app_position_popup"
+msgstr "<strong>Posición aproximada</strong><br/><strong>Animal:</strong> ${animal_name}<br/><strong>Fecha:</strong> ${date}"
+
+#: ondestan/services/animal_service.py:68
 msgid "gps_no_positions_notification_web"
 msgstr "El animal ${animal_name} parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones."
 
-#: ondestan/services/animal_service.py:63
+#: ondestan/services/animal_service.py:69
 msgid "gps_no_positions_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name} parece que no envía posiciones nuevas"
 
-#: ondestan/services/animal_service.py:64
+#: ondestan/services/animal_service.py:70
 msgid "gps_no_positions_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>    <p>¡Hola ${name}!<br><br>Según los datos recibidos, tu animal <b>${animal_name}</b> parece llevar al menos <b>${hours_wo_positions} horas sin enviar posiciones</b> (desde el ${date_last_position}).<br>Puede ser que el aparato simplemente no tenga mucha cobertura, pero mejor que lo compruebes por si acaso y que contactes con nuestro equipo técnico si es necesario.</p><p>Saludos<br>Equipo OndeEstán<br><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
-#: ondestan/services/animal_service.py:65
+#: ondestan/services/animal_service.py:71
 msgid "gps_no_positions_notification_mail_text_body"
 msgstr ""
 "¡Hola ${name}!\n"
@@ -1719,27 +1731,44 @@ msgstr ""
 "Equipo OndeEstán\n"
 "www.ondeestan.com"
 
-#: ondestan/services/animal_service.py:66
-#| msgid "gps_no_positions_notification_web"
+#: ondestan/services/animal_service.py:72
 msgid "gps_no_positions_notification_sms"
 msgstr "[Onde Estan] ${animal_name} lleva al menos ${hours_wo_positions} horas sin enviar posiciones"
 
-#: ondestan/services/animal_service.py:68
+#: ondestan/services/animal_service.py:74
 msgid "gps_no_positions_admin_notification_web"
 msgstr "El animal ${animal_name}, del usuario ${email}, parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones."
 
-#: ondestan/services/animal_service.py:69
+#: ondestan/services/animal_service.py:75
 msgid "gps_no_positions_admin_notification_mail_subject"
 msgstr "[Onde Están] ${animal_name}, de ${email}, parece que no envía posiciones nuevas"
 
-#: ondestan/services/animal_service.py:70
+#: ondestan/services/animal_service.py:76
 msgid "gps_no_positions_admin_notification_mail_html_body"
 msgstr "<html>    <head></head>    <body>Según los datos recibidos, el animal <b>${animal_name}</b> del usuario ${email} parece llevar al menos <b>${hours_wo_positions} horas sin enviar posiciones</b> (desde el ${date_last_position}).</p><p><a href=\"www.ondeestan.com\">www.ondeestan.com</a></p></body></html>"
 
-#: ondestan/services/animal_service.py:71
+#: ondestan/services/animal_service.py:77
 msgid "gps_no_positions_admin_notification_mail_text_body"
 msgstr ""
 "Según los datos recibidos, el animal ${animal_name} del usuario ${email} parece llevar al menos ${hours_wo_positions} horas sin enviar posiciones (desde el ${date_last_position}).\n"
 "\n"
 "www.ondeestan.com"
+
+#. Default: Click to show this animal's approximate current position (based on
+#. previous data).
+#: ondestan/templates/animalViewer.pt:40
+msgid "show_animal_current_approx_position_tooltip"
+msgstr "Click para mostrar la posición actual aproximada de este animal (basada en datos anteriores)."
+
+#. Default: Not enough data
+#: ondestan/templates/animalViewer.pt:144
+msgid "no_info_app_position_title"
+msgstr "No hay suficientes datos"
+
+#. Default: Sorry, we don't have enough data for computing an approximate
+#. position
+#. for that animal at this instant.
+#: ondestan/templates/animalViewer.pt:147
+msgid "no_info_app_position_msg"
+msgstr "Lo sentimos, pero no tenemos suficientes datos para calcular la posición aproximada de ese animal en este instante."
 

@@ -9,6 +9,8 @@ from ondestan.entities.position import Position
 from ondestan.utils import Base
 from ondestan.config import Config
 
+from datetime import datetime
+
 max_positions = Config.get_int_value('config.history_max_positions')
 
 
@@ -52,6 +54,21 @@ class Animal(Entity, Base):
         if self.n_positions > 0:
             return self.positions[0].outside()
         return None
+
+    def get_approx_position_as_geojson(self, time=datetime.utcnow()):
+        positions = []
+        if self.id != None:
+            query = Position().queryObject().filter(Position.animal_id
+                    == self.id)
+            query = query.filter(func.abs(
+                    func.date_part('hour', Position.date - time)) <= 2)
+            aux = query.order_by(Position.date.desc()).limit(50)
+            for position in aux:
+                positions.append(position.geom)
+        return self.session.scalar(func.ST_AsGeoJson(
+            func.ST_MinimumBoundingCircle(func.ST_Collect(
+            array(positions))))) if len(positions) > 1\
+            else None
 
     def filter_positions(self, start=None, end=None):
         if self.id != None:

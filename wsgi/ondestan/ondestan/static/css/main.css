@@ -195,6 +195,10 @@ div#map_history {
   }
 }
 
+.popover {
+	max-width: 376px;
+}
+
 .popover-content {
     padding: 5px;
 }
@@ -215,7 +219,7 @@ div#map_history {
 
 .data .popover-content ul {
 	margin: 0px;
-	min-width: 260px;
+	min-width: 280px;
 }
 
 .list-group-item input {

@@ -1,4 +1,5 @@
 var animals_layer;
+var animal_approx_pos_layer;
 var plots;
 var active_devices;
 var active_devices_popover_content;
@@ -52,6 +53,35 @@ function getStyleForDevice(feature){
     return opt;
 }
 
+function show_current_approx_position(animal_id) {
+	if (animal_approx_pos_layer != null) {
+		map.removeLayer(animal_approx_pos_layer);
+	}
+	animal_approx_pos_layer = new L.FeatureGroup();
+	animal_approx_pos_data = new L.GeoJSON.AJAX(contextVariables.animal_approx_position_json_url.replace('__animal_id__', animal_id),{
+	    style: function (feature) {
+	    	return {color: "#FFF700", fillOpacity: 0.3, weight: 0};
+	    },
+        onEachFeature: function (feature, layer) {
+        	layer.bindPopup(feature.properties.popup);
+        	animal_approx_pos_layer.addLayer(layer);
+        },
+        middleware: function(data) {
+        	if (data.length == 0) {
+        		$('#no-info-app-position-modal').modal();
+        	}
+        	return data;
+        }
+    });
+
+	animal_approx_pos_data.on('data:loaded', function(e) {
+		animal_approx_pos_layer.bringToBack();
+		map.fitBounds(animal_approx_pos_layer.getBounds());
+	});
+
+	map.addLayer(animal_approx_pos_layer);
+}
+
 function addToPopover(feature){
     var device = feature.properties;
     var zoomString = '<span class="glyphicon glyphicon-screenshot" disabled></span> ';
@@ -61,6 +91,8 @@ function addToPopover(feature){
         var lat = feature.geometry.coordinates[1];
         zoomString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.center_view_on_animal_tooltip + '"' +
         	' href="#" onclick="zoom('+lng+','+lat+')"><span class="glyphicon glyphicon-screenshot"></span>  </a>';
+        approxPositionString = '<a data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.show_animal_current_approx_position_tooltip + '"' +
+    	' href="#" onclick="show_current_approx_position(' + device.id + ')"><span class="glyphicon glyphicon-hand-down"></span>  </a>';
         historyString = '<a href="' + window.contextVariables.positions_history_url + device.id + '"><span data-toggle="tooltip" data-placement="top" title="' +
         	window.contextVariables.view_positions_history_tooltip + '" class="history-link glyphicon glyphicon-calendar pull-right"></span>  </a>';
     }
@@ -79,6 +111,7 @@ function addToPopover(feature){
         '<input type="hidden" id="id" name="id" style="display: none;" value="' + device.id + '"/>' +
         '<a href="' + url + '" type="button" class="pull-right btn btn-default btn-xs">' + activation + '</a>' +
         zoomString +
+        approxPositionString +
         '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + (device.name || '') + '" />' +
         '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
         '<span class="badge">' + battery + '%</span>' +

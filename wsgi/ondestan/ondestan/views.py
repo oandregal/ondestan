@@ -31,6 +31,7 @@ from ondestan.config import Config
 max_positions = Config.get_int_value('config.history_max_positions')
 
 import logging, json, urllib2
+from datetime import datetime
 
 logger = logging.getLogger('ondestan')
 logger_nominatim = logging.getLogger('nominatim')
@@ -511,6 +512,54 @@ def delete_plot(request):
     else:
         user = user_service.get_user_by_email(get_user_email(request))
         return {'success': plot_service.delete_plot(plot_id, user.id)}
+
+
+@view_config(route_name='json_animal_approx_position', renderer='json',
+             permission='view')
+def json_animal_approx_position(request):
+    geojson = []
+    animal_id = request.matchdict['animal_id']
+    is_admin = check_permission('admin', request)
+    email = get_user_email(request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    if animal != None and (is_admin or animal.user.email == email):
+        instant = datetime.utcnow()
+        position = animal.get_approx_position_as_geojson(instant)
+        if position != None:
+            parameters = {
+                'animal_name': animal.name,
+                'name': animal.user.email,
+                'imei': animal.imei,
+                'date': format_utcdatetime(instant,
+                                           request)
+            }
+            if is_admin:
+                popup_str = _("animal_app_position_popup_admin", domain='Ondestan',
+                              mapping=parameters)
+            else:
+                popup_str = _("animal_app_position_popup", domain='Ondestan',
+                              mapping=parameters)
+            geojson.append({
+                "type": "Feature",
+                "properties": {
+                    "id": animal.id,
+                    "name": animal.name,
+                    "imei": animal.imei,
+                    "owner": animal.user.email,
+                    "active": animal.active,
+                    "date": format_utcdatetime(instant,
+                                           request),
+                    "popup": get_localizer(request).translate(
+                                                        popup_str)
+                },
+                "geometry": eval(position)
+            })
+    return geojson
 
 
 @view_config(route_name='json_animals', renderer='json',
