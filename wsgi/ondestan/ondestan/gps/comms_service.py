@@ -51,7 +51,8 @@ base_data = {
     'lat': None,
     'lon': None,
     'battery': None,
-    'coverage': None
+    'coverage': None,
+    'charging': False
 }
 
 legacy_base_data = {
@@ -185,6 +186,8 @@ def process_gps_data(data, header, request):
             position.battery = float(data['battery'])
         if data['coverage'] != None:
             position.coverage = float(data['coverage'])
+        if data['charging'] != None:
+            position.charging = (int(data['charging']) == 1);
         if no_coverage:
             animal_service.process_no_coverage_position(position, animal,
                                                         request)

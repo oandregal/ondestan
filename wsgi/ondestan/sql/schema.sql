@@ -74,6 +74,7 @@ CREATE TABLE positions (
 	"date" TIMESTAMP NOT NULL,
 	battery REAL,
 	coverage REAL,
+	charging BOOL NOT NULL DEFAULT FALSE,
 	animal_id INTEGER REFERENCES animals NOT NULL,
 	UNIQUE ("date", animal_id)
 );
@@ -114,9 +115,9 @@ INSERT INTO animals(user_id, order_id, name, imei, phone, active, plot_id) VALUE
 (3, 2, 'Pepa', '2', '666666667', TRUE, 2),
 (3, 2, 'Rubia', '3', '666666668', FALSE, NULL);
 
-INSERT INTO positions(animal_id, battery, coverage, geom, date) VALUES
-(1, 5, 50, ST_GeomFromText('POINT(-7.55421 42.25482)', 3857), now()),
-(2, 100, 80, ST_GeomFromText('POINT(-7.54726 42.25323)', 3857), now()),
-(3, 45, 50, ST_GeomFromText('POINT(-7.55421 42.25323)', 3857), now());
+INSERT INTO positions(animal_id, battery, coverage, charging, geom, date) VALUES
+(1, 5, 50, false, ST_GeomFromText('POINT(-7.55421 42.25482)', 3857), now()),
+(2, 100, 80, false, ST_GeomFromText('POINT(-7.54726 42.25323)', 3857), now()),
+(3, 45, 50, false, ST_GeomFromText('POINT(-7.55421 42.25323)', 3857), now());
 
 COMMIT;

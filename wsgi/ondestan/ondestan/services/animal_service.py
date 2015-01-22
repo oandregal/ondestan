@@ -257,9 +257,9 @@ def save_new_position(position, animal, request):
         if get_animal_position_by_date(animal.id, position.date) == None:
             position.animal_id = animal.id
             position.save()
-            if animal.positions[0] == position and animal.positions[0].\
-                outside() and ((animal.n_positions > 1 and not
-                animal.positions[1].outside()) or animal.n_positions == 1):
+            if (not position.charging and animal.positions[0] == position and
+                animal.positions[0].outside() and ((animal.n_positions > 1 and not
+                animal.positions[1].outside()) or animal.n_positions == 1)):
                 parameters = {'name': animal.user.name,
                  'animal_name': animal.name if (animal.name != None and
                                 animal.name != '') else animal.imei,
@@ -286,7 +286,8 @@ def save_new_position(position, animal, request):
 
 def process_no_coverage_position(position, animal, request):
     if animal.active:
-        if get_animal_position_by_date(animal.id, position.date) == None:
+        if (not position.charging and
+            get_animal_position_by_date(animal.id, position.date) == None):
             parameters = {'name': animal.user.name,
              'animal_name': animal.name if (animal.name != None and
                             animal.name != '') else animal.imei,
@@ -302,6 +303,10 @@ def process_no_coverage_position(position, animal, request):
 
 def process_position_general_notifications(position, animal, request):
     if animal.active:
+        if position.charging:
+            logger.warn('Processed update for charging IMEI: ' + animal.imei +
+                        ' for date ' + str(position.date))
+            return
         aux = get_animal_position_by_date(animal.id, position.date)
         if aux == position or aux == None:
             if position.battery != None and\

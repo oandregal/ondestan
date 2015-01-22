@@ -39,14 +39,15 @@ class Animal(Entity, Base):
     def n_positions(self):
         if self.id != None:
             return Position().queryObject().filter(Position.animal_id
-                    == self.id).count()
+                    == self.id, Position.charging == False).count()
         return 0
 
     @hybrid_property
     def positions(self):
         if self.id != None:
             return Position().queryObject().filter(Position.animal_id
-                    == self.id).order_by(Position.date.desc()).yield_per(100)
+                    == self.id, Position.charging == False).\
+                    order_by(Position.date.desc()).yield_per(100)
         return []
 
     @hybrid_property
@@ -55,11 +56,43 @@ class Animal(Entity, Base):
             return self.positions[0].outside()
         return None
 
-    def get_approx_position_as_geojson(self, time=datetime.utcnow()):
+    @hybrid_property
+    def n_positions_w_charging(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).count()
+        return 0
+
+    @hybrid_property
+    def positions_w_charging(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).order_by(Position.date.desc()).yield_per(100)
+        return []
+
+    @hybrid_property
+    def n_positions_only_charging(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == True).count()
+        return 0
+
+    @hybrid_property
+    def positions_only_charging(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == True).\
+                    order_by(Position.date.desc()).yield_per(100)
+        return []
+
+    def get_approx_position_as_geojson(self, time=datetime.utcnow(),
+                                       filter_charging=True):
         positions = []
         if self.id != None:
             query = Position().queryObject().filter(Position.animal_id
                     == self.id)
+            if filter_charging:
+                query = query.filter(Position.charging == False)
             query = query.filter(func.abs(
                     func.date_part('hour', Position.date - time)) <= 2)
             aux = query.order_by(Position.date.desc()).limit(50)
@@ -70,10 +103,13 @@ class Animal(Entity, Base):
             array(positions))))) if len(positions) > 1\
             else None
 
-    def filter_positions(self, start=None, end=None):
+    def filter_positions(self, start=None, end=None,
+                                       filter_charging=True):
         if self.id != None:
             query = Position().queryObject().filter(Position.animal_id
                     == self.id)
+            if filter_charging:
+                query.filter(Position.charging == False)
             if start != None:
                 query = query.filter(Position.date >= start)
             if end != None:
@@ -81,10 +117,13 @@ class Animal(Entity, Base):
             return query.order_by(Position.date.asc()).yield_per(100)
         return []
 
-    def n_filter_positions(self, start=None, end=None):
+    def n_filter_positions(self, start=None, end=None,
+                                        filter_charging=True):
         if self.id != None:
             query = Position().queryObject().filter(Position.animal_id
                     == self.id)
+            if filter_charging:
+                query.filter(Position.charging == False)
             if start != None:
                 query = query.filter(Position.date >= start)
             if end != None:

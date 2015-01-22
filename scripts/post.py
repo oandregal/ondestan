@@ -29,7 +29,7 @@ print str(r._content)
 s = Session()
 url = "http://0.0.0.0:6543/gps_update"
 # params = '1,20141022150735,42.234375,-8.716689,100,2.060000,85'
-params = 'data: 12345678910|20140722011302,10,42.326602,-7.818424,0.000000,0.000000,0.000000,0.000000'
+params = 'data: 12345678910|20140722011302,10,42.326602,-7.818424,0.000000,0.000000,0.000000,0.000000,0'
 req = Request('POST', url, data=params)
 prepped = req.prepare()
 # prepped.headers['Content-MD5'] = md5.new(prepped.body).hexdigest()

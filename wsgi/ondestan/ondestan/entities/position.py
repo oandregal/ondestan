@@ -1,7 +1,6 @@
 # coding=UTF-8
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, Float, func
-from sqlalchemy.orm import relationship, column_property, backref
-from sqlalchemy.ext.hybrid import hybrid_property, hybrid_method
+from sqlalchemy import Column, Integer, ForeignKey, DateTime, Float, func, Boolean
+from sqlalchemy.orm import relationship, column_property
 from geoalchemy2 import Geometry
 
 from ondestan.entities import Entity
@@ -18,6 +17,7 @@ class Position(Entity, Base):
     battery = Column(Float)
     coverage = Column(Float)
     date = Column(DateTime)
+    charging = Column(Boolean)
     animal_id = Column(Integer, ForeignKey("animals.id"))
     animal = relationship("Animal")
     geom = Column(Geometry('POINT', Entity.srid))
