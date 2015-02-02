@@ -33,11 +33,6 @@ no_positions_mail_checks = Config.get_int_value(
                                 'config.no_positions_mail_checks')
 no_positions_sms_checks = Config.get_int_value(
                                 'config.no_positions_sms_checks')
-check_non_communicating_animals_lockfile = Config.get_string_value(
-    'config.lockfiles_folder') + '.check_non_communicating_animals.lock'
-# We remove the lock file in case the application was shut down in the middle of the process
-if os.path.isfile(check_non_communicating_animals_lockfile):
-    os.remove(check_non_communicating_animals_lockfile)
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -304,7 +299,7 @@ def process_no_coverage_position(position, animal, request):
 def process_position_general_notifications(position, animal, request):
     if animal.active:
         if position.charging:
-            logger.warn('Processed update for charging IMEI: ' + animal.imei +
+            logger.info('Processed update for charging IMEI: ' + animal.imei +
                         ' for date ' + str(position.date))
             return
         aux = get_animal_position_by_date(animal.id, position.date)
@@ -426,10 +421,6 @@ def process_position_general_notifications(position, animal, request):
 
 @Config.sched.cron_schedule(hour='*')
 def check_non_communicating_animals():
-    if os.path.isfile(check_non_communicating_animals_lockfile):
-        logger.debug('There is already another check_non_communicating_animals process working...')
-        return
-    open(check_non_communicating_animals_lockfile, 'a').close()
     manager = transaction.manager
     manager.begin()
     try:
@@ -470,6 +461,3 @@ def check_non_communicating_animals():
     except:
         manager.abort()
         raise
-    finally:
-        if os.path.isfile(check_non_communicating_animals_lockfile):
-            os.remove(check_non_communicating_animals_lockfile)

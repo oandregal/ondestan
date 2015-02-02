@@ -7,13 +7,13 @@ from apscheduler.scheduler import Scheduler
 class Config:
 
     config = {}
-    sched = Scheduler()
+    sched = None
     registry = None
 
     @staticmethod
     def init_settings(settings, registry):
         Config.config = settings
-        Config.sched.configure(settings)
+        Config.sched = Scheduler(settings)
         Config.sched.start()
         Config.registry = registry
 
