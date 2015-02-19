@@ -99,6 +99,7 @@ function addToPopover(feature){
     }
     var name = device.name || device.imei;
     var battery = device.battery || batteryStandards.level.noData;
+    var charging = device.charging || false;
     var url = contextVariables.deactivate_device_url.replace('__device_id__', device.id);
     var toggleClass = 'toggle_' + device.id;
     var activation = contextVariables.deactivate_device_msg;
@@ -106,6 +107,7 @@ function addToPopover(feature){
         url = contextVariables.activate_device_url.replace('__device_id__', device.id);
         activation = contextVariables.activate_device_msg;
         battery = batteryStandards.level.noData;
+        charging = false;
     }
     return '<li class="list-group-item">' +
     	'<form role="form" class="form-inline" action="' + contextVariables.update_animal_name_url + '" method="post">' +
@@ -115,7 +117,7 @@ function addToPopover(feature){
         approxPositionString +
         '<input class="form-control '+toggleClass+'" type="text" id="name" style="display: none;" name="name" value="' + (device.name || '') + '" />' +
         '<label data-toggle="tooltip" data-placement="top" title="' + window.contextVariables.edit_name_tooltip + '" class="'+toggleClass+'" ondblclick="$(\'.'+toggleClass+'\').toggle(0)">' + name + '</label>'+
-        '<span class="badge">' + battery + '%</span>' +
+        '<span class="badge">' + battery + '%' + (charging ? ' <span class="glyphicon glyphicon-flash"></span>' : '') + '</span>' +
         historyString +
         '</form>' +
         '</li>';

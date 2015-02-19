@@ -43,8 +43,9 @@
             		<tal:block tal:condition="not animal.active" i18n:translate="no">No</tal:block>
             	</td>
             	<td>
-            		<tal:block tal:condition="animal.n_positions > 0" tal:content="animal.positions[0].battery"/>
+            		<tal:block tal:condition="animal.n_positions > 0" tal:content="animal.current_battery"/>
             		<tal:block tal:condition="animal.n_positions == 0">---</tal:block>
+            		<span tal:condition="animal.n_positions > 0 and animal.currently_charging" class="glyphicon glyphicon-flash"></span>
             	</td>
             	<td tal:content="animal.imei"/>
             	<td tal:content="animal.phone"/>
