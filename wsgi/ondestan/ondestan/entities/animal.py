@@ -51,6 +51,18 @@ class Animal(Entity, Base):
         return []
 
     @hybrid_property
+    def current_battery(self):
+        if self.n_positions > 0:
+            return self.positions_w_charging[0].battery
+        return None
+
+    @hybrid_property
+    def currently_charging(self):
+        if self.n_positions > 0:
+            return self.positions_w_charging[0].charging
+        return None
+
+    @hybrid_property
     def currently_outside(self):
         if self.n_positions > 0:
             return self.positions[0].outside()
