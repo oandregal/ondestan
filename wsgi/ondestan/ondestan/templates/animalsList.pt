@@ -37,7 +37,7 @@
             <tr tal:repeat="animal animals">
               	<td tal:condition="is_admin" tal:content="animal.id"/>
               	<td tal:condition="is_admin" tal:content="animal.user.email"/>
-            	<td>${animal.name}<a href="${request.route_url('history_map', animal_id=animal.id)}" type="button" class="pull-right btn btn-default btn-xs"><span class="history-link glyphicon glyphicon-calendar"></span><tal:block i18n:translate="positions_history">Positions History</tal:block></a></td>
+            	<td class="animal-name-td">${animal.name}<a href="${request.route_url('history_map', animal_id=animal.id)}" type="button" class="btn btn-default btn-xs table-btn"><span class="history-link glyphicon glyphicon-calendar" ></span><tal:block i18n:translate="positions_history">Positions History</tal:block></a></td>
             	<td>
             		<tal:block tal:condition="animal.active" i18n:translate="yes">Yes</tal:block>
             		<tal:block tal:condition="not animal.active" i18n:translate="no">No</tal:block>
