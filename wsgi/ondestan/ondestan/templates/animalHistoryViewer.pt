@@ -84,12 +84,6 @@
 		      		<div id="outside-plots" class="circle"></div><span i18n:translate="outside_plots">Outside plots</span>
 		      	</li>
 	      	</ul>
-	      	<hr/>
-	      	<ul>
-		      	<li>
-		      		<div id="inactive-devices" class="circle"></div><span i18n:translate="inactive_device_legend">Inactive devices</span>
-		      	</li>
-	      	</ul>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
