@@ -53,7 +53,19 @@ class Animal(Entity, Base):
     @hybrid_property
     def current_battery(self):
         if self.n_positions > 0:
-            return self.all_positions[0].battery
+            if int(self.all_positions[0].battery) == self.all_positions[0].battery:
+                return int(self.all_positions[0].battery)
+            else:
+                return self.all_positions[0].battery
+        return None
+
+    @hybrid_property
+    def current_battery_wo_charging(self):
+        if self.n_positions > 0:
+            if int(self.positions[0].battery) == self.positions[0].battery:
+                return int(self.positions[0].battery)
+            else:
+                return self.positions[0].battery
         return None
 
     @hybrid_property

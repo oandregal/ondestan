@@ -612,7 +612,7 @@ def json_animals(request):
                         'animal_name': name,
                         'name': animal.user.email,
                         'imei': animal.imei,
-                        'battery': str(animal.positions[0].battery),
+                        'battery': str(animal.current_battery_wo_charging),
                         'date': fancy_date,
                         'plot': animal.plot.name if animal.plot != None\
                                 else '---'
@@ -626,7 +626,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": animal.current_battery,
-                            "battery_wo_charging": animal.positions[0].battery,
+                            "battery_wo_charging": animal.current_battery_wo_charging,
                             "charging": animal.currently_charging,
                             "owner": animal.user.email,
                             "active": animal.active,
@@ -679,7 +679,7 @@ def json_animals(request):
                         'animal_name': name,
                         'name': animal.user.email,
                         'imei': animal.imei,
-                        'battery': str(animal.positions[0].battery),
+                        'battery': str(animal.current_battery_wo_charging),
                         'date': fancy_date,
                         'plot': animal.plot.name if animal.plot != None\
                                 else '---'
@@ -693,7 +693,7 @@ def json_animals(request):
                             "name": animal.name,
                             "imei": animal.imei,
                             "battery": animal.current_battery,
-                            "battery_wo_charging": animal.positions[0].battery,
+                            "battery_wo_charging": animal.current_battery_wo_charging,
                             "charging": animal.currently_charging,
                             "owner": animal.user.email,
                             "active": animal.active,
@@ -768,6 +768,8 @@ def json_animal_positions(request):
                 name = animal.imei
             positions = animal.filter_positions(start, end)
             for position in positions:
+                if int(position.battery) == position.battery:
+                    position.battery = int(position.battery)
                 fancy_date = get_fancy_time_from_utc(position.\
                                                     date, request=request)
                 parameters = {
@@ -866,6 +868,8 @@ def json_animal_charging_positions(request):
                 name = animal.imei
             positions = animal.filter_charging_positions(start, end)
             for position in positions:
+                if int(position.battery) == position.battery:
+                    position.battery = int(position.battery)
                 fancy_date = get_fancy_time_from_utc(position.\
                                                     date, request=request)
                 parameters = {
