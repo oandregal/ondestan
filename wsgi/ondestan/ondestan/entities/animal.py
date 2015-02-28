@@ -58,13 +58,13 @@ class Animal(Entity, Base):
     @hybrid_property
     def current_battery(self):
         if self.n_positions > 0:
-            return self.positions_w_charging[0].battery
+            return self.all_positions[0].battery
         return None
 
     @hybrid_property
     def currently_charging(self):
         if self.n_positions > 0:
-            return self.positions_w_charging[0].charging
+            return self.all_positions[0].charging
         return None
 
     @hybrid_property
@@ -72,6 +72,20 @@ class Animal(Entity, Base):
         if self.n_positions > 0:
             return self.positions[0].outside()
         return None
+
+    @hybrid_property
+    def n_all_positions(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).count()
+        return 0
+
+    @hybrid_property
+    def all_positions(self):
+        if self.id != None:
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id).order_by(Position.date.desc()).yield_per(100)
+        return []
 
     @hybrid_property
     def n_charging_positions(self):
