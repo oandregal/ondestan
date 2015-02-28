@@ -36,18 +36,23 @@ class Animal(Entity, Base):
                                                   order_by=name))
 
     @hybrid_property
-    def n_positions(self):
+    def n_positions(self, filter_charging=True):
         if self.id != None:
-            return Position().queryObject().filter(Position.animal_id
-                    == self.id, Position.charging == False).count()
+            query = Position().queryObject().filter(Position.animal_id
+                    == self.id)
+            if filter_charging:
+                query.filter(Position.charging == False)
+            return query.count()
         return 0
 
     @hybrid_property
-    def positions(self):
+    def positions(self, filter_charging=True):
         if self.id != None:
-            return Position().queryObject().filter(Position.animal_id
-                    == self.id, Position.charging == False).\
-                    order_by(Position.date.desc()).yield_per(100)
+            query = Position().queryObject().filter(Position.animal_id
+                    == self.id)
+            if filter_charging:
+                query.filter(Position.charging == False)
+            return query.order_by(Position.date.desc()).yield_per(100)
         return []
 
     @hybrid_property
@@ -69,28 +74,14 @@ class Animal(Entity, Base):
         return None
 
     @hybrid_property
-    def n_positions_w_charging(self):
-        if self.id != None:
-            return Position().queryObject().filter(Position.animal_id
-                    == self.id).count()
-        return 0
-
-    @hybrid_property
-    def positions_w_charging(self):
-        if self.id != None:
-            return Position().queryObject().filter(Position.animal_id
-                    == self.id).order_by(Position.date.desc()).yield_per(100)
-        return []
-
-    @hybrid_property
-    def n_positions_only_charging(self):
+    def n_charging_positions(self):
         if self.id != None:
             return Position().queryObject().filter(Position.animal_id
                     == self.id, Position.charging == True).count()
         return 0
 
     @hybrid_property
-    def positions_only_charging(self):
+    def charging_positions(self):
         if self.id != None:
             return Position().queryObject().filter(Position.animal_id
                     == self.id, Position.charging == True).\
@@ -136,6 +127,28 @@ class Animal(Entity, Base):
                     == self.id)
             if filter_charging:
                 query.filter(Position.charging == False)
+            if start != None:
+                query = query.filter(Position.date >= start)
+            if end != None:
+                query = query.filter(Position.date <= end)
+            return query.count()
+        return []
+
+    def filter_charging_positions(self, start=None, end=None):
+        if self.id != None:
+            query = Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == True)
+            if start != None:
+                query = query.filter(Position.date >= start)
+            if end != None:
+                query = query.filter(Position.date <= end)
+            return query.order_by(Position.date.asc()).yield_per(100)
+        return []
+
+    def n_filter_charging_positions(self, start=None, end=None):
+        if self.id != None:
+            query = Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == True)
             if start != None:
                 query = query.filter(Position.date >= start)
             if end != None:
