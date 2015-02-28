@@ -36,23 +36,18 @@ class Animal(Entity, Base):
                                                   order_by=name))
 
     @hybrid_property
-    def n_positions(self, filter_charging=True):
+    def n_positions(self):
         if self.id != None:
-            query = Position().queryObject().filter(Position.animal_id
-                    == self.id)
-            if filter_charging:
-                query.filter(Position.charging == False)
-            return query.count()
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == False).count()
         return 0
 
     @hybrid_property
-    def positions(self, filter_charging=True):
+    def positions(self):
         if self.id != None:
-            query = Position().queryObject().filter(Position.animal_id
-                    == self.id)
-            if filter_charging:
-                query.filter(Position.charging == False)
-            return query.order_by(Position.date.desc()).yield_per(100)
+            return Position().queryObject().filter(Position.animal_id
+                    == self.id, Position.charging == False).\
+                    order_by(Position.date.desc()).yield_per(100)
         return []
 
     @hybrid_property
