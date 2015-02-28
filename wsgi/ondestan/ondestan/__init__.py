@@ -76,9 +76,12 @@ def main(global_config, **settings):
 
     config.add_route('map', '/map')
     config.add_route('history_map', '/history_map/{animal_id}')
+    config.add_route('charging_history_map', '/charging_history_map/{animal_id}')
     config.add_route('json_animals', '/json/animals.json')
     config.add_route('json_animal_positions',
                      '/json/positions/{animal_id}.json')
+    config.add_route('json_animal_charging_positions',
+                     '/json/charging_positions/{animal_id}.json')
     config.add_route('json_animal_approx_position',
                      '/json/approx_position/{animal_id}.json')
     config.add_route('json_inactive_animals', '/json/inactive_animals.json')

@@ -404,6 +404,35 @@ def animal_history_viewer(request):
     )
 
 
+@view_config(route_name='charging_history_map',
+             renderer='templates/animalChargingHistoryViewer.pt',
+             permission='admin')
+def animal_charging_history_viewer(request):
+    animal_id = request.matchdict['animal_id']
+    email = get_user_email(request)
+    is_admin = check_permission('admin', request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    if (animal == None) or (not is_admin and animal.user.email != email):
+        return HTTPFound(request.route_url("map"))
+    parameters = {
+        'max_positions': max_positions
+    }
+    too_many_positions_msg = _("too_many_positions_in_selected_time_interval",
+                               domain='Ondestan',
+                               mapping=parameters)
+    return dict(
+        view=animal.get_bounding_box_as_json(),
+        animal_id=animal_id,
+        too_many_positions_msg=get_localizer(request).\
+            translate(too_many_positions_msg)
+    )
+
+
 @view_config(route_name='plot_manager', renderer='templates/plotManager.pt',
              permission='view')
 def plot_manager(request):
@@ -777,6 +806,100 @@ def json_animal_positions(request):
                 # detect there are more and not just the barrier number
                 if len(geojson) == (max_positions + 1):
                     logger.warning("Too many positions requested for animal "
+                        + str(animal_id) + ", only the last "
+                        + str(max_positions + 1) + " will be returned")
+                    break
+        else:
+            geojson.append({
+                "type": "Feature",
+                "properties": {
+                    "id": animal.id,
+                    "name": animal.name,
+                    "imei": animal.imei,
+                    "battery": None,
+                    "owner": animal.user.email,
+                    "active": animal.active,
+                    "outside": None,
+                    "date": None,
+                    "fancy_date": None,
+                    "popup": None
+                },
+                "geometry": None
+            })
+    return geojson
+
+
+@view_config(route_name='json_animal_charging_positions', renderer='json',
+             permission='admin')
+def json_animal_charging_positions(request):
+    animal_id = request.matchdict['animal_id']
+    email = get_user_email(request)
+    is_admin = check_permission('admin', request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    geojson = []
+    if animal != None and (is_admin or animal.user.email == email):
+        start = None
+        end = None
+        if 'start' in request.GET:
+            try:
+                start = parse_to_utcdatetime(request.GET['start'])
+            except ValueError:
+                pass
+        if 'end' in request.GET:
+            try:
+                end = parse_to_utcdatetime(request.GET['end'])
+            except ValueError:
+                pass
+
+        n_positions = animal.n_filter_charging_positions(start, end)
+        logger.debug("Found " + str(n_positions) +
+                     " charging positions for animal " + str(animal_id))
+        if n_positions > 0:
+            if animal.name != None and len(animal.name) > 0:
+                name = animal.name
+            else:
+                name = animal.imei
+            positions = animal.filter_charging_positions(start, end)
+            for position in positions:
+                fancy_date = get_fancy_time_from_utc(position.\
+                                                    date, request=request)
+                parameters = {
+                    'animal_name': name,
+                    'name': animal.user.email,
+                    'imei': animal.imei,
+                    'battery': str(position.battery),
+                    'date': fancy_date,
+                    'plot': animal.plot.name if animal.plot != None else '---'
+                }
+                popup_str = _("animal_popup_admin", domain='Ondestan',
+                                  mapping=parameters)
+                geojson.append({
+                    "type": "Feature",
+                    "properties": {
+                        "id": animal.id,
+                        "name": animal.name,
+                        "imei": animal.imei,
+                        "battery": position.battery,
+                        "owner": animal.user.email,
+                        "active": animal.active,
+                        "outside": position.outside(),
+                        "date": format_utcdatetime(position.date,
+                                               request),
+                        "fancy_date": fancy_date,
+                        "popup": get_localizer(request).translate(
+                                                            popup_str)
+                    },
+                    "geometry": eval(position.geojson)
+                })
+                # We return the max number of positions plus one, so it can
+                # detect there are more and not just the barrier number
+                if len(geojson) == (max_positions + 1):
+                    logger.warning("Too many charging positions requested for animal "
                         + str(animal_id) + ", only the last "
                         + str(max_positions + 1) + " will be returned")
                     break

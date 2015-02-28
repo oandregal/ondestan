@@ -71,7 +71,7 @@
 	color: #FF0000;
 }
 
- a:hover.devices-alert, a:focus.devices-alert {
+a:hover.devices-alert, a:focus.devices-alert {
 	color: #C50E0E;
 }
 
@@ -244,36 +244,36 @@ div#map_history {
 	margin: 1px 2px 0 2px;;
 }
 
- .modal-xsm {
+.modal-xsm {
  	width: 230px;
- }
+}
 
 .modal-body {
  	text-align: center;
  	padding: 10px;
- }
+}
 
- .modal-footer {
+.modal-footer {
  	margin: 0px;
  	text-align: center;
- }
+}
 
- .mini-form {
+.mini-form {
  	width: 300px;
- }
+}
 
- .mini-form input, .mini-form textarea, .mini-form select {
+.mini-form input, .mini-form textarea, .mini-form select {
  	margin-bottom: 5px;
- }
+}
 
- .mini-form select {
+.mini-form select {
  	width: 150px;
- }
+}
 
- .form-block {
+.form-block {
  	max-width: 700px;
  	margin: 0 auto 150px;
- }
+}
 
 .big-font {
 	font-size: 18px;
@@ -281,6 +281,10 @@ div#map_history {
 
 .small-font {
 	font-size: 12px;
+}
+
+.btn-xxs, .btn-group-xxs > .btn {
+	padding: 1px;
 }
 
 #legend-modal h5 {
@@ -471,7 +475,7 @@ table td .btn.pull-right {
 	margin-left: 5px;
 }
 
-.animal-name-td {
+.td-with-btn {
 	white-space: nowrap;
 }
 
@@ -485,4 +489,8 @@ table td .btn.pull-right {
 .dropdown-menu {
     min-width: 100px;
     z-index: 1001;
+}
+
+.currently-charging-icon {
+	color: #428bca;
 }

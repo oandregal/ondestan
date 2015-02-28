@@ -37,15 +37,18 @@
             <tr tal:repeat="animal animals">
               	<td tal:condition="is_admin" tal:content="animal.id"/>
               	<td tal:condition="is_admin" tal:content="animal.user.email"/>
-            	<td class="animal-name-td">${animal.name}<a href="${request.route_url('history_map', animal_id=animal.id)}" type="button" class="btn btn-default btn-xs table-btn"><span class="history-link glyphicon glyphicon-calendar" ></span><tal:block i18n:translate="positions_history">Positions History</tal:block></a></td>
+            	<td class="td-with-btn">${animal.name}<a href="${request.route_url('history_map', animal_id=animal.id)}" type="button" class="btn btn-default btn-xs table-btn"><span class="history-link glyphicon glyphicon-calendar" ></span><tal:block i18n:translate="positions_history">Positions History</tal:block></a></td>
             	<td>
             		<tal:block tal:condition="animal.active" i18n:translate="yes">Yes</tal:block>
             		<tal:block tal:condition="not animal.active" i18n:translate="no">No</tal:block>
             	</td>
-            	<td>
+            	<td class="td-with-btn">
             		<tal:block tal:condition="animal.n_positions > 0" tal:content="animal.current_battery"/>
             		<tal:block tal:condition="animal.n_positions == 0">---</tal:block>
-            		<span tal:condition="animal.n_positions > 0 and animal.currently_charging" class="glyphicon glyphicon-flash"></span>
+            		<tal:block tal:condition="animal.n_positions > 0">
+	            		<a tal:condition="is_admin" href="${request.route_url('charging_history_map', animal_id=animal.id)}" type="button" class="btn btn-default btn-xxs table-btn"><span tal:attributes="class ('currently-charging-icon glyphicon glyphicon-flash' if animal.currently_charging else 'glyphicon glyphicon-flash')"></span></a>
+	            		<span tal:condition="not is_admin" tal:attributes="class ('currently-charging-icon glyphicon glyphicon-flash' if animal.currently_charging else 'glyphicon glyphicon-flash')"></span>
+	            	</tal:block>
             	</td>
             	<td tal:content="animal.imei"/>
             	<td tal:content="animal.phone"/>

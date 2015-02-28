@@ -1,0 +1,142 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+  <tal:block metal:fill-slot="head">
+    <title i18n:translate="animal_charging_history_viewer_title">Animal History Viewer - Ondestán</title>
+  </tal:block>
+
+  <tal:block metal:fill-slot="styles">
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/leaflet/leaflet.draw.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/jquery-ui/jquery-ui-1.10.4.min.css')}" />
+    <link rel="stylesheet" href="${request.static_url('ondestan:static/styles/ladda-themeless.min.css')}" />
+  </tal:block>
+
+  <tal:block metal:fill-slot="javascript">
+   	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-1.10.4.min.js')}"></script>
+   	<script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/jquery-ui-datepicker-spanish.js')}"></script>
+   	<!-- We must load Bootstrap after jQueryUI to avoid some problems. -->
+    <script type="text/javascript" src="${request.static_url('ondestan:static/bootstrap-3.1.1-dist/js/bootstrap.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/spin.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/ladda.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.ajax.min.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/leaflet.draw.js')}"></script>
+    <script src="http://maps.google.com/maps/api/js"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/lib/Google.js')}"></script>
+    <?python from ondestan.config import Config?>
+    <script type="text/javascript">
+      window.contextVariables.animals_json_url = "${request.route_url('json_animal_charging_positions', animal_id=animal_id)}";
+      window.contextVariables.plots_json_url = "${request.route_url('json_plots')}";
+      window.contextVariables.orders_popover_content = "${orders_popover_content}";
+      window.contextVariables.low_battery_barrier = ${Config.get_float_value('config.low_battery_barrier')};
+      window.contextVariables.medium_battery_barrier = ${Config.get_float_value('config.medium_battery_barrier')};
+      window.contextVariables.map_view_json = ${view if view != None else 'null'};
+      window.contextVariables.default_view = [${Config.get_string_value('config.default_view')}];
+      window.contextVariables.edit_name_tooltip = "<tal:block i18n:translate="edit_name_tooltip">Double click to edit name (confirm change by pressing enter).</tal:block>";
+      window.contextVariables.max_positions = ${Config.get_int_value('config.history_max_positions')};
+      window.contextVariables.center_on_user_position = "<tal:block i18n:translate="center_on_user_position_tooltip">Center map onto your current position.</tal:block>";
+      window.contextVariables.geolocation_not_supported = "<tal:block i18n:translate="geolocation_not_supported">Geolocation is not supported by this browser.</tal:block>";
+
+      window.contextVariables.zoom_in_tooltip = "<tal:block i18n:translate="map_tool_zoom_in_tooltip">Zoom in</tal:block>";
+      window.contextVariables.zoom_out_tooltip = "<tal:block i18n:translate="map_tool_zoom_out_tooltip">Zoom out</tal:block>";
+      window.contextVariables.show_map_legend_tooltip = "<tal:block i18n:translate="map_legend">Map legend</tal:block>";
+      window.contextVariables.map_widget_id = "map_history";
+    </script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/animalChargingHistoryViewer.js')}"></script>
+    <script type="text/javascript" src="${request.static_url('ondestan:static/js/baseMap.js')}"></script>
+  </tal:block>
+
+  <tal:block metal:fill-slot="content">
+    <?python from ondestan.config import Config?>
+
+	<!-- Legend modal -->
+	<div class="modal fade bs-example-modal-sm" id="legend-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	        <h4 class="modal-title" id="myModalLabel" i18n:translate="map_legend">Map legend</h4>
+	      </div>
+	      <div class="modal-body">
+	      	<h5 i18n:translate="battery_level_legend">Battery Level (color)</h5>
+	      	<ul>
+		      	<li>
+		      		<div id="low-battery" class="circle" ></div><span><tal:block i18n:translate="low_battery_level">Low battery level</tal:block> (&lt; ${Config.get_float_value('config.low_battery_barrier')}%)</span>
+		      	</li>
+		      	<li>
+		      		<div id="medium-battery" class="circle"></div><span><tal:block i18n:translate="medium_battery_level">Medium battery level</tal:block> (${Config.get_float_value('config.low_battery_barrier')}% - ${Config.get_float_value('config.medium_battery_barrier')}%)</span>
+		      	</li>
+		      	<li>
+		      		<div id="high-battery" class="circle"></div><span><tal:block i18n:translate="high_battery_level">High battery level</tal:block> (&gt; ${Config.get_float_value('config.medium_battery_barrier')}%)</span>
+		      	</li>
+	      	</ul>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- No positions modal -->
+	<div class="modal fade bs-example-modal-sm" id="no-positions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	<p i18n:translate="no_positions_in_selected_time_interval">There are no positions in the selected time interval.</p>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<!-- Too many positions modal -->
+	<div class="modal fade bs-example-modal-sm" id="too-many-positions-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	      <div class="modal-body">
+	      	${too_many_positions_msg}
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-default" data-dismiss="modal" i18n:translate="close">Close</button>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+	<div id="date_selectors" class="btn-toolbar" role="toolbar">
+		<div class="btn-group btn-toggle btn-group-lg" data-toggle="buttons" style="float: left; margin-left: 5%;">
+		  <label id="update_time_today" class="btn btn-default ladda-button active" autocomplete="off" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option1" checked="true" type="radio"/><span class="ladda-label" i18n:translate="today">Today</span>
+		  </label>
+		  <label id="update_time_yesterday" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option2" type="radio"/><span class="ladda-label" i18n:translate="yesterday">Yesterday</span>
+		  </label>
+		  <label id="update_time_last_week" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000">
+		    <input name="options" value="option3" type="radio"/><span class="ladda-label" i18n:translate="last_week">Last Week</span>
+		  </label>
+		</div>
+		<div id="update_time_custom_btn_group" class="btn-group btn-group-lg col-md-offset-1" data-toggle="buttons" style="float: right; margin-right: 5%;">
+		  <label id="update_time_custom" class="btn btn-default inactive">
+		    <input name="options" value="option4" type="radio"/><tal:block i18n:translate="custom">Custom</tal:block>:
+		    <div id="custom_dates">
+				<label for="startdate"><tal:block i18n:translate="start_date">Start</tal:block></label><input autocomplete="off" type="text" class="datepicker" id="startdate"/>
+				<label for="enddate"><tal:block i18n:translate="end_date">End</tal:block></label><input autocomplete="off" type="text" class="datepicker" id="enddate"/>
+			</div>
+		  </label>
+		  <button autocomplete="off" type="button" id="update_time_custom_confirm" class="btn btn-default ladda-button" data-style="zoom-in" data-spinner-color="#000000"><span class="ladda-label" i18n:translate="confirm">Confirm</span></button>
+		</div>
+	</div>
+	<div id="map_history"></div>
+    <div id="history_controls">
+    	<div id="current_date">----------</div>
+		<a id="pause" class="playing"></a>
+    	<div id="slider"></div>
+	</div>
+
+  </tal:block>
+
+</html>
