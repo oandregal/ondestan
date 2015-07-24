@@ -238,6 +238,7 @@ div#map_history {
 .list-group-item .form-inline input, .list-group-item label {
 	width: 90px;
 	padding-left: 3px;
+	white-space: nowrap;
 }
 
 .list-group-item .history-link {
