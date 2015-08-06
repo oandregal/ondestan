@@ -37,7 +37,7 @@
             		<a tal:condition="len(orders) > 0" href="${request.route_url('orders')}"><b>${len(orders)} <span i18n:translate="pending_orders_menu">order(s)</span></b></a>
             		<a tal:condition="len(orders) == 0" href="${request.route_url('orders')}"><span i18n:translate="new_order_menu">New order</span></a>
             	</li>
-	            <li><a href="${request.route_url('update_profile')}" i18n:translate="update_profile">Update Profile</a></li>
+	            <li><a href="${request.route_url('update_profile')}" i18n:translate="user_profile">User Profile</a></li>
 	            <li><a href="${request.route_url('notifications')}" i18n:translate="notifications_log">Notifications Log</a></li>
 	            <li><a href="${request.route_url('logout')}" i18n:translate="logout">Logout</a></li>
 	          </ul>

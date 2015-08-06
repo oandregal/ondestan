@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-02-28 21:43+0100\n"
+"POT-Creation-Date: 2015-08-06 12:31+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -48,21 +48,21 @@ msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/views.py:591
 #: build/lib.linux-x86_64-2.7/ondestan/views.py:745 ondestan/views.py:620
-#: ondestan/views.py:782 ondestan/views.py:879
+#: ondestan/views.py:784 ondestan/views.py:883
 msgid "animal_popup_admin"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/views.py:654
 #: build/lib.linux-x86_64-2.7/ondestan/views.py:748 ondestan/views.py:687
-#: ondestan/views.py:785
+#: ondestan/views.py:787
 msgid "animal_popup"
 msgstr ""
 
-#: build/lib.linux-x86_64-2.7/ondestan/views.py:842 ondestan/views.py:973
+#: build/lib.linux-x86_64-2.7/ondestan/views.py:842 ondestan/views.py:977
 msgid "plot_popup_admin"
 msgstr ""
 
-#: build/lib.linux-x86_64-2.7/ondestan/views.py:868 ondestan/views.py:999
+#: build/lib.linux-x86_64-2.7/ondestan/views.py:868 ondestan/views.py:1003
 msgid "plot_popup"
 msgstr ""
 
@@ -913,8 +913,7 @@ msgstr ""
 #: build/lib.linux-x86_64-2.7/ondestan/templates/main.pt:40
 #: build/lib.linux-x86_64-2.7/ondestan/templates/updateProfile.pt:39
 #: build/lib.linux-x86_64-2.7/ondestan/templates/updateProfile.pt:64
-#: ondestan/templates/main.pt:40 ondestan/templates/updateProfile.pt:39
-#: ondestan/templates/updateProfile.pt:64
+#: ondestan/templates/updateProfile.pt:39 ondestan/templates/updateProfile.pt:64
 msgid "update_profile"
 msgstr ""
 
@@ -1638,5 +1637,10 @@ msgstr ""
 #. Default: Animal History Viewer - Ondestán
 #: ondestan/templates/animalChargingHistoryViewer.pt:8
 msgid "animal_charging_history_viewer_title"
+msgstr ""
+
+#. Default: User Profile
+#: ondestan/templates/main.pt:40
+msgid "user_profile"
 msgstr ""
 
