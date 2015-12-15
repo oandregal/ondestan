@@ -214,3 +214,72 @@ def escape_code_to_eval(st):
 def unescape_code_to_eval(st):
     return st.replace("'eval[", '').replace('"eval[', '').\
         replace("]eval'", '').replace(']eval"', '')
+
+def get_device_preconfig_names(request=None, locale=None):
+    nr = 1
+    try:
+        while True:
+            Config.get_int_value('gps.preconfig_' + str(nr) + '_readtime')
+            Config.get_int_value('gps.preconfig_' + str(nr) + '_sampletime')
+            Config.get_int_value('gps.preconfig_' + str(nr) + '_datatime')
+            nr = nr + 1
+    except:
+        pass
+
+    if request != None:
+        localizer = get_localizer(request)
+    else:
+        localizer = get_custom_localizer(locale)
+
+    device_preconfig_names = []
+    for i in range(1, nr):
+        device_preconfig_names.append(localizer.translate(_('gps_preconfig_' + str(i) + '_name', domain='Ondestan')))
+    return device_preconfig_names
+
+def get_device_config_fancy_description(config, request=None, locale=None):
+
+    if request != None:
+        localizer = get_localizer(request)
+    else:
+        localizer = get_custom_localizer(locale)
+
+    datatime = get_device_config_fancy_description_unit_value(config.datatime)
+    sampletime = get_device_config_fancy_description_unit_value(config.sampletime)
+    readtime = get_device_config_fancy_description_unit_value(config.readtime)
+    parameters = {
+        'datatime_val': datatime[0],
+        'datatime_unit': localizer.translate(_(datatime[1],
+            domain='Ondestan')),
+        'sampletime_val': sampletime[0],
+        'sampletime_unit': localizer.translate(_(sampletime[1],
+            domain='Ondestan')),
+        'readtime_val': readtime[0],
+        'readtime_unit': localizer.translate(_(readtime[1],
+            domain='Ondestan'))
+    }
+
+    return localizer.translate(_("fancy_config_description",
+         domain='Ondestan',
+         mapping=parameters))
+
+def get_device_config_fancy_description_unit_value(value):
+    if value % 86400 == 0:
+        if value == 86400:
+            return ['', 'day']
+        else:
+            return [str(value / 86400), 'days']
+    elif value % 3600 == 0:
+        if value == 3600:
+            return ['', 'hour']
+        else:
+            return [str(value / 3600), 'hours']
+    elif value % 60 == 0:
+        if value == 60:
+            return ['', 'minute']
+        else:
+            return [str(value / 60), 'minutes']
+    else:
+        if value == 1:
+            return ['', 'second']
+        else:
+            return [str(value), 'seconds']

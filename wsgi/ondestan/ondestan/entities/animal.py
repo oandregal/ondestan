@@ -6,12 +6,17 @@ from sqlalchemy.dialects.postgresql import array
 
 from ondestan.entities import Entity
 from ondestan.entities.position import Position
+from ondestan.entities.configuration import Configuration
 from ondestan.utils import Base
 from ondestan.config import Config
 
 from datetime import datetime
 
 max_positions = Config.get_int_value('config.history_max_positions')
+
+default_config_readtime = Config.get_int_value('gps.default_config_readtime')
+default_config_sampletime = Config.get_int_value('gps.default_config_readtime')
+default_config_datatime = Config.get_int_value('gps.default_config_readtime')
 
 
 class Animal(Entity, Base):
@@ -200,3 +205,33 @@ class Animal(Entity, Base):
         return self.session.scalar(func.ST_Envelope(
             func.ST_MakeLine(array(positions)))) if len(positions) > 0\
             else None
+
+    def save_new_configuration(self, readtime, sampletime, datatime):
+        configuration = Configuration()
+        configuration.readtime = readtime
+        configuration.sampletime = sampletime
+        configuration.datatime = datatime
+        # If latest saved configuration hasn't been sent yet, then we delete it
+        if len(self.configurations) != 0 and self.configurations[0].sent_date == None:
+            self.configurations[0].delete()
+        configuration.animal_id = self.id
+        self.configurations.insert(0, configuration)
+        self.configurations[0].save()
+
+    def get_confirm_pending_configuration(self):
+        # If latest saved configuration hasn't been sent yet, then we set its sent_date and return it
+        if len(self.configurations) != 0 and self.configurations[0].sent_date == None:
+            self.configurations[0].sent_date = datetime.utcnow()
+            self.configurations[0].update()
+            return self.configurations[0]
+        return None
+
+    def get_current_configuration(self):
+        for configuration in self.configurations:
+            if configuration.sent_date != None:
+                return configuration
+        configuration = Configuration()
+        configuration.readtime = default_config_readtime
+        configuration.sampletime = default_config_sampletime
+        configuration.datatime = default_config_datatime
+        return configuration

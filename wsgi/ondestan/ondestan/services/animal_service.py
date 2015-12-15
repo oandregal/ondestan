@@ -6,16 +6,17 @@ from pyramid.i18n import (
 from sqlalchemy import and_
 
 from ondestan.security import check_permission, get_user_email
-from ondestan.entities import Animal, Position, Order_state
+from ondestan.entities import Animal, Position, Order_state, Configuration
 from ondestan.utils import format_utcdatetime, escape_code_to_eval
 from ondestan.utils import internal_format_datetime, get_fancy_time_from_utc
-from ondestan.utils import compare_datetime_ago_from_utc
+from ondestan.utils import compare_datetime_ago_from_utc, send_sms
 from ondestan.config import Config
 import ondestan.services
 
 import logging
 import transaction
 import os.path
+from datetime import datetime
 from dateutil.relativedelta import relativedelta
 
 logger = logging.getLogger('ondestan')
@@ -33,6 +34,14 @@ no_positions_mail_checks = Config.get_int_value(
                                 'config.no_positions_mail_checks')
 no_positions_sms_checks = Config.get_int_value(
                                 'config.no_positions_sms_checks')
+
+update_sms = Config.get_string_value('gps.update_sms')
+alarm_state_readtime = Config.get_int_value('gps.alarm_state_readtime')
+alarm_state_sampletime = Config.get_int_value('gps.alarm_state_sampletime')
+alarm_state_datatime = Config.get_int_value('gps.alarm_state_datatime')
+default_config_readtime = Config.get_int_value('gps.default_config_readtime')
+default_config_sampletime = Config.get_int_value('gps.default_config_sampletime')
+default_config_datatime = Config.get_int_value('gps.default_config_datatime')
 
 # We put these 18n strings here so they're detected when parsing files
 _('low_battery_notification_web', domain='Ondestan')
@@ -71,6 +80,9 @@ _('gps_no_positions_admin_notification_mail_subject', domain='Ondestan')
 _('gps_no_positions_admin_notification_mail_html_body', domain='Ondestan')
 _('gps_no_positions_admin_notification_mail_text_body', domain='Ondestan')
 
+_('gps_preconfig_1_name', domain='Ondestan')
+_('gps_preconfig_2_name', domain='Ondestan')
+_('gps_preconfig_3_name', domain='Ondestan')
 
 def get_all_animals(email=None):
     if email != None:
@@ -246,6 +258,36 @@ def deactivate_animal_by_id(request):
         animal.active = False
         animal.update()
 
+def save_new_preconfigured_configuration(configuration_id, animal):
+    animal.save_new_configuration(
+        Config.get_int_value('gps.preconfig_' + str(configuration_id) + '_readtime'),
+        Config.get_int_value('gps.preconfig_' + str(configuration_id) + '_sampletime'),
+        Config.get_int_value('gps.preconfig_' + str(configuration_id) + '_datatime'))
+
+def save_and_send_sms_new_configuration(readtime, sampletime, datatime, animal):
+    animal.save_new_configuration(readtime, sampletime, datatime)
+    configuration = animal.get_confirm_pending_configuration()
+    if configuration != None and animal.phone != None and animal.phone != unicode(''):
+        response = update_sms\
+            .replace('{readtime}', str(configuration.readtime))\
+            .replace('{sampletime}', str(configuration.sampletime))\
+            .replace('{datatime}', str(configuration.datatime))
+        logger.info('Sending new configuration by SMS to phone ' + animal.phone + ' : ' + response)
+        send_sms(response, '+34686677495')
+
+def activate_alarm_state(animal):
+    save_and_send_sms_new_configuration(alarm_state_readtime, alarm_state_sampletime,
+                                        alarm_state_datatime, animal)
+
+def deactivate_alarm_state(animal):
+    save_and_send_sms_new_configuration(default_config_readtime, default_config_sampletime,
+                                        default_config_datatime, animal)
+
+def is_in_alarm_state(animal):
+    configuration = animal.get_current_configuration()
+    return configuration.readtime == alarm_state_readtime and\
+        configuration.sampletime == alarm_state_sampletime and\
+        configuration.datatime == alarm_state_datatime
 
 def save_new_position(position, animal, request):
     if animal.active:

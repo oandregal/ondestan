@@ -24,8 +24,8 @@ from ondestan.services import plot_service, animal_service, user_service
 from ondestan.services import order_service, notification_service
 from ondestan.gps import comms_service
 from ondestan.gps.gps_update_error import GpsUpdateError
-from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime
-from ondestan.utils import parse_to_utcdatetime, get_fancy_time_from_utc
+from ondestan.utils import Customizable_PageURL_WebOb, format_utcdatetime, parse_to_utcdatetime
+from ondestan.utils import get_device_config_fancy_description, get_fancy_time_from_utc, get_device_preconfig_names
 from ondestan.config import Config
 
 max_positions = Config.get_int_value('config.history_max_positions')
@@ -1041,6 +1041,40 @@ def animals_list(request):
         is_admin=is_admin,
         animals=animals,
         )
+
+
+@view_config(route_name='device_configuration',
+             renderer='templates/deviceConfiguration.pt',
+             permission='view')
+def device_configuration(request):
+    animal_id = request.matchdict['animal_id']
+    is_admin = check_permission('admin', request)
+    email = get_user_email(request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    if (animal == None) or (not is_admin and animal.user.email != email):
+        return HTTPFound(request.route_url("animals_list"))
+    if 'form.submitted' in request.params:
+        if 'preconfig_nr' in request.params:
+            preconfig_nr = int(request.params['preconfig_nr'])
+            animal_service.save_new_preconfigured_configuration(preconfig_nr, animal)
+        elif 'alarm_state' in request.params:
+            if request.params['alarm_state'] == 'True':
+                animal_service.activate_alarm_state(animal)
+            else:
+                animal_service.deactivate_alarm_state(animal)
+    return dict(
+        is_admin=is_admin,
+        animal=animal,
+        is_in_alarm_state=animal_service.is_in_alarm_state(animal),
+        preconfig_names=get_device_preconfig_names(),
+        current_config=get_device_config_fancy_description(animal.get_current_configuration(),
+            request)
+    )
 
 
 @view_config(route_name='nominatim_request_by_name', renderer='json',

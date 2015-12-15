@@ -80,6 +80,16 @@ CREATE TABLE positions (
 );
 SELECT AddGeometryColumn ('public', 'positions', 'geom', 3857, 'POINT', 2);
 
+DROP TABLE IF EXISTS configurations CASCADE;
+CREATE TABLE configurations (
+	id SERIAL PRIMARY KEY,
+	readtime INTEGER NOT NULL,
+	sampletime INTEGER NOT NULL,
+	datatime INTEGER NOT NULL,
+	sent_date TIMESTAMP,
+	animal_id INTEGER REFERENCES animals NOT NULL
+);
+
 -- data insertion
 
 INSERT INTO roles(name) VALUES

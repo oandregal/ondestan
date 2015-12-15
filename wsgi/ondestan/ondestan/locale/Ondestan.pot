@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-08-06 12:31+0200\n"
+"POT-Creation-Date: 2015-12-16 00:19+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,137 +110,137 @@ msgid "danger"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:43
-#: ondestan/services/animal_service.py:38
+#: ondestan/services/animal_service.py:47
 msgid "low_battery_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:44
-#: ondestan/services/animal_service.py:39
+#: ondestan/services/animal_service.py:48
 msgid "low_battery_notification_mail_subject"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:45
-#: ondestan/services/animal_service.py:40
+#: ondestan/services/animal_service.py:49
 msgid "low_battery_notification_mail_html_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:46
-#: ondestan/services/animal_service.py:41
+#: ondestan/services/animal_service.py:50
 msgid "low_battery_notification_mail_text_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:47
-#: ondestan/services/animal_service.py:42
+#: ondestan/services/animal_service.py:51
 msgid "low_battery_notification_sms"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:49
-#: ondestan/services/animal_service.py:44
+#: ondestan/services/animal_service.py:53
 msgid "medium_battery_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:51
-#: ondestan/services/animal_service.py:46
+#: ondestan/services/animal_service.py:55
 msgid "gps_immobile_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:52
-#: ondestan/services/animal_service.py:47
+#: ondestan/services/animal_service.py:56
 msgid "gps_immobile_notification_mail_subject"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:53
-#: ondestan/services/animal_service.py:48
+#: ondestan/services/animal_service.py:57
 msgid "gps_immobile_notification_mail_html_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:54
-#: ondestan/services/animal_service.py:49
+#: ondestan/services/animal_service.py:58
 msgid "gps_immobile_notification_mail_text_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:56
-#: ondestan/services/animal_service.py:51
+#: ondestan/services/animal_service.py:60
 msgid "gps_instant_duplicated_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:58
-#: ondestan/services/animal_service.py:53
+#: ondestan/services/animal_service.py:62
 msgid "gps_inactive_device_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:60
-#: ondestan/services/animal_service.py:55
+#: ondestan/services/animal_service.py:64
 msgid "no_gps_coverage_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:62
-#: ondestan/services/animal_service.py:57
+#: ondestan/services/animal_service.py:66
 msgid "outside_plots_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:63
-#: ondestan/services/animal_service.py:58
+#: ondestan/services/animal_service.py:67
 msgid "outside_plots_notification_mail_subject"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:64
-#: ondestan/services/animal_service.py:59
+#: ondestan/services/animal_service.py:68
 msgid "outside_plots_notification_mail_html_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:65
-#: ondestan/services/animal_service.py:60
+#: ondestan/services/animal_service.py:69
 msgid "outside_plots_notification_mail_text_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:66
-#: ondestan/services/animal_service.py:61
+#: ondestan/services/animal_service.py:70
 msgid "outside_plots_notification_sms"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:68
-#: ondestan/services/animal_service.py:63
+#: ondestan/services/animal_service.py:72
 msgid "gps_no_positions_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:69
-#: ondestan/services/animal_service.py:64
+#: ondestan/services/animal_service.py:73
 msgid "gps_no_positions_notification_mail_subject"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:70
-#: ondestan/services/animal_service.py:65
+#: ondestan/services/animal_service.py:74
 msgid "gps_no_positions_notification_mail_html_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:71
-#: ondestan/services/animal_service.py:66
+#: ondestan/services/animal_service.py:75
 msgid "gps_no_positions_notification_mail_text_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:72
-#: ondestan/services/animal_service.py:67
+#: ondestan/services/animal_service.py:76
 msgid "gps_no_positions_notification_sms"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:74
-#: ondestan/services/animal_service.py:69
+#: ondestan/services/animal_service.py:78
 msgid "gps_no_positions_admin_notification_web"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:75
-#: ondestan/services/animal_service.py:70
+#: ondestan/services/animal_service.py:79
 msgid "gps_no_positions_admin_notification_mail_subject"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:76
-#: ondestan/services/animal_service.py:71
+#: ondestan/services/animal_service.py:80
 msgid "gps_no_positions_admin_notification_mail_html_body"
 msgstr ""
 
 #: build/lib.linux-x86_64-2.7/ondestan/services/animal_service.py:77
-#: ondestan/services/animal_service.py:72
+#: ondestan/services/animal_service.py:81
 msgid "gps_no_positions_admin_notification_mail_text_body"
 msgstr ""
 
@@ -1634,13 +1634,74 @@ msgstr ""
 msgid "meta_time_format"
 msgstr ""
 
+#: ondestan/services/animal_service.py:83
+msgid "gps_preconfig_1_name"
+msgstr ""
+
+#: ondestan/services/animal_service.py:84
+msgid "gps_preconfig_2_name"
+msgstr ""
+
+#: ondestan/services/animal_service.py:85
+msgid "gps_preconfig_3_name"
+msgstr ""
+
 #. Default: Animal History Viewer - Ondestán
 #: ondestan/templates/animalChargingHistoryViewer.pt:8
 msgid "animal_charging_history_viewer_title"
 msgstr ""
 
+#. Default: Device configuration - Ondestán
+#: ondestan/templates/deviceConfiguration.pt:8
+msgid "device_configuration_title"
+msgstr ""
+
+#. Default: Device configuration of
+#: ondestan/templates/deviceConfiguration.pt:15
+msgid "device_configuration"
+msgstr ""
+
+#. Default: Choose device configuration
+#: ondestan/templates/deviceConfiguration.pt:25
+msgid "choose_device_configuration"
+msgstr ""
+
+#. Default: Configuration
+#: ondestan/templates/deviceConfiguration.pt:33
+msgid "configuration"
+msgstr ""
+
+#. Default: Confirm configuration
+#: ondestan/templates/deviceConfiguration.pt:41
+msgid "confirm_configuration"
+msgstr ""
+
+#. Default: Emergency mode
+#: ondestan/templates/deviceConfiguration.pt:52
+msgid "emergency_mode"
+msgstr ""
+
+#. Default: Activate alarm state
+#: ondestan/templates/deviceConfiguration.pt:61
+msgid "activate_alarm_state"
+msgstr ""
+
+#. Default: Deactivate alarm state and return to default config
+#: ondestan/templates/deviceConfiguration.pt:65
+msgid "deactivate_alarm_state"
+msgstr ""
+
+#. Default: Current configuration
+#: ondestan/templates/deviceConfiguration.pt:78
+msgid "current_device_configuration"
+msgstr ""
+
 #. Default: User Profile
 #: ondestan/templates/main.pt:40
 msgid "user_profile"
+msgstr ""
+
+#: ondestan/utils/various.py:261
+msgid "fancy_config_description"
 msgstr ""
 

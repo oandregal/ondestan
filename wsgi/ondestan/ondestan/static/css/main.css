@@ -492,6 +492,6 @@ table td .btn.pull-right {
     z-index: 1001;
 }
 
-.currently-charging-icon {
+.device-config-icon, .currently-charging-icon {
 	color: #428bca;
 }

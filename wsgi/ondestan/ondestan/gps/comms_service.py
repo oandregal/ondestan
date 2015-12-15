@@ -38,6 +38,7 @@ header_params_positions = Config.get_string_value(
 body_params_positions = Config.get_string_value(
         'gps.body_params_positions').split(',')
 default_response = Config.get_string_value('gps.default_response')
+update_response = Config.get_string_value('gps.update_response')
 gps_proj = pyproj.Proj("+init=EPSG:" + Config.get_string_value('gps.proj'))
 viewer_proj = pyproj.Proj(
         "+init=EPSG:" + Config.get_string_value('config.viewer_proj'))
@@ -70,7 +71,17 @@ def get_response_legacy(imei):
 
 
 def get_response(imei):
-    return default_response
+    response = default_response
+    animal = animal_service.get_animal(imei)
+    if animal != None:
+        configuration = animal.get_confirm_pending_configuration()
+        if configuration != None:
+            response = update_response\
+                .replace('{readtime}', str(configuration.readtime))\
+                .replace('{sampletime}', str(configuration.sampletime))\
+                .replace('{datatime}', str(configuration.datatime))
+            logger.info('Sending new configuration for imei ' + imei + ' : ' + response)
+    return response
 
 
 def process_update_request(request):

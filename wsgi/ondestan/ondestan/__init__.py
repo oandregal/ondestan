@@ -76,6 +76,7 @@ def main(global_config, **settings):
 
     config.add_route('map', '/map')
     config.add_route('history_map', '/history_map/{animal_id}')
+    config.add_route('device_configuration', '/device_configuration/{animal_id}')
     config.add_route('charging_history_map', '/charging_history_map/{animal_id}')
     config.add_route('json_animals', '/json/animals.json')
     config.add_route('json_animal_positions',
