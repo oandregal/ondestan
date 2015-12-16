@@ -15,8 +15,8 @@ from datetime import datetime
 max_positions = Config.get_int_value('config.history_max_positions')
 
 default_config_readtime = Config.get_int_value('gps.default_config_readtime')
-default_config_sampletime = Config.get_int_value('gps.default_config_readtime')
-default_config_datatime = Config.get_int_value('gps.default_config_readtime')
+default_config_sampletime = Config.get_int_value('gps.default_config_sampletime')
+default_config_datatime = Config.get_int_value('gps.default_config_datatime')
 
 
 class Animal(Entity, Base):
