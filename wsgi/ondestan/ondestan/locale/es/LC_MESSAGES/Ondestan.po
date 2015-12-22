@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-16 00:19+0100\n"
-"PO-Revision-Date: 2015-12-16 23:35+0100\n"
+"POT-Creation-Date: 2015-12-22 15:42+0100\n"
+"PO-Revision-Date: 2015-12-22 15:42+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -1840,32 +1840,57 @@ msgstr "Seleccionar configuración"
 
 #. Default: Configuration
 #: ondestan/templates/deviceConfiguration.pt:33
-#| msgid "device_configuration"
 msgid "configuration"
 msgstr "Configuración"
 
 #. Default: Confirm configuration
 #: ondestan/templates/deviceConfiguration.pt:41
+#: ondestan/templates/deviceConfiguration.pt:83
 msgid "confirm_configuration"
 msgstr "Confirmar configuración"
 
-#. Default: Emergency mode
+#. Default: Custom configuration
 #: ondestan/templates/deviceConfiguration.pt:52
+msgid "custom_configuration"
+msgstr "Configuración personalizada"
+
+#. Default: Readtime
+#: ondestan/templates/deviceConfiguration.pt:60
+msgid "readtime"
+msgstr "Tiempo de captura GPS (s)"
+
+#. Default: Sampletime
+#: ondestan/templates/deviceConfiguration.pt:66
+msgid "sampletime"
+msgstr "Intervalo de captura GPS (s)"
+
+#. Default: Datatime
+#: ondestan/templates/deviceConfiguration.pt:72
+msgid "datatime"
+msgstr "Intervalo de envío (s)"
+
+#. Default: Send by SMS
+#: ondestan/templates/deviceConfiguration.pt:78
+msgid "send_by_sms"
+msgstr "Enviar por SMS"
+
+#. Default: Emergency mode
+#: ondestan/templates/deviceConfiguration.pt:94
 msgid "emergency_mode"
 msgstr "Modo de emergencias"
 
 #. Default: Activate alarm state
-#: ondestan/templates/deviceConfiguration.pt:61
+#: ondestan/templates/deviceConfiguration.pt:103
 msgid "activate_alarm_state"
 msgstr "Activar modo de emergencias"
 
 #. Default: Deactivate alarm state and return to default config
-#: ondestan/templates/deviceConfiguration.pt:65
+#: ondestan/templates/deviceConfiguration.pt:107
 msgid "deactivate_alarm_state"
 msgstr "Desactivar modo de emergencias"
 
 #. Default: Current configuration
-#: ondestan/templates/deviceConfiguration.pt:78
+#: ondestan/templates/deviceConfiguration.pt:120
 msgid "current_device_configuration"
 msgstr "Configuración actual"
 

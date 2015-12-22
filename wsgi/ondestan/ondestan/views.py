@@ -1067,6 +1067,8 @@ def device_configuration(request):
                 animal_service.activate_alarm_state(animal)
             else:
                 animal_service.deactivate_alarm_state(animal)
+        elif is_admin:
+            animal_service.save_new_custom_configuration(request, animal)
     return dict(
         is_admin=is_admin,
         animal=animal,

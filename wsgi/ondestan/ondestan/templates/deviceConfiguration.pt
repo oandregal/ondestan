@@ -43,6 +43,48 @@
 	  </div>
 	</div>
 
+    <div id="bottom1b" tal:condition="is_admin">
+      <div class="bottom form-block">
+
+	    <div id="middle col-md-5 col-md-offset-4">
+	      <div class="middle align-right">
+	        <div id="left" class="app-welcome align-left">
+	          <h4><tal:block i18n:translate="custom_configuration">Custom configuration</tal:block></h4>
+	        </div>
+	      </div>
+	    </div>
+
+        <form id="form" class="form-horizontal" role="form" action="${request.path}" method="post">
+          <input type="hidden" id="id" name="id" value="${id}"/>
+          <div class="form-group">
+            <label for="readtime" class="col-sm-4 control-label" i18n:translate="readtime">Readtime</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="readtime" name="readtime"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="sampletime" class="col-sm-4 control-label" i18n:translate="sampletime">Sampletime</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="sampletime" name="sampletime"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="datatime" class="col-sm-4 control-label" i18n:translate="datatime">Datatime</label>
+            <div class="col-sm-6">
+              <input type="text" class="form-control" id="datatime" name="datatime"/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="send_by_sms" class="col-sm-4 control-label" i18n:translate="send_by_sms">Send by SMS</label>
+            <div class="col-sm-6">
+              <input type="checkbox" class="form-control" id="send_by_sms" name="send_by_sms" value="true"/>
+            </div>
+          </div>
+		  <input class="btn btn-lg col-sm-4 col-sm-offset-5 btn-primary" id="submit" type="submit" name="form.submitted" i18n:attributes="value confirm_configuration" value="Confirm configuration"/>
+		</form>
+	  </div>
+	</div>
+
     <div id="bottom2">
       <div class="bottom form-block">
 

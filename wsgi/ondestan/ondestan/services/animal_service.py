@@ -258,6 +258,26 @@ def deactivate_animal_by_id(request):
         animal.active = False
         animal.update()
 
+def save_new_custom_configuration(request, animal):
+    current_config = animal.get_current_configuration()
+    if (request.params['readtime'] != ''):
+        readtime = int(request.params['readtime'])
+    else:
+        readtime = current_config.readtime
+    if (request.params['sampletime'] != ''):
+        sampletime = int(request.params['sampletime'])
+    else:
+        sampletime = current_config.sampletime
+    if (request.params['datatime'] != ''):
+        datatime = int(request.params['datatime'])
+    else:
+        datatime = current_config.datatime
+    if (readtime != None or sampletime != None or datatime != None):
+        if (request.params.has_key('send_by_sms')):
+            save_and_send_sms_new_configuration(readtime, sampletime, datatime, animal)
+        else:
+            animal.save_new_configuration(readtime, sampletime, datatime)
+
 def save_new_preconfigured_configuration(configuration_id, animal):
     animal.save_new_configuration(
         Config.get_int_value('gps.preconfig_' + str(configuration_id) + '_readtime'),
@@ -268,10 +288,19 @@ def save_and_send_sms_new_configuration(readtime, sampletime, datatime, animal):
     animal.save_new_configuration(readtime, sampletime, datatime)
     configuration = animal.get_confirm_pending_configuration()
     if configuration != None and animal.phone != None and animal.phone != unicode(''):
-        response = update_sms\
-            .replace('{readtime}', str(configuration.readtime))\
-            .replace('{sampletime}', str(configuration.sampletime))\
-            .replace('{datatime}', str(configuration.datatime))
+        response = update_sms
+        if configuration.readtime != None:
+            response = response.replace('{readtime}', str(configuration.readtime))
+        else:
+            response = response.replace('{readtime}', '')
+        if configuration.sampletime != None:
+            response = response.replace('{sampletime}', str(configuration.sampletime))
+        else:
+            response = response.replace('{sampletime}', '')
+        if configuration.datatime != None:
+            response = response.replace('{datatime}', str(configuration.datatime))
+        else:
+            response = response.replace('{datatime}', '')
         logger.info('Sending new configuration by SMS to phone ' + animal.phone + ' : ' + response)
         send_sms(response, '+34686677495')
 

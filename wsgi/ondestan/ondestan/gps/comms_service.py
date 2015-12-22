@@ -76,10 +76,19 @@ def get_response(imei):
     if animal != None:
         configuration = animal.get_confirm_pending_configuration()
         if configuration != None:
-            response = update_response\
-                .replace('{readtime}', str(configuration.readtime))\
-                .replace('{sampletime}', str(configuration.sampletime))\
-                .replace('{datatime}', str(configuration.datatime))
+            response = update_response
+            if configuration.readtime != None:
+                response = response.replace('{readtime}', str(configuration.readtime))
+            else:
+                response = response.replace('{readtime}', '')
+            if configuration.sampletime != None:
+                response = response.replace('{sampletime}', str(configuration.sampletime))
+            else:
+                response = response.replace('{sampletime}', '')
+            if configuration.datatime != None:
+                response = response.replace('{datatime}', str(configuration.datatime))
+            else:
+                response = response.replace('{datatime}', '')
             logger.info('Sending new configuration for imei ' + imei + ' : ' + response)
     return response
 
