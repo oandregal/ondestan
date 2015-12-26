@@ -235,3 +235,12 @@ class Animal(Entity, Base):
         configuration.sampletime = default_config_sampletime
         configuration.datatime = default_config_datatime
         return configuration
+
+    def get_all_configurations(self):
+        all_configs = list(self.configurations)
+        configuration = Configuration()
+        configuration.readtime = default_config_readtime
+        configuration.sampletime = default_config_sampletime
+        configuration.datatime = default_config_datatime
+        all_configs.append(configuration)
+        return all_configs

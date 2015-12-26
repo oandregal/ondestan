@@ -1,0 +1,55 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="Ondestan" metal:use-macro="load: main.pt">
+
+  <tal:block metal:fill-slot="head">
+    <title i18n:translate="configuration_history_title">Configurations History - Ondestán</title>
+  </tal:block>
+
+  <tal:block metal:fill-slot="content">
+	<h3><tal:block i18n:translate="configuration_history">Configurations History</tal:block></h3>
+
+    <div>
+      <div class="bottom">
+
+        <table class="table table-bordered table-hover">
+
+          <thead>
+            <tr>
+              <th i18n:translate="sent_date">Sent Date</th>
+              <th i18n:translate="readtime">Readtime</th>
+              <th i18n:translate="sampletime">Sampletime</th>
+              <th i18n:translate="datatime">Datatime</th>
+            </tr>
+          </thead>
+          <?python from ondestan.utils import format_utcdatetime ?>
+          <tbody>
+            <tr tal:repeat="configuration configurations">
+            	<td tal:condition="configuration.sent_date != None" tal:content="format_utcdatetime(configuration.sent_date, request)"/>
+            	<td tal:condition="configuration.sent_date == None">---</td>
+            	<td tal:content="configuration.readtime"/>
+            	<td tal:content="configuration.sampletime"/>
+            	<td tal:content="configuration.datatime"/>
+            </tr>
+          </tbody>
+
+        </table>
+        
+		<div class="pager">
+		  ${configurations.pager(format="$link_previous ~2~ $link_next",
+		    symbol_previous="«",
+		    symbol_next="»",
+		    link_attr={"class": "btn small"},
+		    curpage_attr={"class": "btn primary small disabled"},
+		    dotdot_attr={"class": "btn small disabled"})}
+		</div>
+
+      </div>
+
+    </div>
+
+  </tal:block>
+
+</html>

@@ -1079,6 +1079,31 @@ def device_configuration(request):
     )
 
 
+@view_config(route_name='device_configuration_history',
+             renderer='templates/deviceConfigurationHistory.pt',
+             permission='view')
+def device_configuration_history(request):
+    animal_id = request.matchdict['animal_id']
+    is_admin = check_permission('admin', request)
+    email = get_user_email(request)
+    animal = None
+    if animal_id != None:
+        try:
+            animal = animal_service.get_animal_by_id(int(animal_id))
+        except ValueError:
+            pass
+    if (animal == None) or (not is_admin and animal.user.email != email):
+        return HTTPFound(request.route_url("animals_list"))
+    configurations = Page(animal.get_all_configurations(),
+        page=int(request.params.get('p', 1)),
+        items_per_page=20,
+        url=Customizable_PageURL_WebOb(request, get_param='p'))
+    return dict(
+        is_admin=check_permission('admin', request),
+        configurations=configurations
+        )
+
+
 @view_config(route_name='nominatim_request_by_name', renderer='json',
              permission='view')
 def nominatim_request_by_name(request):

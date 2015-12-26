@@ -495,3 +495,8 @@ table td .btn.pull-right {
 .device-config-icon, .currently-charging-icon {
 	color: #428bca;
 }
+
+#current-configuration {
+	padding-bottom: 20px;
+}
+}

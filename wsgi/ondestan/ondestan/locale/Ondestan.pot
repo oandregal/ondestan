@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-22 15:42+0100\n"
+"POT-Creation-Date: 2015-12-26 14:10+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1684,16 +1684,19 @@ msgstr ""
 
 #. Default: Readtime
 #: ondestan/templates/deviceConfiguration.pt:60
+#: ondestan/templates/deviceConfigurationHistory.pt:22
 msgid "readtime"
 msgstr ""
 
 #. Default: Sampletime
 #: ondestan/templates/deviceConfiguration.pt:66
+#: ondestan/templates/deviceConfigurationHistory.pt:23
 msgid "sampletime"
 msgstr ""
 
 #. Default: Datatime
 #: ondestan/templates/deviceConfiguration.pt:72
+#: ondestan/templates/deviceConfigurationHistory.pt:24
 msgid "datatime"
 msgstr ""
 
@@ -1720,6 +1723,26 @@ msgstr ""
 #. Default: Current configuration
 #: ondestan/templates/deviceConfiguration.pt:120
 msgid "current_device_configuration"
+msgstr ""
+
+#. Default: See device configuration history
+#: ondestan/templates/deviceConfiguration.pt:132
+msgid "see_device_configuration_history"
+msgstr ""
+
+#. Default: Configurations History - Ondestán
+#: ondestan/templates/deviceConfigurationHistory.pt:8
+msgid "configuration_history_title"
+msgstr ""
+
+#. Default: Configurations History
+#: ondestan/templates/deviceConfigurationHistory.pt:12
+msgid "configuration_history"
+msgstr ""
+
+#. Default: Sent Date
+#: ondestan/templates/deviceConfigurationHistory.pt:21
+msgid "sent_date"
 msgstr ""
 
 #. Default: User Profile

@@ -122,11 +122,15 @@
 	      </div>
 	    </div>
 
-          <div class="form-group">
+        <div class="form-group" id="current-configuration">
             <div class="col-sm-8 col-sm-offset-3">
               <span>${current_config}</span>
             </div>
-          </div>
+        </div>
+
+        <div class="bottom">
+            <a type="button" class="btn col-sm-5 col-sm-offset-4 btn-default" href="${request.route_url('device_configuration_history', animal_id=animal.id)}" i18n:translate="see_device_configuration_history">See device configuration history</a>
+        </div>
 	  </div>		
 	</div>
 

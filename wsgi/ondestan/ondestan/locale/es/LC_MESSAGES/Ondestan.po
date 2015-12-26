@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ondestan 0.1\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2015-12-22 15:42+0100\n"
-"PO-Revision-Date: 2015-12-22 15:42+0100\n"
+"POT-Creation-Date: 2015-12-26 14:10+0100\n"
+"PO-Revision-Date: 2015-12-26 14:11+0100\n"
 "Last-Translator: Jorge López Fernández <jlopez@cartolab.es>\n"
 "Language-Team: es <LL@li.org>\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
@@ -1856,16 +1856,19 @@ msgstr "Configuración personalizada"
 
 #. Default: Readtime
 #: ondestan/templates/deviceConfiguration.pt:60
+#: ondestan/templates/deviceConfigurationHistory.pt:22
 msgid "readtime"
 msgstr "Tiempo de captura GPS (s)"
 
 #. Default: Sampletime
 #: ondestan/templates/deviceConfiguration.pt:66
+#: ondestan/templates/deviceConfigurationHistory.pt:23
 msgid "sampletime"
 msgstr "Intervalo de captura GPS (s)"
 
 #. Default: Datatime
 #: ondestan/templates/deviceConfiguration.pt:72
+#: ondestan/templates/deviceConfigurationHistory.pt:24
 msgid "datatime"
 msgstr "Intervalo de envío (s)"
 
@@ -1893,6 +1896,30 @@ msgstr "Desactivar modo de emergencias"
 #: ondestan/templates/deviceConfiguration.pt:120
 msgid "current_device_configuration"
 msgstr "Configuración actual"
+
+#. Default: See device configuration history
+#: ondestan/templates/deviceConfiguration.pt:132
+#| msgid "choose_device_configuration"
+msgid "see_device_configuration_history"
+msgstr "Ver histórico de configuraciones"
+
+#. Default: Configurations History - Ondestán
+#: ondestan/templates/deviceConfigurationHistory.pt:8
+#| msgid "device_configuration_title"
+msgid "configuration_history_title"
+msgstr "Histórico de configuraciones de dispositivo - Ondestán"
+
+#. Default: Configurations History
+#: ondestan/templates/deviceConfigurationHistory.pt:12
+#| msgid "configuration"
+msgid "configuration_history"
+msgstr "Histórico de configuraciones de dispositivo"
+
+#. Default: Sent Date
+#: ondestan/templates/deviceConfigurationHistory.pt:21
+#| msgid "end_date"
+msgid "sent_date"
+msgstr "Fecha de envío"
 
 #. Default: User Profile
 #: ondestan/templates/main.pt:40
